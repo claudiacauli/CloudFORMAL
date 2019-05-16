@@ -1,7 +1,7 @@
 package aws.cfn.dlmodel.terminology
 
 import aws.cfn.dlmodel.Symbols
-import aws.cfn.types.{Action, ServiceActions}
+import aws.cfn.formalization.{Action, ServiceActions}
 
 class ServiceActionsMapper (val servActions : ServiceActions) {
 

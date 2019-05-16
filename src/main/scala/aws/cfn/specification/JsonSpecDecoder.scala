@@ -2,7 +2,7 @@ package aws.cfn.specification
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.specification.maps.{InterResourceReferencesMap, PolicyReferencesMap}
-import aws.cfn.types._
+import aws.cfn.formalization._
 
 import scala.language.postfixOps
 

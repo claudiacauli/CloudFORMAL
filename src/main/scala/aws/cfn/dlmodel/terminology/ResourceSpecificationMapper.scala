@@ -1,7 +1,7 @@
 package aws.cfn.dlmodel.terminology
 
 import aws.cfn.dlmodel.{Constants, Symbols}
-import aws.cfn.types._
+import aws.cfn.formalization._
 import org.semanticweb.owlapi.model.{OWLAxiom, OWLClass}
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 

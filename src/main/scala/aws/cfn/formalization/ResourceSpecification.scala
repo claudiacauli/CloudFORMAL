@@ -1,43 +1,53 @@
-package aws.cfn.types
+package aws.cfn.formalization
 
+
+
+
+
+/*
+*
+*
+* Types for main ResourceType and SubpropertyTypes within a ResourceSpecification Object
+*
+ */
 class ResourceSpecification(val name:String, val resType:ResourceValueType, val subPropTypes: Vector[SubPropertyValueType])
 
-sealed trait PropertyValueType
-sealed trait AttributeValueType
+//sealed trait PropertyValueType
+//sealed trait AttributeValueType
 
-sealed trait SingleValueType extends PropertyValueType
-  sealed trait PrimitiveValueType extends SingleValueType with AttributeValueType
-    case object StringValueType extends PrimitiveValueType
-    case object CommaDelimitedListValueType extends PrimitiveValueType
-    case object IntValueType extends PrimitiveValueType
-    case object FloatValueType extends PrimitiveValueType
-    case object LongValueType extends PrimitiveValueType
-    case object BooleanValueType extends PrimitiveValueType
-    case object DateTimeValueType extends PrimitiveValueType
-    case object JsonValueType extends PrimitiveValueType
+//sealed trait SingleValueType extends PropertyValueType
+//  sealed trait PrimitiveValueType extends SingleValueType with AttributeValueType
+//    case object StringValueType extends PrimitiveValueType
+//    case object CommaDelimitedListValueType extends PrimitiveValueType
+//    case object IntValueType extends PrimitiveValueType
+//    case object FloatValueType extends PrimitiveValueType
+//    case object LongValueType extends PrimitiveValueType
+//    case object BooleanValueType extends PrimitiveValueType
+//    case object DateTimeValueType extends PrimitiveValueType
+//    case object JsonValueType extends PrimitiveValueType
 
-  sealed trait NonPrimitiveValueType extends SingleValueType {
-    val name : String
+sealed trait NonPrimitiveValueType /*extends SingleValueType*/ {
+  val name : String
+}
+
+  case class SubPropertyValueType(name: String) extends NonPrimitiveValueType {
+    var props : Vector[GenericPropertyType] = Vector()
+    def addPropertyList(l:Vector[GenericPropertyType]): Unit = this.props = l
   }
 
-    case class SubPropertyValueType(name: String) extends NonPrimitiveValueType {
-      var props : Vector[GenericPropertyType] = Vector()
-      def addPropertyList(l:Vector[GenericPropertyType]): Unit = this.props = l
-    }
-
-    case class ResourceValueType(name: String) extends NonPrimitiveValueType {
-      var attrs : Vector[GenericAttributeType] = Vector()
-      var props : Vector[GenericPropertyType] = Vector()
-      def addAttributeList(l:Vector[GenericAttributeType]): Unit = this.attrs = l
-      def addPropertyList(l:Vector[GenericPropertyType]): Unit = this.props = l
-    }
+  case class ResourceValueType(name: String) extends NonPrimitiveValueType {
+    var attrs : Vector[GenericAttributeType] = Vector()
+    var props : Vector[GenericPropertyType] = Vector()
+    def addAttributeList(l:Vector[GenericAttributeType]): Unit = this.attrs = l
+    def addPropertyList(l:Vector[GenericPropertyType]): Unit = this.props = l
+  }
 
 
-sealed trait MultiValueType extends PropertyValueType
-  sealed trait ListValueType extends MultiValueType
-    case class ListOfPrimitiveValueType[T <: PrimitiveValueType]() extends ListValueType with AttributeValueType
-    case class ListOfNonPrimitiveValueType[T <: NonPrimitiveValueType]() extends ListValueType
-  case class MapValueType[T <: SingleValueType]() extends MultiValueType
+//sealed trait MultiValueType extends PropertyValueType
+//  sealed trait ListValueType extends MultiValueType
+//    case class ListOfPrimitiveValueType[T <: PrimitiveValueType]() extends ListValueType with AttributeValueType
+//    case class ListOfNonPrimitiveValueType[T <: NonPrimitiveValueType]() extends ListValueType
+//  case class MapValueType[T <: SingleValueType]() extends MultiValueType
 
 
 

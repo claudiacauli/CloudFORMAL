@@ -1,7 +1,7 @@
 package aws.cfn.dlmodel
 
 import aws.cfn.dlmodel.terminology.{ResourceSpecificationMapper, ResourceSpecificationModel}
-import aws.cfn.types._
+import aws.cfn.formalization._
 
 
 object DLEncoder {

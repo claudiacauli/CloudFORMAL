@@ -1,7 +1,7 @@
 package aws.cfn.specification
 
 import aws.cfn.specification.maps.ActionsMap
-import aws.cfn.types.{Action, ServiceActions}
+import aws.cfn.formalization.{Action, ServiceActions}
 
 object ServiceActionsGenerator {
 
