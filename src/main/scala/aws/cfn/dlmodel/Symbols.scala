@@ -9,7 +9,7 @@ object Symbols {
 
 
   val baseIRI : IRI = IRI.create("https://www.claudiacauli.com/aws/cfn/2019/")
-  val versionIRI : IRI = IRI.create(baseIRI + "v1.0/")
+  val versionIRI : IRI = IRI.create(baseIRI.toString + "v1.0/")
   val currentIRI : IRI = versionIRI
 
 
@@ -18,38 +18,38 @@ object Symbols {
   /*
     Specification Alphabet Naming Rules
    */
-  def resourceTerminologyIRI : String => IRI = serviceResourceName => IRI.create(currentIRI+ serviceResourceName + "#")
+  def resourceTerminologyIRI : String => IRI = serviceResourceName => IRI.create(currentIRI.toString+ serviceResourceName + "#")
   def resourceTerminologyNamespace : (String, String) => String = (serviceName, resourceName) => serviceName+resourceName
   def filename : (String,String) => String = (serviceName, resourceName) => serviceName+resourceName+".owl"
 
   def resourceTypeIRI :(String,String) => IRI =
-    (resSpecName, resourceName) => IRI.create(currentIRI + resSpecName +"#" + resourceName)
+    (resSpecName, resourceName) => IRI.create(currentIRI.toString + resSpecName +"#" + resourceName)
   def subpropertyTypeIRI : (String,String) => IRI =
-    (resSpecName,subpropertyName) => IRI.create(currentIRI + resSpecName + "#" + subpropertyName)
+    (resSpecName,subpropertyName) => IRI.create(currentIRI.toString + resSpecName + "#" + subpropertyName)
   def attributeTypeIRI : (String,String) => IRI =
-    (resSpecName, attributeName) => IRI.create(currentIRI + resSpecName + "#" + attributeName)
+    (resSpecName, attributeName) => IRI.create(currentIRI.toString + resSpecName + "#" + attributeName)
   def propertyTypeIRI : (String,String) => IRI =
-    (resSpecName, propertyName) => IRI.create(currentIRI + resSpecName + "#" + propertyName)
+    (resSpecName, propertyName) => IRI.create(currentIRI.toString + resSpecName + "#" + propertyName)
 
   def mapEntryConceptIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI + resSpecName + "#" + "mapentry_" + valueType)
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType)
   def mapEntryKeyRoleIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI + resSpecName + "#" + "mapentry_" + valueType + "_key")
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType + "_key")
   def mapEntryValueRoleIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI + resSpecName + "#" + "mapentry_" + valueType + "_value")
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType + "_value")
 
-  def actionsOntologyIRI : String => IRI = serviceName => IRI.create( currentIRI + serviceName + "#" )
-  def actionIRI : (String,String) => IRI = (serviceName,actionName) => IRI.create(currentIRI+serviceName+"#"+actionName)
+  def actionsOntologyIRI : String => IRI = serviceName => IRI.create( currentIRI.toString + serviceName + "#" )
+  def actionIRI : (String,String) => IRI = (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName+"#"+actionName)
 
 
 
   /*
     Template Alphabet Naming Rules
   */
-  def stackSetIRI : String => IRI = stackSetName => IRI.create(currentIRI + stackSetName.toLowerCase() + "#")
+  def stackSetIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#")
   def stackSetNamespace : String => String = stackSetName => stackSetName.toLowerCase()
-  def resourceInstanceIRI : (String,String) => IRI = (stackSetName,resourceLogicalId) => IRI.create(currentIRI + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
-  def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI + stackSetName.toLowerCase + "#" + "uid_" + randomUUID )
+  def resourceInstanceIRI : (String,String) => IRI = (stackSetName,resourceLogicalId) => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
+  def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "uid_" + randomUUID )
 
 
 
