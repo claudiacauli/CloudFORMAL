@@ -4,25 +4,27 @@ import java.nio.charset.StandardCharsets
 import java.util.Base64
 
 
+sealed trait Node
+
 /*
- * Collection of all possible nodes in a CFn template
+* Collection of all possible nodes in a CFn stackSet
+*/
+final class ForeignNode(name:String) extends Node
+
+/*
+ * Collection of all possible nodes in a CFn stackSet
  */
-sealed class CloudFormationNode {
-  //def equals(other: CloudFormationNode): Boolean = this == other
-}
+sealed trait StackSetNode extends Node
 
 
   /*
    * Nodes that contains values of any type. Leaf nodes
    */
-  sealed trait GenericValueNode extends CloudFormationNode
+  sealed class GenericValueNode extends StackSetNode
 
-    sealed trait ValueNode[T] extends GenericValueNode {
-      def value: T
-      //def equals(other: ValueNode[T]): Boolean = this.value == other.value
-    }
+    sealed trait ValueNode[T] extends GenericValueNode
 
-      final case class StringNode(value: String) extends ValueNode[String] {
+      final case class StringNode(value:String) extends ValueNode[String] {
         def apply(): String = value
       }
 
@@ -46,7 +48,7 @@ sealed class CloudFormationNode {
         def apply(): String = value
       }
 
-      final case class CommaDelimitedLisNode(value: String) extends ValueNode[String] {
+      final case class CommaDelimitedListNode(value: String) extends ValueNode[String] {
         def apply(): String = value
       }
 
@@ -62,7 +64,7 @@ sealed class CloudFormationNode {
   /*
    * Intrinsic functions! Evaluate to several different things...
    */
-  sealed trait IntrinsicFunction extends CloudFormationNode {
+  sealed trait IntrinsicFunction extends StackSetNode {
     //def equals(other : IntrinsicFunction) : Boolean = this == other
   }
 
@@ -79,7 +81,7 @@ sealed class CloudFormationNode {
     }
 
     final case class FindInMapFunction(m: String, k1: String, k2: String, t:Template) extends IntrinsicFunction {
-      def apply(): Either[CloudFormationNode,AnyVal] = t.mappings(k1)(k2)
+      def apply(): Either[StackSetNode,AnyVal] = t.mappings(k1)(k2)
     }
 
     final case class GetAttFunction(res:String, attr:String, t:Template) extends IntrinsicFunction {
@@ -163,24 +165,36 @@ sealed class CloudFormationNode {
   /*
    * Object Nodes, extending CloudFormation Nodes
    */
-  sealed trait ObjectNode extends CloudFormationNode {
-    //def equals(other: ObjectNode): Boolean = this == other
-  }
+  sealed trait ObjectNode extends StackSetNode
 
     final case class ResourceNode(resourceLogicalId: String,
-                            condition: Either[Boolean,BooleanFunction],
                             attributes : Map[String, AnyVal],
-                            properties: Map[String,CloudFormationNode]) extends ObjectNode
+                            properties: Map[String,StackSetNode]) extends ObjectNode
     {
       def apply(): ResourceNode = this
     }
 
-    final case class SubpropertyNode(properties: Map[String, CloudFormationNode]) extends ObjectNode
+    final case class SubpropertyNode(properties: Map[String, StackSetNode]) extends ObjectNode
     {
       def apply(): SubpropertyNode = this
     }
 
-    final case class PolicyNode() extends ObjectNode
+    final case class PolicyNode(statements: Vector[Statement]) extends ObjectNode
     {
       def apply(): PolicyNode = this
     }
+
+    sealed case class Statement(principals: (Boolean,Vector[Node]),
+                                actions: (Boolean,Vector[String]),
+                                resources:(Boolean, Vector[Node]),
+                                conditions: Map[String,(AnyVal, AnyVal)] ) extends ObjectNode
+
+      final case class AllowStatement(p: (Boolean,Vector[Node]),
+                                      a: (Boolean,Vector[String]),
+                                      r:(Boolean, Vector[Node]),
+                                      c: Map[String,(AnyVal, AnyVal)] ) extends Statement(p,a,r,c)
+
+      final case class DenyStatement(p: (Boolean,Vector[Node]),
+                                     a: (Boolean,Vector[String]),
+                                     r:(Boolean, Vector[Node]),
+                                     c: Map[String,(AnyVal, AnyVal)] ) extends Statement(p,a,r,c)

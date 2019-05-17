@@ -4,12 +4,12 @@ package aws.cfn.formalization
 class StackSet(val name:String) {
 
   var templates: Vector[Template] = Vector()
-  var outputs: Map[String,Either[CloudFormationNode, AnyVal]] = Map()
+  var outputs: Map[String,Either[StackSetNode, AnyVal]] = Map()
 
   def addTemplates(templateInput: Vector[(String, Map[String,Any])] ): Unit =
     templates = templateInput map ( p => new Template(p._1, p._2) )
 
-  def addOutputs (outs: Map[String, Either[CloudFormationNode, AnyVal]]) : Unit =
+  def addOutputs (outs: Map[String, Either[StackSetNode, AnyVal]]) : Unit =
     outputs = outs
 
 
