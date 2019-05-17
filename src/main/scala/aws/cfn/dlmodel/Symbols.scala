@@ -40,7 +40,7 @@ object Symbols {
 
   def actionsOntologyIRI : String => IRI = serviceName => IRI.create( currentIRI.toString + serviceName + "#" )
   def actionIRI : (String,String) => IRI = (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName+"#"+actionName)
-
+  def policyDocIRI:IRI = IRI.create(currentIRI.toString + "policydocument#policydocument")
 
 
   /*
@@ -49,8 +49,8 @@ object Symbols {
   def stackSetIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#")
   def stackSetNamespace : String => String = stackSetName => stackSetName.toLowerCase()
   def resourceInstanceIRI : (String,String) => IRI = (stackSetName,resourceLogicalId) => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
-  def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "uid_" + randomUUID )
-
+  def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Subproperty_" + randomUUID )
+  def policyNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Policy_"+randomUUID())
 
 
 }
