@@ -2,8 +2,9 @@ package aws.cfn.encoding.template
 
 import aws.cfn.dlmodel.Symbols
 import aws.cfn.dlmodel.template.StackSetModel
+import aws.cfn.encoding.specification.maps.DefaultsMap
 import aws.cfn.formalization.{AllowStatement, BooleanNode, CommaDelimitedListNode, DateTimeNode, DenyStatement, FloatNode, GenericValueNode, IntNode, JsonNode, LongNode, Node, ObjectNode, PolicyNode, ResourceNode, StackSet, StackSetNode, StringNode, SubpropertyNode, ValueNode}
-import org.semanticweb.owlapi.model.{IRI, OWLAxiom, OWLAxiomVisitor, OWLClass, OWLClassExpression, OWLDataProperty, OWLIndividual, OWLNamedIndividual, OWLObjectProperty, OWLObjectPropertyAssertionAxiom}
+import org.semanticweb.owlapi.model.{IRI, OWLAxiom, OWLAxiomVisitor, OWLClass, OWLClassExpression, OWLDataProperty, OWLIndividual, OWLLiteral, OWLNamedIndividual, OWLObjectProperty, OWLObjectPropertyAssertionAxiom}
 
 import scala.jdk.OptionConverters._
 
@@ -40,10 +41,19 @@ class StackSetDLEncoder(stackSet: StackSet){
     def encodeProperty(sourceIndividual:OWLIndividual, propName: String, cfnNode: StackSetNode): Vector[OWLAxiom] = oProperty(propName) match {
       case Some(op) => encodeObjectProperty(sourceIndividual, op, cfnNode.asInstanceOf[ObjectNode])
       case None => dProperty(propName) match {
-        case Some(dp) => encodeValueProperty(sourceIndividual,dp,cfnNode.asInstanceOf[ValueNode])
+        case Some(dp) => encodeValueProperty(sourceIndividual,dp,cfnNode.asInstanceOf[GenericValueNode])
         case None => Vector()    // TODO ERROR! Something wrong
       }
     }
+
+
+    def encodeAbsentProperty(sourceIndividual:OWLIndividual, propName:String) : Vector[OWLAxiom] =
+      Vector( m.df.getOWLSubClassOfAxiom( m.df.getOWLObjectOneOf(sourceIndividual),
+        oProperty(propName) match {
+          case Some(op) => m.df.getOWLObjectAllValuesFrom(op, m.df.getOWLNothing)
+          case None =>  m.df.getOWLObjectComplementOf(m.df.getOWLDataSomeValuesFrom( dProperty(propName).get, m.df.getTopDatatype ))
+        }
+      ))
 
     /*
     Only used in case of policies
@@ -69,12 +79,12 @@ class StackSetDLEncoder(stackSet: StackSet){
 
     def encodeObjectProperty(sourceIndividual:OWLIndividual, objProp:OWLObjectProperty, objNode: ObjectNode) : Vector[OWLAxiom]
     = objNode match {
-      case ResourceNode(resourceLogicalId, _, _) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
-      case SubpropertyNode(properties) => {
+      case ResourceNode(resourceLogicalId, _, _,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
+      case SubpropertyNode(givenProperties,absentProperties) => {
         val individualRandomIRI = Symbols.subpropertyBlankNodeIRI(stackSet.name)
         createBlankNode(objProp, individualRandomIRI) ++
-          properties.toVector.flatMap(p => encodeProperty(
-            m.df.getOWLNamedIndividual(individualRandomIRI), p._1, p._2))
+          (givenProperties.toVector flatMap (p => encodeProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p._1, p._2))) ++
+          (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
       }
       case PolicyNode(statements) => {
         val policyRandomIRI = Symbols.policyNodeIRI(stackSet.name)

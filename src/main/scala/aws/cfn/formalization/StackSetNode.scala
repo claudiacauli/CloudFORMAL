@@ -20,7 +20,7 @@ sealed trait StackSetNode extends Node
   /*
    * Nodes that contains values of any type. Leaf nodes
    */
-  sealed class GenericValueNode extends StackSetNode
+  sealed trait GenericValueNode extends StackSetNode
 
     sealed trait ValueNode[T] extends GenericValueNode
 
@@ -168,13 +168,16 @@ sealed trait StackSetNode extends Node
   sealed trait ObjectNode extends StackSetNode
 
     final case class ResourceNode(resourceLogicalId: String,
-                            attributes : Map[String, AnyVal],
-                            properties: Map[String,StackSetNode]) extends ObjectNode
+                                  attributes : Map[String, AnyVal],
+                                  givenProperties: Map[String,StackSetNode],
+                                  absentProperties: Vector[String]
+                                 ) extends ObjectNode
     {
       def apply(): ResourceNode = this
     }
 
-    final case class SubpropertyNode(properties: Map[String, StackSetNode]) extends ObjectNode
+    final case class SubpropertyNode(givenProperties: Map[String, StackSetNode],
+                                     absentProperties: Vector[String]) extends ObjectNode
     {
       def apply(): SubpropertyNode = this
     }
@@ -184,17 +187,14 @@ sealed trait StackSetNode extends Node
       def apply(): PolicyNode = this
     }
 
-    sealed case class Statement(principals: (Boolean,Vector[Node]),
-                                actions: (Boolean,Vector[String]),
-                                resources:(Boolean, Vector[Node]),
-                                conditions: Map[String,(AnyVal, AnyVal)] ) extends ObjectNode
+    sealed trait Statement extends ObjectNode
 
       final case class AllowStatement(p: (Boolean,Vector[Node]),
                                       a: (Boolean,Vector[String]),
                                       r:(Boolean, Vector[Node]),
-                                      c: Map[String,(AnyVal, AnyVal)] ) extends Statement(p,a,r,c)
+                                      c: Map[String,(AnyVal, AnyVal)] ) extends Statement
 
       final case class DenyStatement(p: (Boolean,Vector[Node]),
                                      a: (Boolean,Vector[String]),
                                      r:(Boolean, Vector[Node]),
-                                     c: Map[String,(AnyVal, AnyVal)] ) extends Statement(p,a,r,c)
+                                     c: Map[String,(AnyVal, AnyVal)] ) extends Statement

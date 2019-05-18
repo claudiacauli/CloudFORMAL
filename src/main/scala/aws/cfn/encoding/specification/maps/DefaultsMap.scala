@@ -1,6 +1,10 @@
 package aws.cfn.encoding.specification.maps
 
+
 object DefaultsMap {
+
+  def lookUp(k: String) : Option[Map[String,AnyVal]] = map.get(k)
+  def lookUp(k1:String, k2:String) : Option[AnyVal] = map(k1).get(k2)
 
   private val map : Map[String,Map[String,AnyVal]] = Map(
 
