@@ -2,11 +2,11 @@ package aws.cfn.encoding.template
 
 import aws.cfn.dlmodel.Symbols
 import aws.cfn.dlmodel.template.StackSetModel
-import aws.cfn.encoding.specification.maps.DefaultsMap
-import aws.cfn.formalization.{AllowStatement, BooleanNode, CommaDelimitedListNode, DateTimeNode, DenyStatement, FloatNode, GenericValueNode, IntNode, JsonNode, LongNode, Node, ObjectNode, PolicyNode, ResourceNode, StackSet, StackSetNode, StringNode, SubpropertyNode, ValueNode}
-import org.semanticweb.owlapi.model.{IRI, OWLAxiom, OWLAxiomVisitor, OWLClass, OWLClassExpression, OWLDataProperty, OWLIndividual, OWLLiteral, OWLNamedIndividual, OWLObjectProperty, OWLObjectPropertyAssertionAxiom}
+import aws.cfn.formalization._
+import org.semanticweb.owlapi.model.{IRI, OWLAxiom, OWLClassExpression, OWLDataProperty, OWLIndividual, OWLObjectProperty}
 
 import scala.jdk.OptionConverters._
+import scala.jdk.CollectionConverters._
 
 
 object StackSetDLEncoder {
@@ -22,11 +22,21 @@ class StackSetDLEncoder(stackSet: StackSet){
 
   val m : StackSetModel = new StackSetModel(stackSet.name)
 
-  def encode(): StackSetModel ={
+  def encode() : StackSetModel = {
 
     /*
     TODO Populate the model m will the set of all axioms computed by instantiating all the things in the StackSet object!
      */
+    for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
+      m.ontology.add(m.df.getOWLClassAssertionAxiom(
+        classFromIRI(
+          Symbols.resourceTypeIRI(r._2.serviceType, r._2.resourceType)),
+          m.df.getOWLNamedIndividual(Symbols.resourceInstanceIRI(stackSet.name, r._1))
+      ))
+    }
+    for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
+      m.ontology.add(encodeResource(r._2).asJava)
+    }
 
     m
   }
@@ -35,7 +45,24 @@ class StackSetDLEncoder(stackSet: StackSet){
   TODO Write necessary encoding submethods, that correspond to encoding of all different parts of a template
    */
 
-  private def encodeResource(resType: String, resource: ResourceNode): Unit = {
+  private def encodeResource(resource: ResourceNode): Vector[OWLAxiom]  = {
+
+
+
+
+//    def createResourceNode(iri: IRI) =
+//      Vector ( m.df.getOWLClassAssertionAxiom(
+//        classFromIRI(Symbols.resourceTypeIRI(resource.resourceType,resource.resourceLogicalId)), m.df.getOWLNamedIndividual(iri)) )
+
+
+    def encodeAllGivenSubproperties(sourceIndividualIRI :IRI, givenProperties: Map[String,StackSetNode]):Vector[OWLAxiom] =
+      givenProperties.toVector flatMap (p => encodeProperty(m.df.getOWLNamedIndividual(sourceIndividualIRI), p._1, p._2))
+
+
+
+    def encodeAllAbsentSuproperties(sourceIndividualIRI: IRI, absentProperties: Vector[String]):Vector[OWLAxiom] =
+      absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(sourceIndividualIRI), p))
+
 
 
     def encodeProperty(sourceIndividual:OWLIndividual, propName: String, cfnNode: StackSetNode): Vector[OWLAxiom] = oProperty(propName) match {
@@ -79,14 +106,14 @@ class StackSetDLEncoder(stackSet: StackSet){
 
     def encodeObjectProperty(sourceIndividual:OWLIndividual, objProp:OWLObjectProperty, objNode: ObjectNode) : Vector[OWLAxiom]
     = objNode match {
-      case ResourceNode(resourceLogicalId, _, _,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
+      case ResourceNode(resourceLogicalId, _,_,_, _,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
       case SubpropertyNode(givenProperties,absentProperties) => {
         val individualRandomIRI = Symbols.subpropertyBlankNodeIRI(stackSet.name)
         createBlankNode(objProp, individualRandomIRI) ++
-          (givenProperties.toVector flatMap (p => encodeProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p._1, p._2))) ++
+          encodeAllGivenSubproperties(individualRandomIRI,givenProperties) ++
           (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
       }
-      case PolicyNode(statements) => {
+      case PolicyNode(statements) => {   // TODO Again!
         val policyRandomIRI = Symbols.policyNodeIRI(stackSet.name)
         createPolicyNode(policyRandomIRI) ++
           statements.flatMap( s => encodePropertyWithIRI( m.df.getOWLNamedIndividual(policyRandomIRI) ,
@@ -116,25 +143,27 @@ class StackSetDLEncoder(stackSet: StackSet){
     }
 
     def oProperty(name:String): Option[OWLObjectProperty] =
-      if (m.ontology.containsObjectPropertyInSignature(Symbols.propertyTypeIRI(resType, name)))
-        Some(m.df.getOWLObjectProperty(Symbols.propertyTypeIRI(resType, name)))
+      if (m.ontology.containsObjectPropertyInSignature(Symbols.propertyTypeIRI(resource.resourceType, name)))
+        Some(m.df.getOWLObjectProperty(Symbols.propertyTypeIRI(resource.resourceType, name)))
       else None
 
     def dProperty(name:String): Option[OWLDataProperty] =
-      if (m.ontology.containsDataPropertyInSignature(Symbols.propertyTypeIRI(resType, name)))
-        Some(m.df.getOWLDataProperty(Symbols.propertyTypeIRI(resType, name)))
+      if (m.ontology.containsDataPropertyInSignature(Symbols.propertyTypeIRI(resource.resourceType, name)))
+        Some(m.df.getOWLDataProperty(Symbols.propertyTypeIRI(resource.resourceType, name)))
       else None
 
-    def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
     def oPropFromIRI(iri:IRI) = m.df.getOWLObjectProperty(iri)
 
 
-
-
+    val resourceInstanceIRI = Symbols.resourceInstanceIRI(stackSet.name, resource.resourceLogicalId)
+    //createResourceNode( resourceInstanceIRI ) ++
+    encodeAllGivenSubproperties( resourceInstanceIRI, resource.givenProperties ) ++
+      encodeAllAbsentSuproperties( resourceInstanceIRI, resource.absentProperties )
 
   }
 
 
+  def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
 
 
 }

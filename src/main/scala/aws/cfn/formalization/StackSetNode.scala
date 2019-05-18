@@ -168,6 +168,8 @@ sealed trait StackSetNode extends Node
   sealed trait ObjectNode extends StackSetNode
 
     final case class ResourceNode(resourceLogicalId: String,
+                                  serviceType: String,
+                                  resourceType : String,
                                   attributes : Map[String, AnyVal],
                                   givenProperties: Map[String,StackSetNode],
                                   absentProperties: Vector[String]
