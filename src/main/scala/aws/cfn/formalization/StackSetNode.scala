@@ -3,6 +3,8 @@ package aws.cfn.formalization
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
+import argonaut.{DecodeJson, EncodeJson, Json}
+
 
 sealed trait Node
 
@@ -21,6 +23,8 @@ sealed trait StackSetNode extends Node
    * Nodes that contains values of any type. Leaf nodes
    */
   sealed trait GenericValueNode extends StackSetNode
+
+    case object NoValue extends GenericValueNode
 
     sealed trait ValueNode[T] extends GenericValueNode
 
@@ -64,12 +68,10 @@ sealed trait StackSetNode extends Node
   /*
    * Intrinsic functions! Evaluate to several different things...
    */
-  sealed trait IntrinsicFunction extends StackSetNode {
-    //def equals(other : IntrinsicFunction) : Boolean = this == other
-  }
+  sealed trait IntrinsicFunction extends StackSetNode
 
-    final case class Arn(p: String, ss:StackSet, t:Template) extends IntrinsicFunction {
-      def apply(): ResourceNode = null // TODO
+    final case class Arn(p: String, ss:StackSet) extends IntrinsicFunction {
+      def apply(): Either[ResourceNode,ForeignNode] = ss.resourceByArn(p)
     }
 
     final case class Base64Function(p: String) extends IntrinsicFunction {
@@ -80,12 +82,14 @@ sealed trait StackSetNode extends Node
       def apply(): String = ipBlock // TODO
     }
 
-    final case class FindInMapFunction(m: String, k1: String, k2: String, t:Template) extends IntrinsicFunction {
-      def apply(): Either[StackSetNode,AnyVal] = t.mappings(k1)(k2)
+    final case class FindInMapFunction(maps:Json, m: String, k1: String, k2: String = null) extends IntrinsicFunction {
+      def apply() =
+        if ( k2==null ) maps.field(m).get.field(k1).get
+        else maps.field(m).get.field(k1).get.field(k2).get
     }
 
-    final case class GetAttFunction(res:String, attr:String, t:Template) extends IntrinsicFunction {
-      def apply(): AnyVal = t.resources(res).attributes(attr)
+    final case class GetAttFunction(res:String, attr:String, resources:Json) extends IntrinsicFunction {
+      def apply(): String = DecodeJson.StringDecodeJson.decodeJson( resources.field(res).get.field("Attributes").get.field(attr).get ).toOption.get
     }
 
     // Availability zones might depend on the account and not only on the region!
@@ -93,8 +97,8 @@ sealed trait StackSetNode extends Node
       def apply(): Vector[String] = Vector(reg+"a", reg+"b", reg+"c") // TODO This is an absolutely fake list
     }
 
-    final case class ImportValueFunction(importName: String, ss:StackSet) extends IntrinsicFunction {
-      implicit def apply() : AnyRef = ss.outputs(importName)
+    final case class ImportValueFunction( importName: String, outputs: (Map[String,Either[AnyVal,StackSetNode]], Map[String,Either[AnyVal,StackSetNode]]) ) extends IntrinsicFunction {
+      implicit def apply(): Any = outputs._1.getOrElse(importName, outputs._2.getOrElse(importName, NoValue))
     }
 
     final case class JoinFunction(delimiter:String, values:Vector[String]) extends IntrinsicFunction {
@@ -109,9 +113,9 @@ sealed trait StackSetNode extends Node
       def apply(): Vector[String] = value.split(delimiter).toVector
     }
 
-    final case class SubFunction(str:String, subMap:Option[Map[String,String]], t:Template) extends IntrinsicFunction {
+    final case class SubFunction(resources:Json, parameters:Json, str:String, subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
       def apply(): Any = subMap match {
-        case None => if (str.contains(".")) GetAttFunction(str.split(".")(0), str.split(".")(1), t)() else RefFunction(str, t)()
+        case None => if (str.contains(".")) GetAttFunction(str.split(".")(0), str.split(".")(1), resources)() else RefFunction(str, resources, parameters)()
         case Some(m) => m.foldLeft(str)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2))
       }
     }
@@ -120,8 +124,8 @@ sealed trait StackSetNode extends Node
       def apply() : Any = null // TODO
     }
 
-    final case class RefFunction(p: String, t:Template) extends IntrinsicFunction {
-      def apply(): Either[ResourceNode, Any] = null // TODO
+    final case class RefFunction(p: String, resources:Json, parameters:Json) extends IntrinsicFunction {
+      def apply(): Either[ResourceNode, AnyVal] = null // TODO
     }
 
 
@@ -131,8 +135,8 @@ sealed trait StackSetNode extends Node
 
       sealed trait ConditionFunction extends IntrinsicFunction
 
-        final case class IfFunction() extends ConditionFunction {
-          def apply(c: Boolean, e1: GenericValueNode, e2: GenericValueNode): GenericValueNode = if (c) e1 else e2
+        final case class IfFunction(c: Boolean, e1: GenericValueNode, e2: GenericValueNode) extends ConditionFunction {
+          def apply(): GenericValueNode = if (c) e1 else e2
         }
 
 
@@ -141,20 +145,20 @@ sealed trait StackSetNode extends Node
        */
       sealed trait BooleanFunction extends ConditionFunction
 
-        final case class AndFunction() extends BooleanFunction {
-          def apply(e1: Boolean, e2: Boolean): Boolean = e1 && e2
+        final case class AndFunction(e1: Boolean, e2: Boolean) extends BooleanFunction {
+          def apply(): Boolean = e1 && e2
         }
 
-        final case class OrFunction() extends BooleanFunction {
-          def apply(e1: Boolean, e2: Boolean): Boolean = e1 || e2
+        final case class OrFunction(e1: Boolean, e2: Boolean) extends BooleanFunction {
+          def apply(): Boolean = e1 || e2
         }
 
-        final case class NotFunction() extends BooleanFunction {
-          def apply(e: Boolean): Boolean = !e
+        final case class NotFunction(e: Boolean) extends BooleanFunction {
+          def apply(): Boolean = !e
         }
 
-        final case class EqualsFunction() extends BooleanFunction {
-          def apply(e1: AnyVal, e2: AnyVal):Boolean = e1 == e2
+        final case class EqualsFunction(e1: AnyVal, e2: AnyVal) extends BooleanFunction {
+          def apply():Boolean = e1 == e2
         }
 
 

@@ -101,6 +101,7 @@ class StackSetDLEncoder(stackSet: StackSet){
       case DateTimeNode(v) =>   Vector( m.df.getOWLDataPropertyAssertionAxiom(dataProp,sourceIndividual,v) )
       case CommaDelimitedListNode(v) => Vector( m.df.getOWLDataPropertyAssertionAxiom(dataProp,sourceIndividual,v) )
       case JsonNode(v) =>       Vector( m.df.getOWLDataPropertyAssertionAxiom(dataProp,sourceIndividual,v) )
+      case NoValue =>           Vector()
     }
 
 
