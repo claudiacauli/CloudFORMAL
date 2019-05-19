@@ -3,7 +3,7 @@ package aws.cfn.formalization
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import argonaut.{DecodeJson, EncodeJson, Json}
+import argonaut.{DecodeJson, Json}
 
 
 sealed trait Node
@@ -71,7 +71,7 @@ sealed trait StackSetNode extends Node
   sealed trait IntrinsicFunction extends StackSetNode
 
     final case class Arn(p: String, arnsMap:Map[String,Node]) extends IntrinsicFunction {
-      def apply(): Node = arnsMap.getOrElse(p,new ForeignNode(p))
+      def apply(): Node = arnsMap.getOrElse(p, new ForeignNode(p))
     }
 
     final case class Base64Function(p: String) extends IntrinsicFunction {
@@ -124,12 +124,16 @@ sealed trait StackSetNode extends Node
       def apply() : Any = null // TODO
     }
 
-    final case class RefFunction(p: String, resources:Map[String,ResourceNode], parameters:Map[String,Any]) extends IntrinsicFunction {
-      def apply(): Any = parameters.getOrElse(p, resources(p))
-    }
+    final case class RefFunction(n: Any, resources:Map[String,ResourceNode], parameters:Map[String,Any]) extends IntrinsicFunction {
+      def apply(): Any = {
+          n match {
+            case str: String => resources.get(str).orElse(parameters.get(str)).get
+            case node: ResourceNode => node
+            case node: ForeignNode => node
+            case _ => "Referred field NOT FOUND: Not a resource, nor parameter, nor arns for Resource or ForeignNode"
+          }
 
-    final case class RefFunction(n: Node, resources:Map[String,ResourceNode], parameters:Map[String,Any]) extends IntrinsicFunction {
-      def apply(): Node = n
+      }
     }
 
 

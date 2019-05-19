@@ -41,16 +41,13 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
   val template = new Template(templateName)
   val NodeEncoder: JsonStackSetNodeEncoder = new JsonStackSetNodeEncoder(ssE, ss, this, template)
   val parameters: Map[String,Any] = getParameters
-  val mappings: Map[String,Json] = templateMappingsAsMapOfJsons
+  val mappings: Map[String,Json] = getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val outputsByLogicalId: Map[String, Any] = getOutputsByLogicalId
   val outputsByExportName: Map[String, Any] = getOutputsMapByExportName
 
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor)
-  val templateParametersAsMapOfJsons: Map[String, Json] = getSection("Parameters")
-  val templateMappingsAsMapOfJsons: Map[String, Json] = getSection("Mappings")
-  val templateConditionsAsMapOfJsons: Map[String, Json] = getSection("Conditions")
-  val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform")
+  val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform") // TODO!
   val templateResourcesAsMapOfJson: Map[String, Json] = getSection("Resources")
 
 
@@ -67,7 +64,7 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
     def evaluateCondition(c : (String,Json)) : Map[String,Boolean] =
       Map(c._1, NodeEncoder.encode(c._2).asInstanceOf[Boolean])
 
-    templateConditionsAsMapOfJsons flatMap evaluateCondition
+    getSection("Conditions") flatMap evaluateCondition
   }
 
 
@@ -93,7 +90,7 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
       case "CommaDelimitedList" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.split(",").toVector)
     }
 
-    (templateParametersAsMapOfJsons ++ templateDescriptorAsMapOfJsons) flatMap parametersMapEntry
+    (getSection("Parameters") ++ templateDescriptorAsMapOfJsons) flatMap parametersMapEntry
 
   }
 
