@@ -39,10 +39,11 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
 
   val template = new Template(templateName)
   val NodeEncoder: JsonStackSetNodeEncoder = new JsonStackSetNodeEncoder(ssE, ss, this, template)
+  val parameters: Map[String,Any] = getParameters
   val outputsByLogicalId: Map[String, Any] = getOutputsByLogicalId
   val outputsByExportName: Map[String, Any] = getOutputsMapByExportName
 
-  val templateDescriptorAsMapOfStrings : Map[String,String] = EncodeUtils.getNodesAsMapOfStrings(templateDescriptor)
+  val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor)
   val templateParametersAsMapOfJsons: Map[String, Json] = getSection("Parameters")
   val templateMappingsAsMapOfJsons: Map[String, Json] = getSection("Mappings")
   val templateConditionsAsMapOfJsons: Map[String, Json] = getSection("Conditions")
@@ -57,6 +58,23 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
   }
 
 
+
+  private def getParameters : Map[String,Any] = templateParametersAsMapOfJsons flatMap parametersMapEntry
+
+  private def parametersMapEntry (e: (String,Json)) : Map[String,Any] = templateDescriptorAsMapOfJsons.get(e._1) match {
+    case None => e._2.field("Default") match {
+      case None => Map(e._1 -> "")
+      case Some(defaultJsonField) => decodeJsonParameterValue(e._1, defaultJsonField, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+    }
+    case Some(jsonValue) => decodeJsonParameterValue(e._1, jsonValue, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+  }
+
+  private def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,Any] = paramType match {
+    case "String" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get)
+    case "Number" => Map(paramName -> DecodeJson.IntDecodeJson.decodeJson(jsonValue).toOption.get)
+    case "List<Number>" => Map(paramName -> (jsonValue.array.get map ( i => DecodeJson.IntDecodeJson.decodeJson(i).toOption.get)).toVector )
+    case "CommaDelimitedList" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.split(",").toVector)
+  }
 
 
 
