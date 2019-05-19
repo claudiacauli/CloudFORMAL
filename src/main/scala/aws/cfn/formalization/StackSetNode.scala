@@ -82,10 +82,10 @@ sealed trait StackSetNode extends Node
       def apply(): String = ipBlock // TODO
     }
 
-    final case class FindInMapFunction(maps:Json, m: String, k1: String, k2: String = null) extends IntrinsicFunction {
-      def apply() =
-        if ( k2==null ) maps.field(m).get.field(k1).get
-        else maps.field(m).get.field(k1).get.field(k2).get
+    final case class FindInMapFunction(mappings: Map[String,Json], m: String, k1: String, k2: String = null) extends IntrinsicFunction {
+      def apply() : String =
+        if ( k2==null ) DecodeJson.StringDecodeJson.decodeJson( mappings(m).field(k1).get ).toOption.get
+        else DecodeJson.StringDecodeJson.decodeJson( mappings(m).field(k1).get.field(k2).get ).toOption.get
     }
 
     final case class GetAttFunction(res:String, attr:String, resources:Json) extends IntrinsicFunction {
@@ -113,7 +113,7 @@ sealed trait StackSetNode extends Node
       def apply(): Vector[String] = value.split(delimiter).toVector
     }
 
-    final case class SubFunction(resources:Json, parameters:Json, str:String, subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
+    final case class SubFunction(resources:Json, parameters:Map[String,Any], str:String, subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
       def apply(): Any = subMap match {
         case None => if (str.contains(".")) GetAttFunction(str.split(".")(0), str.split(".")(1), resources)() else RefFunction(str, resources, parameters)()
         case Some(m) => m.foldLeft(str)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2))
@@ -124,7 +124,7 @@ sealed trait StackSetNode extends Node
       def apply() : Any = null // TODO
     }
 
-    final case class RefFunction(p: String, resources:Json, parameters:Json) extends IntrinsicFunction {
+    final case class RefFunction(p: String, resources:Json, parameters:Map[String,Any]) extends IntrinsicFunction {
       def apply(): Either[ResourceNode, AnyVal] = null // TODO
     }
 

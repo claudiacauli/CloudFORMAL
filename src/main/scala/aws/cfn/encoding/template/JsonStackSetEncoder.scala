@@ -40,6 +40,8 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
   val template = new Template(templateName)
   val NodeEncoder: JsonStackSetNodeEncoder = new JsonStackSetNodeEncoder(ssE, ss, this, template)
   val parameters: Map[String,Any] = getParameters
+  val mappings: Map[String,Json] = templateMappingsAsMapOfJsons
+  val conditions: Map[String,Boolean] = getConditions
   val outputsByLogicalId: Map[String, Any] = getOutputsByLogicalId
   val outputsByExportName: Map[String, Any] = getOutputsMapByExportName
 
@@ -59,22 +61,31 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
 
 
 
-  private def getParameters : Map[String,Any] = templateParametersAsMapOfJsons flatMap parametersMapEntry
+  private def getParameters : Map[String,Any] = {
 
-  private def parametersMapEntry (e: (String,Json)) : Map[String,Any] = templateDescriptorAsMapOfJsons.get(e._1) match {
-    case None => e._2.field("Default") match {
-      case None => Map(e._1 -> "")
-      case Some(defaultJsonField) => decodeJsonParameterValue(e._1, defaultJsonField, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+    def parametersMapEntry (e: (String,Json)) : Map[String,Any] = templateDescriptorAsMapOfJsons.get(e._1) match {
+      case None => e._2.field("Default") match {
+        case None => Map(e._1 -> "")
+        case Some(defaultJsonField) =>
+          decodeJsonParameterValue(e._1, defaultJsonField, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+      }
+      case Some(jsonValue) =>
+        decodeJsonParameterValue(e._1, jsonValue, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
     }
-    case Some(jsonValue) => decodeJsonParameterValue(e._1, jsonValue, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+
+    def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,Any] = paramType match {
+      case "String" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get)
+      case "Number" => Map(paramName -> DecodeJson.IntDecodeJson.decodeJson(jsonValue).toOption.get)
+      case "List<Number>" => Map(paramName -> (jsonValue.array.get map ( i => DecodeJson.IntDecodeJson.decodeJson(i).toOption.get)).toVector )
+      case "CommaDelimitedList" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.split(",").toVector)
+    }
+
+    (templateParametersAsMapOfJsons ++ templateDescriptorAsMapOfJsons) flatMap parametersMapEntry
+
   }
 
-  private def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,Any] = paramType match {
-    case "String" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get)
-    case "Number" => Map(paramName -> DecodeJson.IntDecodeJson.decodeJson(jsonValue).toOption.get)
-    case "List<Number>" => Map(paramName -> (jsonValue.array.get map ( i => DecodeJson.IntDecodeJson.decodeJson(i).toOption.get)).toVector )
-    case "CommaDelimitedList" => Map(paramName -> DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.split(",").toVector)
-  }
+
+
 
 
 
@@ -147,11 +158,11 @@ private class JsonStackSetNodeEncoder(ssE: JsonStackSetEncoder, ss:StackSet, tE:
         encode(json.field("Fn::Or").get.array.get(1)).asInstanceOf[Boolean])()
       case "Fn::FindInMap" =>
         if (json.field("Fn::FindInMap").get.array.get.size == 2) {
-          FindInMapFunction(mappings,
+          FindInMapFunction(tE.mappings,
             encode(json.field("Fn::FindInMap").get.array.get(0)).asInstanceOf[String],
             encode(json.field("Fn::FindInMap").get.array.get(1)).asInstanceOf[String])()
         } else {
-          FindInMapFunction(mappings,
+          FindInMapFunction(tE.mappings,
             encode(json.field("Fn::FindInMap").get.array.get(0)).asInstanceOf[String],
             encode(json.field("Fn::FindInMap").get.array.get(1)).asInstanceOf[String],
             encode(json.field("Fn::FindInMap").get.array.get(2)).asInstanceOf[String])()
@@ -174,15 +185,15 @@ private class JsonStackSetNodeEncoder(ssE: JsonStackSetEncoder, ss:StackSet, tE:
         encode(json.field("Fn::Split").get.array.get(1)).asInstanceOf[String] ) ()
       case "Fn::Sub" =>
         if (json.field("Fn::Sub").get.array.get.size == 2) {
-          SubFunction ( resources, parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String],
+          SubFunction ( resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String],
             Some(EncodeUtils.getNodesAsMapOfStrings( json.field("Fn::Sub").get.array.get(1) )) ) ()
         }
         else
-          SubFunction ( resources, parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String] ) ()
+          SubFunction ( resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String] ) ()
       case "Fn::Transform" => json.toString()   // TODO!
       case "Ref" => RefFunction(
         encode( json.field("Ref").get ).asInstanceOf[String],
-        resources, parameters )()
+        resources, tE.parameters )()
       case _ => json
     }
   }
