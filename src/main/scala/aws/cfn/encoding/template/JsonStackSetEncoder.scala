@@ -18,7 +18,8 @@ object JsonStackSetEncoder {
 private class JsonStackSetEncoder(templates: Vector[(String,Json,Json)], stackSetName: String) {
 
   val stackSet = new StackSet(stackSetName)
-  //var arnsMap : Map[String,Either[ResourceNode,ForeignNode]] = Map()
+  var arnsMap : Map[String,Node] = Map()  // TODO
+  var foreignNodes : Map[String,ForeignNode] = Map()
   var outputsByExportName : Map[String,Any] = Map()
 
 
@@ -58,6 +59,18 @@ private class JsonTemplateEncoder(ssE: JsonStackSetEncoder, ss: StackSet, templa
 
     template
   }
+
+
+
+  private def getConditions : Map[String,Boolean] = {
+
+    def evaluateCondition(c : (String,Json)) : Map[String,Boolean] =
+      Map(c._1, NodeEncoder.encode(c._2).asInstanceOf[Boolean])
+
+    templateConditionsAsMapOfJsons flatMap evaluateCondition
+  }
+
+
 
 
 
@@ -130,12 +143,18 @@ private class JsonStackSetNodeEncoder(ssE: JsonStackSetEncoder, ss:StackSet, tE:
   def encodeArrayNode(json: Json) = json.array.get.toVector
 
 
-  def encodeValueNode(json: Json) =
-    if ( DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.startsWith("arn:") )
-      Arn(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get, ss) ()
+  def encodeValueNode(json: Json) = {
+    val stringValue = DecodeJson.StringDecodeJson.decodeJson(json).toOption.get
+    if (stringValue.startsWith("arn:")) {
+      val referredNode = Arn(stringValue, ssE.arnsMap)()
+      ssE.arnsMap = ssE.arnsMap ++ Map(stringValue, referredNode)
+      ssE.foreignNodes = ssE.foreignNodes ++ Map(stringValue,referredNode)
+      referredNode
+    }
     else {
 
     }
+  }
 
 
   def encodeObjectNode(json:Json) {
@@ -169,7 +188,7 @@ private class JsonStackSetNodeEncoder(ssE: JsonStackSetEncoder, ss:StackSet, tE:
         }
       case "Fn::GetAtt" => GetAttFunction(
         encode (json.field("Fn::GetAtt").get.array.get(0)).asInstanceOf[String],
-        encode (json.field("Fn::GetAtt").get.array.get(1)).asInstanceOf[String], resources)()
+        encode (json.field("Fn::GetAtt").get.array.get(1)).asInstanceOf[String], tE.resources)()
       case "Fn::GetAZs" => GetAZsFunction ( encode (json.field("Fn::GetAZs").get).asInstanceOf[String] )()
       case "Fn::ImportValue" =>
         ImportValueFunction ( encode(json.field("Fn::ImportValue").get).asInstanceOf[String],
@@ -185,15 +204,15 @@ private class JsonStackSetNodeEncoder(ssE: JsonStackSetEncoder, ss:StackSet, tE:
         encode(json.field("Fn::Split").get.array.get(1)).asInstanceOf[String] ) ()
       case "Fn::Sub" =>
         if (json.field("Fn::Sub").get.array.get.size == 2) {
-          SubFunction ( resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String],
+          SubFunction ( tE.resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String],
             Some(EncodeUtils.getNodesAsMapOfStrings( json.field("Fn::Sub").get.array.get(1) )) ) ()
         }
         else
-          SubFunction ( resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String] ) ()
+          SubFunction ( tE.resources, tE.parameters, encode(json.field("Fn::Sub").get.array.get(0)).asInstanceOf[String] ) ()
       case "Fn::Transform" => json.toString()   // TODO!
       case "Ref" => RefFunction(
-        encode( json.field("Ref").get ).asInstanceOf[String],
-        resources, tE.parameters )()
+        encode( json.field("Ref").get ),
+        tE.resources, tE.parameters )()
       case _ => json
     }
   }

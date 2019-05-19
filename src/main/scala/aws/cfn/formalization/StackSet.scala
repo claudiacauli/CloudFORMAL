@@ -4,8 +4,10 @@ package aws.cfn.formalization
 class StackSet(val name:String) {
 
   var templates: Vector[Template] = Vector()
+  var foreignNodes: Map[String,ForeignNode] = Map()
 
   def addTemplates(templateInput: Vector[(String, Map[String,Any])] ): Unit =
+
     templates = templateInput map ( p => new Template(p._1, p._2) )
 
 

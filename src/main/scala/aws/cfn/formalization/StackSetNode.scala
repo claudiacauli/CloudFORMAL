@@ -70,8 +70,8 @@ sealed trait StackSetNode extends Node
    */
   sealed trait IntrinsicFunction extends StackSetNode
 
-    final case class Arn(p: String, ss:StackSet) extends IntrinsicFunction {
-      def apply(): Either[ResourceNode,ForeignNode] = ss.resourceByArn(p)
+    final case class Arn(p: String, arnsMap:Map[String,Node]) extends IntrinsicFunction {
+      def apply(): Node = arnsMap.getOrElse(p,new ForeignNode(p))
     }
 
     final case class Base64Function(p: String) extends IntrinsicFunction {
@@ -124,8 +124,12 @@ sealed trait StackSetNode extends Node
       def apply() : Any = null // TODO
     }
 
-    final case class RefFunction(p: String, resources:Json, parameters:Map[String,Any]) extends IntrinsicFunction {
-      def apply(): Either[ResourceNode, AnyVal] = null // TODO
+    final case class RefFunction(p: String, resources:Map[String,ResourceNode], parameters:Map[String,Any]) extends IntrinsicFunction {
+      def apply(): Any = parameters.getOrElse(p, resources(p))
+    }
+
+    final case class RefFunction(n: Node, resources:Map[String,ResourceNode], parameters:Map[String,Any]) extends IntrinsicFunction {
+      def apply(): Node = n
     }
 
 
