@@ -97,8 +97,8 @@ sealed trait StackSetNode extends Node
       def apply(): Vector[String] = Vector(reg+"a", reg+"b", reg+"c") // TODO This is an absolutely fake list
     }
 
-    final case class ImportValueFunction( importName: String, outputs: (Map[String,Either[AnyVal,StackSetNode]], Map[String,Either[AnyVal,StackSetNode]]) ) extends IntrinsicFunction {
-      implicit def apply(): Any = outputs._1.getOrElse(importName, outputs._2.getOrElse(importName, NoValue))
+    final case class ImportValueFunction( importName: String, outputsByExportName: Map[String,Any], outputsByLogicalId: Map[String,Any]) extends IntrinsicFunction {
+      implicit def apply(): Any = outputsByLogicalId.getOrElse(importName, outputsByExportName.getOrElse(importName, NoValue))
     }
 
     final case class JoinFunction(delimiter:String, values:Vector[String]) extends IntrinsicFunction {

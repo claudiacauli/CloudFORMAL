@@ -1,6 +1,6 @@
 package aws.cfn.formalization
 
-class Template(val name: String, val inputParameters: Map[String, Any]) {
+class Template(val name: String) {
 
 
   var resources : Map[String,ResourceNode] = Map()
