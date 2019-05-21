@@ -18,28 +18,28 @@ object Symbols {
   /*
     Specification Alphabet Naming Rules
    */
-  def resourceTerminologyIRI : String => IRI = serviceResourceName => IRI.create(currentIRI.toString+ serviceResourceName + "#")
-  def resourceTerminologyNamespace : (String, String) => String = (serviceName, resourceName) => serviceName+resourceName
-  def filename : (String,String) => String = (serviceName, resourceName) => serviceName+resourceName+".owl"
+  def resourceTerminologyIRI : String => IRI = serviceResourceName => IRI.create(currentIRI.toString+ serviceResourceName.toLowerCase() + "#")
+  def resourceTerminologyNamespace : (String, String) => String = (serviceName, resourceName) => serviceName.toLowerCase()+resourceName.toLowerCase()
+  def filename : (String,String) => String = (serviceName, resourceName) => serviceName.toLowerCase()+resourceName.toLowerCase()+".owl"
 
   def resourceTypeIRI :(String,String) => IRI =
-    (resSpecName, resourceName) => IRI.create(currentIRI.toString + resSpecName +"#" + resourceName)
+    (resSpecName, resourceName) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() +"#" + resourceName.toLowerCase())
   def subpropertyTypeIRI : (String,String) => IRI =
-    (resSpecName,subpropertyName) => IRI.create(currentIRI.toString + resSpecName + "#" + subpropertyName)
+    (resSpecName,subpropertyName) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + subpropertyName.toLowerCase())
   def attributeTypeIRI : (String,String) => IRI =
-    (resSpecName, attributeName) => IRI.create(currentIRI.toString + resSpecName + "#" + attributeName)
+    (resSpecName, attributeName) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + attributeName.toLowerCase())
   def propertyTypeIRI : (String,String) => IRI =
-    (resSpecName, propertyName) => IRI.create(currentIRI.toString + resSpecName + "#" + propertyName)
+    (resSpecName, propertyName) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + propertyName.toLowerCase())
 
   def mapEntryConceptIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType)
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + "mapentry_" + valueType.toLowerCase())
   def mapEntryKeyRoleIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType + "_key")
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + "mapentry_" + valueType.toLowerCase() + "_key")
   def mapEntryValueRoleIRI : (String,String) => IRI =
-    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName + "#" + "mapentry_" + valueType + "_value")
+    (resSpecName, valueType) => IRI.create(currentIRI.toString + resSpecName.toLowerCase() + "#" + "mapentry_" + valueType.toLowerCase() + "_value")
 
-  def actionsOntologyIRI : String => IRI = serviceName => IRI.create( currentIRI.toString + serviceName + "#" )
-  def actionIRI : (String,String) => IRI = (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName+"#"+actionName)
+  def actionsOntologyIRI : String => IRI = serviceName => IRI.create( currentIRI.toString + serviceName.toLowerCase() + "#" )
+  def actionIRI : (String,String) => IRI = (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName.toLowerCase()+"#"+actionName.toLowerCase())
   def policyDocIRI:IRI = IRI.create(currentIRI.toString + "policydocument#policydocument")
 
 

@@ -9,15 +9,15 @@ import org.semanticweb.owlapi.vocab.OWL2Datatype
 import scala.jdk.CollectionConverters._
 
 
-object SpecificationDLEncoder {
+object Specification2DLEncoder {
 
   def encode(resourceSpecification: ResourceSpecification) : ResourceSpecificationModel =
-    new SpecificationDLEncoder(resourceSpecification).encode()
+    new Specification2DLEncoder(resourceSpecification).encode()
 
 }
 
 
-private class SpecificationDLEncoder(resSpec : ResourceSpecification) {
+private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
   val m : ResourceSpecificationModel = new ResourceSpecificationModel(resSpec.name)
 

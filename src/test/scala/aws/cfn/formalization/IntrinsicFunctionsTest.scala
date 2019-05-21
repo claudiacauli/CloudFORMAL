@@ -7,7 +7,7 @@ import org.scalatest.FunSuite
 @RunWith(classOf[BlockJUnit4ClassRunner])
 class IntrinsicFunctionsTest extends FunSuite {
 
-  val ss = new StackSet("testStackSet")
+  //val ss = new StackSet("testStackSet")
   //ss.addTemplate()
 
   //val s1 = new StringNode("Claudia")

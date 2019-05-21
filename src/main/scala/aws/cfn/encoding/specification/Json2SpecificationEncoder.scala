@@ -8,16 +8,16 @@ import aws.cfn.encoding.specification.maps.{InterResourceReferencesMap, PolicyRe
 import scala.language.postfixOps
 
 
-object JsonSpecificationEncoder {
+object Json2SpecificationEncoder {
 
   def encode(json: Json, resourceSpecificationName: String) : ResourceSpecification =
-    new JsonSpecificationEncoder(json, resourceSpecificationName).encode()
+    new Json2SpecificationEncoder(json, resourceSpecificationName).encode()
 
 }
 
 
 
-private class JsonSpecificationEncoder(json: Json, resourceSpecificationName: String) {
+private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: String) {
 
   val resSpecName: String = Renaming.resourceSpecificationName(resourceSpecificationName)
 

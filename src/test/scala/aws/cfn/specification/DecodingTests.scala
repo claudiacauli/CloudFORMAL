@@ -4,7 +4,7 @@ import java.io.{File, FileWriter}
 
 import aws.cfn.dlmodel.OntologyWriter
 import aws.cfn.encoding.Parser
-import aws.cfn.encoding.specification.{ServiceActionsDLEncoder, ServiceActionsGenerator}
+import aws.cfn.encoding.specification.{ServiceActions2DLEncoder, ServiceActionsGenerator}
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
 import org.scalatest.FunSuite
@@ -116,7 +116,7 @@ class DecodingTests extends FunSuite {
 //    ).get, "S3BucketPolicy" )))
 
 
-ServiceActionsGenerator.fromMap() foreach (sa => OntologyWriter.writeToOutputDir(new ServiceActionsDLEncoder(sa).encode(), "src/main/resources/terminology/actions/"))
+ServiceActionsGenerator.fromMap() foreach (sa => OntologyWriter.writeToOutputDir(new ServiceActions2DLEncoder(sa).encode(), "src/main/resources/terminology/actions/"))
 
 
 

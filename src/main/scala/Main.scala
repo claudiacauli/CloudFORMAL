@@ -1,14 +1,17 @@
-import java.io.{File, FileNotFoundException}
 
 import aws.cfn.dlmodel.OntologyWriter
 import aws.cfn.encoding.Parser
-import aws.cfn.encoding.specification.JsonSpecificationEncoder
-import aws.cfn.encoding.specification.SpecificationDLEncoder
+import aws.cfn.encoding.template.{Json2StackSetEncoder, StackSet2DLEncoder}
 
 
 
 object Main extends App {
 
+  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/s3bucket_with_replica_and_IAMrole.json").get
+  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/descriptor.json")
+  val ss = Json2StackSetEncoder.encode(Vector(("bucketWithLogging",tmplJson,descrJson)),"BucketWithReplicaAndIam")
+  val ssM = StackSet2DLEncoder.encode(ss)
+  OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/")
 
 //  printOntologiesFromResourceSpecificationDirectoryToFolder(
 //    "/Users/claudia/Downloads/CloudFormationResourceSpecification/",

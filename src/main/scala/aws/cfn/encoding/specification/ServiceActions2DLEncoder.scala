@@ -8,10 +8,10 @@ import scala.jdk.CollectionConverters._
 
 
 
-object ServiceActionsDLEncoder{
+object ServiceActions2DLEncoder{
 
   def encode(serviceActions: ServiceActions) : ServiceActionsModel =
-    new ServiceActionsDLEncoder(serviceActions).encode()
+    new ServiceActions2DLEncoder(serviceActions).encode()
 
 }
 
@@ -21,7 +21,7 @@ object ServiceActionsDLEncoder{
 
 
 
-class ServiceActionsDLEncoder(val serviceActions : ServiceActions) {
+class ServiceActions2DLEncoder(val serviceActions : ServiceActions) {
 
   val m: ServiceActionsModel = new ServiceActionsModel(serviceActions.serviceName+"Actions")
 
