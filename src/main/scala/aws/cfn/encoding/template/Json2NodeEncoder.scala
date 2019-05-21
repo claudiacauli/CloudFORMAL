@@ -84,7 +84,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
           ssE.outputsByExportName, tE.outputByLogicalId) ()
       case "fn::join" => JoinFunction (
         encode (arrayAt("Fn::Join",0)).asInstanceOf[StringNode],
-        encode (arrayAt("Fn::Join",1)).asInstanceOf[ListNode[StringNode]] ) ()
+        encode (arrayAt("Fn::Join",1)).asInstanceOf[ListNode[Node]] ) ()
       case "fn::select" => SelectFunction (
         encode (arrayAt("Fn::Select",0)).asInstanceOf[IntNode],
         encode (arrayAt("Fn::Select",1)).asInstanceOf[ListNode[Node]] ) ()

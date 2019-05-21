@@ -1,4 +1,6 @@
 
+import java.io.{File, FileNotFoundException}
+
 import aws.cfn.dlmodel.OntologyWriter
 import aws.cfn.encoding.Parser
 import aws.cfn.encoding.template.{Json2StackSetEncoder, StackSet2DLEncoder}
@@ -7,11 +9,38 @@ import aws.cfn.encoding.template.{Json2StackSetEncoder, StackSet2DLEncoder}
 
 object Main extends App {
 
-  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/s3bucket_with_replica_and_IAMrole.json").get
-  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/descriptor.json")
-  val ss = Json2StackSetEncoder.encode(Vector(("bucketWithLogging",tmplJson,descrJson)),"BucketWithReplicaAndIam")
-  val ssM = StackSet2DLEncoder.encode(ss)
-  OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/")
+  val inputDir = new File("src/main/resources/InputStackSets/")
+  (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createStackSet(f) )
+
+  def createStackSet(file: File) = {
+    val stackSetName = file.getName
+    var descriptor : File = null
+
+    try {
+      descriptor = new File("src/main/resources/InputStackSets/" + stackSetName +"/descriptor.json")
+    } catch {
+      case e: FileNotFoundException => descriptor = null
+    }
+
+    println("Checking subfiles in directory: " + file)
+
+    file.listFiles().toVector foreach ( f => {
+      if(!f.getName.equals("descriptor.json")) {
+        val tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
+        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
+        val ss = Json2StackSetEncoder.encode(Vector((f.getName,tmplJson,descrJson)),stackSetName)
+        val ssM = StackSet2DLEncoder.encode(ss)
+        OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/" )
+      }
+    })
+
+  }
+
+//  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/s3bucket_with_replica_and_IAMrole.json").get
+//  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/descriptor.json")
+//  val ss = Json2StackSetEncoder.encode(Vector(("bucketWithLogging",tmplJson,descrJson)),"BucketWithReplicaAndIam")
+//  val ssM = StackSet2DLEncoder.encode(ss)
+//  OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/" )
 
 //  printOntologiesFromResourceSpecificationDirectoryToFolder(
 //    "/Users/claudia/Downloads/CloudFormationResourceSpecification/",

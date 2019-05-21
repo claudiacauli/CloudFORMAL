@@ -4,8 +4,8 @@ import java.io.File
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.dlmodel.Symbols
-import aws.cfn.formalization.{BooleanNode, GenericValueNode, ListNode, LongNode, Node, ResourceNode, StringNode}
-import org.semanticweb.owlapi.model.{OWLClass, OWLDataProperty, OWLObjectProperty, OWLOntology}
+import aws.cfn.formalization._
+import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 
 import scala.jdk.OptionConverters._
@@ -45,7 +45,7 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
       }
     }
 
-    def importOntology : Unit = {
+    def importOntology: Unit  = {
       ssE.manager.loadOntologyFromOntologyDocument(
           new File("src/main/resources/terminology/resourcespecificationsOwl/"
             + resourceNode.serviceType.toLowerCase() + resourceNode.resourceType.toLowerCase() + ".owl"))

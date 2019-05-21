@@ -120,8 +120,9 @@ sealed trait StackSetNode extends Node
       implicit def apply(): Node = outputsByLogicalId.getOrElse(importName.value, outputsByExportName.getOrElse(importName.value, NoValue))
     }
 
-    final case class JoinFunction(delimiter:StringNode, values:ListNode[StringNode]) extends IntrinsicFunction {
-      def apply(): StringNode = StringNode( ((values.value) map (i => i.value)).mkString(delimiter.value) )
+    final case class JoinFunction(delimiter:StringNode, values:ListNode[Node]) extends IntrinsicFunction {
+      def apply(): StringNode =
+        StringNode( (values.value map (i => if (i.isInstanceOf[StringNode]) i.asInstanceOf[StringNode].value else StringNode("CouldNOTevaluateAsString"))).mkString(delimiter.value))
     }
 
     final case class SelectFunction(index:IntNode, list:ListNode[Node]) extends IntrinsicFunction {
@@ -227,6 +228,7 @@ sealed trait StackSetNode extends Node
                                   attributes : Map[String, GenericValueNode],
                                  ) extends ObjectNode
     {
+      val value = resourceLogicalId
       var givenProperties: Map[String,Node] = Map()
       var absentProperties: Set[String] = Set()
       def apply(): ResourceNode = this
