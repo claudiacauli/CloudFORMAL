@@ -51,10 +51,17 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
             + resourceNode.serviceType.toLowerCase() + resourceNode.resourceType.toLowerCase() + ".owl"))
     }
 
+
     if (tE.isConditionTrue(resourceJsonNode)){
-      resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
-      importOntology
-      Map( resourceLogicalId -> resourceNode )
+      if ( isCustomResource ) {
+        println("Found Custom Resource! With node " + resourceJsonNode)
+        resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, Map() )
+        Map( resourceLogicalId -> resourceNode )
+      } else {
+        resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
+        importOntology
+        Map( resourceLogicalId -> resourceNode )
+      }
     }
     else Map()
 
@@ -80,11 +87,19 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
   def givenProperties(): Set[String] =
     (resourceJsonNode.field("Properties").getOrElse(Json.jEmptyObject).objectFieldsOrEmpty map (f => resourceType+"_"+f.toString)).toSet
 
+
+  def isCustomResource : Boolean =
+    DecodeJson.StringDecodeJson.decodeJson(resourceJsonNode.field("Type").get).toOption.get.equals("AWS::CloudFormation::CustomResource") ||
+      DecodeJson.StringDecodeJson.decodeJson(resourceJsonNode.field("Type").get).toOption.get.startsWith("Custom::")
+
+
   def getServiceName: String =
-    DecodeJson.StringDecodeJson.decodeJson( resourceJsonNode.field("Type").get ).toOption.get.split("::")(1)
+      if ( isCustomResource ) "cloudformation"
+      else DecodeJson.StringDecodeJson.decodeJson( resourceJsonNode.field("Type").get ).toOption.get.split("::")(1)
 
   def getResourceType: String =
-    DecodeJson.StringDecodeJson.decodeJson( resourceJsonNode.field("Type").get ).toOption.get.split("::")(2)
+    if ( isCustomResource ) "customresource"
+    else DecodeJson.StringDecodeJson.decodeJson( resourceJsonNode.field("Type").get ).toOption.get.split("::")(2)
 
 
   def subPropertiesNamesOfClassName (conceptName:String): Set[String] = {
