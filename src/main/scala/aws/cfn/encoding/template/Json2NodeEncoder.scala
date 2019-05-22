@@ -2,20 +2,29 @@ package aws.cfn.encoding.template
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.encoding.EncodeUtils
+import aws.cfn.encoding.EncodeUtils.{subFieldNames}
 import aws.cfn.formalization._
 
+import scala.language.postfixOps
 
 protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEncoder, rE: Json2ResourceEncoder) {
 
 
   def encode(json: Json, subpropertyType: Option[String] = None): Node = {
-    if (json.isNull) NoValue
-    else if (json.isObject && isIntrinsicFunction(json)) evalIntrinsicFunction(json)
-    else if (json.isObject && isMapProperty(json,subpropertyType).isDefined) encodeMapProperty(json,isMapProperty(json,subpropertyType).get)
-    else if (json.isObject && isPolicy(json)) rE.PolicyEncoder.encode(json)
-    else if (json.isObject) encodeSubproperty(json,subpropertyType)
-    else if (json.isArray) encodeArrayNode(json,subpropertyType)
-    else encodeValueNode(json)
+    if (json.isNull)
+      NoValue
+    else if (json.isObject && isIntrinsicFunction(json))
+      evalIntrinsicFunction(json)
+    else if (json.isObject && isMapProperty(json,subpropertyType).isDefined)
+      encodeMapProperty(json,isMapProperty(json,subpropertyType).get)
+    else if (json.isObject && isPolicy(json))
+      rE.PolicyEncoder.encode(json)
+    else if (json.isObject)
+      encodeSubproperty(json,subpropertyType)
+    else if (json.isArray)
+      encodeArrayNode(json,subpropertyType)
+    else
+      encodeValueNode(json)
   }
 
 
@@ -27,10 +36,11 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
   def encodeValueNode(json: Json): Node = {
-    val stringValue = DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase()
     if (json.isBool) BooleanNode(DecodeJson.BooleanDecodeJson.decodeJson(json).toOption.get)
-    else if (json.isNumber) LongNode(DecodeJson.LongDecodeJson.decodeJson(json).toOption.get)
-    else StringNode(stringValue)
+    else if (json.isNumber && json.number.get.toInt.isDefined) IntNode(json.number.get.toInt.get)
+    else if (json.isNumber && json.number.get.toLong.isDefined) LongNode(json.number.get.toLong.get)
+    else if (json.isNumber && json.number.get.toFloat.isDefined) FloatNode(json.number.get.toLong.get)
+    else StringNode(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase())
   }
 
   def isIntrinsicFunction(json:Json) : Boolean = {
@@ -40,7 +50,9 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
   def evalIntrinsicFunction(json:Json) : Node = {
 
-    def arrayAt(funName:String, index:Int) = json.field(funName).get.array.get(index)
+    def arrayAt(funName:String, index:Int) = {
+      json.field(funName).get.array.get(index)
+    }
 
     EncodeUtils.subFieldNames(json)(0) match {
       case "fn::base64"
@@ -49,12 +61,26 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
         => CidrFunction (encode (arrayAt("Fn::Cidr",0)).asInstanceOf[StringNode],
               encode (arrayAt("Fn::Cidr",1) ).asInstanceOf[IntNode],
               encode (arrayAt("Fn::Cidr",2)).asInstanceOf[IntNode] ) ()
-      case "fn::if"
-        => IfFunction (encode (arrayAt("Fn::If",0)).asInstanceOf[BooleanNode],
-            encode (arrayAt("Fn::If",1)),
-            encode (arrayAt("Fn::If",2))) ()
-      case "fn::not"
-        => NotFunction (encode (json.field ("Fn::Not").get).asInstanceOf[BooleanNode]) ()
+      case "fn::if" => {
+        val encodedCondition = encode (arrayAt("Fn::If",0))
+        if (encodedCondition.isInstanceOf[StringNode]) {
+          tE.conditions.get(encodedCondition.asInstanceOf[StringNode].value) match {
+            case None => NoValue
+            case Some(b) => IfFunction ( BooleanNode(b) , encode (arrayAt("Fn::If",1)), encode (arrayAt("Fn::If",2))) ()
+          }
+        } else {
+          IfFunction ( encodedCondition.asInstanceOf[BooleanNode] ,
+          encode (arrayAt("Fn::If",1)),
+          encode (arrayAt("Fn::If",2))) ()
+        }
+      }
+      case "fn::not" => {
+        var encodedJson = encode(json.field("Fn::Not").get)
+        encodedJson match {
+          case n : ListNode[BooleanNode] => NotFunction (n.value.head) ()
+          case n : BooleanNode => NotFunction(n)()
+        }
+      }
       case "fn::and"
         => AndFunction (encode (arrayAt("Fn::And",0) ).asInstanceOf[BooleanNode],
         encode (arrayAt("Fn::And",1)).asInstanceOf[BooleanNode]) ()
@@ -78,16 +104,23 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
       case "fn::getatt" => GetAttFunction (
         encode (arrayAt("Fn::GetAtt",0)).asInstanceOf[StringNode],
         encode (arrayAt("Fn::GetAtt",1)).asInstanceOf[StringNode], tE.resources) ()
-      case "fn::getazs" => GetAZsFunction (encode (json.field ("fn::GetAZs").get).asInstanceOf[StringNode] ) ()
+      case "fn::getazs" => GetAZsFunction (encode (json.field ("Fn::GetAZs").get).asInstanceOf[StringNode] ) ()
       case "fn::importvalue" =>
-        ImportValueFunction (encode (json.field ("fn::ImportValue").get).asInstanceOf[StringNode],
+        ImportValueFunction (encode (json.field ("Fn::ImportValue").get).asInstanceOf[StringNode],
           ssE.outputsByExportName, tE.outputByLogicalId) ()
       case "fn::join" => JoinFunction (
         encode (arrayAt("Fn::Join",0)).asInstanceOf[StringNode],
         encode (arrayAt("Fn::Join",1)).asInstanceOf[ListNode[Node]] ) ()
-      case "fn::select" => SelectFunction (
-        encode (arrayAt("Fn::Select",0)).asInstanceOf[IntNode],
-        encode (arrayAt("Fn::Select",1)).asInstanceOf[ListNode[Node]] ) ()
+      case "fn::select" => {
+        var p2 = encode (arrayAt("Fn::Select",1))
+        if (!p2.isInstanceOf[ListNode[Node]])
+          p2 = ListNode(Vector(p2))
+        else if (p2.equals(NoValue))
+          NoValue
+        SelectFunction (
+          encode (arrayAt("Fn::Select",0)).asInstanceOf[IntNode],
+          p2.asInstanceOf[ListNode[Node]] ) ()
+      }
       case "fn::split" => SplitFunction (
         encode (arrayAt("Fn::Split",0)).asInstanceOf[StringNode],
         encode (arrayAt("Fn::Split",1)).asInstanceOf[StringNode] ) ()
@@ -95,7 +128,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
         if ( json.field("Fn::Sub").get.isArray && json.field("Fn::Sub").get.array.get.size == 2)
         {
           SubFunction (tE.resources, tE.parameters, encode (arrayAt("Fn::Sub",0) ).asInstanceOf[StringNode],
-          Some (EncodeUtils.getNodesAsMapOfStrings (arrayAt("Fn::Sub",1)) ) ) ()
+          Some (getNodesAsMapOfEvalStrings (arrayAt("Fn::Sub",1)) ) ) ()
         }
         else if ( json.field("Fn::Sub").get.isArray && json.field("Fn::Sub").get.array.get.size == 1)
         {
@@ -119,7 +152,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
   }
 
 
-  def encodeMapProperty(json: Json, subpropertyType: String) = ??? // TODO
+  def encodeMapProperty(json: Json, subpropertyType: String) = NoValue // TODO
 
 
 
@@ -150,5 +183,21 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
       json.field("Statement").get.array.get(0).hasField("Effect") &&
       json.field("Statement").get.array.get(0).hasField("Action")
   }
+
+
+  def getNodesAsMapOfEvalStrings(j:Json) : Map[String, String] = subFieldNames(j) zip subFieldValueEvalContents(j) toMap
+
+  def subFieldValueEvalContents (json: Json) : List[String] =
+    json.objectFieldsOrEmpty map ( f => getLowerCaseEvalStringField(json, f) )
+
+  def getLowerCaseEvalStringField(json: Json, field:String): String = {
+    encode(json.field(field).get) match {
+      case NoValue => "" // TODO
+      case StringNode(s) => s
+    }
+  }
+
+
+
 
 }

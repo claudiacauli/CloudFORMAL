@@ -59,7 +59,13 @@ class StackSet2DLEncoder(stackSet: StackSet){
     def encodeProperty(sourceIndividual: OWLIndividual, propName: String, cfnNode: Node): Vector[OWLAxiom] = oProperty(propName) match {
       case Some(op) => {
         cfnNode match {
-         case ListNode(vec) => vec flatMap (n => encodeObjectProperty(sourceIndividual,op,n.asInstanceOf[ObjectNode]))
+         case ListNode(vec) => vec flatMap (n => {
+           n match {
+             case StringNode(s) => encodeObjectProperty(sourceIndividual,op,ForeignNode(s))
+             case NoValue => Vector()
+             case _ => encodeObjectProperty(sourceIndividual,op,n.asInstanceOf[ObjectNode])
+           }
+         })
          case MapNode(m) => m.toVector flatMap (e => encodeObjectMapEntry(sourceIndividual, op, e))
          case NoValue => Vector()
          case _ => encodeObjectProperty(sourceIndividual, op,
@@ -70,9 +76,15 @@ class StackSet2DLEncoder(stackSet: StackSet){
       }
       case None => dProperty(propName) match {
         case Some(dp) => { cfnNode match {
-          case ListNode(vec) => vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
+          case ListNode(vec) => {
+            vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
+          }
           case MapNode(m) => m.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
           case NoValue => Vector()
+          case ResourceNode(id,s,r,_) => {
+
+            Vector()
+          }
           case _ => encodeValueProperty(sourceIndividual, dp, cfnNode.asInstanceOf[GenericValueNode])
           }
         }

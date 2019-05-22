@@ -86,8 +86,8 @@ sealed trait StackSetNode extends Node
       def apply(): StringNode = ipBlock // TODO
     }
 
-    final case class FindInMapFunction(mappings: Map[String,Map[String,Either[String,Map[String,String]]]], m: StringNode, k1: StringNode, k2: StringNode = null) extends IntrinsicFunction {
-      def apply() : StringNode = {
+    final case class FindInMapFunction(mappings: Map[String,Map[String,Either[String,Map[String,Any]]]], m: StringNode, k1: StringNode, k2: StringNode = null) extends IntrinsicFunction {
+      def apply() : GenericValueNode = {
         if ( k2==null ) {
           mappings(m.value)(k1.value) match {
             case Left(s) => StringNode(s)
@@ -96,7 +96,11 @@ sealed trait StackSetNode extends Node
         }
         else mappings(m.value)(k1.value) match {
           case Left(s) => StringNode(s)
-          case Right(m1) => StringNode(m1(k2.value))
+          case Right(m1) => m1(k2.value) match {
+            case float: Float => FloatNode(m1(k2.value).asInstanceOf[Float])
+            case bool: Boolean => BooleanNode(m1(k2.value).asInstanceOf[Boolean])
+            case _ => StringNode(m1(k2.value).asInstanceOf[String])
+          }
         }
     }
     }
@@ -104,9 +108,9 @@ sealed trait StackSetNode extends Node
 
     final case class GetAttFunction(res:StringNode, attr:StringNode, resources:Map[String,ResourceNode]) extends IntrinsicFunction {
       def apply(): Node = {
-        if (attr.value.equals("arn"))
+        if (attr.value.equals("arn") && resources!=null && resources.get(res.value).isDefined)
           resources(res.value)
-        else StringNode("")
+        else NoValue
         //resources(res.value).attributes(attr.value) //TODO!
       }
     }
@@ -126,27 +130,34 @@ sealed trait StackSetNode extends Node
     }
 
     final case class SelectFunction(index:IntNode, list:ListNode[Node]) extends IntrinsicFunction {
-      def apply(): Node = list.value(index.value)
+      def apply(): Node =
+        if (index.value >= list.value.size)
+          NoValue
+        else list.value(index.value)
     }
 
     final case class SplitFunction(delimiter:StringNode, v:StringNode) extends IntrinsicFunction {
-      def apply(): ListNode[StringNode] = ListNode[StringNode]( (v.value.split(delimiter.value) map (s => StringNode(s))).toVector )
+      def apply(): ListNode[StringNode] = {
+        ListNode[StringNode]( (v.value.split(delimiter.value) map (s => StringNode(s))).toVector )
+      }
     }
 
     final case class SubFunction(resources:Map[String,ResourceNode], parameters:Map[String,Node], str:StringNode, subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
       def apply(): Node = {
-        subMap match {
-        case None =>
-          if (str.value.contains("."))
-            GetAttFunction(StringNode(str.value.split(".")(0)), StringNode(str.value.split(".")(1)), resources)()
-          else
-            StringNode ( parameters.foldLeft(str.value)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2.asInstanceOf[StringNode].value)) )
-//          else
-//            RefFunction(str, resources, parameters)()
-        case Some(m) => {
-          StringNode ( m.foldLeft(str.value)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2.asInstanceOf[StringNode].value)) )
+        var tempString = str.value
+        if (subMap.isDefined) {
+          tempString = subMap.get.foldLeft(tempString)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}", b._2))
         }
-      }
+        tempString = parameters.foldLeft(tempString)((a, b) => {
+          if (b._2.isInstanceOf[StringNode]) {
+            a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2.asInstanceOf[StringNode].value)
+          }
+          else
+            a
+          })
+        if (tempString.contains("."))
+          GetAttFunction(StringNode(tempString.split("\\.")(0)), StringNode(tempString.split("\\.")(1)), resources)()
+        StringNode ( tempString )
       }
     }
 
@@ -164,10 +175,11 @@ sealed trait StackSetNode extends Node
                   ssE.foreignNodesByArn = ssE.foreignNodesByArn ++ Map(str.value -> referredNode.asInstanceOf[ForeignNode])
                 referredNode
               }
-              else if (resources.get(str.value).isDefined)
-                resources(str.value)
-              else if (parameters.get(str.value).isDefined)
+              else if (parameters!=null && parameters.get(str.value).isDefined){
                 parameters(str.value)
+              }
+              else if (resources!=null && resources.get(str.value).isDefined)
+                resources(str.value)
               else NoValue
             }
             case node: ResourceNode => node

@@ -3,7 +3,7 @@ package aws.cfn.encoding.specification.maps
 object InterResourceReferencesMap {
 
   def lookUp(k: String) :Option[(String,String,Boolean,Boolean)]= map.get(k)
-
+                                                                                       // req, fun
   private val map = Map(
     "ec2egressonlyinternetgateway_egressonlyinternetgateway_vpcid" -> ("ec2vpc", "vpc", true, true ),
     "ec2eip_eip_instanceid" -> ("ec2instance", "instance", false, true ),
@@ -148,7 +148,11 @@ object InterResourceReferencesMap {
     "s3bucket_lambdaconfiguration_function" -> ("lambdafunction", "function", true, true ),
     "s3bucket_queueconfiguration_queue" -> ("sqsqueue", "queue", true, true ),
     "s3bucket_topicconfiguration_topic" -> ("snstopic", "topic", true, true ),
-    "s3bucketpolicy_bucketpolicy_bucket" -> ("s3bucket", "bucket", true, true )
+    "s3bucketpolicy_bucketpolicy_bucket" -> ("s3bucket", "bucket", true, true ),
+    "configdeliverychannel_deliverychannel_s3bucketname" -> ("s3bucket", "bucket",true,true),
+    "cloudwatchalarm_alarm_alarmactions" -> ("snstopic", "topic", false, false),
+    "cloudwatchalarm_dimension_value" -> ("s3bucket","bucket",true,false),
+    "eventsrule_target_arn" -> ("lambdafunction", "function", true, false)
   )
 
 }

@@ -116,7 +116,7 @@ class DecodingTests extends FunSuite {
 //    ).get, "S3BucketPolicy" )))
 
 
-ServiceActionsGenerator.fromMap() foreach (sa => OntologyWriter.writeToOutputDir(new ServiceActions2DLEncoder(sa).encode(), "src/main/resources/terminology/actions/"))
+ServiceActionsGenerator.fromMap() foreach (sa => OntologyWriter.writeStackSetToOutputFolder(new ServiceActions2DLEncoder(sa).encode(), "src/main/resources/terminology/actions/"))
 
 
 

@@ -15,7 +15,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor.getOrElse(Json.jEmptyObject))
   val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform") // TODO!
   val parameters: Map[String,Node] = getParametersMap
-  val mappings: Map[String,Map[String,Either[String,Map[String,String]]]] = getMappings()//getSection("Mappings")
+  val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings()//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(ssE,this,e._1,e._2)))).toMap
   val resources: Map[String,ResourceNode] = (resourceEncoders.toVector flatMap ( rE => rE._2.createResourceNodeWithAttributes )).toMap
@@ -29,16 +29,20 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   def encode(): Template = {
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
 
-    // For each resource, do a deep instantiation
-    // Resource Node with name and attributes already exists.
-    // Now you need to go through all possible properties from the OWL Spec file and either put them in the present
-    // or in the absent list of properties
-    // the absent ones you only need their name
-    // the present ones are a map of Name,Node (this is because they can point to foreign nodes, resource nodes, subprop nodes etc.
-    // Fetch from Ontology with res type name the list of properties that have domain the current node
-    // go through all of them
-    // put them either in the absent or present
-    // for the present, get the node corresponding to their subproperty node
+    print("PARAMETERS\t")
+    println(parameters)
+    println()
+    print("MAPPINGS\t")
+    println(mappings)
+    println()
+    print("CONDITIONS\t")
+    println(conditions)
+    println()
+    print("OUTPUTS BY LOGICAL ID\t")
+    println(outputByLogicalId)
+    println()
+    print("OUTPUTS BY EXPORT NAME\t")
+    println(outputByExportName)
 
     template
   }
@@ -60,7 +64,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   def isConditionTrue(json : Json) : Boolean = {
 
     def evaluateCondition(json: Json) : Boolean = {
-      conditions.get( DecodeJson.StringDecodeJson.decodeJson(json).toOption.get ) match {
+      conditions.get( DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase() ) match {
         case None => NodeEncoder.encode(json).asInstanceOf[BooleanNode].value
         case Some(b) => b
       }
@@ -105,7 +109,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
 
     def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,Node] = paramType match {
       case "String" =>
-        Map(paramName -> StringNode(DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get))
+        Map(paramName -> StringNode(DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.toLowerCase()))
       case "Number" =>
         Map(paramName -> LongNode(DecodeJson.IntDecodeJson.decodeJson(jsonValue).toOption.get))
       case "List<Number>" =>
@@ -156,14 +160,25 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
     EncodeUtils.getNodesAsMapOfJsons( templateJson.field(sectionName).getOrElse(Json.jEmptyObject) )
   }
 
-  private def getMappings() : Map[String,Map[String,Either[String,Map[String,String]]]] = {
+  private def getMappings() : Map[String,Map[String,Either[String,Map[String,Any]]]] = {
 
-    def getNodesAsMapOfStrings(json: Json) =
+    def getNodesAsMapOfStrings(json: Json): Either[String,Map[String,Any]] = {
+
+      def subFieldToAnyObj(e : (String, Json)): (String,Any) =  {
+        e._2 match {
+          case sn if sn.isString => (e._1, DecodeJson.StringDecodeJson.decodeJson(sn).toOption.get )
+          case nn if nn.isNumber => (e._1,DecodeJson.FloatDecodeJson.decodeJson(nn).toOption.get)
+          case bn if bn.isBool => (e._1,DecodeJson.BooleanDecodeJson.decodeJson(bn).toOption.get)
+          case an if an.isArray => (e._1, an.array.get.toVector map ( n => subFieldToAnyObj((e._1,n))._2) )
+          case _ => (e._1,DecodeJson.StringDecodeJson.decodeJson(e._2).toOption.get)
+        }
+      }
+
       if (json.isObject)
-        Right(subFieldNames(json) zip (subFieldContents(json) map (
-      c => DecodeJson.StringDecodeJson.decodeJson(c).toOption.get) ) toMap)
+        Right( ((subFieldNames(json) zip subFieldContents(json)) map subFieldToAnyObj).toMap )
       else Left(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase)
 
+    }
 
     getSection("Mappings") map (m => (m._1 ,
       ( EncodeUtils.getNodesAsMapOfJsons(m._2).toVector map ( p => (p._1 , getNodesAsMapOfStrings(p._2))) ).toMap

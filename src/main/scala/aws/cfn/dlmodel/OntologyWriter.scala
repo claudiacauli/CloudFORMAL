@@ -12,10 +12,24 @@ import scala.jdk.StreamConverters._
 object OntologyWriter {
 
 
-    def write(model:DescriptionLogicModel, format: String = "rdf"): Unit =
-        writeToOutputDir(model, model.name+"/", format)
+    def writeSpecification(model:DescriptionLogicModel, format: String = "rdf") : Unit =
+        writeSpecificationToOutputFolder(model, model.name+"/", format)
 
-    def writeToOutputDir(model:DescriptionLogicModel, outputDir: String, format: String = "rdf"): Unit = {
+
+    def writeSpecificationToOutputFolder(model:DescriptionLogicModel, outputDir: String, format: String = "rdf"): Unit = {
+        format.toLowerCase() match {
+            case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(outputDir+"/"+model.name+".owl"))
+            case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(outputDir+"/"+model.name+".owl"))
+            case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(outputDir+"/"+model.name+".owl"))
+            case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(outputDir+"/"+model.name+".owl"))
+        }
+    }
+
+
+    def writeStackSet(model:DescriptionLogicModel, format: String = "rdf"): Unit =
+        writeStackSetToOutputFolder(model, model.name+"/", format)
+
+    def writeStackSetToOutputFolder(model:DescriptionLogicModel, outputDir: String, format: String = "rdf"): Unit = {
         mkdir(outputDir+model.name)
         format.toLowerCase() match {
             case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+model.name+".owl"))

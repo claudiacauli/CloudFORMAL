@@ -1,51 +1,82 @@
 
 import java.io.{File, FileNotFoundException}
 
+import argonaut.Json
 import aws.cfn.dlmodel.OntologyWriter
 import aws.cfn.encoding.Parser
+import aws.cfn.encoding.specification.{Json2SpecificationEncoder, Specification2DLEncoder}
 import aws.cfn.encoding.template.{Json2StackSetEncoder, StackSet2DLEncoder}
 
-
+import scala.language.postfixOps
+import scala.jdk.CollectionConverters._
 
 object Main extends App {
 
-  val inputDir = new File("src/main/resources/InputStackSets/")
+
+
+
+
+  val inputDir = new File("src/main/resources/InputStackSets/Zelkova/test/")
   (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createStackSet(f) )
 
   def createStackSet(file: File) = {
     val stackSetName = file.getName
-    var descriptor : File = null
 
-    try {
-      descriptor = new File("src/main/resources/InputStackSets/" + stackSetName +"/descriptor.json")
-    } catch {
-      case e: FileNotFoundException => descriptor = null
-    }
+    val vectorOfTemplates : Vector[(String,Json,Option[Json])] = file.listFiles().toVector flatMap  ( f => {
+      val templateName = f.getName.split(".json").head
+      if(!templateName.endsWith("Descriptor") && !templateName.endsWith("DS_Store")) {
 
-    println("Checking subfiles in directory: " + file)
+        var descriptor : File = null
+        try {
+          descriptor = new File("src/main/resources/InputStackSets/Zelkova/test/" + stackSetName +"/" + templateName + "Descriptor.json")
+        } catch {
+          case e: FileNotFoundException => descriptor = null
+        }
 
-    file.listFiles().toVector foreach ( f => {
-      if(!f.getName.equals("descriptor.json")) {
-        val tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
+        val   tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
         val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
-        val ss = Json2StackSetEncoder.encode(Vector((f.getName,tmplJson,descrJson)),stackSetName)
-        val ssM = StackSet2DLEncoder.encode(ss)
-        OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/" )
-      }
+        Vector((templateName, tmplJson,descrJson))
+      } else Vector()
     })
+
+
+    val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
+    val ssM = StackSet2DLEncoder.encode(ss)
+    OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/ZelkovaTest/" )
+
+
+//    file.listFiles().toVector foreach ( f => {
+//      if(!f.getName.equals("descriptor.json")) {
+//        val tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
+//        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
+//        val ss = Json2StackSetEncoder.encode(Vector((f.getName,tmplJson,descrJson)),stackSetName)
+//        val ssM = StackSet2DLEncoder.encode(ss)
+//        OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/ZelkovaTest/" )
+//      }
+//    })
 
   }
 
-//  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/s3bucket_with_replica_and_IAMrole.json").get
-//  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithReplicaAndIamRole/descriptor.json")
-//  val ss = Json2StackSetEncoder.encode(Vector(("bucketWithLogging",tmplJson,descrJson)),"BucketWithReplicaAndIam")
+
+
+
+
+//  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/Zelkova/test/SnsAlarms.json").get
+//  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/Zelkova/test/descriptor.json")
+//  val ss = Json2StackSetEncoder.encode(Vector(("DLtestClaudia",tmplJson,descrJson)),"DLtestClaudia")
 //  val ssM = StackSet2DLEncoder.encode(ss)
-//  OntologyWriter.writeToOutputDir(ssM, "src/main/resources/OutputModels/" )
+//  OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/" )
+
+
+
+
+
 
 //  printOntologiesFromResourceSpecificationDirectoryToFolder(
-//    "/Users/claudia/Downloads/CloudFormationResourceSpecification/",
+//    "/Users/caulic/Downloads/CloudFormationResourceSpecification/",
 //    "src/main/resources/terminology/resourcespecificationsOwl/"
 //  )
+//
 //
 //
 //  def printOntologiesFromResourceSpecificationDirectoryToFolder(dirPath: String, outputPath : String): Unit = {
@@ -63,8 +94,8 @@ object Main extends App {
 //
 //
 //  def getOntologyFromResourceSpecificationFile(file: File) =
-//    SpecificationDLEncoder.encode(
-//      JsonSpecificationEncoder.encode(
+//    Specification2DLEncoder.encode(
+//      Json2SpecificationEncoder.encode(
 //        Parser.jsonFromFile(file).get,
 //        file.getName.split("/").last.split("Specification.json").head))
 //
@@ -79,7 +110,7 @@ object Main extends App {
 //
 //  def printOntologyFromResourceSpecificationFileToFolder(file : File, outputPath: String): Unit = {
 //    println("[TBox]  " + file.getName.split("Specification.json")(0))
-//    OntologyWriter.writeToOutputDir(getOntologyFromResourceSpecificationFile(file), outputPath)
+//    OntologyWriter.writeSpecificationToOutputFolder(getOntologyFromResourceSpecificationFile(file), outputPath)
 //  }
 
 
