@@ -154,7 +154,7 @@ sealed trait StackSetNode extends Node
 
     final case class SubFunction(resources:Map[String,ResourceNode], parameters:Map[String,Node], str:StringNode, subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
       def apply(): Node = {
-        var tempString = str.value
+        var tempString = str.value.toLowerCase
         if (subMap.isDefined) {
           tempString = subMap.get.foldLeft(tempString)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}", b._2))
         }

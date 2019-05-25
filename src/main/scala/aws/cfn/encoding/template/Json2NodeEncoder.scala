@@ -12,7 +12,9 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
   def encode(json: Json, subpropertyType: Option[String] = None): Node = {
-    if ( isArn(json) ) ArnFunction(tE.resources, tE.parameters, json.string.get, ssE.resourceByArn)
+    println("Working with node " + json)
+    println("Parameters " + tE.parameters)
+    if ( isArn(json) ) ArnFunction(tE.resources, tE.parameters, json.string.get, ssE.resourceByArn)()
     else if (json.isNull)
       NoValue
     else if (json.isObject && isIntrinsicFunction(json))
@@ -113,8 +115,13 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
   def evalIntrinsicFunction(json:Json) : Node = {
 
     def arrayAt(funName:String, index:Int) = {
-      json.field(funName).get.array.get(index)
+      if (json.field(funName).get.isArray)
+        json.field(funName).get.array.get(index)
+      else
+        json.field(funName).get
     }
+
+    println("Working on node " + json)
 
     EncodeUtils.subFieldNames(json)(0) match {
       case "fn::base64"
@@ -187,7 +194,10 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
         encode (arrayAt("Fn::Split",0)).asInstanceOf[StringNode],
         encode (arrayAt("Fn::Split",1)).asInstanceOf[StringNode] ) ()
       case "fn::sub" =>
-        if ( json.field("Fn::Sub").get.isArray && json.field("Fn::Sub").get.array.get.size == 2)
+        if (  isArn(arrayAt("Fn::Sub",0)) ){
+          SubFunction (tE.resources, tE.parameters, StringNode(arrayAt("Fn::Sub",0).string.get ) ) ()
+        }
+        else if ( json.field("Fn::Sub").get.isArray && json.field("Fn::Sub").get.array.get.size == 2)
         {
           SubFunction (tE.resources, tE.parameters, encode (arrayAt("Fn::Sub",0) ).asInstanceOf[StringNode],
           Some (getNodesAsMapOfEvalStrings (arrayAt("Fn::Sub",1)) ) ) ()
@@ -197,7 +207,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
           SubFunction (tE.resources, tE.parameters, encode (arrayAt("Fn::Sub",0) ).asInstanceOf[StringNode]) ()
         }
         else {
-          SubFunction (tE.resources, tE.parameters, encode (json.field("Fn::Sub").get).asInstanceOf[StringNode] ) ()
+          SubFunction (tE.resources, tE.parameters, encode(json.field("Fn::Sub").get).asInstanceOf[StringNode] ) ()
         }
       case "fn::transform" => NoValue // TODO!
       case "ref" => RefFunction (

@@ -156,6 +156,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
       case ForeignNode(v) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(v)))
       case AllowStatement(p, a, r, c) => null // TODO
       case DenyStatement(p, a, r, c) => null // TODO Continue from here and decide if you should move the instantion from here to another class!
+      case null => Vector() // TODO
     }
 
 

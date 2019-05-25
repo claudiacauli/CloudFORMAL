@@ -20,56 +20,56 @@ object Main extends App {
   Going through all templates essentially :)
    */
 
-    val t1 = ("Acc1", Vector(1,2,3,4))
-    val t2 = ("Acc2", Vector(5,6,7,8))
-    val t3 = ("Acc2", Vector(9))
-    val t4 = ("Acc1", Vector(10,11))
-    val vt = Vector(t1,t2,t3,t4)
-
-    println(vt.groupBy(e => e._1).toVector.flatMap( e => Map(e._1 -> e._2.flatMap( p => p._2 ) )))
-
-
-
-//  val inputDir = new File("src/main/resources/InputStackSets/Zelkova/test/")
-//  (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createStackSet(f) )
+//    val t1 = ("Acc1", Vector(1,2,3,4))
+//    val t2 = ("Acc2", Vector(5,6,7,8))
+//    val t3 = ("Acc2", Vector(9))
+//    val t4 = ("Acc1", Vector(10,11))
+//    val vt = Vector(t1,t2,t3,t4)
 //
-//  def createStackSet(file: File) = {
-//    val stackSetName = file.getName
-//
-//    val vectorOfTemplates : Vector[(String,Json,Option[Json])] = file.listFiles().toVector flatMap  ( f => {
-//      val templateName = f.getName.split(".json").head
-//      if(!templateName.endsWith("Descriptor") && !templateName.endsWith("DS_Store")) {
-//
-//        var descriptor : File = null
-//        try {
-//          descriptor = new File("src/main/resources/InputStackSets/Zelkova/test/" + stackSetName +"/" + templateName + "Descriptor.json")
-//        } catch {
-//          case e: FileNotFoundException => descriptor = null
-//        }
-//
-//        val   tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
+//    println(vt.groupBy(e => e._1).toVector.flatMap( e => Map(e._1 -> e._2.flatMap( p => p._2 ) )))
+
+
+
+  val inputDir = new File("src/main/resources/InputStackSets/Zelkova/test/")
+  (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createStackSet(f) )
+
+  def createStackSet(file: File) = {
+    val stackSetName = file.getName
+
+    val vectorOfTemplates : Vector[(String,Json,Option[Json])] = file.listFiles().toVector flatMap  ( f => {
+      val templateName = f.getName.split(".json").head
+      if(!templateName.endsWith("Descriptor") && !templateName.endsWith("DS_Store")) {
+
+        var descriptor : File = null
+        try {
+          descriptor = new File("src/main/resources/InputStackSets/Zelkova/test/" + stackSetName +"/" + templateName + "Descriptor.json")
+        } catch {
+          case e: FileNotFoundException => descriptor = null
+        }
+
+        val   tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
+        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
+        Vector((templateName, tmplJson,descrJson))
+      } else Vector()
+    })
+
+
+    val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
+    val ssM = StackSet2DLEncoder.encode(ss)
+    OntologyWriter.writeStackSetToOutputFolder(ssM, "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
+
+
+//    file.listFiles().toVector foreach ( f => {
+//      if(!f.getName.equals("descriptor.json")) {
+//        val tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
 //        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
-//        Vector((templateName, tmplJson,descrJson))
-//      } else Vector()
+//        val ss = Json2StackSetEncoder.encode(Vector((f.getName,tmplJson,descrJson)),stackSetName)
+//        val ssM = StackSet2DLEncoder.encode(ss)
+//        OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/ZelkovaTest/" )
+//      }
 //    })
-//
-//
-//    val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
-//    val ssM = StackSet2DLEncoder.encode(ss)
-//    OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/ZelkovaTest/" )
-//
-//
-////    file.listFiles().toVector foreach ( f => {
-////      if(!f.getName.equals("descriptor.json")) {
-////        val tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
-////        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
-////        val ss = Json2StackSetEncoder.encode(Vector((f.getName,tmplJson,descrJson)),stackSetName)
-////        val ssM = StackSet2DLEncoder.encode(ss)
-////        OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/ZelkovaTest/" )
-////      }
-////    })
-//
-//  }
+
+  }
 
 
 

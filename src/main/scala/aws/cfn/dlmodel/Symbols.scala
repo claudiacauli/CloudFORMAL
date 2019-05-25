@@ -8,7 +8,7 @@ object Symbols {
 
 
 
-  val baseIRI : IRI = IRI.create("https://www.claudiacauli.com/aws/cfn/2019/")
+  val baseIRI : IRI = IRI.create("http://www.claudiacauli.com/aws/cfn/2019/")
   val versionIRI : IRI = IRI.create(baseIRI.toString + "v1.0/")
   val currentIRI : IRI = versionIRI
 

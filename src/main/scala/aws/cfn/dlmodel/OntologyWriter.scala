@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
 
 import org.semanticweb.owlapi.formats._
-import org.semanticweb.owlapi.model.OWLOntology
+import org.semanticweb.owlapi.model.{AddImport, IRI, OWLOntology, RemoveImport}
 
 import scala.jdk.StreamConverters._
 
@@ -30,35 +30,57 @@ object OntologyWriter {
         writeStackSetToOutputFolder(model, model.name+"/", format)
 
     def writeStackSetToOutputFolder(model:DescriptionLogicModel, outputDir: String, format: String = "rdf"): Unit = {
+
         val folderName = outputDir+model.name
         val fileName = folderName + "/" + model.name + "_StackSetOWLModel.owl"
+
+        def makeDirIfDoesNotExist(folderName:String): Unit = {
+            val dir = new File(folderName)
+            if (!dir.exists())
+                dir.mkdir()
+        }
+
+        def saveToOutputFolder(ontology : OWLOntology) = {
+            model.manager.saveOntology(ontology, new RDFXMLDocumentFormat, new FileOutputStream(folderName+"/"+
+              ontology.getOWLOntologyManager.getOntologyDocumentIRI(ontology).toString.split("/").last ))
+        }
+
+        def updateImportPointer(ontology: OWLOntology) = {
+            val oldDocIRI = ontology.getOWLOntologyManager.getOntologyDocumentIRI(ontology)
+            val newDocIRI = IRI.create( "file:" + folderName + "/" + ontology.getOWLOntologyManager.getOntologyDocumentIRI(ontology).toString.split("/").last )
+            println("Old iri was " + oldDocIRI)
+            println("New iri is " + newDocIRI)
+
+            model.manager.applyChange(
+                    new RemoveImport(model.ontology, model.df.getOWLImportsDeclaration(oldDocIRI)))
+            model.manager.setOntologyDocumentIRI( ontology, newDocIRI )
+            model.manager.applyChange( new AddImport(model.ontology, model.df.getOWLImportsDeclaration( ontology.getOWLOntologyManager.getOntologyDocumentIRI(ontology) )))
+        }
+
         makeDirIfDoesNotExist(folderName)
-        //makeFileIfDoesNotExist(folderName+"/"+model.name+".owl")
+        onlyImportedOntologies(model) foreach (o => {
+            updateImportPointer(o)
+            saveToOutputFolder(o)
+        })
         format.toLowerCase() match {
             case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(fileName))
             case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(fileName))
             case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(fileName))
             case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
         }
-        onlyImportedOntologies(model) foreach (o => model.manager.saveOntology(o, new RDFXMLDocumentFormat, new FileOutputStream(folderName+"/"+
-          o.getOWLOntologyManager.getOntologyDocumentIRI(o).toString.split("/").last.split("#").head )))
+
         addProtegeCatalogue(model,folderName)
+
+
     }
 
-    private def onlyImportedOntologies(model: DescriptionLogicModel)
+
+
+
+    def onlyImportedOntologies(model: DescriptionLogicModel)
     = model.manager.ontologies().toScala(List) filter ( o => o!=model.ontology)
 
-    private def makeDirIfDoesNotExist(folderName:String): Unit = {
-        val dir = new File(folderName)
-        if (!dir.exists())
-            dir.mkdir()
-    }
 
-//    private def makeFileIfDoesNotExist(fileName: String) : Unit = {
-//        val f = new File(fileName)
-//        if (!f.exists())
-//            f.createNewFile()
-//    }
 
 
     private def addProtegeCatalogue(model: DescriptionLogicModel, outputDir : String ) : Unit = {

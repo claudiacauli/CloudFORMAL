@@ -13,6 +13,11 @@ class Arn(evaluatedString : String) {
 
   def resourceFromArn() : Node = {
 
+    // TODO!
+
+    // Look-up in the resourceByArn map. If it's there, return the resource
+    // Look-up the information that you have from the arn in the maps that belong to the stackSetEncoder
+    // If you find a matching resource, add it to the ResourceByArn map, and then return it.
 
     null
   }
