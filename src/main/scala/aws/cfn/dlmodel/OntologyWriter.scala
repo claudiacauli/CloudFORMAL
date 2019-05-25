@@ -30,26 +30,35 @@ object OntologyWriter {
         writeStackSetToOutputFolder(model, model.name+"/", format)
 
     def writeStackSetToOutputFolder(model:DescriptionLogicModel, outputDir: String, format: String = "rdf"): Unit = {
-        mkdir(outputDir+model.name)
+        val folderName = outputDir+model.name
+        val fileName = folderName + "/" + model.name + "_StackSetOWLModel.owl"
+        makeDirIfDoesNotExist(folderName)
+        //makeFileIfDoesNotExist(folderName+"/"+model.name+".owl")
         format.toLowerCase() match {
-            case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+model.name+".owl"))
-            case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+model.name+".owl"))
-            case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+model.name+".owl"))
-            case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+model.name+".owl"))
+            case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(fileName))
+            case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(fileName))
+            case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(fileName))
+            case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
         }
-        onlyImportedOntologies(model) foreach (o => model.manager.saveOntology(o, new RDFXMLDocumentFormat, new FileOutputStream(outputDir+model.name+"/"+
+        onlyImportedOntologies(model) foreach (o => model.manager.saveOntology(o, new RDFXMLDocumentFormat, new FileOutputStream(folderName+"/"+
           o.getOWLOntologyManager.getOntologyDocumentIRI(o).toString.split("/").last.split("#").head )))
-        addProtegeCatalogue(model,outputDir+model.name)
+        addProtegeCatalogue(model,folderName)
     }
 
     private def onlyImportedOntologies(model: DescriptionLogicModel)
     = model.manager.ontologies().toScala(List) filter ( o => o!=model.ontology)
 
-    private def mkdir(outputDir:String): Unit = {
-        val dir = new File(outputDir)
+    private def makeDirIfDoesNotExist(folderName:String): Unit = {
+        val dir = new File(folderName)
         if (!dir.exists())
             dir.mkdir()
     }
+
+//    private def makeFileIfDoesNotExist(fileName: String) : Unit = {
+//        val f = new File(fileName)
+//        if (!f.exists())
+//            f.createNewFile()
+//    }
 
 
     private def addProtegeCatalogue(model: DescriptionLogicModel, outputDir : String ) : Unit = {

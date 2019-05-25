@@ -3,7 +3,7 @@ package aws.cfn.encoding.template
 import java.io.File
 
 import argonaut.{DecodeJson, Json}
-import aws.cfn.dlmodel.Symbols
+import aws.cfn.dlmodel.{Constants, Symbols}
 import aws.cfn.formalization._
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.vocab.OWL2Datatype
@@ -53,15 +53,9 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
 
 
     if (tE.isConditionTrue(resourceJsonNode)){
-      if ( isCustomResource ) {
-        println("Found Custom Resource! With node " + resourceJsonNode)
-        resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, Map() )
-        Map( resourceLogicalId -> resourceNode )
-      } else {
-        resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
-        importOntology
-        Map( resourceLogicalId -> resourceNode )
-      }
+      resourceNode = ResourceNode( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
+      importOntology
+      Map( resourceLogicalId -> resourceNode )
     }
     else Map()
 
@@ -119,6 +113,11 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
     case None  => Vector()
     case Some(c) => {
       val className = c.getIRI.toString.split("#").last
+
+      if (resourceOntology==null)
+        println("We are in resource: " + resourceType + " with name " + resourceLogicalId + " and the ontology is null!")
+
+
       (resourceOntology.dataPropertiesInSignature().toArray().toVector
         ++ resourceOntology.objectPropertiesInSignature().toArray().toVector).filter(
         p => p match {
@@ -135,12 +134,14 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
     }
   }
 
-  def rangeNameOf(propertyName:String): Option[String] =
+  def rangeNameOf(propertyName:String): Option[String] = {
     rangeOf(propertyName) match {
       case None => None
-      case Some(Left(dt)) => None
+      case Some(Left(dt)) => Some(Constants.toString(dt))
       case Some(Right(c)) => Some(c.getIRI.toString.split("#").last)
     }
+  }
+
 
   def rangeOf(propertyName:String): Option[Either[OWL2Datatype, OWLClass]] = {
     if (isObjectProperty(propertyName)) objectPropertyRange(propertyName) match {

@@ -42,6 +42,10 @@ sealed trait StackSetNode extends Node
         def apply(): Float = value
       }
 
+      final case class DoubleNode(value : Double) extends  ValueNode[Double]{
+        def apply() : Double = value
+      }
+
       final case class LongNode(value: Long) extends ValueNode[Long] {
         def apply(): Long = value
       }
@@ -74,8 +78,14 @@ sealed trait StackSetNode extends Node
    */
   sealed trait IntrinsicFunction extends StackSetNode
 
-    final case class Arn(arnString: StringNode, arnsMap:Map[String,Node]) extends IntrinsicFunction {
-      def apply(): Node = arnsMap.getOrElse(arnString.value, ForeignNode(arnString.value))
+    final case class ArnFunction(resources:Map[String,ResourceNode],
+                                 parameters:Map[String,Node],
+                                 arnString: String,
+                                 arnsMap:Map[String,Node]) extends IntrinsicFunction {
+      def apply(): Node = {
+        val evalArnString = SubFunction(resources, parameters, StringNode(arnString))()
+        new Arn(evalArnString.asInstanceOf[StringNode].value).resourceFromArn()
+      }
     }
 
     final case class Base64Function(string: StringNode) extends IntrinsicFunction {
@@ -170,7 +180,7 @@ sealed trait StackSetNode extends Node
           n match {
             case str: StringNode => {
               if (str.value.startsWith("arn:")){
-                val referredNode = Arn(StringNode(str.value), ssE.resourceByArn)()
+                val referredNode = ArnFunction(resources,parameters, str.value, ssE.resourceByArn)()
                 if (!ssE.resourceByArn.values.toVector.contains(referredNode))
                   ssE.foreignNodesByArn = ssE.foreignNodesByArn ++ Map(str.value -> referredNode.asInstanceOf[ForeignNode])
                 referredNode

@@ -128,6 +128,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
         case BooleanNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case LongNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case FloatNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
+        case DoubleNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp,sourceIndividual,v))
         case DateTimeNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case CommaDelimitedListNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case JsonNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))

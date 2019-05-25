@@ -53,6 +53,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
       case StringAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_STRING, f = true)
       case IntAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_INT, f = true)
       case FloatAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_FLOAT, f = true)
+      case DoubleAttribute(name,dom) => attrAxioms(name,dom.name,Constants.OWL_DOUBLE, f=true)
       case LongAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_LONG, f = true)
       case CommaDelimitedListAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_STRING, f = true)
       case BooleanAttribute(name, dom) => attrAxioms(name, dom.name, Constants.OWL_BOOL, f = true)
@@ -72,6 +73,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
       case StringProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_STRING, req, f = true)
       case IntProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_INT, req, f = true)
       case FloatProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_FLOAT, req, f = true)
+      case DoubleProperty(name,dom,req) => axioms(name,dom.name,Constants.OWL_DOUBLE, req, f=true)
       case LongProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_LONG, req, f = true)
       case CommaDelimitedListProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_STRING, req, f = true)
       case BooleanProperty(name, dom, req) => axioms(name, dom.name, Constants.OWL_BOOL, req, f = true)
@@ -83,6 +85,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
       case MapOfNonPrimitiveProperty(nonPrimitiveType, name, dom, req) => mapAxioms(name, dom.name, nonPrimitiveType, req, f = false)
       case SubpropertyProperty(rangeName, propName, dom, req) => axioms(propName, dom.name, rangeName, req, f = true)
       case ResourceProperty(otherResSpecName, resTypeName, name, dom, req) => axioms(name, dom.name, resTypeName, req, f = true, otherResSpecName)
+      case ListOfResourcesProperty(otherResSpecName,resTypeName,name,dom,req) => axioms(name,dom.name,resTypeName,req, f = false, otherResSpecName)
       case PolicyProperty(name, dom, req) => axioms(name, dom.name, "policydocument", req, f = true)
     }
 
@@ -128,6 +131,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
     ra match {
       case "string" => attrAxioms(a, d, Constants.OWL_STRING, f)
       case "float" => attrAxioms(a, d, Constants.OWL_FLOAT, f)
+      case "double" => attrAxioms(a,d,Constants.OWL_DOUBLE,f)
       case "long" => attrAxioms(a, d, Constants.OWL_LONG, f)
       case "integer" => attrAxioms(a, d, Constants.OWL_INT, f)
       case "datetime" => attrAxioms(a, d, Constants.OWL_STRING, f)

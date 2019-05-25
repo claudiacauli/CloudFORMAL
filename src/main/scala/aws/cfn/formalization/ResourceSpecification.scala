@@ -41,6 +41,7 @@ sealed trait GenericAttributeOrPropertyType
     case class StringAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
     case class IntAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
     case class FloatAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
+    case class DoubleAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
     case class LongAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
     case class CommaDelimitedListAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
     case class BooleanAttribute(name: String, domain: ResourceValueType) extends GenericAttributeType
@@ -52,6 +53,7 @@ sealed trait GenericAttributeOrPropertyType
     case class StringProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class IntProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class FloatProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
+    case class DoubleProperty(name:String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class LongProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class CommaDelimitedListProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class BooleanProperty(name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
@@ -63,6 +65,7 @@ sealed trait GenericAttributeOrPropertyType
     case class MapOfNonPrimitiveProperty(nonPrimitiveType: String, name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class SubpropertyProperty(subpropTypeName: String, name:String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class ResourceProperty(resSpecName: String, resName: String, name: String, domain: NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
+    case class ListOfResourcesProperty(resSpecName:String, resName:String, name:String, domain:NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
     case class PolicyProperty(name:String, domain:NonPrimitiveValueType, req:Boolean) extends GenericPropertyType
 
 

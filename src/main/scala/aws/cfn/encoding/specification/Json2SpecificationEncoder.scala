@@ -88,6 +88,7 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
         else EncodeUtils.getPrimitiveType(pair._2) match {
           case "string" => StringProperty(propName, domain, isReq(pair._2))
           case "float" => FloatProperty(propName, domain, isReq(pair._2))
+          case "double" => DoubleProperty(propName, domain, isReq(pair._2))
           case "long" => LongProperty(propName, domain, isReq(pair._2))
           case "integer" => IntProperty(propName, domain, isReq(pair._2))
           case "boolean" => BooleanProperty(propName, domain, isReq(pair._2))
@@ -101,7 +102,11 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
       else if (isInterResourceReference.isDefined)
       {
         val x = isInterResourceReference.get
-        ResourceProperty(x._1,x._2, Renaming.propertyName(domain.name,pair._1), domain, x._3)
+        if ( x._4 )
+          ResourceProperty(x._1,x._2, Renaming.propertyName(domain.name,pair._1), domain, x._3)
+        else
+          ListOfResourcesProperty(x._1,x._2, Renaming.propertyName(domain.name, pair._1), domain, x._3)
+
       }
       else // if !isPolicyDocument.isEmpty
       {
@@ -130,6 +135,7 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
       else EncodeUtils.getPrimitiveType(pair._2) match {
         case "string" => StringAttribute(attrName, domain)
         case "float" => FloatAttribute(attrName, domain)
+        case "double" => DoubleAttribute(attrName, domain)
         case "long" => LongAttribute(attrName, domain)
         case "integer" => IntAttribute(attrName, domain)
         case "boolean" => BooleanAttribute(attrName, domain)

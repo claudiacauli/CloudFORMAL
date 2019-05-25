@@ -110,7 +110,7 @@ object InterResourceReferencesMap {
     "iamusertogroupaddition_usertogroupaddition_groupname" -> ("iamgroup", "group", true, true ),
     "iamusertogroupaddition_usertogroupaddition_users" -> ("iamuser", "user", true, false ),
     "iamaccesskey_accesskey_username" -> ("iamuser", "user", true, true ),
-    "iamrole_role_managedpolicyarns" -> ("iammanagedpolicy", "managedpolicy", false, false ),
+    "iamrole_role_managedpolicyarns" -> ("iammanagedpolicy", "managedpolicy", false, false),
     "iamrole_role_permissionsboundary" -> ("iampolicy", "policy", false, true ),
     "iamrole_role_policies" -> ("iampolicy", "policy", false, false ),
     "iaminstanceprofile_instanceprofile_roles" -> ("iamrole", "role", true, false ),
@@ -149,9 +149,11 @@ object InterResourceReferencesMap {
     "s3bucket_queueconfiguration_queue" -> ("sqsqueue", "queue", true, true ),
     "s3bucket_topicconfiguration_topic" -> ("snstopic", "topic", true, true ),
     "s3bucketpolicy_bucketpolicy_bucket" -> ("s3bucket", "bucket", true, true ),
+
+
     "configdeliverychannel_deliverychannel_s3bucketname" -> ("s3bucket", "bucket",true,true),
     "cloudwatchalarm_alarm_alarmactions" -> ("snstopic", "topic", false, false),
-    "cloudwatchalarm_dimension_value" -> ("s3bucket","bucket",true,false),
+    "cloudwatchalarm_dimension_value" -> ("null","null",true,false),
     "eventsrule_target_arn" -> ("lambdafunction", "function", true, false)
   )
 

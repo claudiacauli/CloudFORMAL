@@ -2,7 +2,8 @@ package aws.cfn.encoding.template
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.encoding.EncodeUtils
-import aws.cfn.encoding.EncodeUtils.{subFieldNames}
+import aws.cfn.encoding.EncodeUtils.subFieldNames
+import aws.cfn.formalization
 import aws.cfn.formalization._
 
 import scala.language.postfixOps
@@ -11,7 +12,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
   def encode(json: Json, subpropertyType: Option[String] = None): Node = {
-    if (json.isNull)
+    if ( isArn(json) ) ArnFunction(tE.resources, tE.parameters, json.string.get, ssE.resourceByArn)
+    else if (json.isNull)
       NoValue
     else if (json.isObject && isIntrinsicFunction(json))
       evalIntrinsicFunction(json)
@@ -19,12 +21,14 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
       encodeMapProperty(json,isMapProperty(json,subpropertyType).get)
     else if (json.isObject && isPolicy(json))
       rE.PolicyEncoder.encode(json)
+    else if (json.isObject && subpropertyType.isDefined && subpropertyType.get.equals("string"))
+      StringNode(json.toString())
     else if (json.isObject)
       encodeSubproperty(json,subpropertyType)
     else if (json.isArray)
       encodeArrayNode(json,subpropertyType)
     else
-      encodeValueNode(json)
+      encodeValueNode(json,subpropertyType)
   }
 
 
@@ -35,13 +39,71 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  def encodeValueNode(json: Json): Node = {
-    if (json.isBool) BooleanNode(DecodeJson.BooleanDecodeJson.decodeJson(json).toOption.get)
-    else if (json.isNumber && json.number.get.toInt.isDefined) IntNode(json.number.get.toInt.get)
-    else if (json.isNumber && json.number.get.toLong.isDefined) LongNode(json.number.get.toLong.get)
-    else if (json.isNumber && json.number.get.toFloat.isDefined) FloatNode(json.number.get.toLong.get)
-    else StringNode(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase())
+  def encodeValueNode(json: Json, subpropertyType: Option[String]): Node = {
+
+
+    def matchJsonByItsType : Node = {
+      if (json.isString ) StringNode(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase())
+      else if (json.isBool ) BooleanNode(DecodeJson.BooleanDecodeJson.decodeJson(json).toOption.get)
+      else if (json.isNumber && json.number.get.toInt.isDefined) IntNode(json.number.get.toInt.get)
+      else if (json.isNumber && json.number.get.toLong.isDefined) LongNode(json.number.get.toLong.get)
+      else if (json.isNumber && json.number.get.toDouble.isDefined) DoubleNode(json.number.get.toDouble.get)
+      else if (json.isNumber && json.number.get.toLong.isDefined) FloatNode(json.number.get.toLong.get)
+      else StringNode(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase())
+    }
+
+    def matchJsonBySubpropertyType : Node = {
+      if (json.isString && subpropertyType.get.equals("string")) StringNode(DecodeJson.StringDecodeJson.decodeJson(json).toOption.get.toLowerCase())
+      else if (json.isBool && subpropertyType.get.equals("boolean")) BooleanNode(DecodeJson.BooleanDecodeJson.decodeJson(json).toOption.get)
+      else if (json.isNumber && subpropertyType.get.equals("integer")) IntNode(json.number.get.toInt.get)
+      else if (json.isNumber && subpropertyType.get.equals("long")) LongNode(json.number.get.toLong.get)
+      else if (json.isNumber && subpropertyType.get.equals("double")) DoubleNode(json.number.get.toDouble.get)
+      else if (json.isNumber && subpropertyType.get.equals("float")) FloatNode(json.number.get.toLong.get)
+      else forceSubpropertyType   // THIS IS A FALLBACK SOLUTION... FOR THOSE FIELD THAT DO NOT RESPECT THEIR OWN SPECIFICATION!
+    }
+
+    def forceSubpropertyType : Node = {
+      subpropertyType.get match {
+        case "string" => {
+          if (json.isNumber) StringNode(json.number.get.toString)
+          else StringNode(json.bool.get.toString)
+        }
+        case "boolean" => {
+          if (json.isString ) BooleanNode(json.string.get.toBoolean)
+          else BooleanNode(json.number.get.truncateToInt > 0)
+        }
+        case "integer" =>
+          if (json.isString) IntNode(json.string.get.toInt)
+          else if (json.isNumber) IntNode(json.number.get.truncateToInt)
+          else IntNode(json.bool.get.toString.toInt)
+        case "long" =>
+          if (json.isString) LongNode(json.string.get.toLong)
+          else if (json.isNumber) LongNode(json.number.get.toLong.get)
+          else LongNode(json.bool.get.toString.toLong)
+        case "double" =>
+          if (json.isString) DoubleNode(json.string.get.toDouble)
+          else if (json.isNumber) DoubleNode(json.number.get.toDouble.get)
+          else DoubleNode(json.bool.get.toString.toDouble)
+        case "float" =>
+          if (json.isString) FloatNode(json.string.get.toFloat)
+          else if (json.isNumber) FloatNode(json.number.get.toFloat.get)
+          else FloatNode(json.bool.get.toString.toFloat)
+        case _ => ForeignNode(json.toString())
+      }
+    }
+
+
+
+    subpropertyType match {
+      case Some(spt) => matchJsonBySubpropertyType
+      case None => matchJsonByItsType
+    }
+
   }
+
+  def isArn(json:Json) : Boolean =
+    json.isString && json.string.get.startsWith("arn:") && json.string.get.contains(":")
+
 
   def isIntrinsicFunction(json:Json) : Boolean = {
     EncodeUtils.subFieldNames(json)(0).startsWith("fn::") ||

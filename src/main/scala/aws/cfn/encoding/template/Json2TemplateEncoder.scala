@@ -9,6 +9,8 @@ import scala.language.postfixOps
 
 protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:String, templateJson:Json, templateDescriptor:Option[Json]){
 
+//  println("\n\n\n\n\n\n\n\n\nENCODING TEMPLATE WITH NAME " + templateName)
+//  println()
 
   val template = new Template(templateName)
   val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(ssE, this, null) // TODO
@@ -27,22 +29,24 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
 
 
   def encode(): Template = {
+    //println("\n\n\n\n\n\n\n\n\n\n\n\nTEMPLATE: " + templateName)
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
 
-    print("PARAMETERS\t")
-    println(parameters)
-    println()
-    print("MAPPINGS\t")
-    println(mappings)
-    println()
-    print("CONDITIONS\t")
-    println(conditions)
-    println()
-    print("OUTPUTS BY LOGICAL ID\t")
-    println(outputByLogicalId)
-    println()
-    print("OUTPUTS BY EXPORT NAME\t")
-    println(outputByExportName)
+
+//    print("\nPARAMETERS\t")
+//    println(parameters)
+//    println()
+//    print("MAPPINGS\t")
+//    println(mappings)
+//    println()
+//    print("CONDITIONS\t")
+//    println(conditions)
+//    println()
+//    print("OUTPUTS BY LOGICAL ID\t")
+//    println(outputByLogicalId)
+//    println()
+//    print("OUTPUTS BY EXPORT NAME\t")
+//    println(outputByExportName)
 
     template
   }

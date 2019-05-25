@@ -23,6 +23,7 @@ class Json2StackSetEncoder(templates: Vector[(String,Json,Option[Json])], stackS
   val templatesEncoders: Vector[Json2TemplateEncoder] = templates map (t => new Json2TemplateEncoder(this,t._1,t._2, t._3))
   val outputsByExportName : Map[String,Node] = (templatesEncoders flatMap ( te => te.outputByExportName )).toMap
   val resourceByArn: Map[String,Node] = (templatesEncoders flatMap (te => te.resourceByArn)).toMap
+  //val resourcesByAccount : Map[String,Vector[Node]] = (templatesEncoders flatMap () )
   var foreignNodesByArn : Map[String,ForeignNode] = Map() // TODO
 
   def encode(): StackSet = {
