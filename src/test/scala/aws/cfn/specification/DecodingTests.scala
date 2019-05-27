@@ -2,9 +2,10 @@ package aws.cfn.specification
 
 import java.io.{File, FileWriter}
 
-import aws.cfn.dlmodel.OntologyWriter
-import aws.cfn.encoding.Parser
-import aws.cfn.encoding.specification.{ServiceActions2DLEncoder, ServiceActionsGenerator}
+import aws.cfn.dlmodel.DLModelWriter
+import aws.cfn.shared.ParseUtils
+import aws.cfn.specifications.encoding.Map2ToServiceActions
+import aws.cfn.specifications.encoding.{ServiceActions2DLEncoder, Map2ToServiceActions}
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
 import org.scalatest.FunSuite
@@ -116,7 +117,6 @@ class DecodingTests extends FunSuite {
 //    ).get, "S3BucketPolicy" )))
 
 
-ServiceActionsGenerator.fromMap() foreach (sa => OntologyWriter.writeStackSetToOutputFolder(new ServiceActions2DLEncoder(sa).encode(), "src/main/resources/terminology/actions/"))
 
 
 

@@ -1,13 +1,17 @@
 package aws.cfn.dlmodel.specification
 
-import aws.cfn.dlmodel.{DescriptionLogicModel, Symbols}
+import aws.cfn.dlmodel.{DLModel, DLModelWriter, DLModelIRI}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntology, OWLOntologyManager}
 
-class ServiceActionsModel(val name:String) extends DescriptionLogicModel{
+class ServiceActionsModel(val name:String) extends DLModel{
 
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager()
-  val ontology: OWLOntology = manager.createOntology(Symbols.actionsOntologyIRI(name))
+  val ontology: OWLOntology = manager.createOntology(DLModelIRI.actionsOntologyIRI(name))
   val df: OWLDataFactory = manager.getOWLDataFactory
+
+  def writeToOutputFolder (destinationFolder: String) = {
+    DLModelWriter.writeSpecificationToOutputFolder(this,destinationFolder)
+  }
 
 }

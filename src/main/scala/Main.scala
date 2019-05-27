@@ -2,11 +2,12 @@
 import java.io.{File, FileNotFoundException}
 
 import argonaut.Json
-import aws.cfn.dlmodel.OntologyWriter
-import aws.cfn.encoding.Parser
-import aws.cfn.encoding.specification.{Json2SpecificationEncoder, Specification2DLEncoder}
-import aws.cfn.encoding.template.{Json2StackSetEncoder, StackSet2DLEncoder}
-import aws.cfn.formalization.Arn
+import aws.cfn.dlmodel.DLModelWriter
+import aws.cfn.shared.ParseUtils
+import aws.cfn.specifications.encoding.{Json2SpecificationEncoder, Map2ToServiceActions, ServiceActions2DLEncoder, Specification2DLEncoder}
+import aws.cfn.specifications.formalization.StringProperty
+import aws.cfn.templates.encoding.{Json2StackSetEncoder, StackSet2DLEncoder}
+import aws.cfn.templates.formalization._
 
 import scala.language.postfixOps
 import scala.jdk.CollectionConverters._
@@ -47,8 +48,8 @@ object Main extends App {
           case e: FileNotFoundException => descriptor = null
         }
 
-        val   tmplJson = Parser.jsonFromFilePath( f.getAbsolutePath ).get
-        val descrJson = Parser.jsonFromFilePath( descriptor.getAbsolutePath )
+        val   tmplJson = ParseUtils.jsonFromFilePath( f.getAbsolutePath ).get
+        val descrJson = ParseUtils.jsonFromFilePath( descriptor.getAbsolutePath )
         Vector((templateName, tmplJson,descrJson))
       } else Vector()
     })
@@ -56,7 +57,7 @@ object Main extends App {
 
     val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
     val ssM = StackSet2DLEncoder.encode(ss)
-    OntologyWriter.writeStackSetToOutputFolder(ssM, "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
+    DLModelWriter.writeStackSetToOutputFolder(ssM, "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
 
 
 //    file.listFiles().toVector foreach ( f => {
@@ -110,7 +111,7 @@ object Main extends App {
 //  def getOntologyFromResourceSpecificationFile(file: File) =
 //    Specification2DLEncoder.encode(
 //      Json2SpecificationEncoder.encode(
-//        Parser.jsonFromFile(file).get,
+//        ParseUtils.jsonFromFile(file).get,
 //        file.getName.split("/").last.split("Specification.json").head))
 //
 //
@@ -124,25 +125,22 @@ object Main extends App {
 //
 //  def printOntologyFromResourceSpecificationFileToFolder(file : File, outputPath: String): Unit = {
 //    println("[TBox]  " + file.getName.split("Specification.json")(0))
-//    OntologyWriter.writeSpecificationToOutputFolder(getOntologyFromResourceSpecificationFile(file), outputPath)
+//    getOntologyFromResourceSpecificationFile(file).writeToOutputFolder(outputPath)
 //  }
 
 
 
-
-////
 //
-//  /*
-//    ACTION FUNCTIONALITIES!
-//  */
+
+  /*
+    ACTION FUNCTIONALITIES!
+  */
 //  def updateActionsOntologiesInProjectResources(): Unit =
 //    saveActionsOntologyInFolder("src/main/resources/terminology/actions/")
 //
 //
 //  def saveActionsOntologyInFolder(folderPath : String): Unit =
-//    ServiceActionsGenerator.fromMap() foreach (sa =>
-//      OntologyWriter.write(new ServiceActionsMapper(sa).map(), folderPath))
-//
+//    ServiceActions2DLEncoder.encode(Map2ToServiceActions.fromMap())  foreach ( aM => aM.writeToOutputFolder("src/main/resources/terminology/actions/") )
 
 
 }
