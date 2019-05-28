@@ -154,7 +154,8 @@ object InterResourceReferencesMap {
     "configdeliverychannel_deliverychannel_s3bucketname" -> ("s3bucket", "bucket",true,true),
     "cloudwatchalarm_alarm_alarmactions" -> ("snstopic", "topic", false, false),
     //"cloudwatchalarm_dimension_value" -> ("null","null",true,false),
-    "eventsrule_target_arn" -> ("lambdafunction", "function", true, false)
+    "eventsrule_target_arn" -> ("lambdafunction", "function", true, false),
+    "logssubscriptionfilter_subscriptionfilter_destinationarn" -> (null,null,true,true)
   )
 
 }

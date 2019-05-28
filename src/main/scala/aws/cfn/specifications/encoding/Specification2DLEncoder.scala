@@ -166,9 +166,12 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
 
   private def domainAxiom(p: String, d: String): Set[OWLAxiom] = {
+    val domainClass = owlClass(d)
     owlOProp(p) match {
-      case op if op != null => Set(m.df.getOWLObjectPropertyDomainAxiom(op, owlClass(d)))
-      case _ => Set(m.df.getOWLDataPropertyDomainAxiom(owlDProp(p), owlClass(d)))}
+      case op if op != null && domainClass.isDefined => Set(m.df.getOWLObjectPropertyDomainAxiom(op, owlClass(d).get))
+      case op if domainClass.isDefined => Set(m.df.getOWLDataPropertyDomainAxiom(owlDProp(p), domainClass.get))
+      case _ => Set()
+    }
   }
 
 
@@ -199,8 +202,10 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
         Set(m.df.getOWLDeclarationAxiom(v))
     } else {
       val v = m.df.getOWLObjectProperty( DLModelIRI.mapEntryValueRoleIRI(m.name, ra) )
+      val ranDef = owlClass(ra).isDefined
       Set(m.df.getOWLObjectPropertyDomainAxiom(v,e)) ++
-        Set(m.df.getOWLObjectPropertyRangeAxiom(v,owlClass(ra))) ++
+        (if (ranDef) Set(m.df.getOWLObjectPropertyRangeAxiom(v,owlClass(ra).get))
+      else Set()) ++
         Set(m.df.getOWLDeclarationAxiom(v))
     }
 
@@ -218,10 +223,11 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
 
   private def rangeAxiom(p: String, r: String, otherResourceSpecName: String = m.name): Set[OWLAxiom] =
-    if (r.equals("null"))
-      Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), m.df.getOWLThing))
+    if (r != null && owlClass(r,otherResourceSpecName).isDefined)
+      Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), owlClass(r, otherResourceSpecName).get))
     else
-      Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), owlClass(r, otherResourceSpecName)))
+      //Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), m.df.getOWLThing))
+      Set()
 
 
 
@@ -238,11 +244,14 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
   private def requiredAxiom(d: String, p: String, r: Boolean, ra: OWL2Datatype = null): Set[OWLAxiom] =
     if (!r) Set()
-    else owlOProp(p) match {
-      case op if op != null => Set(m.df.getOWLSubClassOfAxiom(owlClass(d), m.df.getOWLObjectSomeValuesFrom(op, m.df.getOWLThing)))
-      case _ => Set(m.df.getOWLSubClassOfAxiom(owlClass(d), m.df.getOWLDataSomeValuesFrom(owlDProp(p), ra)))
-    }
+    else {
+      def rangeClassPresent = owlClass(d).isDefined
+      owlOProp(p) match {
+        case op if op != null && rangeClassPresent => Set(m.df.getOWLSubClassOfAxiom(owlClass(d).get, m.df.getOWLObjectSomeValuesFrom(op, m.df.getOWLThing)))
+        case op if op == null & rangeClassPresent => Set(m.df.getOWLSubClassOfAxiom(owlClass(d).get, m.df.getOWLDataSomeValuesFrom(owlDProp(p), ra)))
+      }
 
+    }
 
 
 
@@ -280,10 +289,12 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
 
   private def owlClass(resName: String, otherResSpec: String = m.name) = {
-    if (resName.equals("policydocument"))
-      m.df.getOWLClass(DLModelIRI.resourceTypeIRI("policydocument", resName))
+    if (resName==null)
+      None
+    else if (resName.equals("policydocument"))
+      Some(m.df.getOWLClass(DLModelIRI.resourceTypeIRI("policydocument", resName)))
     else
-      m.df.getOWLClass(DLModelIRI.resourceTypeIRI(otherResSpec, resName))
+      Some(m.df.getOWLClass(DLModelIRI.resourceTypeIRI(otherResSpec, resName)))
 
   }
 

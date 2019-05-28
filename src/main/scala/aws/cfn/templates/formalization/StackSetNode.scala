@@ -32,8 +32,8 @@ sealed trait StackSetNode extends Node
                                  arnString: String,
                                  arnsMap:Map[String,Node]) extends IntrinsicFunction {
       def apply(): Node = {
-        val evalArnString = SubFunction(resources, parameters, StringNode(arnString))()
-        new Arn(evalArnString.asInstanceOf[StringNode].value).resourceFromArn()
+        val evalArnStringNode = SubFunction(resources, parameters, StringNode(arnString)) ()
+        new Arn(evalArnStringNode.value).resourceFromArn()
       }
     }
 
@@ -91,8 +91,10 @@ sealed trait StackSetNode extends Node
     final case class ImportValueFunction( importName: StringNode,
                                           outputsByExportName: Map[String,Node],
                                           outputsByLogicalId: Map[String,Node]) extends IntrinsicFunction {
-      implicit def apply(): Node =
+      implicit def apply(): Node = {
         outputsByLogicalId.getOrElse(importName.value, outputsByExportName.getOrElse(importName.value, NoValue))
+      }
+
     }
 
     final case class JoinFunction(delimiter:StringNode,
@@ -119,21 +121,21 @@ sealed trait StackSetNode extends Node
                                  parameters:Map[String,Node],
                                  str:StringNode,
                                  subMap:Option[Map[String,String]] = None) extends IntrinsicFunction {
-      def apply(): Node = {
+      def apply():StringNode = {
         var tempString = str.value.toLowerCase
-        if (subMap.isDefined) {
+        if (subMap.isDefined) { // FIRST ROUND: Replace what you find in the map
           tempString = subMap.get.foldLeft(tempString)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}", b._2))
         }
-        tempString = parameters.foldLeft(tempString)((a, b) => {
+        tempString = parameters.foldLeft(tempString)((a, b) => {    // SECOND ROUND: Replace what you find in parameters
           if (b._2.isInstanceOf[StringNode]) {
             a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2.asInstanceOf[StringNode].value)
           }
           else
             a
           })
-        if (tempString.contains("."))
+        if (tempString.contains("."))  // THIRD ROUND: Replace what can be an attribute
           GetAttFunction(StringNode(tempString.split("\\.")(0)), StringNode(tempString.split("\\.")(1)), resources)()
-        StringNode ( tempString )
+        StringNode ( tempString.replaceAll("\\$|\\{|\\}", "") )     // FOURTH ROUND: IF THERE are still variables just get rid of the delimiter and hope it was a local resource name!
       }
     }
 

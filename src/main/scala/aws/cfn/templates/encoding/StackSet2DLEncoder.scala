@@ -28,7 +28,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
       m.ontology.add(m.df.getOWLClassAssertionAxiom(
         classFromIRI(
           DLModelIRI.resourceTypeIRI(r._2.serviceType+r._2.resourceType, r._2.resourceType)),
-          m.df.getOWLNamedIndividual(DLModelIRI.resourceInstanceIRI(stackSet.name, r._1))
+            getResourceIndividual(r._1)
       ))
     }
     for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
@@ -36,6 +36,13 @@ class StackSet2DLEncoder(stackSet: StackSet){
     }
 
     m
+  }
+
+
+  private def getResourceIndividual(resId: String) : OWLNamedIndividual = {
+    val newResource = m.df.getOWLNamedIndividual(DLModelIRI.resourceInstanceIRI(stackSet.name, resId))
+    addComment(newResource, "resource")
+    newResource
   }
 
 
@@ -121,7 +128,8 @@ class StackSet2DLEncoder(stackSet: StackSet){
       encodeObjectProperty(sourceIndividual, oPropFromIRI(propIRI), cfnNode.asInstanceOf[ObjectNode])
 
 
-    def encodeValueProperty(sourceIndividual: OWLIndividual, dataProp: OWLDataProperty, valueNode: GenericValueNode) =
+    def encodeValueProperty(sourceIndividual: OWLIndividual, dataProp: OWLDataProperty, valueNode: GenericValueNode) = {
+
       valueNode match {
         case StringNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case IntNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
@@ -135,7 +143,13 @@ class StackSet2DLEncoder(stackSet: StackSet){
         case NoValue => Vector()
         case ListNode(vec) => Vector() // TODO Generate axioms for list properties
         case MapNode(map) => Vector() // TODO Generate axioms for map properties
+        case _ => {
+          println("Evaluation returned: " + valueNode + " which is not a value node. Therefore prooperty " + dataProp + " must not be a real data property.")
+          Vector()
+        }
       }
+    }
+
 
 
     def encodeObjectProperty(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, objNode: ObjectNode): Vector[OWLAxiom]
@@ -164,11 +178,13 @@ class StackSet2DLEncoder(stackSet: StackSet){
         range(objProp) match {
           case None => {
             val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
+            addComment(newNode, "subproperty")
             Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
             Vector(m.df.getOWLDeclarationAxiom(newNode))
           }
           case Some(c) => {
             val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
+            addComment(newNode, "subproperty")
             Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
             Vector(m.df.getOWLClassAssertionAxiom(c,newNode))
           }
@@ -176,9 +192,14 @@ class StackSet2DLEncoder(stackSet: StackSet){
       }
 
 
-    def createPolicyNode(policyRandomIRI : IRI) : Vector[OWLAxiom] =
-      Vector ( m.df.getOWLClassAssertionAxiom(
-        classFromIRI(DLModelIRI.policyDocIRI), m.df.getOWLNamedIndividual(DLModelIRI.policyNodeIRI(stackSet.name))) )
+    def createPolicyNode(policyRandomIRI : IRI) : Vector[OWLAxiom] = {
+      val policyNode = m.df.getOWLNamedIndividual(DLModelIRI.policyNodeIRI(stackSet.name))
+      addComment(policyNode, "policy")
+      Vector ( m.df.getOWLClassAssertionAxiom( classFromIRI(DLModelIRI.policyDocIRI), policyNode ))
+    }
+
+
+
 
 
     def individual(name:String) = m.df.getOWLNamedIndividual(DLModelIRI.resourceInstanceIRI(m.name,name))
@@ -216,5 +237,9 @@ class StackSet2DLEncoder(stackSet: StackSet){
 
   def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
 
+  private def addComment (individual:OWLNamedIndividual, comment:String) = {
+    val commentAxiom  = m.df.getOWLAnnotationAssertionAxiom( individual.getIRI , m.df.getRDFSComment(comment ) )
+    m.manager.applyChange( new AddAxiom( m.ontology, commentAxiom ))
+  }
 
 }

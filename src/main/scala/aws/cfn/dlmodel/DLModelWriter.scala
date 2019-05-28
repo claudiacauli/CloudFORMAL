@@ -27,12 +27,13 @@ package object DLModelWriter {
 
 
     def writeStackSet(model:DLModel, format: String = "rdf"): Unit =
-        writeStackSetToOutputFolder(model, model.name+"/", format)
+        writeStackSetToOutputFolder(model, model.name+"/", "",format)
 
-    def writeStackSetToOutputFolder(model:DLModel, outputDir: String, format: String = "rdf"): Unit = {
+    def writeStackSetToOutputFolder(model:DLModel, outputDir: String, modelType : String, format: String = "rdf"): Unit = {
 
         val folderName = outputDir+model.name
-        val fileName = folderName + "/" + model.name + "_StackSetOWLModel.owl"
+        val fileName = folderName + "/" + model.name +   modelType + "_OWLModel.owl"
+        println("Going to write to file " + fileName)
 
         def makeDirIfDoesNotExist(folderName:String): Unit = {
             val dir = new File(folderName)

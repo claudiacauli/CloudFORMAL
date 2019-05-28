@@ -12,7 +12,10 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
   def encode(json: Json, subpropType: Option[String] = None): Node = {
     json match {
-      case j if isArn(j)            => ArnFunction(tE.resources, tE.parameters, j.string.get, ssE.resourceByArn)()
+      case j if isArn(j)            => {
+        println("Calling arn function from " + tE.template.name)
+        ArnFunction(tE.resources, tE.parameters, j.string.get, ssE.resourceByArn) ()
+      }
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
@@ -63,7 +66,10 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     }
 
     subpropType match {
-      case None               => StringNode( DecodeJson.StringDecodeJson.decodeJson(j).toOption.get )
+      case None               => {
+        println("WE DO NOT KNOW THE TYPE THAT THE SUBPROPERTY SHOULD HAVE TO ENCODE THE NODE: " + j)
+        StringNode( DecodeJson.StringDecodeJson.decodeJson(j).toOption.get )
+      }
       case Some(spt) => {
         val absentProperties  = rE.subPropertiesNamesOfClassName(spt) -- givenProperties.map(s => s.toLowerCase())
         val presentProperties = (givenProperties flatMap ( propName => Map(propName -> nodeObjectForProperty(j,propName)))).toMap
@@ -328,7 +334,11 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val substitutionMap = if (isArrayWithTwoElements) Some(getNodesAsMapOfEvalStrings (arrayAt(j,"Fn::Sub",1))) else None
 
     stringToMatch match {
-      case n if isArn(n)            => SubFunction(tE.resources, tE.parameters, StringNode(stringToMatch.string.get)) ()
+      case n if isArn(n) => {
+        val subArn = SubFunction(tE.resources, tE.parameters, StringNode(n.string.get), substitutionMap) ()
+        println("Calling ArnFunction from " + tE.template.name)
+        ArnFunction(tE.resources, tE.parameters, subArn.value, ssE.resourceByArn) ()
+      }
       case _ => {
         val encodedStringToMatch = encode(stringToMatch)
         (substitutionMap,encodedStringToMatch) match {
@@ -377,12 +387,12 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
   private def matchNodeByJsonType(j: Json) =
     j match {
-      case n if n.isString                                    => StringNode(n.string.get.toLowerCase())
-      case n if n.isBool                                      => BooleanNode(n.bool.get)
       case n if n.isNumber && n.number.get.toInt.isDefined    => IntNode(n.number.get.toInt.get)
       case n if n.isNumber && n.number.get.toLong.isDefined   => LongNode(n.number.get.toLong.get)
       case n if n.isNumber && n.number.get.toDouble.isDefined => DoubleNode(n.number.get.toDouble.get)
       case n if n.isNumber && n.number.get.toFloat.isDefined  => FloatNode(n.number.get.toFloat.get)
+      case n if n.isBool                                      => BooleanNode(n.bool.get)
+      case n if n.isString                                    => StringNode(n.string.get.toLowerCase())
       case n => {
         // We should not get here
         println("We couldn't match the json node to any of the primitive possible types. Json is " + n)

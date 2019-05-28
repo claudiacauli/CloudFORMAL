@@ -57,7 +57,8 @@ object Main extends App {
 
     val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
     val ssM = StackSet2DLEncoder.encode(ss)
-    DLModelWriter.writeStackSetToOutputFolder(ssM, "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
+    ssM.writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
+    ssM.pruneToFlow().writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/")
 
 
 //    file.listFiles().toVector foreach ( f => {

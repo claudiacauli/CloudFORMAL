@@ -84,10 +84,6 @@ protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2Template
     case Some(c) => {
       val className = c.getIRI.toString.split("#").last
 
-      if (resourceOntology==null)
-        println("We are in resource: " + resourceType + " with name " + resourceLogicalId + " and the ontology is null!")
-
-
       (resourceOntology.dataPropertiesInSignature().toArray().toVector
         ++ resourceOntology.objectPropertiesInSignature().toArray().toVector).filter(
         p => p match {

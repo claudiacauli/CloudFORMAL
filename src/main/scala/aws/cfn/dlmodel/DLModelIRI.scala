@@ -53,4 +53,6 @@ object DLModelIRI {
   def policyNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Policy_"+randomUUID )
 
 
+  def stackFlowIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "Flow" + "#")
+
 }
