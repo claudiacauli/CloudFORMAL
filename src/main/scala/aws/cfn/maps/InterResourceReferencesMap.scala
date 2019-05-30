@@ -149,13 +149,23 @@ object InterResourceReferencesMap {
     "s3bucket_queueconfiguration_queue" -> ("sqsqueue", "queue", true, true ),
     "s3bucket_topicconfiguration_topic" -> ("snstopic", "topic", true, true ),
     "s3bucketpolicy_bucketpolicy_bucket" -> ("s3bucket", "bucket", true, true ),
+    "cloudformationcustomresource_customresource_servicetoken" -> (null,null,true,true),
 
 
     "configdeliverychannel_deliverychannel_s3bucketname" -> ("s3bucket", "bucket",true,true),
+    "configdeliverychannel_deliverychannel_snstopicarn" -> ("snstopic","topic",false,true),
+    "configconfigurationrecorder_configurationrecorder_rolearn" -> ("iamrole","role",true,true),
     "cloudwatchalarm_alarm_alarmactions" -> ("snstopic", "topic", false, false),
     //"cloudwatchalarm_dimension_value" -> ("null","null",true,false),
     "eventsrule_target_arn" -> ("lambdafunction", "function", true, false),
-    "logssubscriptionfilter_subscriptionfilter_destinationarn" -> (null,null,true,true)
+    "logssubscriptionfilter_subscriptionfilter_destinationarn" -> (null,null,true,true),
+    "route53recordset_recordset_hostedzoneid" -> ("route53hostedzone","hostedzone",false,true),
+
+    "apigatewayaccount_account_cloudwatchrolearn" -> ("iamrole","role",false,true),
+    "apigatewaydeployment_deployment_restapiid" -> ("apigatewayrestapi","restapi",true,true),
+    "apigatewaybasepathmapping_basepathmapping_restapiid" -> ("apigatewayrestapi","restapi",true,true),
+    "apigatewayusageplan_apistage_apiid" -> ("apigatewayrestapi","restapi",false,true)
+
   )
 
 }
