@@ -34,8 +34,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
 
 
-//    print("\nPARAMETERS\t")
-//    println(parameters)
+
 //    println()
 //    print("MAPPINGS\t")
 //    println(mappings)

@@ -3,7 +3,6 @@ package aws.cfn.dlmodel.template
 import aws.cfn.dlmodel.{DLModel, DLModelIRI, DLModelWriter}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._
-import scala.jdk.StreamConverters._
 
 class StackSetModel (val name: String, val ontologies: Vector[OWLOntology]) extends DLModel {
 
@@ -94,10 +93,6 @@ class StackSetModel (val name: String, val ontologies: Vector[OWLOntology]) exte
   }
 
 
-  private def importOntology(model: DLModel, o: OWLOntology) = {
-    model.manager.loadOntology( o.getOWLOntologyManager.getOntologyDocumentIRI(o) )
-    model.manager.applyChange( new AddImport( model.ontology, model.df.getOWLImportsDeclaration( o.getOWLOntologyManager.getOntologyDocumentIRI(o) ) ))
-  }
 
 
 

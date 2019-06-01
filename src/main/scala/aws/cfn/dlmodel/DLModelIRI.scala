@@ -46,7 +46,7 @@ object DLModelIRI {
   /*
     Template Alphabet Naming Rules
   */
-  def stackSetIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#")
+  def stackSetIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "_stackset#")
   def stackSetNamespace : String => String = stackSetName => stackSetName.toLowerCase()
   def resourceInstanceIRI : (String,String) => IRI = (stackSetName,resourceLogicalId) => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
   def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Subproperty_" + randomUUID )
@@ -54,5 +54,8 @@ object DLModelIRI {
 
 
   def stackFlowIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "Flow" + "#")
+  def infrastructureModelIRI : String => IRI = infrastructureName => IRI.create(currentIRI.toString + infrastructureName.toLowerCase + "_infrastructure#")
+
+
 
 }

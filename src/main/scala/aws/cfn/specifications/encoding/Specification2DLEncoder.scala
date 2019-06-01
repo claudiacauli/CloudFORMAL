@@ -222,12 +222,16 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
 
 
-  private def rangeAxiom(p: String, r: String, otherResourceSpecName: String = m.name): Set[OWLAxiom] =
-    if (r != null && owlClass(r,otherResourceSpecName).isDefined)
-      Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), owlClass(r, otherResourceSpecName).get))
-    else
-      //Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), m.df.getOWLThing))
+  private def rangeAxiom(p: String, r: String, otherResourceSpecName: String = m.name): Set[OWLAxiom] = {
+
+    if (r==null || r=="null")
       Set()
+    else if (owlClass(r,otherResourceSpecName).isDefined)
+      Set(m.df.getOWLObjectPropertyRangeAxiom(owlOProp(p), owlClass(r, otherResourceSpecName).get))
+    else Set()
+
+  }
+
 
 
 

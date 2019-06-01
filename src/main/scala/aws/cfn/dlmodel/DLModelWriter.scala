@@ -11,6 +11,9 @@ import scala.jdk.StreamConverters._
 
 package object DLModelWriter {
 
+    val stackSetFileSuffix          = "_StackSetModel.owl"
+    val stacksetOntoSuffix          = stackSetFileSuffix.split(".owl").head
+    val infrastructureFileSuffix    = "_InfrastructureModel.owl"
 
     def writeSpecification(model:DLModel, format: String = "rdf") : Unit =
         writeSpecificationToOutputFolder(model, model.name+"/", format)
@@ -32,14 +35,7 @@ package object DLModelWriter {
     def writeStackSetToOutputFolder(model:DLModel, outputDir: String, modelType : String, format: String = "rdf"): Unit = {
 
         val folderName = outputDir+model.name
-        val fileName = folderName + "/" + model.name +   modelType + "_OWLModel.owl"
-        println("Going to write to file " + fileName)
-
-        def makeDirIfDoesNotExist(folderName:String): Unit = {
-            val dir = new File(folderName)
-            if (!dir.exists())
-                dir.mkdir()
-        }
+        val fileName = folderName + "/" + model.name +   modelType + stackSetFileSuffix
 
         def saveToOutputFolder(ontology : OWLOntology) = {
             model.manager.saveOntology(ontology, new RDFXMLDocumentFormat, new FileOutputStream(folderName+"/"+
@@ -68,12 +64,38 @@ package object DLModelWriter {
             case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
         }
 
-        addProtegeCatalogue(model,folderName)
+        addProtegeCatalogue(onlyImportedOntologies(model),model.name,folderName, true)
 
 
     }
 
 
+
+    def writeInfrastructureToOutputFolder(model:DLModel, outputDir:String, format:String = "rdf"): Unit = {
+
+        val folderName = outputDir+model.name
+        val fileName = folderName + "/" + model.name + infrastructureFileSuffix
+
+        makeDirIfDoesNotExist(folderName)
+
+        format.toLowerCase() match {
+            case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(fileName))
+            case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(fileName))
+            case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(fileName))
+            case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
+        }
+
+        addProtegeCatalogue(importedStackSets(model),model.name,folderName)
+    }
+
+
+    private def importedStackSets(model:DLModel) = {
+        onlyImportedOntologies(model) filter isStackSetOntology
+    }
+
+    private def isStackSetOntology(ontology : OWLOntology) : Boolean = {
+        ontology.getOntologyID.getOntologyIRI.get().toString.endsWith("_stackset#")
+    }
 
 
     private def onlyImportedOntologies(model: DLModel)
@@ -82,7 +104,7 @@ package object DLModelWriter {
 
 
 
-    private def addProtegeCatalogue(model: DLModel, outputDir : String ) : Unit = {
+    private def addProtegeCatalogue(modelImportedOntologies: List[OWLOntology], modelName:String, outputDir : String, withGroupBlock:Boolean = false) : Unit = {
 
         val header:String = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"
         val trailer :String = "</catalog>"
@@ -94,11 +116,13 @@ package object DLModelWriter {
             def importEntryLine(o : OWLOntology) : String = {
                 val ontologyDocumentIRI = o.getOWLOntologyManager.getOntologyDocumentIRI(o).toString
                 val ontologyName = ontologyDocumentIRI.split("/").last.split(".owl").head
+                val ontologyFolderName = if(ontologyName.contains(stacksetOntoSuffix)) ontologyName.split("_")(0) else ""
+                val ontologyPath = if(ontologyName.contains(stacksetOntoSuffix)) ontologyFolderName + "/" + ontologyName else ontologyName
                 val ontologyIRI = DLModelIRI.resourceTerminologyIRI(ontologyName)
-                "    <uri id=\"Imports Wizard Entry\" name=\"" + ontologyIRI + "\" uri=\"" + ontologyName+".owl\"/>"
+                "    <uri id=\"Imports Wizard Entry\" name=\"" + ontologyIRI + "\" uri=\"" + ontologyPath +".owl\"/>"
             }
 
-            onlyImportedOntologies(model).foldLeft(header+"\n"+importEntryHeader)( (acc,o) => acc + "\n"  + importEntryLine(o) )
+            modelImportedOntologies.foldLeft(header+"\n"+importEntryHeader)( (acc,o) => acc + "\n"  + importEntryLine(o) )
 
         }
 
@@ -114,13 +138,21 @@ package object DLModelWriter {
                 "        <uri id=\"Automatically generated entry, Timestamp=1562608576686\" name=\""+ ontologyIRI.replaceAll("#","") +"\" uri=\""+ ontologyName +".owl\"/>"
             }
 
-            val mainOntoLine = "        <uri id=\"Automatically generated entry, Timestamp=1562608576686\" name=\""+ DLModelIRI.resourceTerminologyIRI(model.name).toString.replaceAll("#","") +"\" uri=\""+ model.name +".owl\"/>"
-              (onlyImportedOntologies(model)).foldLeft(groupEntryHeader+"\n"+mainOntoLine)((acc,o)=>acc+"\n"+groupEntryLine(o))+"\n"+groupEntryTrailer
+            val mainOntoLine = "        <uri id=\"Automatically generated entry, Timestamp=1562608576686\" name=\""+ DLModelIRI.resourceTerminologyIRI(modelName).toString.replaceAll("#","") +"\" uri=\""+ modelName +".owl\"/>"
+              modelImportedOntologies.foldLeft(groupEntryHeader+"\n"+mainOntoLine)((acc, o)=>acc+"\n"+groupEntryLine(o))+"\n"+groupEntryTrailer
         }
 
-        Files.write(Paths.get(outputDir + "/catalog-v001.xml"), (importEntries + "\n" + groupEntries + "\n" + trailer+"\n").getBytes(StandardCharsets.UTF_8))
-        //        new PrintWriter(outputDir + "/catalog-v001.xml"  ){ write((importEntries + "\n" + groupEntries + "\n" + trailer+"\n").getBytes(StandardCharsets.UTF_8)); close()}
+        val groupBlock = if (withGroupBlock) groupEntries + "\n" else ""
+        Files.write(Paths.get(outputDir + "/catalog-v001.xml"), (importEntries + "\n" + groupBlock + trailer+"\n").getBytes(StandardCharsets.UTF_8))
 
+    }
+
+
+    def makeDirIfDoesNotExist(folderName:String): File = {
+        val dir = new File(folderName)
+        if (!dir.exists())
+            dir.mkdir()
+        dir
     }
 
 

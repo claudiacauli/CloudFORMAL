@@ -3,10 +3,11 @@ import java.io.{File, FileNotFoundException}
 
 import argonaut.Json
 import aws.cfn.dlmodel.DLModelWriter
+import aws.cfn.dlmodel.template.StackSetModel
 import aws.cfn.shared.ParseUtils
 import aws.cfn.specifications.encoding.{Json2SpecificationEncoder, Map2ToServiceActions, ServiceActions2DLEncoder, Specification2DLEncoder}
 import aws.cfn.specifications.formalization.StringProperty
-import aws.cfn.templates.encoding.{Json2StackSetEncoder, StackSet2DLEncoder}
+import aws.cfn.templates.encoding.{Infrastructure2DLEncoder, Json2InfrastructureEncoder, Json2StackSetEncoder, StackSet2DLEncoder}
 import aws.cfn.templates.formalization._
 
 import scala.language.postfixOps
@@ -34,34 +35,52 @@ object Main extends App {
 
 
   def modelZelkovaTest() = {
-    val inputDir = new File("src/main/resources/InputStackSets/Zelkova/test/")
-    (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createStackSet(f) )
 
-    def createStackSet(file: File) = {
+    val inputFilePath = "src/main/resources/InputStackSets/Zelkova/test/"
+    val outputFilePath = "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/"
+    val inputDir = new File(inputFilePath)
+    (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createInfrastructure(f) )
+
+    def createInfrastructure(file: File) = {
+
+      val infrastructureName = file.getName
+
+      val i = Json2InfrastructureEncoder.encode(
+        ((file.listFiles() filter (f => f.isDirectory)) map ( f => createStackSetFiles(f,infrastructureName) )).toVector,
+        infrastructureName)
+      val iM = Infrastructure2DLEncoder.encode(i)
+
+      iM.writeToOutputFolder(outputFilePath)
+
+    }
+
+
+
+    def createStackSetFiles(file: File, infrastructureName:String): (Vector[(String, Json, Option[Json])], String) = {
       val stackSetName = file.getName
 
-      val vectorOfTemplates : Vector[(String,Json,Option[Json])] = file.listFiles().toVector flatMap  ( f => {
+      (file.listFiles().toVector flatMap (f => {
         val templateName = f.getName.split(".json").head
-        if(!templateName.endsWith("Descriptor") && !templateName.endsWith("DS_Store")) {
+        if (!templateName.endsWith("Descriptor") && !templateName.endsWith("DS_Store")) {
 
-          var descriptor : File = null
+          var descriptor: File = null
           try {
-            descriptor = new File("src/main/resources/InputStackSets/Zelkova/test/" + stackSetName +"/" + templateName + "Descriptor.json")
+            descriptor = new File(inputFilePath + infrastructureName +"/" +stackSetName + "/" + templateName + "Descriptor.json")
           } catch {
             case e: FileNotFoundException => descriptor = null
           }
 
-          val   tmplJson = ParseUtils.jsonFromFilePath( f.getAbsolutePath ).get
-          val descrJson = ParseUtils.jsonFromFilePath( descriptor.getAbsolutePath )
-          Vector((templateName, tmplJson,descrJson))
+          val tmplJson = ParseUtils.jsonFromFilePath(f.getAbsolutePath).get
+          val descrJson = ParseUtils.jsonFromFilePath(descriptor.getAbsolutePath)
+          Vector((templateName, tmplJson, descrJson))
         } else Vector()
-      })
+      }),stackSetName )
+    }
 
 
-      val ss = Json2StackSetEncoder.encode(vectorOfTemplates,stackSetName)
-      val ssM = StackSet2DLEncoder.encode(ss)
-      ssM.writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
-      ssM.pruneToDataFlowModel().writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/")
+
+      //ssM.writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/" )
+      //ssM.pruneToDataFlowModel().writeToOutputFolder("/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/")
 
       //
       ////    file.listFiles().toVector foreach ( f => {
@@ -74,7 +93,7 @@ object Main extends App {
       ////      }
       ////    })
       //
-    }
+    //}
   }
 
 

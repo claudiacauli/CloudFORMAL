@@ -228,7 +228,7 @@ sealed trait StackSetNode extends Node
     }
 
     final case class Subproperty(givenProperties: Map[String,Node],
-                                 absentProperties: Set[String]) extends ObjectNode
+                                 absentProperties: Set[String]=Set()) extends ObjectNode
     {
       def apply(): Subproperty = this
     }

@@ -7,6 +7,7 @@ class Json2PolicyEncoder (ssE:Json2StackSetEncoder, tE:Json2TemplateEncoder, rE:
 
   def encode(jsonPolicy:Json): Policy = {
       // TODO
+
     new Policy(Vector())
   }
 

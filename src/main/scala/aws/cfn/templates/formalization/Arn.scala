@@ -41,7 +41,6 @@ class Arn(evaluatedString : String) {
       case "" => Vector()
     }
 
-    println(part + " "  + serv + " " + reg + " " + acc + " " + ids)
     (part,serv,reg,acc,ids)
   }
 
