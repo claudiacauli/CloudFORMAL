@@ -2,7 +2,7 @@ package aws.cfn.specifications.encoding
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.shared.{EncodeUtils, SpecificationRenaming}
-import aws.cfn.maps.{InterResourceReferencesMap, PolicyReferencesMap}
+import aws.cfn.maps.{InterResourceReferencesMap, PolicyDocumentsReferencesMap}
 import aws.cfn.specifications.formalization._
 
 import scala.language.postfixOps
@@ -72,7 +72,7 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
       val propName = SpecificationRenaming.propertyName(domain.name,pair._1)
       val unambPropName = SpecificationRenaming.unambiguousPropertyName( resSpecName, domain.name, pair._1)
       val isInterResourceReference = InterResourceReferencesMap.lookUp(unambPropName)
-      val isPolicyDocument = PolicyReferencesMap.lookup(unambPropName)
+      val isPolicyDocument = PolicyDocumentsReferencesMap.lookup(unambPropName)
       def primitiveItem = EncodeUtils.getLowerCaseStringField(pair._2,"PrimitiveItemType")
       def item = EncodeUtils.getLowerCaseStringField(pair._2,"ItemType")
 

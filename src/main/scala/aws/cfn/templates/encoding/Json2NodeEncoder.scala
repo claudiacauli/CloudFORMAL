@@ -1,23 +1,29 @@
 package aws.cfn.templates.encoding
 
+import java.io.File
+
 import argonaut._
+import aws.cfn.dlmodel.DLModelIRI
 import aws.cfn.shared.EncodeUtils
 import aws.cfn.shared.EncodeUtils.subFieldNames
+import aws.cfn.templates.encoding.Json2ResourceEncoder.rangeNameOf
 import aws.cfn.templates.formalization._
+import org.semanticweb.owlapi.model.OWLOntology
 
 import scala.language.postfixOps
 
 protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEncoder, rE: Json2ResourceEncoder) {
 
 
-  def encode(json: Json, subpropType: Option[String] = None): Node = {
+  def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
     json match {
       case j if isArn(j)            => ArnFunction(tE.resources, tE.parameters, j.string.get, ssE.resourceByArn) ()
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
-      case j if j.isObject && isPolicy(j)                   => rE.PolicyEncoder.encode(j)
-      case j if j.isObject && subpropType.isDefined && subpropType.get.equals("string") => StringNode(j.toString())
+      case j if j.isObject && isPolicyDoc(j)                   => rE.PolicyEncoder.encode(j)
+      case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("string") => StringNode(j.toString())
+      case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("policy") => encodeEmbeddedPolicy(j,subpropType.get)
       case j if j.isObject        => encodeSubproperty(j,subpropType)
       case j if j.isArray         => encodeArrayNode(j,subpropType)
       case j                      => encodeValueNode(j,subpropType)
@@ -28,16 +34,16 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  private def encodeValueNode(j: Json, subpropType: Option[String])=
+  private def encodeValueNode(j: Json, subpropType: Option[(String,String)])=
     subpropType match {
-      case Some(spt)  => matchNodeBySubpropType(j,spt)
-      case None       => matchNodeByJsonType(j)
+      case Some((_,spt))  => matchNodeBySubpropType(j,spt)
+      case None           => matchNodeByJsonType(j)
     }
 
 
 
 
-  private def encodeArrayNode(j: Json, subpropType:Option[String])
+  private def encodeArrayNode(j: Json, subpropType:Option[(String,String)])
     = ListNode((j.array.get map (ji => encode(ji,subpropType))).toVector)
 
 
@@ -52,14 +58,14 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  private def encodeSubproperty(j: Json, subpropType:Option[String]): Node = {
+  private def encodeSubproperty(j: Json, subpropType:Option[(String,String)]): Node = {
 
     def givenProperties =
-      (j.objectFieldsOrEmpty map (f => subpropType.get+"_"+f.toString)).toSet
+      (j.objectFieldsOrEmpty map (f => subpropType.get._2+"_"+f.toString)).toSet
 
     def nodeObjectForProperty(j: Json, propFullName: String)  = {
-      val propTemplateName = propFullName.split(subpropType.get+ "_").last
-      encode( j.field(propTemplateName).get, rE.rangeNameOf(propFullName))
+      val propTemplateName = propFullName.split(subpropType.get._2+ "_").last
+      encode( j.field(propTemplateName).get, Json2ResourceEncoder.rangeNameOf(propFullName,rE.resourceOntology,rE.serviceType,rE.resourceType,ssE))
     }
 
     subpropType match {
@@ -67,14 +73,45 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
         val presentProperties = (givenProperties flatMap ( propName => Map(propName -> nodeObjectForProperty(j,propName)))).toMap
         Subproperty(presentProperties)
       }
-      case Some(spt) => {
-        val absentProperties  = rE.subPropertiesNamesOfClassName(spt) -- givenProperties.map(s => s.toLowerCase())
+      case Some((_,spt)) => {
+        val absentProperties  = Json2ResourceEncoder.subPropertiesNamesOfClassName(spt, ssE,rE.serviceType,rE.resourceType, rE.resourceOntology) -- givenProperties.map(s => s.toLowerCase())
         val presentProperties = (givenProperties flatMap ( propName => Map(propName -> nodeObjectForProperty(j,propName)))).toMap
         Subproperty(presentProperties,absentProperties)
       }
     }
   }
 
+
+
+  def encodeEmbeddedPolicy(json: Json, policyType: (String,String)) : StackSetResource = {
+
+    val resourceType = policyType._2
+    val serviceType = policyType._1.split(resourceType).head
+    val embeddedPolicyIRI = DLModelIRI.embeddedPolicyIRI(ssE.stackSet.name)
+    val embeddedPolicyName = embeddedPolicyIRI.toString.split("#").last
+    val embeddedPolicyResource = StackSetResource(embeddedPolicyName, serviceType, resourceType, Map())
+
+    val ontology : OWLOntology = ssE.manager.loadOntologyFromOntologyDocument(
+      new File("src/main/resources/terminology/resourcespecificationsOwl/" + serviceType+resourceType + ".owl"))
+
+    def givenProperties(json : Json, resourceType:String): Set[String] =
+      (json.objectFieldsOrEmpty map (f => resourceType+"_"+f.toString)).toSet
+
+    def nodeObjectForProperty(propFullName: String) : Node = {
+      val propTemplateName = propFullName.split(resourceType+ "_").last
+      val subPropertyType = Json2ResourceEncoder.rangeNameOf(propFullName.toLowerCase(), ontology, serviceType, resourceType, ssE)
+      val returnNode = encode(json.field(propTemplateName).get ,subPropertyType)
+      returnNode
+    }
+
+    embeddedPolicyResource.absentProperties = Json2ResourceEncoder.subPropertiesNamesOfClassName(resourceType.toLowerCase(),ssE,serviceType,resourceType,ontology) --
+      givenProperties(json,resourceType).map(s=>s.toLowerCase())
+    embeddedPolicyResource.givenProperties = (givenProperties(json,resourceType) flatMap (propName => Map(propName ->
+      nodeObjectForProperty(propName)))).toMap
+
+    tE.embeddedResources = tE.embeddedResources ++ Map(embeddedPolicyName -> embeddedPolicyResource)
+    embeddedPolicyResource
+  }
 
 
   /*
@@ -371,11 +408,15 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
   private def subFieldValueEvalContents (j: Json) =
     j.objectFieldsOrEmpty map ( f => getLowerCaseEvalStringField(j, f) )
 
-  private def getLowerCaseEvalStringField(j: Json, field:String) =
-    encode(j.field(field).get) match {
+  private def getLowerCaseEvalStringField(j: Json, field:String) = {
+    val encodedField = encode( j.field(field).get )
+    encodedField match {
       case NoValue => "" // TODO
       case StringNode(s) => s
+      case StackSetResource(name,_,_,_) => name
     }
+  }
+
 
 
 
@@ -466,7 +507,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  private def isPolicy(j: Json) = {
+  private def isPolicyDoc(j: Json) = {
     j.hasField("Statement") && j.field("Statement").get.isArray &&
     j.field("Statement").get.array.get(0).hasField("Effect") &&
     j.field("Statement").get.array.get(0).hasField("Action")
@@ -474,14 +515,14 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  private def isMapProperty(j:Json, subpropType:Option[String]) =
+  private def isMapProperty(j:Json, subpropType:Option[(String,String)]) =
     mapProperty(j, subpropType).isDefined
 
 
 
-  private def mapProperty(j: Json, subpropType:Option[String]) =
+  private def mapProperty(j: Json, subpropType:Option[(String,String)]): Option[String] =
     subpropType match {
-    case Some(s) if s.startsWith("mapentry_")   => Some(s.split("mapentry_").last)
+    case Some((_,s)) if s.startsWith("mapentry_")   => Some(s.split("mapentry_").last)
     case None         => None
     case _            => None
   }

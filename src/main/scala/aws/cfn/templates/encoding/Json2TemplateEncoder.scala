@@ -21,7 +21,8 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings()//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(ssE,this,e._1,e._2)))).toMap
-  val resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
+  var resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
+  var embeddedResources : Map[String,StackSetResource] = Map()
   val outputByLogicalId: Map[String, Node] = getOutputsByLogicalId
   val outputByExportName: Map[String, Node] = getOutputsMapByExportName
   val resourceByArn: Map[String,Node] = createResourceByArnMap
@@ -32,8 +33,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   def encode(): Template = {
     //println("\n\n\n\n\n\n\n\n\n\n\n\nTEMPLATE: " + templateName)
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
-
-
+    template.resources = template.resources ++ embeddedResources
 
 //    println()
 //    print("MAPPINGS\t")

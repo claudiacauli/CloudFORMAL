@@ -99,8 +99,9 @@ sealed trait StackSetNode extends Node
 
     final case class JoinFunction(delimiter:StringNode,
                                   values:ListNode[StringNode]) extends IntrinsicFunction {
-      def apply(): StringNode =
+      def apply(): StringNode = {
         StringNode ( (values.value map ( i => i.value )).mkString(delimiter.value) )
+      }
     }
 
     final case class SelectFunction(index:IntNode,
@@ -140,7 +141,7 @@ sealed trait StackSetNode extends Node
     }
 
     final case class TransformFunction() extends IntrinsicFunction {
-      def apply() : Node = null // TODO
+      def apply() : Node = NoValue // TODO
     }
 
     final case class RefFunction(n: Node,

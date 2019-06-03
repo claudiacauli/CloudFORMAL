@@ -50,8 +50,8 @@ object DLModelIRI {
   def stackSetNamespace : String => String = stackSetName => stackSetName.toLowerCase()
   def resourceInstanceIRI : (String,String) => IRI = (stackSetName,resourceLogicalId) => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
   def subpropertyBlankNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Subproperty_" + randomUUID )
-  def policyNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Policy_"+randomUUID )
-
+  def policyNodeIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "PolicyDocument_"+randomUUID )
+  def embeddedPolicyIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "EmbeddedPolicy_" + randomUUID())
 
   def stackFlowIRI : String => IRI = stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "Flow" + "#")
   def infrastructureModelIRI : String => IRI = infrastructureName => IRI.create(currentIRI.toString + infrastructureName.toLowerCase + "_infrastructure#")
