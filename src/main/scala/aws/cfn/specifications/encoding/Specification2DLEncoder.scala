@@ -169,7 +169,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
     val domainClass = owlClass(d)
     owlOProp(p) match {
       case op if op != null && domainClass.isDefined => Set(m.df.getOWLObjectPropertyDomainAxiom(op, owlClass(d).get))
-      case op if domainClass.isDefined => Set(m.df.getOWLDataPropertyDomainAxiom(owlDProp(p), domainClass.get))
+      case _ if domainClass.isDefined => Set(m.df.getOWLDataPropertyDomainAxiom(owlDProp(p), domainClass.get))
       case _ => Set()
     }
   }

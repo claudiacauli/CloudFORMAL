@@ -60,8 +60,8 @@ sealed trait StackSetNode extends Node
         else mappings(m.value)(k1.value) match {
           case Left(s) => StringNode(s)
           case Right(m1) => m1(k2.value) match {
-            case float: Float => FloatNode(m1(k2.value).asInstanceOf[Float])
-            case bool: Boolean => BooleanNode(m1(k2.value).asInstanceOf[Boolean])
+            case float: Float => FloatNode(float)
+            case bool: Boolean => BooleanNode(bool)
             case _ => StringNode(m1(k2.value).asInstanceOf[String])
           }
         }
@@ -128,11 +128,11 @@ sealed trait StackSetNode extends Node
           tempString = subMap.get.foldLeft(tempString)((a, b) => a.replaceAll("\\$\\{" + b._1 + "\\}", b._2))
         }
         tempString = parameters.foldLeft(tempString)((a, b) => {    // SECOND ROUND: Replace what you find in parameters
-          if (b._2.isInstanceOf[StringNode]) {
-            a.replaceAll("\\$\\{" + b._1 + "\\}" ,b._2.asInstanceOf[StringNode].value)
+          b._2 match {
+            case StringNode(s) =>
+              a.replaceAll("\\$\\{" + b._1 + "\\}", s)
+            case _ => a
           }
-          else
-            a
           })
         if (tempString.contains("."))  // THIRD ROUND: Replace what can be an attribute
           GetAttFunction(StringNode(tempString.split("\\.")(0)), StringNode(tempString.split("\\.")(1)), resources)()
@@ -150,7 +150,7 @@ sealed trait StackSetNode extends Node
                                  ssE:Json2StackSetEncoder) extends IntrinsicFunction {
       def apply(): Node = {
           n match {
-            case str: StringNode => {
+            case str: StringNode =>
               if (str.value.startsWith("arn:")){
                 val referredNode = ArnFunction(resources,parameters, str.value, ssE.resourceByArn)()
                 if (!ssE.resourceByArn.values.toVector.contains(referredNode))
@@ -163,7 +163,6 @@ sealed trait StackSetNode extends Node
               else if (resources!=null && resources.get(str.value).isDefined)
                 resources(str.value)
               else NoValue
-            }
             case node: StackSetResource => node
             case node: ForeignResource => node
             case _ => NoValue //"Referred field NOT FOUND: Not a resource, nor parameter, nor arns for Resource or ForeignNode"
@@ -222,7 +221,7 @@ sealed trait StackSetNode extends Node
                                       attributes : Map[String, GenericValueNode],
                                  ) extends ObjectNode
     {
-      val value = resourceLogicalId
+      val value: String = resourceLogicalId
       var givenProperties: Map[String,Node] = Map()
       var absentProperties: Set[String] = Set()
       def apply(): StackSetResource = this
@@ -234,9 +233,9 @@ sealed trait StackSetNode extends Node
       def apply(): Subproperty = this
     }
 
-    final case class Policy(statements: Vector[Statement]) extends ObjectNode
+    final case class PolicyDocument(statements: Vector[Statement]) extends ObjectNode
     {
-      def apply(): Policy = this
+      def apply(): PolicyDocument = this
     }
 
     sealed trait Statement extends ObjectNode

@@ -9,10 +9,10 @@ import org.semanticweb.owlapi.model.{AddImport, IRI, OWLOntology, RemoveImport}
 
 import scala.jdk.StreamConverters._
 
-package object DLModelWriter {
+object DLModelWriter {
 
     val stackSetFileSuffix          = "_StackSetModel.owl"
-    val stacksetOntoSuffix          = stackSetFileSuffix.split(".owl").head
+    val stacksetOntoSuffix: String = stackSetFileSuffix.split(".owl").head
     val infrastructureFileSuffix    = "_InfrastructureModel.owl"
 
     def writeSpecification(model:DLModel, format: String = "rdf") : Unit =
@@ -37,7 +37,7 @@ package object DLModelWriter {
         val folderName = outputDir+model.name
         val fileName = folderName + "/" + model.name +   modelType + stackSetFileSuffix
 
-        def saveToOutputFolder(ontology : OWLOntology) = {
+        def saveToOutputFolder(ontology : OWLOntology): Unit = {
             model.manager.saveOntology(ontology, new RDFXMLDocumentFormat, new FileOutputStream(folderName+"/"+
               ontology.getOWLOntologyManager.getOntologyDocumentIRI(ontology).toString.split("/").last ))
         }
@@ -64,7 +64,7 @@ package object DLModelWriter {
             case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
         }
 
-        addProtegeCatalogue(onlyImportedOntologies(model),model.name,folderName, true)
+        addProtegeCatalogue(onlyImportedOntologies(model),model.name,folderName, withGroupBlock = true)
 
 
     }

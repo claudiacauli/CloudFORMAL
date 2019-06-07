@@ -101,10 +101,9 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
           case "json"       => JsonProperty(propName, domain, isReq(pair._2))
           // Must be ONE malformed specification file, only happens for AWS::ServiceDiscovery::Instance instanceattributes property.
           case "map"        => MapOfPrimitiveProperty ( "string" , propName, domain, isReq(pair._2))
-          case _            => {
+          case _            =>
             println("AWS::" + resSpecName + " found possibly malformed property declaration for " + propName)
             StringProperty(propName, domain, isReq(pair._2))
-          }
         }
 
       }

@@ -10,7 +10,7 @@ class ResourceSpecificationModel(val name : String) extends DLModel{
   val ontology: OWLOntology = manager.createOntology(DLModelIRI.resourceTerminologyIRI(name))
   val df: OWLDataFactory = manager.getOWLDataFactory
 
-  def writeToOutputFolder (destinationFolder: String) = {
+  def writeToOutputFolder (destinationFolder: String): Unit = {
     DLModelWriter.writeSpecificationToOutputFolder(this,destinationFolder)
   }
 

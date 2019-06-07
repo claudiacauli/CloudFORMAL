@@ -14,15 +14,15 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
 //  println()
 
   val template = new Template(templateName)
-  val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(ssE, this, null) // TODO
+  val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(ssE, this, null)
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor.getOrElse(Json.jEmptyObject))
   val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform") // TODO!
   val parameters: Map[String,Node] = getParametersMap
-  val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings()//getSection("Mappings")
+  val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(ssE,this,e._1,e._2)))).toMap
-  var resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
-  var embeddedResources : Map[String,StackSetResource] = Map()
+  val resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
+  var embeddedPolicies : Map[String,StackSetResource] = Map()
   val outputByLogicalId: Map[String, Node] = getOutputsByLogicalId
   val outputByExportName: Map[String, Node] = getOutputsMapByExportName
   val resourceByArn: Map[String,Node] = createResourceByArnMap
@@ -33,7 +33,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
   def encode(): Template = {
     //println("\n\n\n\n\n\n\n\n\n\n\n\nTEMPLATE: " + templateName)
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
-    template.resources = template.resources ++ embeddedResources
+    template.resources = template.resources ++ embeddedPolicies
 
 //    println()
 //    print("MAPPINGS\t")
@@ -99,14 +99,13 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
             case Some(defaultJsonField) =>
               decodeJsonParameterValue(e._1, defaultJsonField, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
           }
-        case Some(jsonValue) => {
+        case Some(jsonValue) =>
           if (e._2.isObject)
             e._2.field("Type") match {
               case None =>  decodeJsonParameterValue(e._1, jsonValue, "String")
-              case Some(t) => decodeJsonParameterValue(e._1, jsonValue, DecodeJson.StringDecodeJson.decodeJson(e._2.field("Type").get).toOption.get)
+              case Some(t) => decodeJsonParameterValue(e._1, jsonValue, t.string.get)
             }
           else decodeJsonParameterValue(e._1, jsonValue, "String")
-        }
       }
     }
 
@@ -164,7 +163,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
     EncodeUtils.getNodesAsMapOfJsons( templateJson.field(sectionName).getOrElse(Json.jEmptyObject) )
   }
 
-  private def getMappings() : Map[String,Map[String,Either[String,Map[String,Any]]]] = {
+  private def getMappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = {
 
     def getNodesAsMapOfStrings(json: Json): Either[String,Map[String,Any]] = {
 

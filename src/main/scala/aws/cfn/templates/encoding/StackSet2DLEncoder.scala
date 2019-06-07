@@ -63,40 +63,41 @@ class StackSet2DLEncoder(stackSet: StackSet){
       absentProperties.toVector flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(sourceIndividualIRI), p))
 
 
-    def encodeProperty(sourceIndividual: OWLIndividual, propName: String, cfnNode: Node): Vector[OWLAxiom] = oProperty(propName) match {
-      case Some(op) => {
-        cfnNode match {
-         case ListNode(vec) => vec flatMap (n => {
-           n match {
-             case StringNode(s) => encodeObjectProperty(sourceIndividual,op,ForeignResource(s))
-             case NoValue => Vector()
-             case _ => encodeObjectProperty(sourceIndividual,op,n.asInstanceOf[ObjectNode])
-           }
-         })
-         case MapNode(m) => m.toVector flatMap (e => encodeObjectMapEntry(sourceIndividual, op, e))
-         case NoValue => Vector()
-         case _ => encodeObjectProperty(sourceIndividual, op,
-           if (cfnNode.isInstanceOf[StringNode])
-             ForeignResource(cfnNode.asInstanceOf[StringNode].value)
-           else cfnNode.asInstanceOf[ObjectNode])
-       }
-      }
-      case None => dProperty(propName) match {
-        case Some(dp) => { cfnNode match {
-          case ListNode(vec) => {
-            vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
-          }
-          case MapNode(m) => m.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
-          case NoValue => Vector()
-          case StackSetResource(id,s,r,_) => {
+    def encodeProperty(sourceIndividual: OWLIndividual, propName: String, cfnNode: Node): Vector[OWLAxiom] =
 
-            Vector()
-          }
-          case _ => encodeValueProperty(sourceIndividual, dp, cfnNode.asInstanceOf[GenericValueNode])
-          }
+      oProperty(propName) match {
+
+        case Some(op) =>
+          cfnNode match {
+           case ListNode(vec) => vec flatMap {
+             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ForeignResource(s))
+             case NoValue => Vector()
+             case n => encodeObjectProperty(sourceIndividual, op, n.asInstanceOf[ObjectNode])
+            }
+           case MapNode(map) => map.toVector flatMap (e => encodeObjectMapEntry(sourceIndividual, op, e))
+           case NoValue => Vector()
+           case _ => encodeObjectProperty(sourceIndividual, op,
+             cfnNode match {
+               case StringNode(s) => ForeignResource(s)
+               case _ => cfnNode.asInstanceOf[ObjectNode]
+             })
+         }
+
+        case None => dProperty(propName) match {
+          case Some(dp) => cfnNode match {
+            case ListNode(vec) =>
+              vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
+            case MapNode(map) => map.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
+            case NoValue => Vector()
+            case StackSetResource(_,s,r,_) =>
+              println("Data Property " + dp.toString.split("#").last + " of " + resource.serviceType + resource.resourceType + "#" + resource.resourceType + " points to resource of type "
+                + s + r + "#" + r )
+              Vector() // TODO ERROR! Something wrong here: Property seems data but points to a resource
+            case _ => encodeValueProperty(sourceIndividual, dp, cfnNode.asInstanceOf[GenericValueNode])
+            }
+          case None => Vector() // TODO ERROR! Something wrong here: Property neither obj or data!
         }
-        case None => Vector() // TODO ERROR! Something wrong
-      }
+
     }
 
 
@@ -128,7 +129,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
       encodeObjectProperty(sourceIndividual, oPropFromIRI(propIRI), cfnNode.asInstanceOf[ObjectNode])
 
 
-    def encodeValueProperty(sourceIndividual: OWLIndividual, dataProp: OWLDataProperty, valueNode: GenericValueNode) = {
+    def encodeValueProperty(sourceIndividual: OWLIndividual, dataProp: OWLDataProperty, valueNode: GenericValueNode) : Vector[OWLAxiom] = {
 
       valueNode match {
         case StringNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
@@ -141,12 +142,13 @@ class StackSet2DLEncoder(stackSet: StackSet){
         case CommaDelimitedListNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case JsonNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
         case NoValue => Vector()
-        case ListNode(vec) => Vector() // TODO Generate axioms for list properties
-        case MapNode(map) => Vector() // TODO Generate axioms for map properties
-        case _ => {
-          println("Evaluation returned: " + valueNode + " which is not a value node. Therefore prooperty " + dataProp + " must not be a real data property.")
+        case ListNode(vec: Vector[Node]) =>
+          vec flatMap (n => encodeValueProperty(sourceIndividual,dataProp,n.asInstanceOf[GenericValueNode]))//Vector() // TODO Generate axioms for list properties
+        case MapNode(map) =>
+          map.toVector flatMap (entry => encodeValueMapEntry(sourceIndividual,dataProp,entry.asInstanceOf[(String,GenericValueNode)]))// TODO Generate axioms for map properties
+        case _ =>
+          println("Evaluation returned: " + valueNode + " which is not a value node. Therefore property " + dataProp + " must not be a real data property.")
           Vector()
-        }
       }
     }
 
@@ -155,39 +157,35 @@ class StackSet2DLEncoder(stackSet: StackSet){
     def encodeObjectProperty(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, objNode: ObjectNode): Vector[OWLAxiom]
     = objNode match {
       case StackSetResource(resourceLogicalId, _, _, _) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
-      case Subproperty(givenProperties, absentProperties) => {
+      case Subproperty(givenProperties, absentProperties) =>
         val individualRandomIRI = DLModelIRI.subpropertyBlankNodeIRI(stackSet.name)
         createBlankNode(sourceIndividual,objProp, individualRandomIRI) ++
           encodeAllGivenSubproperties(individualRandomIRI, givenProperties) ++
           (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
-      }
-      case Policy(statements) => { // TODO Again!
+      case ForeignResource(v) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(v)))
+      case PolicyDocument(statements) => // TODO Again!
         val policyRandomIRI = DLModelIRI.policyNodeIRI(stackSet.name)
         createPolicyNode(policyRandomIRI) ++
           statements.flatMap(s => encodePropertyWithIRI(m.df.getOWLNamedIndividual(policyRandomIRI),
             DLModelIRI.propertyTypeIRI("policydocument", "statement"), s))
-      }
-      case ForeignResource(v) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(v)))
-      case AllowStatement(p, a, r, c) => null // TODO
-      case DenyStatement(p, a, r, c) => null // TODO Continue from here and decide if you should move the instantion from here to another class!
-      case null => Vector() // TODO
+      case AllowStatement(_,_,_,_) => null // TODO
+      case DenyStatement(_,_,_,_) => null // TODO Continue from here and decide if you should move the instantiation from here to another class!
+      case _ => Vector() // TODO
     }
 
 
     def createBlankNode(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, individualRandomIRI: IRI): Vector[OWLAxiom] = {
         range(objProp) match {
-          case None => {
+          case None =>
             val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
             addComment(newNode, "subproperty")
             Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
             Vector(m.df.getOWLDeclarationAxiom(newNode))
-          }
-          case Some(c) => {
+          case Some(c) =>
             val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
             addComment(newNode, "subproperty")
             Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
             Vector(m.df.getOWLClassAssertionAxiom(c,newNode))
-          }
         }
       }
 
@@ -228,14 +226,14 @@ class StackSet2DLEncoder(stackSet: StackSet){
 
 
     val resourceInstanceIRI = DLModelIRI.resourceInstanceIRI(stackSet.name, resource.resourceLogicalId)
-    //createResourceNode( resourceInstanceIRI ) ++
+
     encodeAllGivenSubproperties( resourceInstanceIRI, resource.givenProperties ) ++
       encodeAllAbsentSuproperties( resourceInstanceIRI, resource.absentProperties )
 
   }
 
 
-  def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
+  private def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
 
   private def addComment (individual:OWLNamedIndividual, comment:String) = {
     val commentAxiom  = m.df.getOWLAnnotationAssertionAxiom( individual.getIRI , m.df.getRDFSComment(comment ) )

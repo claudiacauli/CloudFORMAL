@@ -15,7 +15,7 @@ object ParseUtils {
          case x => x
        }
      } catch {
-       case e: FileNotFoundException => None
+       case _: FileNotFoundException => None
      }
 
   }

@@ -1,11 +1,11 @@
 package aws.cfn.templates.encoding
 
 import argonaut.Json
-import aws.cfn.templates.formalization.{Infrastructure}
+import aws.cfn.templates.formalization.Infrastructure
 
 object Json2InfrastructureEncoder {
 
-  def encode(stackSets: Vector[(Vector[(String,Json,Option[Json])],String)], infrastructureName:String) = {
+  def encode(stackSets: Vector[(Vector[(String,Json,Option[Json])],String)], infrastructureName:String): Infrastructure = {
     new Json2InfrastructureEncoder(stackSets,infrastructureName).encode()
   }
 

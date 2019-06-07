@@ -3,7 +3,7 @@ package aws.cfn.templates.encoding
 import argonaut.Json
 import aws.cfn.templates.formalization.{ForeignResource, Node, StackSet}
 import org.semanticweb.owlapi.apibinding.OWLManager
-import org.semanticweb.owlapi.model.OWLOntologyManager
+import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntologyManager}
 
 
 object Json2StackSetEncoder {
@@ -18,8 +18,8 @@ object Json2StackSetEncoder {
 
 class Json2StackSetEncoder(templates: Vector[(String,Json,Option[Json])], stackSetName: String) {
 
-  val manager: OWLOntologyManager =
-    OWLManager.createOWLOntologyManager()
+  val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager()
+  val df : OWLDataFactory = manager.getOWLDataFactory
 
   val stackSet = new StackSet(stackSetName, manager)
 

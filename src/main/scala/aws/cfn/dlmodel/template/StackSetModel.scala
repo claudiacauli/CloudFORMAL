@@ -50,7 +50,7 @@ class StackSetModel (val name: String, val ontologies: Vector[OWLOntology]) exte
     isResource(targetIndividual) || leadToResource(targetIndividual)
   }
 
-  private def copyResourcesFromTo(fromModel: DLModel, toModel: DLModel) = {
+  private def copyResourcesFromTo(fromModel: DLModel, toModel: DLModel): Unit = {
     resourcesInModel(fromModel) forEach(r=> copyResourceFromTo(r, fromModel,toModel))
   }
 
@@ -88,7 +88,7 @@ class StackSetModel (val name: String, val ontologies: Vector[OWLOntology]) exte
     else false
   }
 
-  private def copyImportsFromTo(fromModel:DLModel, toModel:DLModel) = {
+  private def copyImportsFromTo(fromModel:DLModel, toModel:DLModel): Unit = {
     (fromModel.manager.ontologies() filter ( o => o != ontology)) forEach ( o => importOntology(toModel,o))
   }
 

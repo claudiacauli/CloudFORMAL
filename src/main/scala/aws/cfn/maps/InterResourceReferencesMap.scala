@@ -156,9 +156,13 @@ object InterResourceReferencesMap {
     "configdeliverychannel_deliverychannel_snstopicarn" -> ("snstopic","topic",false,true),
     "configconfigurationrecorder_configurationrecorder_rolearn" -> ("iamrole","role",true,true),
     "cloudwatchalarm_alarm_alarmactions" -> ("snstopic", "topic", false, false),
+    "cloudwatchalarm_dimension_value" -> (null,null,true,true),
     "eventsrule_target_arn" -> ("lambdafunction", "function", true, false),
     "logssubscriptionfilter_subscriptionfilter_destinationarn" -> (null,null,true,true),
+    "logssubscriptionfilter_subscriptionfilter_loggroupname" -> ("logsloggroup","loggroup",true,true),
+    "logsdestination_destination_targetarn" -> (null,null,true,true),
     "route53recordset_recordset_hostedzoneid" -> ("route53hostedzone","hostedzone",false,true),
+    "logsmetricfilter_metricfilter_loggroupname" -> ("logsloggroup","loggroup",true,true),
 
     "apigatewayaccount_account_cloudwatchrolearn" -> ("iamrole","role",false,true),
     "apigatewaydeployment_deployment_restapiid" -> ("apigatewayrestapi","restapi",true,true),
