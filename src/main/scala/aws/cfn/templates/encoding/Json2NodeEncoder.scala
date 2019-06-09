@@ -15,7 +15,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
     json match {
-      case j if isArn(j)            => ArnFunction(tE.resources, tE.parameters, j.string.get, ssE.resourceByArn) ()
+      case j if isArn(j)            => ArnFunction(tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
@@ -154,15 +154,15 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
   private def validateParamsAndEvalBase64(j: Json) =
-    Base64Function (encode (j.field ("Fn::Base64").get).asInstanceOf[StringNode] ) ()
+    Base64Function()(encode (j.field ("Fn::Base64").get).asInstanceOf[StringNode] )
 
 
 
   private def validateParamsAndEvalCidr(j: Json) =
-    CidrFunction (
+    CidrFunction()(
       encode (arrayAt(j, "Fn::Cidr",0)).asInstanceOf[StringNode],
       encode (arrayAt(j, "Fn::Cidr",1) ).asInstanceOf[IntNode],
-      encode (arrayAt(j, "Fn::Cidr",2)).asInstanceOf[IntNode] ) ()
+      encode (arrayAt(j, "Fn::Cidr",2)).asInstanceOf[IntNode] )
 
 
   private def validateParamsAndEvalIf(j: Json) = {
@@ -174,9 +174,9 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     encodedCondition match {
       case sn: StringNode   => tE.conditions.get(sn.value) match {
         case None     => NoValue
-        case Some(b)  => IfFunction(BooleanNode(b), encodedTrueExp, encodedFalseExp)()
+        case Some(b)  => IfFunction()(BooleanNode(b), encodedTrueExp, encodedFalseExp)
       }
-      case bn : BooleanNode => IfFunction(bn, encodedTrueExp, encodedFalseExp)()
+      case bn : BooleanNode => IfFunction()(bn, encodedTrueExp, encodedFalseExp)
       case _                =>
         println("\nWe should NOT get here: the encoded condition inside an If function doesn't evaluate to a boolean node.")
         println("The original json node of the condition is: " + arrayAt(j, "Fn::If",0))
@@ -192,8 +192,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedJson = encode(j.field("Fn::Not").get)
 
     encodedJson match {
-      case n : BooleanNode            => NotFunction(n) ()
-      case n : ListNode[BooleanNode]  => NotFunction(n.value.head) ()
+      case n : BooleanNode            => NotFunction()(n)
+      case n : ListNode[BooleanNode]  => NotFunction()(n.value.head)
       case _ =>
         println("\nWe should NOT get here. The result of the evaluation of the node contained in a Not function is not a boolean node.")
         println("The original json node of the FnNot is: " + j.field("Fn::Not").get )
@@ -209,7 +209,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedRightExp = encode(arrayAt(j,"Fn::And",1))
 
     (encodedLeftExp, encodedRightExp) match {
-      case (l:BooleanNode,r:BooleanNode) => AndFunction(l,r) ()
+      case (l:BooleanNode,r:BooleanNode) => AndFunction()(l,r)
       case _ =>
         println("\nWe should NOT get here. The result of the evaluation of one or both the And expressions is not a boolean node.")
         println("The original jsons are: " + arrayAt(j,"Fn::And",0) + " and " + arrayAt(j, "Fn::And",1) )
@@ -225,7 +225,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedRightExp = encode(arrayAt(j,"Fn::Or",1))
 
     (encodedLeftExp, encodedRightExp) match {
-      case (l:BooleanNode, r:BooleanNode) => OrFunction(l,r) ()
+      case (l:BooleanNode, r:BooleanNode) => OrFunction()(l,r)
       case _ =>
         println("\nWe should NOT get here. The result of the evaluation of one or both the Or expressions is not a boolean node.")
         println("The original jsons are: " + arrayAt(j,"Fn::Or",0) + " and " + arrayAt(j, "Fn::Or",1) )
@@ -240,7 +240,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedLeftExp = encode (arrayAt(j,"Fn::Equals",0))
     val encodedRightExp = encode (arrayAt(j,"Fn::Equals",1))
 
-    EqualsFunction(encodedLeftExp, encodedRightExp) ()
+    EqualsFunction()(encodedLeftExp, encodedRightExp)
   }
 
 
@@ -252,8 +252,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedSecondLevelKey = if (hasSecondLevelKey) encode(arrayAt(j,"Fn::FindInMap",2)) else None
 
     (encodedMapName,encodedTopLevelKey,encodedSecondLevelKey) match {
-      case (m:StringNode,k1:StringNode,None)                => FindInMapFunction(tE.mappings, m,k1) ()
-      case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings, m,k1,k2) ()
+      case (m:StringNode,k1:StringNode,None)                => FindInMapFunction(tE.mappings)(m,k1)
+      case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings)(m,k1,k2)
       case _ =>
         println("We should NOT get here. It was not possible to evaluate the parameters of a FindInMap function with the correct types or values missing in map!")
         println("Template: " + tE.template.name + " and Original node is : " + j)
@@ -268,7 +268,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedAttributeName  = encode(arrayAt(j,"Fn::GetAtt",1))
 
     (encodedResourceName, encodedAttributeName) match {
-      case (r:StringNode,a:StringNode)  => GetAttFunction(r,a,tE.resources) ()
+      case (r:StringNode,a:StringNode)  => GetAttFunction(tE.resources)(r,a)
       case _ =>
         println("\nWe should NOT get here. It was not possible to evaluate the parameters of a GetAtt function with correct types.")
         println("Original node is: " + j)
@@ -282,7 +282,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedRegion = encode (j.field ("Fn::GetAZs").get)
 
     encodedRegion match {
-      case r:StringNode => GetAZsFunction(r) ()
+      case r:StringNode => GetAZsFunction()(r)
       case _ =>
         println("\nWe should NOT get here. It was not possible to valuate GetAZs param as StringNode. Node is " + j)
         NoValue
@@ -295,7 +295,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedImportName = encode (j.field ("Fn::ImportValue").get)
 
     encodedImportName match {
-      case i:StringNode => ImportValueFunction(i, ssE.outputsByExportName, tE.outputByLogicalId) ()
+      case i:StringNode => ImportValueFunction(ssE.outputsByExportName,tE.outputByLogicalId)(i)
       case _ =>
         println("\nWe should NOT get here. It was not possible to evaluate ImportValue params as a String. Node is: " + j)
         NoValue
@@ -309,7 +309,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedList = encode (arrayAt(j,"Fn::Join",1))
 
     (encodedDelimiter, encodedList) match {
-      case (d:StringNode,l:ListNode[StringNode]) => JoinFunction(d,l) ()
+      case (d:StringNode,l:ListNode[StringNode]) => JoinFunction()(d,l)
       case _ =>
         println("\nWe should NOT get here. Unable to resolve params of Join to correct types. Json : " + j)
         NoValue
@@ -323,7 +323,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedList  = encode(arrayAt(j,"Fn::Select",1))
 
     (encodedIndex, encodedList) match {
-      case (i:IntNode, l:ListNode[Node]) => SelectFunction(i,l) ()
+      case (i:IntNode, l:ListNode[Node]) => SelectFunction()(i,l)
       case _ =>
         println("\nWe should NOT get here. Unable to evaluate params of Select to the right types. Json node " + j)
         NoValue
@@ -337,7 +337,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedString = encode (arrayAt(j,"Fn::Split",1))
 
     (encodedDelimiter, encodedString) match {
-      case (d:StringNode, s:StringNode) => SplitFunction(d,s) ()
+      case (d:StringNode, s:StringNode) => SplitFunction ()(d,s)
       case _ =>
         println("\nWe should NOT get here. Unable to evaluate params for SplitFunction. Node " + j )
         NoValue
@@ -354,13 +354,13 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
     stringToMatch match {
       case n if isArn(n) =>
-        val subArn = SubFunction(tE.resources, tE.parameters, StringNode(n.string.get), substitutionMap) ()
-        ArnFunction(tE.resources, tE.parameters, subArn.value, ssE.resourceByArn) ()
+        val subArn = SubFunction(tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap)
+        ArnFunction(tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
       case _ =>
         val encodedStringToMatch = encode(stringToMatch)
         (substitutionMap,encodedStringToMatch) match {
-          case (None,s:StringNode)    => SubFunction(tE.resources, tE.parameters, s) ()
-          case (_,s:StringNode)       => SubFunction(tE.resources,tE.parameters,s,substitutionMap) ()
+          case (None,s:StringNode)    => SubFunction(tE.resources, tE.parameters)(s)
+          case (_,s:StringNode)       => SubFunction(tE.resources,tE.parameters)(s,substitutionMap)
           case _ =>
             println("\nWe should NOT get here. Unable to resolve SubFunction params to right types. Node " + j)
             NoValue
@@ -377,7 +377,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
   private def validateParamsAndEvalRef(j: Json) = {
     val encodedReferredEntity = encode (j.field("Ref").get)
-    RefFunction(encodedReferredEntity, tE.resources, tE.parameters, ssE) ()
+    RefFunction(tE.resources, tE.parameters, ssE) (encodedReferredEntity)
   }
 
 
