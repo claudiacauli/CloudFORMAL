@@ -15,11 +15,11 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
     json match {
-      case j if isArn(j)            => ArnFunction(iE,tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
+      case j if isArn(j)            => ArnFunction(iE,rE,tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
-      case j if j.isObject && isPolicyDoc(j)                   => rE.PolicyEncoder.encode(j)
+      case j if j.isObject && isPolicyDoc(j)                   => rE.PolicyEncoder.encode(j,getPolicyResource)
       case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("string") => StringNode(j.toString())
       case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("policy") => encodeEmbeddedPolicy(j,subpropType.get)
       case j if j.isObject        => encodeSubproperty(j,subpropType)
@@ -268,7 +268,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     val encodedAttributeName  = encode(arrayAt(j,"Fn::GetAtt",1))
 
     (encodedResourceName, encodedAttributeName) match {
-      case (r:StringNode,a:StringNode)  => GetAttFunction(tE.resources)(r,a)
+      case (r:StringNode,a:StringNode)  => GetAttFunction(iE,rE,tE.resources)(r,a)
       case _ =>
         println("\nWe should NOT get here. It was not possible to evaluate the parameters of a GetAtt function with correct types.")
         println("Original node is: " + j)
@@ -295,7 +295,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     val encodedImportName = encode (j.field ("Fn::ImportValue").get)
 
     encodedImportName match {
-      case i:StringNode => ImportValueFunction(iE, ssE.outputsByExportName,tE.outputByLogicalId)(i)
+      case i:StringNode => ImportValueFunction(iE, rE, ssE.outputsByExportName,tE.outputByLogicalId)(i)
       case _ =>
         println("\nWe should NOT get here. It was not possible to evaluate ImportValue params as a String. Node is: " + j)
         NoValue
@@ -323,7 +323,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     val encodedList  = encode(arrayAt(j,"Fn::Select",1))
 
     (encodedIndex, encodedList) match {
-      case (i:IntNode, l:ListNode[Node] )=> SelectFunction()(i,l)
+      case (i:IntNode, l:ListNode[Node] )=> SelectFunction(iE,rE)(i,l)
       case _ =>
         //println("\nWe should NOT get here. Unable to evaluate params of Select to the right types. Json node " + j)
         NoValue
@@ -354,13 +354,13 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
     stringToMatch match {
       case n if isArn(n) =>
-        val subArn = SubFunction(tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap)
-        ArnFunction(iE,tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
+        val subArn = SubFunction(iE,rE,tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap)
+        ArnFunction(iE,rE,tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
       case _ =>
         val encodedStringToMatch = encode(stringToMatch)
         (substitutionMap,encodedStringToMatch) match {
-          case (None,s:StringNode)    => SubFunction(tE.resources, tE.parameters)(s)
-          case (_,s:StringNode)       => SubFunction(tE.resources,tE.parameters)(s,substitutionMap)
+          case (None,s:StringNode)    => SubFunction(iE,rE,tE.resources, tE.parameters)(s)
+          case (_,s:StringNode)       => SubFunction(iE,rE,tE.resources,tE.parameters)(s,substitutionMap)
           case _ =>
             println("\nWe should NOT get here. Unable to resolve SubFunction params to right types. Node " + j)
             NoValue
@@ -377,7 +377,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
   private def validateParamsAndEvalRef(j: Json) = {
     val encodedReferredEntity = encode (j.field("Ref").get)
-    RefFunction(iE,tE.resources, tE.parameters, ssE) (encodedReferredEntity)
+    RefFunction(iE,rE,tE.resources, tE.parameters, ssE) (encodedReferredEntity)
   }
 
 
@@ -510,6 +510,18 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     case None         => None
     case _            => None
   }
+
+
+
+  private def getPolicyResource: Set[StackSetResource] = {
+    if (iE.resourcesByPolicy.get(rE.resource).isDefined)
+      iE.resourcesByPolicy(rE.resource).toSet
+    else Set(rE.resource)
+  }
+
+
+
+
 
 
 

@@ -125,8 +125,8 @@ object Json2ResourceEncoder {
 
 
 
-protected class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, tE:Json2TemplateEncoder,
-                                     resourceLogicalId:String, resourceJsonNode:Json) {
+class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, tE:Json2TemplateEncoder,
+                                     resourceLogicalId:String, val resourceJsonNode:Json) {
 
   val serviceType: String = getServiceName
   val resourceType: String = getResourceType
@@ -155,6 +155,8 @@ protected class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2S
 
   def deepInstantiationOfResource(): StackSetResource = {
 
+    updateResourceByPolicy()
+
     resource.absentProperties =
       Json2ResourceEncoder.subPropertiesNamesOfClassName(resourceType.toLowerCase(),ssE,serviceType,resourceType,resourceOntology) --
       givenProperties.map(s=>s.toLowerCase())
@@ -162,6 +164,7 @@ protected class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2S
     resource.givenProperties =
       (givenProperties flatMap (propName => Map(propName ->
       nodeObjectForProperty(propName, serviceType,resourceType, ssE, resourceOntology)))).toMap
+
 
     resource
 
@@ -248,5 +251,47 @@ protected class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2S
         + serviceType + resourceType + ".owl"))
   }
 
+
+
+  def pointedResourceIsPolicy(res : Node) : Boolean = {
+    if (res.isInstanceOf[StackSetResource])
+      (res.asInstanceOf[StackSetResource].serviceType.toLowerCase, res.asInstanceOf[StackSetResource].resourceType.toLowerCase) match {
+        case ("s3","bucketpolicy")    => true
+        case ("iam","managedpolicy")  => true
+        case ("iam","policy")         => true
+        case ("iot","policy")         => true
+        case ("sqs","queuepolicy")    => true
+        case ("sns","topicpolicy")    => true
+        case ("secretsmanager","resourcepolicy") => true
+        case _ => false
+      }
+    else false
+  }
+
+
+  def currentResourceIsPolicyAndPointsTo : Set[StackSetResource] = {
+    (resource.serviceType.toLowerCase,resource.resourceType.toLowerCase) match {
+      case ("s3","bucketpolicy")    => {
+        if (resourceJsonNode.field("Properties").get.field("Bucket").isDefined){
+          NodeEncoder.encode(resourceJsonNode.field("Properties").get.field("Bucket").get) match {
+            case r:StackSetResource => Set( r )
+            case _ => Set()
+          }
+        }
+        else Set()
+      }
+//      case ("iam","managedpolicy")  => true
+//      case ("iam","policy")         => true
+//      case ("iot","policy")         => true
+//      case ("sqs","queuepolicy")    => true
+//      case ("sns","topicpolicy")    => true
+//      case ("secretsmanager","resourcepolicy") => true
+        case _ => Set()
+    }
+  }
+
+  def updateResourceByPolicy() = {
+    currentResourceIsPolicyAndPointsTo foreach (pr => iE.updateResByPolicyMap(resource, pr))
+  }
 
 }

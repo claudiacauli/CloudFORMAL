@@ -34,6 +34,7 @@ sealed trait StackSetNode extends Node
                                       serviceType : String,
                                       resourceType : String,
                                       attributes : Map[String, GenericValueNode],
+                                      resourceName : String
                                  ) extends ObjectNode
     {
       val value: String = resourceLogicalId
