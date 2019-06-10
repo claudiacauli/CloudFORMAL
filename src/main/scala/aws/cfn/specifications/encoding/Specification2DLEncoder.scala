@@ -310,12 +310,12 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
   private def addPropertyToOntology(pName: String, isObjProp: Boolean) =
     if (isObjProp) {
       val oProp = m.df.getOWLObjectProperty(DLModelIRI.propertyTypeIRI(m.name, pName))
-      addLabel(oProp,pName)
+      //addLabel(oProp,pName)
       m.ontology.add(m.df.getOWLDeclarationAxiom(oProp))
     }
     else {
       val dProp = m.df.getOWLDataProperty(DLModelIRI.propertyTypeIRI(m.name, pName))
-      addLabel(dProp,pName)
+      //addLabel(dProp,pName)
       m.ontology.add(m.df.getOWLDeclarationAxiom(dProp))
     }
 
@@ -326,7 +326,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
   private def addResourceTypeToOntology(resName: String) = {
     val concept = m.df.getOWLClass(DLModelIRI.resourceTypeIRI(m.name, resName))
-    addLabel(concept, resName)
+    //addLabel(concept, resName)
     m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
   }
 
@@ -338,7 +338,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
   private def addSubpropertyTypeToOntology(subpName: String)  = {
     val concept = m.df.getOWLClass(DLModelIRI.subpropertyTypeIRI(m.name, subpName))
-    addLabel(concept, subpName)
+    //addLabel(concept, subpName)
     m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
   }
 

@@ -325,7 +325,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     (encodedIndex, encodedList) match {
       case (i:IntNode, l:ListNode[Node] )=> SelectFunction()(i,l)
       case _ =>
-        println("\nWe should NOT get here. Unable to evaluate params of Select to the right types. Json node " + j)
+        //println("\nWe should NOT get here. Unable to evaluate params of Select to the right types. Json node " + j)
         NoValue
     }
   }
