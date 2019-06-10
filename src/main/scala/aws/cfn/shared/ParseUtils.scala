@@ -6,9 +6,15 @@ import scala.io.Source
 
 object ParseUtils {
 
-  def jsonFromFilePath(fp : String): Option[Json] = jsonFromFile( new File(fp) )
 
-  def jsonFromFile(f : File): Option[Json] = {
+
+  def jsonFromFilePath(fp : String) : Option[Json] =
+    jsonFromFile(new File(fp))
+
+
+
+  def jsonFromFile(f : File): Option[Json] =
+  {
      try {
        Parse.parseOption( Source.fromFile(f).mkString ) match {
          case None =>  None
@@ -17,7 +23,9 @@ object ParseUtils {
      } catch {
        case _: FileNotFoundException => None
      }
-
   }
+
+
+
 
 }

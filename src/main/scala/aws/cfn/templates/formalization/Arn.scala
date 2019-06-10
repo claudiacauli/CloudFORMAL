@@ -37,8 +37,8 @@ class Arn(evaluatedString : String) {
     val acc = if (arnComponents(3).equals("")) None else Some(arnComponents(3))
     val lastBit = evaluatedString.split(arnComponents(0)+":"+arnComponents(1)+":"+arnComponents(2)+":"+arnComponents(3)+":").last
     val ids = lastBit match {
-      case s => s.replaceAll("/",":").split(":").toVector
       case "" => Vector()
+      case  s => s.replaceAll("/",":").split(":").toVector
     }
 
     (part,serv,reg,acc,ids)

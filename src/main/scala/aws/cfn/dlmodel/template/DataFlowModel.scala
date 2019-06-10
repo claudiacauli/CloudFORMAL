@@ -11,7 +11,6 @@ class DataFlowModel(val name: String) extends DLModel {
   val df: OWLDataFactory = manager.getOWLDataFactory
 
   def writeToOutputFolder (destinationFolder: String): Unit = {
-    println("here")
     DLModelWriter.writeStackSetToOutputFolder(this,destinationFolder, "Flow")
   }
 

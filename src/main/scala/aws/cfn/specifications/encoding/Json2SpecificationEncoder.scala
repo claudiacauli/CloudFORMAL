@@ -90,18 +90,18 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
         else if (EncodeUtils.isComplexType(pair._2))
           SubpropertyProperty(EncodeUtils.getLowerCaseStringField(pair._2, "Type"), propName, domain, isReq(pair._2))
         else EncodeUtils.getPrimitiveType(pair._2) match {
-          case "string"     => StringProperty(propName, domain, isReq(pair._2))
-          case "float"      => FloatProperty(propName, domain, isReq(pair._2))
-          case "double"     => DoubleProperty(propName, domain, isReq(pair._2))
-          case "long"       => LongProperty(propName, domain, isReq(pair._2))
-          case "integer"    => IntProperty(propName, domain, isReq(pair._2))
-          case "boolean"    => BooleanProperty(propName, domain, isReq(pair._2))
-          case "timestamp"  => TimeStampProperty(propName, domain, isReq(pair._2))
-          case "commadelimitedlist" => CommaDelimitedListProperty(propName, domain, isReq(pair._2))
-          case "json"       => JsonProperty(propName, domain, isReq(pair._2))
+          case Some("string")     => StringProperty(propName, domain, isReq(pair._2))
+          case Some("float")      => FloatProperty(propName, domain, isReq(pair._2))
+          case Some("double")     => DoubleProperty(propName, domain, isReq(pair._2))
+          case Some("long")       => LongProperty(propName, domain, isReq(pair._2))
+          case Some("integer")    => IntProperty(propName, domain, isReq(pair._2))
+          case Some("boolean")    => BooleanProperty(propName, domain, isReq(pair._2))
+          case Some("timestamp")  => TimeStampProperty(propName, domain, isReq(pair._2))
+          case Some("commadelimitedlist") => CommaDelimitedListProperty(propName, domain, isReq(pair._2))
+          case Some("json")       => JsonProperty(propName, domain, isReq(pair._2))
           // Must be ONE malformed specification file, only happens for AWS::ServiceDiscovery::Instance instanceattributes property.
-          case "map"        => MapOfPrimitiveProperty ( "string" , propName, domain, isReq(pair._2))
-          case _            =>
+          case Some("map")        => MapOfPrimitiveProperty ( "string" , propName, domain, isReq(pair._2))
+          case _               =>
             println("AWS::" + resSpecName + " found possibly malformed property declaration for " + propName)
             StringProperty(propName, domain, isReq(pair._2))
         }
@@ -141,16 +141,17 @@ private class Json2SpecificationEncoder(json: Json, resourceSpecificationName: S
       if (EncodeUtils.isList(pair._2) && EncodeUtils.ofPrimitive(pair._2))
         ListOfPrimitiveAttribute(EncodeUtils.getLowerCaseStringField(pair._2, "PrimitiveItemType"), attrName, domain)
       else EncodeUtils.getPrimitiveType(pair._2) match {
-        case "string" => StringAttribute(attrName, domain)
-        case "float" => FloatAttribute(attrName, domain)
-        case "double" => DoubleAttribute(attrName, domain)
-        case "long" => LongAttribute(attrName, domain)
-        case "integer" => IntAttribute(attrName, domain)
-        case "boolean" => BooleanAttribute(attrName, domain)
-        case "timestamp" => TimeStamp(attrName, domain)
-        case "commadelimitedlist" => CommaDelimitedListAttribute(attrName, domain)
-        case "json" => JsonAttribute(attrName, domain)
-        case _ => StringAttribute(attrName, domain)
+        case Some("string")         => StringAttribute(attrName, domain)
+        case Some("float")          => FloatAttribute(attrName, domain)
+        case Some("double")         => DoubleAttribute(attrName, domain)
+        case Some("long")           => LongAttribute(attrName, domain)
+        case Some("integer")        => IntAttribute(attrName, domain)
+        case Some("boolean")        => BooleanAttribute(attrName, domain)
+        case Some("timestamp")      => TimeStamp(attrName, domain)
+        case Some("commadelimitedlist") => CommaDelimitedListAttribute(attrName, domain)
+        case Some("json")           => JsonAttribute(attrName, domain)
+        case _                      => println("Function EncodeUtils.getPrimitive should not return this.")
+          StringAttribute(attrName, domain)
       }
     }
 

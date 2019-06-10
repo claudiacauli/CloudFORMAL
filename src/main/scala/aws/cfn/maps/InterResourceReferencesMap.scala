@@ -151,7 +151,6 @@ object InterResourceReferencesMap {
     "s3bucketpolicy_bucketpolicy_bucket" -> ("s3bucket", "bucket", true, true ),
     "cloudformationcustomresource_customresource_servicetoken" -> (null,null,true,true),
 
-
     "configdeliverychannel_deliverychannel_s3bucketname" -> ("s3bucket", "bucket",true,true),
     "configdeliverychannel_deliverychannel_snstopicarn" -> ("snstopic","topic",false,true),
     "configconfigurationrecorder_configurationrecorder_rolearn" -> ("iamrole","role",true,true),

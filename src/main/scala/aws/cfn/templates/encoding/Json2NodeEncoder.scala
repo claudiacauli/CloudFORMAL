@@ -192,8 +192,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedJson = encode(j.field("Fn::Not").get)
 
     encodedJson match {
-      case n : BooleanNode            => NotFunction()(n)
-      case n : ListNode[BooleanNode]  => NotFunction()(n.value.head)
+      case n : BooleanNode                      => NotFunction()(n)
+      case n : ListBoolean                      => NotFunction()(n.value.head)
       case _ =>
         println("\nWe should NOT get here. The result of the evaluation of the node contained in a Not function is not a boolean node.")
         println("The original json node of the FnNot is: " + j.field("Fn::Not").get )
@@ -253,7 +253,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
     (encodedMapName,encodedTopLevelKey,encodedSecondLevelKey) match {
       case (m:StringNode,k1:StringNode,None)                => FindInMapFunction(tE.mappings)(m,k1)
-      case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings)(m,k1,k2)
+      case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings)(m,k1,Some(k2))
       case _ =>
         println("We should NOT get here. It was not possible to evaluate the parameters of a FindInMap function with the correct types or values missing in map!")
         println("Template: " + tE.template.name + " and Original node is : " + j)
@@ -309,7 +309,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedList = encode (arrayAt(j,"Fn::Join",1))
 
     (encodedDelimiter, encodedList) match {
-      case (d:StringNode,l:ListNode[StringNode]) => JoinFunction()(d,l)
+      case (d:StringNode,l:ListString) => JoinFunction()(d,l)
       case _ =>
         println("\nWe should NOT get here. Unable to resolve params of Join to correct types. Json : " + j)
         NoValue
@@ -323,7 +323,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedList  = encode(arrayAt(j,"Fn::Select",1))
 
     (encodedIndex, encodedList) match {
-      case (i:IntNode, l:ListNode[Node]) => SelectFunction()(i,l)
+      case (i:IntNode, l:ListNode[Node] )=> SelectFunction()(i,l)
       case _ =>
         println("\nWe should NOT get here. Unable to evaluate params of Select to the right types. Json node " + j)
         NoValue
@@ -384,7 +384,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
 
 
 
-  private def getNodesAsMapOfEvalStrings(j:Json)=
+  private def getNodesAsMapOfEvalStrings(j:Json) =
     subFieldNames(j) zip subFieldValueEvalContents(j) toMap
 
   private def subFieldValueEvalContents (j: Json) =
@@ -396,6 +396,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
       case NoValue => ""
       case StringNode(s) => s
       case StackSetResource(name,_,_,_) => name
+      case _ => println("Function getLowerCaseEvalStringField should not return another type.")
+      ""// TODO
     }
   }
 

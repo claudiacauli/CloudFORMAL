@@ -1,9 +1,9 @@
 package aws.cfn.specifications.encoding
 
 import aws.cfn.dlmodel.specification.ResourceSpecificationModel
-import aws.cfn.dlmodel.{PrimitiveTypes, DLModelIRI}
+import aws.cfn.dlmodel.{DLModelIRI, PrimitiveTypes}
 import aws.cfn.specifications.formalization._
-import org.semanticweb.owlapi.model.{OWLAxiom, OWLClass}
+import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 
 import scala.jdk.CollectionConverters._
@@ -308,31 +308,57 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
 
 
   private def addPropertyToOntology(pName: String, isObjProp: Boolean) =
-    if (isObjProp)
-      m.ontology.add(m.df.getOWLDeclarationAxiom(m.df.getOWLObjectProperty(DLModelIRI.propertyTypeIRI(m.name, pName))))
-    else
-      m.ontology.add(m.df.getOWLDeclarationAxiom(m.df.getOWLDataProperty(DLModelIRI.propertyTypeIRI(m.name, pName))))
+    if (isObjProp) {
+      val oProp = m.df.getOWLObjectProperty(DLModelIRI.propertyTypeIRI(m.name, pName))
+      addLabel(oProp,pName)
+      m.ontology.add(m.df.getOWLDeclarationAxiom(oProp))
+    }
+    else {
+      val dProp = m.df.getOWLDataProperty(DLModelIRI.propertyTypeIRI(m.name, pName))
+      addLabel(dProp,pName)
+      m.ontology.add(m.df.getOWLDeclarationAxiom(dProp))
+    }
 
 
 
 
 
 
-  private def addResourceTypeToOntology(resName: String) =
-    m.ontology.add(m.df.getOWLDeclarationAxiom(m.df.getOWLClass(DLModelIRI.resourceTypeIRI(m.name, resName))))
+  private def addResourceTypeToOntology(resName: String) = {
+    val concept = m.df.getOWLClass(DLModelIRI.resourceTypeIRI(m.name, resName))
+    addLabel(concept, resName)
+    m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
+  }
 
 
 
 
 
 
-  private def addSubpropertyTypeToOntology(subpName: String)  =
-    m.ontology.add(m.df.getOWLDeclarationAxiom(m.df.getOWLClass(DLModelIRI.subpropertyTypeIRI(m.name, subpName))))
+
+  private def addSubpropertyTypeToOntology(subpName: String)  = {
+    val concept = m.df.getOWLClass(DLModelIRI.subpropertyTypeIRI(m.name, subpName))
+    addLabel(concept, subpName)
+    m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
+  }
 
 
 
 
 
 
+  private def addLabel(concept: OWLClass, label:String): Unit =
+    addLabel(concept.getIRI,label)
+
+  private def addLabel(oProp : OWLObjectProperty, label:String) : Unit =
+    addLabel(oProp.getIRI,label.split("_").last)
+
+  private def addLabel(dProp: OWLDataProperty, label:String): Unit =
+    addLabel(dProp.getIRI,label.split("_").last)
+
+  private def addLabel(iri: IRI, label:String) : Unit = {
+    val labelAxiom  = m.df.getOWLAnnotationAssertionAxiom( iri , m.df.getRDFSLabel(label) )
+    m.manager.applyChange( new AddAxiom( m.ontology, labelAxiom ))
+  }
 
 }

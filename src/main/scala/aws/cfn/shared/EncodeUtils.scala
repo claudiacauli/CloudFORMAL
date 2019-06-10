@@ -1,32 +1,46 @@
 package aws.cfn.shared
 
-import argonaut.{DecodeJson, Json}
+import argonaut.Json
 import scala.language.postfixOps
 
 object EncodeUtils {
 
-  def getNodesAsMapOfJsons(j:Json) : Map[String, Json] = subFieldNames(j) zip subFieldContents(j) toMap
 
-  def getNodesAsMapOfStrings(j:Json) : Map[String, String] = subFieldNames(j) zip subFieldValueContents(j) toMap
+  def getNodesAsMapOfJsons(j:Json) : Map[String, Json] =
+    subFieldNames(j) zip subFieldContents(j) toMap
 
-  def isList( json : Json ):Boolean = json.hasField("Type") && getLowerCaseStringField(json,"Type").equals("list")
+  def getNodesAsMapOfStrings(j:Json) : Map[String, String] =
+    subFieldNames(j) zip subFieldValueContents(j) toMap
 
-  def ofPrimitive(json: Json):Boolean = json.hasField("PrimitiveItemType")
+  def isList(j : Json ) : Boolean =
+    j.hasField("Type") && getLowerCaseStringField(j,"Type").equals("list")
 
-  def isMap( json : Json ):Boolean = json.hasField("Type") && getLowerCaseStringField(json,"Type").equals("map")
+  def ofPrimitive(j: Json) : Boolean =
+    j.hasField("PrimitiveItemType")
 
-  def isComplexType (json: Json):Boolean = json.hasField("Type")
+  def isMap(j : Json ) : Boolean =
+    j.hasField("Type") && getLowerCaseStringField(j,"Type").equals("map")
 
-  def getPrimitiveType ( json : Json ):Any = if (json.hasField("PrimitiveType")) getLowerCaseStringField(json,"PrimitiveType")
+  def isComplexType (j: Json) : Boolean =
+    j.hasField("Type")
 
-  def subFieldNames (json : Json) : List[String] = json.objectFields.get map (f => f.toString.toLowerCase)
+  def getPrimitiveType (j : Json ) : Option[String] =
+    if (j.hasField("PrimitiveType"))
+      Some(getLowerCaseStringField(j,"PrimitiveType"))
+    else
+      None
 
-  def subFieldContents (json : Json) : List[Json] = json.objectFieldsOrEmpty map (f => json.fieldOrEmptyArray(f) )
+  def subFieldNames (j : Json) : List[String] =
+    j.objectFields.get map (f => f.toString.toLowerCase)
 
-  def subFieldValueContents (json: Json) : List[String] =
-    json.objectFieldsOrEmpty map ( f => getLowerCaseStringField(json, f) )
+  def subFieldContents (j : Json) : List[Json] =
+    j.objectFieldsOrEmpty map (f => j.fieldOrEmptyArray(f) )
 
-  def getLowerCaseStringField(json: Json, field:String): String =
-    DecodeJson.StringDecodeJson.decodeJson(json.field(field).get).toOption.get.toLowerCase()
+  def subFieldValueContents (j: Json) : List[String] =
+    j.objectFieldsOrEmpty map (f => getLowerCaseStringField(j, f) )
+
+  def getLowerCaseStringField(j: Json, field:String): String =
+    j.field(field).get.string.get.toLowerCase()
+
 
 }

@@ -15,6 +15,11 @@ object DLModelWriter {
     val stacksetOntoSuffix: String = stackSetFileSuffix.split(".owl").head
     val infrastructureFileSuffix    = "_InfrastructureModel.owl"
 
+
+
+
+
+
     def writeSpecification(model:DLModel, format: String = "rdf") : Unit =
         writeSpecificationToOutputFolder(model, model.name+"/", format)
 
@@ -27,6 +32,9 @@ object DLModelWriter {
             case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(outputDir+"/"+model.name+".owl"))
         }
     }
+
+
+
 
 
     def writeStackSet(model:DLModel, format: String = "rdf"): Unit =
@@ -71,6 +79,10 @@ object DLModelWriter {
 
 
 
+
+
+
+
     def writeInfrastructureToOutputFolder(model:DLModel, outputDir:String, format:String = "rdf"): Unit = {
 
         val folderName = outputDir+model.name
@@ -100,6 +112,9 @@ object DLModelWriter {
 
     private def onlyImportedOntologies(model: DLModel)
     = model.manager.ontologies().toScala(List) filter ( o => o!=model.ontology)
+
+
+
 
 
 
@@ -148,12 +163,20 @@ object DLModelWriter {
     }
 
 
+
+
+
+
     def makeDirIfDoesNotExist(folderName:String): File = {
         val dir = new File(folderName)
         if (!dir.exists())
             dir.mkdir()
         dir
     }
+
+
+
+
 
 
 }

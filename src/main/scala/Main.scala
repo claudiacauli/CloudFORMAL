@@ -30,18 +30,18 @@ object Main extends App {
 //
 //    println(vt.groupBy(e => e._1).toVector.flatMap( e => Map(e._1 -> e._2.flatMap( p => p._2 ) )))
 
-  //recompileTerminology()
-  modelZelkovaTest()
+  recompileTerminology()
+  //modelZelkovaTest()
 
 
-  def modelZelkovaTest() = {
+  def modelZelkovaTest(): Unit = {
 
     val inputFilePath = "src/main/resources/InputStackSets/Zelkova/test/"
     val outputFilePath = "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/"
     val inputDir = new File(inputFilePath)
     (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createInfrastructure(f) )
 
-    def createInfrastructure(file: File) = {
+    def createInfrastructure(file: File): Unit = {
 
       val infrastructureName = file.getName
 
@@ -97,7 +97,7 @@ object Main extends App {
   }
 
 
- def recompileTerminology() = {
+ def recompileTerminology(): Unit = {
      printOntologiesFromResourceSpecificationDirectoryToFolder(
        "/Users/caulic/Downloads/CloudFormationResourceSpecification/",
        "src/main/resources/terminology/resourcespecificationsOwl/"
