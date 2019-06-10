@@ -14,7 +14,7 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
   val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(iE, ssE, this, null)
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor.getOrElse(Json.jEmptyObject))
   val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform") // TODO!
-  val parameters: Map[String,Node] = getParametersMap
+  val parameters: Map[String,GenericValueNode] = getParametersMap
   val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(iE,ssE,this,e._1,e._2)))).toMap
@@ -22,7 +22,7 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
   var embeddedPolicies : Map[String,StackSetResource] = Map()
   val outputByLogicalId: Map[String, Node] = getOutputsByLogicalId
   val outputByExportName: Map[String, Node] = getOutputsMapByExportName
-  val resourceByArn: Map[String,Node] = createResourceByArnMap
+  var resourceByArn: Map[String,Node] = Map()//createResourceByArnMap
 
 
 
@@ -81,9 +81,9 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
   }
 
 
-  private def getParametersMap : Map[String,Node] = {
+  private def getParametersMap : Map[String,GenericValueNode] = {
 
-    def parametersMapEntry (e: (String,Json)) : Map[String,Node] = {
+    def parametersMapEntry (e: (String,Json)) : Map[String,GenericValueNode] = {
 
       templateDescriptorAsMapOfJsons.get(e._1) match {
         case None =>
@@ -103,7 +103,7 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
     }
 
 
-    def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,Node] = paramType match {
+    def decodeJsonParameterValue(paramName:String, jsonValue: Json, paramType:String): Map[String,GenericValueNode] = paramType match {
       case "String" =>
         Map(paramName -> StringNode(DecodeJson.StringDecodeJson.decodeJson(jsonValue).toOption.get.toLowerCase()))
       case "Number" =>

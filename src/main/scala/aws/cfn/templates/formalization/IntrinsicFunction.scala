@@ -3,7 +3,7 @@ package aws.cfn.templates.formalization
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import aws.cfn.templates.encoding.{Json2InfrastructureEncoder, Json2StackSetEncoder}
+import aws.cfn.templates.encoding.{Arn, Json2InfrastructureEncoder, Json2StackSetEncoder}
 
 import scala.language.postfixOps
 
@@ -15,14 +15,13 @@ sealed trait IntrinsicFunction
 
 
 
-final case class ArnFunction( resources   :Map[String,StackSetResource],
-                              parameters  :Map[String,Node],
-                              arnsMap     :Map[String,Node] ) extends IntrinsicFunction
+final case class ArnFunction( iE: Json2InfrastructureEncoder, resources   :Map[String,StackSetResource],
+                              parameters  :Map[String,Node], arnsMap :Map[String,Node] ) extends IntrinsicFunction
 {
   def apply(arnString: String) : Node =
   {
     val evaluatedArnStringNode = SubFunction(resources, parameters) (StringNode(arnString))
-    new Arn(evaluatedArnStringNode.value).resourceFromArn()
+    new Arn(iE, evaluatedArnStringNode.value).resourceFromArn()
   }
 }
 
@@ -217,7 +216,8 @@ final case class TransformFunction() extends IntrinsicFunction
 
 
 
-final case class RefFunction( resources   :Map[String,StackSetResource],
+final case class RefFunction( iE: Json2InfrastructureEncoder,
+                              resources   :Map[String,StackSetResource],
                               parameters  :Map[String,Node],
                               ssE         :Json2StackSetEncoder) extends IntrinsicFunction
 {
@@ -228,7 +228,7 @@ final case class RefFunction( resources   :Map[String,StackSetResource],
       case str: StringNode =>
         if (str.value.startsWith("arn:"))
         {
-          val referredNode = ArnFunction(resources,parameters, ssE.resourceByArn)(str.value)
+          val referredNode = ArnFunction(iE,resources,parameters, ssE.resourceByArn)(str.value)
           if (!ssE.resourceByArn.values.toVector.contains(referredNode))
             ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> referredNode.asInstanceOf[ForeignResource])
           referredNode

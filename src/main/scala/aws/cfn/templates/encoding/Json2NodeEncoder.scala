@@ -15,7 +15,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
     json match {
-      case j if isArn(j)            => ArnFunction(tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
+      case j if isArn(j)            => ArnFunction(iE,tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
@@ -355,7 +355,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     stringToMatch match {
       case n if isArn(n) =>
         val subArn = SubFunction(tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap)
-        ArnFunction(tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
+        ArnFunction(iE,tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
       case _ =>
         val encodedStringToMatch = encode(stringToMatch)
         (substitutionMap,encodedStringToMatch) match {
@@ -377,15 +377,16 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
   private def validateParamsAndEvalRef(j: Json) = {
     val encodedReferredEntity = encode (j.field("Ref").get)
-    RefFunction(tE.resources, tE.parameters, ssE) (encodedReferredEntity)
+    RefFunction(iE,tE.resources, tE.parameters, ssE) (encodedReferredEntity)
   }
 
 
 
 
 
-  private def getNodesAsMapOfEvalStrings(j:Json) =
+  private def getNodesAsMapOfEvalStrings(j:Json) = {
     subFieldNames(j) zip subFieldValueEvalContents(j) toMap
+  }
 
   private def subFieldValueEvalContents (j: Json) =
     j.objectFieldsOrEmpty map ( f => getLowerCaseEvalStringField(j, f) )
@@ -396,7 +397,8 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
       case NoValue => ""
       case StringNode(s) => s
       case StackSetResource(name,_,_,_) => name
-      case _ => println("Function getLowerCaseEvalStringField should not return another type.")
+      case ForeignResource(name)        => name
+      case _ => println("Function getLowerCaseEvalStringField should not return another type. Encoded field is " + encodedField)
       ""// TODO
     }
   }
