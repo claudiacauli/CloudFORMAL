@@ -8,19 +8,19 @@ import aws.cfn.templates.formalization._
 import scala.language.postfixOps
 
 
-protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:String, templateJson:Json, templateDescriptor:Option[Json]){
+protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, templateName:String, templateJson:Json, templateDescriptor:Option[Json]){
 
 //  println("\n\n\n\n\n\n\n\n\nENCODING TEMPLATE WITH NAME " + templateName)
 //  println()
 
   val template = new Template(templateName)
-  val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(ssE, this, null)
+  val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(iE, ssE, this, null)
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor.getOrElse(Json.jEmptyObject))
   val templateTransformAsMapOfJson: Map[String, Json] = getSection("Transform") // TODO!
   val parameters: Map[String,Node] = getParametersMap
   val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
-  val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(ssE,this,e._1,e._2)))).toMap
+  val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(iE,ssE,this,e._1,e._2)))).toMap
   val resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
   var embeddedPolicies : Map[String,StackSetResource] = Map()
   val outputByLogicalId: Map[String, Node] = getOutputsByLogicalId
@@ -31,7 +31,7 @@ protected class Json2TemplateEncoder(ssE: Json2StackSetEncoder, templateName:Str
 
 
   def encode(): Template = {
-    //println("\n\n\n\n\n\n\n\n\n\n\n\nTEMPLATE: " + templateName)
+    //println("\n\n\n\n\n\n\nTEMPLATE: " + templateName)
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
     template.resources = template.resources ++ embeddedPolicies
 

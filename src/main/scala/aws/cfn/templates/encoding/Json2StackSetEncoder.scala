@@ -9,14 +9,14 @@ import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntologyManager}
 object Json2StackSetEncoder {
 
   // Template ingested as: (Name, TemplateJson, DescriptorJson)
-  def encode(templates: Vector[(String,Json,Option[Json])], stackSetName: String): StackSet =
-    new Json2StackSetEncoder(templates, stackSetName).encode()
+  def encode(iE: Json2InfrastructureEncoder, templates: Vector[(String,Json,Option[Json])], stackSetName: String): StackSet =
+    new Json2StackSetEncoder(iE,templates, stackSetName).encode()
 
 }
 
 
 
-class Json2StackSetEncoder(templates: Vector[(String,Json,Option[Json])], stackSetName: String) {
+class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(String,Json,Option[Json])], stackSetName: String) {
 
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager()
   val df : OWLDataFactory = manager.getOWLDataFactory
@@ -24,7 +24,7 @@ class Json2StackSetEncoder(templates: Vector[(String,Json,Option[Json])], stackS
   val stackSet = new StackSet(stackSetName, manager)
 
   val templatesEncoders: Vector[Json2TemplateEncoder] =
-    templates map (t => new Json2TemplateEncoder(this,t._1,t._2, t._3))
+    templates map (t => new Json2TemplateEncoder(iE,this,t._1,t._2, t._3))
 
   val outputsByExportName : Map[String,Node] =
     (templatesEncoders flatMap ( te => te.outputByExportName )).toMap

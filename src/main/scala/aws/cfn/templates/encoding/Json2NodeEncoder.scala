@@ -10,7 +10,7 @@ import aws.cfn.templates.formalization._
 
 import scala.language.postfixOps
 
-protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEncoder, rE: Json2ResourceEncoder) {
+protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, tE: Json2TemplateEncoder, rE: Json2ResourceEncoder) {
 
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
@@ -192,8 +192,8 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedJson = encode(j.field("Fn::Not").get)
 
     encodedJson match {
-      case n : BooleanNode                      => NotFunction()(n)
-      case n : ListBoolean                      => NotFunction()(n.value.head)
+      case bn : BooleanNode                        => NotFunction()(bn)
+      case l  : ListNode[BooleanNode]             => NotFunction()(l.value.head)
       case _ =>
         println("\nWe should NOT get here. The result of the evaluation of the node contained in a Not function is not a boolean node.")
         println("The original json node of the FnNot is: " + j.field("Fn::Not").get )
@@ -295,7 +295,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedImportName = encode (j.field ("Fn::ImportValue").get)
 
     encodedImportName match {
-      case i:StringNode => ImportValueFunction(ssE.outputsByExportName,tE.outputByLogicalId)(i)
+      case i:StringNode => ImportValueFunction(iE, ssE.outputsByExportName,tE.outputByLogicalId)(i)
       case _ =>
         println("\nWe should NOT get here. It was not possible to evaluate ImportValue params as a String. Node is: " + j)
         NoValue
@@ -309,7 +309,7 @@ protected class Json2NodeEncoder(ssE: Json2StackSetEncoder, tE: Json2TemplateEnc
     val encodedList = encode (arrayAt(j,"Fn::Join",1))
 
     (encodedDelimiter, encodedList) match {
-      case (d:StringNode,l:ListString) => JoinFunction()(d,l)
+      case (d:StringNode,l:ListNode[StringNode]) => JoinFunction()(d,l)
       case _ =>
         println("\nWe should NOT get here. Unable to resolve params of Join to correct types. Json : " + j)
         NoValue

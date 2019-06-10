@@ -361,4 +361,7 @@ private class Specification2DLEncoder(resSpec : ResourceSpecification) {
     m.manager.applyChange( new AddAxiom( m.ontology, labelAxiom ))
   }
 
+
+
+
 }

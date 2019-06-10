@@ -2,7 +2,8 @@ package aws.cfn.templates.formalization
 
 import java.nio.charset.StandardCharsets
 import java.util.Base64
-import aws.cfn.templates.encoding.Json2StackSetEncoder
+
+import aws.cfn.templates.encoding.{Json2InfrastructureEncoder, Json2StackSetEncoder}
 
 import scala.language.postfixOps
 
@@ -88,7 +89,8 @@ final case class GetAttFunction ( resources :Map[String,StackSetResource]) exten
   {
     if (attributeName.value.equals("arn") && resources!=null && resources.get(resourceName.value).isDefined)
       resources(resourceName.value)
-    else if ( resources!=null && resources(resourceName.value).attributes.get(attributeName.value).isDefined )
+    else if ( resources!=null && resources.get(resourceName.value).isDefined
+      && resources(resourceName.value).attributes.get(attributeName.value).isDefined )
       resources(resourceName.value).attributes(attributeName.value)
     else
       NoValue
@@ -112,14 +114,19 @@ final case class GetAZsFunction() extends IntrinsicFunction
 
 
 
-final case class ImportValueFunction( outputsByExportName: Map[String,Node],
+final case class ImportValueFunction( iE: Json2InfrastructureEncoder,
+                                      outputsByExportName: Map[String,Node],
                                       outputsByLogicalId: Map[String,Node] ) extends IntrinsicFunction
 {
   def apply(importName: StringNode): Node =
   {
+    def lookupOtherStackSets() =
+      (iE.stackSetEncoders find (ssE => ssE.outputsByExportName.get(importName.value).isDefined))
+        .map (ssE => ssE.outputsByExportName(importName.value)).getOrElse(NoValue)
+
     outputsByLogicalId.getOrElse(importName.value,
       outputsByExportName.getOrElse(importName.value,
-        NoValue))
+        lookupOtherStackSets()))
   }
 }
 

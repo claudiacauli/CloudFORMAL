@@ -125,12 +125,12 @@ object Json2ResourceEncoder {
 
 
 
-protected class Json2ResourceEncoder(ssE: Json2StackSetEncoder, tE:Json2TemplateEncoder,
+protected class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, tE:Json2TemplateEncoder,
                                      resourceLogicalId:String, resourceJsonNode:Json) {
 
   val serviceType: String = getServiceName
   val resourceType: String = getResourceType
-  val NodeEncoder = new Json2NodeEncoder(ssE,tE,this)
+  val NodeEncoder = new Json2NodeEncoder(iE, ssE,tE,this)
   val PolicyEncoder = new Json2PolicyDocumentEncoder(ssE,tE,this,NodeEncoder)
   var resource : StackSetResource = _
 

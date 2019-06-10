@@ -16,9 +16,7 @@ sealed trait StackSetNode extends Node
       final case class JsonNode(value: String)      extends ValueNode[String]
       final case class CommaDelimitedListNode(value: String) extends ValueNode[String]
       final case class TimeStampNode(value: String)   extends ValueNode[String]
-      sealed case class ListNode[T<:Node](value: Vector[T])  extends GenericValueNode
-        final class ListString(value:Vector[StringNode])        extends ListNode[StringNode](value:Vector[StringNode])
-        final class ListBoolean(value: Vector[BooleanNode])     extends ListNode[BooleanNode](value:Vector[BooleanNode])
+      final case class ListNode[T<:Node](value: Vector[T])  extends GenericValueNode
       final case class MapNode[T<:Node](value: Map[String,T]) extends GenericValueNode
 
 

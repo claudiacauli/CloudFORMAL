@@ -14,9 +14,11 @@ object Json2InfrastructureEncoder {
 
 class Json2InfrastructureEncoder(stackSets: Vector[(Vector[(String,Json,Option[Json])],String)], infrastructureName:String){
 
+  val stackSetEncoders: Vector[Json2StackSetEncoder] = stackSets map (ss => new Json2StackSetEncoder(this,ss._1,ss._2))
+
   def encode(): Infrastructure = {
         new Infrastructure(infrastructureName,
-          stackSets map ( ss => Json2StackSetEncoder.encode(ss._1,ss._2)) )
+          stackSetEncoders map (ssE => ssE.encode()) )
   }
 
 }

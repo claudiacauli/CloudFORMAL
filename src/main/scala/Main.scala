@@ -30,8 +30,8 @@ object Main extends App {
 //
 //    println(vt.groupBy(e => e._1).toVector.flatMap( e => Map(e._1 -> e._2.flatMap( p => p._2 ) )))
 
-  recompileTerminology()
-  //modelZelkovaTest()
+  //recompileTerminology()
+  modelZelkovaTest()
 
 
   def modelZelkovaTest(): Unit = {
