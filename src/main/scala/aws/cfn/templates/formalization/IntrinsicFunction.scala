@@ -120,9 +120,11 @@ final case class ImportValueFunction( iE: Json2InfrastructureEncoder,
 {
   def apply(importName: StringNode): Node =
   {
-    def lookupOtherStackSets() =
+    def lookupOtherStackSets() = {
       (iE.stackSetEncoders find (ssE => ssE.outputsByExportName.get(importName.value).isDefined))
         .map (ssE => ssE.outputsByExportName(importName.value)).getOrElse(NoValue)
+    }
+
 
     outputsByLogicalId.getOrElse(importName.value,
       outputsByExportName.getOrElse(importName.value,

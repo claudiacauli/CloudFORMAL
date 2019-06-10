@@ -10,9 +10,6 @@ import scala.language.postfixOps
 
 protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, templateName:String, templateJson:Json, templateDescriptor:Option[Json]){
 
-//  println("\n\n\n\n\n\n\n\n\nENCODING TEMPLATE WITH NAME " + templateName)
-//  println()
-
   val template = new Template(templateName)
   val NodeEncoder: Json2NodeEncoder = new Json2NodeEncoder(iE, ssE, this, null)
   val templateDescriptorAsMapOfJsons : Map[String,Json] = EncodeUtils.getNodesAsMapOfJsons(templateDescriptor.getOrElse(Json.jEmptyObject))
@@ -31,25 +28,21 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
 
 
   def encode(): Template = {
-    //println("\n\n\n\n\n\n\nTEMPLATE: " + templateName)
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
     template.resources = template.resources ++ embeddedPolicies
-
-//    println()
-//    print("MAPPINGS\t")
-//    println(mappings)
-//    println()
-//    print("CONDITIONS\t")
-//    println(conditions)
-//    println()
-//    print("OUTPUTS BY LOGICAL ID\t")
-//    println(outputByLogicalId)
-//    println()
-//    print("OUTPUTS BY EXPORT NAME\t")
-//    println(outputByExportName)
-
     template
   }
+
+
+  override def toString: String = {
+    "\t\tTemplate: " + templateName + "\n" +
+    prettyString(parameters,"Parameters") +
+    prettyString(mappings, "Mappings") +
+    prettyString(conditions, "Conditions") +
+    prettyString(outputByLogicalId, "Outputs By ID") +
+    prettyString(outputByExportName, "Outputs By Export Name")
+  }
+
 
 
 
@@ -186,6 +179,14 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
     getSection("Mappings") map (m => (m._1 ,
       ( EncodeUtils.getNodesAsMapOfJsons(m._2).toVector map ( p => (p._1 , getNodesAsMapOfStrings(p._2))) ).toMap
     ))
+  }
+
+
+
+  private def prettyString(map : Map[String,Any], s : String) = {
+    if (map.nonEmpty)
+      "\t\t "+s+": \n"   + map.foldLeft("")((a,b)=> a + "\t\t\t("+b._1+" -> "+b._2+")\n")
+    else ""
   }
 
 }

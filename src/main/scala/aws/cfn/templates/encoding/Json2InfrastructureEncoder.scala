@@ -17,8 +17,18 @@ class Json2InfrastructureEncoder(stackSets: Vector[(Vector[(String,Json,Option[J
   val stackSetEncoders: Vector[Json2StackSetEncoder] = stackSets map (ss => new Json2StackSetEncoder(this,ss._1,ss._2))
 
   def encode(): Infrastructure = {
-        new Infrastructure(infrastructureName,
+    val infr = new Infrastructure(infrastructureName,
           stackSetEncoders map (ssE => ssE.encode()) )
+    println(this)
+    infr
   }
+
+
+  override def toString: String = {
+    "\nInfrastructure: " + infrastructureName + ", includes StackSets: \n" +
+      stackSetEncoders.foldLeft("")((a,b)=> a + " - " + b.stackSet.name + " \n")  + "\n" +
+      stackSetEncoders.foldLeft("")((a,b)=> a + b.toString + "\n")
+  }
+
 
 }

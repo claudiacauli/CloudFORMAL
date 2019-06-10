@@ -44,4 +44,10 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
     stackSet
   }
 
+  override def toString: String = {
+    "\tStackSet: " + stackSetName + ", includes Templates: " + "\n" +
+    templatesEncoders.foldLeft("")((a,b)=> a + b.toString + "\n")
+
+  }
+
 }

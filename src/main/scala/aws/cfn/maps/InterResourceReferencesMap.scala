@@ -160,9 +160,9 @@ object InterResourceReferencesMap {
     "logssubscriptionfilter_subscriptionfilter_destinationarn" -> (null,null,true,true),
     "logssubscriptionfilter_subscriptionfilter_loggroupname" -> ("logsloggroup","loggroup",true,true),
     "logsdestination_destination_targetarn" -> (null,null,true,true),
+    "logsdestination_destination_rolearn" -> ("iamrole","role",true,true),
     "route53recordset_recordset_hostedzoneid" -> ("route53hostedzone","hostedzone",false,true),
     "logsmetricfilter_metricfilter_loggroupname" -> ("logsloggroup","loggroup",true,true),
-
     "apigatewayaccount_account_cloudwatchrolearn" -> ("iamrole","role",false,true),
     "apigatewaydeployment_deployment_restapiid" -> ("apigatewayrestapi","restapi",true,true),
     "apigatewaybasepathmapping_basepathmapping_restapiid" -> ("apigatewayrestapi","restapi",true,true),
