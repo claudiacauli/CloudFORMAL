@@ -14,6 +14,7 @@ object DLModelWriter {
     val stackSetFileSuffix          = "_StackSetModel.owl"
     val stacksetOntoSuffix: String = stackSetFileSuffix.split(".owl").head
     val infrastructureFileSuffix    = "_InfrastructureModel.owl"
+    val dataFlowFileSuffix = "_DataFlowModel.owl"
 
 
 
@@ -98,6 +99,24 @@ object DLModelWriter {
         }
 
         addProtegeCatalogue(importedStackSets(model),model.name,folderName)
+    }
+
+
+    def writeDataFlowToOutputFolder(model:DLModel, outputDir:String, format:String = "rdf"): Unit = {
+
+        val folderName = outputDir+model.name
+        val fileName = folderName + "/" + model.name + dataFlowFileSuffix
+
+        makeDirIfDoesNotExist(folderName)
+
+        format.toLowerCase() match {
+            case "rdf" => model.manager.saveOntology(model.ontology, new RDFXMLDocumentFormat, new FileOutputStream(fileName))
+            case "xml" => model.manager.saveOntology(model.ontology, new OWLXMLDocumentFormat, new FileOutputStream(fileName))
+            case "ttl" => model.manager.saveOntology(model.ontology, new TurtleDocumentFormat, new FileOutputStream(fileName))
+            case "fun" => model.manager.saveOntology(model.ontology, new FunctionalSyntaxDocumentFormat, new FileOutputStream(fileName))
+        }
+
+        //  addProtegeCatalogue(importedStackSets(model),model.name,folderName)
     }
 
 

@@ -15,17 +15,21 @@ trait DLModel {
 
   def writeToOutputFolder (destinationFolder: String)
 
-  def importOntology(model: DLModel, o: OWLOntology): ChangeApplied =
+  def importOntology(model: DLModel, o: OWLOntology): Unit =
     importDocIRI(model, o.getOWLOntologyManager.getOntologyDocumentIRI(o))
 
 
-  def importDocIRI(model:DLModel, docIRI: IRI): ChangeApplied =
+  def importDocIRI(model:DLModel, docIRI: IRI) : Unit =
   {
-    model.manager.loadOntology( docIRI )
-    model.manager.applyChange( new AddImport( model.ontology, model.df.getOWLImportsDeclaration( docIRI ) ))
+    try {
+      model.manager.loadOntology( docIRI )
+      model.manager.applyChange( new AddImport( model.ontology, model.df.getOWLImportsDeclaration( docIRI ) ))
+    } catch {
+      case e: OWLOntologyDocumentAlreadyExistsException =>
+    }
   }
 
-  def importFile(model:DLModel, owlFile: File): ChangeApplied =
+  def importFile(model:DLModel, owlFile: File): Unit =
   {
     val o = manager.loadOntologyFromOntologyDocument(owlFile)
     model.manager.applyChange(
