@@ -14,6 +14,7 @@ object Infrastructure2DLEncoder {
 class Infrastructure2DLEncoder(infrastructure: Infrastructure) {
 
   def encode(): InfrastructureModel = {
+
     val infrastructureModel = new InfrastructureModel(infrastructure.name,
       infrastructure.stacksets map (ss => StackSet2DLEncoder.encode(ss)))
 

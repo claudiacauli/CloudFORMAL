@@ -1,14 +1,62 @@
 package aws.cfn.maps
 
+
 object ActionsMap {
 
-  def lookUp(k: String) : Option[Map[String,Vector[String]]]= map.get(k)
-  def lookUp(k1:String, k2:String) : Option[Vector[String]] = map(k1).get(k2)
+
+  // https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html
+  val actionPrefixesFromService : Map[String,Vector[String]] =
+    Map(
+    "apigateway"              -> Vector("execute-api"),
+    "applicationautoscaling"  -> Vector("application-autoscaling"),
+    "autoscaling"             -> Vector("autoscaling-plans", "autoscaling"  ),
+    "certificatemanager"      -> Vector("acm"),
+    "cognito"                 -> Vector("cognito-identity", "cognito-sync", "cognito-idp"),
+    "dynamodb"                -> Vector("dynamodb", "dax"),
+    "efs"                     -> Vector("elasticfilesystem"),
+    "elasticloadbalancingv2"  -> Vector("elasticloadbalancing"),
+    "emr"                     -> Vector("elasticmapreduce"),
+    "elasticsearch"           -> Vector("es"),
+    "kinesisanalyticsv2"      -> Vector("kinesisanalytics"),
+    "kinesisfirehose"         -> Vector("firehose"),
+    "neptune"                 -> Vector("neptune-db"),
+    "opsworkscm"              -> Vector("opsworks-cm"),
+    "rds"                     -> Vector("rds","rds-data"),
+    "route53"                 -> Vector("route53","route53domains"),
+    "stepfunctions"           -> Vector("states"),
+    "wafregional"             -> Vector("waf-regional")
+  )
+
+  def lookUp(serviceName: String): Vector[(String, Map[String, Vector[String]])] = {
+
+    actionPrefixesFromService.getOrElse(serviceName,Vector(serviceName)) flatMap ( actPrefix =>
+      Map(actPrefix -> map.getOrElse(actPrefix,Map()))
+    )
+
+  }
+
+  def lookUp(serviceName:String, resourceType:String) : Vector[String] = {
+    actionPrefixesFromService.getOrElse(serviceName,Vector(serviceName)) flatMap
+      ( actPrefix =>
+        map.getOrElse(actPrefix,Map())
+        .getOrElse(resourceType,
+          map.getOrElse(actPrefix,Map())
+            .getOrElse("",Vector())) )
+  }
+
   def getKeys: Iterable[String] = map.keys
 
   private val map : Map[String,Map[String,Vector[String]]] = Map(
 
-      "ApplicationAutoScaling" ->
+      "acm" -> Map(
+        "" -> Vector("DeleteCertificate","DescribeCertificate","RequestCertificate")
+      ),
+
+      "apigateway" -> Map(
+        "RestApi" -> Vector("Get","Post", "Delete", "Patch")
+      ),
+
+      "applicationautoscaling" ->
         Map(
           "ScalingPolicy" ->  Vector("DeleteScalingPolicy", "DescribeScalingPolicy", "PutScalingPolicy"),
 
@@ -17,14 +65,14 @@ object ActionsMap {
 
 
 
-      "AutoScalingPlans" ->
+      "autoscalingplans" ->
         Map(
           "ScalingPlan" -> Vector("CreateScalingPlan", "DeleteScalingPlan", "DescribeScalingPlanResources",
               "DescribeScalingPlans", "GetScalingPlanResourceForecastData", "UpdateScalingPlan")),
 
 
 
-      "Batch" ->
+      "batch" ->
         Map(
           "JobQueue" -> Vector("CancelJob", "CreateJobQueue", "DeleteJobQueue", "DeregisterJobDefinition",
                "DescribeJobDefinitions", "DescribeJobQueues", "DescribeJobs", "ListJobs", "RegisterJobDefinition",
@@ -34,7 +82,7 @@ object ActionsMap {
 
 
 
-      "CloudFormation" -> Map(
+      "cloudformation" -> Map(
         "Stack" -> Vector("CancelUpdateStack", "CreateStack", "CreateStackInstances", "CreateStackSet",
           "DeleteStack", "DeleteStackInstances", "DeleteStackSet", "ContinueUpdateRollback", "CreateChangeSet", "DeleteChangeSet",
           "DescribeAccountLimits", "DescribeChangeSet", "DescribeStackDriftDetectionStatus", "DescribeStackEvents",
@@ -47,7 +95,7 @@ object ActionsMap {
 
 
 
-      "CloudWatch" ->  Map(
+      "cloudwatch" ->  Map(
         "Alarm" -> Vector("DeleteAlarms", "DescribeAlarmHistory", "DescribeAlarms", "DescribeAlarmsForMetric",
             "DisableAlarmActions", "EnableAlarmActions", "SetAlarmState"),
 
@@ -57,59 +105,106 @@ object ActionsMap {
 
 
 
-      "CodeBuild" -> Map(
+      "codebuild" -> Map(
         "Project" -> Vector("BatchDeleteBuilds", "BatchGetBuilds", "BatchGetProjects", "CreateProject", "CreateWebhook",
             "DeleteProject", "DeleteSourceCredentials", "DeleteWebhook", "ImportSourceCredentials", "InvalidateProjectCache",
             "ListBuilds", "ListBuildsForProject", "ListCuratedEnvironmentImages", "ListProjects", "ListSourceCredentials",
             "StartBuild", "StopBuild", "UpdateProject", "UpdateWebhook")),
 
 
-      "CodeCommit" -> Map(),
+      "codecommit" -> Map(),
 
 
-      "Config" -> Map(),
+      "config" -> Map(),
 
 
-      "DynamoDB" -> Map(),
+      "dynamodb" -> Map(
+        "Table" -> Vector(
+          "BatchGetItem", "BatchWriteItem", "CreateBackup", "CreateGlobalTable", "CreateTable", "DeleteBackup",
+          "DeleteItem", "DeleteTable", "DescribeBackup", "DescribeContinuousBackups", "DescribeEndpoints",
+          "DescribeGlobalTable", "DescribeGlobalTableSettings", "DescribeLimits", "DescribeTable", "DescribeTimeToLive",
+          "GetItem", "ListBackups", "ListGlobalTables", "ListTables", "ListTagsOfResource", "PutItem", "Query",
+          "RestoreTableFromBackup", "RestoreTableToPointInTime", "Scan", "TagResource", "TransactGetItems",
+          "TransactWriteItems", "UntagResource", "UpdateContinuousBackups", "UpdateGlobalTable", "UpdateGlobalTableSettings",
+          "UpdateItem", "UpdateTable", "UpdateTimeToLive", "DescribeStream", "GetRecords", "GetShardIterator",
+          "ListStreams"
+        )
+      ),
 
 
-      "Ec2" -> Map(),
+      "ec2" -> Map(),
 
 
-      "ECR" -> Map(),
+      "ecr" -> Map(),
 
 
-      "ECS" -> Map(),
+      "ecs" -> Map(),
 
 
-      "EKS" -> Map(),
+      "eks" -> Map(),
 
 
-      "ElastiCache" -> Map(),
+      "elasticache" -> Map(),
 
 
-      "ElasticBeanstalk" -> Map(),
+      "elasticbeanstalk" -> Map(),
 
 
-      "ElasticLoadBalancing" -> Map(),
+      "elasticloadbalancing" -> Map(),
 
 
-      "IAM" -> Map(),
+      "iam" -> Map(
+        "" -> Vector("ListPolicies", "GetPolicyVersion")
+      ),
 
 
-      "Kinesis" -> Map(),
+      "kms" -> Map(
+        "Key" -> Vector(
+          "CancelKeyDeletion", "ConnectCustomKeyStore", "CreateAlias", "CreateCustomKeyStore", "CreateGrant", "CreateKey",
+          "Decrypt", "DeleteAlias", "DeleteCustomKeyStore", "DeleteImportedKeyMaterial", "DescribeCustomKeyStores",
+          "DescribeKey", "DisableKey", "DisableKeyRotation", "DisconnectCustomKeyStore", "EnableKey", "EnableKeyRotation",
+          "Encrypt", "GenerateDataKey", "GenerateDataKeyWithoutPlaintext", "GenerateRandom", "GetKeyPolicy",
+          "GetKeyRotationStatus", "GetParametersForImport", "ImportKeyMaterial", "ListAliases", "ListGrants",
+          "ListKeyPolicies", "ListKeys", "ListResourceTags", "ListRetirableGrants", "PutKeyPolicy", "ReEncrypt",
+          "RetireGrant", "RevokeGrant", "ScheduleKeyDeletion", "TagResource", "UntagResource", "UpdateAlias",
+          "UpdateCustomKeyStore", "UpdateKeyDescription"
+        )),
 
 
-      "Lambda" -> Map(),
+      "kinesis" -> Map(
+        "Stream" -> Vector(
+          "AddTagsToStream", "CreateStream", "DecreaseStreamRetentionPeriod", "DeleteStream", "DeregisterStreamConsumer",
+          "DescribeLimits", "DescribeStream", "DescribeStreamConsumer", "DescribeStreamSummary", "DisableEnhancedMonitoring",
+          "EnableEnhancedMonitoring", "GetRecords", "GetShardIterator", "IncreaseStreamRetentionPeriod", "ListShards",
+          "ListStreamConsumers", "ListStreams", "ListTagsForStream", "MergeShards", "PutRecord", "PutRecords",
+          "RegisterStreamConsumer", "RemoveTagsFromStream", "SplitShard", "StartStreamEncryption", "StopStreamEncryption",
+          "SubscribeToShard", "UpdateShardCount"
+      )),
 
 
-      "Logs" -> Map(),
+      "lambda" -> Map(),
 
 
-      "RDS" -> Map(),
+      "logs" -> Map(
+        "LogGroup" -> Vector(
+          "AssociateKmsKey", "CreateLogGroup", "DeleteLogGroup", "DescribeLogGroups", "GetLogGroupFields",
+          "ListTagsLogGroup", "TagLogGroup", "UntagLogGroup"),
+        "LogStream" -> Vector("CancelExportTask", "CreateExportTask", "CreateLogStream", "DeleteLogStream" , "DeleteResourcePolicy",
+          "DescribeSubscriptionFilters", "DescribeResourcePolicies", "DisassociateKmsKey", "FilterLogEvents",
+          "DeleteRetentionPolicy", "DescribeDestinations", "DescribeExportTasks", "DescribeLogStreams", "GetLogEvents",
+          "GetLogRecord", "PutDestination", "PutDestinationPolicy", "PutLogEvents", "PutMetricFilter", "PutResourcePolicy",
+          "PutRetentionPolicy"),
+        "Destination" -> Vector("DeleteDestination"),
+        "MetricFilter" -> Vector("DeleteMetricFilter", "DescribeMetricFilters", "DescribeQueries", "GetQueryResults",
+        "StartQuery", "StopQuery", "TestMetricFilter"),
+        "SubscriptionFilter" -> Vector("DeleteSubscriptionFilter", "PutSubscriptionFilter")
+        ),
 
 
-      "S3" -> Map(
+      "rds" -> Map(),
+
+
+      "s3" -> Map(
         "Bucket" -> Vector("AbortMultipartUpload", "CreateBucket", "CreateJob", "DeleteBucket", "DeleteBucketWebsite",
             "DeleteObject", "DeleteObjectTagging", "DeleteObjectVersion", "DeleteObjectVersionTagging", "DescribeJob",
             "GetAccelerateConfiguration", "GetAccountPublicAccessBlock", "GetAnalyticsConfiguration", "GetBucketAcl",
@@ -131,13 +226,33 @@ object ActionsMap {
         "Policy" -> Vector("DeleteBucketPolicy", "GetBucketPolicy", "GetBucketPolicyStatus", "PutBucketPolicy")),
 
 
-      "SNS" -> Map(),
+      "sns" -> Map(
+        "Topic" -> Vector(
+          "AddPermission", "CheckIfPhoneNumberIsOptedOut", "ConfirmSubscription", "CreatePlatformApplication", "CreatePlatformEndpoint",
+          "CreateTopic", "DeleteEndpoint", "DeletePlatformApplication", "DeleteTopic", "GetEndpointAttributes",
+          "GetPlatformApplicationAttributes", "GetSMSAttributes", "GetSubscriptionAttributes", "GetTopicAttributes",
+          "ListEndpointsByPlatformApplication", "ListPhoneNumbersOptedOut", "ListPlatformApplications",
+          "ListSubscriptions", "ListSubscriptionsByTopic", "ListTagsForResource", "ListTopics", "OptInPhoneNumber",
+          "Publish","RemovePermission", "SetEndpointAttributes", "SetPlatformApplicationAttributes", "SetSMSAttributes",
+          "SetSubscriptionAttributes", "SetTopicAttributes", "Subscribe", "TagResource", "Unsubscribe",
+          "UntagResource"
+        )
+      ),
+
+      "ses" -> Map(
+        "" -> Vector("SendEmail","SendRawEmail")
+      ),
+
+      "sqs" -> Map(),
 
 
-      "SQS" -> Map(),
+      "sts" -> Map(
+        "" -> Vector(
+          "AssumeRole", "AssumeRoleWithSAML", "AssumeRoleWithWebIdentity", "DecodeAuthorizationMessage", "GetCallerIdentity",
+          "GetFederationToken", "GetSessionToken"
+        )
+      )
 
-
-      "STS" -> Map()
 
 
   )

@@ -18,12 +18,12 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
   val mappings: Map[String,Map[String,Either[String,Map[String,Any]]]] = getMappings//getSection("Mappings")
   val conditions: Map[String,Boolean] = getConditions
   val resourceEncoders : Map[String,Json2ResourceEncoder] = (getSection("Resources").toVector map ( e => (e._1, new Json2ResourceEncoder(iE,ssE,this,e._1,e._2)))).toMap
-  val resources: Map[String,StackSetResource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
-  var embeddedPolicies : Map[String,StackSetResource] = Map()
+  val resources: Map[String,Resource] = (resourceEncoders.toVector flatMap (rE => rE._2.createResourceNodeWithAttributes )).toMap
+  var embeddedPolicies : Map[String,Resource] = Map()
   val outputByLogicalId: Map[String, Node] = getOutputsByLogicalId
   val outputByExportName: Map[String, Node] = getOutputsMapByExportName
   var resourceByArn: Map[String,Node] = Map()//createResourceByArnMap
-
+  var policyEncoders : Vector[Json2PolicyDocumentEncoder] = Vector()
 
 
   def updateResourcesNames : Unit = {
@@ -53,9 +53,9 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
 
 
 
-  private def createResourceByArnMap: Map[String, StackSetResource] = {
+  private def createResourceByArnMap: Map[String, Resource] = {
 
-    def arnResourcePairFromResources( e: (String, StackSetResource)) : Map[String,StackSetResource] = {
+    def arnResourcePairFromResources( e: (String, Resource)) : Map[String,Resource] = {
       if (e._2.attributes.contains("Arn"))
         Map ( e._2.attributes("Arn").asInstanceOf[StringNode].value -> e._2 )
       else Map()

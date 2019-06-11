@@ -13,6 +13,29 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -26,17 +49,6 @@
 
 
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_aliasname">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -62,17 +74,24 @@
     <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_aliasname"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_targetkeyid"/>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmsalias#alias_aliasname"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
 </rdf:RDF>
 
 

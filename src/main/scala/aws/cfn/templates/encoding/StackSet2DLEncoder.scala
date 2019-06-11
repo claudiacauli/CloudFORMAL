@@ -46,7 +46,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
   }
 
 
-  private def encodeResource(resource: StackSetResource): Vector[OWLAxiom]  = {
+  private def encodeResource(resource: Resource): Vector[OWLAxiom]  = {
 
 
     //    def createResourceNode(iri: IRI) =
@@ -70,7 +70,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
         case Some(op) =>
           cfnNode match {
            case ListNode(vec) => vec flatMap {
-             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ForeignResource(s))
+             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ExternalEntity(s))
              case NoValue => Vector()
              case n => encodeObjectProperty(sourceIndividual, op, n.asInstanceOf[ObjectNode])
             }
@@ -78,7 +78,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
            case NoValue => Vector()
            case _ => encodeObjectProperty(sourceIndividual, op,
              cfnNode match {
-               case StringNode(s) => ForeignResource(s)
+               case StringNode(s) => ExternalEntity(s)
                case _ => cfnNode.asInstanceOf[ObjectNode]
              })
          }
@@ -89,7 +89,7 @@ class StackSet2DLEncoder(stackSet: StackSet){
               vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
             case MapNode(map) => map.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
             case NoValue => Vector()
-            case StackSetResource(_,s,r,_) =>
+            case Resource(_,s,r,_) =>
               println("Data Property " + dp.toString.split("#").last + " of " + resource.serviceType + resource.resourceType + "#" + resource.resourceType + " points to resource of type "
                 + s + r + "#" + r )
               Vector() // TODO ERROR! Something wrong here: Property seems data but points to a resource
@@ -156,20 +156,20 @@ class StackSet2DLEncoder(stackSet: StackSet){
 
     def encodeObjectProperty(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, objNode: ObjectNode): Vector[OWLAxiom]
     = objNode match {
-      case StackSetResource(resourceLogicalId, _, _, _) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
+      case Resource(resourceLogicalId, _, _, _) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(resourceLogicalId)))
       case Subproperty(givenProperties, absentProperties) =>
         val individualRandomIRI = DLModelIRI.subpropertyBlankNodeIRI(stackSet.name)
         createBlankNode(sourceIndividual,objProp, individualRandomIRI) ++
           encodeAllGivenSubproperties(individualRandomIRI, givenProperties) ++
           (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
-      case ForeignResource(v) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(v)))
-      case PolicyDocument(statements) => // TODO Again!
-        val policyRandomIRI = DLModelIRI.policyNodeIRI(stackSet.name)
-        createPolicyNode(policyRandomIRI) ++
-          statements.flatMap(s => encodePropertyWithIRI(m.df.getOWLNamedIndividual(policyRandomIRI),
-            DLModelIRI.propertyTypeIRI("policydocument", "statement"), s))
-      case AllowStatement(_,_,_,_) => null // TODO
-      case DenyStatement(_,_,_,_) => null // TODO Continue from here and decide if you should move the instantiation from here to another class!
+      case ExternalEntity(v) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individual(v)))
+//      case PolicyDocument(statements) => // TODO Again!
+//        val policyRandomIRI = DLModelIRI.policyNodeIRI(stackSet.name)
+//        createPolicyNode(policyRandomIRI) /*++
+//          statements.flatMap(s => encodePropertyWithIRI
+//              (m.df.getOWLNamedIndividual(policyRandomIRI), DLModelIRI.propertyTypeIRI("policydocument", "statement"), s))*/
+//      case AllowStatement(_,_,_,_) => null // TODO
+//      case DenyStatement(_,_,_,_) => null // TODO Continue from here and decide if you should move the instantiation from here to another class!
       case _ => Vector() // TODO
     }
 

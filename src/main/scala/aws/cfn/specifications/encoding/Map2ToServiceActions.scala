@@ -12,15 +12,15 @@ object Map2ToServiceActions {
 
   private def serviceActions(serviceName : String): Vector[ServiceActions] = {
 
-    def resourceActionsVector (n: String, v: Vector[String]) : Vector[Action] =
-      v flatMap (s => Vector(new Action(s.toLowerCase(), n.toLowerCase() )))
+    def resourceActionsVector (resType: String, resActions: Vector[String]) : Vector[Action] =
+      resActions flatMap (act => Vector(new Action(act.toLowerCase(), resType.toLowerCase() )))
 
-    ActionsMap.lookUp(serviceName) match {
-      case None => Vector()
-      case Some(m) => Vector( new ServiceActions (serviceName.toLowerCase(), m.toVector flatMap ( e =>  resourceActionsVector(e._1, e._2) ) ) )
-    }
+    ActionsMap.lookUp(serviceName) flatMap ( p =>
+      Vector( new ServiceActions (p._1, p._2.toVector flatMap ( e =>  resourceActionsVector(e._1, e._2) ) ))
+      )
 
   }
+
 
 
 

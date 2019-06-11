@@ -1,7 +1,7 @@
 package aws.cfn.templates.encoding
 
 import argonaut.Json
-import aws.cfn.templates.formalization.{ForeignResource, Node, StackSet}
+import aws.cfn.templates.formalization.{ExternalEntity, Node, StackSet}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntologyManager}
 
@@ -34,7 +34,7 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
 
   //val resourcesByAccount : Map[String,Vector[Node]] = (templatesEncoders flatMap () )
 
-  var foreignResourcesByArn : Map[String,ForeignResource] = Map() // TODO
+  var foreignResourcesByArn : Map[String,ExternalEntity] = Map() // TODO
 
 
 
@@ -44,8 +44,13 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
   }
 
   def encode(): StackSet = {
-    stackSet.templates = templatesEncoders map ( te => te.encode() )
+    stackSet.templates    = templatesEncoders map ( te => te.encode() )
     stackSet.foreignNodes = foreignResourcesByArn
+    stackSet
+  }
+
+  def encodePolicies() : StackSet = {
+    templatesEncoders foreach ( tE => tE.policyEncoders foreach (pE => pE.encode()) )
     stackSet
   }
 

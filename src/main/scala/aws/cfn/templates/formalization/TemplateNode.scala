@@ -28,27 +28,35 @@ sealed trait StackSetNode extends Node
 
   sealed trait ObjectNode extends StackSetNode
 
-    final case class ForeignResource(name:String) extends Node with ObjectNode
+    sealed trait Entity extends ObjectNode
 
-    final case class StackSetResource(resourceLogicalId : String,
-                                      serviceType : String,
-                                      resourceType : String,
-                                      attributes : Map[String, GenericValueNode]
-                                 ) extends ObjectNode
-    {
-      val value: String = resourceLogicalId
-      var resourceName : String = resourceLogicalId
-      var givenProperties: Map[String,Node] = Map()
-      var absentProperties: Set[String] = Set()
-      def apply(): StackSetResource = this
-
-      override def toString: String = {
-       serviceType + "::" + resourceType + "(" + resourceLogicalId + ")"
+      case object Public extends Entity {
+        override def toString : String = "Public"
       }
-    }
+
+      final case class ExternalEntity(name:String) extends Node with Entity
+
+      final case class Resource(resourceLogicalId : String,
+                                serviceType : String,
+                                resourceType : String,
+                                attributes : Map[String, GenericValueNode]
+                                   ) extends Entity
+      {
+        val value: String = resourceLogicalId
+        var resourceName : String = resourceLogicalId
+        var givenProperties: Map[String,Node] = Map()
+        var absentProperties: Set[String] = Set()
+        def apply(): Resource = this
+
+        override def toString: String = {
+         serviceType + "::" + resourceType + "(" + resourceLogicalId + ")"
+        }
+      }
+
+    final case class ListOfObjectNodes(nodes:Vector[Node]) extends ObjectNode
 
     final case class Subproperty(givenProperties  : Map[String,Node],
-                                 absentProperties : Set[String]=Set()) extends ObjectNode
+                                 absentProperties : Set[String] = Set()) extends ObjectNode
     {
       def apply(): Subproperty = this
     }
@@ -58,14 +66,42 @@ sealed trait StackSetNode extends Node
       def apply(): PolicyDocument = this
     }
 
-    sealed trait Statement extends ObjectNode
+
+
+    sealed class Statement (p: (Boolean,Vector[Node]),
+                            a: (Boolean,Vector[String]),
+                            r: (Boolean, Vector[Node]),
+                            hasC: Boolean )  extends ObjectNode {
+
+      def list(l:Vector[Any]) = {
+        l.foldLeft("")((a,b)=>a+b+" ")
+      }
+
+      def pretty(a: (Boolean,Vector[Any])) = {
+        if (!a._1) " NOT { " + list(a._2) + " }" else " { " + list(a._2) + " }"
+      }
+
+      def pretty(hasC: Boolean): String = {
+        if (hasC) "\n with a condition."
+        else "\n with NO condition."
+      }
+
+    }
 
       final case class AllowStatement(p: (Boolean,Vector[Node]),
                                       a: (Boolean,Vector[String]),
                                       r: (Boolean, Vector[Node]),
-                                      c: Map[String,(AnyVal, AnyVal)] ) extends Statement
+                                      hasC: Boolean ) extends Statement(p,a,r,hasC){
+        override def toString: String = {
+          "Allows \n principals " + pretty(p) + "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + pretty(hasC)
+        }
+      }
 
       final case class DenyStatement(p: (Boolean,Vector[Node]),
                                      a: (Boolean,Vector[String]),
                                      r: (Boolean, Vector[Node]),
-                                     c: Map[String,(AnyVal, AnyVal)] ) extends Statement
+                                     hasC: Boolean ) extends Statement(p,a,r,hasC){
+        override def toString: String = {
+          "Denies " + pretty(p) + " to perform actions " + pretty(a) + " on resources " + pretty(r) + pretty(hasC)
+        }
+      }

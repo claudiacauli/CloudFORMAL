@@ -166,7 +166,9 @@ object InterResourceReferencesMap {
     "apigatewayaccount_account_cloudwatchrolearn" -> ("iamrole","role",false,true),
     "apigatewaydeployment_deployment_restapiid" -> ("apigatewayrestapi","restapi",true,true),
     "apigatewaybasepathmapping_basepathmapping_restapiid" -> ("apigatewayrestapi","restapi",true,true),
-    "apigatewayusageplan_apistage_apiid" -> ("apigatewayrestapi","restapi",false,true)
+    "apigatewayusageplan_apistage_apiid" -> ("apigatewayrestapi","restapi",false,true),
+    "apigatewaydomainname_domainname_regionalcertificatearn" -> (null,null,false,true),
+    "kmsalias_alias_targetkeyid" -> ("kmskey","key",true,true)
 
 
   )

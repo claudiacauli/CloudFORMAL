@@ -17,6 +17,7 @@ object ResourcesNameFieldsMap {
     "logs::destination"   -> "DestinationName",
     "lambda::function"    -> "FunctionName",
     "kinesis::stream"     -> "Name",
+    "kms::alias"        -> "AliasName",
     "iam::role"         -> "RoleName",
     "iam::group"        -> "GroupName",
     "events::rule"      -> "Name",

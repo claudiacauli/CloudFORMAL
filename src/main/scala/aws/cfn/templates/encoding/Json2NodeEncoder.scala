@@ -15,11 +15,25 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node = {
     json match {
-      case j if isArn(j)            => ArnFunction(iE,rE,tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
+      case j if isArn(j)            => {
+        val vecNodes = ArnFunction(iE,rE,tE.resources, tE.parameters, ssE.resourceByArn) (j.string.get)
+        vecNodes match {
+          case ListOfObjectNodes(v) if v.size==1 => v.head
+          case ln:ListOfObjectNodes => ln
+          case x => x
+        }
+      }
       case j if j.isNull || isNoValue(j)                    => NoValue
       case j if j.isObject && isIntrinsicFunction(j)        => evalIntrinsicFunction(j)
       case j if j.isObject && isMapProperty(j,subpropType)  => encodeMapProperty(j,mapProperty(j,subpropType).get)
-      case j if j.isObject && isPolicyDoc(j)                   => rE.PolicyEncoder.encode(j,getPolicyResource)
+      //case j if j.isObject && isPolicyDoc(j)                   => rE.PolicyEncoder.encode(j,getPolicyResource)
+
+      case j if j.isObject && isPolicyDoc(j)   => {
+        val policyEncoder = new Json2PolicyDocumentEncoder(iE,ssE,tE,rE,this,j,rE.resource)
+        tE.policyEncoders = tE.policyEncoders ++ Vector(policyEncoder)
+        policyEncoder.createNode()
+      }
+
       case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("string") => StringNode(j.toString())
       case j if j.isObject && subpropType.isDefined && subpropType.get._2.equals("policy") => encodeEmbeddedPolicy(j,subpropType.get)
       case j if j.isObject        => encodeSubproperty(j,subpropType)
@@ -41,15 +55,18 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
 
 
-  private def encodeArrayNode(j: Json, subpropType:Option[(String,String)])
-    = ListNode((j.array.get map (ji => encode(ji,subpropType))).toVector)
+  private def encodeArrayNode(j: Json, subpropType:Option[(String,String)]) : Node = {
+    ListNode( (j.array.get map (ji => encode(ji,subpropType))).toVector )
+  }
 
 
 
 
 
 
-  private def encodeMapProperty(json: Json, subpropertyType: String) = NoValue // TODO
+
+  private def encodeMapProperty(json: Json, subpropertyType: String) : Node
+  = NoValue // TODO
 
 
 
@@ -82,13 +99,13 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
 
 
-  def encodeEmbeddedPolicy(json: Json, policyType: (String,String)) : StackSetResource = {
+  def encodeEmbeddedPolicy(json: Json, policyType: (String,String)) : Resource = {
 
     val resourceType  = policyType._2
     val serviceType   = policyType._1.split(resourceType).head
     val embeddedPolicyIRI       = DLModelIRI.embeddedPolicyIRI(ssE.stackSet.name)
     val embeddedPolicyName      = embeddedPolicyIRI.toString.split("#").last
-    val embeddedPolicyResource  = StackSetResource(embeddedPolicyName, serviceType, resourceType, Map())
+    val embeddedPolicyResource  = Resource(embeddedPolicyName, serviceType, resourceType, Map())
     val ontology                = ssE.manager.loadOntologyFromOntologyDocument(
       new File("src/main/resources/terminology/resourcespecificationsOwl/" + serviceType+resourceType + ".owl"))
 
@@ -345,7 +362,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
   }
 
 
-  private def validateParamsAndEvalSub(j: Json) = {
+  private def validateParamsAndEvalSub(j: Json) : Node = {
 
     val stringToMatch = arrayAt(j, "Fn::Sub",0)
     val isArray = j.field("Fn::Sub").get.isArray
@@ -354,7 +371,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
     stringToMatch match {
       case n if isArn(n) =>
-        val subArn = SubFunction(iE,rE,tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap)
+        val subArn = SubFunction(iE,rE,tE.resources, tE.parameters) (StringNode(n.string.get), substitutionMap).asInstanceOf[StringNode]
         ArnFunction(iE,rE,tE.resources, tE.parameters,ssE.resourceByArn) (subArn.value)
       case _ =>
         val encodedStringToMatch = encode(stringToMatch)
@@ -396,8 +413,9 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     encodedField match {
       case NoValue => ""
       case StringNode(s) => s
-      case StackSetResource(name,_,_,_) => name
-      case ForeignResource(name)        => name
+      case Resource(name,_,_,_) => name
+      case ExternalEntity(name)        => name
+      //case ListOfObjectNodes(v)         => v
       case _ => println("Function getLowerCaseEvalStringField should not return another type. Encoded field is " + encodedField)
       ""// TODO
     }
@@ -460,7 +478,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
       case _ =>
         println("It was not possible to match the current json field with the expected subproperty type. Returning foreign node." )
         println("Json is " + j + " and subproperty is " + subpropType + " template is " + tE.template.name)
-        ForeignResource(j.toString())
+        ExternalEntity(j.toString())
     }
   }
 
@@ -513,9 +531,11 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
 
 
-  private def getPolicyResource: Set[StackSetResource] = {
-    if (iE.resourcesByPolicy.get(rE.resource).isDefined)
-      iE.resourcesByPolicy(rE.resource).toSet
+  private def getPolicyResource: Set[Resource] = {
+    if (iE.resourcesPointingToPolicy.get(rE.resource).isDefined){
+      println("The current Policy resource " + rE.resource + " is pointed at by the resources: " + iE.resourcesPointingToPolicy(rE.resource).toSet)
+      iE.resourcesPointingToPolicy(rE.resource).toSet
+    }
     else Set(rE.resource)
   }
 

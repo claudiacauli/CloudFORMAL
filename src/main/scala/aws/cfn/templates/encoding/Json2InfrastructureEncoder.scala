@@ -1,7 +1,7 @@
 package aws.cfn.templates.encoding
 
 import argonaut.Json
-import aws.cfn.templates.formalization.{Infrastructure, Node, StackSetResource}
+import aws.cfn.templates.formalization._
 
 import scala.collection.mutable
 
@@ -17,14 +17,22 @@ object Json2InfrastructureEncoder {
 class Json2InfrastructureEncoder(stackSets: Vector[(Vector[(String,Json,Option[Json])],String)], infrastructureName:String){
 
   val stackSetEncoders: Vector[Json2StackSetEncoder] = stackSets map (ss => new Json2StackSetEncoder(this,ss._1,ss._2))
-  var resourceByArn: Map[String,Node] = Map()
-  var resourcesByPolicy: Map[StackSetResource,mutable.Set[StackSetResource]] = Map()
+  var resourcesByArn: Map[String,Vector[Entity]] = Map()
+  var resourcesPointingToPolicy: Map[Resource,mutable.Set[Resource]] = Map()
+
+  var allPoliciesStatement : Set[Statement] = Set()
 
   def encode(): Infrastructure = {
     stackSetEncoders foreach (ssE => ssE.updateResourcesNames())
+    stackSetEncoders foreach (ssE => ssE.encode())
     val infr = new Infrastructure(infrastructureName,
-          stackSetEncoders map (ssE => ssE.encode()) )
+          stackSetEncoders map (ssE => ssE.encodePolicies()) )
     println(this)
+
+//    stackSetEncoders foreach ( ssE => ssE.templatesEncoders foreach (
+//      tE => tE.resources foreach ( r => println(r._2.resourceLogicalId + " ---> "  +r._2.resourceName) )
+//    ) )
+
     infr
   }
 
@@ -36,11 +44,11 @@ class Json2InfrastructureEncoder(stackSets: Vector[(Vector[(String,Json,Option[J
   }
 
 
-  def updateResByPolicyMap(policyRes: StackSetResource, resource: StackSetResource): Unit = {
-    if (resourcesByPolicy.get(policyRes).isDefined) {
-      resourcesByPolicy(policyRes).add(resource)
+  def updateResByPolicyMap(policyRes: Resource, resource: Resource): Unit = {
+    if (resourcesPointingToPolicy.get(policyRes).isDefined) {
+      resourcesPointingToPolicy(policyRes).add(resource)
     } else
-      resourcesByPolicy = resourcesByPolicy ++ Map(policyRes -> mutable.Set(resource))
+      resourcesPointingToPolicy = resourcesPointingToPolicy ++ Map(policyRes -> mutable.Set(resource))
   }
 
 }

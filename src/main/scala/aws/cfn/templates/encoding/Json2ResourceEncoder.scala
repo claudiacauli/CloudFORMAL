@@ -132,17 +132,16 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   val serviceType: String   = getServiceName
   val resourceType: String  = getResourceType
   val NodeEncoder     = new Json2NodeEncoder(iE, ssE,tE,this)
-  val PolicyEncoder   = new Json2PolicyDocumentEncoder(ssE,tE,this,NodeEncoder)
-  var resource : StackSetResource = _
+  var resource : Resource = _
 
 
 
 
 
-  def createResourceNodeWithAttributes: Map[String,StackSetResource] = {
+  def createResourceNodeWithAttributes: Map[String,Resource] = {
 
     if (tE.hasTrueCondition(resourceJsonNode)){
-      resource = StackSetResource( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
+      resource = Resource( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
       importResourceSpecificationOntology()
       Map( resourceLogicalId -> resource )
     }
@@ -156,7 +155,7 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   }
 
 
-  def deepInstantiationOfResource(): StackSetResource = {
+  def deepInstantiationOfResource(): Resource = {
 
     updateResourceByPolicy()
 
@@ -223,17 +222,13 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
 
 
   private def getResourceName: String = {
-    println("Looking up " + serviceType + resourceType )
     ResourcesNameFieldsMap.lookUp(serviceType,resourceType) match {
       case None     => resourceLogicalId
       case Some(f)  =>
         if (resourceJsonNode.field("Properties").get.field(f).isDefined)
           NodeEncoder.encode( resourceJsonNode.field("Properties").get.field(f).get ) match {
-            case StringNode(s) => println("Resource with id " + resourceLogicalId + " has name " +s)
-              s
-            case _ => println("The evaluation of the resource name: " + resourceJsonNode.field("Properties").get.field(f).get +
-            " did not produce a StringNode.")
-              resourceLogicalId
+            case StringNode(s) => s
+            case _ => resourceLogicalId
           }
         else
           resourceLogicalId
@@ -277,8 +272,8 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
 
 
   def pointedResourceIsPolicy(res : Node) : Boolean = {
-    if (res.isInstanceOf[StackSetResource])
-      (res.asInstanceOf[StackSetResource].serviceType.toLowerCase, res.asInstanceOf[StackSetResource].resourceType.toLowerCase) match {
+    if (res.isInstanceOf[Resource])
+      (res.asInstanceOf[Resource].serviceType.toLowerCase, res.asInstanceOf[Resource].resourceType.toLowerCase) match {
         case ("s3","bucketpolicy")    => true
         case ("iam","managedpolicy")  => true
         case ("iam","policy")         => true
@@ -292,12 +287,12 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   }
 
 
-  def currentResourceIsPolicyAndPointsTo : Set[StackSetResource] = {
+  def currentResourceIsPolicyAndPointsTo : Set[Resource] = {
     (resource.serviceType.toLowerCase,resource.resourceType.toLowerCase) match {
       case ("s3","bucketpolicy")    => {
         if (resourceJsonNode.field("Properties").get.field("Bucket").isDefined){
           NodeEncoder.encode(resourceJsonNode.field("Properties").get.field("Bucket").get) match {
-            case r:StackSetResource => Set( r )
+            case r:Resource => Set( r )
             case _ => Set()
           }
         }

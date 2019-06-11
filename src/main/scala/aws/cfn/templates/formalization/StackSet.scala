@@ -7,7 +7,7 @@ import org.semanticweb.owlapi.model.OWLOntologyManager
 class StackSet(val name:String, val manager: OWLOntologyManager) {
 
   var templates: Vector[Template] = Vector()
-  var foreignNodes: Map[String,ForeignResource] = Map()
+  var foreignNodes: Map[String,ExternalEntity] = Map()
   manager.loadOntologyFromOntologyDocument(new File("src/main/resources/terminology/policy/policydocument.owl"))
 
 }

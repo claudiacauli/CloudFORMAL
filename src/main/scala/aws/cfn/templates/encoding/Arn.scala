@@ -12,28 +12,41 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
   val identifiers :Vector[String] = arnComponents._5
 
 
-  def resourceFromArn() :Node = {
+  def resourceFromArn() : Vector[Entity] = {
+    iE.resourcesByArn.getOrElse(
+      evaluatedString,
+      findMatchinResources
+    )
+  }
+
+  private def findMatchinResources : Vector[Entity] = {
+
+//    println("\nHandling ARN : " + evaluatedString)
+//    println("Identifiers is the vector: " + identifiers)
+//    if ( identifiers == Vector("*") ) println ("Identifiers is all resources of that type!")
+//    if ( !(identifiers==Vector("*"))) println ("Identifiers can be a longer vector or just don't even contain *")
+//    if ( identifiers contains "*") println ( "Identifiers contain *, therefore might also contain resource name" )
+
+    val identifiersIsStarVector = identifiers == Vector("*")
 
     val matchingResources =
-    for ( ssE <- iE.stackSetEncoders; tE <- ssE.templatesEncoders; r <- tE.resources.toVector
-          if   comparePartition(tE.parameters("aws::partition"))
-            && compareAccount(tE.parameters("aws::accountid"))
-            && compareRegion(tE.parameters("aws::region"))
-            && ((identifiers contains r._1.toLowerCase) ||
-            (identifiers contains r._2.resourceName.toLowerCase))) yield {
-      r
-    }
+      if (identifiersIsStarVector)
+        resourcesMatchinServiceType
+      else {
+        val rS = resourcesMatchingIdentifiers
+        if (rS.nonEmpty) rS else resourcesMatchinServiceType
+      }
 
-    if (matchingResources.nonEmpty){
-      println("Found matching resource: " + matchingResources.head._2)
-      iE.resourceByArn = iE.resourceByArn ++ Map(evaluatedString -> matchingResources.head._2)
-      matchingResources.head._2
+//    println("Matching resources: "+ matchingResources)
+
+    if (matchingResources.nonEmpty) {
+      iE.resourcesByArn = iE.resourcesByArn ++ Map(evaluatedString -> matchingResources)
+      matchingResources
     }
     else {
-      println("Could not find a node in the current infrastructure matching arn " + evaluatedString + " returning new foreign node.")
-      val newForeignNode = ForeignResource(evaluatedString)
-      iE.resourceByArn = iE.resourceByArn ++ Map(evaluatedString -> newForeignNode)
-      newForeignNode
+      val newForeignNode = ExternalEntity(evaluatedString)
+      iE.resourcesByArn = iE.resourcesByArn ++ Map(evaluatedString -> Vector(newForeignNode))
+      Vector(newForeignNode)
     }
 
   }
@@ -59,6 +72,8 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
       case Some(r) => accountRegionNode.asInstanceOf[StringNode].value == r
     }
   }
+
+
 
 
 
@@ -90,6 +105,38 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
     (part,serv,reg,acc,ids)
   }
 
+
+
+
+  private def identifiersContainEitherResourceIDorName : Resource => Boolean =
+    res => {
+      (identifiers contains res.resourceLogicalId.toLowerCase) ||
+        (identifiers contains res.resourceName.toLowerCase)
+    }
+
+  private def sameService : Resource => Boolean =
+    res => service match {
+        case None => true
+        case Some(r) => res.serviceType.toLowerCase == r
+      }
+
+  private def resourcesMatchingIdentifiers : Vector[Resource] =
+    resourcesMatchingCondition(identifiersContainEitherResourceIDorName)
+
+  private def resourcesMatchinServiceType : Vector[Resource] =
+    resourcesMatchingCondition(sameService)
+
+
+  private def resourcesMatchingCondition(condition: Resource => Boolean) : Vector[Resource] = {
+    for ( ssE <- iE.stackSetEncoders; tE <- ssE.templatesEncoders; r <- tE.resources.toVector
+          if   comparePartition(tE.parameters("aws::partition"))
+            && compareAccount(tE.parameters("aws::accountid"))
+            && compareRegion(tE.parameters("aws::region"))
+            && condition(r._2)
+    ) yield {
+      r._2
+    }
+  }
 
 
 }
