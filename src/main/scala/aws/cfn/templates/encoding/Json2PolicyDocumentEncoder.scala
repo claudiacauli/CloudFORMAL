@@ -12,7 +12,7 @@ class Json2PolicyDocumentEncoder(ssE:Json2StackSetEncoder, tE:Json2TemplateEncod
     // Nodes might contain arns or intrinsic functions and therefore need to be encoded.
     // Nodes in resources and principals might / should evaluate to resources or set of them
 
-    println( "\n\n\nPolicy attached to: " + resourcesIsAttachedTo )
+    println( "\n\n\n"+ ssE.stackSet.name + " " + tE.template.name +" - Policy attached to: " + resourcesIsAttachedTo )
     val hasArrayOfStatements = jsonPolicy.field("Statement").get.isArray
     val statements : Vector[Json] =
       if (hasArrayOfStatements)

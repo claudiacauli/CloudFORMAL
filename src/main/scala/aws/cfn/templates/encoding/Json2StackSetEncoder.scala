@@ -38,6 +38,11 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
 
 
 
+
+  def updateResourcesNames() : Unit = {
+    templatesEncoders foreach (tE => tE.updateResourcesNames)
+  }
+
   def encode(): StackSet = {
     stackSet.templates = templatesEncoders map ( te => te.encode() )
     stackSet.foreignNodes = foreignResourcesByArn

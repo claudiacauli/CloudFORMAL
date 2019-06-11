@@ -33,11 +33,11 @@ sealed trait StackSetNode extends Node
     final case class StackSetResource(resourceLogicalId : String,
                                       serviceType : String,
                                       resourceType : String,
-                                      attributes : Map[String, GenericValueNode],
-                                      resourceName : String
+                                      attributes : Map[String, GenericValueNode]
                                  ) extends ObjectNode
     {
       val value: String = resourceLogicalId
+      var resourceName : String = resourceLogicalId
       var givenProperties: Map[String,Node] = Map()
       var absentProperties: Set[String] = Set()
       def apply(): StackSetResource = this

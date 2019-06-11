@@ -19,11 +19,13 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
           if   comparePartition(tE.parameters("aws::partition"))
             && compareAccount(tE.parameters("aws::accountid"))
             && compareRegion(tE.parameters("aws::region"))
-            && (identifiers contains r._1.toLowerCase)) yield {
+            && ((identifiers contains r._1.toLowerCase) ||
+            (identifiers contains r._2.resourceName.toLowerCase))) yield {
       r
     }
 
     if (matchingResources.nonEmpty){
+      println("Found matching resource: " + matchingResources.head._2)
       iE.resourceByArn = iE.resourceByArn ++ Map(evaluatedString -> matchingResources.head._2)
       matchingResources.head._2
     }

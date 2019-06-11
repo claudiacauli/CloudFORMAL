@@ -4,6 +4,7 @@ import java.io.File
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.dlmodel.{DLModelIRI, PrimitiveTypes}
+import aws.cfn.maps.ResourcesNameFieldsMap
 import aws.cfn.templates.encoding.Json2ResourceEncoder.rangeNameOf
 import aws.cfn.templates.formalization._
 import org.semanticweb.owlapi.model._
@@ -128,10 +129,10 @@ object Json2ResourceEncoder {
 class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEncoder, tE:Json2TemplateEncoder,
                                      resourceLogicalId:String, val resourceJsonNode:Json) {
 
-  val serviceType: String = getServiceName
-  val resourceType: String = getResourceType
-  val NodeEncoder = new Json2NodeEncoder(iE, ssE,tE,this)
-  val PolicyEncoder = new Json2PolicyDocumentEncoder(ssE,tE,this,NodeEncoder)
+  val serviceType: String   = getServiceName
+  val resourceType: String  = getResourceType
+  val NodeEncoder     = new Json2NodeEncoder(iE, ssE,tE,this)
+  val PolicyEncoder   = new Json2PolicyDocumentEncoder(ssE,tE,this,NodeEncoder)
   var resource : StackSetResource = _
 
 
@@ -149,8 +150,10 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
 
   }
 
-
-
+  def updateResourceName : Unit = {
+    if (tE.hasTrueCondition(resourceJsonNode))
+      resource.resourceName = getResourceName
+  }
 
 
   def deepInstantiationOfResource(): StackSetResource = {
@@ -217,6 +220,26 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
       "customresource"
     else
       resourceJsonNode.field("Type").get.string.get.split("::")(2)
+
+
+  private def getResourceName: String = {
+    println("Looking up " + serviceType + resourceType )
+    ResourcesNameFieldsMap.lookUp(serviceType,resourceType) match {
+      case None     => resourceLogicalId
+      case Some(f)  =>
+        if (resourceJsonNode.field("Properties").get.field(f).isDefined)
+          NodeEncoder.encode( resourceJsonNode.field("Properties").get.field(f).get ) match {
+            case StringNode(s) => println("Resource with id " + resourceLogicalId + " has name " +s)
+              s
+            case _ => println("The evaluation of the resource name: " + resourceJsonNode.field("Properties").get.field(f).get +
+            " did not produce a StringNode.")
+              resourceLogicalId
+          }
+        else
+          resourceLogicalId
+    }
+  }
+
 
 
   private def valueNodeFromSingleAttribute(attributeNode:Json) : GenericValueNode = {

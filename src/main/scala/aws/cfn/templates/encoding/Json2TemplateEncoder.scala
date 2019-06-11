@@ -26,6 +26,13 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
 
 
 
+  def updateResourcesNames : Unit = {
+    resourceEncoders foreach (rE => {
+      if (rE._2 == null) println ("Resource encoder has encoder null!")
+      else rE._2.updateResourceName
+    })
+  }
+
 
   def encode(): Template = {
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap

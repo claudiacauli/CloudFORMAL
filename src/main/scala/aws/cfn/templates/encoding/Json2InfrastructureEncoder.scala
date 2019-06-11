@@ -21,6 +21,7 @@ class Json2InfrastructureEncoder(stackSets: Vector[(Vector[(String,Json,Option[J
   var resourcesByPolicy: Map[StackSetResource,mutable.Set[StackSetResource]] = Map()
 
   def encode(): Infrastructure = {
+    stackSetEncoders foreach (ssE => ssE.updateResourcesNames())
     val infr = new Infrastructure(infrastructureName,
           stackSetEncoders map (ssE => ssE.encode()) )
     println(this)
