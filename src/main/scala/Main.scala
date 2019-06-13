@@ -1,11 +1,13 @@
 
 import java.io.{File, FileNotFoundException}
 
-import argonaut.Json
-import aws.cfn.shared.ParseUtils
-import aws.cfn.specifications.encoding.{Json2SpecificationEncoder, Map2ToServiceActions, ServiceActions2DLEncoder, Specification2DLEncoder}
-import aws.cfn.templates.encoding.{Infrastructure2DLEncoder, Json2InfrastructureEncoder, Json2StackSetEncoder, StackSet2DLEncoder}
+import argonaut.{Json, Parse}
+import aws.cfn.actions.{ActionsMap, ActionsMapper, ActionsModel, ActionsModelMapper}
+import aws.cfn.specifications.ResourceSpecificationModel
+import aws.cfn.templates.{InfrastructureModel, PermissionsModel}
+import aws.cfn.templates.Json2InfrastructureEncoder
 
+import scala.io.Source
 import scala.language.postfixOps
 
 object Main extends App {
@@ -25,14 +27,15 @@ object Main extends App {
 //
 //    println(vt.groupBy(e => e._1).toVector.flatMap( e => Map(e._1 -> e._2.flatMap( p => p._2 ) )))
 
-  //recompileTerminology()
+  recompileTerminology()
+  updateActionsOntologiesInProjectResources()
   modelZelkovaTest()
 
 
   def modelZelkovaTest(): Unit = {
 
     val inputFilePath = "src/main/resources/InputStackSets/Zelkova/test/"
-    val outputFilePath = "/Users/caulic/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/"
+    val outputFilePath = "/Users/claudia/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/"
     val inputDir = new File(inputFilePath)
     (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createInfrastructure(f) )
 
@@ -43,12 +46,14 @@ object Main extends App {
       val i = Json2InfrastructureEncoder.encode(
         ((file.listFiles() filter (f => f.isDirectory)) map ( f => createStackSetFiles(f,infrastructureName) )).toVector,
         infrastructureName)
-      val models = Infrastructure2DLEncoder.encode(i)
 
-      models._1.writeToOutputFolder(outputFilePath)
-      models._1.writeInfrastructureSummaryToFolder(outputFilePath)
-      models._1.writePolicySummaryToFolder(outputFilePath)
-      models._2.writeToOutputFolder(outputFilePath)
+      val infrastructureModel = InfrastructureModel.fromInfrastructure(i)
+      val permissionModel = PermissionsModel.fromInfrastructure(i)
+
+      infrastructureModel.writeToOutputFolder(outputFilePath)
+      i.writeInfrastructureSummaryToFolder(outputFilePath)
+      i.writePolicySummaryToFolder(outputFilePath)
+      permissionModel.writeToOutputFolder(outputFilePath)
 
     }
 
@@ -68,8 +73,10 @@ object Main extends App {
             case e: FileNotFoundException => descriptor = null
           }
 
-          val tmplJson = ParseUtils.jsonFromFilePath(f.getAbsolutePath).get
-          val descrJson = ParseUtils.jsonFromFilePath(descriptor.getAbsolutePath)
+
+
+          val tmplJson  = Parse.parseOption(Source.fromFile(f).mkString).get
+          val descrJson = Parse.parseOption(Source.fromFile(descriptor).mkString)
           Vector((templateName, tmplJson, descrJson))
         } else Vector()
       }),stackSetName )
@@ -97,7 +104,7 @@ object Main extends App {
 
  def recompileTerminology(): Unit = {
      printOntologiesFromResourceSpecificationDirectoryToFolder(
-       "/Users/caulic/Downloads/CloudFormationResourceSpecification/",
+       "/Users/claudia/Downloads/CloudFormationResourceSpecification/",
        "src/main/resources/terminology/resourcespecificationsOwl/"
      )
 
@@ -113,22 +120,9 @@ object Main extends App {
      }
 
 
-     def getOntologyFromResourceSpecificationFilePath(filepath: String) =
-       getOntologyFromResourceSpecificationFile(new File(filepath))
-
 
      def getOntologyFromResourceSpecificationFile(file: File) =
-       Specification2DLEncoder.encode(
-         Json2SpecificationEncoder.encode(
-           ParseUtils.jsonFromFile(file).get,
-           file.getName.split("/").last.split("Specification.json").head))
-
-
-
-
-
-     def printOntologyFromResourceSpecificationFilePathToFolder(filePath: String, outputPath: String): Unit =
-       printOntologyFromResourceSpecificationFileToFolder(new File(filePath), outputPath)
+       ResourceSpecificationModel.fromResourceSpecificationFile(file)
 
 
 
@@ -140,34 +134,16 @@ object Main extends App {
 
 
 
-//  val tmplJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithLogging/s3bucket_with_logging_bucket.json").get
-//  val descrJson = Parser.jsonFromFilePath("src/main/resources/InputStackSets/BucketWithLogging/descriptor.json")
-//  val ss = Json2StackSetEncoder.encode(Vector(("testBucketLogging",tmplJson,descrJson)),"testBucketLogging")
-//  val ssM = StackSet2DLEncoder.encode(ss)
-//  OntologyWriter.writeStackSetToOutputFolder(ssM, "src/main/resources/OutputModels/" )
-
-
-
-
-
-
-
-
-
-
-//
-
   /*
     ACTION FUNCTIONALITIES!
   */
-  //updateActionsOntologiesInProjectResources()
 
   def updateActionsOntologiesInProjectResources(): Unit =
     saveActionsOntologyInFolder("src/main/resources/terminology/actions/")
 
-
   def saveActionsOntologyInFolder(folderPath : String): Unit =
-    ServiceActions2DLEncoder.encode(Map2ToServiceActions.fromMap())  foreach ( aM => aM.writeToOutputFolder("src/main/resources/terminology/actions/") )
-
+    ActionsMap.getActionPrefixes
+      .flatMap(s => ActionsModel.getFromServiceName(s))
+          .foreach(_.writeToOutputFolder(folderPath))
 
 }
