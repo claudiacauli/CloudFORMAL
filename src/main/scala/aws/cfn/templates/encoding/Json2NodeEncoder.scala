@@ -413,8 +413,8 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
     encodedField match {
       case NoValue => ""
       case StringNode(s) => s
-      case Resource(id,_,_,_,_)          => id
-      case ExternalEntity(name,_)        => name
+      case StackSetResource(id,_,_,_,_)          => id
+      case ExternalResource(name,_)        => name
       //case ListOfObjectNodes(v)         => v
       case _ => println("Function getLowerCaseEvalStringField should not return another type. Encoded field is " + encodedField)
       ""// TODO
@@ -451,9 +451,10 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
       case "double" if j.isNumber && j.number.get.toDouble.isDefined    => DoubleNode(j.number.get.toDouble.get)
       case "float"  if j.isNumber && j.number.get.toFloat.isDefined     => FloatNode(j.number.get.toFloat.get)
       case "unknownresourcetype" => j match {
-        case n if n.isString => ExternalEntity(n.string.get, iE.infrastructure)
-        case n if n.isNumber => ExternalEntity(n.string.get, iE.infrastructure)
-        case n if n.isBool   => ExternalEntity(n.string.get, iE.infrastructure)
+        case n if n.isString || n.isNumber || n.isBool =>
+          val eR = ExternalResource(n.string.get, iE.infrastructure)
+          iE.externalResources = iE.externalResources ++ Set(eR)
+          eR
       }
       case _ => forceSubpropertyType(j,subpropType)
     }
@@ -483,7 +484,9 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
       case _ =>
         println("It was not possible to match the current json field with the expected subproperty type. Returning foreign node." )
         println("Json is " + j + " and subproperty is " + subpropType + " template is " + tE.template.name)
-        ExternalEntity(j.toString(), iE.infrastructure)
+        val eR = ExternalResource(j.toString(), iE.infrastructure)
+        iE.externalResources = iE.externalResources ++ Set(eR)
+        eR
     }
   }
 
@@ -536,7 +539,7 @@ protected class Json2NodeEncoder(iE: Json2InfrastructureEncoder, ssE: Json2Stack
 
 
 
-  private def getPolicyResource: Set[Resource] = {
+  private def getPolicyResource: Set[StackSetResource] = {
     if (iE.resourcesPointingToPolicy.get(rE.resource).isDefined){
       println("The current Policy resource " + rE.resource + " is pointed at by the resources: " + iE.resourcesPointingToPolicy(rE.resource).toSet)
       iE.resourcesPointingToPolicy(rE.resource).toSet

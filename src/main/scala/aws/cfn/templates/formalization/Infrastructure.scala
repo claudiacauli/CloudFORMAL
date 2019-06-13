@@ -7,6 +7,7 @@ class Infrastructure(val name:String) {
 
   var stackSets     : Set[StackSet]   = Set()
   var aclStatements : Set[Statement]  = Set()
+  var externalResources : Set[ExternalResource] = Set()
 
   type Policy = (String,String,Json,Set[Statement])
   var policies : Vector[Policy] = Vector()

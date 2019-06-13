@@ -7,7 +7,7 @@ class Template(val name: String) {
   var conditions : Map[String,Boolean] = _
   var outputByLogicalId : Map[String,Node] = _
   var outputByExportName : Map[String,Node] = _
-  var resources : Map[String,Resource]  = _
+  var resources : Map[String,StackSetResource]  = _
   var policyStatements : Set[Statement] = _
 
   override def toString: String = {

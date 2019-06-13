@@ -12,14 +12,14 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
   val identifiers :Vector[String] = arnComponents._5
 
 
-  def resourcesFromArn() : Vector[Entity] = {
+  def resourcesFromArn() : Vector[Resource] = {
     iE.resourcesByArn.getOrElse(
       evaluatedString,
       findMatchinResources
     )
   }
 
-  private def findMatchinResources : Vector[Entity] = {
+  private def findMatchinResources : Vector[Resource] = {
 
 //    println("\nHandling ARN : " + evaluatedString)
 //    println("Identifiers is the vector: " + identifiers)
@@ -44,7 +44,8 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
       matchingResources
     }
     else {
-      val newForeignNode = ExternalEntity(evaluatedString,iE.infrastructure)
+      val newForeignNode = ExternalResource(evaluatedString,iE.infrastructure)
+      iE.externalResources = iE.externalResources ++ Set(newForeignNode)
       iE.resourcesByArn = iE.resourcesByArn ++ Map(evaluatedString -> Vector(newForeignNode))
       Vector(newForeignNode)
     }
@@ -108,26 +109,26 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
 
 
 
-  private def identifiersContainEitherResourceIDorName : Resource => Boolean =
+  private def identifiersContainEitherResourceIDorName : StackSetResource => Boolean =
     res => {
       (identifiers contains res.resourceLogicalId.toLowerCase) ||
         (identifiers contains res.resourceName.toLowerCase)
     }
 
-  private def sameService : Resource => Boolean =
+  private def sameService : StackSetResource => Boolean =
     res => service match {
         case None => true
         case Some(r) => res.serviceType.toLowerCase == r
       }
 
-  private def resourcesMatchingIdentifiers : Vector[Resource] =
+  private def resourcesMatchingIdentifiers : Vector[StackSetResource] =
     resourcesMatchingCondition(identifiersContainEitherResourceIDorName)
 
-  private def resourcesMatchinServiceType : Vector[Resource] =
+  private def resourcesMatchinServiceType : Vector[StackSetResource] =
     resourcesMatchingCondition(sameService)
 
 
-  private def resourcesMatchingCondition(condition: Resource => Boolean) : Vector[Resource] = {
+  private def resourcesMatchingCondition(condition: StackSetResource => Boolean) : Vector[StackSetResource] = {
     for ( ssE <- iE.stackSetEncoders; tE <- ssE.templatesEncoders; r <- tE.resources.toVector
           if   comparePartition(tE.parameters("aws::partition"))
             && compareAccount(tE.parameters("aws::accountid"))

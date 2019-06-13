@@ -37,7 +37,7 @@ private class Statements2DLEncoder(val name: String,
   }
 
 
-  private def getAclAxiom(ra: (Entity,String)) : Set[OWLSubClassOfAxiom] = {
+  private def getAclAxiom(ra: (Resource,String)) : Set[OWLSubClassOfAxiom] = {
 
     val r = individual(ra._1)
     val a = property(ra._2)
@@ -67,24 +67,24 @@ private class Statements2DLEncoder(val name: String,
     df.getOWLObjectInverseOf(act)
   }
 
-  private def filler(r:Entity, a:String) : OWLClassExpression = {
+  private def filler(r:Principal, a:String) : OWLClassExpression = {
 
     df.getOWLObjectIntersectionOf(
       overApproximatedAllowSet(r,a),
       not(underApproximatedDenySet(r,a)))
   }
 
-  private def overApproximatedAllowSet(r:Entity,a:String) : OWLClassExpression = {
+  private def overApproximatedAllowSet(r:Principal,a:String) : OWLClassExpression = {
 
-    def trustedPrincipals(princ:Set[Entity],r:Entity):Set[Entity] =
+    def trustedPrincipals(princ:Set[Principal],r:Principal):Set[Principal] =
       princ filter ( p =>
           assumeRoleStatements exists (
               s =>  ( s.principals._1 && ( (s.principals._2 contains r) || (s.principals._2 contains Public))) ||
                     (!s.principals._1  && (!(s.principals._2 contains r) && !(s.principals._2 contains Public)))
-                && (s.resources._2.toSet contains p)
+                && (s.resources._2.toSet contains p.asInstanceOf[Resource])
         ))
 
-    def checkIfAttemptingToAssumeRole(s: Statement):Set[Entity] = {
+    def checkIfAttemptingToAssumeRole(s: Statement) : Set[Principal] = {
       if (s.actions._2 contains "sts:AssumeRole") {
         trustedPrincipals( s.principals._2 ,r)
       }
@@ -108,10 +108,10 @@ private class Statements2DLEncoder(val name: String,
   private def not(ce: OWLClassExpression) =
     df.getOWLObjectComplementOf(ce)
 
-  private def actualPrincipals(isAllow: Boolean, principals:Set[Entity]) : OWLClassExpression = {
+  private def actualPrincipals(isAllow: Boolean, principals:Set[Principal]) : OWLClassExpression = {
 
     val conceptPrincipals =
-      (principals map conceptOf)
+      (principals map conceptFromPrincipal)
       .foldLeft[OWLClassExpression](df.getOWLNothing)((filler,c) => df.getOWLObjectUnionOf(filler,c) )
 
     if (isAllow) conceptPrincipals else not(conceptPrincipals)
@@ -119,10 +119,10 @@ private class Statements2DLEncoder(val name: String,
   }
 
 
-  private def resourceActionPairs() = {
+  private def resourceActionPairs() : Set[(Resource,String)] = {
 
     def actionCanBePerformedOverResource(a:String,r:Entity):Boolean =
-      ActionsMap.lookUpActionPrefix(r.asInstanceOf[Resource].serviceType) contains a
+      ActionsMap.lookUpActionPrefix(r.asInstanceOf[StackSetResource].serviceType) contains a
 
     def actionIsInStatementsWithEntity(a:String,r:Entity):Boolean =
       statementsWithResource(r) & statementsWithAction(a) nonEmpty
@@ -134,9 +134,9 @@ private class Statements2DLEncoder(val name: String,
 
   }
 
-  private def actualResources(statement: Statement) : Set[Entity] = {
+  private def actualResources(statement: Statement) : Set[Resource] = {
 
-    def complementOf(resources : Set[Entity]) : Set[Entity] =
+    def complementOf(resources : Set[Resource]) : Set[Resource] =
       (for ( s <- statements; r <- s.resources._2) yield r) &~ resources
 
     if ( statement.resources._1 )
@@ -168,18 +168,69 @@ private class Statements2DLEncoder(val name: String,
     statements filter ( s => s.resources._2 contains r)
   private def statementsWithAction(a:String):Set[Statement] =
     statements filter ( s => s.actions._2 contains a)
-  private def isResource(e:Entity):Boolean          = e.isInstanceOf[Resource]
-  private def isExternalEntity(e:Entity):Boolean    = e.isInstanceOf[ExternalEntity]
-  private def entityIRI(e:Entity) = e match {
-    case Resource(n,_,_,ss,_)   => DLModelIRI.resourceInstanceIRI(ss.name,n)
-    case ExternalEntity(n,i)    => DLModelIRI.externalEntityIRI(i.name,n)
-    case ServicePrincipal(n,i)  => DLModelIRI.servicePrincipalIRI(i.name,n)
+  private def isResource(e:Entity):Boolean          = e.isInstanceOf[StackSetResource]
+  private def isExternalEntity(e:Entity):Boolean    = e.isInstanceOf[ExternalResource]
+
+  private def resourceIRI(e:Resource) = e match {
+    case StackSetResource(n,_,_,ss,_)   => DLModelIRI.resourceInstanceIRI(ss.name,n)
+    case ExternalResource(n,i)    => DLModelIRI.externalEntityIRI(i.name,n)
   }
+
   private def actionIRI(a:String) = DLModelIRI.actionIRI(a.split(":").head,a.split(":").last)
-  private def individual(e:Entity) = df.getOWLNamedIndividual(entityIRI(e))
-  private def property(a:String) = df.getOWLObjectProperty(actionIRI(a))
-  private def conceptOf(e:Entity) : OWLClassExpression = e match {
-    case Public => df.getOWLClass(DLModelIRI.publicEntityIRI)
-    case x => nominalOf(df.getOWLNamedIndividual(entityIRI(x)))
+  private def individual(e:Resource) = e match {
+    case r:StackSetResource => df.getOWLNamedIndividual(resourceIRI(r))
+    case eR:ExternalResource => {
+      val extRes = df.getOWLNamedIndividual(resourceIRI(eR))
+      permissionsModel.ontology.add(df.getOWLClassAssertionAxiom(
+        df.getOWLClass( DLModelIRI.awsConceptIRI("ExternalResource") ),
+        extRes
+      ))
+      extRes
+    }
   }
+  private def property(a:String) = df.getOWLObjectProperty(actionIRI(a))
+
+
+
+  private def conceptFromPrincipal(e:Principal) : OWLClassExpression =
+    e match {
+      case Public               => df.getOWLClass(DLModelIRI.awsPublicIRI)
+      case ServicePrincipal(sp) => nominalOf( df.getOWLNamedIndividual(DLModelIRI.awsServicePrincipalIRI(sp)) )
+      case AccountPrincipal(accId)  => {
+        val accountIndividual   = df.getOWLNamedIndividual(DLModelIRI.awsAccountIRI(accId))
+        permissionsModel.ontology.add(df.getOWLClassAssertionAxiom(
+          df.getOWLClass( DLModelIRI.awsConceptIRI("AwsAccount") ),
+          accountIndividual
+        ))
+        val isOwnedBy           = df.getOWLObjectProperty(DLModelIRI.awsPropertyIRI("isOwnedByAccount"))
+        val hasAccessToAccount  = df.getOWLObjectProperty(DLModelIRI.awsPropertyIRI("hasAccessToAccount"))
+        val ownedByAccount      = df.getOWLObjectSomeValuesFrom(isOwnedBy,nominalOf(accountIndividual))
+        val canAccessAccount    = df.getOWLObjectSomeValuesFrom(hasAccessToAccount,nominalOf(accountIndividual))
+        df.getOWLObjectUnionOf(ownedByAccount,canAccessAccount,nominalOf(accountIndividual))
+      }
+      case FederatedAccountPrincipal(fed) => {
+        val federation            = df.getOWLNamedIndividual(DLModelIRI.awsFederatedAccountIRI(fed))
+        permissionsModel.ontology.add(df.getOWLClassAssertionAxiom(
+          df.getOWLClass( DLModelIRI.awsConceptIRI("FederatedAccount") ),
+          federation
+        ))
+        val hasAccessToFedAccount = df.getOWLObjectProperty(DLModelIRI.awsPropertyIRI("hasAccessToFederatedAccount"))
+        df.getOWLObjectSomeValuesFrom(hasAccessToFedAccount,nominalOf(federation))
+      }
+      case CanonicalUserPrincipal(uid) => {
+        nominalOf( df.getOWLNamedIndividual(DLModelIRI.awsCanonicalUserIRI(uid)) )
+      }
+      case ssR:StackSetResource => nominalOf(df.getOWLNamedIndividual(resourceIRI(ssR)))
+      case eR:ExternalResource  => {
+        val externalResource = df.getOWLNamedIndividual(DLModelIRI.externalEntityIRI(infrastructure.name,eR.name))
+        permissionsModel.ontology.add(df.getOWLClassAssertionAxiom(
+          df.getOWLClass( DLModelIRI.awsConceptIRI("ExternalResource") ),
+          externalResource
+        ))
+        nominalOf(externalResource)
+      }
+    }
+
+
+
 }

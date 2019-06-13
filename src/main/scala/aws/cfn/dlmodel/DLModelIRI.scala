@@ -114,8 +114,28 @@ object DLModelIRI {
   def permissionsModelIRI : String => IRI =
     infrastructureName => IRI.create(currentIRI.toString + infrastructureName.toLowerCase + "_permissions#")
 
-  def publicEntityIRI: IRI =
+  def awsPublicIRI: IRI =
     IRI.create(currentIRI.toString + "aws#Public" )
 
+  def awsServicePrincipalIRI : String => IRI =
+    servicePrincipal => IRI.create(currentIRI.toString + "aws#"+servicePrincipal)
+
+  def awsFederatedAccountIRI : String => IRI =
+    federation => IRI.create(currentIRI.toString + "aws#"+federation)
+
+  def awsAccountIRI : String => IRI =
+    accountId => IRI.create(currentIRI.toString + "aws#"+accountId)
+
+  def awsCanonicalUserIRI : String => IRI =
+    canonicalUser => IRI.create(currentIRI.toString + "aws#"+canonicalUser)
+
+  def awsPropertyIRI : String => IRI =
+    propertyName => IRI.create(currentIRI.toString + "aws#"+propertyName)
+
+  def awsConceptIRI : String => IRI =
+    conceptName => IRI.create(currentIRI.toString + "aws#"+conceptName)
+
+  def awsIndividualIRI : String => IRI =
+    individualName => IRI.create(currentIRI.toString + "aws#"+individualName)
 
 }

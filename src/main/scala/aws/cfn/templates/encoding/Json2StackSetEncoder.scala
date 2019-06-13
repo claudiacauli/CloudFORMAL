@@ -1,7 +1,9 @@
 package aws.cfn.templates.encoding
 
+import java.io.File
+
 import argonaut.Json
-import aws.cfn.templates.formalization.{ExternalEntity, Node, StackSet}
+import aws.cfn.templates.formalization.{ExternalResource, Node, StackSet}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntologyManager}
 
@@ -20,6 +22,8 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
 
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager()
   val df : OWLDataFactory = manager.getOWLDataFactory
+  manager.loadOntologyFromOntologyDocument(
+    new File("src/main/resources/terminology/aws.owl"))
 
   val stackSet = new StackSet(stackSetName, iE.infrastructure, manager)
 
@@ -34,7 +38,7 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
 
   //val resourcesByAccount : Map[String,Vector[Node]] = (templatesEncoders flatMap () )
 
-  var foreignResourcesByArn : Map[String,ExternalEntity] = Map() // TODO
+  var foreignResourcesByArn : Map[String,ExternalResource] = Map() // TODO
 
 
 

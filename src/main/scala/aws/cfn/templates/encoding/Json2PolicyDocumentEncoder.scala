@@ -10,14 +10,14 @@ import aws.cfn.templates.formalization._
 
 class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackSetEncoder,
                                   tE:Json2TemplateEncoder, rE:Json2ResourceEncoder, nE:Json2NodeEncoder,
-                                  jsonPolicy:Json, parentResource: Resource ) {
+                                  jsonPolicy:Json, parentResource: StackSetResource ) {
 
-  var principals    : (Boolean,Set[Entity]) = _
+  var principals    : (Boolean,Set[Principal]) = _
   var actions       : (Boolean,Vector[String]) = _
-  var resources     : (Boolean,Vector[Entity]) = _
+  var resources     : (Boolean,Vector[Resource]) = _
   var hasCondition  : Boolean = _
   var isAssumeRoleStatement : Boolean = _
-  var resourcesIsAttachedTo : Set[Entity] = _
+  var resourcesIsAttachedTo : Set[Principal] = _
   var policyDocument : PolicyDocument = _
 
   def createNode() : PolicyDocument = policyDocument
@@ -84,7 +84,7 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
 
 
 
-  private def computePrincipals(json: Json) : (Boolean,Set[Entity]) = {
+  private def computePrincipals(json: Json) : (Boolean,Set[Principal]) = {
 
     val isPrincipalBlock    = json.hasField("Principal")
     val isNotPrincipalBlock = json.hasField("NotPrincipal")
@@ -94,7 +94,7 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
         ( j.hasField("NotPrincipal") && j.field("NotPrincipal").get.isString && j.field("NotPrincipal").get.string.get == "*" )
     }
 
-    def computePrincipalSet : Set[Entity] = {
+    def computePrincipalSet : Set[Principal] = {
       isStarPrincipalBlock(json) match {
         case false  => computeNormalSet
         case true   => computeStarSet
@@ -102,62 +102,104 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
     }
 
 
-    def computeStarSet : Set[Entity] = {
+    def computeStarSet : Set[Principal] = {
       Set(Public)
     }
 
 
-    def computeNormalSet : Set[Entity] = {
+    def computeNormalSet : Set[Principal] = {
 
-      def nodesFromCanonicalPrincipal(j:Json) : Set[Entity]  = Set()  // TODO
-      def nodesFromFederatedPrincipal(j: Json) : Set[Entity] = Set() // TODO
-      def nodesFromServicePrincipal(j: Json) : Set[Entity]  = {
+//      def nodesFromCanonicalPrincipal(j:Json) : Set[Principal]  = Set()  // TODO
+//      def nodesFromFederatedPrincipal(j: Json) : Set[Principal] = Set() // TODO
+//      def nodesFromServicePrincipal(j: Json) : Set[Principal]  = {
+//
+//        def singleServicePrincipal(j:Json) : Set[Principal] = {
+//          nE.encode(j) match {
+//            case e:Entity       => Set(e)
+//            case StringNode(s)  => Set(ServicePrincipal(s,iE.infrastructure))
+//            case x => println("The function encode to encode a json node did not return an entity but: " + x); Set()
+//          }
+//        }
+//        if (j.isArray)
+//          j.array.get.toSet flatMap singleServicePrincipal
+//        else
+//          singleServicePrincipal(j)
+//      }
 
-        def singleServicePrincipal(j:Json) : Set[Entity] = {
-          nE.encode(j) match {
-            case e:Entity       => Set(e)
-            case StringNode(s)  => Set(ServicePrincipal(s,iE.infrastructure))
-            case x => println("The function encode to encode a json node did not return an entity but: " + x); Set()
+//      def nodesFromAwsPrincipal(j : Json): Set[Principal] = {
+//
+//        def singleAwsPrincipal(j:Json): Set[Principal] = {
+//          val encodedJson = nE.encode(j)
+//          encodedJson match {
+//            case r:StackSetResource               => Set(r)
+//            case f:ExternalResource      => Set(f)
+//            case l:ListNode[Principal]   => l.value.toSet
+//            case l:ListOfEntities      => l.nodes.toSet
+//            case StringNode(account)   =>
+//              (for {ssE <- iE.stackSetEncoders; tE <- ssE.templatesEncoders; r <- tE.resources.toVector
+//                   if tE.parameters("aws::accountid").asInstanceOf[StringNode].value == account} yield {
+//                r._2
+//              }).toSet
+//          }
+//        }
+//
+//        if (j.isArray)
+//          j.array.get.toSet flatMap singleAwsPrincipal
+//        else
+//          singleAwsPrincipal(j)
+//
+//      }
+
+      def principalsFromSingleNode(j:Json) : Set[Principal] = {
+
+        if ( isServicePrincipal(j) ){
+          nE.encode(j.field("Service").get) match {
+            case StringNode(v) => Set(ServicePrincipal(v))
+            case ListNode(v) if v.isInstanceOf[Vector[StringNode]]
+              => v.toSet.asInstanceOf[Set[StringNode]] flatMap (sn => Set(ServicePrincipal(sn.value)))
+            case r:Resource => Set(r)
+            case _ => println("Weird. The evaluation of a node that should resolve to a service principal id wasn't a string node or list thereof.")
+              Set()
           }
         }
-        if (j.isArray)
-          j.array.get.toSet flatMap singleServicePrincipal
-        else
-          singleServicePrincipal(j)
-      }
 
-      def nodesFromAwsPrincipal(j : Json): Set[Entity] = {
-
-        def singleAwsPrincipal(j:Json): Set[Entity] = {
-          val encodedJson = nE.encode(j)
-          encodedJson match {
-            case r:Resource               => Set(r)
-            case f:ExternalEntity      => Set(f)
-            case l:ListNode[Entity]    => l.value.toSet
-            case l:ListOfEntities      => l.nodes.toSet
-            case StringNode(account)   =>
-              (for {ssE <- iE.stackSetEncoders; tE <- ssE.templatesEncoders; r <- tE.resources.toVector
-                   if tE.parameters("aws::accountid").asInstanceOf[StringNode].value == account} yield {
-                r._2
-              }).toSet
+        else if (isAwsPrincipal(j)){
+          nE.encode(j.field("AWS").get) match {
+            case StringNode(v) => Set(AccountPrincipal(v))
+            case ListNode(v) if v.isInstanceOf[Vector[StringNode]]
+              => v.toSet.asInstanceOf[Set[StringNode]] flatMap (sn => Set(AccountPrincipal(sn.value)))
+            case r:Resource => Set(r)
+            case _ =>
+              println("Weird. The evaluation of a node that should resolve to an account id wasn't a string node or list thereof.")
+              Set()
           }
         }
 
-        if (j.isArray)
-          j.array.get.toSet flatMap singleAwsPrincipal
-        else
-          singleAwsPrincipal(j)
+        else if (isFederatedPrincipal(j)) {
+          nE.encode(j.field("Federated").get) match {
+            case StringNode(v) => Set(FederatedAccountPrincipal(v))
+            case ListNode(v) if v.isInstanceOf[Vector[StringNode]]
+            => v.toSet.asInstanceOf[Set[StringNode]] flatMap (sn => Set(FederatedAccountPrincipal(sn.value)))
+            case r:Resource => Set(r)
+            case _ => println("Weird. The evaluation of a node that should resolve to a federation string id wasn't a string node or list thereof.")
+              Set()
+          }
+        }
 
-      }
+        else if (isCanonicalUserPrincipal(j)) {
+          nE.encode(j.field("CanonicalUser").get) match {
+            case StringNode(v) => Set(CanonicalUserPrincipal(v))
+            case ListNode(v) if v.isInstanceOf[Vector[StringNode]]
+            => v.toSet.asInstanceOf[Set[StringNode]] flatMap (sn => Set(CanonicalUserPrincipal(sn.value)))
+            case r:Resource => Set(r)
+            case _ => println("Weird. The evaluation of a node that should resolve to a canonical user id wasn't a string node or list thereof.")
+              Set()
+          }
+        }
 
-      def principalsFromSingleNode(j:Json) : Set[Entity] = {
-        if ( isServicePrincipal(j) )            nodesFromServicePrincipal(j.field("Service").get)
-        else if (isAwsPrincipal(j))             nodesFromAwsPrincipal (j.field("AWS").get)
-        else if (isFederatedPrincipal(j))       nodesFromFederatedPrincipal (j.field("Federated").get)
-        else if (isCanonicalUserPrincipal(j))   nodesFromCanonicalPrincipal (j.field("CanonicalUser").get)
         else                                    {
           nE.encode(j) match {
-            case e:Entity => Set(e)
+            case r:Resource => Set(r)
             case StringNode(s) => println("The function returned a stringnode! with value " + s); Set()
             case x => println("The function to encode the node did not return an entity but " + x); Set()
           }
@@ -227,7 +269,7 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
     }
 
     def computeStarSet : Set[String] = {
-      val servType  = resources._2.head.asInstanceOf[Resource].serviceType
+      val servType  = resources._2.head.asInstanceOf[StackSetResource].serviceType
       ActionsMap.lookUpActionPrefix(servType)
     }
 
@@ -240,26 +282,26 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
 
 
 
-  private def computeResources(json: Json) : (Boolean,Vector[Entity]) = {
+  private def computeResources(json: Json) : (Boolean,Vector[Resource]) = {
 
 
-    def computeResourceSet: Set[Entity] = {
+    def computeResourceSet: Set[Resource] = {
       isStarResourceBlock(json) match {
         case false => computeNormalSet
         case true  => computeStarSet
       }
     }
 
-    def ifNotEntityEmptySet(encodedNone :Node) : Set[Entity] = {
+    def ifNotEntityEmptySet(encodedNone : Node) : Set[Resource] = {
       encodedNone match {
         case ListOfEntities(v) => v.toSet
-        case e:Entity => Set(e)
+        case r:Resource => Set(r)
         case StringNode(s) => println("The function returned a stringnode! with value " + s); Set()
         case x => println("The function to encode the node did not return entity but " + x) ; Set()
       }
     }
 
-    def computeNormalSet : Set[Entity] = {
+    def computeNormalSet : Set[Resource] = {
 
         if (isResourceBlock(json) && !json.field("Resource").get.isArray)
           ifNotEntityEmptySet(nE.encode(json.field("Resource").get))
@@ -273,7 +315,7 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
     }
 
 
-    def computeStarSet : Set[Entity] = {
+    def computeStarSet : Set[Resource] = {
 
       if (actions._2.nonEmpty) {
 
@@ -301,7 +343,7 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
 
 
       isResourceBlock(json) || isNotResourceBlock(json)  match {
-        case false => (true,resourcesIsAttachedTo.toVector)
+        case false => (true,resourcesIsAttachedTo.toVector.asInstanceOf[Vector[Resource]])
         case true  => (isResourceBlock(json), computeResourceSet.toVector)
         }
 
@@ -364,9 +406,9 @@ class Json2PolicyDocumentEncoder( iE:Json2InfrastructureEncoder, ssE:Json2StackS
   private def isResourceOmitted(j:Json) : Boolean = !(isResourceBlock(j)||isNotResourceBlock(j))
 
   def isAttachedToRole(j:Json):Boolean =
-    resourcesIsAttachedTo.size==1 && resourcesIsAttachedTo.head.isInstanceOf[Resource] &&
-      resourcesIsAttachedTo.head.asInstanceOf[Resource].serviceType.toLowerCase =="iam" &&
-      resourcesIsAttachedTo.head.asInstanceOf[Resource].resourceType.toLowerCase == "role"
+    resourcesIsAttachedTo.size==1 && resourcesIsAttachedTo.head.isInstanceOf[StackSetResource] &&
+      resourcesIsAttachedTo.head.asInstanceOf[StackSetResource].serviceType.toLowerCase =="iam" &&
+      resourcesIsAttachedTo.head.asInstanceOf[StackSetResource].resourceType.toLowerCase == "role"
 
 
 }

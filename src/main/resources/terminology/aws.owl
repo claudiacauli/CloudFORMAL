@@ -1,0 +1,1271 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToAccount -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToAccount">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToFederatedAccount -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToFederatedAccount">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isDeployedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isDeployedIn">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Stack"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStack -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStack">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackResource"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Stack"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStackSet -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStackSet">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Stack"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSet"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStack"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStackSet"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isOwnedByAccount -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isOwnedByAccount">
+        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#owns"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSetResource"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isInStack"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isDeployedIn"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#owns -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#owns"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AuthenticatedUser -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AuthenticatedUser">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToAccount"/>
+                        <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsAccount">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsPartition -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsPartition"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsResource -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsResource">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ExternalResource -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ExternalResource">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedAccount -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedAccount">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedUser -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedUser">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasAccessToFederatedAccount"/>
+                        <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#FederatedAccount"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ExternalResource"/>
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Stack -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Stack"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackResource -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackResource">
+        <owl:equivalentClass rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSetResource"/>
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSet -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSet"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSetResource -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#StackSetResource"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#UnauthenticatedUser -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#UnauthenticatedUser">
+        <owl:equivalentClass rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#User">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#Public"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#acm.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#acm.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#alexa-appkit.amazon.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#alexa-appkit.amazon.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#alexa-connectedhome.amazon.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#alexa-connectedhome.amazon.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-east-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-east-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-2">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-northeast-3">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-south-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-south-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-southeast-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-southeast-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-southeast-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ap-southeast-2">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#apigateway.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#apigateway.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#appstream.application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#appstream.application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#appsync.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#appsync.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#athena.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#athena.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsPartition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-artifact-account-sync.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-artifact-account-sync.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-cn -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-cn">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsPartition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-us-gov -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#aws-us-gov">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsPartition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#batch.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#batch.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ca-central-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ca-central-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#channels.lex.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#channels.lex.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloud9.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloud9.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#clouddirectory.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#clouddirectory.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudformation.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudformation.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudfront.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudfront.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudsearch.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudsearch.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudtrail.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cloudtrail.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cn-north-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cn-north-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cn-northwest-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#cn-northwest-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codebuild.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codebuild.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codecommit.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codecommit.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codedeploy.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codedeploy.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codepipeline.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#codepipeline.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#config.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#config.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#continuousexport.discovery.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#continuousexport.discovery.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#custom-resource.application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#custom-resource.application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#datapipeline.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#datapipeline.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dax.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dax.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#deeplens.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#deeplens.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#directconnect.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#directconnect.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dlm.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dlm.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dms.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dms.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ds.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ds.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dynamodb.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dynamodb.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dynamodb.application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#dynamodb.application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2.application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2.application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2fleet.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2fleet.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2scheduled.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ec2scheduled.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecr.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecr.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs-tasks.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs-tasks.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs.application-autoscaling.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ecs.application-autoscaling.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#edgelambda.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#edgelambda.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eks.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eks.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticache.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticache.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticbeanstalk.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticbeanstalk.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticfilesystem.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticfilesystem.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticloadbalancing.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticloadbalancing.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticmapreduce.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elasticmapreduce.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elastictranscoder.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#elastictranscoder.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#es.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#es.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-central-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-central-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-north-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-north-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-2">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#eu-west-3">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#events.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#events.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#firehose.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#firehose.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#fms.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#fms.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#glue.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#glue.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#greengrass.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#greengrass.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#guardduty.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#guardduty.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#health.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#health.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#iam.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#iam.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#inspector.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#inspector.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#iot.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#iot.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kinesis.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kinesis.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kinesisanalytics.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kinesisanalytics.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kms.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#kms.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lambda.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lambda.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lex.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lex.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#license-manager.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#license-manager.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lightsail.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#lightsail.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#logs.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#logs.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#machinelearning.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#machinelearning.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#macie.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#macie.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#mediaconvert.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#mediaconvert.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#monitoring.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#monitoring.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#monitoring.rds.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#monitoring.rds.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#opsworks.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#opsworks.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#organizations.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#organizations.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ram.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ram.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#rds.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#rds.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#redshift.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#redshift.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#rekognition.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#rekognition.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#replication.dynamodb.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#replication.dynamodb.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#route53.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#route53.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#s3.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#s3.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sa-east-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sa-east-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sagemaker.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sagemaker.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#secretsmanager.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#secretsmanager.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#servicecatalog.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#servicecatalog.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ses.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ses.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#signin.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#signin.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sms.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sms.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sns.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sns.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#spotfleet.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#spotfleet.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sqs.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sqs.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ssm.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ssm.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sso.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sso.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#states.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#states.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#storagegateway.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#storagegateway.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sts.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#sts.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#support.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#support.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#swf.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#swf.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#trustedadvisor.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#trustedadvisor.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-east-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-east-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-east-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-east-2">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-west-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-west-1">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-west-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#us-west-2">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#AwsRegion"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#vmie.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#vmie.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#waf.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#waf.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#workdocs.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#workdocs.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#workspaces.amazonaws.com -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#workspaces.amazonaws.com">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ServicePrincipal"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

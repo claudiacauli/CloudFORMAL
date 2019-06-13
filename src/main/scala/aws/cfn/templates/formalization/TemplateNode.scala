@@ -30,37 +30,53 @@ sealed trait StackSetNode extends Node
 
     sealed trait Entity extends ObjectNode
 
-      case object Public extends Entity {
+      sealed trait Principal extends Entity
+
+      case object Public extends Principal {
         override def toString : String = "Public"
       }
 
-      final case class ServicePrincipal(name:String, infrastructure: Infrastructure) extends Entity {
+      final case class ServicePrincipal(name:String) extends Principal {
         override def toString: String = "ServicePrincipal(" + name + ")"
       }
 
-      final case class ExternalEntity(name:String, infrastructure:Infrastructure=null) extends Entity{
+      final case class AccountPrincipal(accountId:String) extends Principal{
+        override def toString: String = "AccountPrincipal("+accountId+")"
+      }
+
+      final case class FederatedAccountPrincipal(federation:String) extends Principal{
+        override def toString: String = "FederatedAccountPrincipal("+federation+")"
+      }
+
+      final case class CanonicalUserPrincipal(canonicalUserId:String) extends Principal{
+        override def toString: String = "CanonicalUserPrincipal("+canonicalUserId+")"
+      }
+
+      sealed trait Resource extends Principal with Entity
+
+      final case class ExternalResource(name:String, infrastructure:Infrastructure=null) extends Resource {
         override def toString: String = "ExternalEntity(" + name + ")"
       }
 
-      final case class Resource(resourceLogicalId : String,
-                                serviceType : String,
-                                resourceType : String,
-                                stackset : StackSet,
-                                attributes : Map[String, GenericValueNode]
-                                   ) extends Entity
+      final case class StackSetResource(resourceLogicalId : String,
+                                        serviceType : String,
+                                        resourceType : String,
+                                        stackset : StackSet,
+                                        attributes : Map[String, GenericValueNode]
+                                   ) extends Resource
       {
         val value: String = resourceLogicalId
         var resourceName : String = resourceLogicalId
         var givenProperties: Map[String,Node] = Map()
         var absentProperties: Set[String] = Set()
-        def apply(): Resource = this
+        def apply(): StackSetResource = this
 
         override def toString: String = {
          serviceType + "::" + resourceType + "(" + resourceLogicalId + ")"
         }
       }
 
-    final case class ListOfEntities(nodes:Vector[Entity]) extends Entity
+    final case class ListOfEntities(nodes:Vector[Resource]) extends Resource with Entity
 
     final case class Subproperty(givenProperties  : Map[String,Node],
                                  absentProperties : Set[String] = Set()) extends ObjectNode
@@ -75,9 +91,9 @@ sealed trait StackSetNode extends Node
 
 
 
-    sealed abstract class Statement ( val principals: (Boolean,Set[Entity]),
+    sealed abstract class Statement ( val principals: (Boolean,Set[Principal]),
                                       val actions: (Boolean,Vector[String]),
-                                      val resources: (Boolean, Vector[Entity]),
+                                      val resources: (Boolean, Vector[Resource]),
                                       val hasCondition: Boolean,
                                       val isAssumeRoleStatement: Boolean )  extends ObjectNode {
 
@@ -89,11 +105,11 @@ sealed trait StackSetNode extends Node
         if (!a._1) " NOT { " + list(a._2) + " }" else " { " + list(a._2) + " }"
       }
 
-      def listS(l: Set[Entity]): String = {
+      def listS(l: Set[Principal]): String = {
         l.foldLeft("")((a,b)=>a+b+" ")
       }
 
-      def prettyS(a: (Boolean,Set[Entity])) : String = {
+      def prettyS(a: (Boolean,Set[Principal])) : String = {
         if (!a._1) " NOT { " + listS(a._2) + " }" else " { " + listS(a._2) + " }"
       }
 
@@ -104,9 +120,9 @@ sealed trait StackSetNode extends Node
 
     }
 
-      final case class AllowStatement(p: (Boolean,Set[Entity]),
+      final case class AllowStatement(p: (Boolean,Set[Principal]),
                                       a: (Boolean,Vector[String]),
-                                      r: (Boolean, Vector[Entity]),
+                                      r: (Boolean, Vector[Resource]),
                                       hasC: Boolean ,
                                       isARS: Boolean) extends Statement(p,a,r,hasC,isARS){
         override def toString: String = {
@@ -115,9 +131,9 @@ sealed trait StackSetNode extends Node
         }
       }
 
-      final case class DenyStatement(p: (Boolean,Set[Entity]),
+      final case class DenyStatement(p: (Boolean,Set[Principal]),
                                      a: (Boolean,Vector[String]),
-                                     r: (Boolean, Vector[Entity]),
+                                     r: (Boolean, Vector[Resource]),
                                      hasC: Boolean ,
                                      isARS: Boolean) extends Statement(p,a,r,hasC,isARS){
         override def toString: String = {

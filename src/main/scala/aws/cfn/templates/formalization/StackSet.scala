@@ -9,7 +9,7 @@ class StackSet( val name:String,
                 val manager: OWLOntologyManager) {
 
   var templates: Vector[Template] = Vector()
-  var foreignNodes: Map[String,ExternalEntity] = Map()
+  var foreignNodes: Map[String,ExternalResource] = Map()
   manager.loadOntologyFromOntologyDocument(new File("src/main/resources/terminology/policy/policydocument.owl"))
 
   override def toString: String = {

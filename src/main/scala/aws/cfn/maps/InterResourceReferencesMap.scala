@@ -168,8 +168,11 @@ object InterResourceReferencesMap {
     "apigatewaybasepathmapping_basepathmapping_restapiid" -> ("apigatewayrestapi","restapi",true,true),
     "apigatewayusageplan_apistage_apiid" -> ("apigatewayrestapi","restapi",false,true),
     "apigatewaydomainname_domainname_regionalcertificatearn" -> (null,null,false,true),
-    "kmsalias_alias_targetkeyid" -> ("kmskey","key",true,true)
+    "kmsalias_alias_targetkeyid" -> ("kmskey","key",true,true),
+    "apigatewayrestapi_s3location_bucket" -> ("s3bucket","bucket",false,true),
 
+    // Null because it can point to any other DB Resource (RDS,Aurora,etc...)
+    "rdsdbinstance_dbinstance_dbsnapshotidentifier" -> (null,null,false,true)
 
   )
 

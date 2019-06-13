@@ -16,7 +16,7 @@ sealed trait IntrinsicFunction
 
 
 final case class ArnFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEncoder,
-                             resources   :Map[String,Resource],
+                             resources   :Map[String,StackSetResource],
                              parameters  :Map[String,Node], arnsMap :Map[String,Node] ) extends IntrinsicFunction
 {
   def apply(arnString: String) : Entity = {
@@ -26,7 +26,7 @@ final case class ArnFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
       case v if v.isEmpty => NoValue
       case v if v.size == 1 => {
         if (rE != null && rE.pointedResourceIsPolicy(v.head))
-          iE.updateResByPolicyMap(v.head.asInstanceOf[Resource], rE.resource)
+          iE.updateResByPolicyMap(v.head.asInstanceOf[StackSetResource], rE.resource)
         v.head
       }
       case v => ListOfEntities(v)
@@ -93,14 +93,14 @@ final case class FindInMapFunction( mappings: Map[String,Map[String,Either[Strin
 
 
 final case class GetAttFunction ( iE:Json2InfrastructureEncoder, rE: Json2ResourceEncoder,
-                                  resources :Map[String,Resource]) extends IntrinsicFunction
+                                  resources :Map[String,StackSetResource]) extends IntrinsicFunction
 {
   def apply(resourceName:StringNode, attributeName:StringNode): Node =
   {
     if (attributeName.value.equals("arn") && resources!=null && resources.get(resourceName.value).isDefined) {
       val res = resources(resourceName.value)
       if ( rE!=null && rE.pointedResourceIsPolicy(res) )
-        iE.updateResByPolicyMap(res.asInstanceOf[Resource],
+        iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],
           rE.resource)
       res
     }
@@ -144,7 +144,7 @@ final case class ImportValueFunction( iE: Json2InfrastructureEncoder, rE:Json2Re
     val res = outputsByLogicalId.getOrElse(importName.value,
       outputsByExportName.getOrElse(importName.value,
         lookupOtherStackSets()))
-    if ( rE!=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
+    if ( rE!=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],rE.resource)
     res
   }
 }
@@ -156,9 +156,9 @@ final case class JoinFunction() extends IntrinsicFunction
 {
   def apply(delimiter : StringNode, segments : ListNode[StringNode]): Node =
   {
-    if (segments.value.asInstanceOf[Vector[Node]] exists ( i => i.isInstanceOf[Resource]) )
-      (segments.value.asInstanceOf[Vector[Node]] find ( i => i.isInstanceOf[Resource]))
-        .get.asInstanceOf[Resource]
+    if (segments.value.asInstanceOf[Vector[Node]] exists ( i => i.isInstanceOf[StackSetResource]) )
+      (segments.value.asInstanceOf[Vector[Node]] find ( i => i.isInstanceOf[StackSetResource]))
+        .get.asInstanceOf[StackSetResource]
     else
       StringNode ( (segments.value map (i => i.value )).mkString(delimiter.value) )
 
@@ -175,7 +175,7 @@ final case class SelectFunction(iE: Json2InfrastructureEncoder, rE:Json2Resource
       NoValue
     else {
       val res = list.value(index.value)
-      if ( rE!=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
+      if ( rE!=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],rE.resource)
       res
     }
   }
@@ -196,7 +196,7 @@ final case class SplitFunction() extends IntrinsicFunction
 
 
 final case class SubFunction (iE:Json2InfrastructureEncoder, rE:Json2ResourceEncoder,
-                              resources  : Map[String,Resource],
+                              resources  : Map[String,StackSetResource],
                               parameters : Map[String,Node] ) extends IntrinsicFunction
 {
   def apply(str : StringNode, substitutionMap : Option[Map[String,String]] = None ):Node =
@@ -223,7 +223,7 @@ final case class SubFunction (iE:Json2InfrastructureEncoder, rE:Json2ResourceEnc
       s = s.split(".arn\\}").head.split("\\{").last
       if (resources!=null && resources.get(s).isDefined) {
         val res = resources(s)
-        if ( rE !=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
+        if ( rE !=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],rE.resource)
         res
       }
       else NoValue
@@ -250,7 +250,7 @@ final case class TransformFunction() extends IntrinsicFunction
 
 
 final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEncoder,
-                             resources   :Map[String,Resource],
+                             resources   :Map[String,StackSetResource],
                              parameters  :Map[String,Node],
                              ssE         :Json2StackSetEncoder) extends IntrinsicFunction
 {
@@ -266,9 +266,9 @@ final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
           res match {
             case ListOfEntities(v) if v.size==1 => {
               if (!ssE.resourceByArn.values.toVector.contains(v.head))
-                ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> v.head.asInstanceOf[ExternalEntity])
+                ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> v.head.asInstanceOf[ExternalResource])
               if ( rE!=null &&  rE.pointedResourceIsPolicy(v.head) )
-                iE.updateResByPolicyMap(v.head.asInstanceOf[Resource],rE.resource)
+                iE.updateResByPolicyMap(v.head.asInstanceOf[StackSetResource],rE.resource)
               v.head
             }
             case l:ListOfEntities => {
@@ -276,9 +276,9 @@ final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
             }
             case _ =>
               if (!ssE.resourceByArn.values.toVector.contains(res))
-                ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> res.asInstanceOf[ExternalEntity])
+                ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> res.asInstanceOf[ExternalResource])
               if ( rE!=null &&  rE.pointedResourceIsPolicy(res) )
-                iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
+                iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],rE.resource)
               res
           }
 
@@ -288,13 +288,13 @@ final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
         }
         else if (resources!=null && resources.get(str.value).isDefined) {
           val res = resources(str.value)
-          if ( rE !=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
+          if ( rE !=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[StackSetResource],rE.resource)
           res
         }
         else NoValue
 
-      case node: Resource   => node
-      case node: ExternalEntity    => node
+      case node: StackSetResource   => node
+      case node: ExternalResource    => node
       case _                        => NoValue
     }
   }

@@ -24,13 +24,52 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
 
   def encode() : StackSetModel = {
 
+    stackSet.templates foreach ( t => {
+
+      val stackIndividualName = stackSet.name + t.name + "Stack"
+
+      m.ontology.add(
+        m.df.getOWLClassAssertionAxiom(
+          classFromIRI(DLModelIRI.awsConceptIRI("Stack")),
+          m.df.getOWLNamedIndividual(DLModelIRI.awsIndividualIRI( stackIndividualName ))
+        ))
+
+      m.ontology.add(
+        m.df.getOWLObjectPropertyAssertionAxiom(
+          m.df.getOWLObjectProperty(DLModelIRI.awsPropertyIRI("isDeployedIn")),
+          m.df.getOWLNamedIndividual(DLModelIRI.awsIndividualIRI(stackIndividualName)),
+          m.df.getOWLNamedIndividual(DLModelIRI.awsAccountIRI(
+            t.parameters("aws::accountid").asInstanceOf[StringNode].value))
+        )
+      )
+
+    })
+
     for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
+
       m.ontology.add(m.df.getOWLClassAssertionAxiom(
         classFromIRI(
           DLModelIRI.resourceTypeIRI(r._2.serviceType+r._2.resourceType, r._2.resourceType)),
             getResourceIndividual(r._1)
       ))
+
+      m.ontology.add(m.df.getOWLObjectPropertyAssertionAxiom(
+        m.df.getOWLObjectProperty(DLModelIRI.awsPropertyIRI("isInStack")),
+        getResourceIndividual(r._1),
+        m.df.getOWLNamedIndividual(DLModelIRI.awsIndividualIRI(stackSet.name + t.name + "Stack"))
+      ))
+
     }
+
+    infrastructure.externalResources foreach ( eR =>
+      m.ontology.add(
+        m.df.getOWLClassAssertionAxiom(
+          classFromIRI(DLModelIRI.awsConceptIRI("ExternalResource")),
+          m.df.getOWLNamedIndividual(DLModelIRI.externalEntityIRI(infrastructure.name,eR.name))
+        )
+      ))
+
+
     for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
       m.ontology.add(encodeResource(r._2).asJava)
     }
@@ -46,7 +85,7 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
   }
 
 
-  private def encodeResource(resource: Resource): Vector[OWLAxiom]  = {
+  private def encodeResource(resource: StackSetResource): Vector[OWLAxiom]  = {
 
 
     //    def createResourceNode(iri: IRI) =
@@ -70,7 +109,7 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
         case Some(op) =>
           cfnNode match {
            case ListNode(vec) => vec flatMap {
-             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ExternalEntity(s,infrastructure))
+             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ExternalResource(s,infrastructure))
              case NoValue => Vector()
              case n => encodeObjectProperty(sourceIndividual, op, n.asInstanceOf[ObjectNode])
             }
@@ -78,7 +117,7 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
            case NoValue => Vector()
            case _ => encodeObjectProperty(sourceIndividual, op,
              cfnNode match {
-               case StringNode(s) => ExternalEntity(s,infrastructure)
+               case StringNode(s) => ExternalResource(s,infrastructure)
                case _ => cfnNode.asInstanceOf[ObjectNode]
              })
          }
@@ -89,7 +128,7 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
               vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
             case MapNode(map) => map.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
             case NoValue => Vector()
-            case Resource(_,s,r,_,_) =>
+            case StackSetResource(_,s,r,_,_) =>
               println("Data Property " + dp.toString.split("#").last + " of " + resource.serviceType + resource.resourceType + "#" + resource.resourceType + " points to resource of type "
                 + s + r + "#" + r )
               Vector() // TODO ERROR! Something wrong here: Property seems data but points to a resource
@@ -156,13 +195,13 @@ class StackSet2DLEncoder(stackSet: StackSet, infrastructure: Infrastructure){
 
     def encodeObjectProperty(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, objNode: ObjectNode): Vector[OWLAxiom]
     = objNode match {
-      case Resource(resourceLogicalId,_,_,ss,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromStackSet(resourceLogicalId,ss)))
+      case StackSetResource(resourceLogicalId,_,_,ss,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromStackSet(resourceLogicalId,ss)))
       case Subproperty(givenProperties, absentProperties) =>
         val individualRandomIRI = DLModelIRI.subpropertyBlankNodeIRI(stackSet.name)
         createBlankNode(sourceIndividual,objProp, individualRandomIRI) ++
           encodeAllGivenSubproperties(individualRandomIRI, givenProperties) ++
           (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
-      case ExternalEntity(v,infr) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromInfrastructure(v,infr)))
+      case ExternalResource(v,infr) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromInfrastructure(v,infr)))
 //      case PolicyDocument(statements) => // TODO Again!
 //        val policyRandomIRI = DLModelIRI.policyNodeIRI(stackSet.name)
 //        createPolicyNode(policyRandomIRI) /*++

@@ -133,16 +133,16 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   val serviceType: String   = getServiceName
   val resourceType: String  = getResourceType
   val NodeEncoder     = new Json2NodeEncoder(iE, ssE,tE,this)
-  var resource : Resource = _
+  var resource : StackSetResource = _
 
 
 
 
 
-  def createResourceNodeWithAttributes: Map[String,Resource] = {
+  def createResourceNodeWithAttributes: Map[String,StackSetResource] = {
 
     if (tE.hasTrueCondition(resourceJsonNode)){
-      resource = Resource( resourceLogicalId, serviceType, resourceType, ssE.stackSet, attributesFromResourceJsonNode )
+      resource = StackSetResource( resourceLogicalId, serviceType, resourceType, ssE.stackSet, attributesFromResourceJsonNode )
       importResourceSpecificationOntology()
       Map( resourceLogicalId -> resource )
     }
@@ -156,7 +156,7 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   }
 
 
-  def deepInstantiationOfResource(): Resource = {
+  def deepInstantiationOfResource(): StackSetResource = {
 
     updateResourceByPolicy()
 
@@ -280,8 +280,8 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
 
 
   def pointedResourceIsPolicy(res : Node) : Boolean = {
-    if (res.isInstanceOf[Resource])
-      (res.asInstanceOf[Resource].serviceType.toLowerCase, res.asInstanceOf[Resource].resourceType.toLowerCase) match {
+    if (res.isInstanceOf[StackSetResource])
+      (res.asInstanceOf[StackSetResource].serviceType.toLowerCase, res.asInstanceOf[StackSetResource].resourceType.toLowerCase) match {
         case ("s3","bucketpolicy")    => true
         case ("iam","managedpolicy")  => true
         case ("iam","policy")         => true
@@ -295,12 +295,12 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   }
 
 
-  def currentResourceIsPolicyAndPointsTo : Set[Resource] = {
+  def currentResourceIsPolicyAndPointsTo : Set[StackSetResource] = {
     (resource.serviceType.toLowerCase,resource.resourceType.toLowerCase) match {
       case ("s3","bucketpolicy")    => {
         if (resourceJsonNode.field("Properties").get.field("Bucket").isDefined){
           NodeEncoder.encode(resourceJsonNode.field("Properties").get.field("Bucket").get) match {
-            case r:Resource => Set( r )
+            case r:StackSetResource => Set( r )
             case _ => Set()
           }
         }
