@@ -39,5 +39,10 @@ trait DLModel {
     )
   }
 
+  def stackSetFilesInSubdirs(currentDir: File) = {
+    (currentDir.listFiles() filter (f => f.isDirectory)).toVector flatMap (
+      f => f.listFiles().toVector filter (f => f.getName.endsWith(DLModelWriter.stackSetFileSuffix))
+      )
+  }
 
 }

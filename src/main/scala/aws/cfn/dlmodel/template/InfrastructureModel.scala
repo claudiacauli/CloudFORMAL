@@ -1,8 +1,9 @@
 package aws.cfn.dlmodel.template
 
-import java.io.File
+import java.io.{File, PrintWriter}
 
 import aws.cfn.dlmodel.{DLModel, DLModelIRI, DLModelWriter}
+import aws.cfn.templates.formalization.Infrastructure
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._
 
@@ -10,7 +11,7 @@ import scala.jdk.StreamConverters._
 
 
 
-class InfrastructureModel(val name:String, stacksetsModels: Vector[StackSetModel]) extends DLModel {
+class InfrastructureModel(val name:String, stacksetsModels: Set[StackSetModel], val infrastructure:Infrastructure) extends DLModel {
 
   val manager :OWLOntologyManager = OWLManager.createOWLOntologyManager()
   val ontology: OWLOntology = manager.createOntology(DLModelIRI.infrastructureModelIRI(name))
@@ -27,11 +28,21 @@ class InfrastructureModel(val name:String, stacksetsModels: Vector[StackSetModel
 
   }
 
-  private def stackSetFilesInSubdirs(currentDir: File) = {
-    (currentDir.listFiles() filter (f => f.isDirectory)).toVector flatMap (
-      f => f.listFiles().toVector filter (f => f.getName.endsWith(DLModelWriter.stackSetFileSuffix))
-      )
+  def writeInfrastructureSummaryToFolder( destinationFolder:String ) : Unit = {
+    val dir = DLModelWriter.makeDirIfDoesNotExist(destinationFolder+name+"/")
+    val pw = new PrintWriter( new File ( destinationFolder + name + "/InfrastructureSummary.txt" ))
+    pw.write(infrastructure.toString)
+    pw.close()
   }
+
+  def writePolicySummaryToFolder( destinationFolder:String ) : Unit = {
+    val dir = DLModelWriter.makeDirIfDoesNotExist(destinationFolder+name+"/")
+    val pw = new PrintWriter( new File ( destinationFolder + name + "/PermissionsSummary.txt" ))
+    pw.write(infrastructure.printPolicies)
+    pw.close()
+  }
+
+
 
 
 

@@ -2,16 +2,11 @@
 import java.io.{File, FileNotFoundException}
 
 import argonaut.Json
-import aws.cfn.dlmodel.DLModelWriter
-import aws.cfn.dlmodel.template.StackSetModel
 import aws.cfn.shared.ParseUtils
 import aws.cfn.specifications.encoding.{Json2SpecificationEncoder, Map2ToServiceActions, ServiceActions2DLEncoder, Specification2DLEncoder}
-import aws.cfn.specifications.formalization.StringProperty
 import aws.cfn.templates.encoding.{Infrastructure2DLEncoder, Json2InfrastructureEncoder, Json2StackSetEncoder, StackSet2DLEncoder}
-import aws.cfn.templates.formalization._
 
 import scala.language.postfixOps
-import scala.jdk.CollectionConverters._
 
 object Main extends App {
 
@@ -48,9 +43,12 @@ object Main extends App {
       val i = Json2InfrastructureEncoder.encode(
         ((file.listFiles() filter (f => f.isDirectory)) map ( f => createStackSetFiles(f,infrastructureName) )).toVector,
         infrastructureName)
-      val iM = Infrastructure2DLEncoder.encode(i)
+      val models = Infrastructure2DLEncoder.encode(i)
 
-      iM.writeToOutputFolder(outputFilePath)
+      models._1.writeToOutputFolder(outputFilePath)
+      models._1.writeInfrastructureSummaryToFolder(outputFilePath)
+      models._1.writePolicySummaryToFolder(outputFilePath)
+      models._2.writeToOutputFolder(outputFilePath)
 
     }
 
@@ -162,12 +160,14 @@ object Main extends App {
   /*
     ACTION FUNCTIONALITIES!
   */
-//  def updateActionsOntologiesInProjectResources(): Unit =
-//    saveActionsOntologyInFolder("src/main/resources/terminology/actions/")
-//
-//
-//  def saveActionsOntologyInFolder(folderPath : String): Unit =
-//    ServiceActions2DLEncoder.encode(Map2ToServiceActions.fromMap())  foreach ( aM => aM.writeToOutputFolder("src/main/resources/terminology/actions/") )
+  //updateActionsOntologiesInProjectResources()
+
+  def updateActionsOntologiesInProjectResources(): Unit =
+    saveActionsOntologyInFolder("src/main/resources/terminology/actions/")
+
+
+  def saveActionsOntologyInFolder(folderPath : String): Unit =
+    ServiceActions2DLEncoder.encode(Map2ToServiceActions.fromMap())  foreach ( aM => aM.writeToOutputFolder("src/main/resources/terminology/actions/") )
 
 
 }

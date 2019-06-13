@@ -21,7 +21,7 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager()
   val df : OWLDataFactory = manager.getOWLDataFactory
 
-  val stackSet = new StackSet(stackSetName, manager)
+  val stackSet = new StackSet(stackSetName, iE.infrastructure, manager)
 
   val templatesEncoders: Vector[Json2TemplateEncoder] =
     templates map (t => new Json2TemplateEncoder(iE,this,t._1,t._2, t._3))
@@ -52,12 +52,6 @@ class Json2StackSetEncoder(iE:Json2InfrastructureEncoder, templates: Vector[(Str
   def encodePolicies() : StackSet = {
     templatesEncoders foreach ( tE => tE.policyEncoders foreach (pE => pE.encode()) )
     stackSet
-  }
-
-  override def toString: String = {
-    "\tStackSet: " + stackSetName + ", includes Templates: " + "\n" +
-    templatesEncoders.foldLeft("")((a,b)=> a + b.toString + "\n")
-
   }
 
 }

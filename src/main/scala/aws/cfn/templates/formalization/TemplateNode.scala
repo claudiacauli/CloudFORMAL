@@ -5,7 +5,7 @@ sealed trait Node
 sealed trait StackSetNode extends Node
 
   sealed trait GenericValueNode extends StackSetNode
-    case object NoValue extends GenericValueNode
+    case object NoValue extends GenericValueNode with Entity
     sealed class ValueNode[T](value: T) extends GenericValueNode {
       override def toString: String = value.toString
     }
@@ -34,11 +34,18 @@ sealed trait StackSetNode extends Node
         override def toString : String = "Public"
       }
 
-      final case class ExternalEntity(name:String) extends Node with Entity
+      final case class ServicePrincipal(name:String, infrastructure: Infrastructure) extends Entity {
+        override def toString: String = "ServicePrincipal(" + name + ")"
+      }
+
+      final case class ExternalEntity(name:String, infrastructure:Infrastructure=null) extends Entity{
+        override def toString: String = "ExternalEntity(" + name + ")"
+      }
 
       final case class Resource(resourceLogicalId : String,
                                 serviceType : String,
                                 resourceType : String,
+                                stackset : StackSet,
                                 attributes : Map[String, GenericValueNode]
                                    ) extends Entity
       {
@@ -53,7 +60,7 @@ sealed trait StackSetNode extends Node
         }
       }
 
-    final case class ListOfObjectNodes(nodes:Vector[Node]) extends ObjectNode
+    final case class ListOfEntities(nodes:Vector[Entity]) extends Entity
 
     final case class Subproperty(givenProperties  : Map[String,Node],
                                  absentProperties : Set[String] = Set()) extends ObjectNode
@@ -61,47 +68,60 @@ sealed trait StackSetNode extends Node
       def apply(): Subproperty = this
     }
 
-    final case class PolicyDocument(statements: Vector[Statement]) extends ObjectNode
+    final case class PolicyDocument(statements: Set[Statement]) extends ObjectNode
     {
       def apply(): PolicyDocument = this
     }
 
 
 
-    sealed class Statement (p: (Boolean,Vector[Node]),
-                            a: (Boolean,Vector[String]),
-                            r: (Boolean, Vector[Node]),
-                            hasC: Boolean )  extends ObjectNode {
+    sealed abstract class Statement ( val principals: (Boolean,Set[Entity]),
+                                      val actions: (Boolean,Vector[String]),
+                                      val resources: (Boolean, Vector[Entity]),
+                                      val hasCondition: Boolean,
+                                      val isAssumeRoleStatement: Boolean )  extends ObjectNode {
 
-      def list(l:Vector[Any]) = {
+      def list(l: Vector[Any]): String = {
         l.foldLeft("")((a,b)=>a+b+" ")
       }
 
-      def pretty(a: (Boolean,Vector[Any])) = {
+      def pretty(a: (Boolean,Vector[Any])) : String = {
         if (!a._1) " NOT { " + list(a._2) + " }" else " { " + list(a._2) + " }"
       }
 
-      def pretty(hasC: Boolean): String = {
-        if (hasC) "\n with a condition."
+      def listS(l: Set[Entity]): String = {
+        l.foldLeft("")((a,b)=>a+b+" ")
+      }
+
+      def prettyS(a: (Boolean,Set[Entity])) : String = {
+        if (!a._1) " NOT { " + listS(a._2) + " }" else " { " + listS(a._2) + " }"
+      }
+
+      def prettyB(hasC: Boolean): String = {
+        if (hasC) "\n under a condition."
         else "\n with NO condition."
       }
 
     }
 
-      final case class AllowStatement(p: (Boolean,Vector[Node]),
+      final case class AllowStatement(p: (Boolean,Set[Entity]),
                                       a: (Boolean,Vector[String]),
-                                      r: (Boolean, Vector[Node]),
-                                      hasC: Boolean ) extends Statement(p,a,r,hasC){
+                                      r: (Boolean, Vector[Entity]),
+                                      hasC: Boolean ,
+                                      isARS: Boolean) extends Statement(p,a,r,hasC,isARS){
         override def toString: String = {
-          "Allows \n principals " + pretty(p) + "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + pretty(hasC)
+          "Allows \n principals " + prettyS(p) +
+            "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + prettyB(hasC)
         }
       }
 
-      final case class DenyStatement(p: (Boolean,Vector[Node]),
+      final case class DenyStatement(p: (Boolean,Set[Entity]),
                                      a: (Boolean,Vector[String]),
-                                     r: (Boolean, Vector[Node]),
-                                     hasC: Boolean ) extends Statement(p,a,r,hasC){
+                                     r: (Boolean, Vector[Entity]),
+                                     hasC: Boolean ,
+                                     isARS: Boolean) extends Statement(p,a,r,hasC,isARS){
         override def toString: String = {
-          "Denies " + pretty(p) + " to perform actions " + pretty(a) + " on resources " + pretty(r) + pretty(hasC)
+          "Denies \n principals" + prettyS(p) +
+            "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + prettyB(hasC)
         }
       }

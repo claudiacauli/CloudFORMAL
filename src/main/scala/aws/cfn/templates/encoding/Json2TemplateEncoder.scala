@@ -25,7 +25,6 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
   var resourceByArn: Map[String,Node] = Map()//createResourceByArnMap
   var policyEncoders : Vector[Json2PolicyDocumentEncoder] = Vector()
 
-
   def updateResourcesNames : Unit = {
     resourceEncoders foreach (rE => {
       if (rE._2 == null) println ("Resource encoder has encoder null!")
@@ -35,19 +34,14 @@ protected class Json2TemplateEncoder(iE:Json2InfrastructureEncoder, ssE: Json2St
 
 
   def encode(): Template = {
+    template.parameters = this.parameters
+    template.mappings = this.mappings
+    template.conditions = this.conditions
+    template.outputByLogicalId = this.outputByLogicalId
+    template.outputByExportName = this.outputByExportName
     template.resources = (resources.toVector flatMap (r => Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource()))).toMap
     template.resources = template.resources ++ embeddedPolicies
     template
-  }
-
-
-  override def toString: String = {
-    "\t\tTemplate: " + templateName + "\n" +
-    prettyString(parameters,"Parameters") +
-    prettyString(mappings, "Mappings") +
-    prettyString(conditions, "Conditions") +
-    prettyString(outputByLogicalId, "Outputs By ID") +
-    prettyString(outputByExportName, "Outputs By Export Name")
   }
 
 

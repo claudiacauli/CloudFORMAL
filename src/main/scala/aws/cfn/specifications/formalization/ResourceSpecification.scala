@@ -75,5 +75,5 @@ sealed trait GenericAttributeOrPropertyType
 *  Types of CloudFormation Actions
 *
  */
-class Action(val name : String, val resource:String)
-class ServiceActions(val serviceName : String, val actions: Vector[Action])
+class Action(val name : String)
+class ServiceActions(val serviceName : String, val actions: Set[Action])

@@ -19,9 +19,9 @@ final case class ArnFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
                              resources   :Map[String,Resource],
                              parameters  :Map[String,Node], arnsMap :Map[String,Node] ) extends IntrinsicFunction
 {
-  def apply(arnString: String) : Node = {
+  def apply(arnString: String) : Entity = {
     val evaluatedArnStringNode = SubFunction(iE, rE, resources, parameters)(StringNode(arnString)).asInstanceOf[StringNode]
-    val arnMatchingResources = new Arn(iE, evaluatedArnStringNode.value).resourceFromArn()
+    val arnMatchingResources = new Arn(iE, evaluatedArnStringNode.value).resourcesFromArn()
     arnMatchingResources match {
       case v if v.isEmpty => NoValue
       case v if v.size == 1 => {
@@ -29,7 +29,7 @@ final case class ArnFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
           iE.updateResByPolicyMap(v.head.asInstanceOf[Resource], rE.resource)
         v.head
       }
-      case v => ListNode(v)
+      case v => ListOfEntities(v)
     }
   }
 
@@ -226,11 +226,10 @@ final case class SubFunction (iE:Json2InfrastructureEncoder, rE:Json2ResourceEnc
         if ( rE !=null && rE.pointedResourceIsPolicy(res) ) iE.updateResByPolicyMap(res.asInstanceOf[Resource],rE.resource)
         res
       }
+      else NoValue
     }
-      //GetAttFunction(iE,rE,resources)(StringNode(s.split("\\.")(0)), StringNode(s.split("\\.")(1)))
-
-    // Round 4: If there are still variables, get rid of special chars and hope they are resource names!
-    StringNode ( s.replaceAll("\\$|\\{|\\}", "") )
+    else    // Round 4: If there are still variables, get rid of special chars and hope they are resource names!
+      StringNode ( s.replaceAll("\\$|\\{|\\}", "") )
   }
 }
 
@@ -255,7 +254,7 @@ final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
                              parameters  :Map[String,Node],
                              ssE         :Json2StackSetEncoder) extends IntrinsicFunction
 {
-  def apply(n: Node): Node =
+  def apply(n: Node) : Node =
   {
     n match {
 
@@ -265,14 +264,14 @@ final case class RefFunction(iE: Json2InfrastructureEncoder, rE:Json2ResourceEnc
           val res = ArnFunction(iE,rE,resources,parameters, ssE.resourceByArn)(str.value)
 
           res match {
-            case ListOfObjectNodes(v) if v.size==1 => {
+            case ListOfEntities(v) if v.size==1 => {
               if (!ssE.resourceByArn.values.toVector.contains(v.head))
                 ssE.foreignResourcesByArn = ssE.foreignResourcesByArn ++ Map(str.value -> v.head.asInstanceOf[ExternalEntity])
               if ( rE!=null &&  rE.pointedResourceIsPolicy(v.head) )
                 iE.updateResByPolicyMap(v.head.asInstanceOf[Resource],rE.resource)
               v.head
             }
-            case l:ListOfObjectNodes => {
+            case l:ListOfEntities => {
               l
             }
             case _ =>

@@ -62,7 +62,8 @@ object DLModelIRI {
     serviceName => IRI.create( currentIRI.toString + serviceName.toLowerCase() + "#" )
 
   def actionIRI : (String,String) => IRI =
-    (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName.toLowerCase()+"#"+actionName.toLowerCase())
+    (serviceName,actionName) => IRI.create(currentIRI.toString+serviceName.toLowerCase+"Actions#"
+      +actionName.split(":").last.toLowerCase())
 
   def policyDocIRI:IRI =
     IRI.create(currentIRI.toString + "policydocument#policydocument")
@@ -84,25 +85,37 @@ object DLModelIRI {
     (stackSetName,resourceLogicalId) => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "#" + resourceLogicalId.toLowerCase)
 
   def subpropertyBlankNodeIRI : String => IRI =
-    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "Subproperty_" + randomUUID )
+    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "subproperty_" + randomUUID )
 
   def policyNodeIRI : String => IRI =
-    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "PolicyDocument_"+randomUUID )
+    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "policydocument_"+randomUUID )
 
   def embeddedPolicyIRI : String => IRI =
-    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "EmbeddedPolicy_" + randomUUID())
+    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase + "#" + "embeddedpolicy_" + randomUUID())
 
 
 
 
 
   def stackFlowIRI : String => IRI =
-    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "Flow" + "#")
+    stackSetName => IRI.create(currentIRI.toString + stackSetName.toLowerCase() + "_flow#")
 
   def infrastructureModelIRI : String => IRI =
     infrastructureName => IRI.create(currentIRI.toString + infrastructureName.toLowerCase + "_infrastructure#")
 
+  def externalEntityIRI    : (String,String) => IRI =
+    (infrastructureName, externalEntityName) =>  IRI.create(currentIRI.toString + infrastructureName.toLowerCase() +
+      "_infrastructure#" + externalEntityName.toLowerCase)
 
+  def servicePrincipalIRI : (String,String) => IRI =
+    (infrastructureName, servicePrincipalName) =>  IRI.create(currentIRI.toString + infrastructureName.toLowerCase() +
+      "_infrastructure#" + servicePrincipalName.toLowerCase)
+
+  def permissionsModelIRI : String => IRI =
+    infrastructureName => IRI.create(currentIRI.toString + infrastructureName.toLowerCase + "_permissions#")
+
+  def publicEntityIRI: IRI =
+    IRI.create(currentIRI.toString + "aws#Public" )
 
 
 }

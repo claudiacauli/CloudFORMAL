@@ -1,10 +1,10 @@
 package aws.cfn.templates.encoding
 
-import java.io.File
+import java.io.{File, FileNotFoundException}
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.dlmodel.{DLModelIRI, PrimitiveTypes}
-import aws.cfn.maps.ResourcesNameFieldsMap
+import aws.cfn.maps.{ActionsMap, ResourcesNameFieldsMap}
 import aws.cfn.templates.encoding.Json2ResourceEncoder.rangeNameOf
 import aws.cfn.templates.formalization._
 import org.semanticweb.owlapi.model._
@@ -66,9 +66,9 @@ object Json2ResourceEncoder {
                   serviceType: String, resourceType: String,
                   ssE: Json2StackSetEncoder): Option[(String,String)] = {
 
-    def rangeOf(propertyName:String): Option[Either[OWL2Datatype, OWLClass]] = {
+    def rangeOf(propertyName:String) : Option[Serializable] = {
       if (isObjectProperty(propertyName)) objectPropertyRange(propertyName) match {
-        case None => None
+        case None => Some("UnknownObject")
         case Some(c) => Some(Right(c))
       }
       else if (isDataProperty(propertyName)) dataPropertyRange(propertyName) match {
@@ -112,8 +112,9 @@ object Json2ResourceEncoder {
 
     rangeOf(propertyName) match {
       case None => None
-      case Some(Left(dt)) => Some(("",PrimitiveTypes.toString(dt)))
-      case Some(Right(c)) => Some((c.getIRI.toString.split("#").head.split("/").last,
+      case Some("UnknownObject") => Some(("unknownservicetype", "unknownresourcetype"))
+      case Some(Left(dt:OWL2Datatype)) => Some(("",PrimitiveTypes.toString(dt)))
+      case Some(Right(c:OWLClass)) => Some((c.getIRI.toString.split("#").head.split("/").last,
         c.getIRI.toString.split("#").last))
     }
   }
@@ -141,7 +142,7 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   def createResourceNodeWithAttributes: Map[String,Resource] = {
 
     if (tE.hasTrueCondition(resourceJsonNode)){
-      resource = Resource( resourceLogicalId, serviceType, resourceType, attributesFromResourceJsonNode )
+      resource = Resource( resourceLogicalId, serviceType, resourceType, ssE.stackSet, attributesFromResourceJsonNode )
       importResourceSpecificationOntology()
       Map( resourceLogicalId -> resource )
     }
@@ -263,10 +264,17 @@ class Json2ResourceEncoder(iE: Json2InfrastructureEncoder, ssE: Json2StackSetEnc
   }
 
 
-  private def importResourceSpecificationOntology() : OWLOntology  = {
+  private def importResourceSpecificationOntology() : Unit  = {
     ssE.manager.loadOntologyFromOntologyDocument(
       new File("src/main/resources/terminology/resourcespecificationsOwl/"
         + serviceType + resourceType + ".owl"))
+
+    ActionsMap.getActionPrefixFromService(serviceType.toLowerCase)
+      .filter ( actPrefix => ActionsMap.lookUpActionPrefix(actPrefix).nonEmpty)
+        .foreach ( actPrefix =>
+        ssE.manager.loadOntologyFromOntologyDocument(
+          new File ("src/main/resources/terminology/actions/" + actPrefix + "Actions.owl"))
+        )
   }
 
 

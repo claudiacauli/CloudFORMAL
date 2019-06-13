@@ -12,7 +12,7 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
   val identifiers :Vector[String] = arnComponents._5
 
 
-  def resourceFromArn() : Vector[Entity] = {
+  def resourcesFromArn() : Vector[Entity] = {
     iE.resourcesByArn.getOrElse(
       evaluatedString,
       findMatchinResources
@@ -44,7 +44,7 @@ class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
       matchingResources
     }
     else {
-      val newForeignNode = ExternalEntity(evaluatedString)
+      val newForeignNode = ExternalEntity(evaluatedString,iE.infrastructure)
       iE.resourcesByArn = iE.resourcesByArn ++ Map(evaluatedString -> Vector(newForeignNode))
       Vector(newForeignNode)
     }

@@ -5,6 +5,9 @@ object SpecificationRenaming {
   val resourceSpecificationName : String => String
     = resSpecFileName => resSpecFileName.split("Specification")(0).toLowerCase
 
+  val serviceActionsName : String => String
+    = serviceName => serviceName+"Actions"
+
   val resourceTypeName : String => String
     = resTypeName => resTypeName.split("::")(2).toLowerCase()
 
