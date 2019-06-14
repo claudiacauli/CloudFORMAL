@@ -160,6 +160,7 @@ sealed trait Node
         override def toString: String = {
          serviceType + "::" + resourceType + "(" + resourceLogicalId + ")"
         }
+
       }
 
 
@@ -185,6 +186,10 @@ sealed trait Node
       def apply(): PolicyDocument = this
     }
 
+
+    private[templates]
+    final case class AwsManagedPolicy(name: String)
+      extends ObjectNode
 
 
     private[templates]

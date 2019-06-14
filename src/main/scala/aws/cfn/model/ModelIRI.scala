@@ -126,6 +126,10 @@ object ModelIRI {
   def awsCanonicalUserIRI(canonicalUserId: String): IRI =
     awsIri(canonicalUserId)
 
+
+  def awsManagedPolicyIRI(arn: String): IRI =
+    awsIri(arn)
+
   
   def awsPropertyIRI(propertyName:String): IRI =
     awsIri(propertyName)

@@ -4,6 +4,7 @@ import java.io.File
 
 import argonaut.Json
 import aws.cfn.FilePath
+import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 
 
@@ -25,7 +26,10 @@ private object Json2StackSetEncoder
 private class Json2StackSetEncoder(val iE:Json2InfrastructureEncoder,
                            templates: Vector[(String,Json,Option[Json])],
                            stackSetName: String)
+extends StrictLogging
 {
+
+  logger.info(s"Initializing $stackSetName StackSet Encoder")
 
   private[templates] val manager  = OWLManager.createOWLOntologyManager()
   private[templates] val df       = manager.getOWLDataFactory
@@ -58,7 +62,7 @@ private class Json2StackSetEncoder(val iE:Json2InfrastructureEncoder,
   def encodePolicies() = {
     templatesEncoders
       .foreach(_.policyEncoders
-        .foreach (_.encode()) )
+        .foreach (_.encode()))
     stackSet
   }
 

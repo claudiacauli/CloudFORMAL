@@ -1,6 +1,7 @@
 package aws.cfn.mapping.templates
 
 import argonaut.Json
+import com.typesafe.scalalogging.{LazyLogging, StrictLogging}
 
 import scala.collection.mutable
 
@@ -15,7 +16,12 @@ object Json2InfrastructureEncoder {
 
 private class Json2InfrastructureEncoder
 (stackSets: Vector[(Vector[(String,Json,Option[Json])],String)], infrastructureName:String)
+extends StrictLogging
 {
+
+  logger.info(s"Initializing $infrastructureName Infrastructure Encoder and sub-Encoders.")
+
+  AwsManagedPolicies.loadManagedPolicies()
 
   private[templates] val infrastructure =
     new Infrastructure(infrastructureName)
@@ -35,14 +41,18 @@ private class Json2InfrastructureEncoder
   private[templates] var policyStatements
   : Set[Statement] = Set()
 
-
+  logger.info(s"Initialization of $infrastructureName Infrastructure Encoder and sub-Encoders completed.")
 
   private def encode(): Infrastructure = {
     stackSetEncoders foreach (_.updateResourcesNames())
+    logger.info("Binding Resources names, in addition to their logical IDs.")
     stackSetEncoders foreach (_.encode())
-    infrastructure.stackSets = (stackSetEncoders map (_.encodePolicies()) ).toSet
+    logger.info("Fully instantiated all Resource objects and their properties.")
+    infrastructure.stackSets = (stackSetEncoders map (_.encodePolicies())).toSet
+    logger.info("Computed Policy Statements for the entire infrastructure.")
     infrastructure.aclStatements = policyStatements
     infrastructure.externalResources = this.externalResources
+    logger.info(s"Generation of Infrastructure Object for $infrastructureName completed.")
     infrastructure
   }
 
@@ -57,6 +67,8 @@ private class Json2InfrastructureEncoder
       case Some(_)  =>
         resourcesPointingToPolicy(policyRes).add(resource)
     }
+
+
 
 
 

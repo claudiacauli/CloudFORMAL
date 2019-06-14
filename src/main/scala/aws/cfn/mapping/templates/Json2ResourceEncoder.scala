@@ -298,7 +298,8 @@ extends LazyLogging
       .lookUp(serviceType,resourceType) match {
       case None     => resourceLogicalId
       case Some(f)  =>
-        if (resourceJsonNode.field(Specification.Properties).get.hasField(f))
+        if (resourceJsonNode.hasField(Specification.Properties) &&
+          resourceJsonNode.field(Specification.Properties).get.hasField(f))
           NodeEncoder.encode(
             resourceJsonNode.field(Specification.Properties).get
               .field(f).get ) match {

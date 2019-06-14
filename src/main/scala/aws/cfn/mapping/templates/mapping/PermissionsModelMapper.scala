@@ -48,10 +48,25 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   {
     val r = individual(ra._1)
     val a = property(ra._2)
+
+    val explicitlyAllowed = overApproximatedAllowSet(ra._1,ra._2)
+    val explicitlyDenied  = underApproximatedDenySet(ra._1,ra._2)
+
+    val allowedMinusDenied =
+      df.getOWLObjectIntersectionOf(
+        explicitlyAllowed,
+        not(explicitlyDenied))
+
     Set(
       subclassOf(
-        filler(ra._1,ra._2),
+        allowedMinusDenied,
         performActionOnResource(a,r))
+    ) ++
+    Set(
+      subclassOf(
+        explicitlyDenied,
+        doNotPerformActionOnResource(a,r)
+      )
     )
   }
 
@@ -59,6 +74,12 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   private def performActionOnResource(a:OWLObjectProperty, r:OWLNamedIndividual) =
     df.getOWLObjectSomeValuesFrom(
       a,nominalOf(r))
+
+
+  private def doNotPerformActionOnResource(a:OWLObjectProperty, r:OWLNamedIndividual) =
+    df.getOWLObjectComplementOf(
+      df.getOWLObjectSomeValuesFrom(
+      a,nominalOf(r)))
 
 
   private def subclassOf(lhs: OWLClassExpression, rhs:OWLClassExpression) =
@@ -69,11 +90,6 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   private def nominalOf(r:OWLNamedIndividual) =
     df.getOWLObjectOneOf(r)
 
-
-  private def filler(r:Principal, a:String)  =
-    df.getOWLObjectIntersectionOf(
-      overApproximatedAllowSet(r,a),
-      not(underApproximatedDenySet(r,a)))
 
 
   private def overApproximatedAllowSet(r:Principal,a:String) = {

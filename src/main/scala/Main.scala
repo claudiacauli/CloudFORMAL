@@ -31,8 +31,16 @@ object Main extends App {
 
   def modelZelkovaTest(): Unit = {
 
-    val inputFilePath = "src/main/resources/InputStackSets/Zelkova/test/"
-    val outputFilePath = "src/main/resources/OutputModels/ZelkovaTest/"
+//val inputFilePath = "src/main/resources/InputStackSets/CaseStudy0_Tiros/"
+    val inputFilePath = "src/main/resources/InputStackSets/CaseStudy1_Zelkova/"
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy2_BucketAnalyticsInventory/"
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy3_BucketCloudFront/"
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy4_BucketCors/"
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy5_BucketDefaultEncryption/"
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy6_BucketLambdaConfig/
+//  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy7_BucketRetainOnDelete/"
+
+    val outputFilePath = "src/main/resources/OutputModels/"
     val inputDir = new File(inputFilePath)
     (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createInfrastructure(f) )
 

@@ -21,11 +21,11 @@ private class PermissionsModel(val name: String)
   extends Model
 {
 
-  protected[mapping] val manager :OWLOntologyManager
+  val manager :OWLOntologyManager
   = OWLManager.createOWLOntologyManager()
-  protected[mapping] val ontology: OWLOntology
+  val ontology: OWLOntology
   = manager.createOntology(ModelIRI.permissionsModelIRI(name))
-  protected[mapping] val df: OWLDataFactory
+  val df: OWLDataFactory
   = manager.getOWLDataFactory
 
 

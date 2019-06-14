@@ -9,10 +9,10 @@ import org.semanticweb.owlapi.model.parameters.ChangeApplied
 trait Model {
 
 
-  protected val name      : String
-  protected val manager   : OWLOntologyManager
-  protected val df        : OWLDataFactory
-  protected val ontology  : OWLOntology
+  private[model] val name      : String
+  private[model] val manager   : OWLOntologyManager
+  private[model] val df        : OWLDataFactory
+  private[model] val ontology  : OWLOntology
 
 
   def writeToOutputFolder (destinationFolder: String)
@@ -48,11 +48,11 @@ trait Model {
   }
 
 
-  def stackSetFilesInSubdirs(currentDir: File): Vector[File] = {
+  protected def stackSetFilesInSubdirs(currentDir: File): Vector[File] = {
     currentDir.listFiles()
-      .filter( f => f.isDirectory ).toVector
-      .flatMap( f => f.listFiles().toVector
-        .filter ( f => f.getName.endsWith(ModelFileSuffix.StackSet)))
+      .filter(_.isDirectory).toVector
+      .flatMap(_.listFiles().toVector
+        .filter (_.getName.endsWith(ModelFileSuffix.StackSet)))
   }
 
 

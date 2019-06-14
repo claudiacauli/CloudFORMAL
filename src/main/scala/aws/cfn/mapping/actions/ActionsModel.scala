@@ -9,11 +9,10 @@ object ActionsModel
 {
 
 
-  def getFromServiceName(serviceName: String): Set[ActionsModel] = {
+  def getFromServiceName(serviceName: String): Set[ActionsModel] =
     ActionsMapper.fromServiceName(serviceName)
-      .map( sA =>
-        ActionsModelMapper.fromServiceActions(sA))
-  }
+      .map(ActionsModelMapper.fromServiceActions)
+
 
 
 }

@@ -1,5 +1,7 @@
 package aws.cfn.mapping.templates
 
+import com.typesafe.scalalogging.LazyLogging
+
 
 private final case class ArnFunction(optRE:Option[Json2ResourceEncoder],
                              tE: Json2TemplateEncoder)
@@ -21,7 +23,9 @@ private final case class ArnFunction(optRE:Option[Json2ResourceEncoder],
 
 
 
-private class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
+private class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String)
+extends LazyLogging
+{
 
   private val arnComponents = splitArn
   private val partition     = arnComponents._1
@@ -34,41 +38,41 @@ private class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
 
   private[templates]
   def resourcesFromArn(): Vector[Resource] =
-    iE.resourcesByArn.getOrElse(
-      evaluatedString,
-      findMatchingResources
-    )
+      iE.resourcesByArn.getOrElse(
+        evaluatedString,
+        findMatchingResources)
 
 
 
   private def findMatchingResources: Vector[Resource] = {
 
-    val identifiersIsStarVector =
-      identifiers == Vector("*")
+      val identifiersIsStarVector =
+        identifiers == Vector("*")
 
-    matchingResources =
-      if (identifiersIsStarVector)
-        resourcesMatchingServiceType
-      else {
-        val rS = resourcesMatchingIdentifiers
-        if (rS.nonEmpty)
-          rS
-        else resourcesMatchingServiceType
+      if (identifiers == Vector(""))
+        logger.warn(s"Arn $evaluatedString does not appear to have" +
+          s" any identifier.")
+
+      matchingResources =
+        if (identifiersIsStarVector)
+          resourcesMatchingServiceType
+        else {
+          val rS = resourcesMatchingIdentifiers
+          if (rS.nonEmpty)
+            rS
+          else resourcesMatchingServiceType
+        }
+
+      if (matchingResources.nonEmpty) {
+        iE.resourcesByArn ++= Map(evaluatedString -> matchingResources)
+        matchingResources
       }
-
-    if (matchingResources.nonEmpty)
-    {
-      iE.resourcesByArn ++= Map(evaluatedString -> matchingResources)
-      matchingResources
-    }
-    else
-    {
-      val newForeignNode = ExternalResource(evaluatedString,iE.infrastructure)
-      iE.externalResources  ++= Set(newForeignNode)
-      iE.resourcesByArn     ++= Map(evaluatedString -> Vector(newForeignNode))
-      Vector(newForeignNode)
-    }
-
+      else {
+        val newForeignNode = ExternalResource(evaluatedString, iE.infrastructure)
+        iE.externalResources ++= Set(newForeignNode)
+        iE.resourcesByArn ++= Map(evaluatedString -> Vector(newForeignNode))
+        Vector(newForeignNode)
+      }
   }
 
 
@@ -79,28 +83,43 @@ private class Arn(iE: Json2InfrastructureEncoder, evaluatedString : String) {
       .replace("arn:","")
       .split(":",-1)
 
-    val partition   = if (arnComponents(0).equals("")) None else Some(arnComponents(0))
-    val service     = if (arnComponents(1).equals("")) None else Some(arnComponents(1))
-    val region      = if (arnComponents(2).equals("")) None else Some(arnComponents(2))
-    val account     = if (arnComponents(3).equals("")) None else Some(arnComponents(3))
+    if (arnComponents.size>=5)
+    {
+      val partition   = if (arnComponents(0).equals("")) None else Some(arnComponents(0))
+      val service     = if (arnComponents(1).equals("")) None else Some(arnComponents(1))
+      val region      = if (arnComponents(2).equals("")) None else Some(arnComponents(2))
+      val account     = if (arnComponents(3).equals("")) None else Some(arnComponents(3))
 
-    val lastPart = evaluatedString
-      .split(arnComponents(0)+":"+arnComponents(1)+":"+arnComponents(2)+":"+arnComponents(3)+":")
-      .last
+      val lastPart = evaluatedString
+        .split(arnComponents(0)+":"+arnComponents(1)+":"+arnComponents(2)+":"+arnComponents(3)+":")
+        .last
 
-    val ids = lastPart match {
-      case "" => Vector()
-      case s => s.replaceAll("/",":")
-        .split(":")
-        .toVector
+      val ids = lastPart match {
+        case "" => Vector()
+        case s => s.replaceAll("/",":")
+          .split(":")
+          .toVector
+      }
+
+      (partition,service,region,account,ids)
+    }
+    else
+    {
+      val ids = evaluatedString match {
+        case "" => Vector()
+        case s => s.replaceAll("/",":")
+          .split(":")
+          .toVector
+      }
+      (None,None,None,None,ids)
     }
 
-    (partition,service,region,account,ids)
   }
 
 
   private def resourcesMatchingIdentifiers=
-    resourcesMatchingCondition(identifiersContainEitherResourceIDorName)
+    resourcesMatchingCondition(
+      identifiersContainEitherResourceIDorName)
 
 
   private def identifiersContainEitherResourceIDorName

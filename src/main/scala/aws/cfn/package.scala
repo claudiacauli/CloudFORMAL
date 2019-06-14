@@ -29,6 +29,7 @@ package object cfn
     private val ActionsTermsPathPrefix  = "src/main/resources/terminology/actions/"
     private val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology                     = "src/main/resources/terminology/aws.owl"
+    val AwsManagedPolicies              = "terminology/AwsManagedPolicies.json"
 
     val ActionTerminology: String => String
     = actionPrefix  =>
@@ -100,6 +101,7 @@ package object cfn
     val ExternalResource  = "ExternalResource"
     val Account           = "AwsAccount"
     val Federation        = "Federation"
+    val AwsManagedPolicy  = "AwsManagedPolicy"
 
     val HasAccountWithFederation  = "hasAccountWithFederation"
     val AccessAccount             = "hasAccessToAccount"

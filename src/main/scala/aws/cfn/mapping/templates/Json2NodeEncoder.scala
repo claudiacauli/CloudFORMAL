@@ -27,42 +27,46 @@ extends LazyLogging
   private[templates] val iE: Json2InfrastructureEncoder = ssE.iE
 
 
-  def encode(json: Json, subpropType: Option[(String,String)] = None): Node =
+  def encode(json: Json, expectedType: Option[(String,String)] = None): Node =
   {
     json match {
+      case j if isAwsManagedPolicyArn(j)
+      => getAwsManagedPolicyExternalResource(j)
       case j if isArn(j)
-      => encodeArn(j)
+      => resolvedArn(j,expectedType)
       case j if j.isNull || isNoValue(j)
       => NoValue
       case j if j.isObject && isIntrinsicFunction(j)
-      => matchWithExpectedTypeIfAny(
-        evalIntrinsicFunction(j),subpropType)
-      case j if j.isObject && isMapProperty(j,subpropType)
-      => encodeMapProperty(j,mapProperty(j,subpropType).get)
+      => evalIntrinsicFunction(j,expectedType)
+      case j if j.isObject && isMapProperty(j,expectedType)
+      => encodeMapProperty(j,mapProperty(j,expectedType).get)
       case j if j.isObject && isPolicyDoc(j)
       => encodePolicyDoc(j)
-      case j if j.isObject && subpropType.isDefined &&
-        subpropType.get._2.equals(CFnType.String)
+      case j if j.isObject && expectedType.isDefined &&
+        expectedType.get._2.equals(CFnType.String)
       => StringNode(j.toString())
       case j if j.isObject
-      => encodeSubproperty(j,subpropType)
+      => encodeSubproperty(j,expectedType)
       case j if j.isArray
-      => encodeArrayNode(j,subpropType)
+      => encodeArrayNode(j,expectedType)
       case j
-      => encodeValueNode(j,subpropType)
+      => encodeValueNode(j,expectedType)
     }
 
   }
 
 
-  private def encodeArn(j: Json) = {
-    val vecNodes = ArnFunction(optRE,tE)(j.string.get)
-    vecNodes match {
-      case ListOfResources(v) if v.size==1 => v.head
-      case ln:ListOfResources => ln
-      case x => x
+  private def resolvedArn(j: Json, spT:Option[(String,String)]) =
+    spT match {
+      case Some((_,CFnType.String)) => StringNode(j.string.get)
+      case _ =>
+        val vecNodes = ArnFunction(optRE,tE)(j.string.get)
+        vecNodes match {
+          case ListOfResources(v) if v.size==1 => v.head
+          case ln:ListOfResources => ln
+          case x => x
+        }
     }
-  }
 
 
   private def encodePolicyDoc(j: Json) =
@@ -73,7 +77,7 @@ extends LazyLogging
       case Some(rE) =>
         val policyEncoder = new Json2PolicyDocumentEncoder(this,j,rE.resource)
         tE.policyEncoders ++= Vector(policyEncoder)
-        policyEncoder.createNode()
+        policyEncoder.policyDocument
     }
 
 
@@ -162,27 +166,61 @@ extends LazyLogging
 
 
 
-  private def evalIntrinsicFunction(j:Json) = {
+  private def evalIntrinsicFunction(j:Json, subpropT:Option[(String,String)]) = {
 
     JsonUtils.subFieldNames(j)(0) match
     {
-      case CFnFunTag.Base64          => validateParamsAndEvalBase64(j)
-      case CFnFunTag.Cidr            => validateParamsAndEvalCidr(j)
-      case CFnFunTag.If              => validateParamsAndEvalIf(j)
-      case CFnFunTag.Not             => validateParamsAndEvalNot(j)
-      case CFnFunTag.And             => validateParamsAndEvalAnd(j)
-      case CFnFunTag.Equals          => validateParamsAndEvalEquals(j)
-      case CFnFunTag.Or              => validateParamsAndEvalOr(j)
-      case CFnFunTag.FindInMap       => validateParamsAndEvalFindInMap(j)
-      case CFnFunTag.GetAtt          => validateParamsAndEvalGetAtt(j)
-      case CFnFunTag.GetAZs          => validateParamsAndEvalGetAZs(j)
-      case CFnFunTag.ImportValue     => validateParamsAndEvalImportValue(j)
-      case CFnFunTag.Join            => validateParamsAndEvalJoin(j)
-      case CFnFunTag.Select          => validateParamsAndEvalSelect(j)
-      case CFnFunTag.Split           => validateParamsAndEvalSplit(j)
-      case CFnFunTag.Sub             => validateParamsAndEvalSub(j)
-      case CFnFunTag.Transform       => validateParamsAndEvalTransform(j)
-      case CFnFunTag.Ref             => validateParamsAndEvalRef(j)
+      case CFnFunTag.Base64
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalBase64(j),subpropT)
+      case CFnFunTag.Cidr
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalCidr(j),subpropT)
+      case CFnFunTag.If
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalIf(j),subpropT)
+      case CFnFunTag.Not
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalNot(j),subpropT)
+      case CFnFunTag.And
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalAnd(j),subpropT)
+      case CFnFunTag.Equals
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalEquals(j),subpropT)
+      case CFnFunTag.Or
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalOr(j),subpropT)
+      case CFnFunTag.FindInMap
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalFindInMap(j),subpropT)
+      case CFnFunTag.GetAtt
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalGetAtt(j),subpropT)
+      case CFnFunTag.GetAZs
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalGetAZs(j),subpropT)
+      case CFnFunTag.ImportValue
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalImportValue(j),subpropT)
+      case CFnFunTag.Join
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalJoin(j,Some("",CFnType.String)),Some("",CFnType.String))
+      case CFnFunTag.Select
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalSelect(j),subpropT)
+      case CFnFunTag.Split
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalSplit(j),Some("",CFnType.String))
+      case CFnFunTag.Sub
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalSub(j),subpropT)
+      case CFnFunTag.Transform
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalTransform(j),subpropT)
+      case CFnFunTag.Ref
+      => matchWithExpectedTypeIfAny(
+        validateParamsAndEvalRef(j),subpropT)
       case _ =>
         logger.warn(s"Json object $j is intrinsic function but does not " +
           "contain any of the CFn functions tags. Returning NoValue")
@@ -205,7 +243,7 @@ extends LazyLogging
     encode(j.field(CFnFunTag.Base64UC).get) match {
       case sn: StringNode => Base64Function()(sn)
       case _ =>
-        logger.warn(s"Content of Fn::Base64 node $j does not evaluate " +
+        logger.debug(s"Value of Fn::Base64 node $j does not evaluate " +
           "to a StringNode. Returning NoValue")
         NoValue
     }
@@ -232,7 +270,7 @@ extends LazyLogging
       }
       case bn : BooleanNode => IfFunction()(bn, encodedTrueExp, encodedFalseExp)
       case _                =>
-        logger.warn(s"Content of Fn::If node $j does not evaluate " +
+        logger.debug(s"Value of Fn::If node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")
         NoValue
     }
@@ -248,7 +286,7 @@ extends LazyLogging
       case bn : BooleanNode                        => NotFunction()(bn)
       case l  : ListNode[BooleanNode]             => NotFunction()(l.value.head)
       case _ =>
-        logger.warn(s"Content of Fn::Not node $j does not evaluate " +
+        logger.debug(s"Value of Fn::Not node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")
         NoValue
     }
@@ -263,7 +301,7 @@ extends LazyLogging
     (lhs, rhs) match {
       case (l:BooleanNode,r:BooleanNode) => AndFunction()(l,r)
       case _ =>
-        logger.warn(s"Either lhs or rhs of Fn::And node $j does not evaluate " +
+        logger.debug(s"Either lhs or rhs of Fn::And node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")
         NoValue
     }
@@ -278,7 +316,7 @@ extends LazyLogging
     (lhs, rhs) match {
       case (l:BooleanNode, r:BooleanNode) => OrFunction()(l,r)
       case _ =>
-        logger.warn(s"Either lhs or rhs of Fn::Or node $j does not evaluate " +
+        logger.debug(s"Either lhs or rhs of Fn::Or node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")
         NoValue
     }
@@ -303,7 +341,7 @@ extends LazyLogging
       case (m:StringNode,k1:StringNode,None)                => FindInMapFunction(tE.mappings)(m,k1)
       case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings)(m,k1,Some(k2))
       case _ =>
-        logger.warn(s"Content of Fn::FindInMap node $j does not " +
+        logger.debug(s"Value of Fn::FindInMap node $j does not " +
           "evaluate to the right type or requested key not found " +
           "in templates mappings. Returning NoValue")
         NoValue
@@ -319,7 +357,7 @@ extends LazyLogging
     (encodedResourceName, encodedAttributeName) match {
       case (r:StringNode,a:StringNode)  => GetAttFunction(optRE,tE)(r,a)
       case _ =>
-        logger.warn(s"Contents of Fn::GetAtt node $j do not " +
+        logger.debug(s"Values of Fn::GetAtt node $j do not " +
           "evaluate to a StringNode type. Returning NoValue")
         NoValue
     }
@@ -333,7 +371,7 @@ extends LazyLogging
     encodedRegion match {
       case r:StringNode => GetAZsFunction()(r)
       case _ =>
-        logger.warn(s"Content of Fn::GetAZs node $j do not" +
+        logger.debug(s"Value of Fn::GetAZs node $j do not" +
           " evaluate to a StringNode. Returning NoValue")
         NoValue
     }
@@ -347,25 +385,26 @@ extends LazyLogging
     encodedImportName match {
       case i:StringNode => ImportValueFunction(tE, optRE)(i)
       case _ =>
-        logger.warn(s"Content of Fn::ImportValue node $j does" +
+        logger.debug(s"Value of Fn::ImportValue node $j does" +
           " not evaluate to a StringNode. Returning NoValue")
         NoValue
     }
   }
 
 
-  private def validateParamsAndEvalJoin(j: Json) = {
-
-    val encodedDelimiter = encode (arrayAt(j,CFnFunTag.JoinUC,0))
-    val encodedList = encode (arrayAt(j,CFnFunTag.JoinUC,1))
+  private def validateParamsAndEvalJoin(j: Json,  subpropT: Option[(String,String)]) =
+  {
+    val encodedDelimiter  = encode (arrayAt(j,CFnFunTag.JoinUC,0),subpropT)
+    val encodedList       = encode (arrayAt(j,CFnFunTag.JoinUC,1),subpropT)
 
     (encodedDelimiter, encodedList) match {
       case (d:StringNode,l:ListNode[Node]) => JoinFunction()(d,l)
       case _ =>
-        logger.warn(s"Contents of Fn::Join node $j do not " +
+        logger.debug(s"Values of Fn::Join node $j do not " +
           "evaluate to the expected types. Returning NoValue")
         NoValue
     }
+
   }
 
 
@@ -377,7 +416,7 @@ extends LazyLogging
     (encodedIndex, encodedList) match {
       case (i:IntNode, l:ListNode[Node] ) => SelectFunction(optRE)(i,l)
       case _ =>
-        logger.warn(s"Contents of Fn::Select node $j do " +
+        logger.debug(s"Values of Fn::Select node $j do " +
           "not evaluate to the expected types. Returning NoValue")
         NoValue
     }
@@ -392,7 +431,7 @@ extends LazyLogging
     (encodedDelimiter, encodedString) match {
       case (d:StringNode, s:StringNode) => SplitFunction ()(d,s)
       case _ =>
-        logger.warn(s"Contents of Fn::Split node $j do " +
+        logger.debug(s"Values of Fn::Split node $j do " +
           "not evaluate to StringNode. Returning NoValue")
         NoValue
     }
@@ -414,11 +453,11 @@ extends LazyLogging
         None
 
     stringToMatch match {
-      case n if isArn(n) =>
+      case n if isCompleteArn(n) =>
         SubFunction(optRE,tE)(StringNode(n.string.get), substitutionMap) match {
           case StringNode(s) => ArnFunction(optRE,tE)(s)
           case _ =>
-            logger.warn(s"Evaluation of Fn::Sub node $n, supposed " +
+            logger.debug(s"Evaluation of Fn::Sub node $n, supposed " +
               s"to contain an ARN, did not produce a " +
               s"StringNode. Returning NoValue")
             NoValue
@@ -429,7 +468,7 @@ extends LazyLogging
           case (None,s:StringNode)    => SubFunction(optRE,tE)(s)
           case (_,s:StringNode)       => SubFunction(optRE,tE)(s,substitutionMap)
           case _ =>
-            logger.warn(s"Contents of Fn::Sub node $j do not " +
+            logger.debug(s"Values of Fn::Sub node $j do not " +
               "evaluate to the expected types. Returning NoValue")
             NoValue
         }
@@ -439,7 +478,7 @@ extends LazyLogging
 
   private def validateParamsAndEvalTransform(j: Json) = {
     // TODO
-    logger.error("Intrinsic Function Fn::Transform not " +
+    logger.warn("Intrinsic Function Fn::Transform not " +
       "implemented. Returning NoValue")
     NoValue
   }
@@ -448,7 +487,7 @@ extends LazyLogging
   private def validateParamsAndEvalRef(j: Json) =
     encode(j.field(CFnFunTag.RefUC).get) match {
       case NoValue =>
-        logger.warn(s"Evaluation of Fn::Ref node $j " +
+        logger.debug(s"Evaluation of Fn::Ref node $j " +
           s"produced NoValue. Returning NoValue")
         NoValue
       case x => RefFunction(optRE,tE)(x)
@@ -478,7 +517,7 @@ extends LazyLogging
       case StackSetResource(id,_,_,_,_)          => id
       case ExternalResource(name,_)        => name
       case x =>
-        logger.warn(s"Field supposed to contain either a String " +
+        logger.debug(s"Field supposed to contain either a String " +
           s"or Resource evaluates to unexpected type: $x"+
           ". Returning empty string.")
       ""
@@ -501,7 +540,7 @@ extends LazyLogging
       case n if n.isString
       => StringNode(n.string.get.toLowerCase())
       case n =>
-        logger.warn(s"Could not match node $n with a " +
+        logger.debug(s"Could not match node $n with a " +
           s"primitive type. Returning NoValue")
         NoValue
     }
@@ -538,7 +577,7 @@ extends LazyLogging
 
 
 
-  private def forceSubpropertyType(j:Json, subpropType:String) : GenericValueNode =
+  private def forceSubpropertyType(j:Json, subpropType:String): GenericValueNode =
     subpropType match {
       case CFnType.String if j.isNumber
       => StringNode(j.number.get.toString)
@@ -573,22 +612,49 @@ extends LazyLogging
       case CFnType.Float
       => FloatNode(j.bool.get.toString.toFloat)
       case _ =>
-        logger.warn("Attempted fallback solution to force " +
-          "conversion from json type to expected subproperty " +
-          "type. Failed. Returning StringNode with json content. ")
+        logger.debug(s"Attempted fallback solution to force " +
+          s"conversion from json type to expected subproperty " +
+          s"type $subpropType. Failed. Returning StringNode with json content $j. ")
         StringNode(j.toString)
     }
 
 
-  private def isNoValue(j: Json) = {
+  private def isNoValue(j: Json) =
   (j.isString && j.string.get.toLowerCase.equals(PseudoParameter.NoValue)) ||
     (j.isArray && j.array.get.size==1 && j.array.get(0).isString &&
       j.array.get(0).string.get.toLowerCase.equals(PseudoParameter.NoValue))
+
+
+
+  private def isArn(j: Json) =
+    j.isString && j.string.get.startsWith(Specification.ArnHead)
+
+
+  private def isCompleteArn(j:Json) =
+    isArn(j) &&
+      j.string.get
+        .replace("arn:", "")
+        .split(":", -1).size >= 5
+
+
+
+  private def isNotCompleteArn(j: Json) =
+    isArn(j) && !isCompleteArn(j)
+
+
+  private def resolveNotCompleteArn(j: Json) = {
+    println("Found Arn that does not appear to be complete: " + j)
+    StringNode(j.string.get)
   }
 
 
-  private def isArn(j:Json) =
-    j.isString && j.string.get.startsWith(Specification.ArnHead)
+  private def isAwsManagedPolicyArn(j:Json) =
+    j.isString &&
+      AwsManagedPolicies.isManagedPolicy(j.string.get)
+
+
+  private def getAwsManagedPolicyExternalResource(j: Json) =
+    AwsManagedPolicy(j.string.get)
 
 
 
@@ -638,6 +704,11 @@ extends LazyLogging
           case (CFnType.Float,IntNode(v))        => FloatNode(v.toFloat)
           case (CFnType.Float,LongNode(v))       => FloatNode(v.toFloat)
           case (CFnType.Float,DoubleNode(v))     => FloatNode(v.toFloat)
+          case (CFnType.String,IntNode(i))       => StringNode(i.toString)
+          case (CFnType.String,DoubleNode(d))    => StringNode(d.toString)
+          case (CFnType.String,FloatNode(f))     => StringNode(f.toString)
+          case (CFnType.String,BooleanNode(b))   => StringNode(b.toString)
+          case (CFnType.String,r:StackSetResource) => StringNode(r.resourceName)
           case _ => evalFunNode
         }
       case _ => evalFunNode

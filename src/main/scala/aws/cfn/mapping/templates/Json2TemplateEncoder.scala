@@ -2,6 +2,7 @@ package aws.cfn.mapping.templates
 
 import argonaut.{DecodeJson, Json}
 import aws.cfn.mapping.JsonUtils
+import com.typesafe.scalalogging.StrictLogging
 
 import scala.language.postfixOps
 
@@ -10,21 +11,27 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
                                      templateName:String,
                                      templateJson:Json,
                                      templateDescriptor:Option[Json])
+extends StrictLogging
 {
+
+  logger.debug(s"Initializing $templateName Template Encoder and Node Encoder.")
 
   private[templates] val template = new Template(templateName)
   private val NodeEncoder = new Json2NodeEncoder(tE = this)
   private val descriptors = getDescriptors
-  private[templates] val parameters = getParametersMap
+
+  logger.debug(s"Binding parameters, mappings, and condition for Template $templateName.")
+  private[templates] val parameters       = getParametersMap
   private[templates] val mappings         = getMappings
   private[templates] val conditions       = getConditions
   private[templates] val resourceEncoders = getResourceEncoders
+  logger.debug(s"Creating resources instances of Template $templateName.")
   private[templates] val resources        = createResources
   private[templates] val transforms       = getTransforms
+  logger.debug(s"Binding Outputs for Template $templateName.")
   private[templates] val outputByLogicalId  = getOutputsByLogicalId
   private[templates] val outputByExportName = getOutputsMapByExportName
   private[templates] var policyEncoders: Vector[Json2PolicyDocumentEncoder] = Vector()
-
 
 
   def updateResourcesNames() : Unit = {
@@ -45,6 +52,7 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
     template.resources = resources.toVector
       .flatMap (r =>
         Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource())).toMap
+    logger.debug(s"Instantiated properties for all resources of Template $templateName")
     template
 
   }
@@ -107,10 +115,14 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
       }
 
 
-    def decodeJsonParameterValue(pName:String, j: Json, pType: String) =
+    def decodeJsonParameterValue(pName:String, j: Json, pType: String) = {
       pType match {
         case ParameterType.String =>
-          Map(pName -> StringNode(j.string.get.toLowerCase()))
+          Map(pName -> StringNode( j match {
+            case n if n.isString => n.string.get
+            case n if n.isBool => n.bool.get.toString
+            case n if n.isNumber => n.number.get.toString
+          }))
         case ParameterType.Number =>
           Map(pName -> LongNode(j.number.get.truncateToLong))
         case ParameterType.ListOfNumber =>
@@ -120,6 +132,8 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
         case ParameterType.CommaDelimitedList =>
           Map(pName -> CommaDelimitedListNode(j.string.get))
       }
+    }
+
 
 
     (getSection(TemplateTag.Parameters) ++
@@ -141,7 +155,7 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
             case Some(exportNameJson) =>
               Map (
                 NodeEncoder.encode(exportNameJson)
-                  .asInstanceOf[StringNode].value ->
+                  .asInstanceOf[StringNode].value.toLowerCase ->
                   NodeEncoder.encode(e._2.field(TemplateTag.ValueTag).get))
           }
         }
@@ -159,7 +173,7 @@ private class Json2TemplateEncoder(val ssE: Json2StackSetEncoder,
 
     def outputByLogicalIdMapEntry(e: (String,Json)) : Map[String,Node] =
       if (hasTrueCondition(e._2))
-        Map(e._1 -> NodeEncoder
+        Map(e._1.toLowerCase -> NodeEncoder
           .encode(e._2.field(TemplateTag.ValueTag)
             .get))
       else

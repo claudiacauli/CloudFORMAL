@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets
 import java.util.Base64
 
 import aws.cfn.mapping.Specification
+import com.typesafe.scalalogging.{Logger, StrictLogging}
 
 import scala.language.postfixOps
 
@@ -51,15 +52,15 @@ private final case class FindInMapFunction
   def apply(m: StringNode, k1: StringNode, k2: Option[StringNode]=None): GenericValueNode =
     k2 match {
       case None =>
-        mappings(m.value)(k1.value) match {
+        mappings(m.value.toLowerCase)(k1.value.toLowerCase) match {
           case Left(s)            => StringNode(s)
           case Right(m1)          => StringNode(m1.toString)
       }
       case Some(k) =>
-        mappings(m.value)(k1.value) match {
+        mappings(m.value.toLowerCase)(k1.value.toLowerCase) match {
           case Left(s)            => StringNode(s)
           case Right(m1) =>
-            m1(k.value) match {
+            m1(k.value.toLowerCase) match {
               case f: Float       => FloatNode(f)
               case b: Boolean     => BooleanNode(b)
               case l: Long        => LongNode(l)
@@ -79,6 +80,7 @@ private final case class GetAttFunction ( optRE: Option[Json2ResourceEncoder],
                                   tE: Json2TemplateEncoder)
   extends IntrinsicFunction
   with ((StringNode,StringNode) => Node)
+  with StrictLogging
 {
   def apply(resourceName:StringNode, attributeName:StringNode): Node =
   {
@@ -86,16 +88,20 @@ private final case class GetAttFunction ( optRE: Option[Json2ResourceEncoder],
       if (attributeName.value == "arn") {
         val res = tE.resources(resourceName.value)
         updateResourceByPolicyMap(optRE, res)
+        logger.debug(s"Fn::GetAtt(${resourceName.v},Arn) " +
+          s"evaluated to StackSetResource $res." )
         res
       }
       else
         tE.resources(resourceName.value).attributes.get(attributeName.value) match {
           case Some(v)  => v
-          case None     => {
+          case None     =>
 //            println("No attribute with name " + attributeName + " found for resource " + tE.resources(resourceName.value))
 //            println("Returning StringNode with concatenation of resource and attributename")
+            logger.warn(s"Cannot evaluate Fn::GetAtt(${resourceName.v},${attributeName.v}). " +
+              "If you wish to evaluate attributes add an \"Attributes\" block in addition to " +
+              "the \"Properties\" block under the target resource.")
             StringNode(resourceName + "_attribute_" + attributeName)
-          }
         }
     }
     else NoValue
@@ -157,13 +163,16 @@ private final case class JoinFunction()
 {
   def apply(delimiter: StringNode, segments: ListNode[Node]): Node =
   {
-    segments.value.head match {
-      case r:StackSetResource => r // TODO!
-      case StringNode(_) => StringNode(
-        segments.value.asInstanceOf[Vector[StringNode]]
-          .map(_.value)
-          .mkString(delimiter.value))
-    }
+    StringNode(segments.value.map({
+      case StringNode(v)                => v
+      case IntNode(i)                   => i.toString
+      case FloatNode(f)                 => f.toString
+      case LongNode(f)                  => f.toString
+      case DoubleNode(d)                => d.toString
+      case ExternalResource(n,_)        => n
+      case StackSetResource(id,_,_,_,_) => id
+      case NoValue => ""
+      }).mkString(delimiter.value))
   }
 }
 

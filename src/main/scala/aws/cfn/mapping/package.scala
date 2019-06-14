@@ -7,6 +7,7 @@ import scala.language.postfixOps
 package object mapping{
 
 
+
   private[mapping]
   object CFnType {
     val String  = "string"

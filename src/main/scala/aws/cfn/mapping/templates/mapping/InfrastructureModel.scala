@@ -4,6 +4,7 @@ import java.io.File
 
 import aws.cfn.model.{Model, ModelIRI, ModelWriter}
 import aws.cfn.mapping.templates.Infrastructure
+import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._
 
@@ -18,16 +19,16 @@ object InfrastructureModel
 
 private class InfrastructureModel
 (val stacksetsModels: Set[StackSetModel], val infrastructure:Infrastructure)
-  extends Model
+  extends Model with StrictLogging
 {
 
-  protected[this] val name
+  val name
   : String = infrastructure.name
-  protected[this] val manager
+  val manager
   : OWLOntologyManager = OWLManager.createOWLOntologyManager()
-  protected[this] val ontology
+  val ontology
   : OWLOntology = manager.createOntology(ModelIRI.infrastructureModelIRI(name))
-  protected[this] val df
+  val df
   : OWLDataFactory = manager.getOWLDataFactory
 
 
@@ -39,14 +40,17 @@ private class InfrastructureModel
     if (!dir.exists) dir.mkdir
 
     stacksetsModels
-      .foreach( ssM =>
-        ModelWriter.writeStackSetToFolder(
-          ssM,
-          outputDir+name+"/"))
+      .foreach(_.writeToOutputFolder(outputDir+name+"/")
+//        ModelWriter.writeStackSetToFolder(
+//          ssM,
+//          outputDir+name+"/")
+      )
 
     stackSetFilesInSubdirs(dir)
       .foreach(
         f => importFile(this,f))
+
+    logger.info(s"Writing InfrastructureModel to file.")
 
     ModelWriter
       .writeInfrastructureToOutputFolder(this,outputDir)

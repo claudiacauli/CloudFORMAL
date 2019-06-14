@@ -44,8 +44,7 @@ extends LazyLogging
         initializeStackIndividualFromTemplate)
 
     stackSet.templates
-      .flatMap(t =>
-        t.resources.toVector
+      .flatMap(t => t.resources.toVector
           .map(r => (t,r)))
       .foreach(
         initializeResourceIndividual)
@@ -96,7 +95,7 @@ extends LazyLogging
     m.ontology.add(m.df.getOWLClassAssertionAxiom(
       classFromIRI(
         ModelIRI.resourceTypeIRI(
-          o._2._2 + o._2._2.resourceType,
+          o._2._2.serviceType + o._2._2.resourceType,
           o._2._2.resourceType)),
       getResourceIndividual(o._2._1)
     ))
@@ -212,9 +211,27 @@ extends LazyLogging
               encodeValueProperty(source, dp, target.asInstanceOf[GenericValueNode])
           }
           case None =>
-            logger.error("Data Property " + prop + " of " + res.serviceType + res.resourceType
-              + " is not found either as object or as data property!")
-            Vector()
+            if (res.serviceType == "CloudFormation" &&
+              res.resourceType == "CustomResource")
+              target match {
+                case n: GenericValueNode
+                => encodeValueProperty(
+                    source,
+                    m.df.getOWLDataProperty(ModelIRI
+                      .propertyTypeIRI(res.serviceType+res.resourceType,prop)),
+                      n)
+                case n: ObjectNode
+                  => encodeObjectProperty(
+                      source,
+                      m.df.getOWLObjectProperty(ModelIRI
+                        .propertyTypeIRI(res.serviceType+res.resourceType,prop)),
+                      n,res)
+              }
+            else {
+              logger.error("Property " + prop + " of " + res.serviceType + res.resourceType
+                + " is not found either as object or as data property!")
+              Vector()
+            }
         }
 
     }
@@ -251,7 +268,7 @@ extends LazyLogging
 
   private def encodeValueProperty(source: OWLIndividual,
                                   dp: OWLDataProperty,
-                                  value: GenericValueNode) : Vector[OWLAxiom] =
+                                  value: GenericValueNode): Vector[OWLAxiom] =
     value match {
       case NoValue        => Vector()
       case ListNode(vec:Vector[Node]) =>
@@ -279,7 +296,8 @@ extends LazyLogging
   {
 
     if (target==null)
-    println(s"Property $op from ${res.serviceType}+${res.resourceType} is assigned to individual $source but points to an objectNode NULL.")
+    println(s"Property $op from ${res.serviceType}+${res.resourceType} " +
+      s"is assigned to individual $source but points to an objectNode NULL.")
 
 
     target match {
@@ -301,6 +319,17 @@ extends LazyLogging
       case ExternalResource(v,infr)
       => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
         op, source, externalResourceIndividualFromInfrastructure(v,infr)))
+
+        // TODO
+//      case PolicyDocument(s)
+//      => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
+//        op,source, policyDocumentAxioms(s)
+//      ))
+
+      case AwsManagedPolicy(arn)
+      => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
+        op, source, awsManagedPolicyFromName(arn)))
+
 
       case x => logger.warn(s"Attempting to encode Object Property " +
         s"with unexpected target type. Should be one of " +
@@ -337,6 +366,11 @@ extends LazyLogging
                                     (name:String, infr: Infrastructure) =
     m.df.getOWLNamedIndividual(ModelIRI
       .externalEntityIRI(infr.name,name))
+
+
+  private def awsManagedPolicyFromName(arn: String) =
+    m.df.getOWLNamedIndividual(ModelIRI
+      .awsManagedPolicyIRI(arn))
 
 
   private def range(op: OWLObjectProperty, res: StackSetResource)=

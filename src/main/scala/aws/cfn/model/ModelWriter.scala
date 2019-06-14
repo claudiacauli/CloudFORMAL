@@ -5,12 +5,13 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
 
 import aws.cfn.{Extension, OntologySuffix}
+import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.formats._
 import org.semanticweb.owlapi.model._
 
 import scala.jdk.StreamConverters._
 
-object ModelWriter {
+object ModelWriter extends StrictLogging{
 
 
     def writeSpecificationToFolder
@@ -62,7 +63,9 @@ object ModelWriter {
               documentFormat(format),
               new FileOutputStream(fileName))
 
+        logger.info(s"Written InfrastructureModel to file.")
         addProtegeCatalogue(importedStackSets(model),model.name,folderName)
+        logger.info(s"Written InfrastructureModel Protege Catalogue to file.")
     }
 
 
@@ -79,6 +82,7 @@ object ModelWriter {
               model.ontology,
               documentFormat(format),
               new FileOutputStream(fileName))
+        logger.info("Written PermissionsModel to file.")
     }
 
 
@@ -98,7 +102,7 @@ object ModelWriter {
     private def onlyImportedOntologies(model: Model) =
         model.manager
           .ontologies().toScala(List)
-          .filter ( o => o!=model.ontology )
+          .filter (o => o!=model.ontology )
 
 
     private def addProtegeCatalogue

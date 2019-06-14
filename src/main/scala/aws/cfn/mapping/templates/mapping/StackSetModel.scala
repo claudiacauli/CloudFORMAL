@@ -1,19 +1,20 @@
 package aws.cfn.mapping.templates.mapping
 
 import aws.cfn.model.{Model, ModelIRI, ModelWriter}
+import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._
 
 class StackSetModel
 (val name: String, val ontologies: Vector[OWLOntology])
-  extends Model
+  extends Model with StrictLogging
 {
 
-  protected[mapping] val manager :OWLOntologyManager
+  val manager :OWLOntologyManager
   = OWLManager.createOWLOntologyManager()
-  protected[mapping] val ontology: OWLOntology
+  val ontology: OWLOntology
   = manager.createOntology(ModelIRI.stackSetIRI(name))
-  protected[mapping] val df: OWLDataFactory
+  val df: OWLDataFactory
   = manager.getOWLDataFactory
 
   ontologies
@@ -22,10 +23,14 @@ class StackSetModel
 
 
 
-  def writeToOutputFolder(destinationFolder: String): Unit =
+  def writeToOutputFolder(destinationFolder: String): Unit = {
+    logger.info(s"Writing $name StackSetModel and its " +
+      s"imports to corresponding subfolder.")
     ModelWriter
       .writeStackSetToFolder(this,
         destinationFolder)
+  }
+
 
 
 
