@@ -149,8 +149,8 @@ private object Json2ResourceEncoder
 
 
     rangeOf(propertyName) match {
-      case Some(CFnType.UnknownType) =>
-        Some((CFnType.UnknownService, CFnType.UnknownResource))
+      case Some(CFnType.UnknownType)
+      => Some((CFnType.UnknownService, CFnType.UnknownResource))
       case Some(Left(dt:OWL2Datatype))
       => Some(("",ModelType.stringOf(dt)))
       case Some(Right(c:OWLClass))
@@ -158,7 +158,6 @@ private object Json2ResourceEncoder
         c.getIRI.toString.split(Ontology.Pound).last))
       case _ => None
     }
-
   }
 
 

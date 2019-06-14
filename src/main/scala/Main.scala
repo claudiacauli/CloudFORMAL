@@ -13,8 +13,8 @@ import scala.language.postfixOps
 object Main extends App {
 
 
-  recompileTerminology()
-  updateActionsOntologiesInProjectResources()
+  //recompileTerminology()
+  //updateActionsOntologiesInProjectResources()
   modelZelkovaTest()
 
 

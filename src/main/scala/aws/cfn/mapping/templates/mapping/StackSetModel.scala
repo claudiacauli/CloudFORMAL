@@ -4,41 +4,28 @@ import aws.cfn.model.{Model, ModelIRI, ModelWriter}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._
 
-class StackSetModel (val name: String, val ontologies: Vector[OWLOntology]) extends Model {
+class StackSetModel
+(val name: String, val ontologies: Vector[OWLOntology])
+  extends Model
+{
 
-  val manager :OWLOntologyManager = OWLManager.createOWLOntologyManager()
-  val ontology: OWLOntology = manager.createOntology(ModelIRI.stackSetIRI(name))
-  val df: OWLDataFactory = manager.getOWLDataFactory
+  protected[mapping] val manager :OWLOntologyManager
+  = OWLManager.createOWLOntologyManager()
+  protected[mapping] val ontology: OWLOntology
+  = manager.createOntology(ModelIRI.stackSetIRI(name))
+  protected[mapping] val df: OWLDataFactory
+  = manager.getOWLDataFactory
 
-  ontologies.foreach(o => importOntology(this,o))
-
-
-  def writeToOutputFolder (destinationFolder: String): Unit = {
-    ModelWriter.writeStackSetToFolder(this,destinationFolder)
-  }
-
-
-
-
-
+  ontologies
+    .foreach(o =>
+      importOntology(this,o))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  def writeToOutputFolder(destinationFolder: String): Unit =
+    ModelWriter
+      .writeStackSetToFolder(this,
+        destinationFolder)
 
 
 

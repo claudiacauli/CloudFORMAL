@@ -16,7 +16,7 @@ sealed trait Node
 
 
     private[templates]
-    sealed class ValueNode[T](value: T)
+    sealed abstract class ValueNode[T](val value: T)
       extends GenericValueNode
     {
       override def toString: String = value.toString
@@ -24,40 +24,40 @@ sealed trait Node
 
 
       private[templates]
-      final case class StringNode(value:String)
-        extends ValueNode[String](value)
+      final case class StringNode(v: String)
+        extends ValueNode[String](v)
 
       private[templates]
-      final case class BooleanNode(value: Boolean)
-        extends ValueNode[Boolean](value)
+      final case class BooleanNode(v: Boolean)
+        extends ValueNode[Boolean](v)
 
       private[templates]
-      final case class IntNode(value: Int)
-        extends ValueNode[Int](value)
+      final case class IntNode(v: Int)
+        extends ValueNode[Int](v)
 
       private[templates]
-      final case class FloatNode(value: Float)
-        extends ValueNode[Float](value)
+      final case class FloatNode(v: Float)
+        extends ValueNode[Float](v)
 
       private[templates]
-      final case class DoubleNode(value : Double)
-        extends ValueNode[Double](value)
+      final case class DoubleNode(v: Double)
+        extends ValueNode[Double](v)
 
       private[templates]
-      final case class LongNode(value: Long)
-        extends ValueNode[Long](value)
+      final case class LongNode(v: Long)
+        extends ValueNode[Long](v)
 
       private[templates]
-      final case class JsonNode(value: String)
-        extends ValueNode[String](value)
+      final case class JsonNode(v: String)
+        extends ValueNode[String](v)
 
       private[templates]
-      final case class CommaDelimitedListNode(value: String)
-        extends ValueNode[String](value)
+      final case class CommaDelimitedListNode(v: String)
+        extends ValueNode[String](v)
 
       private[templates]
-      final case class TimeStampNode(value: String)
-        extends ValueNode[String](value)
+      final case class TimeStampNode(v: String)
+        extends ValueNode[String](v)
 
       private[templates]
       final case class ListNode[T<:Node](value: Vector[T])

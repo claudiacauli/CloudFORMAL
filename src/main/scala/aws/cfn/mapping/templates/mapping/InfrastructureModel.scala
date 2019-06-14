@@ -21,34 +21,40 @@ private class InfrastructureModel
   extends Model
 {
 
-  val name: String = infrastructure.name
-  val manager :OWLOntologyManager = OWLManager.createOWLOntologyManager()
-  val ontology: OWLOntology = manager.createOntology(ModelIRI.infrastructureModelIRI(name))
-  val df: OWLDataFactory = manager.getOWLDataFactory
+  protected[this] val name
+  : String = infrastructure.name
+  protected[this] val manager
+  : OWLOntologyManager = OWLManager.createOWLOntologyManager()
+  protected[this] val ontology
+  : OWLOntology = manager.createOntology(ModelIRI.infrastructureModelIRI(name))
+  protected[this] val df
+  : OWLDataFactory = manager.getOWLDataFactory
 
 
 
-  def writeToOutputFolder(destinationFolder: String): Unit = {
-
-    val destFolder =
-      if (!destinationFolder.endsWith("/"))
-        destinationFolder+"/"
-      else destinationFolder
-
-    val dir = new File(destFolder+name)
-    if (!dir.exists)  dir.mkdir
+  def writeToOutputFolder(destinationFolder: String): Unit =
+  {
+    val outputDir = withTrailingSlash(destinationFolder)
+    val dir = new File(outputDir+name)
+    if (!dir.exists) dir.mkdir
 
     stacksetsModels
       .foreach( ssM =>
         ModelWriter.writeStackSetToFolder(
           ssM,
-          destFolder+name+"/"))
+          outputDir+name+"/"))
 
     stackSetFilesInSubdirs(dir)
-      .foreach( f => importFile(this,f) )
+      .foreach(
+        f => importFile(this,f))
 
-    ModelWriter.writeInfrastructureToOutputFolder(this,destFolder)
+    ModelWriter
+      .writeInfrastructureToOutputFolder(this,outputDir)
   }
+
+
+  private def withTrailingSlash(str: String) =
+    str + (if (!str.endsWith("/")) "/" else "")
 
 
 

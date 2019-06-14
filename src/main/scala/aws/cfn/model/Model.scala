@@ -9,10 +9,10 @@ import org.semanticweb.owlapi.model.parameters.ChangeApplied
 trait Model {
 
 
-  val name      : String
-  val manager   : OWLOntologyManager
-  val df        : OWLDataFactory
-  val ontology  : OWLOntology
+  protected val name      : String
+  protected val manager   : OWLOntologyManager
+  protected val df        : OWLDataFactory
+  protected val ontology  : OWLOntology
 
 
   def writeToOutputFolder (destinationFolder: String)

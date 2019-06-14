@@ -29,14 +29,14 @@ extends LazyLogging
 
   def encode(json: Json, subpropType: Option[(String,String)] = None): Node =
   {
-
     json match {
       case j if isArn(j)
       => encodeArn(j)
       case j if j.isNull || isNoValue(j)
       => NoValue
       case j if j.isObject && isIntrinsicFunction(j)
-      => evalIntrinsicFunction(j)
+      => matchWithExpectedTypeIfAny(
+        evalIntrinsicFunction(j),subpropType)
       case j if j.isObject && isMapProperty(j,subpropType)
       => encodeMapProperty(j,mapProperty(j,subpropType).get)
       case j if j.isObject && isPolicyDoc(j)
@@ -53,7 +53,6 @@ extends LazyLogging
     }
 
   }
-
 
 
   private def encodeArn(j: Json) = {
@@ -85,6 +84,7 @@ extends LazyLogging
       case None
       => matchNodeByJsonType(j)
     }
+
 
 
   private def encodeArrayNode(j: Json, spT:Option[(String,String)]) =
@@ -509,13 +509,13 @@ extends LazyLogging
 
 
 
-  private def matchNodeBySubpropType (j:Json, subpropType:String) =
+  private def matchNodeBySubpropType (j:Json, subpropType:String) = {
     subpropType match {
       case CFnType.String   if j.isString
       => StringNode(j.string.get.toLowerCase())
-      case CFnType.Boolean  if j.isBool
+      case CFnType.Bool  if j.isBool
       => BooleanNode(j.bool.get)
-      case CFnType.Integer  if j.isNumber && j.number.get.toInt.isDefined
+      case CFnType.Int  if j.isNumber && j.number.get.toInt.isDefined
       => IntNode(j.number.get.toInt.get)
       case CFnType.Long   if j.isNumber && j.number.get.toLong.isDefined
       => LongNode(j.number.get.toLong.get)
@@ -529,28 +529,30 @@ extends LazyLogging
           iE.externalResources ++= Set(eR)
           eR
       }
-      case _
-      => forceSubpropertyType(j,subpropType)
+      case _ => forceSubpropertyType(j,subpropType)
     }
 
+  }
 
 
 
-  private def forceSubpropertyType(j:Json, subpropType:String)  =
+
+
+  private def forceSubpropertyType(j:Json, subpropType:String) : GenericValueNode =
     subpropType match {
       case CFnType.String if j.isNumber
       => StringNode(j.number.get.toString)
       case CFnType.String
       => StringNode(j.bool.get.toString)
-      case CFnType.Boolean if j.isString
+      case CFnType.Bool if j.isString
       => BooleanNode(j.string.get.toBoolean)
-      case CFnType.Boolean
+      case CFnType.Bool
       => BooleanNode(j.number.get.truncateToInt>0)
-      case CFnType.Integer if j.isString
+      case CFnType.Int if j.isString
       => IntNode(j.string.get.toInt)
-      case CFnType.Integer if j.isNumber
+      case CFnType.Int if j.isNumber
       => IntNode(j.number.get.truncateToInt)
-      case CFnType.Integer
+      case CFnType.Int
       => IntNode(j.bool.get.toString.toInt)
       case CFnType.Long if j.isString
       => LongNode(j.string.get.toLong)
@@ -614,6 +616,33 @@ extends LazyLogging
     => Some(s.split(Ontology.MapEntryPrefix).last)
     case _  => None
   }
+
+
+  private def matchWithExpectedTypeIfAny(evalFunNode: Node,subpropType: Option[(String,String)]) =
+    (subpropType,evalFunNode) match {
+      case (Some((_,x)),y) =>
+        (x,y) match {
+          case (CFnType.Int,StringNode(v))   => IntNode(v.toInt)
+          case (CFnType.Int,DoubleNode(v))   => IntNode(v.toInt)
+          case (CFnType.Int,FloatNode(v))    => IntNode(v.toInt)
+          case (CFnType.Int,LongNode(v))     => IntNode(v.toInt)
+          case (CFnType.Double,StringNode(v))    => DoubleNode(v.toDouble)
+          case (CFnType.Double,IntNode(v))       => DoubleNode(v.toDouble)
+          case (CFnType.Double,FloatNode(v))     => DoubleNode(v.toDouble)
+          case (CFnType.Double,LongNode(v))      => DoubleNode(v.toDouble)
+          case (CFnType.Long,StringNode(v))      => LongNode(v.toLong)
+          case (CFnType.Long,IntNode(v))         => LongNode(v.toLong)
+          case (CFnType.Long,FloatNode(v))       => LongNode(v.toLong)
+          case (CFnType.Long,DoubleNode(v))      => LongNode(v.toLong)
+          case (CFnType.Float,StringNode(v))     => FloatNode(v.toFloat)
+          case (CFnType.Float,IntNode(v))        => FloatNode(v.toFloat)
+          case (CFnType.Float,LongNode(v))       => FloatNode(v.toFloat)
+          case (CFnType.Float,DoubleNode(v))     => FloatNode(v.toFloat)
+          case _ => evalFunNode
+        }
+      case _ => evalFunNode
+    }
+
 
 
 }

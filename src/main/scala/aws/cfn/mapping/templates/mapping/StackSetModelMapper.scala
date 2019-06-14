@@ -3,284 +3,405 @@ package aws.cfn.mapping.templates.mapping
 import aws.cfn.AwsOntology
 import aws.cfn.model.ModelIRI
 import aws.cfn.mapping.templates._
+import com.typesafe.scalalogging.{LazyLogging, Logger}
 import org.semanticweb.owlapi.model._
 
 import scala.jdk.CollectionConverters._
 import scala.jdk.OptionConverters._
 
 
-protected object StackSetModelMapper {
+protected object StackSetModelMapper
+{
 
-  def encode(stackSet: StackSet, infrastructure: Infrastructure): StackSetModel = {
-    new StackSetModelMapper(stackSet, infrastructure).encode()
-  }
+  def encode(stackSet: StackSet, infrastructure: Infrastructure): StackSetModel =
+    new StackSetModelMapper(stackSet, infrastructure)
+      .encode()
 
 }
 
 
-private class StackSetModelMapper(stackSet: StackSet, infrastructure: Infrastructure){
-
-  val m : StackSetModel = new StackSetModel(stackSet.name, stackSet.manager.ontologies().toArray().toVector flatMap ( o => Set(o.asInstanceOf[OWLOntology]) ))
-
-  def encode() : StackSetModel = {
-
-    stackSet.templates foreach ( t => {
-
-      val stackIndividualName = stackSet.name + t.name + AwsOntology.StackSuffix
-
-      m.ontology.add(
-        m.df.getOWLClassAssertionAxiom(
-          classFromIRI(ModelIRI.awsConceptIRI(AwsOntology.StackSuffix)),
-          m.df.getOWLNamedIndividual(ModelIRI.awsIndividualIRI( stackIndividualName ))
-        ))
-
-      m.ontology.add(
-        m.df.getOWLObjectPropertyAssertionAxiom(
-          m.df.getOWLObjectProperty(ModelIRI.awsPropertyIRI(AwsOntology.IsDeployedIn)),
-          m.df.getOWLNamedIndividual(ModelIRI.awsIndividualIRI(stackIndividualName)),
-          m.df.getOWLNamedIndividual(ModelIRI.awsAccountIRI(
-            t.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value))
-        )
-      )
-
-    })
-
-    for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
-
-      m.ontology.add(m.df.getOWLClassAssertionAxiom(
-        classFromIRI(
-          ModelIRI.resourceTypeIRI(r._2.serviceType+r._2.resourceType, r._2.resourceType)),
-            getResourceIndividual(r._1)
-      ))
-
-      m.ontology.add(m.df.getOWLObjectPropertyAssertionAxiom(
-        m.df.getOWLObjectProperty(ModelIRI.awsPropertyIRI(AwsOntology.IsInStack)),
-        getResourceIndividual(r._1),
-        m.df.getOWLNamedIndividual(ModelIRI.awsIndividualIRI(stackSet.name + t.name + AwsOntology.StackSuffix))
-      ))
-
-    }
-
-    infrastructure.externalResources foreach ( eR =>
-      m.ontology.add(
-        m.df.getOWLClassAssertionAxiom(
-          classFromIRI(ModelIRI.awsConceptIRI(AwsOntology.ExternalResource)),
-          m.df.getOWLNamedIndividual(ModelIRI.externalEntityIRI(infrastructure.name,eR.name))
-        )
-      ))
 
 
-    for ( t <- stackSet.templates; r <- t.resources.toVector ) yield {
-      m.ontology.add(encodeResource(r._2).asJava)
-    }
+private class StackSetModelMapper(stackSet: StackSet, infrastructure: Infrastructure)
+extends LazyLogging
+{
+
+  val m: StackSetModel =
+    new StackSetModel(
+      stackSet.name,
+      stackSet.manager
+        .ontologies().toArray().toVector
+        .flatMap( o =>
+          Set(o.asInstanceOf[OWLOntology])))
+
+
+
+  def encode(): StackSetModel =
+  {
+
+    stackSet.templates
+      .foreach(
+        initializeStackIndividualFromTemplate)
+
+    stackSet.templates
+      .flatMap(t =>
+        t.resources.toVector
+          .map(r => (t,r)))
+      .foreach(
+        initializeResourceIndividual)
+
+    infrastructure
+      .externalResources
+        .foreach(initializeExternalResource)
+
+    stackSet.templates
+      .flatMap(_.resources.toVector)
+        .foreach( r =>
+          m.ontology.add(encodeResource(r._2).asJava))
 
     m
   }
 
 
-  private def getResourceIndividual(resId: String) : OWLNamedIndividual = {
-    val newResource = m.df.getOWLNamedIndividual(ModelIRI.resourceInstanceIRI(stackSet.name, resId))
+  private def initializeStackIndividualFromTemplate(t: Template) =
+  {
+    val stackIndividualName =
+      stackSet.name + t.name + AwsOntology.StackSuffix
+
+    m.ontology.add(
+      m.df.getOWLClassAssertionAxiom(
+        classFromIRI(ModelIRI
+          .awsConceptIRI(AwsOntology.StackSuffix)),
+        m.df.getOWLNamedIndividual(ModelIRI
+          .awsIndividualIRI(
+            stackIndividualName))
+      ))
+
+    m.ontology.add(
+      m.df.getOWLObjectPropertyAssertionAxiom(
+        m.df.getOWLObjectProperty(ModelIRI
+          .awsPropertyIRI(AwsOntology.IsDeployedIn)),
+        m.df.getOWLNamedIndividual(ModelIRI
+          .awsIndividualIRI(stackIndividualName)),
+        m.df.getOWLNamedIndividual(ModelIRI
+          .awsAccountIRI(t.parameters(
+            PseudoParameter.AccountId)
+            .asInstanceOf[StringNode].value)))
+    )
+  }
+
+
+  private def initializeResourceIndividual(o: (Template,(String,StackSetResource)) ) =
+  {
+    m.ontology.add(m.df.getOWLClassAssertionAxiom(
+      classFromIRI(
+        ModelIRI.resourceTypeIRI(
+          o._2._2 + o._2._2.resourceType,
+          o._2._2.resourceType)),
+      getResourceIndividual(o._2._1)
+    ))
+
+    m.ontology.add(m.df.getOWLObjectPropertyAssertionAxiom(
+      m.df.getOWLObjectProperty(ModelIRI
+        .awsPropertyIRI(AwsOntology.IsInStack)),
+      getResourceIndividual(o._2._1),
+      m.df.getOWLNamedIndividual(ModelIRI
+        .awsIndividualIRI(
+          stackSet.name+o._1.name+AwsOntology.StackSuffix))
+    ))
+  }
+
+
+  private def initializeExternalResource(eR: ExternalResource) =
+    m.ontology.add(
+      m.df.getOWLClassAssertionAxiom(
+        classFromIRI(ModelIRI
+          .awsConceptIRI(AwsOntology.ExternalResource)),
+        m.df.getOWLNamedIndividual(ModelIRI
+          .externalEntityIRI(infrastructure.name,eR.name))
+      ))
+
+
+  private def getResourceIndividual(resId: String) = {
+    val newResource = m.df
+      .getOWLNamedIndividual(ModelIRI
+        .resourceInstanceIRI(stackSet.name, resId))
     addComment(newResource, AwsOntology.ResourceAnnotationComment)
     newResource
   }
 
 
-  private def encodeResource(resource: StackSetResource): Vector[OWLAxiom]  = {
+
+  private def encodeResource(r: StackSetResource)  =
+  {
+    val resourceInstanceIRI =
+      ModelIRI.resourceInstanceIRI(
+        stackSet.name,r.resourceLogicalId)
+
+    encodeAllGivenSubproperties(resourceInstanceIRI,r.givenProperties,r) ++
+      encodeAllAbsentSuproperties(resourceInstanceIRI,r.absentProperties,r)
+  }
 
 
-    //    def createResourceNode(iri: IRI) =
-    //      Vector ( m.df.getOWLClassAssertionAxiom(
-    //        classFromIRI(Symbols.resourceTypeIRI(resource.resourceType,resource.resourceLogicalId)), m.df.getOWLNamedIndividual(iri)) )
+  private def encodeAllGivenSubproperties(source: IRI, givenProp: Map[String, Node],
+                                          res: StackSetResource): Vector[OWLAxiom] =
+    givenProp.toVector
+      .flatMap(p =>
+        encodeProperty(m.df
+          .getOWLNamedIndividual(source), p._1, p._2,res))
 
 
-    def encodeAllGivenSubproperties(sourceIndividualIRI: IRI, givenProperties: Map[String, Node]): Vector[OWLAxiom] = {
-      givenProperties.toVector flatMap (p => encodeProperty(m.df.getOWLNamedIndividual(sourceIndividualIRI), p._1, p._2))
-    }
+  private def encodeAllAbsentSuproperties(source: IRI, absentProp: Set[String],
+                                          res: StackSetResource): Vector[OWLAxiom]=
+    absentProp.toVector
+      .flatMap(p =>
+        encodeAbsentProperty(m.df
+          .getOWLNamedIndividual(source), p,res))
 
 
-    def encodeAllAbsentSuproperties(sourceIndividualIRI: IRI, absentProperties: Set[String]): Vector[OWLAxiom] =
-      absentProperties.toVector flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(sourceIndividualIRI), p))
+  private def encodeProperty(source: OWLIndividual, prop: String, target: Node, res: StackSetResource)=
 
+    oProperty(prop,res) match {
 
-    def encodeProperty(sourceIndividual: OWLIndividual, propName: String, cfnNode: Node): Vector[OWLAxiom] =
-
-      oProperty(propName) match {
-
-        case Some(op) =>
-          cfnNode match {
-           case ListNode(vec) => vec flatMap {
-             case StringNode(s) => encodeObjectProperty(sourceIndividual, op, ExternalResource(s,infrastructure))
-             case NoValue => Vector()
-             case n => encodeObjectProperty(sourceIndividual, op, n.asInstanceOf[ObjectNode])
+      case Some(op) =>
+        target match {
+          case null => Vector() // This should not be here. Try to get rid of null case. Check where do you assign it.
+          case ListNode(vec) =>
+            vec.flatMap{
+              case StringNode(s)
+              => encodeObjectProperty(source, op, ExternalResource(s,infrastructure),res)
+              case NoValue
+              => Vector()
+              case n
+              => encodeObjectProperty(source, op, n.asInstanceOf[ObjectNode],res)
             }
-           case MapNode(map) => map.toVector flatMap (e => encodeObjectMapEntry(sourceIndividual, op, e))
-           case NoValue => Vector()
-           case _ => encodeObjectProperty(sourceIndividual, op,
-             cfnNode match {
-               case StringNode(s) => ExternalResource(s,infrastructure)
-               case _ => cfnNode.asInstanceOf[ObjectNode]
-             })
-         }
+          case MapNode(map)
+          => map.toVector
+            .flatMap(e => encodeObjectMapEntry(source, op, e))
+          case NoValue
+          => Vector()
+          case _
+          => encodeObjectProperty(source, op,
+            target match {
+              case StringNode(s) => ExternalResource(s,infrastructure)
+              case _             => target.asInstanceOf[ObjectNode]
+            },res)
+        }
 
-        case None => dProperty(propName) match {
-          case Some(dp) => cfnNode match {
-            case ListNode(vec) if vec.head.isInstanceOf[GenericValueNode] =>
-              vec flatMap (n => encodeValueProperty(sourceIndividual,dp,n.asInstanceOf[GenericValueNode]))
-            case ListNode(vec) if vec.head.isInstanceOf[ObjectNode] =>
-              vec flatMap (n => encodeValueProperty(sourceIndividual,dp,StringNode(n.toString)))
-            case MapNode(map) => map.toVector flatMap (e => encodeValueMapEntry(sourceIndividual,dp,e.asInstanceOf[(String,GenericValueNode)]))
-            case NoValue => Vector()
-            case StackSetResource(_,s,r,_,_) =>
-              println("Data Property " + dp.toString.split(AwsOntology.Pound).last + " of " + resource.serviceType + resource.resourceType + AwsOntology.Pound + resource.resourceType + " points to resource of type "
-                + s + r + AwsOntology.Pound + r )
-              Vector() // TODO ERROR! Something wrong here: Property seems data but points to a resource
-            case _ => encodeValueProperty(sourceIndividual, dp, cfnNode.asInstanceOf[GenericValueNode])
-            }
-          case None => Vector() // TODO ERROR! Something wrong here: Property neither obj or data!
+      case None =>
+        dProperty(prop,res) match {
+          case Some(dp) => target match {
+            case ListNode(vec) if vec.head.isInstanceOf[GenericValueNode]
+            => vec.flatMap(n =>
+              encodeValueProperty(source,dp,n.asInstanceOf[GenericValueNode]))
+            case ListNode(vec) if vec.head.isInstanceOf[ObjectNode]
+            => vec.flatMap(n =>
+              encodeValueProperty(source,dp,StringNode(n.toString)))
+            case MapNode(map)
+            => map.toVector.flatMap (e =>
+              encodeValueMapEntry(source,dp,e.asInstanceOf[(String,GenericValueNode)]))
+            case NoValue
+            => Vector()
+            case StackSetResource(_,s,r,_,_)
+            =>
+              logger.error("Data Property " + dp.toString.split(AwsOntology.Pound).last +
+                " of " + res.serviceType + res.resourceType + " points instead to r of type " +
+                s + r + AwsOntology.Pound + r)
+              Vector()
+            case _ =>
+              encodeValueProperty(source, dp, target.asInstanceOf[GenericValueNode])
+          }
+          case None =>
+            logger.error("Data Property " + prop + " of " + res.serviceType + res.resourceType
+              + " is not found either as object or as data property!")
+            Vector()
         }
 
     }
 
 
-    def encodeValueMapEntry(sourceIndividual:OWLIndividual, dp:OWLDataProperty, entry:(String,GenericValueNode) )
-      : Vector[OWLAxiom] = {
-      Vector() // TODO
-    }
-
-    def encodeObjectMapEntry(sourceIndividual: OWLIndividual, op:OWLObjectProperty, entry:(String,Node))
-      :Vector[OWLAxiom] = {
-      Vector() // TODO
-    }
+  private def encodeValueMapEntry(source:OWLIndividual,
+                                  dp:OWLDataProperty,
+                                  entry:(String,GenericValueNode) ) =
+    Vector() // TODO
 
 
-    def encodeAbsentProperty(sourceIndividual: OWLIndividual, propName: String): Vector[OWLAxiom] = {
-      Vector(m.df.getOWLSubClassOfAxiom(m.df.getOWLObjectOneOf(sourceIndividual),
-        oProperty(propName) match {
-          case None => m.df.getOWLObjectComplementOf(m.df.getOWLDataSomeValuesFrom(dProperty(propName).get, m.df.getTopDatatype))
-          case Some(op) => m.df.getOWLObjectAllValuesFrom(op, m.df.getOWLNothing)
+  private def encodeObjectMapEntry(source: OWLIndividual,
+                                   op:OWLObjectProperty,
+                                   entry:(String,Node)) =
+    Vector() // TODO
+
+
+
+  private def encodeAbsentProperty(source: OWLIndividual,
+                                   propName: String,
+                                   res: StackSetResource)=
+    Vector(m.df
+      .getOWLSubClassOfAxiom(m.df
+        .getOWLObjectOneOf(source),
+        oProperty(propName,res) match {
+          case None     => m.df
+            .getOWLObjectComplementOf(m.df
+              .getOWLDataSomeValuesFrom(dProperty(propName,res).get, m.df.getTopDatatype))
+          case Some(op) => m.df
+            .getOWLObjectAllValuesFrom(op, m.df.getOWLNothing)
         }
       ))
+
+
+  private def encodeValueProperty(source: OWLIndividual,
+                                  dp: OWLDataProperty,
+                                  value: GenericValueNode) : Vector[OWLAxiom] =
+    value match {
+      case NoValue        => Vector()
+      case ListNode(vec:Vector[Node]) =>
+        vec.flatMap(n =>
+          encodeValueProperty(source,dp,n.asInstanceOf[GenericValueNode]))
+      case MapNode(map) =>
+        map.toVector.flatMap(entry =>
+          encodeValueMapEntry(source,dp,entry.asInstanceOf[(String,GenericValueNode)]))
+      case StringNode(v)  => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp,source,v))
+      case IntNode(v)     => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case BooleanNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case LongNode(v)    => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case FloatNode(v)   => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case DoubleNode(v)  => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source,v))
+      case TimeStampNode(v)           => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case CommaDelimitedListNode(v)  => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case JsonNode(v)                => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
     }
 
 
-    /*
-    Only used in case of policies
-     */
-//    def encodePropertyWithIRI(sourceIndividual: OWLIndividual, propIRI: IRI, cfnNode: Node): Vector[OWLAxiom] =
-//      encodeObjectProperty(sourceIndividual, oPropFromIRI(propIRI), cfnNode.asInstanceOf[ObjectNode])
+  private def encodeObjectProperty(source: OWLIndividual,
+                                   op: OWLObjectProperty,
+                                   target: ObjectNode,
+                                    res: StackSetResource) =
+  {
+
+    if (target==null)
+    println(s"Property $op from ${res.serviceType}+${res.resourceType} is assigned to individual $source but points to an objectNode NULL.")
 
 
-    def encodeValueProperty(sourceIndividual: OWLIndividual, dataProp: OWLDataProperty, valueNode: GenericValueNode) : Vector[OWLAxiom] = {
+    target match {
+      case StackSetResource(id,_,_,ss,_)
+      => Vector(m.df
+        .getOWLObjectPropertyAssertionAxiom(op, source,
+          resourceIndividualFromStackSet(id,ss)))
 
-      valueNode match {
-        case StringNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case IntNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case BooleanNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case LongNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case FloatNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case DoubleNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp,sourceIndividual,v))
-        case TimeStampNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case CommaDelimitedListNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case JsonNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dataProp, sourceIndividual, v))
-        case NoValue => Vector()
-        case ListNode(vec: Vector[Node]) =>
-          vec flatMap (n => encodeValueProperty(sourceIndividual,dataProp,n.asInstanceOf[GenericValueNode]))//Vector() // TODO Generate axioms for list properties
-        case MapNode(map) =>
-          map.toVector flatMap (entry => encodeValueMapEntry(sourceIndividual,dataProp,entry.asInstanceOf[(String,GenericValueNode)]))// TODO Generate axioms for map properties
-        case _ =>
-          println("Evaluation returned: " + valueNode + " which is not a value node. Therefore property " + dataProp + " must not be a real data property.")
-          Vector()
-      }
+      case Subproperty(gP, aP)
+      => val individualRandomIRI =
+        ModelIRI.subpropertyBlankNodeIRI(stackSet.name)
+
+        createBlankNode(source,op, individualRandomIRI,res) ++
+          encodeAllGivenSubproperties(individualRandomIRI, gP,res) ++
+          aP.flatMap(p
+          => encodeAbsentProperty(m.df
+              .getOWLNamedIndividual(individualRandomIRI), p,res))
+
+      case ExternalResource(v,infr)
+      => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
+        op, source, externalResourceIndividualFromInfrastructure(v,infr)))
+
+      case x => logger.warn(s"Attempting to encode Object Property " +
+        s"with unexpected target type. Should be one of " +
+        s"StackSetResource, Subproperty, or ExternalResource, instead is $x.")
+        Vector()
     }
-
-
-
-    def encodeObjectProperty(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, objNode: ObjectNode): Vector[OWLAxiom]
-    = objNode match {
-      case StackSetResource(resourceLogicalId,_,_,ss,_) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromStackSet(resourceLogicalId,ss)))
-      case Subproperty(givenProperties, absentProperties) =>
-        val individualRandomIRI = ModelIRI.subpropertyBlankNodeIRI(stackSet.name)
-        createBlankNode(sourceIndividual,objProp, individualRandomIRI) ++
-          encodeAllGivenSubproperties(individualRandomIRI, givenProperties) ++
-          (absentProperties flatMap (p => encodeAbsentProperty(m.df.getOWLNamedIndividual(individualRandomIRI), p)))
-      case ExternalResource(v,infr) => Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp, sourceIndividual, individualFromInfrastructure(v,infr)))
-//      case PolicyDocument(statements) => // TODO Again!
-//        val policyRandomIRI = DLModelIRI.policyNodeIRI(stackSet.name)
-//        createPolicyNode(policyRandomIRI) /*++
-//          statements.flatMap(s => encodePropertyWithIRI
-//              (m.df.getOWLNamedIndividual(policyRandomIRI), DLModelIRI.propertyTypeIRI("policydocument", "statement"), s))*/
-//      case AllowStatement(_,_,_,_) => null // TODO
-//      case DenyStatement(_,_,_,_) => null // TODO Continue from here and decide if you should move the instantiation from here to another class!
-      case _ => Vector() // TODO
-    }
-
-
-    def createBlankNode(sourceIndividual: OWLIndividual, objProp: OWLObjectProperty, individualRandomIRI: IRI): Vector[OWLAxiom] = {
-        range(objProp) match {
-          case None =>
-            val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
-            addComment(newNode, AwsOntology.SubpropertyAnnotationComment)
-            Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
-            Vector(m.df.getOWLDeclarationAxiom(newNode))
-          case Some(c) =>
-            val newNode = m.df.getOWLNamedIndividual(individualRandomIRI)
-            addComment(newNode, AwsOntology.SubpropertyAnnotationComment)
-            Vector(m.df.getOWLObjectPropertyAssertionAxiom(objProp,sourceIndividual,newNode)) ++
-            Vector(m.df.getOWLClassAssertionAxiom(c,newNode))
-        }
-      }
-
-
-//    def createPolicyNode(policyRandomIRI : IRI) : Vector[OWLAxiom] = {
-//      val policyNode = m.df.getOWLNamedIndividual(ModelIRI.policyNodeIRI(stackSet.name))
-//      addComment(policyNode, "policy")
-//      Vector ( m.df.getOWLClassAssertionAxiom( classFromIRI(ModelIRI.policyDocIRI), policyNode ))
-//    }
-
-
-    def individualFromStackSet(name:String, stackSet: StackSet) : OWLIndividual
-    = m.df.getOWLNamedIndividual(ModelIRI.resourceInstanceIRI(stackSet.name,name))
-
-    def individualFromInfrastructure(name:String, infrastructure: Infrastructure) : OWLIndividual
-    = m.df.getOWLNamedIndividual(ModelIRI.externalEntityIRI(infrastructure.name,name))
-
-
-    def range(objProp: OWLObjectProperty) : Option[OWLClass] = {
-      m.manager.getOntology(ModelIRI.resourceTerminologyIRI(resource.serviceType+resource.resourceType)).objectPropertyRangeAxioms(objProp).findFirst().toScala match {
-        case Some(ax) => Some(ax.getRange.asOWLClass())
-        case None => None
-      }
-    }
-
-    def oProperty(name:String): Option[OWLObjectProperty] = {
-      if (m.manager.getOntology(ModelIRI.resourceTerminologyIRI(resource.serviceType+resource.resourceType)).containsObjectPropertyInSignature(ModelIRI.propertyTypeIRI(resource.serviceType + resource.resourceType, name)))
-        Some(m.df.getOWLObjectProperty(ModelIRI.propertyTypeIRI(resource.serviceType+resource.resourceType, name)))
-      else None
-    }
-
-    def dProperty(name:String): Option[OWLDataProperty] = {
-      if (m.manager.getOntology(ModelIRI.resourceTerminologyIRI(resource.serviceType+resource.resourceType )).containsDataPropertyInSignature(ModelIRI.propertyTypeIRI(resource.serviceType+resource.resourceType, name)))
-        Some(m.df.getOWLDataProperty(ModelIRI.propertyTypeIRI(resource.serviceType+resource.resourceType, name)))
-      else None
-    }
-
-
-//    def oPropFromIRI(iri:IRI) = m.df.getOWLObjectProperty(iri)
-
-
-    val resourceInstanceIRI = ModelIRI.resourceInstanceIRI(stackSet.name, resource.resourceLogicalId)
-
-    encodeAllGivenSubproperties( resourceInstanceIRI, resource.givenProperties ) ++
-      encodeAllAbsentSuproperties( resourceInstanceIRI, resource.absentProperties )
-
   }
 
 
-  private def classFromIRI(iri:IRI) = m.df.getOWLClass(iri)
 
-  private def addComment (individual:OWLNamedIndividual, comment:String) = {
-    val commentAxiom  = m.df.getOWLAnnotationAssertionAxiom( individual.getIRI , m.df.getRDFSComment(comment ) )
-    m.manager.applyChange( new AddAxiom( m.ontology, commentAxiom ))
+  private def createBlankNode(sourceIndiv: OWLIndividual,
+                              op: OWLObjectProperty,
+                              uniqueRandomIRI: IRI,
+                              res: StackSetResource)=
+  {
+    val newNode = m.df.getOWLNamedIndividual(uniqueRandomIRI)
+    addComment(newNode, AwsOntology.SubpropertyAnnotationComment)
+
+    Vector(m.df.getOWLObjectPropertyAssertionAxiom(op, sourceIndiv, newNode)) ++
+      (range(op,res) match {
+        case None     => Vector(m.df.getOWLDeclarationAxiom(newNode))
+        case Some(c)  => Vector(m.df.getOWLClassAssertionAxiom(c, newNode))
+      })
   }
+
+
+  private def resourceIndividualFromStackSet(name:String,
+                                             stackSet: StackSet) =
+    m.df.getOWLNamedIndividual(ModelIRI
+      .resourceInstanceIRI(stackSet.name,name))
+
+
+  private def externalResourceIndividualFromInfrastructure
+                                    (name:String, infr: Infrastructure) =
+    m.df.getOWLNamedIndividual(ModelIRI
+      .externalEntityIRI(infr.name,name))
+
+
+  private def range(op: OWLObjectProperty, res: StackSetResource)=
+    m.manager.getOntology(ModelIRI
+      .resourceTerminologyIRI(
+        res.serviceType+res.resourceType))
+      .objectPropertyRangeAxioms(op)
+      .findFirst().toScala match {
+      case Some(ax) => Some(ax.getRange.asOWLClass())
+      case None     => None
+    }
+
+
+  private def modelContainsObjProperty(name: String,
+                                       res: StackSetResource) =
+    m.manager.getOntology(ModelIRI
+      .resourceTerminologyIRI
+      (res.serviceType+res.resourceType))
+      .containsObjectPropertyInSignature(ModelIRI
+        .propertyTypeIRI(res.serviceType+res.resourceType,name))
+
+
+  private def oProperty(name:String, res:StackSetResource) =
+    if (modelContainsObjProperty(name,res))
+      Some(m.df
+        .getOWLObjectProperty(
+          ModelIRI.propertyTypeIRI(
+            res.serviceType+res.resourceType,name)))
+    else
+      None
+
+
+  private def modelContainsDataProperty(name: String,
+                                        res: StackSetResource) =
+    m.manager.getOntology(ModelIRI
+      .resourceTerminologyIRI
+      (res.serviceType+res.resourceType))
+      .containsDataPropertyInSignature(ModelIRI
+        .propertyTypeIRI(res.serviceType+res.resourceType,name))
+
+
+  private def dProperty(name:String, res:StackSetResource)=
+    if (modelContainsDataProperty(name,res))
+      Some(m.df
+        .getOWLDataProperty(
+          ModelIRI.propertyTypeIRI(
+            res.serviceType+res.resourceType,name)))
+    else
+      None
+
+
+  private def classFromIRI(iri:IRI) =
+    m.df.getOWLClass(iri)
+
+
+  private def addComment(i:OWLNamedIndividual, comm:String) = {
+    val commentAxiom  =
+      m.df.getOWLAnnotationAssertionAxiom(
+        i.getIRI,
+        m.df.getRDFSComment(comm))
+    m.manager.applyChange(
+      new AddAxiom(m.ontology,
+        commentAxiom))
+  }
+
 
 }
+
