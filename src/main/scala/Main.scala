@@ -2,16 +2,15 @@
 import java.io.{File, FileNotFoundException}
 
 import argonaut.{Json, Parse}
-import aws.cfn.actions.{ActionsMap, ActionsMapper, ActionsModel, ActionsModelMapper}
-import aws.cfn.specifications.ResourceSpecificationModel
-import aws.cfn.templates.{InfrastructureModel, PermissionsModel}
-import aws.cfn.templates.Json2InfrastructureEncoder
+import aws.cfn.mapping.actions.{ActionsMap, ActionsModel}
+import aws.cfn.mapping.specifications.ResourceSpecificationModel
+import aws.cfn.mapping.templates.mapping.{InfrastructureModel, PermissionsModel}
+import aws.cfn.mapping.templates.Json2InfrastructureEncoder
 
 import scala.io.Source
 import scala.language.postfixOps
 
 object Main extends App {
-
 
   /*
   TODO!!!
@@ -35,7 +34,7 @@ object Main extends App {
   def modelZelkovaTest(): Unit = {
 
     val inputFilePath = "src/main/resources/InputStackSets/Zelkova/test/"
-    val outputFilePath = "/Users/claudia/IdeaProjects/CloudLogic/src/main/resources/OutputModels/ZelkovaTest/"
+    val outputFilePath = "src/main/resources/OutputModels/ZelkovaTest/"
     val inputDir = new File(inputFilePath)
     (inputDir.listFiles() filter (f => f.isDirectory)) foreach( f => createInfrastructure(f) )
 
@@ -104,7 +103,7 @@ object Main extends App {
 
  def recompileTerminology(): Unit = {
      printOntologiesFromResourceSpecificationDirectoryToFolder(
-       "/Users/claudia/Downloads/CloudFormationResourceSpecification/",
+       System.getProperty("user.home") + "/Downloads/CloudFormationResourceSpecification/",
        "src/main/resources/terminology/resourcespecificationsOwl/"
      )
 
@@ -112,8 +111,9 @@ object Main extends App {
 
      def printOntologiesFromResourceSpecificationDirectoryToFolder(dirPath: String, outputPath : String): Unit = {
        val dir = new File(dirPath)
-       if ( !dir.isDirectory )
+       if ( !dir.isDirectory ) {
          throw new FileNotFoundException( "The directory " + dirPath + " does not exist")
+       }
        else
          dir.listFiles(f => f.getName.endsWith("Specification.json") && !f.getName.equals("CloudFormationResourceSpecification.json"))
            .foreach ( f => printOntologyFromResourceSpecificationFileToFolder(f,outputPath) )

@@ -1,0 +1,620 @@
+package aws.cfn.mapping.templates
+
+import java.util.regex.Pattern
+
+import argonaut._
+import aws.cfn.Ontology
+import aws.cfn.mapping.{CFnType, JsonUtils, Renaming, Specification}
+import com.typesafe.scalalogging.LazyLogging
+
+import scala.language.postfixOps
+
+private class Json2NodeEncoder
+(val optRE: Option[Json2ResourceEncoder], val tE: Json2TemplateEncoder)
+extends LazyLogging
+{
+
+  def this(tE : Json2TemplateEncoder){
+    this(None,tE)
+  }
+
+  def this(rE : Json2ResourceEncoder){
+    this(Some(rE), rE.tE)
+  }
+
+
+  private[templates] val ssE: Json2StackSetEncoder = tE.ssE
+  private[templates] val iE: Json2InfrastructureEncoder = ssE.iE
+
+
+  def encode(json: Json, subpropType: Option[(String,String)] = None): Node =
+  {
+
+    json match {
+      case j if isArn(j)
+      => encodeArn(j)
+      case j if j.isNull || isNoValue(j)
+      => NoValue
+      case j if j.isObject && isIntrinsicFunction(j)
+      => evalIntrinsicFunction(j)
+      case j if j.isObject && isMapProperty(j,subpropType)
+      => encodeMapProperty(j,mapProperty(j,subpropType).get)
+      case j if j.isObject && isPolicyDoc(j)
+      => encodePolicyDoc(j)
+      case j if j.isObject && subpropType.isDefined &&
+        subpropType.get._2.equals(CFnType.String)
+      => StringNode(j.toString())
+      case j if j.isObject
+      => encodeSubproperty(j,subpropType)
+      case j if j.isArray
+      => encodeArrayNode(j,subpropType)
+      case j
+      => encodeValueNode(j,subpropType)
+    }
+
+  }
+
+
+
+  private def encodeArn(j: Json) = {
+    val vecNodes = ArnFunction(optRE,tE)(j.string.get)
+    vecNodes match {
+      case ListOfResources(v) if v.size==1 => v.head
+      case ln:ListOfResources => ln
+      case x => x
+    }
+  }
+
+
+  private def encodePolicyDoc(j: Json) =
+    optRE match {
+      case None => logger.warn(s"Json contains a policy in an encoder " +
+        s"not associated with a parent resource. Returning NoValue")
+        NoValue
+      case Some(rE) =>
+        val policyEncoder = new Json2PolicyDocumentEncoder(this,j,rE.resource)
+        tE.policyEncoders ++= Vector(policyEncoder)
+        policyEncoder.createNode()
+    }
+
+
+  private def encodeValueNode(j: Json, spT: Option[(String,String)])=
+    spT match {
+      case Some((_, spt))
+      => matchNodeBySubpropType(j, spt)
+      case None
+      => matchNodeByJsonType(j)
+    }
+
+
+  private def encodeArrayNode(j: Json, spT:Option[(String,String)]) =
+    ListNode(
+      j.array.get
+        .map (ji => encode(ji,spT))
+        .toVector
+    )
+
+
+  private def encodeMapProperty(j: Json, spT: String) = {
+    logger.warn("Encoding of Map Values currently " +
+      "not implemented. Returning NoValue")
+    NoValue
+  }
+
+
+  private def encodeSubproperty(j: Json, spT:Option[(String,String)]) =
+  {
+    require(optRE.isDefined)
+    val rE = optRE.get
+
+    def givenProperties =
+      j.objectFieldsOrEmpty
+        .map(f =>
+          spT.get._2 + Renaming.Delimiter + f.toString)
+        .toSet
+
+    def nodeObjectForProperty(j: Json, propFullName: String)  = {
+      val propTemplateName = propFullName
+        .split(spT.get._2 + Renaming.Delimiter).last
+
+      val propRange = Json2ResourceEncoder
+        .rangeNameOf(
+          propFullName,
+          rE.resourceOntology,
+          rE.serviceType,
+          rE.resourceType,ssE)
+
+      encode(
+        j.field(propTemplateName).get,
+        propRange)
+    }
+
+
+    spT match
+    {
+      case None  =>
+
+        Subproperty(givenProperties
+            .flatMap(propName =>
+              Map(propName -> nodeObjectForProperty(j,propName))
+            ).toMap)
+
+      case Some((_,spt)) =>
+
+        val absentProperties  =
+          Json2ResourceEncoder
+            .subPropertiesNamesOfClassName(
+              spt, ssE,rE.serviceType,rE.resourceType
+              ,rE.resourceOntology) --
+            givenProperties
+              .map(_.toLowerCase())
+
+        val presentProperties =
+          givenProperties
+            .flatMap(propName =>
+              Map(propName -> nodeObjectForProperty(j,propName)))
+            .toMap
+
+        Subproperty(presentProperties,absentProperties)
+    }
+
+  } ensuring optRE.isDefined
+
+
+
+  private def evalIntrinsicFunction(j:Json) = {
+
+    JsonUtils.subFieldNames(j)(0) match
+    {
+      case CFnFunTag.Base64          => validateParamsAndEvalBase64(j)
+      case CFnFunTag.Cidr            => validateParamsAndEvalCidr(j)
+      case CFnFunTag.If              => validateParamsAndEvalIf(j)
+      case CFnFunTag.Not             => validateParamsAndEvalNot(j)
+      case CFnFunTag.And             => validateParamsAndEvalAnd(j)
+      case CFnFunTag.Equals          => validateParamsAndEvalEquals(j)
+      case CFnFunTag.Or              => validateParamsAndEvalOr(j)
+      case CFnFunTag.FindInMap       => validateParamsAndEvalFindInMap(j)
+      case CFnFunTag.GetAtt          => validateParamsAndEvalGetAtt(j)
+      case CFnFunTag.GetAZs          => validateParamsAndEvalGetAZs(j)
+      case CFnFunTag.ImportValue     => validateParamsAndEvalImportValue(j)
+      case CFnFunTag.Join            => validateParamsAndEvalJoin(j)
+      case CFnFunTag.Select          => validateParamsAndEvalSelect(j)
+      case CFnFunTag.Split           => validateParamsAndEvalSplit(j)
+      case CFnFunTag.Sub             => validateParamsAndEvalSub(j)
+      case CFnFunTag.Transform       => validateParamsAndEvalTransform(j)
+      case CFnFunTag.Ref             => validateParamsAndEvalRef(j)
+      case _ =>
+        logger.warn(s"Json object $j is intrinsic function but does not " +
+          "contain any of the CFn functions tags. Returning NoValue")
+        NoValue
+    }
+
+  }
+
+
+  private def arrayAt(j: Json, fieldName:String, index:Int) =
+    j.field(fieldName).get.array match {
+      case None
+      => j.field(fieldName).get
+      case Some(a) if index < a.size
+      => a(index)
+    }
+
+
+  private def validateParamsAndEvalBase64(j: Json) =
+    encode(j.field(CFnFunTag.Base64UC).get) match {
+      case sn: StringNode => Base64Function()(sn)
+      case _ =>
+        logger.warn(s"Content of Fn::Base64 node $j does not evaluate " +
+          "to a StringNode. Returning NoValue")
+        NoValue
+    }
+
+
+
+  private def validateParamsAndEvalCidr(j: Json) =
+    CidrFunction()(
+      encode(arrayAt(j,CFnFunTag.CidrUC,0)).asInstanceOf[StringNode],
+      encode(arrayAt(j,CFnFunTag.CidrUC,1)).asInstanceOf[IntNode],
+      encode(arrayAt(j,CFnFunTag.CidrUC,2)).asInstanceOf[IntNode] )
+
+
+  private def validateParamsAndEvalIf(j: Json) = {
+
+    val encodedCondition  = encode(arrayAt(j, CFnFunTag.IfUC,0))
+    val encodedTrueExp    = encode(arrayAt(j, CFnFunTag.IfUC, 1))
+    val encodedFalseExp   = encode(arrayAt(j, CFnFunTag.IfUC, 2))
+
+    encodedCondition match {
+      case sn: StringNode   => tE.conditions.get(sn.value) match {
+        case None     => NoValue
+        case Some(b)  => IfFunction()(BooleanNode(b), encodedTrueExp, encodedFalseExp)
+      }
+      case bn : BooleanNode => IfFunction()(bn, encodedTrueExp, encodedFalseExp)
+      case _                =>
+        logger.warn(s"Content of Fn::If node $j does not evaluate " +
+          "to a BooleanNode. Returning NoValue")
+        NoValue
+    }
+
+  }
+
+
+  private def validateParamsAndEvalNot(j: Json) = {
+
+    val encodedJson = encode(j.field(CFnFunTag.NotUC).get)
+
+    encodedJson match {
+      case bn : BooleanNode                        => NotFunction()(bn)
+      case l  : ListNode[BooleanNode]             => NotFunction()(l.value.head)
+      case _ =>
+        logger.warn(s"Content of Fn::Not node $j does not evaluate " +
+          "to a BooleanNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalAnd(j: Json) = {
+
+    val lhs = encode(arrayAt(j, CFnFunTag.AndUC,0))
+    val rhs = encode(arrayAt(j,CFnFunTag.AndUC,1))
+
+    (lhs, rhs) match {
+      case (l:BooleanNode,r:BooleanNode) => AndFunction()(l,r)
+      case _ =>
+        logger.warn(s"Either lhs or rhs of Fn::And node $j does not evaluate " +
+          "to a BooleanNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalOr(j: Json) = {
+
+    val lhs  = encode(arrayAt(j, CFnFunTag.OrUC,0))
+    val rhs = encode(arrayAt(j, CFnFunTag.OrUC,1))
+
+    (lhs, rhs) match {
+      case (l:BooleanNode, r:BooleanNode) => OrFunction()(l,r)
+      case _ =>
+        logger.warn(s"Either lhs or rhs of Fn::Or node $j does not evaluate " +
+          "to a BooleanNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalEquals(j: Json) = {
+    val lhs = encode(arrayAt(j,CFnFunTag.EqualsUC,0))
+    val rhs = encode(arrayAt(j,CFnFunTag.EqualsUC,1))
+    EqualsFunction()(lhs,rhs)
+  }
+
+
+  private def validateParamsAndEvalFindInMap(j: Json) = {
+
+    val hasSecondLevelKey   = j.field(CFnFunTag.FindInMapUC).get.array.get.size == 3
+    val encodedMapName      = encode(arrayAt(j,CFnFunTag.FindInMapUC,0))
+    val encodedTopLevelKey  = encode(arrayAt(j,CFnFunTag.FindInMapUC,1))
+    val encodedSecondLevelKey = if (hasSecondLevelKey) encode(arrayAt(j,CFnFunTag.FindInMapUC,2)) else None
+
+    (encodedMapName,encodedTopLevelKey,encodedSecondLevelKey) match {
+      case (m:StringNode,k1:StringNode,None)                => FindInMapFunction(tE.mappings)(m,k1)
+      case (m:StringNode,k1:StringNode,k2:StringNode)       => FindInMapFunction(tE.mappings)(m,k1,Some(k2))
+      case _ =>
+        logger.warn(s"Content of Fn::FindInMap node $j does not " +
+          "evaluate to the right type or requested key not found " +
+          "in templates mappings. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalGetAtt(j: Json) = {
+
+    val encodedResourceName   = encode(arrayAt(j,CFnFunTag.GetAttUC,0))
+    val encodedAttributeName  = encode(arrayAt(j,CFnFunTag.GetAttUC,1))
+
+    (encodedResourceName, encodedAttributeName) match {
+      case (r:StringNode,a:StringNode)  => GetAttFunction(optRE,tE)(r,a)
+      case _ =>
+        logger.warn(s"Contents of Fn::GetAtt node $j do not " +
+          "evaluate to a StringNode type. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalGetAZs(j: Json) = {
+
+    val encodedRegion = encode (j.field (CFnFunTag.GetAZsUC).get)
+
+    encodedRegion match {
+      case r:StringNode => GetAZsFunction()(r)
+      case _ =>
+        logger.warn(s"Content of Fn::GetAZs node $j do not" +
+          " evaluate to a StringNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalImportValue(j: Json) = {
+
+    val encodedImportName = encode (j.field (CFnFunTag.ImportValueUC).get)
+
+    encodedImportName match {
+      case i:StringNode => ImportValueFunction(tE, optRE)(i)
+      case _ =>
+        logger.warn(s"Content of Fn::ImportValue node $j does" +
+          " not evaluate to a StringNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalJoin(j: Json) = {
+
+    val encodedDelimiter = encode (arrayAt(j,CFnFunTag.JoinUC,0))
+    val encodedList = encode (arrayAt(j,CFnFunTag.JoinUC,1))
+
+    (encodedDelimiter, encodedList) match {
+      case (d:StringNode,l:ListNode[Node]) => JoinFunction()(d,l)
+      case _ =>
+        logger.warn(s"Contents of Fn::Join node $j do not " +
+          "evaluate to the expected types. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalSelect(j: Json) = {
+
+    val encodedIndex = encode(arrayAt(j,CFnFunTag.SelectUC,0))
+    val encodedList  = encode(arrayAt(j,CFnFunTag.SelectUC,1))
+
+    (encodedIndex, encodedList) match {
+      case (i:IntNode, l:ListNode[Node] ) => SelectFunction(optRE)(i,l)
+      case _ =>
+        logger.warn(s"Contents of Fn::Select node $j do " +
+          "not evaluate to the expected types. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalSplit(j: Json) = {
+
+    val encodedDelimiter = encode (arrayAt(j,CFnFunTag.SplitUC,0))
+    val encodedString = encode (arrayAt(j,CFnFunTag.SplitUC,1))
+
+    (encodedDelimiter, encodedString) match {
+      case (d:StringNode, s:StringNode) => SplitFunction ()(d,s)
+      case _ =>
+        logger.warn(s"Contents of Fn::Split node $j do " +
+          "not evaluate to StringNode. Returning NoValue")
+        NoValue
+    }
+  }
+
+
+  private def validateParamsAndEvalSub(j: Json) = {
+
+    val stringToMatch =
+      arrayAt(j,CFnFunTag.SubUC,0)
+    val isArray =
+      j.field(CFnFunTag.SubUC).get.isArray
+    val isArrayWithTwoElements =
+      isArray && j.field(CFnFunTag.SubUC).get.array.get.size == 2
+    val substitutionMap =
+      if (isArrayWithTwoElements)
+        Some(getNodesAsMapOfEvalStrings(arrayAt(j,CFnFunTag.SubUC,1)))
+      else
+        None
+
+    stringToMatch match {
+      case n if isArn(n) =>
+        SubFunction(optRE,tE)(StringNode(n.string.get), substitutionMap) match {
+          case StringNode(s) => ArnFunction(optRE,tE)(s)
+          case _ =>
+            logger.warn(s"Evaluation of Fn::Sub node $n, supposed " +
+              s"to contain an ARN, did not produce a " +
+              s"StringNode. Returning NoValue")
+            NoValue
+        }
+      case _ =>
+        val encodedStringToMatch = encode(stringToMatch)
+        (substitutionMap,encodedStringToMatch) match {
+          case (None,s:StringNode)    => SubFunction(optRE,tE)(s)
+          case (_,s:StringNode)       => SubFunction(optRE,tE)(s,substitutionMap)
+          case _ =>
+            logger.warn(s"Contents of Fn::Sub node $j do not " +
+              "evaluate to the expected types. Returning NoValue")
+            NoValue
+        }
+    }
+  }
+
+
+  private def validateParamsAndEvalTransform(j: Json) = {
+    // TODO
+    logger.error("Intrinsic Function Fn::Transform not " +
+      "implemented. Returning NoValue")
+    NoValue
+  }
+
+
+  private def validateParamsAndEvalRef(j: Json) =
+    encode(j.field(CFnFunTag.RefUC).get) match {
+      case NoValue =>
+        logger.warn(s"Evaluation of Fn::Ref node $j " +
+          s"produced NoValue. Returning NoValue")
+        NoValue
+      case x => RefFunction(optRE,tE)(x)
+    }
+
+
+
+
+  private def getNodesAsMapOfEvalStrings(j:Json) =
+    JsonUtils.subFieldNames(j)
+      .zip (subFieldValueEvalContents(j))
+      .toMap
+
+
+
+  private def subFieldValueEvalContents (j: Json) =
+    j.objectFieldsOrEmpty
+      .map (f =>
+        getLowerCaseEvalStringField(j,f))
+
+
+
+  private def getLowerCaseEvalStringField(j: Json, field:String) =
+    encode(j.field(field).get) match {
+      case NoValue => ""
+      case StringNode(s) => s
+      case StackSetResource(id,_,_,_,_)          => id
+      case ExternalResource(name,_)        => name
+      case x =>
+        logger.warn(s"Field supposed to contain either a String " +
+          s"or Resource evaluates to unexpected type: $x"+
+          ". Returning empty string.")
+      ""
+    }
+
+
+
+  private def matchNodeByJsonType(j: Json) =
+    j match {
+      case n if n.isNumber && n.number.get.toInt.isDefined
+      => IntNode(n.number.get.toInt.get)
+      case n if n.isNumber && n.number.get.toLong.isDefined
+      => LongNode(n.number.get.toLong.get)
+      case n if n.isNumber && n.number.get.toDouble.isDefined
+      => DoubleNode(n.number.get.toDouble.get)
+      case n if n.isNumber && n.number.get.toFloat.isDefined
+      => FloatNode(n.number.get.toFloat.get)
+      case n if n.isBool
+      => BooleanNode(n.bool.get)
+      case n if n.isString
+      => StringNode(n.string.get.toLowerCase())
+      case n =>
+        logger.warn(s"Could not match node $n with a " +
+          s"primitive type. Returning NoValue")
+        NoValue
+    }
+
+
+
+
+  private def matchNodeBySubpropType (j:Json, subpropType:String) =
+    subpropType match {
+      case CFnType.String   if j.isString
+      => StringNode(j.string.get.toLowerCase())
+      case CFnType.Boolean  if j.isBool
+      => BooleanNode(j.bool.get)
+      case CFnType.Integer  if j.isNumber && j.number.get.toInt.isDefined
+      => IntNode(j.number.get.toInt.get)
+      case CFnType.Long   if j.isNumber && j.number.get.toLong.isDefined
+      => LongNode(j.number.get.toLong.get)
+      case CFnType.Double if j.isNumber && j.number.get.toDouble.isDefined
+      => DoubleNode(j.number.get.toDouble.get)
+      case CFnType.Float  if j.isNumber && j.number.get.toFloat.isDefined
+      => FloatNode(j.number.get.toFloat.get)
+      case CFnType.UnknownResource => j match {
+        case n if n.isString || n.isNumber || n.isBool =>
+          val eR = ExternalResource(n.string.get, iE.infrastructure)
+          iE.externalResources ++= Set(eR)
+          eR
+      }
+      case _
+      => forceSubpropertyType(j,subpropType)
+    }
+
+
+
+
+  private def forceSubpropertyType(j:Json, subpropType:String)  =
+    subpropType match {
+      case CFnType.String if j.isNumber
+      => StringNode(j.number.get.toString)
+      case CFnType.String
+      => StringNode(j.bool.get.toString)
+      case CFnType.Boolean if j.isString
+      => BooleanNode(j.string.get.toBoolean)
+      case CFnType.Boolean
+      => BooleanNode(j.number.get.truncateToInt>0)
+      case CFnType.Integer if j.isString
+      => IntNode(j.string.get.toInt)
+      case CFnType.Integer if j.isNumber
+      => IntNode(j.number.get.truncateToInt)
+      case CFnType.Integer
+      => IntNode(j.bool.get.toString.toInt)
+      case CFnType.Long if j.isString
+      => LongNode(j.string.get.toLong)
+      case CFnType.Long if j.isNumber
+      => LongNode(j.number.get.toLong.get)
+      case CFnType.Long
+      => LongNode(j.bool.get.toString.toLong)
+      case CFnType.Double if j.isString
+      => DoubleNode(j.string.get.toDouble)
+      case CFnType.Double if j.isNumber
+      => DoubleNode(j.number.get.toDouble.get)
+      case CFnType.Double
+      => DoubleNode(j.bool.get.toString.toDouble)
+      case CFnType.Float if j.isString
+      => FloatNode(j.string.get.toFloat)
+      case CFnType.Float if j.isNumber
+      => FloatNode(j.number.get.toFloat.get)
+      case CFnType.Float
+      => FloatNode(j.bool.get.toString.toFloat)
+      case _ =>
+        logger.warn("Attempted fallback solution to force " +
+          "conversion from json type to expected subproperty " +
+          "type. Failed. Returning StringNode with json content. ")
+        StringNode(j.toString)
+    }
+
+
+  private def isNoValue(j: Json) = {
+  (j.isString && j.string.get.toLowerCase.equals(PseudoParameter.NoValue)) ||
+    (j.isArray && j.array.get.size==1 && j.array.get(0).isString &&
+      j.array.get(0).string.get.toLowerCase.equals(PseudoParameter.NoValue))
+  }
+
+
+  private def isArn(j:Json) =
+    j.isString && j.string.get.startsWith(Specification.ArnHead)
+
+
+
+  private def isIntrinsicFunction(j:Json)  =
+    Pattern
+      .compile(CFnFunTag.FunTagRegex, Pattern.CASE_INSENSITIVE)
+      .matcher(JsonUtils.subFieldNames(j)(0))
+      .matches()
+
+
+  private def isPolicyDoc(j: Json) = {
+    j.hasField(Policy.StatementTag) && j.field(Policy.StatementTag).get.isArray &&
+    j.field(Policy.StatementTag).get.array.get(0).hasField(Policy.EffectTag) &&
+    j.field(Policy.StatementTag).get.array.get(0).hasField(Policy.ActionTag)
+  }
+
+
+  private def isMapProperty(j:Json, subpropType:Option[(String,String)]) =
+    mapProperty(j, subpropType).isDefined
+
+
+  private def mapProperty(j: Json, subpropType:Option[(String,String)]) =
+    subpropType match {
+    case Some((_,s)) if s.startsWith(Ontology.MapEntryPrefix)
+    => Some(s.split(Ontology.MapEntryPrefix).last)
+    case _  => None
+  }
+
+
+}
+
