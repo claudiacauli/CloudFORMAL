@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.specification
+package com.cloud.formal.specification
 
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
