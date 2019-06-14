@@ -4,6 +4,7 @@ import aws.cfn.mapping.actions.ActionsMap
 import aws.cfn.model.{Model, ModelIRI}
 import aws.cfn.AwsOntology
 import aws.cfn.mapping.templates._
+import com.sun.xml.internal.stream.Entity.ExternalEntity
 import org.semanticweb.owlapi.model._
 
 import scala.jdk.CollectionConverters._
@@ -94,19 +95,30 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
 
   private def overApproximatedAllowSet(r:Principal,a:String) = {
 
+    /*
+    todo This function is returning always an empty set! Try to understand why!
+     */
     def trustedPrincipals(princ:Set[Principal],r:Principal)=
       princ.filter(p =>
-          assumeRoleStatements.exists(s =>
-            ( s.principals._1 && ( s.principals._2.contains(r) || s.principals._2.contains(Public) ))
-              || (!s.principals._1 && ( !s.principals._2.contains(r) && !s.principals._2.contains(Public) ))
-                && s.resources._2.toSet.contains(p.asInstanceOf[Resource]))
+        assumeRoleStatements.exists(s =>
+          (( s.principals._1 && ( s.principals._2.contains(r) || s.principals._2.contains(Public) ))
+            || (!s.principals._1 && ( !s.principals._2.contains(r) && !s.principals._2.contains(Public) )))
+            && (
+            if (p.isInstanceOf[Resource])
+              s.resources._2.toSet.contains(p.asInstanceOf[Resource])
+            else true
+          ))
       )
 
-    def checkIfAttemptingToAssumeRole(s: Statement) =
+
+
+    def checkIfAttemptingToAssumeRole(s: Statement) = {
       if (s.actions._2 contains "sts:AssumeRole")
         trustedPrincipals(s.principals._2 ,r)
       else
         s.principals._2
+    }
+
 
 
     (allowStatements & statementsWithResource(r) & statementsWithAction(a))
@@ -174,7 +186,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
 
   private def actualResources(statement: Statement)=
   {
-    def complementOf(resources: Set[Resource])=
+    def complementOf(resources: Set[Resource]) =
       (for (s <- statements; r<- s.resources._2) yield r) &~ resources
 
     if (statement.resources._1)
@@ -226,8 +238,8 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
 
   private def resourceIRI(e: Resource) =
     e match {
-      case StackSetResource(n,_,_,ss,_)
-      => ModelIRI.resourceInstanceIRI(ss.name,n)
+      case StackSetResource(id,_,_,ss,t,_)
+      => ModelIRI.resourceInstanceIRI(ss.name,t.name,id)
       case ExternalResource(n,i)
       => ModelIRI.externalEntityIRI(i.name,n)
     }

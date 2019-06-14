@@ -12,7 +12,7 @@ private final case class ArnFunction(optRE:Option[Json2ResourceEncoder],
     SubFunction(optRE,tE)(StringNode(arnString)) match {
       case StringNode(arn) =>
         new Arn(tE.ssE.iE, arn).resourcesFromArn() match {
-          case v if v.size==1 =>
+          case v if v.size == 1 =>
             updateResourceByPolicyMap(optRE,v.head)
             v.head
           case v => ListOfResources(v)

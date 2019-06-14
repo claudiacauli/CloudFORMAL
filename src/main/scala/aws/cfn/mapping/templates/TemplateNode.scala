@@ -147,7 +147,7 @@ sealed trait Node
       private[templates]
       final case class StackSetResource
       (resourceLogicalId : String, serviceType : String,
-       resourceType : String, stackset: StackSet,
+       resourceType : String, stackset: StackSet, template: Template,
        attributes : Map[String, GenericValueNode])
         extends Resource
       {

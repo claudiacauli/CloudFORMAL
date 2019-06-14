@@ -17,6 +17,8 @@ package object templates{
     val ValueTag     = "Value"
     val Name         = "Name"
     val Export       = "Export"
+    val CloudFormation = "CloudFormation"
+    val CustomResource = "CustomResource"
   }
 
 

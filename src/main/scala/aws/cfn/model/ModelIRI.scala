@@ -70,8 +70,9 @@ object ModelIRI {
     stacksetName.toLowerCase
 
   
-  def resourceInstanceIRI(stacksetName: String, resID: String): IRI =
-    iri(stacksetName,resID)
+  def resourceInstanceIRI(stacksetName: String,
+                          templateName: String, resID: String): IRI =
+    iri(stacksetName, templateName+"_"+resID)
 
   
   def subpropertyBlankNodeIRI(stacksetName: String): IRI =

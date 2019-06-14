@@ -186,7 +186,7 @@ extends LazyLogging
     {
       resource = StackSetResource(
         resourceLogicalId, serviceType, resourceType,
-        tE.ssE.stackSet, attributesFromResourceJsonNode)
+        tE.ssE.stackSet, tE.template, attributesFromResourceJsonNode)
 
       importResourceSpecificationOntology()
 
@@ -206,12 +206,12 @@ extends LazyLogging
   {
     updateResourceByPolicy()
 
-    resource.absentProperties =
-      Json2ResourceEncoder
-        .subPropertiesNamesOfClassName(
-          resourceType.toLowerCase(),ssE,serviceType,
-          resourceType,resourceOntology) --
-      givenProperties.map(_.toLowerCase)
+//    resource.absentProperties =
+//      Json2ResourceEncoder
+//        .subPropertiesNamesOfClassName(
+//          resourceType.toLowerCase(),ssE,serviceType,
+//          resourceType,resourceOntology) --
+//      givenProperties.map(_.toLowerCase)
 
     resource.givenProperties =
       givenProperties.flatMap(propName =>

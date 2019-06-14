@@ -5,6 +5,7 @@ import aws.cfn.model.ModelIRI
 import aws.cfn.mapping.templates._
 import com.typesafe.scalalogging.{LazyLogging, Logger}
 import org.semanticweb.owlapi.model._
+import org.semanticweb.owlapi.vocab.OWL2Datatype
 
 import scala.jdk.CollectionConverters._
 import scala.jdk.OptionConverters._
@@ -97,13 +98,13 @@ extends LazyLogging
         ModelIRI.resourceTypeIRI(
           o._2._2.serviceType + o._2._2.resourceType,
           o._2._2.resourceType)),
-      getResourceIndividual(o._2._1)
+      getResourceIndividual(o._2._2)
     ))
 
     m.ontology.add(m.df.getOWLObjectPropertyAssertionAxiom(
       m.df.getOWLObjectProperty(ModelIRI
         .awsPropertyIRI(AwsOntology.IsInStack)),
-      getResourceIndividual(o._2._1),
+      getResourceIndividual(o._2._2),
       m.df.getOWLNamedIndividual(ModelIRI
         .awsIndividualIRI(
           stackSet.name+o._1.name+AwsOntology.StackSuffix))
@@ -121,10 +122,11 @@ extends LazyLogging
       ))
 
 
-  private def getResourceIndividual(resId: String) = {
+  private def getResourceIndividual(res: StackSetResource) = {
     val newResource = m.df
       .getOWLNamedIndividual(ModelIRI
-        .resourceInstanceIRI(stackSet.name, resId))
+        .resourceInstanceIRI(stackSet.name,
+          res.template.name, res.resourceLogicalId))
     addComment(newResource, AwsOntology.ResourceAnnotationComment)
     newResource
   }
@@ -135,7 +137,7 @@ extends LazyLogging
   {
     val resourceInstanceIRI =
       ModelIRI.resourceInstanceIRI(
-        stackSet.name,r.resourceLogicalId)
+        stackSet.name,r.template.name,r.resourceLogicalId)
 
     encodeAllGivenSubproperties(resourceInstanceIRI,r.givenProperties,r) ++
       encodeAllAbsentSuproperties(resourceInstanceIRI,r.absentProperties,r)
@@ -201,7 +203,7 @@ extends LazyLogging
               encodeValueMapEntry(source,dp,e.asInstanceOf[(String,GenericValueNode)]))
             case NoValue
             => Vector()
-            case StackSetResource(_,s,r,_,_)
+            case StackSetResource(_,s,r,_,_,_)
             =>
               logger.error("Data Property " + dp.toString.split(AwsOntology.Pound).last +
                 " of " + res.serviceType + res.resourceType + " points instead to r of type " +
@@ -211,8 +213,8 @@ extends LazyLogging
               encodeValueProperty(source, dp, target.asInstanceOf[GenericValueNode])
           }
           case None =>
-            if (res.serviceType == "CloudFormation" &&
-              res.resourceType == "CustomResource")
+            if (res.serviceType == TemplateTag.CloudFormation &&
+              res.resourceType == TemplateTag.CustomResource)
               target match {
                 case n: GenericValueNode
                 => encodeValueProperty(
@@ -252,7 +254,7 @@ extends LazyLogging
 
   private def encodeAbsentProperty(source: OWLIndividual,
                                    propName: String,
-                                   res: StackSetResource)=
+                                   res: StackSetResource)= {
     Vector(m.df
       .getOWLSubClassOfAxiom(m.df
         .getOWLObjectOneOf(source),
@@ -264,6 +266,8 @@ extends LazyLogging
             .getOWLObjectAllValuesFrom(op, m.df.getOWLNothing)
         }
       ))
+  }
+
 
 
   private def encodeValueProperty(source: OWLIndividual,
@@ -280,7 +284,7 @@ extends LazyLogging
       case StringNode(v)  => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp,source,v))
       case IntNode(v)     => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
       case BooleanNode(v) => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
-      case LongNode(v)    => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
+      case LongNode(v)    => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v.toInt))
       case FloatNode(v)   => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
       case DoubleNode(v)  => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source,v))
       case TimeStampNode(v)           => Vector(m.df.getOWLDataPropertyAssertionAxiom(dp, source, v))
@@ -301,10 +305,10 @@ extends LazyLogging
 
 
     target match {
-      case StackSetResource(id,_,_,ss,_)
+      case StackSetResource(id,_,_,ss,t,_)
       => Vector(m.df
         .getOWLObjectPropertyAssertionAxiom(op, source,
-          resourceIndividualFromStackSet(id,ss)))
+          resourceIndividualFromStackSet(id,ss,t)))
 
       case Subproperty(gP, aP)
       => val individualRandomIRI =
@@ -357,9 +361,10 @@ extends LazyLogging
 
 
   private def resourceIndividualFromStackSet(name:String,
-                                             stackSet: StackSet) =
+                                             stackSet: StackSet,
+                                             template: Template) =
     m.df.getOWLNamedIndividual(ModelIRI
-      .resourceInstanceIRI(stackSet.name,name))
+      .resourceInstanceIRI(stackSet.name,template.name,name))
 
 
   private def externalResourceIndividualFromInfrastructure

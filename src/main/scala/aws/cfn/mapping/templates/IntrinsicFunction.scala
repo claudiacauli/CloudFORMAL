@@ -170,7 +170,7 @@ private final case class JoinFunction()
       case LongNode(f)                  => f.toString
       case DoubleNode(d)                => d.toString
       case ExternalResource(n,_)        => n
-      case StackSetResource(id,_,_,_,_) => id
+      case StackSetResource(id,_,_,_,_,_) => id
       case NoValue => ""
       }).mkString(delimiter.value))
   }

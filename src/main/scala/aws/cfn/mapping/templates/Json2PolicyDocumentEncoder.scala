@@ -58,6 +58,7 @@ extends LazyLogging {
 
 
   private def encodeStatement(statementNode: Json): Statement = {
+
     isAssumeRoleStatement =
       resourceIsOmitted(statementNode) && isAttachedToRole(statementNode)
     hasCondition =
@@ -300,7 +301,8 @@ extends LazyLogging {
     if (resourcesIsAttachedTo.size == 1)
       resourcesIsAttachedTo.head match {
         case r: StackSetResource =>
-          r.serviceType == IAMService && r.resourceType == IAMRole
+          r.serviceType.toLowerCase == IAMService &&
+            r.resourceType.toLowerCase == IAMRole
         case _ => false
       }
     else false
@@ -366,6 +368,7 @@ extends LazyLogging {
           .flatMap (sn =>
             Set(AccountPrincipal(sn.value)))
         case r: Resource => Set(r)
+        //case v: Vector[Node] =>
         //case v: => v.toSet.asInstanceOf[Set[Principal]]
         case x =>
           logger.error(s"Policy Aws Principal field " +
@@ -374,13 +377,14 @@ extends LazyLogging {
           Set(AccountPrincipal("DummyAccount"))
       }
 
+
     if (j.isArray)
       j.array.get.flatMap(getSinglePrincipal).toSet
     else
       getSinglePrincipal(j)
-      getSinglePrincipal(j)
 
-  }
+    }
+
 
 
 

@@ -101,19 +101,19 @@ private object InterResourceReferencesMap{
       -> ("ec2vpc", "vpc", true, true ),
 
     "ec2securitygroup_securitygroup_vpcid"
-      -> ("ec2vpc", "vpc", true, true ),
+      -> ("ec2vpc", "vpc", false, true ),
     "ec2securitygroup_ingress_sourcesecuritygroupid"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
     "ec2securitygroup_ingress_sourcesecuritygroupname"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
     "ec2securitygroup_egress_destinationsecuritygroupid"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
     "ec2securitygroupegress_securitygroupegress_destinationsecuritygroupid"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
     "ec2securitygroupingress_securitygroupingress_sourcesecuritygroupname"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
     "ec2securitygroupingress_securitygroupingress_sourcesecuritygroupid"
-      -> ("ec2securitygroup", "securitygroup", true, true ),
+      -> ("ec2securitygroup", "securitygroup", false, true ),
 
     "ec2volume_volume_kmskeyid"
       -> ("kmskey", "key", false, true ),
@@ -138,20 +138,20 @@ private object InterResourceReferencesMap{
       -> ("null", "null", false, true ),
 
     "ec2subnet_subnet_vpcid"
-      -> ("ec2vpc", "vpc", true, true ),
+      -> ("ec2vpc", "vpc", false, true ),
 
     "ec2subnetcidrblock_subnetcidrblock_subnetid"
-      -> ("ec2subnet", "subnet", true, true ),
+      -> ("ec2subnet", "subnet", false, true ),
 
     "ec2subnetnetworkaclassociation_subnetnetworkaclassociation_subnetid"
-      -> ("ec2subnet", "subnet", true, true ),
+      -> ("ec2subnet", "subnet", false, true ),
     "ec2subnetnetworkaclassociation_subnetnetworkaclassociation_networkaclid"
-      -> ("ec2networkacl", "networkacl", true, true ),
+      -> ("ec2networkacl", "networkacl", false, true ),
 
     "ec2subnetroutetableassociation_subnetroutetableassociation_routetableid"
-      -> ("ec2routetable", "routetable", true, true ),
+      -> ("ec2routetable", "routetable", false, true ),
     "ec2subnetroutetableassociation_subnetroutetableassociation_subnetid"
-      -> ("ec2subnet", "subnet", true, true ),
+      -> ("ec2subnet", "subnet", false, true ),
 
     "ec2volumeattachment_volumeattachment_instanceid"
       -> ("ec2instance", "instance", true, true ),
@@ -159,7 +159,7 @@ private object InterResourceReferencesMap{
       -> ("ec2volume", "volume", true, true ),
 
     "ec2vpccidrblock_vpccidrblock_vpcid"
-      -> ("ec2vpc", "vpc", true, true ),
+      -> ("ec2vpc", "vpc", false, true ),
 
     "ec2vpcdhcpoptionsassociation_vpcdhcpoptionsassociation_dhcpoptionsid"
       -> ("ec2dhcpoptions", "dhcpoptions", true, true ),

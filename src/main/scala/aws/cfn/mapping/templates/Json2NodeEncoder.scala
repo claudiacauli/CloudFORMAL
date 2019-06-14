@@ -62,7 +62,7 @@ extends LazyLogging
       case _ =>
         val vecNodes = ArnFunction(optRE,tE)(j.string.get)
         vecNodes match {
-          case ListOfResources(v) if v.size==1 => v.head
+          case ListOfResources(v) if v.size == 1 => v.head
           case ln:ListOfResources => ln
           case x => x
         }
@@ -100,7 +100,7 @@ extends LazyLogging
 
 
   private def encodeMapProperty(j: Json, spT: String) = {
-    logger.warn("Encoding of Map Values currently " +
+    logger.debug("Encoding of Map Values currently " +
       "not implemented. Returning NoValue")
     NoValue
   }
@@ -514,7 +514,7 @@ extends LazyLogging
     encode(j.field(field).get) match {
       case NoValue => ""
       case StringNode(s) => s
-      case StackSetResource(id,_,_,_,_)          => id
+      case StackSetResource(id,_,_,_,_,_)  => id
       case ExternalResource(name,_)        => name
       case x =>
         logger.debug(s"Field supposed to contain either a String " +
@@ -556,8 +556,8 @@ extends LazyLogging
       => BooleanNode(j.bool.get)
       case CFnType.Int  if j.isNumber && j.number.get.toInt.isDefined
       => IntNode(j.number.get.toInt.get)
-      case CFnType.Long   if j.isNumber && j.number.get.toLong.isDefined
-      => LongNode(j.number.get.toLong.get)
+      case CFnType.Long   if j.isNumber //&& j.number.get.toLong.isDefined
+      => LongNode(j.number.get.truncateToLong)
       case CFnType.Double if j.isNumber && j.number.get.toDouble.isDefined
       => DoubleNode(j.number.get.toDouble.get)
       case CFnType.Float  if j.isNumber && j.number.get.toFloat.isDefined
@@ -596,7 +596,7 @@ extends LazyLogging
       case CFnType.Long if j.isString
       => LongNode(j.string.get.toLong)
       case CFnType.Long if j.isNumber
-      => LongNode(j.number.get.toLong.get)
+      => LongNode(j.number.get.truncateToLong/*.toLong.get*/)
       case CFnType.Long
       => LongNode(j.bool.get.toString.toLong)
       case CFnType.Double if j.isString
