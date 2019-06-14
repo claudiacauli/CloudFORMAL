@@ -83,6 +83,15 @@ private object Json2ResourceEncoder
 
 
 
+  def expectedProperties(resourceType: String, ssE: Json2StackSetEncoder,
+                         serviceType: String, resourceOntology: OWLOntology)
+  : Set[String] =
+    Json2ResourceEncoder
+      .subPropertiesNamesOfClassName(
+        resourceType.toLowerCase(),ssE,serviceType,
+        resourceType,resourceOntology)
+
+
 
   def rangeNameOf(propertyName:String, resourceOntology: OWLOntology,
                   serviceType: String, resourceType: String,
@@ -208,9 +217,8 @@ extends LazyLogging
 
 //    resource.absentProperties =
 //      Json2ResourceEncoder
-//        .subPropertiesNamesOfClassName(
-//          resourceType.toLowerCase(),ssE,serviceType,
-//          resourceType,resourceOntology) --
+//        .expectedProperties(
+//          resourceType, ssE, serviceType, resourceOntology) --
 //      givenProperties.map(_.toLowerCase)
 
     resource.givenProperties =
@@ -218,11 +226,34 @@ extends LazyLogging
         Map(propName -> nodeObjectForProperty(
           propName, serviceType,resourceType,
           ssE, resourceOntology)))
-        .toMap
+        .toMap ++
+      defaultProperties
 
     resource
   }
 
+
+
+  def assignedDefaultNode(value: Any) =
+    value match {
+      case b: Boolean => BooleanNode(b)
+      case s: String  => StringNode(s)
+        // TODO Extend with more cases!
+      //  Now my DefaultsMap Only contains bools and strings so no problem
+    }
+
+
+  def defaultProperties =
+    (Json2ResourceEncoder
+      .expectedProperties(
+        resourceType, ssE, serviceType, resourceOntology) --
+      givenProperties.map(_.toLowerCase))
+      .flatMap( absProp =>
+        DefaultsMap.lookUp(serviceType, absProp) match {
+          case None     => Map()
+          case Some(v)  => Map(absProp -> assignedDefaultNode(v))
+        }
+      ).toMap
 
 
 

@@ -7,67 +7,76 @@ object DefaultsMap {
 
   private[templates]
   def lookUp(k: String) =
-    map.get(k)
+    map.get(k.toLowerCase)
 
 
   private[templates]
-  def lookUp(k1:String, k2:String)
-  = map(k1).get(k2)
+  def lookUp(k1:String, k2:String) =
+    map.get(k1.toLowerCase) match {
+      case None     => None
+      case Some(m)  => m.get(k2.toLowerCase)
+    }
 
 
 
 
-  private val map : Map[String,Map[String,AnyVal]] = Map(
 
-    "ApplicationAutoScaling" -> Map(),
+  private val map : Map[String,Map[String,Any]] = Map(
 
-    "AutoScalingPlans" -> Map(),
+    "applicationautoscaling" -> Map(),
 
-    "Batch" -> Map(),
+    "autoscalingplans" -> Map(),
 
-    "CloudFormation" -> Map(),
+    "batch" -> Map(),
 
-    "CloudWatch" ->  Map(),
+    "cloudformation" -> Map(),
 
-    "CodeBuild" -> Map(),
+    "cloudwatch" ->  Map(),
 
-    "CodeCommit" -> Map(),
+    "cloudtrail" -> Map("trail_ismultiregiontrail" -> false,
+      "trail_enablelogfilevalidation" -> false,
+      "trail_includeglobalserviceevents" -> false),
 
-    "Config" -> Map(),
+    "codebuild" -> Map(),
 
-    "DynamoDB" -> Map(),
+    "codecommit" -> Map(),
 
-    "Ec2" -> Map(),
+    "config" -> Map(),
 
-    "ECR" -> Map(),
+    "dynamodb" -> Map("table_billingmode" -> "provisioned", "ssespecification_sseenabled" -> false,
+      "pointintimerecoveryspecification_pointintimerecoveryenabled" -> false),
 
-    "ECS" -> Map(),
+    "ec2" -> Map(),
 
-    "EKS" -> Map(),
+    "ecr" -> Map(),
 
-    "ElastiCache" -> Map(),
+    "ecs" -> Map(),
 
-    "ElasticBeanstalk" -> Map(),
+    "eks" -> Map(),
 
-    "ElasticLoadBalancing" -> Map(),
+    "elasticache" -> Map(),
 
-    "IAM" -> Map(),
+    "elasticbeanstalk" -> Map(),
 
-    "Kinesis" -> Map(),
+    "elasticLoadbalancing" -> Map(),
 
-    "Lambda" -> Map(),
+    "iam" -> Map(),
 
-    "Logs" -> Map(),
+    "kinesis" -> Map(),
 
-    "RDS" -> Map(),
+    "lambda" -> Map(),
 
-    "S3" -> Map(),
+    "logs" -> Map(),
 
-    "SNS" -> Map(),
+    "rds" -> Map(),
 
-    "SQS" -> Map(),
+    "s3" -> Map("bucket_accesscontrol" -> "private"),
 
-    "STS" -> Map()
+    "sns" -> Map(),
+
+    "sqs" -> Map(),
+
+    "sts" -> Map()
 
   )
 

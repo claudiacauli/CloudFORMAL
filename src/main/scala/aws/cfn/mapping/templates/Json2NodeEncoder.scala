@@ -117,6 +117,7 @@ extends LazyLogging
           spT.get._2 + Renaming.Delimiter + f.toString)
         .toSet
 
+
     def nodeObjectForProperty(j: Json, propFullName: String)  = {
       val propTemplateName = propFullName
         .split(spT.get._2 + Renaming.Delimiter).last
@@ -153,13 +154,23 @@ extends LazyLogging
             givenProperties
               .map(_.toLowerCase())
 
-        val presentProperties =
+        val defaultPropertiesMap =
+          absentProperties.flatMap( absProp =>
+          DefaultsMap.lookUp(rE.serviceType,absProp) match {
+            case None     => Map()
+            case Some(v)  => Map(absProp -> rE.assignedDefaultNode(v))
+          }).toMap
+
+        val presentPropertiesMap =
           givenProperties
             .flatMap(propName =>
               Map(propName -> nodeObjectForProperty(j,propName)))
-            .toMap
+            .toMap ++
+          defaultPropertiesMap
 
-        Subproperty(presentProperties,absentProperties)
+        Subproperty(
+          presentPropertiesMap,
+          absentProperties -- defaultPropertiesMap.keys)
     }
 
   } ensuring optRE.isDefined
