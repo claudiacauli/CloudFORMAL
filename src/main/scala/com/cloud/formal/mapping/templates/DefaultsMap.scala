@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 //noinspection SpellCheckingInspection
 private[templates]

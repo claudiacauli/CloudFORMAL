@@ -1,9 +1,9 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import aws.cfn.mapping.Specification
+import com.cloud.formal.mapping.Specification
 import com.typesafe.scalalogging.StrictLogging
 
 import scala.language.postfixOps

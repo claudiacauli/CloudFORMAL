@@ -1,11 +1,9 @@
-package com.claudiacauli.www.cloudformal.mapping.templates.mapping
+package com.cloud.formal.mapping.templates.mapping
 
-import aws.cfn.mapping.actions.ActionsMap
-import aws.cfn.model.{Model, ModelIRI}
-import aws.cfn.AwsOntology
-import aws.cfn.mapping.templates._
-import com.claudiacauli.www.cloudformal.model.{Model, ModelIRI}
-import com.sun.xml.internal.stream.Entity.ExternalEntity
+import com.cloud.formal.AwsOntology
+import com.cloud.formal.mapping.actions.ActionsMap
+import com.cloud.formal.mapping.templates._
+import com.cloud.formal.model.{Model, ModelIRI}
 import org.semanticweb.owlapi.model._
 
 import scala.jdk.CollectionConverters._

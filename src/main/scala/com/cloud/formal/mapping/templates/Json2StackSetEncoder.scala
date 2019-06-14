@@ -1,9 +1,9 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.io.File
 
 import argonaut.Json
-import aws.cfn.FilePath
+import com.cloud.formal.FilePath
 import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 

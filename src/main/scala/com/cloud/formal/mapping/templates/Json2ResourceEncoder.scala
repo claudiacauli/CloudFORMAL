@@ -1,13 +1,12 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.util.regex.Pattern
 
 import argonaut.Json
-import aws.cfn.mapping.actions.ActionsMap
-import aws.cfn.model.{ModelIRI, ModelUtils}
-import aws.cfn.{ModelType, Ontology}
-import aws.cfn.mapping.{CFnType, Renaming, Specification}
-import com.claudiacauli.www.cloudformal.model.{ModelIRI, ModelUtils}
+import com.cloud.formal.mapping.actions.ActionsMap
+import com.cloud.formal.{ModelType, Ontology}
+import com.cloud.formal.mapping.{CFnType, Renaming, Specification}
+import com.cloud.formal.model.{ModelIRI, ModelUtils}
 import com.typesafe.scalalogging.LazyLogging
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.vocab.OWL2Datatype

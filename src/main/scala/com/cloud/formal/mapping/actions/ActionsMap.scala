@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.actions
+package com.cloud.formal.mapping.actions
 
 //noinspection SpellCheckingInspection
 object ActionsMap {

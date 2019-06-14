@@ -1,12 +1,11 @@
-package com.claudiacauli.www.cloudformal.mapping.specifications
+package com.cloud.formal.mapping.specifications
 
 import java.io.{File, FileNotFoundException}
 
 import argonaut.Parse
-import aws.cfn.Extension
-import aws.cfn.model.{Model, ModelIRI, ModelWriter}
-import aws.cfn.mapping.Specification
-import com.claudiacauli.www.cloudformal.model.{Model, ModelIRI, ModelWriter}
+import com.cloud.formal.Extension
+import com.cloud.formal.mapping.Specification
+import com.cloud.formal.model.{Model, ModelIRI, ModelWriter}
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntology, OWLOntologyManager}
 

@@ -1,9 +1,9 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.util.regex.Pattern
 
 import argonaut.Json
-import aws.cfn.mapping.actions.ActionsMap
+import com.cloud.formal.mapping.actions.ActionsMap
 import com.typesafe.scalalogging.LazyLogging
 
 

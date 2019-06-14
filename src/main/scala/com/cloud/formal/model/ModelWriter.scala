@@ -1,10 +1,10 @@
-package com.claudiacauli.www.cloudformal.model
+package com.cloud.formal.model
 
 import java.io.{File, FileOutputStream}
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
 
-import aws.cfn.{Extension, OntologySuffix}
+import com.cloud.formal.{Extension, OntologySuffix}
 import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.formats._
 import org.semanticweb.owlapi.model._

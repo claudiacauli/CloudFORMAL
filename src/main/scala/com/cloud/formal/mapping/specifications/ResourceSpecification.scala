@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.specifications
+package com.cloud.formal.mapping.specifications
 
 private class ResourceSpecification(val name: String,
                             val resource: ResourceValueType,

@@ -1,7 +1,7 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import argonaut.{Json, Parse}
-import aws.cfn.{AwsOntology, FilePath}
+import com.cloud.formal.FilePath
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.io.Source

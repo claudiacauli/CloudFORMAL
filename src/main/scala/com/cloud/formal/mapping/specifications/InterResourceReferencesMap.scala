@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.specifications
+package com.cloud.formal.mapping.specifications
 
 //noinspection SpellCheckingInspection,SpellCheckingInspection
 private object InterResourceReferencesMap{

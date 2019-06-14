@@ -2,10 +2,10 @@
 import java.io.{File, FileNotFoundException}
 
 import argonaut.{Json, Parse}
-import aws.cfn.mapping.actions.{ActionsMap, ActionsModel}
-import aws.cfn.mapping.specifications.ResourceSpecificationModel
-import aws.cfn.mapping.templates.mapping.{InfrastructureModel, PermissionsModel}
-import aws.cfn.mapping.templates.Json2InfrastructureEncoder
+import com.cloud.formal.mapping.actions.{ActionsMap, ActionsModel}
+import com.cloud.formal.mapping.specifications.ResourceSpecificationModel
+import com.cloud.formal.mapping.templates.Json2InfrastructureEncoder
+import com.cloud.formal.mapping.templates.mapping.{InfrastructureModel, PermissionsModel}
 
 import scala.io.Source
 import scala.language.postfixOps

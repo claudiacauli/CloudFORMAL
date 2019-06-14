@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.actions
+package com.cloud.formal.mapping.actions
 
 private class Action(val name: String)
 private class ServiceActions(val service: String, val actions: Set[Action])

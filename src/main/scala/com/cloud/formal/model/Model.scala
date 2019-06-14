@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.model
+package com.cloud.formal.model
 
 import java.io.File
 

@@ -1,8 +1,8 @@
-package com.claudiacauli.www.cloudformal.model
+package com.cloud.formal.model
 
 import java.io.File
 
-import aws.cfn.FilePath
+import com.cloud.formal.FilePath
 import org.semanticweb.owlapi.model.OWLOntologyManager
 
 object ModelUtils {

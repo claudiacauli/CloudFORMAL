@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import argonaut.Json
 import com.typesafe.scalalogging.{LazyLogging, StrictLogging}

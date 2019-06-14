@@ -1,8 +1,7 @@
-package com.claudiacauli.www.cloudformal.mapping.templates.mapping
+package com.cloud.formal.mapping.templates.mapping
 
-import aws.cfn.model.Model
-import aws.cfn.mapping.templates.Infrastructure
-import com.claudiacauli.www.cloudformal.model.Model
+import com.cloud.formal.mapping.templates.Infrastructure
+import com.cloud.formal.model.Model
 import com.typesafe.scalalogging.StrictLogging
 
 object InfrastructureModelMapper

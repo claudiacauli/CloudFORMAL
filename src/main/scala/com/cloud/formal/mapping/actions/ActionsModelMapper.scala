@@ -1,8 +1,7 @@
-package com.claudiacauli.www.cloudformal.mapping.actions
+package com.cloud.formal.mapping.actions
 
-import aws.cfn.model.ModelIRI
-import aws.cfn.mapping.Renaming
-import com.claudiacauli.www.cloudformal.model.ModelIRI
+import com.cloud.formal.mapping.Renaming
+import com.cloud.formal.model.ModelIRI
 
 import scala.jdk.CollectionConverters._
 

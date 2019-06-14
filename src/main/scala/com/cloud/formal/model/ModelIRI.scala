@@ -1,9 +1,9 @@
-package com.claudiacauli.www.cloudformal.model
+package com.cloud.formal.model
 
 import org.semanticweb.owlapi.model.IRI
 import java.util.UUID.randomUUID
 
-import aws.cfn.{AwsOntology, Extension, Ontology, OntologySuffix}
+import com.cloud.formal.{AwsOntology, Extension, Ontology, OntologySuffix}
 
 
 object ModelIRI {

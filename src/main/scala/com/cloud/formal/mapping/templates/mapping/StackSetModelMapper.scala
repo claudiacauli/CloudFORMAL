@@ -1,12 +1,10 @@
-package com.claudiacauli.www.cloudformal.mapping.templates.mapping
+package com.cloud.formal.mapping.templates.mapping
 
-import aws.cfn.AwsOntology
-import aws.cfn.model.ModelIRI
-import aws.cfn.mapping.templates._
-import com.claudiacauli.www.cloudformal.model.ModelIRI
-import com.typesafe.scalalogging.{LazyLogging, Logger}
+import com.cloud.formal.AwsOntology
+import com.cloud.formal.mapping.templates._
+import com.cloud.formal.model.ModelIRI
+import com.typesafe.scalalogging.LazyLogging
 import org.semanticweb.owlapi.model._
-import org.semanticweb.owlapi.vocab.OWL2Datatype
 
 import scala.jdk.CollectionConverters._
 import scala.jdk.OptionConverters._

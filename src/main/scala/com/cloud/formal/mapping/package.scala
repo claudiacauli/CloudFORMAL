@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal
+package com.cloud.formal
 
 import argonaut.Json
 

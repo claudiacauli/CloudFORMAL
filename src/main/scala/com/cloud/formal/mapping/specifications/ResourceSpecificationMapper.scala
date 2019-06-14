@@ -1,7 +1,7 @@
-package com.claudiacauli.www.cloudformal.mapping.specifications
+package com.cloud.formal.mapping.specifications
 
 import argonaut.Json
-import aws.cfn.mapping.{CFnType, JsonUtils, Renaming, Specification}
+import com.cloud.formal.mapping.{CFnType, JsonUtils, Renaming, Specification}
 
 import scala.language.postfixOps
 

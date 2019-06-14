@@ -1,4 +1,4 @@
-package com.claudiacauli.www.cloudformal.mapping
+package com.cloud.formal.mapping
 
 package object templates{
 

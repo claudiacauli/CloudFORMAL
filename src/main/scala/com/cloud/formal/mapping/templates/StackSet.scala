@@ -1,8 +1,8 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.io.File
 
-import aws.cfn.FilePath
+import com.cloud.formal.FilePath
 import org.semanticweb.owlapi.model.OWLOntologyManager
 
 private class StackSet( val name:String,

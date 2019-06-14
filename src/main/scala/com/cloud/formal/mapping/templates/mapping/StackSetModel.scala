@@ -1,7 +1,6 @@
-package com.claudiacauli.www.cloudformal.mapping.templates.mapping
+package com.cloud.formal.mapping.templates.mapping
 
-import aws.cfn.model.{Model, ModelIRI, ModelWriter}
-import com.claudiacauli.www.cloudformal.model.{Model, ModelIRI, ModelWriter}
+import com.cloud.formal.model.{Model, ModelIRI, ModelWriter}
 import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model._

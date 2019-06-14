@@ -1,21 +1,21 @@
-package com.claudiacauli.www
+package com.cloud
 
 import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 
 
-package object cloudformal
+package object formal
 {
 
 
-  private[cfn]
+  private[formal]
   object Extension extends Enumeration {
     val Json  = ".json"
     val Owl   = ".owl"
   }
 
 
-  private[cfn]
+  private[formal]
   object OntologySuffix extends Enumeration{
     val Actions         = "actions"
     val StackSet        = "_stackset"
@@ -24,7 +24,7 @@ package object cloudformal
   }
 
 
-  private[cfn]
+  private[formal]
   object FilePath {
     private val ActionsTermsPathPrefix  = "src/main/resources/terminology/actions/"
     private val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
@@ -41,7 +41,7 @@ package object cloudformal
   }
 
 
-  private[cfn]
+  private[formal]
   object ModelType {
 
     val OwlString   = OWL2Datatype.XSD_STRING
@@ -73,7 +73,7 @@ package object cloudformal
   }
 
 
-  private[cfn]
+  private[formal]
   object Ontology {
     val BaseStringIRI   = "http://www.claudiacauli.com/aws/cfn/2019/"
     val Version         = "1.0"
@@ -91,7 +91,7 @@ package object cloudformal
   }
 
 
-  private[cfn]
+  private[formal]
   object AwsOntology {
     val Name  = "aws"
     val StringIRI:String  = Ontology.VersionIRI + Name

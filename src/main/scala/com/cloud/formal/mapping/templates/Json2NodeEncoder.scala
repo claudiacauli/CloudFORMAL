@@ -1,10 +1,10 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import java.util.regex.Pattern
 
 import argonaut._
-import aws.cfn.Ontology
-import aws.cfn.mapping.{CFnType, JsonUtils, Renaming, Specification}
+import com.cloud.formal.Ontology
+import com.cloud.formal.mapping.{CFnType, JsonUtils, Renaming, Specification}
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.language.postfixOps

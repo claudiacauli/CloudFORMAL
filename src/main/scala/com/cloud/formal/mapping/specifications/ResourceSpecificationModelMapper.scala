@@ -1,9 +1,8 @@
-package com.claudiacauli.www.cloudformal.mapping.specifications
+package com.cloud.formal.mapping.specifications
 
-import aws.cfn.model.ModelIRI
-import aws.cfn.{ModelType => Type}
-import aws.cfn.mapping.PolicyDoc
-import com.claudiacauli.www.cloudformal.model.ModelIRI
+import com.cloud.formal.mapping.PolicyDoc
+import com.cloud.formal.model.ModelIRI
+import com.cloud.formal.{ModelType => Type}
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 

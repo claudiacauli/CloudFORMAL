@@ -1,7 +1,7 @@
-package com.claudiacauli.www.cloudformal.mapping.templates
+package com.cloud.formal.mapping.templates
 
 import argonaut.{DecodeJson, Json}
-import aws.cfn.mapping.JsonUtils
+import com.cloud.formal.mapping.JsonUtils
 import com.typesafe.scalalogging.StrictLogging
 
 import scala.language.postfixOps
