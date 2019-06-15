@@ -31,8 +31,8 @@ object Main extends App {
 
   def modelZelkovaTest(): Unit = {
 
-  //val inputFilePath = "src/main/resources/InputStackSets/CaseStudy0_Tiros/"
-  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy1_Zelkova/"
+  //val inputFilePath = "src/main/resources/InputStackSets/CaseStudy0_T/"
+  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy1_Z/"
 // val inputFilePath = "src/main/resources/InputStackSets/CaseStudy2_BucketAnalyticsInventory/"
 //  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy3_BucketCloudFront/"
 //  val inputFilePath = "src/main/resources/InputStackSets/CaseStudy4_BucketCors/"
