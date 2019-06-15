@@ -1,0 +1,14 @@
+
+Infrastructure: BucketWithAnalyticsAndInventory, includes StackSets: 
+ - BucketWithAnalyticsAndInventoryStackSet 
+
+	StackSet: BucketWithAnalyticsAndInventoryStackSet, includes Templates: 
+		Template: s3bucket_with_analytics_and_inventory
+		 Parameters: 
+			(aws::stackname -> BucketAnalyticsInventory)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+
+

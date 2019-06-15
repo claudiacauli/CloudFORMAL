@@ -1,0 +1,19 @@
+
+Infrastructure: BucketWithRetainOnDelete, includes StackSets: 
+ - BucketWithRetainOnDeleteStackSet 
+
+	StackSet: BucketWithRetainOnDeleteStackSet, includes Templates: 
+		Template: S3_Website_Bucket_With_Retain_On_Delete
+		 Parameters: 
+			(aws::stackid -> BWCFD1232424)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+			(aws::stackname -> BucketWithRetainOnDelete)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Outputs By ID: 
+			(websiteurl -> s3bucket_attribute_websiteurl)
+			(s3bucketsecureurl -> https://s3bucket_attribute_domainname)
+
+

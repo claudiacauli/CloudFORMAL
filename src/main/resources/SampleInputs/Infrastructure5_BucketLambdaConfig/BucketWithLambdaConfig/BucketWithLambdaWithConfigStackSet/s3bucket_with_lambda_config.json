@@ -1,0 +1,24 @@
+{
+"Resources":{
+"EncryptionServiceBucket" : {
+  "Type" : "AWS::S3::Bucket",
+  "Properties" : {
+    "BucketName" : { "Fn::Sub" : "${User}-encryption-service" },
+    "NotificationConfiguration" : {
+      "LambdaConfigurations" : [{
+        "Function" : { "Ref" : "LambdaDeploymentArn" },
+        "Event" : "s3:ObjectCreated:*",
+        "Filter" : {
+          "S3Key" : {
+            "Rules" : [{
+              "Name" : "suffix",
+              "Value" : "zip"
+            }]
+          }
+        }
+      }]
+    }
+  }
+}
+}
+}

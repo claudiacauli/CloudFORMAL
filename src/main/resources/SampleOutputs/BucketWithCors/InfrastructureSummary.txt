@@ -1,0 +1,18 @@
+
+Infrastructure: BucketWithCors, includes StackSets: 
+ - BucketWithCorsStackSet 
+
+	StackSet: BucketWithCorsStackSet, includes Templates: 
+		Template: s3bucket_with_cors
+		 Parameters: 
+			(aws::stackid -> BWCFD1232424)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+			(aws::stackname -> BucketWithCors)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Outputs By ID: 
+			(bucketname -> S3::Bucket(s3bucket))
+
+
