@@ -1,9 +1,9 @@
-name := "CloudLogic"
+name := "CloudFORMAL"
 
 version := "0.1"
 
 scalaVersion := "2.13.0"
-mainClass in (Compile,run) := Some("src.main.scala.Main")
+mainClass in (Compile,run) := Some("src.main.scala.Playground")
 updateOptions := updateOptions.value.withCachedResolution(true)
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 
