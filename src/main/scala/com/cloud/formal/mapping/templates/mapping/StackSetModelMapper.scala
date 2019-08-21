@@ -106,9 +106,8 @@ extends LazyLogging
         .awsPropertyIRI(AwsOntology.IsInStack)),
       getResourceIndividual(o._2._2),
       m.df.getOWLNamedIndividual(ModelIRI
-        .awsIndividualIRI(
-          stackSet.name+o._1.name+AwsOntology.StackSuffix))
-    ))
+        .resourceInstanceIRI(stackSet.name,o._1.name,AwsOntology.StackSuffix)
+    )))
   }
 
 

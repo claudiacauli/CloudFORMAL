@@ -4,6 +4,7 @@ import java.io.File
 
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.model.parameters.ChangeApplied
+import org.semanticweb.owlapi.util.AutoIRIMapper
 
 
 trait Model {
@@ -37,6 +38,10 @@ trait Model {
 
 
   def importFile(model: Model, owlFile: File): ChangeApplied = {
+    val importFolder = owlFile.getAbsolutePath.split(owlFile.getName)(0)
+    model.manager.getIRIMappers.add(
+      new AutoIRIMapper(new File(importFolder),true)
+    )
     val o = model.manager.loadOntologyFromOntologyDocument(owlFile)
     model.manager.applyChange(
       new AddImport(

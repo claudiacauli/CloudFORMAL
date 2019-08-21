@@ -8,6 +8,7 @@ import com.cloud.formal.{Extension, OntologySuffix}
 import com.typesafe.scalalogging.StrictLogging
 import org.semanticweb.owlapi.formats._
 import org.semanticweb.owlapi.model._
+import org.semanticweb.owlapi.util.AutoIRIMapper
 
 import scala.jdk.StreamConverters._
 
@@ -33,8 +34,8 @@ object ModelWriter extends StrictLogging{
 
         onlyImportedOntologies(model)
           .foreach (o => {
-            updateImportPointer(o,model,folderName)
-            saveToOutputFolder(o,model,folderName,format)
+              saveToOutputFolder(o,model,folderName,format)
+              updateImportPointer(o,model,folderName)
         })
 
         model.manager
@@ -129,10 +130,15 @@ object ModelWriter extends StrictLogging{
                     if(oName.contains(OntologySuffix.StackSet))
                         oName.split("_").head + "/" +
                           oName.split("_").head + ModelFileSuffix.StackSet
-                    else oName
+                    else oName + Extension.Owl
 
                 "\n    <uri id=\"Imports Wizard Entry\" name=\"" +
-                  oIRI + "\" uri=\"" + oPath +"\"/>"
+                  oIRI + "\" uri=\"" + oPath +"\"/>" +
+                  (if (oName.contains(OntologySuffix.StackSet))
+                    "\n    <nextCatalog catalog=\"" + oName.split("_").head +
+                      "/catalog-v001.xml"+"\"/>"
+                    else
+                      "")
             }
 
             modelImportedOntologies
@@ -164,21 +170,25 @@ object ModelWriter extends StrictLogging{
     private def updateImportPointer(ontology: OWLOntology,
                                     m: Model, folder: String): Unit = {
         val oldDocIRI = m.manager.getOntologyDocumentIRI(ontology)
+        val fileName = ontology.getOntologyID.
+          getOntologyIRI.toString.
+          split("/").last.dropRight(2) + Extension.Owl
         val newDocIRI = IRI.create(
-            "file:" + folder + "/" +
-              ontology.getOntologyID.getOntologyIRI.toString.split("/").last.dropRight(2)
-              + Extension.Owl)
+            "file:" + folder + "/" + fileName)
+        val oIRI  = ontology.getOntologyID.getOntologyIRI.get()
 
         m.manager.applyChange(
             new RemoveImport(
-                ontology,
+                m.ontology,
                 m.df.getOWLImportsDeclaration(oldDocIRI)))
 
         m.manager.setOntologyDocumentIRI(ontology,newDocIRI)
 
+        m.manager.getIRIMappers.add(new AutoIRIMapper(new File(folder),false))
+        m.manager.loadOntologyFromOntologyDocument(new File(folder+"/"+fileName))
         m.manager.applyChange(
-            new AddImport(ontology,
-                m.df.getOWLImportsDeclaration( newDocIRI )))
+            new AddImport(m.ontology,
+                m.df.getOWLImportsDeclaration( oIRI )))
     }
 
 

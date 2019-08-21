@@ -94,9 +94,6 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
 
   private def overApproximatedAllowSet(r:Principal,a:String) = {
 
-    /*
-    todo This function is returning always an empty set! Try to understand why!
-     */
     def trustedPrincipals(princ:Set[Principal],r:Principal)=
       princ.filter(p =>
         assumeRoleStatements.exists(s =>
