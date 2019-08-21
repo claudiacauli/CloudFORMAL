@@ -9,12 +9,14 @@ import org.semanticweb.owlapi.model._
 import scala.jdk.CollectionConverters._
 import scala.language.postfixOps
 
+
 protected object PermissionsModelMapper
 {
   def encode(infrastructure: Infrastructure): Model =
     new PermissionsModelMapper(infrastructure)
       .encode()
 }
+
 
 
 private class PermissionsModelMapper(val infrastructure: Infrastructure)
@@ -30,6 +32,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   = permissionsModel.df
 
 
+
   def encode (): PermissionsModel =
   {
     permissionsModel
@@ -40,8 +43,10 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   }
 
 
+
   private def axiomsFromStatements() =
     resourceActionPairs flatMap getAclAxiom
+
 
 
   private def getAclAxiom(ra: (Resource,String))  =
@@ -71,9 +76,11 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   }
 
 
+
   private def performActionOnResource(a:OWLObjectProperty, r:OWLNamedIndividual) =
     df.getOWLObjectSomeValuesFrom(
       a,nominalOf(r))
+
 
 
   private def doNotPerformActionOnResource(a:OWLObjectProperty, r:OWLNamedIndividual) =
@@ -82,9 +89,11 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
       a,nominalOf(r)))
 
 
+
   private def subclassOf(lhs: OWLClassExpression, rhs:OWLClassExpression) =
     df.getOWLSubClassOfAxiom(
       lhs,rhs)
+
 
 
   private def nominalOf(r:OWLNamedIndividual) =
@@ -94,37 +103,38 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
 
   private def overApproximatedAllowSet(r:Principal,a:String) = {
 
-    def trustedPrincipals(princ:Set[Principal],r:Principal)=
-      princ.filter(p =>
-        assumeRoleStatements.exists(s =>
-          (( s.principals._1 && ( s.principals._2.contains(r) || s.principals._2.contains(Public) ))
-            || (!s.principals._1 && ( !s.principals._2.contains(r) && !s.principals._2.contains(Public) )))
-            && (
-            if (p.isInstanceOf[Resource])
-              s.resources._2.toSet.contains(p.asInstanceOf[Resource])
-            else true
-          ))
-      )
-
-
-
-    def checkIfAttemptingToAssumeRole(s: Statement) = {
+    def trustedPrincipals(s: Statement) : Option[Set[Principal]] =
       if (s.actions._2 contains "sts:AssumeRole")
-        trustedPrincipals(s.principals._2 ,r)
-      else
-        s.principals._2
-    }
-
-
+        Some(principalsTrustedBy(r))
+      else None
 
     (allowStatements & statementsWithResource(r) & statementsWithAction(a))
       .foldLeft[OWLClassExpression](df.getOWLNothing)(
         (filler,s) =>
           df.getOWLObjectUnionOf(
             filler,
-            actualPrincipals(isAllow = true,checkIfAttemptingToAssumeRole(s)))
+            actualPrincipals(isAllow = true,s.principals._2, trustedPrincipals(s),s.account))
     )
   }
+
+
+
+  private def principalsTrustedBy(role: Principal) = {
+    assumeRoleStatements
+      .filter( s =>
+        ( s.resources._1 &&
+          ( s.resources._2.contains(role) || s.resources._2.contains(Public) ))
+          || ( !s.resources._1 &&
+          ( !s.resources._2.contains(role) && !s.resources._2.contains(Public) )))
+      .foldLeft[Set[Principal]](Set())(
+      (acc,stmt) =>
+        if (stmt.principals._1)
+          acc ++ stmt.principals._2
+        else
+          acc -- stmt.principals._2
+      )
+  }
+
 
 
   private def underApproximatedDenySet(r:Entity,a: String) =
@@ -134,19 +144,22 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
           df.getOWLObjectUnionOf(
             filler,
             if (s.hasCondition) df.getOWLNothing
-            else actualPrincipals(isAllow = false,s.principals._2))
+            else actualPrincipals(isAllow = false,s.principals._2,None,s.account))
     )
+
 
 
   private def not(ce: OWLClassExpression) =
     df.getOWLObjectComplementOf(ce)
 
 
-  private def actualPrincipals(isAllow: Boolean, principals:Set[Principal]) =
-  {
+
+  private def actualPrincipals(isAllow: Boolean, principals:Set[Principal],
+                               trustedPrincipals: Option[Set[Principal]],
+                               currAccount: String) = {
     val conceptPrincipals =
       principals
-        .map(conceptFromPrincipal)
+        .map(p => conceptFromPrincipal(p,trustedPrincipals,currAccount))
           .foldLeft[OWLClassExpression](
             df.getOWLNothing)(
               (filler,c) =>
@@ -157,6 +170,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
     else
       not(conceptPrincipals)
   }
+
 
 
   private def resourceActionPairs() : Set[(Resource,String)] =
@@ -180,6 +194,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   }
 
 
+
   private def actualResources(statement: Statement)=
   {
     def complementOf(resources: Set[Resource]) =
@@ -190,6 +205,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
     else
       complementOf(statement.resources._2.toSet)
   }
+
 
 
   private def actualActions(statement: Statement) =
@@ -204,32 +220,40 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   }
 
 
+
   private def allowStatements =
     statements.filter(_.isInstanceOf[AllowStatement])
+
 
 
   private def denyStatements =
     statements.filter(_.isInstanceOf[DenyStatement])
 
 
+
   private def assumeRoleStatements =
     statements.filter(_.isAssumeRoleStatement)
+
 
 
   private def statementsWithResource(r: Entity)=
     statements.filter(_.resources._2.contains(r))
 
 
+
   private def statementsWithAction(a: String) =
     statements.filter(_.actions._2.contains(a))
+
 
 
   private def isStackSetResource(e: Entity)          =
     e.isInstanceOf[StackSetResource]
 
 
+
   private def isExternalResource(e: Entity)    =
     e.isInstanceOf[ExternalResource]
+
 
 
   private def resourceIRI(e: Resource) =
@@ -241,10 +265,12 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
     }
 
 
+
   private def actionIRI(a: String) =
     ModelIRI.actionIRI(
       a.split(":").head,
       a.split(":").last)
+
 
 
   private def individual(e: Resource) =
@@ -265,16 +291,20 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
     }
 
 
+
   private def property(a: String) =
     df.getOWLObjectProperty(actionIRI(a))
 
 
-  private def conceptFromPrincipal(e: Principal) =
-    e match {
+
+  private def conceptFromPrincipal(e: Principal, trustedPrincipals:Option[Set[Principal]] = None,
+                                   currAccount: String)
+  : OWLClassExpression = {
+    val concept = e match {
       case Public
       => owlPublic()
       case ServicePrincipal(sp)
-      => owlClassExpressionFromServicePrincipal(sp)
+      => owlClassExpressionFromServicePrincipal(sp, currAccount)
       case AccountPrincipal(accId)
       => owlClassExpressionFromAccountPrincipal(accId)
       case FederatedAccountPrincipal(fed)
@@ -286,17 +316,75 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
       case eR:ExternalResource
       => owlNominalFromExternalResource(eR)
     }
+    trustedPrincipals match {
+      case None             =>
+        concept
+      case Some(trustedSet) =>
+        df.getOWLObjectIntersectionOf(
+          concept,
+          df.getOWLObjectUnionOf(
+            trustedSet.map(tp => conceptFromPrincipal(tp,None,currAccount)).asJava ))
+    }
+  }
 
 
-    private def owlClassExpressionFromServicePrincipal(sp: String) =
-      nominalOf(
+
+    private def owlClassExpressionFromServicePrincipal(sp: String, currentAccount: String) = {
+
+      val accountIndividual   =
         df.getOWLNamedIndividual(ModelIRI
-          .awsServicePrincipalIRI(
-          sp)))
+          .awsAccountIRI(currentAccount))
+
+      val isOwnedBy           =
+        df.getOWLObjectProperty(ModelIRI.
+          awsPropertyIRI(AwsOntology.IsOwnedByAccount))
+
+      val ownedByAccount      =
+        df.getOWLObjectSomeValuesFrom(
+          isOwnedBy,
+          nominalOf(accountIndividual))
+
+      /*
+      TODO Ducktape
+       */
+      val classType =
+        df.getOWLClass ( sp match {
+        case s if s.startsWith("lambda") =>
+          ModelIRI.resourceTypeIRI("lambdafunction","function")
+        case s if s.startsWith("logs") =>
+          ModelIRI.resourceTypeIRI("logs","logsdestination")
+        case s if s.startsWith("apigateway") =>
+          ModelIRI.resourceTypeIRI("apigatewayrestapi","restapi")
+        case s if s.startsWith("cloudformation") =>
+          ModelIRI.resourceTypeIRI("cloudformationstack","stack")
+        case s if s.startsWith("cloudtrail")  =>
+          ModelIRI.resourceTypeIRI("cloudtrailtrail","trail")
+        case s if s.startsWith("codepipeline") =>
+          ModelIRI.resourceTypeIRI("codepipelinepipeline","pipeline")
+        case s if s.startsWith("codebuild") =>
+          ModelIRI.resourceTypeIRI("codebuildproject","project")
+        case s if s.startsWith("config") =>
+          ModelIRI.resourceTypeIRI("configdeliverychannel","deliverychannel")
+        case s if s.startsWith("nova") => IRI.create("owl:Nothing")
+      })
+
+      val service = sp.split("\\.").head
+      permissionsModel
+        .ontology
+        .individualsInSignature()
+        .filter(_.getIRI.getNamespace.startsWith(service))
+
+      df.getOWLObjectIntersectionOf(
+        ownedByAccount,
+        classType)
+    }
+
+
 
 
     private def owlPublic() =
       df.getOWLClass(ModelIRI.awsPublicIRI)
+
 
 
     private def owlClassExpressionFromAccountPrincipal(accId: String) =
@@ -335,20 +423,17 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
           isOwnedBy,
           nominalOf(accountIndividual))
 
-      val canAccessAccount    =
-        df.getOWLObjectSomeValuesFrom(
-          hasAccessToAccount,
-          nominalOf(accountIndividual))
+//      val canAccessAccount    =
+//        df.getOWLObjectSomeValuesFrom(
+//          hasAccessToAccount,
+//          nominalOf(accountIndividual))
 
       df.getOWLObjectIntersectionOf(
         df.getOWLObjectUnionOf(role,user),
         ownedByAccount)
 
-//      df.getOWLObjectUnionOf(
-//        ownedByAccount,
-//        canAccessAccount,
-//        nominalOf(accountIndividual))
     }
+
 
 
     private def owlClassExpressionFromFederatedAccount(fed: String) =
@@ -374,16 +459,19 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
     }
 
 
+
     private def owlClassExpressionFromCanonicalUser(uid: String) =
       nominalOf(
         df.getOWLNamedIndividual(ModelIRI
           .awsCanonicalUserIRI(uid)))
 
 
+
     private def owlNominalFromResource(ssR: StackSetResource) =
       nominalOf(df
         .getOWLNamedIndividual(
           resourceIRI(ssR)))
+
 
 
     private def owlNominalFromExternalResource(eR: ExternalResource) =

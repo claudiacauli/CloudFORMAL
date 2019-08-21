@@ -197,7 +197,8 @@ sealed trait Node
                                       val actions: (Boolean,Vector[String]),
                                       val resources: (Boolean, Vector[Resource]),
                                       val hasCondition: Boolean,
-                                      val isAssumeRoleStatement: Boolean )
+                                      val isAssumeRoleStatement: Boolean,
+                                      val account: String)
       //extends ObjectNode
     {
 
@@ -229,8 +230,9 @@ sealed trait Node
                                       a: (Boolean,Vector[String]),
                                       r: (Boolean, Vector[Resource]),
                                       hasC: Boolean ,
-                                      isARS: Boolean)
-        extends Statement(p,a,r,hasC,isARS)
+                                      isARS: Boolean,
+                                      acc: String)
+        extends Statement(p,a,r,hasC,isARS,acc)
       {
         override def toString: String = {
           "Allows \n principals " + prettyS(p) +
@@ -245,8 +247,9 @@ sealed trait Node
                                      a: (Boolean,Vector[String]),
                                      r: (Boolean, Vector[Resource]),
                                      hasC: Boolean ,
-                                     isARS: Boolean)
-        extends Statement(p,a,r,hasC,isARS)
+                                     isARS: Boolean,
+                                     acc: String)
+        extends Statement(p,a,r,hasC,isARS,acc)
       {
         override def toString: String = {
           "Denies \n principals" + prettyS(p) +

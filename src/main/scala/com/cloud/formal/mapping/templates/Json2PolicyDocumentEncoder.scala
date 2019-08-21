@@ -76,10 +76,12 @@ extends LazyLogging {
 
     if (isAllowStatement(statementNode))
       AllowStatement(principals, actions,
-        resources, hasCondition, isAssumeRoleStatement)
+        resources, hasCondition, isAssumeRoleStatement,
+        tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value)
     else
       DenyStatement(principals, actions,
-        resources, hasCondition, isAssumeRoleStatement)
+        resources, hasCondition, isAssumeRoleStatement,
+        tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value)
 
   }
 
