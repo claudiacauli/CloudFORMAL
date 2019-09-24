@@ -45,6 +45,11 @@ extends LazyLogging
       case j if j.isObject && expectedType.isDefined &&
         expectedType.get._2.equals(CFnType.String)
       => StringNode(j.toString())
+      case j if j.isObject && j.hasField("Condition")
+      => tE.conditions.get(j.field("Condition").get.string.get) match {
+        case None     => BooleanNode(false)
+        case Some(v)  => BooleanNode(v)
+      }
       case j if j.isObject
       => encodeSubproperty(j,expectedType)
       case j if j.isArray

@@ -112,7 +112,10 @@ package object mapping{
         None
 
     def subFieldNames(j: Json): List[String] =
-      j.objectFields.get map (f => f.toString.toLowerCase)
+      j.objectFields match {
+        case None     => List()
+        case Some(l)  => l map (_.toString.toLowerCase)
+      }
 
     def subFieldContents(j: Json): List[Json] =
       j.objectFieldsOrEmpty map (f => j.fieldOrEmptyArray(f) )

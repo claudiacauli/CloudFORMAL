@@ -23,7 +23,8 @@ extends StrictLogging
   logger.debug(s"Binding parameters, mappings, and condition for Template $templateName.")
   private[templates] val parameters       = getParametersMap
   private[templates] val mappings         = getMappings
-  private[templates] val conditions       = getConditions
+  private[templates] var conditions : Map[String,Boolean] = Map()
+    getConditions
   private[templates] val resourceEncoders = getResourceEncoders
   logger.debug(s"Creating resources instances of Template $templateName.")
   private[templates] val resources        = createResources
@@ -77,13 +78,13 @@ extends StrictLogging
 
 
 
-  private def getConditions : Map[String,Boolean] = {
+  private def getConditions : Unit = {
 
-    def evaluateCondition(c : (String,Json)) = {
+    def evaluateCondition(c : (String,Json)) : Map[String,Boolean] = {
       Map(c._1 -> NodeEncoder.encode(c._2).asInstanceOf[BooleanNode].value)
     }
 
-    getSection(TemplateTag.Conditions).flatMap(evaluateCondition)
+    getSection(TemplateTag.Conditions).foreach(c => conditions ++= evaluateCondition(c))
   }
 
 
