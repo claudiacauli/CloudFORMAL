@@ -47,7 +47,10 @@ extends LazyLogging {
         case o => Set(o)
       }
 
-    val statementsObjs = statementsNodes map encodeStatement
+    val statementsObjs : Set[Statement] =
+      (statementsNodes map encodeStatement)
+          .filter(_.isDefined)
+          .map(_.get)
 
     iE.policyStatements ++= statementsObjs
     iE.infrastructure.policies ++=
@@ -57,31 +60,50 @@ extends LazyLogging {
   }
 
 
-  private def encodeStatement(statementNode: Json): Statement = {
+  private def encodeStatement(statementNode: Json): Option[Statement] = {
 
-    isAssumeRoleStatement =
-      resourceIsOmitted(statementNode) && isAttachedToRole(statementNode)
-    hasCondition =
-      statementNode.hasField(Policy.ConditionTag)
+    // check if it is a statement
+    // if not, call the Node Encoder.
 
-    if (isStarActionBlock(statementNode)) {
-      resources = computeResources(statementNode)
-      actions = computeActions(statementNode)
-    } else {
-      actions = computeActions(statementNode)
-      resources = computeResources(statementNode)
+    val optStatementNode =
+    if (!statementNode.hasField(Policy.EffectTag)) {
+      val encodedNode = nE.encode(statementNode)
+      encodedNode match {
+        case NoValue => None
+        case StatementJsonWrapper(j) => Some(j)
+      }
+    } else Some(statementNode)
+
+    optStatementNode match {
+      case None => None
+      case Some(encodedStatementNode) => {
+
+        isAssumeRoleStatement =
+          resourceIsOmitted(encodedStatementNode) && isAttachedToRole(encodedStatementNode)
+        hasCondition =
+          encodedStatementNode.hasField(Policy.ConditionTag)
+
+        if (isStarActionBlock(encodedStatementNode)) {
+          resources = computeResources(encodedStatementNode)
+          actions = computeActions(encodedStatementNode)
+        } else {
+          actions = computeActions(encodedStatementNode)
+          resources = computeResources(encodedStatementNode)
+        }
+        principals = computePrincipals(encodedStatementNode)
+
+
+        if (isAllowStatement(encodedStatementNode))
+          Some(AllowStatement(principals, actions,
+            resources, hasCondition, isAssumeRoleStatement,
+            tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value))
+        else
+          Some(DenyStatement(principals, actions,
+            resources, hasCondition, isAssumeRoleStatement,
+            tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value))
+
+      }
     }
-    principals = computePrincipals(statementNode)
-
-
-    if (isAllowStatement(statementNode))
-      AllowStatement(principals, actions,
-        resources, hasCondition, isAssumeRoleStatement,
-        tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value)
-    else
-      DenyStatement(principals, actions,
-        resources, hasCondition, isAssumeRoleStatement,
-        tE.parameters(PseudoParameter.AccountId).asInstanceOf[StringNode].value)
 
   }
 

@@ -36,6 +36,8 @@ extends LazyLogging
       => resolvedArn(j,expectedType)
       case j if j.isNull || isNoValue(j)
       => NoValue
+      case j if j.isObject && isStatement(j)
+        => StatementJsonWrapper(j)
       case j if j.isObject && isIntrinsicFunction(j)
       => evalIntrinsicFunction(j,expectedType)
       case j if j.isObject && isMapProperty(j,expectedType)
@@ -682,6 +684,9 @@ extends LazyLogging
   private def getAwsManagedPolicyExternalResource(j: Json) =
     AwsManagedPolicy(j.string.get)
 
+
+  private def isStatement(j: Json) =
+    j.hasField(Policy.EffectTag)
 
 
   private def isIntrinsicFunction(j:Json)  =

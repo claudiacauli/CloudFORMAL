@@ -1,5 +1,7 @@
 package com.cloud.formal.mapping.templates
 
+import argonaut.Json
+
 private[templates]
 sealed trait Node
 
@@ -189,6 +191,11 @@ sealed trait Node
 
     private[templates]
     final case class AwsManagedPolicy(name: String)
+      extends ObjectNode
+
+
+    private[templates]
+    final case class StatementJsonWrapper(json: Json)
       extends ObjectNode
 
 
