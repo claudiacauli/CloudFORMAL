@@ -300,6 +300,7 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
   private def conceptFromPrincipal(e: Principal, trustedPrincipals:Option[Set[Principal]] = None,
                                    currAccount: String)
   : OWLClassExpression = {
+
     val concept = e match {
       case Public
       => owlPublic()
@@ -313,6 +314,8 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
       => owlClassExpressionFromCanonicalUser(uid)
       case ssR:StackSetResource
       => owlNominalFromResource(ssR)
+      case lR: ListOfResources
+        => owlSetFromResources(lR)
       case eR:ExternalResource
       => owlNominalFromExternalResource(eR)
     }
@@ -472,6 +475,14 @@ private class PermissionsModelMapper(val infrastructure: Infrastructure)
         .getOWLNamedIndividual(
           resourceIRI(ssR)))
 
+
+    private def owlSetFromResources(resources: ListOfResources) =
+      df.getOWLObjectUnionOf(
+        resources.nodes.map({
+          case r:StackSetResource => owlNominalFromResource(r)
+          case r:ExternalResource => owlNominalFromExternalResource(r)
+        }).asJava
+      )
 
 
     private def owlNominalFromExternalResource(eR: ExternalResource) =
