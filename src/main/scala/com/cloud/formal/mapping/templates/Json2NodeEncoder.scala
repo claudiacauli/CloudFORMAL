@@ -182,61 +182,61 @@ extends LazyLogging
 
 
 
-  private def evalIntrinsicFunction(j:Json, subpropT:Option[(String,String)]) = {
+  private def evalIntrinsicFunction(j:Json, expectedType:Option[(String,String)]) = {
 
     JsonUtils.subFieldNames(j)(0) match
     {
       case CFnFunTag.Base64
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalBase64(j),subpropT)
+        validateParamsAndEvalBase64(j),expectedType)
       case CFnFunTag.Cidr
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalCidr(j),subpropT)
+        validateParamsAndEvalCidr(j),expectedType)
       case CFnFunTag.If
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalIf(j),subpropT)
+        validateParamsAndEvalIf(j,expectedType),expectedType)
       case CFnFunTag.Not
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalNot(j),subpropT)
+        validateParamsAndEvalNot(j),expectedType)
       case CFnFunTag.And
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalAnd(j),subpropT)
+        validateParamsAndEvalAnd(j),expectedType)
       case CFnFunTag.Equals
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalEquals(j),subpropT)
+        validateParamsAndEvalEquals(j),expectedType)
       case CFnFunTag.Or
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalOr(j),subpropT)
+        validateParamsAndEvalOr(j),expectedType)
       case CFnFunTag.FindInMap
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalFindInMap(j),subpropT)
+        validateParamsAndEvalFindInMap(j),expectedType)
       case CFnFunTag.GetAtt
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalGetAtt(j),subpropT)
+        validateParamsAndEvalGetAtt(j),expectedType)
       case CFnFunTag.GetAZs
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalGetAZs(j),subpropT)
+        validateParamsAndEvalGetAZs(j),expectedType)
       case CFnFunTag.ImportValue
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalImportValue(j),subpropT)
+        validateParamsAndEvalImportValue(j),expectedType)
       case CFnFunTag.Join
       => matchWithExpectedTypeIfAny(
         validateParamsAndEvalJoin(j,Some("",CFnType.String)),Some("",CFnType.String))
       case CFnFunTag.Select
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalSelect(j),subpropT)
+        validateParamsAndEvalSelect(j),expectedType)
       case CFnFunTag.Split
       => matchWithExpectedTypeIfAny(
         validateParamsAndEvalSplit(j),Some("",CFnType.String))
       case CFnFunTag.Sub
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalSub(j),subpropT)
+        validateParamsAndEvalSub(j),expectedType)
       case CFnFunTag.Transform
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalTransform(j),subpropT)
+        validateParamsAndEvalTransform(j),expectedType)
       case CFnFunTag.Ref
       => matchWithExpectedTypeIfAny(
-        validateParamsAndEvalRef(j),subpropT)
+        validateParamsAndEvalRef(j),expectedType)
       case _ =>
         logger.warn(s"Json object $j is intrinsic function but does not " +
           "contain any of the CFn functions tags. Returning NoValue")
@@ -273,18 +273,27 @@ extends LazyLogging
       encode(arrayAt(j,CFnFunTag.CidrUC,2)).asInstanceOf[IntNode] )
 
 
-  private def validateParamsAndEvalIf(j: Json) = {
+  private def validateParamsAndEvalIf(j: Json, expectedType:Option[(String,String)]) = {
 
     val encodedCondition  = encode(arrayAt(j, CFnFunTag.IfUC,0))
-    val encodedTrueExp    = encode(arrayAt(j, CFnFunTag.IfUC, 1))
-    val encodedFalseExp   = encode(arrayAt(j, CFnFunTag.IfUC, 2))
+    def encodedTrueExp() : Node =
+      encode(arrayAt(j, CFnFunTag.IfUC, 1),expectedType)
+    def encodedFalseExp() : Node =
+      encode(arrayAt(j, CFnFunTag.IfUC, 2),expectedType)
+
 
     encodedCondition match {
       case sn: StringNode   => tE.conditions.get(sn.value) match {
         case None     => NoValue
-        case Some(b)  => IfFunction()(BooleanNode(b), encodedTrueExp, encodedFalseExp)
+        case Some(b) if b =>
+          IfFunction()(BooleanNode(b), encodedTrueExp(), NoValue)
+        case Some(b) if !b =>
+          IfFunction()(BooleanNode(b), NoValue, encodedFalseExp())
       }
-      case bn : BooleanNode => IfFunction()(bn, encodedTrueExp, encodedFalseExp)
+      case bn : BooleanNode if bn.value =>
+        IfFunction()(bn, encodedTrueExp(), NoValue)
+      case bn : BooleanNode if !bn.value =>
+        IfFunction()(bn, NoValue, encodedFalseExp())
       case _                =>
         logger.debug(s"Value of Fn::If node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")
@@ -342,6 +351,7 @@ extends LazyLogging
   private def validateParamsAndEvalEquals(j: Json) = {
     val lhs = encode(arrayAt(j,CFnFunTag.EqualsUC,0))
     val rhs = encode(arrayAt(j,CFnFunTag.EqualsUC,1))
+
     EqualsFunction()(lhs,rhs)
   }
 

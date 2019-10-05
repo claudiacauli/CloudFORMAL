@@ -353,6 +353,32 @@ private sealed trait BooleanFunction
     extends BooleanFunction
       with ((Node,Node) => BooleanNode)
   {
-    def apply(e1: Node, e2: Node):BooleanNode =
-      BooleanNode( e1 == e2 )
+    def apply(e1: Node, e2: Node):BooleanNode = {
+      (e1,e2) match {
+        case (bn1:BooleanNode, bn2:BooleanNode) =>  BooleanNode(bn1.value == bn2.value)
+        case (bn1:BooleanNode, sn1:StringNode)  if bn1.value => BooleanNode(sn1.value.toLowerCase()=="true")
+        case (bn1:BooleanNode, sn1:StringNode)  if !bn1.value => BooleanNode(sn1.value.toLowerCase()=="false")
+        case (bn1:BooleanNode, in1:IntNode)     if bn1.value => BooleanNode(in1.value==1)
+        case (bn1:BooleanNode, in1:IntNode)     if !bn1.value => BooleanNode(in1.value==0)
+        case (bn1:BooleanNode, in1:LongNode)     if bn1.value => BooleanNode(in1.value==1)
+        case (bn1:BooleanNode, in1:LongNode)     if !bn1.value => BooleanNode(in1.value==0)
+        case (in1:IntNode, sn1:StringNode) => BooleanNode(sn1.value.toInt==in1.value)
+        case (in1:IntNode, bn1:BooleanNode)     if bn1.value => BooleanNode(in1.value==1)
+        case (in1:IntNode, bn1:BooleanNode)     if !bn1.value => BooleanNode(in1.value==0)
+        case (in1:IntNode, bn1:BooleanNode)     if bn1.value => BooleanNode(in1.value==1)
+        case (in1:IntNode, bn1:BooleanNode)     if !bn1.value => BooleanNode(in1.value==0)
+        case (in1:IntNode, in2:IntNode)   => BooleanNode(in1.value==in2.value)
+        case (ln1:LongNode, in1:IntNode)  => BooleanNode(ln1.value == in1.value)
+        case (ln1:LongNode, ln2:LongNode) => BooleanNode(ln1.value == ln2.value)
+        case (in1:LongNode, bn1:BooleanNode)     if bn1.value => BooleanNode(in1.value==1)
+        case (in1:LongNode, bn1:BooleanNode)     if !bn1.value => BooleanNode(in1.value==0)
+        case (in1:LongNode, sn1:StringNode) => BooleanNode(sn1.value.toLong==in1.value)
+        case (sn1:StringNode, in1:IntNode) => BooleanNode(sn1.value.toInt==in1.value)
+        case (sn1:StringNode, bn1:BooleanNode)  if bn1.value => BooleanNode(sn1.value.toLowerCase()=="true")
+        case (sn1:StringNode, bn1:BooleanNode)  if !bn1.value => BooleanNode(sn1.value.toLowerCase()=="false")
+        case (sn1:StringNode, sn2:StringNode) => BooleanNode(sn1.value.toLowerCase()==sn2.value.toLowerCase())
+        case _=>  BooleanNode( e1 == e2 )
+      }
+    }
+
   }
