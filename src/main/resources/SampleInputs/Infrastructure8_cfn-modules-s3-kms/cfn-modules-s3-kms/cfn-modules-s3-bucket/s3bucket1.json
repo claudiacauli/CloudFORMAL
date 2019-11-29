@@ -1,0 +1,1238 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "cfn-modules: AWS S3 bucket",
+    "Parameters": {
+        "KmsKeyModule": {
+            "Description": "Optional but recommended stack name of kms-key module (only works in combination with Access := [Private, PublicRead]).",
+            "Type": "String",
+            "Default": ""
+        },
+        "BucketName": {
+            "Description": "Optional name of the bucket.",
+            "Type": "String",
+            "Default": ""
+        },
+        "Access": {
+            "Description": "Access policy of the bucket.",
+            "Type": "String",
+            "Default": "Private",
+            "AllowedValues": [
+                "Private",
+                "PublicRead",
+                "CloudFrontRead",
+                "CloudFrontAccessLogWrite",
+                "ElbAccessLogWrite",
+                "ConfigWrite",
+                "CloudTrailWrite",
+                "FlowLogWrite"
+            ]
+        },
+        "Cors": {
+            "Description": "CORS policy of the bucket.",
+            "Type": "String",
+            "Default": "Disabled",
+            "AllowedValues": [
+                "Disabled",
+                "AllowAll"
+            ]
+        },
+        "Versioning": {
+            "Description": "Enable versioning to keep a backup if objects change.",
+            "Type": "String",
+            "Default": true,
+            "AllowedValues": [
+                true,
+                false,
+                "false-but-was-true"
+            ]
+        },
+        "NoncurrentVersionExpirationInDays": {
+            "Description": "Remove noncurrent object versions after days (set to 0 to disable).",
+            "Type": "Number",
+            "Default": 0,
+            "MinValue": 0
+        },
+        "ExpirationInDays": {
+            "Description": "Remove objects after days (set to 0 to disable).",
+            "Type": "Number",
+            "Default": 0,
+            "MinValue": 0
+        },
+        "LambdaEventTargetLambdaModule1": {
+            "Description": "Optional stack name of lambda-function module to receive events from this S3 bucket. Also grants the Lambda function access to this bucket and this bucket access to the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        },
+        "LambdaEventType1": {
+            "Description": "S3 bucket events you want to receive",
+            "Type": "String",
+            "Default": "s3:ObjectCreated:*"
+        },
+        "LambdaEventTargetLambdaModule2": {
+            "Description": "Optional stack name of lambda-function module to receive events from this S3 bucket. Also grants the Lambda function access to this bucket and this bucket access to the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        },
+        "LambdaEventType2": {
+            "Description": "S3 bucket events you want to receive",
+            "Type": "String",
+            "Default": "s3:ObjectRemoved:*"
+        },
+        "LambdaEventTargetLambdaModule3": {
+            "Description": "Optional stack name of lambda-function module to receive events from this S3 bucket. Also grants the Lambda function access to this bucket and this bucket access to the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        },
+        "LambdaEventType3": {
+            "Description": "S3 bucket events you want to receive",
+            "Type": "String",
+            "Default": "s3:ReducedRedundancyLostObject"
+        }
+    },
+    "Conditions": {
+        "HasKmsKeyModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "KmsKeyModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasPrivateAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "Private"
+            ]
+        },
+        "HasPrivateAccessAndKmsKeyModule": {
+            "Fn::And": [
+                {
+                    "Condition": "HasPrivateAccess"
+                },
+                {
+                    "Condition": "HasKmsKeyModule"
+                }
+            ]
+        },
+        "HasPublicReadAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "PublicRead"
+            ]
+        },
+        "HasCloudFrontReadAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "CloudFrontRead"
+            ]
+        },
+        "HasElbAccessLogWriteAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "ElbAccessLogWrite"
+            ]
+        },
+        "HasConfigWriteAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "ConfigWrite"
+            ]
+        },
+        "HasCloudTrailWriteAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "CloudTrailWrite"
+            ]
+        },
+        "HasFlowLogWriteAccess": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Access"
+                },
+                "FlowLogWrite"
+            ]
+        },
+        "HasCorsAllowAll": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Cors"
+                },
+                "AllowAll"
+            ]
+        },
+        "HasBucketName": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "BucketName"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasVersioning": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Versioning"
+                },
+                true
+            ]
+        },
+        "HadVersioning": {
+            "Fn::Equals": [
+                {
+                    "Ref": "Versioning"
+                },
+                "false-but-was-true"
+            ]
+        },
+        "HasNoncurrentVersionExpirationInDays": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "NoncurrentVersionExpirationInDays"
+                        },
+                        0
+                    ]
+                }
+            ]
+        },
+        "HasExpirationInDays": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ExpirationInDays"
+                        },
+                        0
+                    ]
+                }
+            ]
+        },
+        "HasLambdaEventTargetLambdaModule1": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LambdaEventTargetLambdaModule1"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasLambdaEventTargetLambdaModule2": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LambdaEventTargetLambdaModule2"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasLambdaEventTargetLambdaModule3": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LambdaEventTargetLambdaModule3"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasPartitionPublic": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Partition"
+                },
+                "aws"
+            ]
+        },
+        "HasPartitionChina": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Partition"
+                },
+                "aws-cn"
+            ]
+        },
+        "HasPartitionUsGov": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AWS::Partition"
+                },
+                "aws-us-gov"
+            ]
+        }
+    },
+    "Resources": {
+        "PolicyLambdaEventTarget1": {
+            "Type": "AWS::IAM::Policy",
+            "Condition": "HasLambdaEventTargetLambdaModule1",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${LambdaEventTargetLambdaModule1}-RoleName"
+                        }
+                    }
+                ],
+                "PolicyName": {
+                    "Fn::Sub": "cfn-modules-${Bucket}-target1"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetObject*",
+                                "s3:ListBucket*",
+                                "s3:ListMultipartUploadParts",
+                                "s3:PutObject*"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::GetAtt": [
+                                        "Bucket",
+                                        "Arn"
+                                    ]
+                                },
+                                {
+                                    "Fn::Sub": "${Bucket.Arn}/*"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "PolicyLambdaEventTarget2": {
+            "Type": "AWS::IAM::Policy",
+            "Condition": "HasLambdaEventTargetLambdaModule2",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${LambdaEventTargetLambdaModule2}-RoleName"
+                        }
+                    }
+                ],
+                "PolicyName": {
+                    "Fn::Sub": "cfn-modules-${Bucket}-target2"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetObject*",
+                                "s3:ListBucket*",
+                                "s3:ListMultipartUploadParts",
+                                "s3:PutObject*"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::GetAtt": [
+                                        "Bucket",
+                                        "Arn"
+                                    ]
+                                },
+                                {
+                                    "Fn::Sub": "${Bucket.Arn}/*"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "PolicyLambdaEventTarget3": {
+            "Type": "AWS::IAM::Policy",
+            "Condition": "HasLambdaEventTargetLambdaModule3",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${LambdaEventTargetLambdaModule3}-RoleName"
+                        }
+                    }
+                ],
+                "PolicyName": {
+                    "Fn::Sub": "cfn-modules-${Bucket}-target3"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:DeleteObject*",
+                                "s3:GetObject*",
+                                "s3:ListBucket*",
+                                "s3:ListMultipartUploadParts",
+                                "s3:PutObject*"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::GetAtt": [
+                                        "Bucket",
+                                        "Arn"
+                                    ]
+                                },
+                                {
+                                    "Fn::Sub": "${Bucket.Arn}/*"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "PermissionLambdaEventTarget1": {
+            "Condition": "HasLambdaEventTargetLambdaModule1",
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:invokeFunction",
+                "FunctionName": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${LambdaEventTargetLambdaModule1}-Arn"
+                    }
+                },
+                "Principal": "s3.amazonaws.com",
+                "SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                },
+                "SourceArn": {
+                    "Fn::If": [
+                        "HasBucketName",
+                        {
+                            "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                }
+            }
+        },
+        "PermissionLambdaEventTarget2": {
+            "Condition": "HasLambdaEventTargetLambdaModule2",
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:invokeFunction",
+                "FunctionName": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${LambdaEventTargetLambdaModule2}-Arn"
+                    }
+                },
+                "Principal": "s3.amazonaws.com",
+                "SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                },
+                "SourceArn": {
+                    "Fn::If": [
+                        "HasBucketName",
+                        {
+                            "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                }
+            }
+        },
+        "PermissionLambdaEventTarget3": {
+            "Condition": "HasLambdaEventTargetLambdaModule3",
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:invokeFunction",
+                "FunctionName": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${LambdaEventTargetLambdaModule3}-Arn"
+                    }
+                },
+                "Principal": "s3.amazonaws.com",
+                "SourceAccount": {
+                    "Ref": "AWS::AccountId"
+                },
+                "SourceArn": {
+                    "Fn::If": [
+                        "HasBucketName",
+                        {
+                            "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                }
+            }
+        },
+        "Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {
+                    "Fn::If": [
+                        "HasBucketName",
+                        {
+                            "Ref": "BucketName"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "CorsConfiguration": {
+                    "Fn::If": [
+                        "HasCorsAllowAll",
+                        {
+                            "CorsRules": [
+                                {
+                                    "AllowedHeaders": [
+                                        "*"
+                                    ],
+                                    "AllowedMethods": [
+                                        "HEAD",
+                                        "GET",
+                                        "PUT",
+                                        "POST",
+                                        "DELETE"
+                                    ],
+                                    "AllowedOrigins": [
+                                        "*"
+                                    ],
+                                    "ExposedHeaders": [
+                                        "x-amz-server-side-encryption",
+                                        "x-amz-request-id",
+                                        "x-amz-id-2",
+                                        "ETag"
+                                    ],
+                                    "MaxAge": 3000
+                                }
+                            ]
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "LifecycleConfiguration": {
+                    "Rules": [
+                        {
+                            "AbortIncompleteMultipartUpload": {
+                                "DaysAfterInitiation": 7
+                            },
+                            "Status": "Enabled"
+                        },
+                        {
+                            "NoncurrentVersionExpirationInDays": {
+                                "Fn::If": [
+                                    "HasNoncurrentVersionExpirationInDays",
+                                    {
+                                        "Ref": "NoncurrentVersionExpirationInDays"
+                                    },
+                                    1
+                                ]
+                            },
+                            "Status": {
+                                "Fn::If": [
+                                    "HasNoncurrentVersionExpirationInDays",
+                                    "Enabled",
+                                    "Disabled"
+                                ]
+                            }
+                        },
+                        {
+                            "ExpirationInDays": {
+                                "Fn::If": [
+                                    "HasExpirationInDays",
+                                    {
+                                        "Ref": "ExpirationInDays"
+                                    },
+                                    1
+                                ]
+                            },
+                            "Status": {
+                                "Fn::If": [
+                                    "HasExpirationInDays",
+                                    "Enabled",
+                                    "Disabled"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "NotificationConfiguration": {
+                    "LambdaConfigurations": [
+                        {
+                            "Fn::If": [
+                                "HasLambdaEventTargetLambdaModule1",
+                                {
+                                    "Event": {
+                                        "Ref": "LambdaEventType1"
+                                    },
+                                    "Function": {
+                                        "Fn::ImportValue": {
+                                            "Fn::Sub": "${LambdaEventTargetLambdaModule1}-Arn"
+                                        }
+                                    }
+                                },
+                                {
+                                    "Ref": "AWS::NoValue"
+                                }
+                            ]
+                        },
+                        {
+                            "Fn::If": [
+                                "HasLambdaEventTargetLambdaModule2",
+                                {
+                                    "Event": {
+                                        "Ref": "LambdaEventType2"
+                                    },
+                                    "Function": {
+                                        "Fn::ImportValue": {
+                                            "Fn::Sub": "${LambdaEventTargetLambdaModule2}-Arn"
+                                        }
+                                    }
+                                },
+                                {
+                                    "Ref": "AWS::NoValue"
+                                }
+                            ]
+                        },
+                        {
+                            "Fn::If": [
+                                "HasLambdaEventTargetLambdaModule3",
+                                {
+                                    "Event": {
+                                        "Ref": "LambdaEventType3"
+                                    },
+                                    "Function": {
+                                        "Fn::ImportValue": {
+                                            "Fn::Sub": "${LambdaEventTargetLambdaModule3}-Arn"
+                                        }
+                                    }
+                                },
+                                {
+                                    "Ref": "AWS::NoValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "VersioningConfiguration": {
+                    "Fn::If": [
+                        "HasVersioning",
+                        {
+                            "Status": "Enabled"
+                        },
+                        {
+                            "Fn::If": [
+                                "HadVersioning",
+                                {
+                                    "Status": "Suspended"
+                                },
+                                {
+                                    "Ref": "AWS::NoValue"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "BucketEncryption": {
+                    "Fn::If": [
+                        "HasKmsKeyModule",
+                        {
+                            "ServerSideEncryptionConfiguration": [
+                                {
+                                    "ServerSideEncryptionByDefault": {
+                                        "KMSMasterKeyID": {
+                                            "Fn::ImportValue": {
+                                                "Fn::Sub": "${KmsKeyModule}-Arn"
+                                            }
+                                        },
+                                        "SSEAlgorithm": "aws:kms"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyPrivate": {
+            "Condition": "HasPrivateAccessAndKmsKeyModule",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Principal": "*",
+                            "Action": "s3:PutObject*",
+                            "Effect": "Deny",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*"
+                            },
+                            "Condition": {
+                                "StringNotEquals": {
+                                    "s3:x-amz-server-side-encryption": "",
+                                    "s3:x-amz-server-side-encryption-aws-kms-key-id": {
+                                        "Fn::ImportValue": {
+                                            "Fn::Sub": "${KmsKeyModule}-Arn"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyPublic": {
+            "Condition": "HasPublicReadAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Principal": "*",
+                            "Action": "s3:GetObject",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyCloudFrontRead": {
+            "Condition": "HasCloudFrontReadAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Principal": {
+                                "CanonicalUser": {
+                                    "Fn::GetAtt": [
+                                        "CloudFrontOriginAccessIdentity",
+                                        "S3CanonicalUserId"
+                                    ]
+                                }
+                            },
+                            "Action": "s3:GetObject",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyElbAccessLogWrite": {
+            "Condition": "HasElbAccessLogWriteAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Principal": {
+                                "AWS": [
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::127311923021:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::033677994240:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::027434742980:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::797873946194:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::985666609251:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::054676820928:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::156460612806:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::652711504416:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::009996457667:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::897822967062:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::582318560864:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::600734575887:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::383597477331:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::114774131450:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::783225319266:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::718504428378:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionPublic",
+                                            "arn:aws:iam::507241528517:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionUsGov",
+                                            "arn:aws-us-gov:iam::048591011584:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionUsGov",
+                                            "arn:aws-us-gov:iam::190560391635:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionChina",
+                                            "arn:aws-cn:iam::638102146993:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "Fn::If": [
+                                            "HasPartitionChina",
+                                            "arn:aws-cn:iam::037604701340:root",
+                                            {
+                                                "Ref": "AWS::NoValue"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "Action": "s3:PutObject",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*AWSLogs/${AWS::AccountId}/*"
+                            }
+                        },
+                        {
+                            "Principal": {
+                                "Service": "delivery.logs.amazonaws.com"
+                            },
+                            "Action": "s3:PutObject",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*AWSLogs/${AWS::AccountId}/*"
+                            },
+                            "Condition": {
+                                "StringEquals": {
+                                    "s3:x-amz-acl": "bucket-owner-full-control"
+                                }
+                            }
+                        },
+                        {
+                            "Principal": {
+                                "Service": "delivery.logs.amazonaws.com"
+                            },
+                            "Action": "s3:GetBucketAcl",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "Bucket",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyConfigWrite": {
+            "Condition": "HasConfigWriteAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "config.amazonaws.com"
+                            },
+                            "Action": "s3:GetBucketAcl",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "Bucket",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "config.amazonaws.com"
+                            },
+                            "Action": "s3:PutObject",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*AWSLogs/${AWS::AccountId}/*"
+                            },
+                            "Condition": {
+                                "StringEquals": {
+                                    "s3:x-amz-acl": "bucket-owner-full-control"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyCloudTrailWrite": {
+            "Condition": "HasCloudTrailWriteAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "cloudtrail.amazonaws.com"
+                            },
+                            "Action": "s3:GetBucketAcl",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "Bucket",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "cloudtrail.amazonaws.com"
+                            },
+                            "Action": "s3:PutObject",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*AWSLogs/${AWS::AccountId}/*"
+                            },
+                            "Condition": {
+                                "StringEquals": {
+                                    "s3:x-amz-acl": "bucket-owner-full-control"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "BucketPolicyFlowLogWrite": {
+            "Condition": "HasFlowLogWriteAccess",
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AWSLogDeliveryWrite",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "delivery.logs.amazonaws.com"
+                            },
+                            "Action": "s3:PutObject",
+                            "Resource": {
+                                "Fn::Sub": "${Bucket.Arn}/*AWSLogs/${AWS::AccountId}/*"
+                            },
+                            "Condition": {
+                                "StringEquals": {
+                                    "s3:x-amz-acl": "bucket-owner-full-control"
+                                }
+                            }
+                        },
+                        {
+                            "Sid": "AWSLogDeliveryAclCheck",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "delivery.logs.amazonaws.com"
+                            },
+                            "Action": "s3:GetBucketAcl",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "Bucket",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "CloudFrontOriginAccessIdentity": {
+            "Condition": "HasCloudFrontReadAccess",
+            "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+            "Properties": {
+                "CloudFrontOriginAccessIdentityConfig": {
+                    "Comment": {
+                        "Ref": "Bucket"
+                    }
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "ModuleId": {
+            "Value": "s3-bucket"
+        },
+        "ModuleVersion": {
+            "Value": "1.5.0"
+        },
+        "StackName": {
+            "Value": {
+                "Ref": "AWS::StackName"
+            }
+        },
+        "Arn": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Bucket",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-Arn"
+                }
+            }
+        },
+        "Name": {
+            "Value": {
+                "Ref": "Bucket"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-Name"
+                }
+            }
+        },
+        "DomainName": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Bucket",
+                    "DomainName"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DomainName"
+                }
+            }
+        },
+        "CloudFrontOriginAccessIdentity": {
+            "Condition": "HasCloudFrontReadAccess",
+            "Value": {
+                "Fn::Sub": "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-CloudFrontOriginAccessIdentity"
+                }
+            }
+        },
+        "IamActions": {
+            "Value": "s3:DeleteObject*,s3:GetObject*,s3:ListBucket*,s3:ListMultipartUploadParts,s3:PutObject*",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamActions"
+                }
+            }
+        },
+        "IamResources": {
+            "Value": {
+                "Fn::Sub": "${Bucket.Arn},${Bucket.Arn}/*"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamResources"
+                }
+            }
+        }
+    }
+}

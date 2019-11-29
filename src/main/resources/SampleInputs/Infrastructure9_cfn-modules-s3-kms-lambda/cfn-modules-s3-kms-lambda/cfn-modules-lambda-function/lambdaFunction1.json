@@ -1,0 +1,930 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "cfn-modules: AWS Lambda function",
+    "Parameters": {
+        "AlertingModule": {
+            "Description": "Optional but recommended stack name of alerting module.",
+            "Type": "String",
+            "Default": ""
+        },
+        "KmsKeyModule": {
+            "Description": "Optional but recommended stack name of kms-key module.",
+            "Type": "String",
+            "Default": ""
+        },
+        "VpcModule": {
+            "Description": "Optional stack name of vpc module.",
+            "Type": "String",
+            "Default": ""
+        },
+        "DeadLetterQueueModule": {
+            "Description": "Optional but recommended for async invocations stack name of sqs-queue module where Lambda sends events to after the maximum number of retries was reached",
+            "Type": "String",
+            "Default": ""
+        },
+        "FunctionName": {
+            "Description": "An optional but recommended name for the function and log group.",
+            "Type": "String",
+            "Default": ""
+        },
+        "Description": {
+            "Description": "Optional description of the function",
+            "Type": "String",
+            "Default": ""
+        },
+        "Handler": {
+            "Description": "The name of the function (within your source code) that Lambda calls to start running your code (file must be in the lambda-src folder)",
+            "Type": "String"
+        },
+        "MemorySize": {
+            "Description": "The amount of memory, in MB, that is allocated to your Lambda function",
+            "Type": "Number",
+            "Default": 128,
+            "MinValue": 128,
+            "MaxValue": 3008
+        },
+        "ReservedConcurrentExecutions": {
+            "Type": "Number",
+            "Default": -1
+        },
+        "Runtime": {
+            "Description": "The runtime environment for the Lambda function that you are uploading",
+            "Type": "String",
+            "AllowedValues": [
+                "dotnetcore1.0",
+                "dotnetcore2.1",
+                "go1.x",
+                "java8",
+                "nodejs10.x",
+                "nodejs8.10",
+                "python2.7",
+                "python3.6",
+                "python3.7",
+                "ruby2.5"
+            ]
+        },
+        "Timeout": {
+            "Description": "The function execution time at which Lambda should terminate the function",
+            "Type": "Number",
+            "Default": 3,
+            "MinValue": 1,
+            "MaxValue": 900
+        },
+        "TracingConfigMode": {
+            "Type": "String",
+            "Default": "PassThrough",
+            "AllowedValues": [
+                "PassThrough",
+                "Active"
+            ]
+        },
+        "LogGroupRetentionInDays": {
+            "Description": "The number of days log events are kept in CloudWatch Logs",
+            "Type": "Number",
+            "Default": 14,
+            "AllowedValues": [
+                1,
+                3,
+                5,
+                7,
+                14,
+                30,
+                60,
+                90,
+                120,
+                150,
+                180,
+                365,
+                400,
+                545,
+                731,
+                1827,
+                3653
+            ]
+        },
+        "DependencyModule1": {
+            "Description": "Optional stack name of module implementing LambdaDependency to generate IAM Policy",
+            "Type": "String",
+            "Default": ""
+        },
+        "DependencyModule2": {
+            "Description": "Optional stack name of module implementing LambdaDependency to generate IAM Policy",
+            "Type": "String",
+            "Default": ""
+        },
+        "DependencyModule3": {
+            "Description": "Optional stack name of module implementing LambdaDependency to generate IAM Policy",
+            "Type": "String",
+            "Default": ""
+        },
+        "EnvironmentVariable1": {
+            "Description": "Optional value of environment variable VARIABLE1",
+            "Type": "String",
+            "Default": ""
+        },
+        "EnvironmentVariable2": {
+            "Description": "Optional value of environment variable VARIABLE2",
+            "Type": "String",
+            "Default": ""
+        },
+        "EnvironmentVariable3": {
+            "Description": "Optional value of environment variable VARIABLE3",
+            "Type": "String",
+            "Default": ""
+        },
+        "ManagedPolicyArns": {
+            "Description": "Optional comma-delimited list of IAM managed policy ARNs to attach to the function's IAM role",
+            "Type": "String",
+            "Default": ""
+        },
+        "LayerArns": {
+            "Description": "Optional comma-delimited list of Layer ARNs to attach to the function",
+            "Type": "String",
+            "Default": ""
+        },
+        "ClientSgModule1": {
+            "Description": "Optional stack name of client-sg module to mark traffic from the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        },
+        "ClientSgModule2": {
+            "Description": "Optional stack name of client-sg module to mark traffic from the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        },
+        "ClientSgModule3": {
+            "Description": "Optional stack name of client-sg module to mark traffic from the Lambda function.",
+            "Type": "String",
+            "Default": ""
+        }
+    },
+    "Conditions": {
+        "HasAlertingModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AlertingModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasKmsKeyModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "KmsKeyModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasDeadLetterQueueModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "DeadLetterQueueModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasReservedConcurrentExecutions": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ReservedConcurrentExecutions"
+                        },
+                        -1
+                    ]
+                }
+            ]
+        },
+        "HasVpcModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "VpcModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasFunctionName": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "FunctionName"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasDependencyModule1": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "DependencyModule1"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasDependencyModule2": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "DependencyModule2"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasDependencyModule3": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "DependencyModule3"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasManagedPolicyArns": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ManagedPolicyArns"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasLayerArns": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LayerArns"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasClientSgModule1": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ClientSgModule1"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasClientSgModule2": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ClientSgModule2"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasClientSgModule3": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ClientSgModule3"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        }
+    },
+    "Resources": {
+        "Role": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": {
+                    "Fn::If": [
+                        "HasManagedPolicyArns",
+                        {
+                            "Fn::Split": [
+                                ",",
+                                {
+                                    "Ref": "ManagedPolicyArns"
+                                }
+                            ]
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "cfn-modules",
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Resource": {
+                                        "Fn::GetAtt": [
+                                            "LogGroup",
+                                            "Arn"
+                                        ]
+                                    }
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasVpcModule",
+                                        {
+                                            "Effect": "Allow",
+                                            "Action": [
+                                                "ec2:CreateNetworkInterface",
+                                                "ec2:DescribeNetworkInterfaces",
+                                                "ec2:DeleteNetworkInterface"
+                                            ],
+                                            "Resource": "*"
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasDependencyModule1",
+                                        {
+                                            "Effect": "Allow",
+                                            "Action": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule1}-IamActions"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "Resource": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule1}-IamResources"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasDependencyModule2",
+                                        {
+                                            "Effect": "Allow",
+                                            "Action": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule2}-IamActions"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "Resource": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule2}-IamResources"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasDependencyModule3",
+                                        {
+                                            "Effect": "Allow",
+                                            "Action": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule3}-IamActions"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "Resource": {
+                                                "Fn::Split": [
+                                                    ",",
+                                                    {
+                                                        "Fn::ImportValue": {
+                                                            "Fn::Sub": "${DependencyModule3}-IamResources"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "SecurityGroup": {
+            "Condition": "HasVpcModule",
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": {
+                    "Ref": "AWS::StackName"
+                },
+                "VpcId": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${VpcModule}-Id"
+                    }
+                }
+            }
+        },
+        "LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::If": [
+                        "HasFunctionName",
+                        {
+                            "Fn::Sub": "/aws/lambda/${FunctionName}"
+                        },
+                        {
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "/aws/lambda/cfn-modules-lambda-",
+                                    {
+                                        "Fn::Select": [
+                                            2,
+                                            {
+                                                "Fn::Split": [
+                                                    "/",
+                                                    {
+                                                        "Ref": "AWS::StackId"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "RetentionInDays": {
+                    "Ref": "LogGroupRetentionInDays"
+                }
+            }
+        },
+        "Function": {
+            "Type": "AWS::Lambda::Function",
+            "DependsOn": "LogGroup",
+            "Properties": {
+                "Code": "../../../lambda-src/",
+                "DeadLetterConfig": {
+                    "Fn::If": [
+                        "HasDeadLetterQueueModule",
+                        {
+                            "TargetArn": {
+                                "Fn::ImportValue": {
+                                    "Fn::Sub": "${DeadLetterQueueModule}-Arn"
+                                }
+                            }
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "Description": {
+                    "Ref": "Description"
+                },
+                "Environment": {
+                    "Variables": {
+                        "VARIABLE1": {
+                            "Ref": "EnvironmentVariable1"
+                        },
+                        "VARIABLE2": {
+                            "Ref": "EnvironmentVariable2"
+                        },
+                        "VARIABLE3": {
+                            "Ref": "EnvironmentVariable3"
+                        },
+                        "DEPENDENCY1_ARN": {
+                            "Fn::If": [
+                                "HasDependencyModule1",
+                                {
+                                    "Fn::ImportValue": {
+                                        "Fn::Sub": "${DependencyModule1}-Arn"
+                                    }
+                                },
+                                ""
+                            ]
+                        },
+                        "DEPENDENCY2_ARN": {
+                            "Fn::If": [
+                                "HasDependencyModule2",
+                                {
+                                    "Fn::ImportValue": {
+                                        "Fn::Sub": "${DependencyModule2}-Arn"
+                                    }
+                                },
+                                ""
+                            ]
+                        },
+                        "DEPENDENCY3_ARN": {
+                            "Fn::If": [
+                                "HasDependencyModule3",
+                                {
+                                    "Fn::ImportValue": {
+                                        "Fn::Sub": "${DependencyModule3}-Arn"
+                                    }
+                                },
+                                ""
+                            ]
+                        }
+                    }
+                },
+                "FunctionName": {
+                    "Fn::If": [
+                        "HasFunctionName",
+                        {
+                            "Ref": "FunctionName"
+                        },
+                        {
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "cfn-modules-lambda-",
+                                    {
+                                        "Fn::Select": [
+                                            2,
+                                            {
+                                                "Fn::Split": [
+                                                    "/",
+                                                    {
+                                                        "Ref": "AWS::StackId"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "Handler": {
+                    "Ref": "Handler"
+                },
+                "KmsKeyArn": {
+                    "Fn::If": [
+                        "HasKmsKeyModule",
+                        {
+                            "Fn::ImportValue": {
+                                "Fn::Sub": "${KmsKeyModule}-Arn"
+                            }
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "MemorySize": {
+                    "Ref": "MemorySize"
+                },
+                "ReservedConcurrentExecutions": {
+                    "Fn::If": [
+                        "HasReservedConcurrentExecutions",
+                        {
+                            "Ref": "ReservedConcurrentExecutions"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "Role": {
+                    "Fn::GetAtt": [
+                        "Role",
+                        "Arn"
+                    ]
+                },
+                "Runtime": {
+                    "Ref": "Runtime"
+                },
+                "Timeout": {
+                    "Ref": "Timeout"
+                },
+                "TracingConfig": {
+                    "Mode": {
+                        "Ref": "TracingConfigMode"
+                    }
+                },
+                "VpcConfig": {
+                    "Fn::If": [
+                        "HasVpcModule",
+                        {
+                            "SecurityGroupIds": [
+                                {
+                                    "Ref": "SecurityGroup"
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasClientSgModule1",
+                                        {
+                                            "Fn::ImportValue": {
+                                                "Fn::Sub": "${ClientSgModule1}-SecurityGroupId"
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasClientSgModule2",
+                                        {
+                                            "Fn::ImportValue": {
+                                                "Fn::Sub": "${ClientSgModule2}-SecurityGroupId"
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::If": [
+                                        "HasClientSgModule3",
+                                        {
+                                            "Fn::ImportValue": {
+                                                "Fn::Sub": "${ClientSgModule3}-SecurityGroupId"
+                                            }
+                                        },
+                                        {
+                                            "Ref": "AWS::NoValue"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "SubnetIds": {
+                                "Fn::Split": [
+                                    ",",
+                                    {
+                                        "Fn::ImportValue": {
+                                            "Fn::Sub": "${VpcModule}-SubnetIdsPrivate"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
+                "Layers": {
+                    "Fn::If": [
+                        "HasLayerArns",
+                        {
+                            "Fn::Split": [
+                                ",",
+                                {
+                                    "Ref": "LayerArns"
+                                }
+                            ]
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                }
+            }
+        },
+        "ErrorsTooHighAlarm": {
+            "Condition": "HasAlertingModule",
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmDescription": "Invocations failed due to errors in the function",
+                "Namespace": "AWS/Lambda",
+                "MetricName": "Errors",
+                "Statistic": "Sum",
+                "Period": 60,
+                "EvaluationPeriods": 1,
+                "ComparisonOperator": "GreaterThanThreshold",
+                "Threshold": 0,
+                "TreatMissingData": "notBreaching",
+                "AlarmActions": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${AlertingModule}-Arn"
+                        }
+                    }
+                ],
+                "OKActions": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${AlertingModule}-Arn"
+                        }
+                    }
+                ],
+                "Dimensions": [
+                    {
+                        "Name": "FunctionName",
+                        "Value": {
+                            "Ref": "Function"
+                        }
+                    }
+                ]
+            }
+        },
+        "ThrottlesTooHighAlarm": {
+            "Condition": "HasAlertingModule",
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmDescription": "Invocation attempts that were throttled due to invocation rates exceeding the concurrent limits",
+                "Namespace": "AWS/Lambda",
+                "MetricName": "Throttles",
+                "Statistic": "Sum",
+                "Period": 60,
+                "EvaluationPeriods": 1,
+                "ComparisonOperator": "GreaterThanThreshold",
+                "Threshold": 0,
+                "TreatMissingData": "notBreaching",
+                "AlarmActions": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${AlertingModule}-Arn"
+                        }
+                    }
+                ],
+                "OKActions": [
+                    {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${AlertingModule}-Arn"
+                        }
+                    }
+                ],
+                "Dimensions": [
+                    {
+                        "Name": "FunctionName",
+                        "Value": {
+                            "Ref": "Function"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "ModuleId": {
+            "Value": "lambda-function"
+        },
+        "ModuleVersion": {
+            "Value": "2.4.1"
+        },
+        "StackName": {
+            "Value": {
+                "Ref": "AWS::StackName"
+            }
+        },
+        "Arn": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Function",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-Arn"
+                }
+            }
+        },
+        "Name": {
+            "Value": {
+                "Ref": "Function"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-Name"
+                }
+            }
+        },
+        "IamActions": {
+            "Value": "lambda:InvokeFunction",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamActions"
+                }
+            }
+        },
+        "IamResources": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Function",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamResources"
+                }
+            }
+        },
+        "RoleArn": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Role",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-RoleArn"
+                }
+            }
+        },
+        "RoleName": {
+            "Value": {
+                "Ref": "Role"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-RoleName"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,200 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "cfn-modules: AWS KMS key",
+    "Parameters": {
+        "AlertingModule": {
+            "Description": "Optional but recommended stack name of alerting module.",
+            "Type": "String",
+            "Default": ""
+        },
+        "AliasName": {
+            "Description": "Optional alias name (if not set, the stack name is used).",
+            "Type": "String",
+            "Default": ""
+        }
+    },
+    "Conditions": {
+        "HasAlertingModule": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AlertingModule"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "HasAliasName": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AliasName"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        }
+    },
+    "Resources": {
+        "Alias": {
+            "DeletionPolicy": "Retain",
+            "Type": "AWS::KMS::Alias",
+            "Properties": {
+                "AliasName": {
+                    "Fn::If": [
+                        "HasAliasName",
+                        {
+                            "Fn::Sub": "alias/${AliasName}"
+                        },
+                        {
+                            "Fn::Sub": "alias/${AWS::StackName}"
+                        }
+                    ]
+                },
+                "TargetKeyId": {
+                    "Ref": "Key"
+                }
+            }
+        },
+        "Key": {
+            "DeletionPolicy": "Retain",
+            "Type": "AWS::KMS::Key",
+            "Properties": {
+                "KeyPolicy": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": {
+                                    "Fn::Sub": "arn:${AWS::Partition}:iam::${AWS::AccountId}:root"
+                                }
+                            },
+                            "Action": "kms:*",
+                            "Resource": "*"
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": [
+                                "kms:Encrypt",
+                                "kms:Decrypt",
+                                "kms:ReEncrypt*",
+                                "kms:GenerateDataKey*",
+                                "kms:DescribeKey"
+                            ],
+                            "Resource": "*",
+                            "Condition": {
+                                "StringEquals": {
+                                    "kms:CallerAccount": {
+                                        "Ref": "AWS::AccountId"
+                                    }
+                                },
+                                "StringLike": {
+                                    "kms:ViaService": {
+                                        "Fn::Sub": "*.${AWS::Region}.amazonaws.com"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "Rule": {
+            "Condition": "HasAlertingModule",
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+                "EventPattern": {
+                    "source": [
+                        "aws.kms"
+                    ],
+                    "detail-type": [
+                        "AWS API Call via CloudTrail"
+                    ],
+                    "resources": [
+                        {
+                            "Fn::GetAtt": [
+                                "Key",
+                                "Arn"
+                            ]
+                        }
+                    ],
+                    "detail": {
+                        "eventSource": [
+                            "kms.amazonaws.com"
+                        ],
+                        "eventName": [
+                            "ScheduleKeyDeletion",
+                            "DisableKey"
+                        ]
+                    }
+                },
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::ImportValue": {
+                                "Fn::Sub": "${AlertingModule}-Arn"
+                            }
+                        },
+                        "Id": "rule"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "ModuleId": {
+            "Value": "kms-key"
+        },
+        "ModuleVersion": {
+            "Value": "1.2.0"
+        },
+        "StackName": {
+            "Value": {
+                "Ref": "AWS::StackName"
+            }
+        },
+        "Arn": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Key",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-Arn"
+                }
+            }
+        },
+        "IamActions": {
+            "Value": "kms:Encrypt,kms:Decrypt,kms:ReEncrypt*,kms:GenerateDataKey*,kms:DescribeKey",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamActions"
+                }
+            }
+        },
+        "IamResources": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "Key",
+                    "Arn"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-IamResources"
+                }
+            }
+        }
+    }
+}
