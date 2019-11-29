@@ -145,10 +145,4 @@ package object mapping{
   }
 
 
-  private[mapping]
-  object PolicyDoc extends Enumeration {
-    val PolicyDocument    = "policydocument"
-  }
-
-
 }

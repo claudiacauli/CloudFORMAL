@@ -74,14 +74,6 @@ extends StrictLogging
 
 
 
-  private[templates]
-  def encodePolicies() = {
-    templatesEncoders
-      .foreach(_.policyEncoders
-        .foreach (_.encode()))
-    stackSet
-  }
-
 
 
 

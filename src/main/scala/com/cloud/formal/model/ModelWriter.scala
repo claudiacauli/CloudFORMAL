@@ -87,23 +87,6 @@ object ModelWriter extends StrictLogging{
     }
 
 
-    def writePermissionToOutputFolder
-    (model:Model, outputDir:String, format:String = Format.DefaultFormat ): Unit = {
-
-        val folderName = outputDir+model.name
-        val fileName = folderName + "/" + model.name + ModelFileSuffix.Permissions
-
-        makeDirIfNoDirExists(folderName)
-
-        model.manager
-          .saveOntology(
-              model.ontology,
-              documentFormat(format),
-              new FileOutputStream(fileName))
-        logger.info("Written PermissionsModel to file.")
-    }
-
-
 
 
 

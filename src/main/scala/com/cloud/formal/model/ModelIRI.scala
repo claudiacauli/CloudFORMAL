@@ -95,16 +95,6 @@ object ModelIRI {
     iri(stacksetName, 
       Ontology.SubpropertyIndividualPrefix + randomUUID)
 
-  
-  def policyNodeIRI(stacksetName: String): IRI =
-    iri(stacksetName, 
-      Ontology.PolicyDocumentIndividualPrefix + randomUUID)
-
-  
-  def embeddedPolicyIRI(stacksetName: String): IRI =
-    iri(stacksetName, 
-      Ontology.EmbeddedPolicyIndividualPrefix+randomUUID )
-
 
   def infrastructureModelIRI(infrastrName: String): IRI =
     iri(infrastrName + OntologySuffix.Infrastructure)
@@ -114,26 +104,6 @@ object ModelIRI {
     iri(infrastrName + 
       OntologySuffix.Infrastructure, extResName)
 
-  
-  def servicePrincipalIRI(infrastrName: String, servPrincName: String): IRI =
-    iri(infrastrName +
-      OntologySuffix.Infrastructure, servPrincName)
-
-
-  def permissionsModelIRI(infrastrName: String): IRI =
-    iri(infrastrName + OntologySuffix.Permissions)
-
-  
-  def awsPublicIRI: IRI =
-    awsIri(AwsOntology.Public)
-
-  
-  def awsServicePrincipalIRI(servPrincName : String): IRI =
-    awsIri(servPrincName)
-
-  
-  def awsFederatedAccountIRI(federation: String): IRI =
-    awsIri(federation)
 
   
   def awsAccountIRI(accountId: String): IRI =
@@ -142,10 +112,6 @@ object ModelIRI {
   
   def awsCanonicalUserIRI(canonicalUserId: String): IRI =
     awsIri(canonicalUserId)
-
-
-  def awsManagedPolicyIRI(arn: String): IRI =
-    awsIri(arn)
 
   
   def awsPropertyIRI(propertyName:String): IRI =

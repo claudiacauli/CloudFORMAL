@@ -46,41 +46,24 @@ extends StrictLogging
   private[templates] var resourcesByArn
   : Map[String,Vector[Resource]] = Map()
 
-  private[templates] var resourcesPointingToPolicy
-  : Map[StackSetResource,mutable.Set[StackSetResource]] = Map()
 
   private[templates] var externalResources
   : Set[ExternalResource] = Set()
 
-  private[templates] var policyStatements
-  : Set[Statement] = Set()
 
   logger.info(s"Initialization of $infrastructureName Infrastructure Encoder and sub-Encoders completed.")
 
   private def encode(): Infrastructure = {
     stackSetEncoders foreach (_.updateResourcesNames())
     logger.info("Binding Resources names, in addition to their logical IDs.")
-    stackSetEncoders foreach (_.encode())
+    infrastructure.stackSets = (stackSetEncoders map (_.encode())).toSet
     logger.info("Fully instantiated all Resource objects and their properties.")
-    infrastructure.stackSets = (stackSetEncoders map (_.encodePolicies())).toSet
-    logger.info("Computed Policy Statements for the entire infrastructure.")
-    infrastructure.aclStatements = policyStatements
     infrastructure.externalResources = this.externalResources
     logger.info(s"Generation of Infrastructure Object for $infrastructureName completed.")
     infrastructure
   }
 
 
-
-  private[templates]
-  def updateResByPolicyMap
-  (policyRes: StackSetResource, resource: StackSetResource): Unit =
-    resourcesPointingToPolicy.get(policyRes) match {
-      case None     =>
-        resourcesPointingToPolicy ++= Map(policyRes -> mutable.Set(resource))
-      case Some(_)  =>
-        resourcesPointingToPolicy(policyRes).add(resource)
-    }
 
 
 

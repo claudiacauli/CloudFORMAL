@@ -56,11 +56,7 @@ private class InfrastructureModel
     if (!dir.exists) dir.mkdir
 
     stacksetsModels
-      .foreach(_.writeToOutputFolder(outputDir+name+"/")
-//        ModelWriter.writeStackSetToFolder(
-//          ssM,
-//          outputDir+name+"/")
-      )
+      .foreach(_.writeToOutputFolder(outputDir+name+"/"))
 
     stackSetFilesInSubdirs(dir)
       .foreach(

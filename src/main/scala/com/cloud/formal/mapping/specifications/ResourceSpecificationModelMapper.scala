@@ -16,7 +16,6 @@
 
 package com.cloud.formal.mapping.specifications
 
-import com.cloud.formal.mapping.PolicyDoc
 import com.cloud.formal.model.ModelIRI
 import com.cloud.formal.{ModelType => Type}
 import org.semanticweb.owlapi.model._
@@ -81,7 +80,6 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
       case SubpropertyProperty(ran,prop,d,r)      => axioms(prop,d.name,ran,r,f = true)
       case ResourceProperty(otherResSpec,resT,n,d,r)          => axioms(n,d.name,resT,r,f = true, otherResSpec)
       case ListOfResourcesProperty(otherResSpec,restT,n,d,r)  => axioms(n,d.name,restT,r,f =false, otherResSpec)
-      case PolicyProperty(n,d,r)                  => axioms(n,d.name, PolicyDoc.PolicyDocument,r,f = true)
       case IntProperty(n,d,r)       => axioms(n,d.name,Type.OwlInt,r,f = true)
       case FloatProperty(n,d,r)     => axioms(n,d.name,Type.OwlFloat,r,f = true)
       case DoubleProperty(n,d,r)    => axioms(n,d.name,Type.OwlDouble,r,f = true)
@@ -227,11 +225,6 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
   private def owlClass(resName: String, otherResSpec: String = m.name) = {
     if (resName==null)
       None
-    else if (resName.equals(PolicyDoc.PolicyDocument))
-      Some(m.df
-        .getOWLClass(ModelIRI
-          .resourceTypeIRI(
-            PolicyDoc.PolicyDocument, resName)))
     else
       Some(m.df
         .getOWLClass(ModelIRI

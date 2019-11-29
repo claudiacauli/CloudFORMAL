@@ -52,14 +52,12 @@ extends LazyLogging
       => resolvedArn(j,expectedType)
       case j if j.isNull || isNoValue(j)
       => NoValue
-      case j if j.isObject && isStatement(j)
-        => StatementJsonWrapper(j)
       case j if j.isObject && isIntrinsicFunction(j)
       => evalIntrinsicFunction(j,expectedType)
       case j if j.isObject && isMapProperty(j,expectedType)
       => encodeMapProperty(j,mapProperty(j,expectedType).get)
       case j if j.isObject && isPolicyDoc(j)
-      => encodePolicyDoc(j)
+      => encodeValueNode(j,Some(("", CFnType.String)))
       case j if j.isObject && expectedType.isDefined &&
         expectedType.get._2.equals(CFnType.String)
       => StringNode(j.toString())
@@ -91,17 +89,6 @@ extends LazyLogging
         }
     }
 
-
-  private def encodePolicyDoc(j: Json) =
-    optRE match {
-      case None => logger.warn(s"Json contains a policy in an encoder " +
-        s"not associated with a parent resource. Returning NoValue")
-        NoValue
-      case Some(rE) =>
-        val policyEncoder = new Json2PolicyDocumentEncoder(this,j,rE.resource)
-        tE.policyEncoders ++= Vector(policyEncoder)
-        policyEncoder.policyDocument
-    }
 
 
   private def encodeValueNode(j: Json, spT: Option[(String,String)])=
@@ -625,6 +612,8 @@ extends LazyLogging
     subpropType match {
       case CFnType.String if j.isNumber
       => StringNode(j.number.get.toString)
+      case CFnType.String if j.isObject
+      => StringNode(j.toString)
       case CFnType.String
       => StringNode(j.bool.get.toString)
       case CFnType.Bool if j.isString
@@ -682,15 +671,6 @@ extends LazyLogging
 
 
 
-  private def isNotCompleteArn(j: Json) =
-    isArn(j) && !isCompleteArn(j)
-
-
-  private def resolveNotCompleteArn(j: Json) = {
-    println("Found Arn that does not appear to be complete: " + j)
-    StringNode(j.string.get)
-  }
-
 
   private def isAwsManagedPolicyArn(j:Json) =
     j.isString &&
@@ -698,9 +678,6 @@ extends LazyLogging
         .contains(j.string.get.toLowerCase)
 
 
-
-  private def isStatement(j: Json) =
-    j.hasField(Policy.EffectTag)
 
 
   private def isIntrinsicFunction(j:Json)  =

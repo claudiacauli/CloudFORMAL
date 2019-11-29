@@ -159,8 +159,3 @@ private sealed trait GenericAttributeOrPropertyType {
     private case class ListOfResourcesProperty
     (resSpecName:String, resName:String, name:String, domain:NonPrimitiveValueType, req:Boolean)
       extends GenericPropertyType
-
-    private case class PolicyProperty
-    (name:String, domain: NonPrimitiveValueType, req:Boolean)
-      extends GenericPropertyType
-

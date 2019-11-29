@@ -33,7 +33,6 @@ package object model{
   object ModelSuffix extends Enumeration {
     val StackSet        = "_StackSetModel"
     val Infrastructure  = "_InfrastructureModel"
-    val Permissions     = "_PermissionsModel"
   }
 
 
@@ -41,7 +40,6 @@ package object model{
   object ModelFileSuffix extends Enumeration {
     val StackSet: String        = ModelSuffix.StackSet + Extension.Owl
     val Infrastructure: String  = ModelSuffix.Infrastructure + Extension.Owl
-    val Permissions: String     = ModelSuffix.Permissions + Extension.Owl
   }
 
 

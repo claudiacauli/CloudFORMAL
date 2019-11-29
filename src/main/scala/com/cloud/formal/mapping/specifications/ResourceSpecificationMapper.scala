@@ -103,7 +103,6 @@ private class ResourceSpecificationMapper
     val propName              = Renaming.PropName(domain.name,pair._1)
     val fullPropName          = Renaming.UniquePropName( resSpecName, domain.name, pair._1)
     val isReferenceToResource = InterResourceReferencesMap.lookUp(fullPropName)
-    val isPolicyDocument      = PolicyDocumentsReferencesMap.lookup(fullPropName)
     def primitiveItem   = JsonUtils.getLCStringField(pair._2,Specification.PrimitiveItemType)
     def complexType     = JsonUtils.getLCStringField(pair._2,Specification.Type)
     def item            = JsonUtils.getLCStringField(pair._2,Specification.ItemType)
@@ -130,8 +129,8 @@ private class ResourceSpecificationMapper
               case Some(CFnType.Float)      => FloatProperty(propName,domain,isReq(pair._2))
               case Some(CFnType.Double)     => DoubleProperty(propName,domain,isReq(pair._2))
               case Some(CFnType.Long)       => LongProperty(propName,domain,isReq(pair._2))
-              case Some(CFnType.Int)    => IntProperty(propName,domain,isReq(pair._2))
-              case Some(CFnType.Bool)    => BooleanProperty(propName,domain,isReq(pair._2))
+              case Some(CFnType.Int)        => IntProperty(propName,domain,isReq(pair._2))
+              case Some(CFnType.Bool)       => BooleanProperty(propName,domain,isReq(pair._2))
               case Some(CFnType.Timestamp)  => TimeStampProperty(propName,domain,isReq(pair._2))
               case Some(CFnType.Cdl)        => CommaDelimitedListProperty(propName,domain,isReq(pair._2))
               case Some(CFnType.Json)       => JsonProperty(propName,domain,isReq(pair._2))
@@ -143,11 +142,9 @@ private class ResourceSpecificationMapper
       }
     }
 
-    (isReferenceToResource,isPolicyDocument) match {
-      //case (Some(_),Some(_))              => () // Cannot happen unless interRes and Policy keys intersect
-      case (Some((s,r,req,fun)),None)     => getResource(s,r,req,fun,propName,domain)
-      case (None,Some(_))                 => PolicyProperty(propName,domain,isReq(pair._2))
-      case (None,None)                    => getProperty
+    (isReferenceToResource) match {
+      case (Some((s,r,req,fun)))     => getResource(s,r,req,fun,propName,domain)
+      case (None)                    => getProperty
     }
   }
 
@@ -171,8 +168,8 @@ private class ResourceSpecificationMapper
       case Some(CFnType.Float)          => FloatAttribute(attrName,domain)
       case Some(CFnType.Double)         => DoubleAttribute(attrName,domain)
       case Some(CFnType.Long)           => LongAttribute(attrName,domain)
-      case Some(CFnType.Int)        => IntAttribute(attrName,domain)
-      case Some(CFnType.Bool)        => BooleanAttribute(attrName,domain)
+      case Some(CFnType.Int)            => IntAttribute(attrName,domain)
+      case Some(CFnType.Bool)           => BooleanAttribute(attrName,domain)
       case Some(CFnType.Timestamp)      => TimeStamp(attrName,domain)
       case Some(CFnType.Cdl)            => CommaDelimitedListAttribute(attrName,domain)
       case Some(CFnType.Json)           => JsonAttribute(attrName,domain)

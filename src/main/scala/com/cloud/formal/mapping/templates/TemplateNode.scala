@@ -16,7 +16,6 @@
 
 package com.cloud.formal.mapping.templates
 
-import argonaut.Json
 
 private[templates]
 sealed trait Node
@@ -104,55 +103,11 @@ sealed trait Node
       extends ObjectNode
 
 
-      private[templates]
-      sealed trait Principal
-        extends Entity
-
-
-      private[templates]
-      case object Public
-        extends Principal
-      {
-        override def toString : String = "Public"
-      }
-
-
-      private[templates]
-      final case class ServicePrincipal(name:String)
-        extends Principal
-      {
-        override def toString: String = "ServicePrincipal(" + name + ")"
-      }
-
-
-      private[templates]
-      final case class AccountPrincipal(accountId:String)
-        extends Principal
-      {
-        override def toString: String = "AccountPrincipal("+accountId+")"
-      }
-
-
-      private[templates]
-      final case class FederatedAccountPrincipal(federation:String)
-        extends Principal
-      {
-        override def toString: String = "FederatedAccountPrincipal("+federation+")"
-      }
-
-
-      private[templates]
-      final case class CanonicalUserPrincipal(canonicalUserId:String)
-        extends Principal
-      {
-        override def toString: String = "CanonicalUserPrincipal("+canonicalUserId+")"
-      }
 
 
       private[templates]
       sealed trait Resource
-        extends Principal
-
+        extends Entity
 
       private[templates]
       final case class ExternalResource(name:String, infrastructure:Infrastructure=null)
@@ -195,82 +150,3 @@ sealed trait Node
     {
       def apply(): Subproperty = this
     }
-
-
-    private[templates]
-    final case class PolicyDocument(statements: Set[Statement])
-      extends ObjectNode
-    {
-      def apply(): PolicyDocument = this
-    }
-
-
-    private[templates]
-    final case class StatementJsonWrapper(json: Json)
-      extends ObjectNode
-
-
-    private[templates]
-    sealed abstract class Statement ( val principals: (Boolean,Set[Principal]),
-                                      val actions: (Boolean,Vector[String]),
-                                      val resources: (Boolean, Vector[Resource]),
-                                      val hasCondition: Boolean,
-                                      val isAssumeRoleStatement: Boolean,
-                                      val account: String)
-      //extends ObjectNode
-    {
-
-      def list(l: Vector[Any]): String = {
-        l.foldLeft("")((a,b)=>a+b+" ")
-      }
-
-      def pretty(a: (Boolean,Vector[Any])) : String = {
-        if (!a._1) " NOT { " + list(a._2) + " }" else " { " + list(a._2) + " }"
-      }
-
-      def listS(l: Set[Principal]): String = {
-        l.foldLeft("")((a,b)=>a+b+" ")
-      }
-
-      def prettyS(a: (Boolean,Set[Principal])) : String = {
-        if (!a._1) " NOT { " + listS(a._2) + " }" else " { " + listS(a._2) + " }"
-      }
-
-      def prettyB(hasC: Boolean): String = {
-        if (hasC) "\n under a condition."
-        else "\n with NO condition."
-      }
-
-    }
-
-      private[templates]
-      final case class AllowStatement(p: (Boolean,Set[Principal]),
-                                      a: (Boolean,Vector[String]),
-                                      r: (Boolean, Vector[Resource]),
-                                      hasC: Boolean ,
-                                      isARS: Boolean,
-                                      acc: String)
-        extends Statement(p,a,r,hasC,isARS,acc)
-      {
-        override def toString: String = {
-          "Allows \n principals " + prettyS(p) +
-            "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + prettyB(hasC)
-        }
-      }
-
-
-
-      private[templates]
-      final case class DenyStatement(p: (Boolean,Set[Principal]),
-                                     a: (Boolean,Vector[String]),
-                                     r: (Boolean, Vector[Resource]),
-                                     hasC: Boolean ,
-                                     isARS: Boolean,
-                                     acc: String)
-        extends Statement(p,a,r,hasC,isARS,acc)
-      {
-        override def toString: String = {
-          "Denies \n principals" + prettyS(p) +
-            "\n to perform actions " + pretty(a) + "\n on resources " + pretty(r) + prettyB(hasC)
-        }
-      }

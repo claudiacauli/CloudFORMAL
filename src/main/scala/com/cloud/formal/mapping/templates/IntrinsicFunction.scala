@@ -103,7 +103,6 @@ private final case class GetAttFunction ( optRE: Option[Json2ResourceEncoder],
     if (tE.resources!=null && tE.resources.get(resourceName.value).isDefined) {
       if (attributeName.value == "arn") {
         val res = tE.resources(resourceName.value)
-        updateResourceByPolicyMap(optRE, res)
         logger.debug(s"Fn::GetAtt(${resourceName.v},Arn) " +
           s"evaluated to StackSetResource $res." )
         res
@@ -165,7 +164,6 @@ private final case class ImportValueFunction( tE: Json2TemplateEncoder,
           tE.ssE.outputsByExportName
             .getOrElse(importName.value,
               lookupOtherStackSets))
-    updateResourceByPolicyMap(optRE,res)
     res
   }
 }
@@ -207,7 +205,6 @@ private final case class SelectFunction(optRE:Option[Json2ResourceEncoder])
       NoValue
     else {
       val item = list.value(index.value)
-      updateResourceByPolicyMap(optRE,item)
       item
     }
   }
@@ -260,7 +257,6 @@ private final case class SubFunction (optRE: Option[Json2ResourceEncoder],
       s = s.split(".arn\\}").head.split("\\{").last
       if (tE.resources!=null && tE.resources.get(s).isDefined) {
         val res = tE.resources(s)
-        updateResourceByPolicyMap(optRE,res)
         res
       }
       else NoValue
@@ -297,21 +293,17 @@ private final case class RefFunction(optRE: Option[Json2ResourceEncoder],
           case ListOfResources(v) if v.size==1 =>
             println("Here the Ref Function is returning only one resource!")
             updateResourceByArnMap(optRE,v.head,s)
-            updateResourceByPolicyMap(optRE,v.head)
             v.head
           case l:ListOfResources => l
           case r =>
             updateResourceByArnMap(optRE,r,s)
-            updateResourceByPolicyMap(optRE,r)
             r
         }
       case StringNode(s) if tE.parameters!=null && tE.parameters.get(s).isDefined
       => tE.parameters(s)
       case StringNode(s) if tE.resources!=null && tE.resources.get(s).isDefined
       =>
-        val res = tE.resources(s)
-        updateResourceByPolicyMap(optRE,res)
-        res
+        tE.resources(s)
       case _  => NoValue
     }
   }

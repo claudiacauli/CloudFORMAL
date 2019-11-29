@@ -229,13 +229,6 @@ extends LazyLogging
 
   def deepInstantiationOfResource(): StackSetResource =
   {
-    updateResourceByPolicy()
-
-//    resource.absentProperties =
-//      Json2ResourceEncoder
-//        .expectedProperties(
-//          resourceType, ssE, serviceType, resourceOntology) --
-//      givenProperties.map(_.toLowerCase)
 
     resource.givenProperties =
       givenProperties.flatMap(propName =>
@@ -371,7 +364,7 @@ extends LazyLogging
       ListNode(
         attrNode.array.get
           .map(valueNodeFromSingleAttribute)
-          .toVector )
+          .toVector)
     else NoValue
 
 
@@ -405,53 +398,6 @@ extends LazyLogging
       )
   }
 
-
-
-  def pointedResourceIsPolicy(res: Node): Boolean =
-    res match {
-      case ssR: StackSetResource =>
-        PolicyResources
-          .containsResource(
-            ssR.serviceType,ssR.resourceType)
-      case _ => false
-    }
-
-
-
-  def currentResourceIsPolicyAndPointsTo: Set[StackSetResource] =
-    if (PolicyResources
-      .containsResource(serviceType,resourceType))
-    {
-      PolicyResources
-        .lookupServResName(serviceType,resourceType)
-          .flatMap( field =>
-            resourceJsonNode.
-              field(Specification.Properties)
-              .get.field(field) match {
-              case None => Set()
-              case Some(j) =>
-                NodeEncoder.encode(j) match {
-                  case ListNode(v)
-                    if v.head.isInstanceOf[StackSetResource] =>
-                    v.toSet.asInstanceOf[Set[StackSetResource]]
-                  case r:StackSetResource => Set(r)
-                  case _ =>
-                    logger.warn(s"Field $field of resource " +
-                      s"$serviceType::$resourceType does not evaluate to " +
-                      s"StackSetResources objects. ")
-                    Set()
-                }
-            }
-          ).toSet
-    }
-    else
-      Set()
-
-
-  def updateResourceByPolicy(): Unit =
-    currentResourceIsPolicyAndPointsTo
-      .foreach (pr =>
-        iE.updateResByPolicyMap(resource, pr))
 
 
 }

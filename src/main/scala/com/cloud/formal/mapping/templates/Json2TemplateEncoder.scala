@@ -48,7 +48,6 @@ extends StrictLogging
   logger.debug(s"Binding Outputs for Template $templateName.")
   private[templates] val outputByLogicalId  = getOutputsByLogicalId
   private[templates] val outputByExportName = getOutputsMapByExportName
-  private[templates] var policyEncoders: Vector[Json2PolicyDocumentEncoder] = Vector()
 
 
   def updateResourcesNames() : Unit = {

@@ -36,7 +36,6 @@ package object formal
     val Actions         = "actions"
     val StackSet        = "_stackset"
     val Infrastructure  = "_infrastructure"
-    val Permissions     = "_permissions"
   }
 
 
@@ -101,8 +100,6 @@ package object formal
     val MapValueSuffix    = "_value"
 
     val SubpropertyIndividualPrefix     = "subproperty_"
-    val PolicyDocumentIndividualPrefix  = "policydocument_"
-    val EmbeddedPolicyIndividualPrefix  = "embeddedpolicy_"
   }
 
 
@@ -112,11 +109,7 @@ package object formal
     val StringIRI:String  = Ontology.VersionIRI + Name
     val Pound: String     = Ontology.Pound
 
-    val Public            = "Public"
     val ExternalResource  = "ExternalResource"
-    val Account           = "AwsAccount"
-    val Federation        = "Federation"
-    val AwsManagedPolicy  = "AwsManagedPolicy"
 
     val HasAccountWithFederation  = "hasAccountWithFederation"
     val AccessAccount             = "hasAccessToAccount"

@@ -24,7 +24,6 @@ private class Template(val name: String) {
   private[templates] var outputByLogicalId:  Map[String,Node] = _
   private[templates] var outputByExportName: Map[String,Node] = _
   private[templates] var resources:          Map[String,StackSetResource]  = _
-  private[templates] var policyStatements:   Set[Statement] = _
 
   override def toString: String = {
     "\t\tTemplate: " + name + "\n" +
