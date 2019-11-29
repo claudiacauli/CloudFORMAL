@@ -54,13 +54,12 @@
     
 
 
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_policy -->
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_tags -->
 
 
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_policy">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_tags">
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag"/>
     </owl:ObjectProperty>
     
 
@@ -103,6 +102,16 @@
 
 
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#endpointconfiguration_types">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#endpointconfiguration"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#endpointconfiguration_vpcendpointids -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#endpointconfiguration_vpcendpointids">
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#endpointconfiguration"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -216,6 +225,17 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_policy -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi_policy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#s3location_etag -->
 
 
@@ -244,6 +264,28 @@
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#s3location_version">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#s3location"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_key -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_key">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_value -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_value">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -289,10 +331,23 @@
     
 
 
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument -->
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag -->
 
 
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument"/>
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_key"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#tag_value"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 

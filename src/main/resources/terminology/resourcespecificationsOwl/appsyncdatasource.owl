@@ -88,6 +88,17 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_deltasyncconfig -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_deltasyncconfig">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#httpconfig_authorizationconfig -->
 
 
@@ -232,6 +243,39 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_basetablettl -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_basetablettl">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablename -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablename">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablettl -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablettl">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_awsregion -->
 
 
@@ -258,6 +302,17 @@
 
 
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_usecallercredentials">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_versioned -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig_versioned">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#dynamodbconfig"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
@@ -427,6 +482,32 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#datasource_type"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_basetablettl"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablename"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#deltasyncconfig_deltasynctablettl"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>

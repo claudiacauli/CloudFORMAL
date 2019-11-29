@@ -75,6 +75,17 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#schedule_fastrestorerule -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#schedule_fastrestorerule">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#schedule"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#schedule_retainrule -->
 
 
@@ -157,6 +168,27 @@
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#createrule_times">
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#createrule"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule_availabilityzones -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule_availabilityzones">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule_count -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule_count">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     </owl:DatatypeProperty>
     
 
@@ -307,6 +339,20 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#createrule_intervalunit"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dlmlifecyclepolicy#fastrestorerule_count"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

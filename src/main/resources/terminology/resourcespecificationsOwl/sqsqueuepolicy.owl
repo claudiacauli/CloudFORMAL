@@ -22,17 +22,6 @@
     
 
 
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_queues -->
 
 
@@ -46,7 +35,7 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Classes
+    // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
@@ -55,10 +44,26 @@
     
 
 
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument -->
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument -->
 
 
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/policydocument#policydocument"/>
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
     
 
 
@@ -75,14 +80,14 @@
     <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument"/>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_queues"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_queues"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sqsqueuepolicy#queuepolicy_policydocument"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

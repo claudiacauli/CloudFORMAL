@@ -55,6 +55,26 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets_catalogtargets -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets_catalogtargets">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets_dynamodbtargets -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets_dynamodbtargets">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#targets_jdbctargets -->
 
 
@@ -84,6 +104,27 @@
      -->
 
 
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget_databasename -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget_databasename">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget_tables -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget_tables">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -180,6 +221,17 @@
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#crawler_tags">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#crawler"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget_path -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget_path">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -283,6 +335,13 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#catalogtarget"/>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#crawler -->
 
 
@@ -295,17 +354,18 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#crawler_databasename"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#crawler_role"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#dynamodbtarget"/>
     
 
 

@@ -22,6 +22,16 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint_excluderetainedvariantproperties -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint_excluderetainedvariantproperties">
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint_tags -->
 
 
@@ -77,6 +87,17 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint_retainallvariantproperties -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint_retainallvariantproperties">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#endpoint"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag_key -->
 
 
@@ -94,6 +115,17 @@
     <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag_value">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty_variantpropertytype -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty_variantpropertytype">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -128,7 +160,27 @@
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag -->
 
 
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag"/>
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag_key"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#tag_value"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerendpoint#variantproperty"/>
 </rdf:RDF>
 
 
