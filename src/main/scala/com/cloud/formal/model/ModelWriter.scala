@@ -19,6 +19,7 @@ package com.cloud.formal.model
 import java.io.{File, FileOutputStream}
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Files, Paths}
+import java.util.UUID.randomUUID
 
 import com.cloud.formal.{Extension, OntologySuffix}
 import com.typesafe.scalalogging.StrictLogging
@@ -148,7 +149,7 @@ object ModelWriter extends StrictLogging{
                           oName.split("_").head + ModelFileSuffix.StackSet
                     else oName + Extension.Owl
 
-                "\n    <uri id=\"Imports Wizard Entry\" name=\"" +
+                "\n    <uri id=\""+ randomUUID +"\" name=\"" +
                   oIRI + "\" uri=\"" + oPath +"\"/>" +
                   (if (oName.contains(OntologySuffix.StackSet))
                     "\n    <nextCatalog catalog=\"" + oName.split("_").head +
