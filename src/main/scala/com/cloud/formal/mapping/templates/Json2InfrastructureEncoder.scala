@@ -37,8 +37,6 @@ extends StrictLogging
 
   logger.info(s"Initializing $infrastructureName Infrastructure Encoder and sub-Encoders.")
 
-  AwsManagedPolicies.loadManagedPolicies()
-
   private[templates] val infrastructure =
     new Infrastructure(infrastructureName)
 

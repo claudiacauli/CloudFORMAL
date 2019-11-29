@@ -45,7 +45,6 @@ package object formal
     private val ActionsTermsPathPrefix  = "src/main/resources/terminology/actions/"
     private val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology                     = "src/main/resources/terminology/aws.owl"
-    val AwsManagedPolicies              = "terminology/AwsManagedPolicies.json"
 
     val ActionTerminology: String => String
     = actionPrefix  =>

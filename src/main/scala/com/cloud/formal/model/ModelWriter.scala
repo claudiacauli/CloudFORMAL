@@ -47,7 +47,7 @@ object ModelWriter extends StrictLogging{
         val folderName = outputDir+model.name
         val fileName    = folderName +"/"+ model.name + ModelFileSuffix.StackSet
 
-        makeDirIfDoesNotExist(folderName)
+        makeDirIfNoDirExists(folderName)
 
         onlyImportedOntologies(model)
           .foreach (o => {
@@ -74,7 +74,7 @@ object ModelWriter extends StrictLogging{
         val folderName = outputDir + model.name
         val fileName = folderName +"/"+ model.name + ModelFileSuffix.Infrastructure
 
-        makeDirIfDoesNotExist(folderName)
+        makeDirIfNoDirExists(folderName)
         model.manager
           .saveOntology(
               model.ontology,
@@ -93,7 +93,7 @@ object ModelWriter extends StrictLogging{
         val folderName = outputDir+model.name
         val fileName = folderName + "/" + model.name + ModelFileSuffix.Permissions
 
-        makeDirIfDoesNotExist(folderName)
+        makeDirIfNoDirExists(folderName)
 
         model.manager
           .saveOntology(
@@ -209,7 +209,7 @@ object ModelWriter extends StrictLogging{
     }
 
 
-    private def makeDirIfDoesNotExist(folderName:String) = {
+    private def makeDirIfNoDirExists(folderName:String) = {
         val dir = new File(folderName)
         if (!dir.exists())
             dir.mkdir()

@@ -339,16 +339,6 @@ extends LazyLogging
       => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
         op, source, externalResourceIndividualFromInfrastructure(v,infr)))
 
-        // TODO
-//      case PolicyDocument(s)
-//      => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
-//        op,source, policyDocumentAxioms(s)
-//      ))
-
-      case AwsManagedPolicy(arn)
-      => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
-        op, source, awsManagedPolicyFromName(arn)))
-
 
       case x => logger.warn(s"Attempting to encode Object Property " +
         s"with unexpected target type. Should be one of " +
@@ -389,10 +379,6 @@ extends LazyLogging
     m.df.getOWLNamedIndividual(ModelIRI
       .externalEntityIRI(infr.name,name))
 
-
-  private def awsManagedPolicyFromName(arn: String) =
-    m.df.getOWLNamedIndividual(ModelIRI
-      .awsManagedPolicyIRI(arn))
 
 
   private def range(op: OWLObjectProperty, res: StackSetResource)=

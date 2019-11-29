@@ -47,7 +47,7 @@ extends LazyLogging
   {
     json match {
       case j if isAwsManagedPolicyArn(j)
-      => getAwsManagedPolicyExternalResource(j)
+      => encodeValueNode(j,None)
       case j if isArn(j)
       => resolvedArn(j,expectedType)
       case j if j.isNull || isNoValue(j)
@@ -694,11 +694,9 @@ extends LazyLogging
 
   private def isAwsManagedPolicyArn(j:Json) =
     j.isString &&
-      AwsManagedPolicies.isManagedPolicy(j.string.get)
+      AwsManagedPoliciesHashSet
+        .contains(j.string.get.toLowerCase)
 
-
-  private def getAwsManagedPolicyExternalResource(j: Json) =
-    AwsManagedPolicy(j.string.get)
 
 
   private def isStatement(j: Json) =
