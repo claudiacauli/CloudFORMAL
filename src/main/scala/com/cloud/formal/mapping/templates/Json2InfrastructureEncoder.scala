@@ -35,7 +35,7 @@ private class Json2InfrastructureEncoder
 extends StrictLogging
 {
 
-  logger.info(s"Initializing $infrastructureName Infrastructure Encoder and sub-Encoders.")
+  logger.info(s"INITIALIZING $infrastructureName Infrastructure Encoder and sub-Encoders.")
 
   private[templates] val infrastructure =
     new Infrastructure(infrastructureName)

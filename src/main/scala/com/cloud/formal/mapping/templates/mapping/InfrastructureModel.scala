@@ -52,6 +52,8 @@ private class InfrastructureModel
   def writeToOutputFolder(destinationFolder: String): Unit =
   {
     val outputDir = withTrailingSlash(destinationFolder)
+    val outDir = new File(outputDir)
+    if (!outDir.exists()) outDir.mkdir()
     val dir = new File(outputDir+name)
     if (!dir.exists) dir.mkdir
 

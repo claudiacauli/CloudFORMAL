@@ -334,7 +334,9 @@ extends LazyLogging
 
 
   private def isIntrinsicFunction(j:Json)  =
-    Pattern
+    if (j.isNull || (j.isObject && j.objectFieldsOrEmpty.isEmpty))
+      false
+    else Pattern
       .compile(CFnFunTag.FunTagRegex, Pattern.CASE_INSENSITIVE)
       .matcher(JsonUtils.subFieldNames(j)(0))
       .matches()

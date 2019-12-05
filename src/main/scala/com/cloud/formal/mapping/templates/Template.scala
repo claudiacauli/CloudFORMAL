@@ -30,14 +30,22 @@ private class Template(val name: String) {
       prettyString(parameters,"Parameters") +
       prettyString(mappings, "Mappings") +
       prettyString(conditions, "Conditions") +
+      prettyStringRes(resources, "Resources") +
       prettyString(outputByLogicalId, "Outputs By ID") +
       prettyString(outputByExportName, "Outputs By Export Name")
   }
 
   private def prettyString(map : Map[String,Any], s : String) = {
     if (map.nonEmpty)
-      "\t\t "+s+": \n"   + map.foldLeft("")((a,b)=> a + "\t\t\t("+b._1+" -> "+b._2+")\n")
+      "\t\t " + s + ": \n" + map.foldLeft("")((a, b) => a + "\t\t\t(" + b._1 + " -> " + b._2 + ")\n")
     else ""
   }
+
+  private def prettyStringRes(map : Map[String,Any], s : String) = {
+    if (map.nonEmpty)
+      "\t\t " + s + ": \n" + map.foldLeft("")((a, b) => a + "\t\t\t" + b._2 + "\n")
+    else ""
+  }
+
 
 }

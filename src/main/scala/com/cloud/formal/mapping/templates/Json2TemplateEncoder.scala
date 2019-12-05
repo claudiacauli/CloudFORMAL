@@ -190,8 +190,9 @@ extends StrictLogging
     def outputByLogicalIdMapEntry(e: (String,Json)) : Map[String,Node] =
       if (hasTrueCondition(e._2))
         Map(e._1.toLowerCase -> NodeEncoder
-          .encode(e._2.field(TemplateTag.ValueTag)
-            .get))
+          .encode(
+            e._2.field(TemplateTag.ValueTag)
+              .getOrElse(e._2)))
       else
         Map()
 

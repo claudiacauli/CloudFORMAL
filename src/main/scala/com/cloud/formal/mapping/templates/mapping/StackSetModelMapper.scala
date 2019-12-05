@@ -246,7 +246,8 @@ extends LazyLogging
               }
             else {
               logger.error("Property " + prop + " of " + res.serviceType + res.resourceType
-                + " is not found either as object or as data property!")
+                + "("+ source.asOWLNamedIndividual().getIRI + ") is not found either as " +
+                "object or as data property! ")
               Vector()
             }
         }
@@ -339,10 +340,16 @@ extends LazyLogging
       => Vector(m.df.getOWLObjectPropertyAssertionAxiom(
         op, source, externalResourceIndividualFromInfrastructure(v,infr)))
 
+//      case ListOfResources(v) =>
+//        v.head match {
+//          case StackSetResource(id, _, _, ss, t, _) =>
+//            Vector(m.df.getOWLObjectPropertyAssertionAxiom(op, source, resourceIndividualFromStackSet(id,ss,t)))
+//        }
 
       case x => logger.warn(s"Attempting to encode Object Property " +
+        op.getIRI.toString + " " +
         s"with unexpected target type. Should be one of " +
-        s"StackSetResource, Subproperty, or ExternalResource, instead is $x.")
+        s"StackSetResource, Subproperty, or ExternalResource.")
         Vector()
     }
   }
