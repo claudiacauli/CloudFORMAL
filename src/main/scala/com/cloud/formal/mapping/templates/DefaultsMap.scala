@@ -76,9 +76,12 @@ object DefaultsMap {
 
     "elasticLoadbalancing" -> Map(),
 
-    "iam" -> Map(),
+    "iam" -> Map("role_maxsessionduration" -> 3600),
 
     "kinesis" -> Map(),
+
+    "kms" -> Map("key_enabled" -> true, "key_enablekeyrotation" -> false, "key_keyusage" -> "ENCRYPT_DECRYPT",
+    "key_pendingwindowindays" -> 30),
 
     "lambda" -> Map(),
 

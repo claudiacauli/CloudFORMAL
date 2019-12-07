@@ -381,7 +381,7 @@ private object InterResourceReferencesMap{
       -> (null,null,true,true),
 
     "eventsrule_target_arn"
-      -> ("lambdafunction", "function", true, false),
+      -> (null, null, true, false),
 
     "logssubscriptionfilter_subscriptionfilter_destinationarn"
       -> (null,null,true,true),
@@ -425,7 +425,10 @@ private object InterResourceReferencesMap{
       -> ("s3bucket","bucket",false,true),
 
     "secretsmanagerresourcepolicy_resourcepolicy_secretid"
-      -> ("secretsmanagersecret","secret",true,true)
+      -> ("secretsmanagersecret","secret",true,true),
+
+    "dynamodbtable_ssespecification_kmsmasterkeyid"
+     -> ("kmskey", "key", false, true)
 
 
   )

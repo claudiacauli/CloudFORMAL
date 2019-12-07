@@ -251,8 +251,9 @@ extends LazyLogging
     value match {
       case b: Boolean => BooleanNode(b)
       case s: String  => StringNode(s)
+      case i: Integer => IntNode(i)
         // TODO Extend with more cases!
-      //  Now my DefaultsMap Only contains bools and strings so no problem
+      //  Now my DefaultsMap Only contains bools, strings, and int so no problem
     }
 
 
