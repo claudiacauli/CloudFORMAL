@@ -68,15 +68,6 @@ object ModelIRI {
       Ontology.MapEntryPrefix + valueType + Ontology.MapValueSuffix)
 
 
-  def actionsOntologyIRI(serviceName: String): IRI =
-    iri(serviceName)
-
-  
-  def actionIRI(serviceName: String, fullActionName: String): IRI =
-    iri(serviceName +
-      OntologySuffix.Actions, 
-      fullActionName.split(":").last)
-
 
   def stackSetIRI(stacksetName: String): IRI =
     iri(stacksetName + OntologySuffix.StackSet)

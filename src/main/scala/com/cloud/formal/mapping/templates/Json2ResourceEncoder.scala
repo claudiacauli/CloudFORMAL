@@ -19,7 +19,6 @@ package com.cloud.formal.mapping.templates
 import java.util.regex.Pattern
 
 import argonaut.Json
-import com.cloud.formal.mapping.actions.ActionsMap
 import com.cloud.formal.{ModelType, Ontology}
 import com.cloud.formal.mapping.{CFnType, Renaming, Specification}
 import com.cloud.formal.model.{ModelIRI, ModelUtils}
@@ -395,12 +394,6 @@ extends LazyLogging
       .loadResourceSpecificationModelFromSpec(
         serviceType,resourceType,ssE.manager)
 
-    ActionsMap
-      .getActionPrefixFromService(serviceType.toLowerCase)
-      .foreach( aPref =>
-        ModelUtils
-          .loadActionsModelFromSpec(aPref,ssE.manager)
-      )
   }
 
 

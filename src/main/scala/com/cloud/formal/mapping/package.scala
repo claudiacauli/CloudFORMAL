@@ -68,14 +68,11 @@ package object mapping{
 
   private[mapping]
   object Renaming {
-    val ActionsTrailer        = "Actions"
     val AttributePrefix       = "attribute_"
     val Delimiter             = "_"
     val ResSpecName: String => String =
       resSpecFileName =>
         resSpecFileName.split(Specification.SpecificationTrailer).head.toLowerCase
-    val ServActName: String => String =
-      servName => servName + ActionsTrailer
     val ResTypeName: String => String =
       resFullType =>
         resFullType.split(Specification.TypeDelimiter).last.toLowerCase

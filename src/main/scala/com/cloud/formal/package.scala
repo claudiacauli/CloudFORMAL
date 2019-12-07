@@ -33,7 +33,6 @@ package object formal
 
   private[formal]
   object OntologySuffix extends Enumeration{
-    val Actions         = "actions"
     val StackSet        = "_stackset"
     val Infrastructure  = "_infrastructure"
   }
@@ -41,13 +40,9 @@ package object formal
 
   private[formal]
   object FilePath {
-    private val ActionsTermsPathPrefix  = "src/main/resources/terminology/actions/"
+
     private val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology                     = "src/main/resources/terminology/aws.owl"
-
-    val ActionTerminology: String => String
-    = actionPrefix  =>
-      ActionsTermsPathPrefix + actionPrefix + OntologySuffix.Actions + Extension.Owl
 
     val ResourceTerminology: (String,String) => String
     = (service,resource) =>
