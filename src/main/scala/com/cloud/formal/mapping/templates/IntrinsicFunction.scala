@@ -176,7 +176,7 @@ private final case class JoinFunction()
   extends IntrinsicFunction
   with ((StringNode, ListNode[Node]) => Node)
 {
-  def apply(delimiter: StringNode, segments: ListNode[Node]): Node =
+  def apply(delimiter: StringNode, segments: ListNode[Node]): StringNode =
   {
     StringNode(segments.value.map({
       case StringNode(v)                => v

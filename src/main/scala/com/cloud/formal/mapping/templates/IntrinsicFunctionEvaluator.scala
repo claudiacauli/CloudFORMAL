@@ -247,7 +247,11 @@ extends LazyLogging
     val encodedList       = nE.encode(arrayAt(j,CFnFunTag.JoinUC,1),subpropT)
 
     (encodedDelimiter, encodedList) match {
-      case (d:StringNode,l:ListNode[Node]) => JoinFunction()(d,l)
+      case (d:StringNode,l:ListNode[Node]) =>
+        val s = JoinFunction()(d,l)
+        if (s.value.startsWith(Specification.ArnHead))
+          ArnFunction(optRE,tE)(s.value)
+        s
       case _ =>
         logger.debug(s"Values of Fn::Join node $j do not " +
           "evaluate to the expected types. Returning NoValue")

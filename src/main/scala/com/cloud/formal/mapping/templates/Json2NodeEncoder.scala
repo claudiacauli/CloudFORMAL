@@ -81,6 +81,7 @@ extends LazyLogging
   private def resolvedArn(j: Json, spT:Option[(String,String)]) =
     spT match {
       case Some((_,CFnType.String)) => StringNode(j.string.get)
+      case _ if j.string.get.split(":").size <=3 => StringNode(j.string.get)
       case _ =>
         val vecNodes = ArnFunction(optRE,tE)(j.string.get)
         vecNodes match {

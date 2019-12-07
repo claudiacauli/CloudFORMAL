@@ -29,9 +29,9 @@ private final case class ArnFunction(optRE:Option[Json2ResourceEncoder],
       case StringNode(arn) =>
         new Arn(tE.ssE.iE, arn).resourcesFromArn() match {
           case v if v.size == 1 =>
-            //updateResourceByPolicyMap(optRE,v.head)
             v.head
-          case v => ListOfResources(v)
+          case v => //ListOfResources(v)
+            v.head
         }
     }
 }
@@ -112,7 +112,7 @@ extends LazyLogging
 
       val ids = lastPart match {
         case "" => Vector()
-        case s => s.replaceAll("/",":")
+        case s => s.replaceAll("/",":").replaceAll("%20"," ")
           .split(":")
           .toVector
       }
@@ -123,7 +123,7 @@ extends LazyLogging
     {
       val ids = evaluatedString match {
         case "" => Vector()
-        case s => s.replaceAll("/",":")
+        case s => s.replaceAll("/",":").replaceAll("%20"," ")
           .split(":")
           .toVector
       }
