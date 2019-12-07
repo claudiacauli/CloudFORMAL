@@ -33,20 +33,20 @@ private object Json2ResourceEncoder
 {
 
 
-  def subPropertiesNamesOfClassName (className: String, ssE: Json2StackSetEncoder,
+  def subPropertiesNamesOfClassName (typeName: String, ssE: Json2StackSetEncoder,
                                      serviceType: String, resourceType: String,
                                      resourceOntology: OWLOntology): Set[String] = {
 
 
 
-    def subPropertiesOfClassName  = {
-      val classObj =
+    def subPropertiesOfTypeName  = {
+      val typeObj =
         Some(ssE.df
             .getOWLClass(
               ModelIRI.resourceTypeIRI(
                 serviceType+resourceType,
-                className)))
-      subPropertiesOf(classObj)
+                typeName)))
+      subPropertiesOf(typeObj)
     }
 
 
@@ -61,27 +61,27 @@ private object Json2ResourceEncoder
 
 
 
-    def propertyNameStartsWithClassName(p: OWLProperty, className:String) =
+    def propertyNameStartsWithTypeObjName(p: OWLProperty, typeObjName:String) =
       p match {
       case op:OWLObjectProperty
         => op.getIRI.toString
         .split(Ontology.Pound)
-        .last.startsWith(className+Renaming.Delimiter)
+        .last.startsWith(typeObjName+Renaming.Delimiter)
       case dp:OWLDataProperty
         => dp.getIRI.toString
         .split(Ontology.Pound)
-        .last.startsWith(className+Renaming.Delimiter)
+        .last.startsWith(typeObjName+Renaming.Delimiter)
     }
 
 
-    def subPropertiesOf(classObj: Option[OWLClass]) =
-      classObj match {
+    def subPropertiesOf(typeObj: Option[OWLClass]) =
+      typeObj match {
         case None     => Vector()
         case Some(c)  =>
-          val className = c.getIRI.toString.split(Ontology.Pound).last
+          val typeObjName = c.getIRI.toString.split(Ontology.Pound).last
           allPropertiesInOntology
             .filter(p =>
-              propertyNameStartsWithClassName(p, className))
+              propertyNameStartsWithTypeObjName(p, typeObjName))
             .map {
               case dp: OWLDataProperty    => Left(dp)
               case op: OWLObjectProperty  => Right(op)
@@ -90,7 +90,7 @@ private object Json2ResourceEncoder
 
 
 
-    subPropertiesOfClassName.
+    subPropertiesOfTypeName.
       map {
         case Left(dp)   => dp.getIRI.toString.split(Ontology.Pound).last
         case Right(op)  => op.getIRI.toString.split(Ontology.Pound).last
@@ -237,6 +237,11 @@ extends LazyLogging
           ssE, resourceOntology)))
         .toMap ++
       defaultProperties
+
+    resource.absentProperties =
+      Json2ResourceEncoder.expectedProperties(
+          resourceType, ssE, serviceType, resourceOntology) --
+      resource.givenProperties.keySet.map(_.toLowerCase)
 
     resource
   }

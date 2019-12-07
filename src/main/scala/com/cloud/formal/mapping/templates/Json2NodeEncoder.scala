@@ -179,9 +179,10 @@ extends LazyLogging
             .toMap ++
           defaultPropertiesMap
 
+
         Subproperty(
           presentPropertiesMap,
-          absentProperties -- defaultPropertiesMap.keys)
+          absentProperties -- defaultPropertiesMap.keySet)
     }
 
   } ensuring optRE.isDefined
