@@ -5,7 +5,6 @@ import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.reasoner._
 import uk.ac.manchester.cs.jfact.JFactFactory
 import uk.ac.manchester.cs.jfact.kernel.options.JFactReasonerConfiguration
-import org.semanticweb.HermiT.ReasonerFactory
 
 
 object Reasoner {
@@ -39,8 +38,6 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
     reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS)
     reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS)
     reasoner.precomputeInferences(InferenceType.DATA_PROPERTY_ASSERTIONS)
-
-    //assert(reasoner.isConsistent)
 
     val unsatisfiable = reasoner
       .getUnsatisfiableClasses.getEntitiesMinusBottom
