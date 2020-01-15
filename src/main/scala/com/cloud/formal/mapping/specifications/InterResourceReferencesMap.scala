@@ -85,6 +85,15 @@ private object InterResourceReferencesMap{
     "ec2networkacl_networkacl_vpcid"
       -> ("ec2vpc", "vpc", true, true ),
 
+    "ec2networkaclentry_networkaclentry_networkaclid"
+      -> ("ec2networkacl", "networkacl", true, true),
+
+    "ec2subnetnetworkaclassociation_subnetnetworkaclassociation_networkaclid"
+      -> ("ec2networkacl", "networkacl", true, true),
+
+    "ec2subnetnetworkaclassociation_subnetnetworkaclassociation_subnetid"
+      -> ("ec2subnet","subnet",true,true),
+
     "ec2networkinterface_networkinterface_groupset"
       -> ("ec2securitygroup", "securitygroup", false, false ),
     "ec2networkinterface_networkinterface_subnetid"
@@ -365,7 +374,7 @@ private object InterResourceReferencesMap{
       -> ("s3bucket", "bucket", true, true ),
 
     "cloudformationcustomresource_customresource_servicetoken"
-      -> (null,null,true,true),
+      -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
 
     "configdeliverychannel_deliverychannel_s3bucketname"
       -> ("s3bucket", "bucket",true,true),
@@ -378,23 +387,26 @@ private object InterResourceReferencesMap{
     "cloudwatchalarm_alarm_alarmactions"
       -> ("snstopic", "topic", false, false),
     "cloudwatchalarm_dimension_value"
-      -> (null,null,true,true),
+      -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
 
     "eventsrule_target_arn"
-      -> (null, null, true, false),
+      -> (null.asInstanceOf[String], null.asInstanceOf[String], true, false),
 
     "logssubscriptionfilter_subscriptionfilter_destinationarn"
-      -> (null,null,true,true),
+      -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
     "logssubscriptionfilter_subscriptionfilter_loggroupname"
       -> ("logsloggroup","loggroup",true,true),
 
     "logsdestination_destination_targetarn"
-      -> (null,null,true,true),
+      -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
     "logsdestination_destination_rolearn"
       -> ("iamrole","role",true,true),
 
     "route53recordset_recordset_hostedzoneid"
       -> ("route53hostedzone","hostedzone",false,true),
+
+    "route53hostedzone_queryloggingconfig_cloudwatchlogsloggrouparn"
+    -> ("logsloggroup", "loggroup", true, false),
 
     "logsmetricfilter_metricfilter_loggroupname"
       -> ("logsloggroup","loggroup",true,true),
@@ -421,6 +433,27 @@ private object InterResourceReferencesMap{
     "rdsdbinstance_dbinstance_dbsnapshotidentifier"
       -> (null.asInstanceOf[String],null.asInstanceOf[String],false,true),
 
+    "rdsdbinstance_dbinstance_dbsecuritygroups"
+     -> ("rdsdbsecuritygroup", "dbsecuritygroup", false, false),
+
+    "rdsdbsecuritygroup_dbsecuritygroup_ec2vpcid"
+      -> ("ec2vpc", "vpc", false, true),
+
+    "rdsdbsecuritygroup_ingress_ec2securitygroupid"
+      -> ("ec2securitygroup", "securitygroup", false, true),
+
+    "redshiftcluster_loggingproperties_bucketname"
+    -> ("s3bucket", "bucket", true, true),
+
+    "redshiftcluster_cluster_clustersecuritygroups"
+    -> ("redshiftclustersecuritygroup", "clustersecuritygroup", false, false),
+
+    "redshiftclustersecuritygroupingress_clustersecuritygroupingress_clustersecuritygroupname"
+    -> ("redshiftclustersecuritygroup", "clustersecuritygroup", true, true),
+
+    "redshiftclustersecuritygroupingress_clustersecuritygroupingress_ec2securitygroupname"
+    -> ("ec2securitygroup", "securitygroup", false, true),
+
     "apigatewayrestapi_s3location_bucket"
       -> ("s3bucket","bucket",false,true),
 
@@ -428,8 +461,13 @@ private object InterResourceReferencesMap{
       -> ("secretsmanagersecret","secret",true,true),
 
     "dynamodbtable_ssespecification_kmsmasterkeyid"
-     -> ("kmskey", "key", false, true)
+     -> ("kmskey", "key", false, true),
 
+    "elasticloadbalancingloadbalancer_accessloggingpolicy_s3bucketname"
+      -> ( "s3bucket","bucket",true,true),
+
+    "cloudtrailtrail_dataresource_values"
+     -> (null.asInstanceOf[String],null.asInstanceOf[String],false,false)
 
   )
 
