@@ -1,0 +1,62 @@
+[
+  {
+    "ID": "BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS",
+    "type": "TFF",
+    "instQuery" : ["bucket"],
+    "propQuery": [
+      "{${x}} and ",
+      "( (bucket_accesscontrol value \"public\") or ",
+      "(bucket_accesscontrol value \"publicread\") or ",
+      "(bucket_accesscontrol value \"publicreadwrite\") ) ",
+      " and not (",
+      "(bucket_websiteconfiguration some websiteconfiguration)",
+      " or (bucket_corsconfiguration some corsconfiguration)",
+      ")"
+    ],
+    "description": [ "Only S3::Buckets that host a website or allow Cross-Origin sharing can be public."],
+    "unsatPrint": ["No bucket that does not host a website or allow CORS and is public can be found."],
+    "sat0print": ["None of the buckets declared in the ",
+      "template break this property. BUT, there ",
+      "are buckets pointed by it for which the information is unknown."],
+    "sat1print": ["There are buckets declared in the template ",
+      "that do not host a website or allow CORS and are public."]
+  }
+  ,
+  {
+    "ID": "BUCKET_STORING_LOGS_NOT_PUBLIC",
+    "type": "TFF",
+    "instQuery": ["bucket and (inverse loggingconfiguration_destinationbucketname some ",
+      "( inverse bucket_loggingconfiguration some bucket ))"],
+    "propQuery": [
+      "{${x}} and ( (bucket_accesscontrol value \"public\") or ",
+      "(bucket_accesscontrol value \"publicread\") or ",
+      "(bucket_accesscontrol value \"publicreadwrite\") )"
+    ],
+    "description": ["No S3::Bucket used to store logs should ever be public."],
+    "unsatPrint": ["No bucket that store logs and is public can be found"],
+    "sat0print": ["None of the buckets declared in the template break",
+      " this property. BUT, there are buckets outside the ",
+      "template for which the information is unknown."],
+    "sat1print": ["There are buckets, declared in this template, ",
+      "that store logs and are public"]
+  }
+  ,
+  {
+    "ID": "ALL_BUCKETS_ENCRYPTED",
+    "type": "TFF",
+    "instQuery": ["bucket"],
+    "propQuery": ["{${x}} and not (",
+      "bucket_bucketencryption some (bucketencryption_",
+      "serversideencryptionconfiguration some ",
+      "(serversideencryptionrule_serversideencryptionbydefault ",
+      "some (serversideencryptionbydefault)))",
+      ")"],
+    "description": ["All buckets must be encrypted"],
+    "unsatPrint": ["All known buckets are indeed encrypted."],
+    "sat0print": ["None of the buckets declared in the template is not encrypted.",
+    " BUT, there are buckets pointed by the template for which this info is not known."],
+    "sat1print": ["There are buckets, declared in this template, that are not encrypted."]
+  }
+
+
+]
