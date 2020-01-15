@@ -26,10 +26,10 @@ import org.semanticweb.owlapi.util.AutoIRIMapper
 trait Model {
 
 
-  private[model] val name      : String
-  private[model] val manager   : OWLOntologyManager
-  private[model] val df        : OWLDataFactory
-  private[model] val ontology  : OWLOntology
+  val name      : String
+  private[formal] val manager   : OWLOntologyManager
+  private[formal] val df        : OWLDataFactory
+  private[formal] val ontology  : OWLOntology
 
 
   def writeToOutputFolder (destinationFolder: String)
@@ -58,7 +58,18 @@ trait Model {
     model.manager.getIRIMappers.add(
       new AutoIRIMapper(new File(importFolder),true)
     )
+
     val o = model.manager.loadOntologyFromOntologyDocument(owlFile)
+
+    val name = owlFile.getAbsolutePath.split(ModelFileSuffix.StackSet)(0).split("/").last
+
+    if (o.getOntologyID.isAnonymous)
+      o.getOWLOntologyManager
+        .applyChange(
+          new SetOntologyID(
+            o, new OWLOntologyID(ModelIRI.stackSetIRI(name),null)
+          ))
+
     model.manager.applyChange(
       new AddImport(
         model.ontology,

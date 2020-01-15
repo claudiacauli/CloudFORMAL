@@ -41,7 +41,7 @@ package object formal
   private[formal]
   object FilePath {
 
-    private val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
+    val ResourceTerms           = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology                     = "src/main/resources/terminology/aws.owl"
 
     val ResourceTerminology: (String,String) => String

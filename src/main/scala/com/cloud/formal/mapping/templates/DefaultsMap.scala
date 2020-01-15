@@ -47,7 +47,7 @@ object DefaultsMap {
 
     "cloudformation" -> Map(),
 
-    "cloudwatch" ->  Map(),
+    "cloudwatch" ->  Map("alarm_actionsenabled" -> true),
 
     "cloudtrail" -> Map("trail_ismultiregiontrail" -> false,
       "trail_enablelogfilevalidation" -> false,
@@ -57,12 +57,12 @@ object DefaultsMap {
 
     "codecommit" -> Map(),
 
-    "config" -> Map(),
+    "config" -> Map("recordinggroup_allsupported" -> true),
 
     "dynamodb" -> Map("table_billingmode" -> "provisioned", "ssespecification_sseenabled" -> false,
       "pointintimerecoveryspecification_pointintimerecoveryenabled" -> false),
 
-    "ec2" -> Map(),
+    "ec2" -> Map("networkinterface_associatepublicipaddress" -> true, "networkaclentry_egress" -> false),
 
     "ecr" -> Map(),
 
@@ -87,7 +87,10 @@ object DefaultsMap {
 
     "logs" -> Map(),
 
-    "rds" -> Map(),
+    "redshift" -> Map("cluster_encrypted" -> false, "cluster_allowversionupgrade" -> true),
+
+    "rds" -> Map("dbinstance_backupretentionperiod" -> 1, "dbinstance_autominorversionupgrade" -> true,
+    "dbinstance_storageencrypted" -> false),
 
     "s3" -> Map("bucket_accesscontrol" -> "private"),
 

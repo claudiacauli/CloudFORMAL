@@ -84,9 +84,9 @@ extends LazyLogging
         matchingResources
       }
       else {
-        val newForeignNode = ExternalResource(evaluatedString, iE.infrastructure)
+        val newForeignNode = ExternalResource("ext_"+evaluatedString.replaceAll("\"",""), iE.infrastructure)
         iE.externalResources ++= Set(newForeignNode)
-        iE.resourcesByArn ++= Map(evaluatedString -> Vector(newForeignNode))
+        iE.resourcesByArn ++= Map(newForeignNode.name -> Vector(newForeignNode))
         Vector(newForeignNode)
       }
   }

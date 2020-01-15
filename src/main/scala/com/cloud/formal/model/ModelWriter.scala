@@ -75,6 +75,7 @@ object ModelWriter extends StrictLogging{
         val fileName = folderName +"/"+ model.name + ModelFileSuffix.Infrastructure
 
         makeDirIfNoDirExists(folderName)
+
         model.manager
           .saveOntology(
               model.ontology,

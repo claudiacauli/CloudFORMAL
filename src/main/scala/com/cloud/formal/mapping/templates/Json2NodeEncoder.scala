@@ -258,7 +258,7 @@ extends LazyLogging
       => FloatNode(j.number.get.toFloat.get)
       case CFnType.UnknownResource => j match {
         case n if n.isString || n.isNumber || n.isBool =>
-          val eR = ExternalResource(n.string.get, iE.infrastructure)
+          val eR = ExternalResource("ext_"+n.string.get.replaceAll("\"",""), iE.infrastructure)
           iE.externalResources ++= Set(eR)
           eR
       }

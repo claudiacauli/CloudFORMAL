@@ -185,7 +185,8 @@ extends LazyLogging
           case ListNode(vec) =>
             vec.flatMap{
               case StringNode(s)
-              => encodeObjectProperty(source, op, ExternalResource(s,infrastructure),res)
+              => val name = "ext_"+s.replaceAll("\"","")
+                encodeObjectProperty(source, op, ExternalResource(name,infrastructure),res)
               case NoValue
               => Vector()
               case n
@@ -199,7 +200,9 @@ extends LazyLogging
           case _
           => encodeObjectProperty(source, op,
             target match {
-              case StringNode(s) => ExternalResource(s,infrastructure)
+              case StringNode(s) =>
+                    val nam = "ext_"+s.replaceAll("\"","")
+                    ExternalResource(nam,infrastructure)
               case _             => target.asInstanceOf[ObjectNode]
             },res)
         }
