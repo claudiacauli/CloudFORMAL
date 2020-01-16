@@ -12,6 +12,7 @@ import Console.{BOLD, RESET}
 
 sealed trait Property {
   val id: String
+  val reqResTypes: Option[Vector[String]]
   val propType: PropertyType
   val propQuery: String
   val description: Option[String]
@@ -32,7 +33,8 @@ sealed trait Property {
 }
 
 case class TFFproperty(val id: String,
-                  val instQuery: String,
+                       val reqResTypes: Option[Vector[String]],
+                val instQuery: String,
                   val propQuery:String,
                   val description: Option[String],
                   val unsatPrint: Option[String],
@@ -48,7 +50,7 @@ case class TFFproperty(val id: String,
       case (QueryOutcome.SAT1, Some(s)) =>
         falsePrint(sat1print.get) +
           s.entities().iterator().asScala.
-            foldLeft("\n\t\t(")( (a,e) => a + e.getIRI.toString.split("#").last+", ")
+            foldLeft("\n\t\t\t(")( (a,e) => a + e.getIRI.toString.split("#").last+", ")
             .dropRight(2) + ")"
     }
   }
@@ -56,6 +58,7 @@ case class TFFproperty(val id: String,
 }
 
 case class TTFproperty(val id: String,
+                       val reqResTypes: Option[Vector[String]],
                   val propQuery:String,
                   val description: Option[String],
                   val unsatPrint: Option[String],
@@ -78,6 +81,7 @@ case class TTFproperty(val id: String,
 }
 
 case class FTTproperty(val id: String,
+                       val reqResTypes: Option[Vector[String]],
                   val instQuery: String,
                   val propQuery:String,
                   val description: Option[String],
@@ -99,6 +103,7 @@ case class FTTproperty(val id: String,
 }
 
 case class FFTproperty(val id: String,
+                       val reqResTypes: Option[Vector[String]],
                   val propQuery:String,
                   val description: Option[String],
                   val unsatPrint: Option[String],

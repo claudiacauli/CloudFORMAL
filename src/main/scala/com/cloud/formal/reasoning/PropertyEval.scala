@@ -18,11 +18,15 @@ class PropertyEvaluator(val r: Reasoner, val o: OWLOntology, val df: OWLDataFact
   def evalAndPrint(p: Property): Unit = {
 
     try {
-      println(s"\n\t$RESET$BOLD*$RESET ${p.description.get}")
-      val t = System.currentTimeMillis()
-      val outcome = r.runQuery( parseStringDLQuery(makeQuery(p)))
-      print("\t\t[" + (System.currentTimeMillis()-t) + " ms] ")
-      println(p.getOutcomePrint(outcome))
+
+      if (hasRequiredResourceTypes(o,p)){
+        println(s"\n\t$RESET$BOLD*$RESET ${p.description.get}")
+        val t = System.currentTimeMillis()
+        val outcome = r.runQuery( parseStringDLQuery(makeQuery(p)))
+        print("\t\t[" + (System.currentTimeMillis()-t) + " ms] ")
+        println(p.getOutcomePrint(outcome))
+      }
+
     } catch {
       case e: ParserException =>
         println("\t\t Could not parse the string expression " + makeQuery(p))
@@ -44,8 +48,8 @@ class PropertyEvaluator(val r: Reasoner, val o: OWLOntology, val df: OWLDataFact
     }
 
     p match {
-      case TFFproperty(_,iq,pq,_,_,_,_) => disjunct(iq,pq)
-      case FTTproperty(_,iq,pq,_,_,_,_) => disjunct(iq,pq)
+      case TFFproperty(_,_,iq,pq,_,_,_,_) => disjunct(iq,pq)
+      case FTTproperty(_,_,iq,pq,_,_,_,_) => disjunct(iq,pq)
       case x => x.propQuery
     }
 
@@ -79,5 +83,14 @@ class PropertyEvaluator(val r: Reasoner, val o: OWLOntology, val df: OWLDataFact
 
   private def replaceIndividualVariableName(i: OWLNamedIndividual, s: String): String
   = s.replaceAll("\\$\\{x\\}", i.getIRI.getFragment)
+
+  private def hasRequiredResourceTypes(o: OWLOntology, p: Property) = {
+    p.reqResTypes.get.toSet
+        .subsetOf(
+          o.imports().iterator().asScala.toSet.map(
+            (x: OWLOntology) =>
+              x.getOntologyID.getOntologyIRI.get().toString.split("#").head.split("/").last)
+        )
+  }
 
 }

@@ -13,7 +13,7 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
     pG.init()
     try {
       r.classify()
-      pG.propMap.values.foreach(pE.evalAndPrint)
+      pG.propVec.sortBy(_._1).foreach( p => pE.evalAndPrint(p._2))
     } catch {
       case e: InconsistentOntologyException
         => println("  INCONSISTENT ONTOLOGY FOUND. SKIPPING. ")

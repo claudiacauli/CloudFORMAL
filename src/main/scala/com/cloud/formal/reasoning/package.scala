@@ -27,6 +27,7 @@ package object reasoning {
     val ManifestPath = "src/main/scala/com/cloud/formal/reasoning/properties/manifest.json"
     val ID = "ID"
     val Type = "type"
+    val ReqResourceTypes = "requiredResourceTypes"
     val PropertyQuery = "propQuery"
     val InstanceQuery = "instQuery"
     val Description = "description"
@@ -56,12 +57,18 @@ package object reasoning {
     }
 
 
-
   private[reasoning]
   def getOptionalField(j: Json, fieldName: String) =
     j.field(fieldName) match {
       case None => None
       case Some(js) => Some(getStringField(j, fieldName))
+    }
+
+  private[reasoning]
+  def getArrayField(j: Json, fieldName: String) =
+    j.field(fieldName) match {
+      case None => None
+      case Some(ja) => Some(ja.array.get.map(_.string.get).toVector)
     }
 
 
