@@ -171,7 +171,7 @@ extends LazyLogging
                                           res: StackSetResource): Vector[OWLAxiom]=
     absentProp.toVector
       .flatMap(p =>
-        encodeAbsentProperty(m.df
+        absentPropertyAxiom(m.df
           .getOWLNamedIndividual(source), p,res))
 
 
@@ -183,14 +183,13 @@ extends LazyLogging
         target match {
           case null => Vector() // This should not be here. Try to get rid of null case. Check where do you assign it.
           case ListNode(vec) =>
+            arrayCardinalityAxiom(source,op,vec.size) ++
             vec.flatMap{
-              case StringNode(s)
-              => val name = "ext_"+s.replaceAll("\"","")
+              case StringNode(s) =>
+                val name = "ext_"+s.replaceAll("\"","")
                 encodeObjectProperty(source, op, ExternalResource(name,infrastructure),res)
-              case NoValue
-              => Vector()
-              case n
-              => encodeObjectProperty(source, op, n.asInstanceOf[ObjectNode],res)
+              case NoValue => Vector()
+              case n => encodeObjectProperty(source, op, n.asInstanceOf[ObjectNode],res)
             }
           case MapNode(map)
           => map.toVector
@@ -271,7 +270,7 @@ extends LazyLogging
 
 
 
-  private def encodeAbsentProperty(source: OWLIndividual,
+  private def absentPropertyAxiom(source: OWLIndividual,
                                    propName: String,
                                    res: StackSetResource)= {
     Vector(m.df
@@ -289,6 +288,26 @@ extends LazyLogging
 
 
 
+
+
+  private def arrayCardinalityAxiom(source: OWLIndividual,
+                                          p: OWLProperty,
+                                          k: Int): Vector[OWLSubClassOfAxiom] =
+    p match {
+      case op: OWLObjectProperty =>
+        Vector(m.df.getOWLSubClassOfAxiom(
+          m.df.getOWLObjectOneOf(source),
+          m.df.getOWLObjectMaxCardinality(k,op)))
+      case dp: OWLDataProperty =>
+        Vector(m.df.getOWLSubClassOfAxiom(
+          m.df.getOWLObjectOneOf(source),
+          m.df.getOWLDataMaxCardinality(k,dp)))
+    }
+
+
+
+
+
   private def encodeValueProperty(source: OWLIndividual,
                                   dp: OWLDataProperty,
                                   value: GenericValueNode): Vector[OWLAxiom] =
@@ -296,7 +315,8 @@ extends LazyLogging
       case NoValue        => Vector()
       case ListNode(vec:Vector[Node]) =>
         vec.flatMap(n =>
-          encodeValueProperty(source,dp,n.asInstanceOf[GenericValueNode]))
+          encodeValueProperty(source,dp,n.asInstanceOf[GenericValueNode])) ++
+          arrayCardinalityAxiom(source,dp,vec.size)
       case MapNode(map) =>
         map.toVector.flatMap(entry =>
           encodeValueMapEntry(source,dp,entry.asInstanceOf[(String,GenericValueNode)]))
@@ -336,7 +356,7 @@ extends LazyLogging
         createBlankNode(source,op, individualRandomIRI,res) ++
           encodeAllGivenSubproperties(individualRandomIRI, gP,res) ++
           aP.flatMap(p
-          => encodeAbsentProperty(m.df
+          => absentPropertyAxiom(m.df
               .getOWLNamedIndividual(individualRandomIRI), p,res))
 
       case ExternalResource(v,infr)
