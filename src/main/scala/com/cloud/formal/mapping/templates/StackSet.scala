@@ -36,4 +36,13 @@ private class StackSet( val name:String,
       templates.foldLeft("")((a,b)=> a + b.toString + "\n")
   }
 
+  private[templates]
+  def getResourcesCount =
+    templates.foldLeft(0)((a,t) => a + t.resources.size)
+
+  private[templates]
+  def getResourceTypes =
+    templates.foldLeft(Set[String]())((a,t) =>
+      a ++ t.resources.flatMap(rEntry => Set(rEntry._2.resourceType)))
+
 }

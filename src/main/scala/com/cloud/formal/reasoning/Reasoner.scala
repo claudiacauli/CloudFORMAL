@@ -1,5 +1,6 @@
 package com.cloud.formal.reasoning
 
+import com.cloud.formal.Benchmarking
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.reasoner._
@@ -17,18 +18,45 @@ object Reasoner {
 class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyManager)
 {
 
+
+
+
   val reasoner = (new JFactFactory)
     .createNonBufferingReasoner(
       ontology,
       new JFactReasonerConfiguration())
 
 
+
+
+
   def classify(): Unit =
   {
-    reasoner.flush()
-    val t = System.currentTimeMillis()
-    print("\n  Precomputing inferences... ")
 
+    //Benchmarking.timeNwPreFun(100)("Classification", createReasoner, computeAllInferences)
+    computeAllInferences(reasoner)
+
+    val unsatisfiable = reasoner
+      .getUnsatisfiableClasses.getEntitiesMinusBottom
+
+    if (!unsatisfiable.isEmpty) {
+      println("The model is inconsistent. The following classes are unsatisfiable: ")
+      unsatisfiable.forEach(c => println(c.getIRI.getFragment))
+    }
+    else println("The model is consistent and there are no unsatisfiable classes")
+  }
+
+
+
+  private def createReasoner(): OWLReasoner = {
+    (new JFactFactory)
+      .createNonBufferingReasoner(
+        ontology,
+        new JFactReasonerConfiguration())
+  }
+
+
+  private def computeAllInferences(reasoner: OWLReasoner) = {
     reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY)
     reasoner.precomputeInferences(InferenceType.DISJOINT_CLASSES)
     reasoner.precomputeInferences(InferenceType.DATA_PROPERTY_HIERARCHY)
@@ -38,19 +66,10 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
     reasoner.precomputeInferences(InferenceType.CLASS_ASSERTIONS)
     reasoner.precomputeInferences(InferenceType.OBJECT_PROPERTY_ASSERTIONS)
     reasoner.precomputeInferences(InferenceType.DATA_PROPERTY_ASSERTIONS)
-
-    val unsatisfiable = reasoner
-      .getUnsatisfiableClasses.getEntitiesMinusBottom
-
-    if (!unsatisfiable.isEmpty) {
-      println(s" (took ${System.currentTimeMillis()-t} ms).\n"+
-        "The following classes are unsatisfiable: ")
-      unsatisfiable.forEach(c => println(c.getIRI.getFragment))
-    }
-    else
-      println(s" (took ${System.currentTimeMillis()-t} ms).\n"+
-        "\t(The model is consistent and there are no unsatisfiable classes)")
   }
+
+
+
 
 
   def runQuery(expr: OWLClassExpression):
@@ -59,6 +78,8 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
       hasInstances(expr)
     else (QueryOutcome.UNSAT, None)
   }
+
+
 
 
 

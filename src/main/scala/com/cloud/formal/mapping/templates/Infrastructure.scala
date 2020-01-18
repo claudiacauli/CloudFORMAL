@@ -48,4 +48,15 @@ class Infrastructure(val name:String) {
   }
 
 
+  private[formal]
+  def getResourcesCount =
+    stackSets.foldLeft(0)((a,s) => a+s.getResourcesCount)
+
+
+  private[formal]
+  def getResourceTypesCount =
+    stackSets.foldLeft(Set[String]())((a,s) => a ++ s.getResourceTypes).size
+
+
+
 }

@@ -6,7 +6,7 @@ import java.nio.file.{Files, Paths}
 import java.util
 
 import argonaut.{Json, Parse}
-import com.cloud.formal.FilePath
+import com.cloud.formal.{Benchmarking, FilePath}
 import com.cloud.formal.mapping.specifications.ResourceSpecificationModel
 import com.cloud.formal.mapping.templates.mapping.InfrastructureModel
 import com.cloud.formal.mapping.templates.{Infrastructure, Json2InfrastructureEncoder}
@@ -63,19 +63,41 @@ object Interface extends LazyLogging{
 
     def createInfrastructure(file: File) = {
       val infrastructureName = file.getName
-      val i = Json2InfrastructureEncoder.encode(
-        file.listFiles()
-          .filter(_.isDirectory)
-          .map ( f =>
-            createStackSetFiles(f,infrastructureName)).toVector,
-        infrastructureName)
 
-      val im =
-        InfrastructureModel.fromInfrastructure(i)
+      var t = System.nanoTime()
+      var i : Infrastructure = null
+      var im : Model = null
+
+      println("\n "+ infrastructureName)
+
+      //  val p = Benchmarking.timeN(100)("Encoding", encodeInfrastructure(file,infrastructureName))
+      val p = encodeInfrastructure(file,infrastructureName)
+      i = p._1
+      im = p._2
+
+      println(s" - [Encoding] Resources count: ${i.getResourcesCount}")
+      println(s" - [Encoding] Resource types count: ${i.getResourceTypesCount}")
 
       im.writeToOutputFolder(outputPath)
       i.writeInfrastructureSummaryToFolder(outputPath)
       (im.name, im.ontology, im.df, im.manager)
+    }
+
+
+    def encodeInfrastructure(file: File, infrastructureName: String) = {
+
+      val i =
+        Json2InfrastructureEncoder.encode(
+          file.listFiles()
+            .filter(_.isDirectory)
+            .map ( f =>
+              createStackSetFiles(f,infrastructureName)).toVector,
+          infrastructureName)
+
+      val im =
+        InfrastructureModel.fromInfrastructure(i)
+
+      (i,im)
     }
 
 

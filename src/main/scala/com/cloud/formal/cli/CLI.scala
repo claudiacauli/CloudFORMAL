@@ -26,7 +26,6 @@ object CLI  extends LazyLogging{
             case "r" => val t = Interface.loadModel(o.getValue())
               new PropertiesChecker(t._4,t._1,t._2,t._3).run()
             case "mr" =>
-              println("here")
               val m = Interface.compileAndSaveTemplates(o.getValue)
               new PropertiesChecker(m._1,m._2,m._3,m._4).run()
             case "ra" =>
