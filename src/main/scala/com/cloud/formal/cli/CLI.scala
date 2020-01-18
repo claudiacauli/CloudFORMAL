@@ -21,12 +21,12 @@ object CLI  extends LazyLogging{
         c.iterator().forEachRemaining(
           o => o.getOpt match {
             case "s" => Interface.compileAndSaveSpecification(o.getValue())
-            case "m" => Interface.modelAndSaveTemplates(o.getValues)
-            case "ma" => Interface.modelAndSaveAllTemplates(o.getValues)
+            case "m" => Interface.modelAndSaveTemplates(o.getValues, Interface.createInfrastructure)
+            case "ma" => Interface.modelAndSaveAllTemplates(o.getValues, Interface.createInfrastructure)
             case "r" => val t = Interface.loadModel(o.getValue())
               new PropertiesChecker(t._4,t._1,t._2,t._3).run()
             case "mr" =>
-              val m = Interface.compileAndSaveTemplates(o.getValue)
+              val m = Interface.compileAndSaveTemplates(o.getValue, Interface.createInfrastructure)
               new PropertiesChecker(m._1,m._2,m._3,m._4).run()
             case "ra" =>
               new File(o.getValue.replace("~",System.getProperty("user.home")))

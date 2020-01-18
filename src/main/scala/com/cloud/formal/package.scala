@@ -19,6 +19,7 @@ package com.cloud
 import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 
+import Console.{BLUE,RESET}
 
 package object formal
 {
@@ -118,43 +119,7 @@ package object formal
   }
 
 
-  private[formal]
-  object Benchmarking{
-    def timeN[R](n: Int)(funName: String, fun: => R): R = {
 
-      def time[R](i: Int, funName: String, fun: => R): (Long,R) = {
-        val t0 = System.nanoTime()
-        val res = fun;
-        val t1 = System.nanoTime()
-        println(s" $i $funName Elapsed time: ${t1-t0} ns." )
-        (t1-t0,res)
-      }
-
-      val res = (1 to n).map(i => time(i,funName,fun))
-      val meanTime = (10 to n-1).foldLeft(0L)((a,i) => a + res(i)._1)/(n-10)
-      println(s" - [$funName] Elapsed mean time: $meanTime ns (" + meanTime/Math.pow(10,6) + " ms).")
-      res.last._2
-    }
-
-
-    def timeNwPreFun[R,S](n: Int)(funName: String, preFun: => S, fun: S => R): R = {
-
-      def time[R](i: Int, funName: String, preFun: => S, fun: S => R): (Long,R) = {
-        val outPrefun = preFun
-        val t0 = System.nanoTime()
-        val res = fun(outPrefun);
-        val t1 = System.nanoTime()
-        println(s" $i $funName Elapsed time: ${t1-t0} ns." )
-        (t1-t0,res)
-      }
-
-      val res = (1 to n).map(i => time(i,funName, preFun, fun))
-      val meanTime = (10 to n-1).foldLeft(0L)((a,i) => a + res(i)._1)/(n-10)
-      println(s" - [$funName] Elapsed mean time: $meanTime ns (" + meanTime/Math.pow(10,6) + " ms).")
-      res.last._2
-    }
-
-  }
 
 
 }

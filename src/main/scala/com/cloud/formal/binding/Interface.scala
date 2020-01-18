@@ -6,7 +6,7 @@ import java.nio.file.{Files, Paths}
 import java.util
 
 import argonaut.{Json, Parse}
-import com.cloud.formal.{Benchmarking, FilePath}
+import com.cloud.formal.{BenchmarkRunner, FilePath}
 import com.cloud.formal.mapping.specifications.ResourceSpecificationModel
 import com.cloud.formal.mapping.templates.mapping.InfrastructureModel
 import com.cloud.formal.mapping.templates.{Infrastructure, Json2InfrastructureEncoder}
@@ -54,92 +54,94 @@ object Interface extends LazyLogging{
   }
 
 
+  private[formal] def createInfrastructure(file: File, inputPath: String, outputPath: String) = {
+    val infrastructureName = file.getName
+
+    println("\n "+ infrastructureName)
+
+    //  val p = Benchmarking.timeN(10, 100)("Encoding", encodeInfrastructure(file,infrastructureName))
+    val p = encodeInfrastructure(file,infrastructureName, inputPath)
+    val i = p._1
+    val im = p._2
+
+    println(s" - [Encoding] Resources count: ${i.getResourcesCount}")
+    println(s" - [Encoding] Resource types count: ${i.getResourceTypesCount}")
+
+    im.writeToOutputFolder(outputPath)
+    i.writeInfrastructureSummaryToFolder(outputPath)
+    (im.name, im.ontology, im.df, im.manager)
+  }
 
 
-  def compileAndSaveTemplates(inPath: String, outputPath: String = "BenchmarksOut/") = {
+
+  private[formal]
+  def encodeInfrastructure(file: File, infrastructureName: String, inputPath: String) = {
+
+    val i =
+      Json2InfrastructureEncoder.encode(
+        file.listFiles()
+          .filter(_.isDirectory)
+          .map ( f =>
+            createStackSetFiles(f,infrastructureName, inputPath)).toVector,
+        infrastructureName)
+
+    val im =
+      InfrastructureModel.fromInfrastructure(i)
+
+    (i,im)
+  }
+
+
+
+
+  private def createStackSetFiles(file: File, iN:String, inputPath:String):
+  (Vector[(String, Json, Option[Json])], String) =
+  {
+    val stackSetName = file.getName
+
+    (file.listFiles().toVector
+      .filter(_.getAbsolutePath.endsWith(".json"))
+      flatMap (f => {
+      val templateName = f.getName.split(".json").head
+      if (!templateName
+        .endsWith("Descriptor") && !templateName.endsWith("DS_Store"))
+      {
+        var descriptor: File = null
+        try {
+          descriptor = new File(inputPath + "/" + iN +"/" +stackSetName + "/" + templateName + "Descriptor.json")
+          if (!descriptor.exists)
+            createDescriptorForTemplateName(templateName, file.getAbsolutePath())
+        } catch {
+          case e: FileNotFoundException => descriptor = null
+        }
+        val tmplJson  = Parse.parseOption(Source.fromFile(f).mkString).get
+        val descrJson = Parse.parseOption(Source.fromFile(descriptor).mkString)
+        Vector((templateName, tmplJson, descrJson))
+      } else Vector()
+    }),stackSetName )
+  }
+
+
+
+
+  def compileAndSaveTemplates(inPath: String,
+                              infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager),
+                              outputPath: String = "BenchmarksOut/") = {
 
     val inputPath = inPath.replace("~",System.getProperty("user.home"))
-
-
-    def createInfrastructure(file: File) = {
-      val infrastructureName = file.getName
-
-      var t = System.nanoTime()
-      var i : Infrastructure = null
-      var im : Model = null
-
-      println("\n "+ infrastructureName)
-
-      //  val p = Benchmarking.timeN(100)("Encoding", encodeInfrastructure(file,infrastructureName))
-      val p = encodeInfrastructure(file,infrastructureName)
-      i = p._1
-      im = p._2
-
-      println(s" - [Encoding] Resources count: ${i.getResourcesCount}")
-      println(s" - [Encoding] Resource types count: ${i.getResourceTypesCount}")
-
-      im.writeToOutputFolder(outputPath)
-      i.writeInfrastructureSummaryToFolder(outputPath)
-      (im.name, im.ontology, im.df, im.manager)
-    }
-
-
-    def encodeInfrastructure(file: File, infrastructureName: String) = {
-
-      val i =
-        Json2InfrastructureEncoder.encode(
-          file.listFiles()
-            .filter(_.isDirectory)
-            .map ( f =>
-              createStackSetFiles(f,infrastructureName)).toVector,
-          infrastructureName)
-
-      val im =
-        InfrastructureModel.fromInfrastructure(i)
-
-      (i,im)
-    }
-
-
-    def createStackSetFiles(file: File, iN:String):
-    (Vector[(String, Json, Option[Json])], String) =
-    {
-      val stackSetName = file.getName
-
-      (file.listFiles().toVector
-        .filter(_.getAbsolutePath.endsWith(".json"))
-        flatMap (f => {
-        val templateName = f.getName.split(".json").head
-        if (!templateName
-          .endsWith("Descriptor") && !templateName.endsWith("DS_Store"))
-        {
-          var descriptor: File = null
-          try {
-            descriptor = new File(inputPath + "/" + iN +"/" +stackSetName + "/" + templateName + "Descriptor.json")
-            if (!descriptor.exists)
-              createDescriptorForTemplateName(templateName, file.getAbsolutePath())
-          } catch {
-            case e: FileNotFoundException => descriptor = null
-          }
-          val tmplJson  = Parse.parseOption(Source.fromFile(f).mkString).get
-          val descrJson = Parse.parseOption(Source.fromFile(descriptor).mkString)
-          Vector((templateName, tmplJson, descrJson))
-        } else Vector()
-      }),stackSetName )
-    }
-
 
     new File(inputPath)
       .listFiles()
       .filter(_.isDirectory)
-      .map(createInfrastructure)
+      .map(f => infrastructureCreationFunction(f, inputPath, outputPath))
       .head
 
   }
 
 
 
-  def modelAndSaveAllTemplates(values: Array[String]): Unit = {
+  def modelAndSaveAllTemplates(values: Array[String],
+    infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)): Unit = {
 
     val inputPath = values(0).replace("~",System.getProperty("user.home"))
 
@@ -152,11 +154,12 @@ object Interface extends LazyLogging{
     new File(inputPath)
       .listFiles()
       .filter(_.isDirectory)
-      .foreach(iF => modelAndSaveTemplates(Array(iF.getAbsolutePath,outputPath)))
+      .foreach(iF => modelAndSaveTemplates(Array(iF.getAbsolutePath,outputPath),infrastructureCreationFunction))
   }
 
 
-  def modelAndSaveTemplates(values: Array[String]): Unit = {
+  def modelAndSaveTemplates(values: Array[String],
+      infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)): Unit = {
 
     val inputPath = values(0).replace("~",System.getProperty("user.home"))
 
@@ -166,7 +169,7 @@ object Interface extends LazyLogging{
       else
         "BenchmarksOut/"
 
-     compileAndSaveTemplates(inputPath, outputPath)
+     compileAndSaveTemplates(inputPath, infrastructureCreationFunction, outputPath)
   }
 
 
@@ -218,10 +221,8 @@ object Interface extends LazyLogging{
     is.forEach(i => ai.add(i))
     o.add(df.getOWLDifferentIndividualsAxiom(ai))
 
-    val axiomsCountPrint = "[Logical Axioms Count: "+o.getLogicalAxiomCount(Imports.INCLUDED)+"]"
 
-    print(f"\n\n ${RESET}${BOLD}${name}${RESET}\twas loaded." +
-      f"\t\t${axiomsCountPrint}%-5s")
+    print(f"\n\n ${RESET}${BOLD}${name}${RESET}\twas loaded.")
     (o,df,m,name)
   }
 

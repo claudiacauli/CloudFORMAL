@@ -1,11 +1,13 @@
 package com.cloud.formal.reasoning
 
-import com.cloud.formal.Benchmarking
+import com.cloud.formal.BenchmarkRunner
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model._
+import org.semanticweb.owlapi.model.parameters.Imports
 import org.semanticweb.owlapi.reasoner._
 import uk.ac.manchester.cs.jfact.JFactFactory
 import uk.ac.manchester.cs.jfact.kernel.options.JFactReasonerConfiguration
+
 
 
 object Reasoner {
@@ -33,7 +35,10 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
   def classify(): Unit =
   {
 
-    //Benchmarking.timeNwPreFun(100)("Classification", createReasoner, computeAllInferences)
+    val axiomsCountPrint = "[Logical Axioms Count: "+ontology.getLogicalAxiomCount(Imports.INCLUDED)+"]"
+    println(f"\t\t${axiomsCountPrint}%-5s")
+
+    //BenchmarkRunner.timeNwPreFun(20,100)("Classification", createReasoner, computeAllInferences)
     computeAllInferences(reasoner)
 
     val unsatisfiable = reasoner
@@ -74,9 +79,13 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
 
   def runQuery(expr: OWLClassExpression):
   (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) = {
+
+    //val isSat = BenchmarkRunner.timeN(10,100)("Satisfiability Query",reasoner.isSatisfiable(expr))
+
     if (reasoner.isSatisfiable(expr))
       hasInstances(expr)
     else (QueryOutcome.UNSAT, None)
+
   }
 
 

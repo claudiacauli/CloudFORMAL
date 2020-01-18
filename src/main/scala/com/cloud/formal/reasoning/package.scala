@@ -5,7 +5,7 @@ import argonaut.Json
 package object reasoning {
 
 
-  private[reasoning]
+  private[formal]
   object PropertyType extends Enumeration {
     type PropertyType = String
     final val TFF: PropertyType = "TFF"
@@ -14,7 +14,7 @@ package object reasoning {
     final val FFT: PropertyType = "FFT"
   }
 
-  private[reasoning]
+  private[formal]
   object QueryOutcome extends Enumeration {
     type QueryOutcome = String
     final val UNSAT: QueryOutcome = "UNSAT"
