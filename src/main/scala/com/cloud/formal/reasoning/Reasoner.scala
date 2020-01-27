@@ -20,26 +20,17 @@ object Reasoner {
 class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyManager)
 {
 
+  private val reasoner: OWLReasoner = jFactReasoner()
 
 
 
-  val reasoner = (new JFactFactory)
-    .createNonBufferingReasoner(
-      ontology,
-      new JFactReasonerConfiguration())
-
-
-
-
-
-  def classify(): Unit =
+  def classify(printEnabled: Boolean = true)(classificationFunction: => OWLReasoner => Unit): Unit =
   {
 
     val axiomsCountPrint = "[Logical Axioms Count: "+ontology.getLogicalAxiomCount(Imports.INCLUDED)+"]"
-    println(f"\t\t${axiomsCountPrint}%-5s")
+    if (printEnabled) println(f"\t\t$axiomsCountPrint%-5s")
 
-    //BenchmarkRunner.timeNwPreFun(20,100)("Classification", createReasoner, computeAllInferences)
-    computeAllInferences(reasoner)
+    classificationFunction(reasoner)
 
     val unsatisfiable = reasoner
       .getUnsatisfiableClasses.getEntitiesMinusBottom
@@ -48,12 +39,12 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
       println("The model is inconsistent. The following classes are unsatisfiable: ")
       unsatisfiable.forEach(c => println(c.getIRI.getFragment))
     }
-    else println("The model is consistent and there are no unsatisfiable classes")
+    else if (printEnabled) println("The model is consistent and there are no unsatisfiable classes\n")
   }
 
 
 
-  private def createReasoner(): OWLReasoner = {
+  private[formal] def jFactReasoner(): OWLReasoner = {
     (new JFactFactory)
       .createNonBufferingReasoner(
         ontology,
@@ -61,7 +52,8 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
   }
 
 
-  private def computeAllInferences(reasoner: OWLReasoner) = {
+
+  private[formal] def computeAllInferences(reasoner: OWLReasoner): Unit = {
     reasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY)
     reasoner.precomputeInferences(InferenceType.DISJOINT_CLASSES)
     reasoner.precomputeInferences(InferenceType.DATA_PROPERTY_HIERARCHY)
@@ -76,23 +68,32 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
 
 
 
-
-  def runQuery(expr: OWLClassExpression):
-  (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) = {
-
-    //val isSat = BenchmarkRunner.timeN(10,100)("Satisfiability Query",reasoner.isSatisfiable(expr))
-
-    if (reasoner.isSatisfiable(expr))
+  def runQuery(satFunction: (=> OWLClassExpression) => Boolean)(expr: => OWLClassExpression):
+  (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) =
+    if (satFunction(expr))
       hasInstances(expr)
-    else (QueryOutcome.UNSAT, None)
+    else unsatOutcome
 
+
+  def unsatOutcome: (QueryOutcome,Option[NodeSet[OWLNamedIndividual]])
+  = (QueryOutcome.UNSAT, None)
+
+
+  def isSat(hasReqResources: Boolean)(expr: => OWLClassExpression): Boolean = {
+    val t = System.nanoTime()
+    if (hasReqResources)
+      reasoner.isSatisfiable(expr)
+    else {
+      false
+    }
   }
 
 
 
 
 
-  private def hasInstances(expr: OWLClassExpression):
+
+  def hasInstances(expr: OWLClassExpression):
       (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) = {
      val set = this.getInstances(expr)
         if (set.isEmpty)

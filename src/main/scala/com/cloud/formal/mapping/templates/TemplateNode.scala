@@ -125,7 +125,7 @@ sealed trait Node
         extends Resource
       {
         val value: String = resourceLogicalId
-        var resourceName : String = resourceLogicalId
+        var resourceName : String = _
         var givenProperties: Map[String,Node] = Map()
         var absentProperties: Set[String] = Set()
         def apply(): StackSetResource = this

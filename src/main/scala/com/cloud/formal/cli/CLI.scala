@@ -24,10 +24,12 @@ object CLI  extends LazyLogging{
             case "m" => Interface.modelAndSaveTemplates(o.getValues, Interface.createInfrastructure)
             case "ma" => Interface.modelAndSaveAllTemplates(o.getValues, Interface.createInfrastructure)
             case "r" => val t = Interface.loadModel(o.getValue())
-              new PropertiesChecker(t._4,t._1,t._2,t._3).run()
+              val pc = new PropertiesChecker(t._4,t._1,t._2,t._3)
+              pc.run(true)(pc.r.runQuery)(pc.r.isSat)
             case "mr" =>
               val m = Interface.compileAndSaveTemplates(o.getValue, Interface.createInfrastructure)
-              new PropertiesChecker(m._1,m._2,m._3,m._4).run()
+              val pc = new PropertiesChecker(m._1,m._2,m._3,m._4)
+              pc.run(true)(pc.r.runQuery)(pc.r.isSat)
             case "ra" =>
               new File(o.getValue.replace("~",System.getProperty("user.home")))
                 .listFiles()
@@ -36,7 +38,8 @@ object CLI  extends LazyLogging{
                 .foreach( dir => {
                  val f = dir.listFiles().filter(_.getName.endsWith(".owl")).head
                   val t = Interface.loadModel(f.getAbsolutePath)
-                  new PropertiesChecker(t._4,t._1,t._2,t._3).run()
+                  val pc = new PropertiesChecker(t._4,t._1,t._2,t._3,dir.getAbsolutePath)
+                  pc.run(true)(pc.r.runQuery)(pc.r.isSat)
                 })
             case "h" => help()
             case  _  => println("Unknown Option Selected")

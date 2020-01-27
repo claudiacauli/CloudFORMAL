@@ -22,11 +22,19 @@ package object reasoning {
     final val SAT1: QueryOutcome  = "SAT/+"
   }
 
+  private[formal]
+  object QueryBuildType extends Enumeration {
+    type QueryBuildType = String
+    final val NominalProp: QueryBuildType = "nominalProp"
+    final val DisjunctProp: QueryBuildType = "disjunctProp"
+  }
+
   private[reasoning]
   object Tag {
     val ManifestPath = "src/main/scala/com/cloud/formal/reasoning/properties/manifest.json"
     val ID = "ID"
     val Type = "type"
+    val QueryBuildType = "queryBuildType"
     val ReqResourceTypes = "requiredResourceTypes"
     val PropertyQuery = "propQuery"
     val InstanceQuery = "instQuery"

@@ -7,11 +7,9 @@ import argonaut.{Json, Parse}
 import scala.io.Source
 
 
-class PropertiesGenerator {
+object PropertiesGenerator {
 
-  val propVec: Vector[(String, Property)] = init()
-
-  //def getProperty(id: String): Option[Property] = propMap.get(id)
+  //val propVec: Vector[(String, Property)] = init()
 
   def init(): Vector[(String,Property)] = {
     Parse.parseOption(Source.fromFile(new File(Tag.ManifestPath)).mkString)
@@ -19,7 +17,13 @@ class PropertiesGenerator {
       case None => exitWithMessage("Could not parse manifest file. Must be invalid.")
         Vector()
       case Some(j) =>
-        j.array.get.flatMap(propFilePath => parsePropertiesFile(propFilePath.string.get)).toVector
+        val propsVec = j.array.get.flatMap(propFilePath => parsePropertiesFile(propFilePath.string.get)).toVector
+//        println("TOTAL Properties " + propsVec.size)
+//        println("\t TFF " + propsVec.count(_._2.propType=="TFF"))
+//        println("\t TTF " + propsVec.count(_._2.propType=="TTF"))
+//        println("\t FTT " + propsVec.count(_._2.propType=="FTT"))
+//        println("\t FFT " + propsVec.count(_._2.propType=="FFT"))
+        propsVec
     }
   }
 
@@ -39,6 +43,7 @@ class PropertiesGenerator {
   private def parseProperty(j: Json): (String, Property) = {
 
     val id    = getStringField(j,Tag.ID)
+    val qbt   = getOptionalField(j,Tag.QueryBuildType)
     val req   = getArrayField(j,Tag.ReqResourceTypes)
     val iq    = getOptionalField(j, Tag.InstanceQuery)
     val pq    = getStringField(j,Tag.PropertyQuery)
@@ -48,10 +53,10 @@ class PropertiesGenerator {
     val s1Pr  = getOptionalField(j, Tag.Sat1Print)
 
     j.field(Tag.Type).get.string.get match {
-      case PropertyType.TFF => (id, new TFFproperty(id, req, iq.get, pq, d, uPr, s0Pr, s1Pr))
-      case PropertyType.TTF => (id, new TTFproperty(id, req, pq, d, uPr, s0Pr, s1Pr))
-      case PropertyType.FTT => (id, new FTTproperty(id, req, iq.get, pq, d, uPr, s0Pr, s1Pr))
-      case PropertyType.FFT => (id, new FFTproperty(id, req, pq, d, uPr, s0Pr, s1Pr))
+      case PropertyType.TFF => (id, TFFproperty(id, req, qbt.get, iq.get, pq, d, uPr, s0Pr, s1Pr))
+      case PropertyType.TTF => (id, TTFproperty(id, req, pq, d, uPr, s0Pr, s1Pr))
+      case PropertyType.FTT => (id, FTTproperty(id, req, qbt.get, iq.get, pq, d, uPr, s0Pr, s1Pr))
+      case PropertyType.FFT => (id, FFTproperty(id, req, pq, d, uPr, s0Pr, s1Pr))
     }
 
   }

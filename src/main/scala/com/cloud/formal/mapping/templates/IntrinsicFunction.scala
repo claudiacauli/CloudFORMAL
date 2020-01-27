@@ -134,7 +134,7 @@ private final case class GetAZsFunction() extends
 {
   def apply(reg: StringNode): ListNode[StringNode] =
   {
-    println("Need to implement a GetAZ Function")
+    //println("Need to implement a GetAZ Function")
     // TODO: This is an absolutely fake list
     ListNode[StringNode]( Vector(StringNode(reg+"a"), StringNode(reg+"b"), StringNode(reg+"c")) )
   }
@@ -285,7 +285,7 @@ private final case class RefFunction(optRE: Option[Json2ResourceEncoder],
   extends IntrinsicFunction with (Node => Node)
 {
   def apply(referredNode: Node): Node = {
-    referredNode match {
+    val ret = referredNode match {
       case ssR: StackSetResource => ssR
       case eR:  ExternalResource => eR
       case StringNode(s) if s.startsWith(Specification.ArnHead) =>
@@ -300,12 +300,22 @@ private final case class RefFunction(optRE: Option[Json2ResourceEncoder],
             r
         }
       case StringNode(s) if tE.parameters!=null && tE.parameters.get(s).isDefined
-      => tE.parameters(s)
+      => val pV = tE.parameters(s)
+        pV match {
+          case node: StringNode =>
+            if (tE.resources!=null)
+            tE.resources.find(_._2.resourceName ==
+              node.v.toLowerCase) match {
+              case None => tE.parameters(s)
+              case Some(p) => p._2
+          } else tE.parameters(s)
+          case _ => tE.parameters(s)
+        }
       case StringNode(s) if tE.resources!=null && tE.resources.get(s).isDefined
-      =>
-        tE.resources(s)
+      => tE.resources(s)
       case _  => NoValue
     }
+    ret
   }
 }
 

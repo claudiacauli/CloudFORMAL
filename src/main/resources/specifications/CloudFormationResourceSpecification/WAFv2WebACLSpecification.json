@@ -1,0 +1,931 @@
+{
+  "PropertyTypes": {
+    "AWS::WAFv2::WebACL.AllowAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-allowaction.html"
+    },
+    "AWS::WAFv2::WebACL.BlockAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-blockaction.html"
+    },
+    "AWS::WAFv2::WebACL.DefaultAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-defaultaction.html",
+      "Properties": {
+        "Allow": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-defaultaction.html#cfn-wafv2-webacl-defaultaction-allow",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "AllowAction"
+        },
+        "Block": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-defaultaction.html#cfn-wafv2-webacl-defaultaction-block",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "BlockAction"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.SingleHeader": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-singleheader.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-singleheader.html#cfn-wafv2-webacl-singleheader-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.SingleQueryArgument": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-singlequeryargument.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-singlequeryargument.html#cfn-wafv2-webacl-singlequeryargument-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.AllQueryArguments": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-allqueryarguments.html"
+    },
+    "AWS::WAFv2::WebACL.UriPath": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-uripath.html"
+    },
+    "AWS::WAFv2::WebACL.QueryString": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-querystring.html"
+    },
+    "AWS::WAFv2::WebACL.Body": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-body.html"
+    },
+    "AWS::WAFv2::WebACL.Method": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-method.html"
+    },
+    "AWS::WAFv2::WebACL.FieldToMatch": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html",
+      "Properties": {
+        "SingleHeader": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-singleheader",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SingleHeader"
+        },
+        "SingleQueryArgument": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-singlequeryargument",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SingleQueryArgument"
+        },
+        "AllQueryArguments": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-allqueryarguments",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "AllQueryArguments"
+        },
+        "UriPath": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-uripath",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "UriPath"
+        },
+        "QueryString": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-querystring",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "QueryString"
+        },
+        "Body": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-body",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "Body"
+        },
+        "Method": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-fieldtomatch.html#cfn-wafv2-webacl-fieldtomatch-method",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "Method"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.TextTransformation": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-texttransformation.html",
+      "Properties": {
+        "Priority": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-texttransformation.html#cfn-wafv2-webacl-texttransformation-priority",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        },
+        "Type": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-texttransformation.html#cfn-wafv2-webacl-texttransformation-type",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.TextTransformations": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-texttransformations.html",
+      "Properties": {
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-texttransformations.html#cfn-wafv2-webacl-texttransformations-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "TextTransformation"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.ByteMatchStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html",
+      "Properties": {
+        "SearchString": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html#cfn-wafv2-webacl-bytematchstatement-searchstring",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "SearchStringBase64": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html#cfn-wafv2-webacl-bytematchstatement-searchstringbase64",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "FieldToMatch": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html#cfn-wafv2-webacl-bytematchstatement-fieldtomatch",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "FieldToMatch"
+        },
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html#cfn-wafv2-webacl-bytematchstatement-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TextTransformations"
+        },
+        "PositionalConstraint": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-bytematchstatement.html#cfn-wafv2-webacl-bytematchstatement-positionalconstraint",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.SqliMatchStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sqlimatchstatement.html",
+      "Properties": {
+        "FieldToMatch": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sqlimatchstatement.html#cfn-wafv2-webacl-sqlimatchstatement-fieldtomatch",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "FieldToMatch"
+        },
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sqlimatchstatement.html#cfn-wafv2-webacl-sqlimatchstatement-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TextTransformations"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.XssMatchStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-xssmatchstatement.html",
+      "Properties": {
+        "FieldToMatch": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-xssmatchstatement.html#cfn-wafv2-webacl-xssmatchstatement-fieldtomatch",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "FieldToMatch"
+        },
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-xssmatchstatement.html#cfn-wafv2-webacl-xssmatchstatement-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TextTransformations"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.SizeConstraintStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sizeconstraintstatement.html",
+      "Properties": {
+        "FieldToMatch": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sizeconstraintstatement.html#cfn-wafv2-webacl-sizeconstraintstatement-fieldtomatch",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "FieldToMatch"
+        },
+        "ComparisonOperator": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sizeconstraintstatement.html#cfn-wafv2-webacl-sizeconstraintstatement-comparisonoperator",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "Size": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sizeconstraintstatement.html#cfn-wafv2-webacl-sizeconstraintstatement-size",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        },
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-sizeconstraintstatement.html#cfn-wafv2-webacl-sizeconstraintstatement-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TextTransformations"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.CountryCodes": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-countrycodes.html",
+      "Properties": {
+        "CountryCodes": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-countrycodes.html#cfn-wafv2-webacl-countrycodes-countrycodes",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "PrimitiveItemType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.GeoMatchStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-geomatchstatement.html",
+      "Properties": {
+        "CountryCodes": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-geomatchstatement.html#cfn-wafv2-webacl-geomatchstatement-countrycodes",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "CountryCodes"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.ExcludedRule": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-excludedrule.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-excludedrule.html#cfn-wafv2-webacl-excludedrule-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.ExcludedRules": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-excludedrules.html",
+      "Properties": {
+        "ExcludedRules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-excludedrules.html#cfn-wafv2-webacl-excludedrules-excludedrules",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "ExcludedRule"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.RuleGroupReferenceStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rulegroupreferencestatement.html",
+      "Properties": {
+        "Arn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rulegroupreferencestatement.html#cfn-wafv2-webacl-rulegroupreferencestatement-arn",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "ExcludedRules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rulegroupreferencestatement.html#cfn-wafv2-webacl-rulegroupreferencestatement-excludedrules",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ExcludedRules"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.IPSetReferenceStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ipsetreferencestatement.html",
+      "Properties": {
+        "Arn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ipsetreferencestatement.html#cfn-wafv2-webacl-ipsetreferencestatement-arn",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.RegexPatternSetReferenceStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regexpatternsetreferencestatement.html",
+      "Properties": {
+        "Arn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regexpatternsetreferencestatement.html#cfn-wafv2-webacl-regexpatternsetreferencestatement-arn",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "FieldToMatch": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regexpatternsetreferencestatement.html#cfn-wafv2-webacl-regexpatternsetreferencestatement-fieldtomatch",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "FieldToMatch"
+        },
+        "TextTransformations": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-regexpatternsetreferencestatement.html#cfn-wafv2-webacl-regexpatternsetreferencestatement-texttransformations",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TextTransformations"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.ManagedRuleGroupStatement": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupstatement.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupstatement.html#cfn-wafv2-webacl-managedrulegroupstatement-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "VendorName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupstatement.html#cfn-wafv2-webacl-managedrulegroupstatement-vendorname",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "ExcludedRules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-managedrulegroupstatement.html#cfn-wafv2-webacl-managedrulegroupstatement-excludedrules",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ExcludedRules"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.StatementThree": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html",
+      "Properties": {
+        "ByteMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-bytematchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ByteMatchStatement"
+        },
+        "SqliMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-sqlimatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SqliMatchStatement"
+        },
+        "XssMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-xssmatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "XssMatchStatement"
+        },
+        "SizeConstraintStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-sizeconstraintstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SizeConstraintStatement"
+        },
+        "GeoMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-geomatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "GeoMatchStatement"
+        },
+        "RuleGroupReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-rulegroupreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RuleGroupReferenceStatement"
+        },
+        "IPSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-ipsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "IPSetReferenceStatement"
+        },
+        "RegexPatternSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-regexpatternsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RegexPatternSetReferenceStatement"
+        },
+        "ManagedRuleGroupStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthree.html#cfn-wafv2-webacl-statementthree-managedrulegroupstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ManagedRuleGroupStatement"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.RateBasedStatementTwo": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementtwo.html",
+      "Properties": {
+        "Limit": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementtwo.html#cfn-wafv2-webacl-ratebasedstatementtwo-limit",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        },
+        "AggregateKeyType": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementtwo.html#cfn-wafv2-webacl-ratebasedstatementtwo-aggregatekeytype",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "ScopeDownStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementtwo.html#cfn-wafv2-webacl-ratebasedstatementtwo-scopedownstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementThree"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.StatementThrees": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthrees.html",
+      "Properties": {
+        "StatementThrees": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementthrees.html#cfn-wafv2-webacl-statementthrees-statementthrees",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "StatementThree"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.AndStatementTwo": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-andstatementtwo.html",
+      "Properties": {
+        "Statements": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-andstatementtwo.html#cfn-wafv2-webacl-andstatementtwo-statements",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementThrees"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.OrStatementTwo": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-orstatementtwo.html",
+      "Properties": {
+        "Statements": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-orstatementtwo.html#cfn-wafv2-webacl-orstatementtwo-statements",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementThrees"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.NotStatementTwo": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-notstatementtwo.html",
+      "Properties": {
+        "Statement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-notstatementtwo.html#cfn-wafv2-webacl-notstatementtwo-statement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementThree"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.StatementTwo": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html",
+      "Properties": {
+        "ByteMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-bytematchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ByteMatchStatement"
+        },
+        "SqliMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-sqlimatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SqliMatchStatement"
+        },
+        "XssMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-xssmatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "XssMatchStatement"
+        },
+        "SizeConstraintStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-sizeconstraintstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SizeConstraintStatement"
+        },
+        "GeoMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-geomatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "GeoMatchStatement"
+        },
+        "RuleGroupReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-rulegroupreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RuleGroupReferenceStatement"
+        },
+        "IPSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-ipsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "IPSetReferenceStatement"
+        },
+        "RegexPatternSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-regexpatternsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RegexPatternSetReferenceStatement"
+        },
+        "ManagedRuleGroupStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-managedrulegroupstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ManagedRuleGroupStatement"
+        },
+        "RateBasedStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-ratebasedstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RateBasedStatementTwo"
+        },
+        "AndStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-andstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "AndStatementTwo"
+        },
+        "OrStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-orstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "OrStatementTwo"
+        },
+        "NotStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwo.html#cfn-wafv2-webacl-statementtwo-notstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "NotStatementTwo"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.RateBasedStatementOne": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementone.html",
+      "Properties": {
+        "Limit": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementone.html#cfn-wafv2-webacl-ratebasedstatementone-limit",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        },
+        "AggregateKeyType": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementone.html#cfn-wafv2-webacl-ratebasedstatementone-aggregatekeytype",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "ScopeDownStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ratebasedstatementone.html#cfn-wafv2-webacl-ratebasedstatementone-scopedownstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementTwo"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.StatementTwos": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwos.html",
+      "Properties": {
+        "StatementTwos": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementtwos.html#cfn-wafv2-webacl-statementtwos-statementtwos",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "StatementTwo"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.AndStatementOne": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-andstatementone.html",
+      "Properties": {
+        "Statements": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-andstatementone.html#cfn-wafv2-webacl-andstatementone-statements",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementTwos"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.OrStatementOne": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-orstatementone.html",
+      "Properties": {
+        "Statements": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-orstatementone.html#cfn-wafv2-webacl-orstatementone-statements",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementTwos"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.NotStatementOne": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-notstatementone.html",
+      "Properties": {
+        "Statement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-notstatementone.html#cfn-wafv2-webacl-notstatementone-statement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementTwo"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.StatementOne": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html",
+      "Properties": {
+        "ByteMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-bytematchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ByteMatchStatement"
+        },
+        "SqliMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-sqlimatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SqliMatchStatement"
+        },
+        "XssMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-xssmatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "XssMatchStatement"
+        },
+        "SizeConstraintStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-sizeconstraintstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "SizeConstraintStatement"
+        },
+        "GeoMatchStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-geomatchstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "GeoMatchStatement"
+        },
+        "RuleGroupReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-rulegroupreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RuleGroupReferenceStatement"
+        },
+        "IPSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-ipsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "IPSetReferenceStatement"
+        },
+        "RegexPatternSetReferenceStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-regexpatternsetreferencestatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RegexPatternSetReferenceStatement"
+        },
+        "ManagedRuleGroupStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-managedrulegroupstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "ManagedRuleGroupStatement"
+        },
+        "RateBasedStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-ratebasedstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RateBasedStatementOne"
+        },
+        "AndStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-andstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "AndStatementOne"
+        },
+        "OrStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-orstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "OrStatementOne"
+        },
+        "NotStatement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-statementone.html#cfn-wafv2-webacl-statementone-notstatement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "NotStatementOne"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.CountAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-countaction.html"
+    },
+    "AWS::WAFv2::WebACL.RuleAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ruleaction.html",
+      "Properties": {
+        "Allow": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ruleaction.html#cfn-wafv2-webacl-ruleaction-allow",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "AllowAction"
+        },
+        "Block": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ruleaction.html#cfn-wafv2-webacl-ruleaction-block",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "BlockAction"
+        },
+        "Count": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-ruleaction.html#cfn-wafv2-webacl-ruleaction-count",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "CountAction"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.NoneAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-noneaction.html"
+    },
+    "AWS::WAFv2::WebACL.OverrideAction": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-overrideaction.html",
+      "Properties": {
+        "Count": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-overrideaction.html#cfn-wafv2-webacl-overrideaction-count",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "CountAction"
+        },
+        "None": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-overrideaction.html#cfn-wafv2-webacl-overrideaction-none",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "NoneAction"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.VisibilityConfig": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-visibilityconfig.html",
+      "Properties": {
+        "SampledRequestsEnabled": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-visibilityconfig.html#cfn-wafv2-webacl-visibilityconfig-sampledrequestsenabled",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Boolean"
+        },
+        "CloudWatchMetricsEnabled": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-visibilityconfig.html#cfn-wafv2-webacl-visibilityconfig-cloudwatchmetricsenabled",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Boolean"
+        },
+        "MetricName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-visibilityconfig.html#cfn-wafv2-webacl-visibilityconfig-metricname",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.Rule": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html",
+      "Properties": {
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "Priority": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-priority",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        },
+        "Statement": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-statement",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "StatementOne"
+        },
+        "Action": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-action",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "RuleAction"
+        },
+        "OverrideAction": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-overrideaction",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "OverrideAction"
+        },
+        "VisibilityConfig": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rule.html#cfn-wafv2-webacl-rule-visibilityconfig",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "VisibilityConfig"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.Rules": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rules.html",
+      "Properties": {
+        "Rules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-rules.html#cfn-wafv2-webacl-rules-rules",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "Rule"
+        }
+      }
+    },
+    "Tag": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html",
+      "Properties": {
+        "Key": {
+          "Required": true,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html#cfn-resource-tags-key",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "Value": {
+          "Required": true,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html#cfn-resource-tags-value",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::WAFv2::WebACL.TagList": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-taglist.html",
+      "Properties": {
+        "TagList": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-wafv2-webacl-taglist.html#cfn-wafv2-webacl-taglist-taglist",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "List",
+          "ItemType": "Tag"
+        }
+      }
+    }
+  },
+  "ResourceType": {
+    "AWS::WAFv2::WebACL": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html",
+      "Properties": {
+        "DefaultAction": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-defaultaction",
+          "UpdateType": "Mutable",
+          "Required": true,
+          "Type": "DefaultAction"
+        },
+        "Description": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-description",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "Name": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-name",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "Scope": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-scope",
+          "UpdateType": "Mutable",
+          "Required": true,
+          "PrimitiveType": "String"
+        },
+        "Rules": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-rules",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "Rules"
+        },
+        "VisibilityConfig": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-visibilityconfig",
+          "UpdateType": "Mutable",
+          "Required": true,
+          "Type": "VisibilityConfig"
+        },
+        "Tags": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html#cfn-wafv2-webacl-tags",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "TagList"
+        }
+      },
+      "Attributes": {
+        "Arn": {
+          "PrimitiveType": "String"
+        },
+        "Capacity": {
+          "PrimitiveType": "Integer"
+        },
+        "Id": {
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  "ResourceSpecificationVersion": "10.3.0"
+}

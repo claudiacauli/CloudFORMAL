@@ -1,0 +1,83 @@
+[
+  {
+    "ID": "43_AKM_RDS_BACKUP",
+    "type": "TFF",
+    "requiredResourceTypes": ["rdsdbinstance"],
+    "queryBuildType": "nominalProp",
+    "instQuery": "dbinstance",
+    "propQuery": ["not (dbinstance_backupretentionperiod value 0)"],
+    "description": ["All known RDS::DBInstances must have backup retention greater than 0"],
+    "unsatPrint": ["All known RDS::DBInstances have backup retention different from 0"],
+    "sat0print": ["All declared RDS::DBInstances have backup retention not zero; but there might be referenced ones that don't"],
+    "sat1print": ["There exists at least one declared RDS::DBInstance that has backup retention set to 0"]
+  }
+  ,
+  {
+    "ID": "44_AM_RDS_MINORUPGRADE",
+    "type": "TTF",
+    "requiredResourceTypes": ["rdsdbinstance"],
+    "propQuery": ["dbinstance and not (dbinstance_autominorversionupgrade value true)"],
+    "description": ["All declared RDS::DBInstance should have auto minor version upgrade enabled"],
+    "unsatPrint": ["All RDS::DBInstance have auto minor upgrade enabled"],
+    "sat0print": ["All declared RDS::DBInstances have auto minor upgrade enabled"],
+    "sat1print": ["There exists at least one declared RDS::DBInstance that has auto minor version upgrade disabled"]
+  }
+  ,
+  {
+    "ID": "45_EM_RDS_SHORT_BACKUP",
+    "type": "FFT",
+    "requiredResourceTypes": ["rdsdbinstance"],
+    "propQuery": ["dbinstance and (dbinstance_backupretentionperiod value 1)"],
+    "description": ["There exists a declared RDS::DBInstance with a too short backup retention of 1 day"],
+    "unsatPrint": ["There is no RDS::DBInstance that retains backups for one day"],
+    "sat0print": ["There is no declared RDS::DBInstance that retains backups for one day"],
+    "sat1print": ["There exists at least one declared RDS::DBInstance that retains backups for one day."]
+  }
+  ,
+  {
+    "ID": "46_EM_DECLARED_RDS_ONEAZ",
+    "type": "FFT",
+    "requiredResourceTypes": ["rdsdbinstance"],
+    "propQuery": ["dbinstance and ((dbinstance_multiaz value false) or (dbinstance_availabilityzone some xsd:string))"],
+    "description": ["There is some declared RDS::DBInstance that is not across availability zones"],
+    "unsatPrint": ["There is not RDS::DBInstance replicated only on one availability zone"],
+    "sat0print": ["There is no declared RDS::DBInstance that is replicated only on one availability zone"],
+    "sat1print": ["There is at least one declared RDS::DBInstance that is not replicated in different Availability Zones"]
+  }
+  ,
+  {
+    "ID": "47_AKM_RDS_ENCRYPTED",
+    "type": "TFF",
+    "queryBuildType": "nominalProp",
+    "requiredResourceTypes": ["rdsdbinstance"],
+    "instQuery": ["dbinstance"],
+    "propQuery": ["not (dbinstance_storageencrypted value true)"],
+    "description": ["All known RDS::DBInstance must be encrypted"],
+    "unsatPrint": ["All known RDS::DBInstances are encrypted"],
+    "sat0print": ["All declared RDS::DBInstances are encrypted - but there might be referenced ones that are not"],
+    "sat1print": ["There exists at least one declared RDS::DBInstance that is not encrypted"]
+  }
+  ,
+  {
+    "ID": "48_EKM_RDS_SECURITYGROUP_OPEN",
+    "type": "FTT",
+    "queryBuildType": "nominalProp",
+    "requiredResourceTypes": ["rdsdbinstance","rdsdbsecuritygroup","ec2securitygroup"],
+    "instQuery": ["dbinstance"],
+    "propQuery": ["(dbinstance_securitygroups some ",
+      "(dbsecuritygroup_dbsecuritygroupngress_ingress some ",
+      "((ingress_cidrip value \"0.0.0.0/0\") or ",
+      "(ingress_cidrip value \"::/0\") or",
+      " (ingress_ec2securitygroupid some",
+      " (securitygroup_securitygroupingress some ((ingress_cidrip value \"0.0.0.0/0\") or (ingress_cidrip value \"::/0\")))",
+      ") )))"],
+    "description": ["There exists a known RDS::DBInstance",
+    " that might be linked to a open security group"],
+    "unsatPrint": ["All known RDS::DBInstances are not",
+      " linked to an open security group"],
+    "sat0print": ["There is not declared RDS::DBInstance",
+      " linked to an open security group - but there might be referenced ones"],
+    "sat1print": ["There is at least one declared RDS::DBInstance",
+      " that is linked to an open security group"]
+  }
+]

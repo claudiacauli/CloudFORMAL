@@ -211,7 +211,7 @@ extends LazyLogging
       resource = StackSetResource(
         resourceLogicalId, serviceType, resourceType,
         tE.ssE.stackSet, tE.template, attributesFromResourceJsonNode)
-
+      updateResourceName()
       importResourceSpecificationOntology()
 
       Map(resourceLogicalId -> resource)
@@ -339,8 +339,8 @@ extends LazyLogging
 
 
 
-  private def getResourceName: String =
-    ResourcesNameFieldsMap
+  private def getResourceName: String = {
+    val res = ResourcesNameFieldsMap
       .lookUp(serviceType,resourceType) match {
       case None     => resourceLogicalId
       case Some(f)  =>
@@ -355,6 +355,9 @@ extends LazyLogging
         else
           resourceLogicalId
     }
+    res.toLowerCase()
+  }
+
 
 
 

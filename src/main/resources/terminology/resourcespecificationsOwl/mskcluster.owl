@@ -88,6 +88,17 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#cluster_openmonitoring -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#cluster_openmonitoring">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#cluster"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#encryptioninfo_encryptionatrest -->
 
 
@@ -106,6 +117,39 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#encryptioninfo"/>
         <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#encryptionintransit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring_prometheus -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring_prometheus">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus_jmxexporter -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus_jmxexporter">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus_nodeexporter -->
+
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus_nodeexporter">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus"/>
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter"/>
     </owl:ObjectProperty>
     
 
@@ -296,6 +340,28 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter_enabledinbroker -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter_enabledinbroker">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter_enabledinbroker -->
+
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter_enabledinbroker">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#tls_certificateauthorityarnlist -->
 
 
@@ -429,6 +495,55 @@
 
 
     <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#encryptionintransit"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#jmxexporter_enabledinbroker"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#nodeexporter_enabledinbroker"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#openmonitoring_prometheus"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus -->
+
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mskcluster#prometheus"/>
     
 
 

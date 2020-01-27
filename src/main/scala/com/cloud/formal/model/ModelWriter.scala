@@ -33,12 +33,15 @@ object ModelWriter extends StrictLogging{
 
 
     def writeSpecificationToFolder
-    (model:Model, outputDir: String, format: String = Format.DefaultFormat ): Unit =
+    (model:Model, outputDir: String, format: String = Format.DefaultFormat ): Unit = {
+        val fos = new FileOutputStream(outputDir+"/"+model.name + Extension.Owl)
         model.manager
           .saveOntology(
               model.ontology,
-              documentFormat(format),
-              new FileOutputStream(outputDir+"/"+model.name + Extension.Owl))
+              documentFormat(format), fos)
+        fos.close()
+    }
+
 
 
     def writeStackSetToFolder
@@ -55,11 +58,12 @@ object ModelWriter extends StrictLogging{
               updateImportPointer(o,model,folderName)
         })
 
+        val fos = new FileOutputStream(fileName)
         model.manager
           .saveOntology(
               model.ontology,
-              documentFormat(format),
-              new FileOutputStream(fileName))
+              documentFormat(format), fos)
+        fos.close()
 
         addProtegeCatalogue(
             onlyImportedOntologies(model),
@@ -76,11 +80,12 @@ object ModelWriter extends StrictLogging{
 
         makeDirIfNoDirExists(folderName)
 
+        val fos = new FileOutputStream(fileName)
         model.manager
           .saveOntology(
               model.ontology,
-              documentFormat(format),
-              new FileOutputStream(fileName))
+              documentFormat(format), fos)
+        fos.close()
 
         logger.info(s"Written InfrastructureModel to file.")
         addProtegeCatalogue(importedStackSets(model),model.name,folderName)
@@ -160,11 +165,10 @@ object ModelWriter extends StrictLogging{
 
     private def saveToOutputFolder(ontology: OWLOntology, m: Model,
                                    folder: String, format: String): Unit = {
-        m.manager
-          .saveOntology( ontology, documentFormat(format),
-              new FileOutputStream(
-                  folder+"/"+ ontology.getOWLOntologyManager
-                    .getOntologyDocumentIRI(ontology).toString.split("/").last ))
+        val fos = new FileOutputStream(folder+"/"+ ontology.getOWLOntologyManager
+              .getOntologyDocumentIRI(ontology).toString.split("/").last )
+        m.manager.saveOntology( ontology, documentFormat(format), fos)
+        fos.close()
     }
 
 

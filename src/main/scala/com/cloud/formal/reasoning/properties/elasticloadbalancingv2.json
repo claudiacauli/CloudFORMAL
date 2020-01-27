@@ -1,0 +1,45 @@
+[
+  {
+    "ID": "32_EM_LOADBALANCER_S3ACCESSLOGS",
+    "type": "FFT",
+    "requiredResourceTypes": ["elasticloadbalancingv2loadbalancer"],
+    "propQuery": ["loadbalancer and (loadbalancer_loadbalance",
+      "rattributes some (loadbalancerattribute_key value \"acc",
+      "ess_logs.s3.enabled\") and (loadbalancerattribute_value",
+      " value true)) "],
+    "description": "There must exist a LoadBalancer with S3 Access Logs enabled",
+    "unsatPrint": "There is no LoadBalancer with S3 Access Logs enabled",
+    "sat0print": "There is no LoadBalancer with S3 Access Logs enabled",
+    "sat1print": "There is at least one LoadBalancer that certainly has S3 Access Logs enabled"
+  }
+  ,
+  {
+    "ID": "33_EM_LOADBALANCER_DELETION_PROTECTED",
+    "type": "FFT",
+    "requiredResourceTypes": ["elasticloadbalancingv2loadbalancer"],
+    "propQuery": ["loadbalancer and (loadbalancer_",
+      "loadbalancerattributes some (loadbalancerattribute_key",
+      " value \"deletion_protection.enabled \") and ",
+      "(loadbalancerattribute_value value true)) "],
+    "description": "There must exist a LoadBalancer with Deletion Protection enabled",
+    "unsatPrint": "There is no LoadBalancer with Deletion Protection enabled",
+    "sat0print": "There is no LoadBalancer with Deletion Protection enabled",
+    "sat1print": "There is at least one LoadBalancer that certainly has Deletion Protection enabled"
+  }
+  ,
+  {
+    "ID": "34_EM_LISTENER_NO_OLD_POLICIES",
+    "type": "FFT",
+    "requiredResourceTypes": ["elasticloadbalancingv2listener"],
+    "propQuery": ["listener and not ((listener_sslpolicy value",
+      " \"ELBSecurityPolicy-2016-08\") or (listener_sslpolicy",
+      " value \"ELBSecurityPolicy-FS-2018-06\") or (listener_sslpolicy",
+      " value \"ELBSecurityPolicy-TLS-1-1-2017-01\") or (listener_sslpolicy",
+      " value \"ELBSecurityPolicy-TLS-1-2-2017-01\") or (listener_sslpolicy",
+      " value \"ELBSecurityPolicy-TLS-1-2-Ext-2018-06\"))"],
+    "description": "There exists a LoadBalancingV2::Listener that does not use old SSL policies",
+    "unsatPrint": "There is no LoadBalancingV2::Listener not using old SSL policies",
+    "sat0print": "There is no LoadBalancingV2::Listener that does not use old SSL policies",
+    "sat1print": "There is at least one LoadBalancingV2::Listener that does not use old policies"
+  }
+]

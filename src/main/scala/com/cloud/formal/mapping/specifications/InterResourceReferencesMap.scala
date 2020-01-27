@@ -414,6 +414,9 @@ private object InterResourceReferencesMap{
     "apigatewayaccount_account_cloudwatchrolearn"
       -> ("iamrole","role",false,true),
 
+    "apigatewaymethod_integration_uri"
+      ->("null","null",false,true),
+
     "apigatewaydeployment_deployment_restapiid"
       -> ("apigatewayrestapi","restapi",true,true),
 
@@ -425,6 +428,9 @@ private object InterResourceReferencesMap{
 
     "apigatewaydomainname_domainname_regionalcertificatearn"
       -> (null.asInstanceOf[String],null.asInstanceOf[String],false,true),
+
+    "autoscalinglaunchconfiguration_launchconfiguration_iaminstanceprofile"
+      -> ("iaminstanceprofile","instanceprofile",false,true),
 
     "kmsalias_alias_targetkeyid"
       -> ("kmskey","key",true,true),

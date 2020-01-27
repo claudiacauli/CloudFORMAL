@@ -1,0 +1,13 @@
+[
+  {
+    "ID": "31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY",
+    "type": "FFT",
+    "requiredResourceTypes": ["elasticloadbalancingloadbalancer"],
+    "propQuery": ["loadbalancer and (loadbalancer_accessloggingpolicy",
+      " some (accessloggingpolicy_enabled value true))"],
+    "description": "There exists a LoadBalancer that must have access logging policy enabled",
+    "unsatPrint": ["There is no LoadBalancer with Access Logging Policy enabled"],
+    "sat0print": ["There is no LoadBalancer with Access Logging Policy enabled"],
+    "sat1print": ["There is at least one LoadBalancer with Access Logging Policy enabled"]
+  }
+]

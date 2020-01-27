@@ -27,7 +27,7 @@ object Interface extends LazyLogging{
 
 
 
-  def compileAndSaveSpecification(inPath: String): Unit = {
+  def compileAndSaveSpecification(inPath: String, printEnabled: Boolean = true): Unit = {
 
     val inputPath = inPath.replace("~",System.getProperty("user.home"))
     val dir = new File(inputPath)
@@ -44,7 +44,7 @@ object Interface extends LazyLogging{
             .fromResourceSpecificationFile(f))
 
     specModels.foreach( sm => {
-      println(s" [Spec-OWL] ${sm.name}")
+      if (printEnabled) println(s" [Spec-OWL] ${sm.name}")
       val dir = new File(FilePath.ResourceTerms)
       if (!dir.exists())
         dir.mkdir()
@@ -54,7 +54,8 @@ object Interface extends LazyLogging{
   }
 
 
-  private[formal] def createInfrastructure(file: File, inputPath: String, outputPath: String) = {
+  private[formal] def createInfrastructure(file: File, inputPath: String, outputPath: String)
+  : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
     val infrastructureName = file.getName
 
     println("\n "+ infrastructureName)
@@ -75,7 +76,7 @@ object Interface extends LazyLogging{
 
 
   private[formal]
-  def encodeInfrastructure(file: File, infrastructureName: String, inputPath: String) = {
+  def encodeInfrastructure(file: File, infrastructureName: String, inputPath: String): (Infrastructure, Model) = {
 
     val i =
       Json2InfrastructureEncoder.encode(
@@ -126,7 +127,8 @@ object Interface extends LazyLogging{
 
   def compileAndSaveTemplates(inPath: String,
                               infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager),
-                              outputPath: String = "BenchmarksOut/") = {
+                              outputPath: String = "BenchmarksOut/")
+  : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
 
     val inputPath = inPath.replace("~",System.getProperty("user.home"))
 
@@ -141,7 +143,8 @@ object Interface extends LazyLogging{
 
 
   def modelAndSaveAllTemplates(values: Array[String],
-    infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)): Unit = {
+    infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)) :
+   Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] = {
 
     val inputPath = values(0).replace("~",System.getProperty("user.home"))
 
@@ -154,12 +157,14 @@ object Interface extends LazyLogging{
     new File(inputPath)
       .listFiles()
       .filter(_.isDirectory)
-      .foreach(iF => modelAndSaveTemplates(Array(iF.getAbsolutePath,outputPath),infrastructureCreationFunction))
+      .map(iF => modelAndSaveTemplates(Array(iF.getAbsolutePath,outputPath),infrastructureCreationFunction))
+      .toVector
   }
 
 
   def modelAndSaveTemplates(values: Array[String],
-      infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)): Unit = {
+      infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager))
+  : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
 
     val inputPath = values(0).replace("~",System.getProperty("user.home"))
 
@@ -174,7 +179,7 @@ object Interface extends LazyLogging{
 
 
 
-  def loadModel(inPath: String): (OWLOntology, OWLDataFactory, OWLOntologyManager, String) = {
+  def loadModel(inPath: String, printEnabled: Boolean = true): (OWLOntology, OWLDataFactory, OWLOntologyManager, String) = {
     val inputPath = inPath.replace("~",System.getProperty("user.home"))
     val m = OWLManager.createOWLOntologyManager()
     val df = m.getOWLDataFactory
@@ -183,7 +188,7 @@ object Interface extends LazyLogging{
 
     val preDir = new File( inPath.split("/").dropRight(1).mkString("/") )
 
-    print(s"\n******************************************" +
+    if (printEnabled) print(s"\n******************************************" +
       s"*******************************************")
 
     preDir.listFiles().filter(_.isDirectory)
@@ -221,8 +226,7 @@ object Interface extends LazyLogging{
     is.forEach(i => ai.add(i))
     o.add(df.getOWLDifferentIndividualsAxiom(ai))
 
-
-    print(f"\n\n ${RESET}${BOLD}${name}${RESET}\twas loaded.")
+    if (printEnabled) print(f"\n\n $RESET$BOLD$name$RESET\twas loaded.")
     (o,df,m,name)
   }
 

@@ -1,23 +1,47 @@
 package com.cloud.formal.reasoning
 
-import org.semanticweb.owlapi.model.{OWLDataFactory, OWLOntology, OWLOntologyManager}
-import org.semanticweb.owlapi.reasoner.InconsistentOntologyException
+import java.io.{File, PrintWriter}
 
-class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager) {
+import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
+import org.semanticweb.owlapi.model.{OWLClassExpression, OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
+import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet}
 
-  private val pG = new PropertiesGenerator
-  private val r = Reasoner.create(o, df, m)
-  private val pE = new PropertyEvaluator(r,o,df,m)
+class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager, dir: String = ".") {
 
-  def run() = {
-    pG.init()
+  private[formal] val propsVec  = PropertiesGenerator.init()
+  private[formal] val r         = Reasoner.create(o, df, m)
+  private[formal] val pE        = new PropertyEval(r,o,df,m)
+
+  def classify(printEnabled: Boolean = true): Unit =
+    r.classify(printEnabled)(r.computeAllInferences)
+
+  def run(printEnabled: Boolean)(runQueryFun: ((=> OWLClassExpression) => Boolean) => (=>OWLClassExpression) => (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) )
+         (satCheckFun: Boolean => (=> OWLClassExpression) => Boolean): Unit =
+  {
+    val pw = new PrintWriter(new File(dir+"/"+name+"Report.csv"))
+    var reportString = ""
     try {
-      r.classify()
-      pG.propVec.sortBy(_._1).foreach( p => pE.evalAndPrint(p._2))
+      classify()
+      propsVec.sortBy(_._1).foreach( p => {
+        val outcome = pE.evalAndPrint(p._2, printEnabled)(runQueryFun)(satCheckFun)
+        outcome match {
+          case None      => reportString += (p._2.id+","+"N/A\n")
+          case Some(oc)  =>
+            reportString += (p._2.id + "," + p._2.getOutcomePrint(oc)+"\n")
+        }
+      })
+      pw.write(reportString)
     } catch {
       case e: InconsistentOntologyException
         => println("  INCONSISTENT ONTOLOGY FOUND. SKIPPING. ")
+        Vector()
     }
+    pw.close()
   }
+
+  def runEach (p: Property, printEnabled: Boolean)
+  (runQueryFun: ((=> OWLClassExpression) => Boolean) => (=>OWLClassExpression) => (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) )
+  (satCheckFun: Boolean => (=> OWLClassExpression) => Boolean): Unit =
+    pE.evalAndPrint(p, printEnabled)(runQueryFun)(satCheckFun)
 
 }

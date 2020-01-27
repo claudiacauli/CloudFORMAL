@@ -65,6 +65,7 @@ extends StrictLogging
     template.conditions         = this.conditions
     template.outputByLogicalId  = this.outputByLogicalId
     template.outputByExportName = this.outputByExportName
+    updateResourcesNames()
     template.resources = resources.toVector
       .flatMap (r =>
         Map(r._1 -> resourceEncoders(r._1).deepInstantiationOfResource())).toMap
@@ -140,7 +141,8 @@ extends StrictLogging
             case n if n.isNumber => n.number.get.toString
           }))
         case ParameterType.Number =>
-          Map(pName -> LongNode(j.number.get.truncateToLong))
+          if (j.isString) Map(pName -> IntNode(j.string.get.toInt))
+          else Map(pName -> LongNode(j.number.get.truncateToLong))
         case ParameterType.ListOfNumber =>
           Map(pName -> ListNode(
             j.array.get
@@ -269,9 +271,11 @@ extends StrictLogging
 
 
 
-  private def createResources =
+  private def createResources = {
     resourceEncoders.toVector
       .flatMap(_._2.createResourceNodeWithAttributes).toMap
+  }
+
 
 
 

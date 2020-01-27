@@ -1,0 +1,85 @@
+[
+  {
+    "ID": "10_EM_GLOBAL_SERVICES_TRAIL",
+    "type": "FFT",
+    "requiredResourceTypes": ["cloudtrailtrail"],
+    "propQuery": ["trail and (trail_islogging value true) and ",
+      "(trail_includeglobalserviceevents value true)"],
+    "description": ["There is a CloudTrail::Trail that logs",
+      " events from global services (e.g., IAM)"],
+    "unsatPrint": ["There is no CloudTrail::Trail that logs",
+      " events from global services."],
+    "sat0print": ["There is no CloudTrail::Trail that logs",
+      " events from global services."],
+    "sat1print": ["There is a CloudTrail::Trail that logs",
+      " events from global services."]
+  }
+  ,
+  {
+    "ID": "22_EKM_TRAIL_CARRYING_NOTHING",
+    "type": "FTT",
+    "queryBuildType": "nominalProp",
+    "requiredResourceTypes": ["cloudtrailtrail"],
+    "instQuery": ["trail"],
+    "propQuery": ["not (trail_eventselectors some",
+      " (eventselector_dataresources some dataresource))"],
+    "description": ["There certainly is a CloudTrail::Trail",
+      " that does not carry logs about data events"],
+    "unsatPrint": ["There is no CloudTrail::Trail carrying",
+      " no data logs"],
+    "sat0print": ["There is no CloudTrail::Trail certainly",
+      " not carrying logs about data events"],
+    "sat1print": ["There is at least one CloudTrail::Trail",
+      " that does not carry logs about data events"]
+  }
+  ,
+  {
+    "ID": "23_EKM_TRAIL_NO_LOGFILE_VALIDATION",
+    "type": "FTT",
+    "queryBuildType": "nominalProp",
+    "instQuery": ["trail"],
+    "requiredResourceTypes": ["cloudtrailtrail"],
+    "propQuery": ["not (trail_enablelogfilevalidation value true)"],
+    "description": ["There is a CloudTrail::Trail that certainly has",
+      " log file validation disabled"],
+    "unsatPrint": ["There is no CloudTrail::Trail with log file ",
+      "validation certainly disabled."],
+    "sat0print": ["There is no CloudTrail::Trail with log file",
+      " validation certainly disabled"],
+    "sat1print": ["There is at least one CloudTrail::Trail with",
+      " log file validation disabled"]
+  }
+  ,
+  {
+    "ID": "24_AKM_TRAIL_LOG",
+    "type": "TFF",
+    "instQuery": ["trail"],
+    "requiredResourceTypes": ["cloudtrailtrail"],
+    "queryBuildType": "nominalProp",
+    "propQuery": ["not (trail_islogging value true)"],
+    "description": ["All CloudTrail::Trails must be keeping logs"],
+    "unsatPrint": ["All CloudTrail::Trails are keeping logs"],
+    "sat0print": ["All CloudTrail::Trails declared in this template ",
+      "keep logs. BUT, there might be referenced Trails that do not."],
+    "sat1print": ["There is at least one CloudTrail::Trail that ",
+      "does not keep logs"]
+  }
+  ,
+  {
+    "ID": "25_EKM_TRAIL_NOT_ALL_REGIONS",
+    "type": "FTT",
+    "instQuery": ["trail"],
+    "requiredResourceTypes": ["cloudtrailtrail"],
+    "queryBuildType": "nominalProp",
+    "propQuery": ["not (trail_ismultiregiontrail value true)"],
+    "description": ["There might exist a CloudTrail::Trail",
+      " that does not log events from all regions"],
+    "unsatPrint": ["All known CloudTrail::Trail log events",
+      " from all regions"],
+    "sat0print": ["All CloudTrail::Trail declared in this template",
+      " log events from all region - but there might be",
+      " referenced ones that do not"],
+    "sat1print": ["There is at least one CloudTrail::Trail",
+      " that certainly do not log events from all regions"]
+  }
+]
