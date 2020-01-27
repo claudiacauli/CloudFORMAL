@@ -1,0 +1,25 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for S3 storage for lambda deployments.",
+    "Resources": {
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "stationeering-lambda",
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "LambdaBucket": {
+            "Export": {
+                "Name": "LambdaBucket"
+            },
+            "Value": {
+                "Ref": "S3Bucket"
+            }
+        }
+    }
+}

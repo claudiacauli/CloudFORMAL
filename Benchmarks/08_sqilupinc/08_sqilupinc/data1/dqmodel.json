@@ -1,0 +1,555 @@
+
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "This AWS CloudFormation Template used for the Sqilup DataBatch1 Infrastructure setup for DQ Model",
+  "Parameters": {
+  
+  
+   "EnvironmentValue" : { 
+       "AllowedValues" : [
+                                                      "Dev",
+                                                      "Test",
+                                                      "QA",
+                                                      "Prod"
+                                                      ],
+                                          "Default" : "Dev",
+                                          "Description" : "select environment where you want to deploy code",
+                                          "Type" : "String"
+                        },
+       
+   
+   
+   "SourceLambdaS3Bucket": {
+         "Description": "The name of the S3 bucket that contains the source code of your Lambda function.",
+         "Type": "String"
+       },
+       "SourceLambdaS3Key": {
+         "Description": "The location and name of your source code .zip file.",
+         "Type": "String",
+         "Default": "rds.zip"
+       },
+       
+      
+           "TransformLambdaS3Bucket": {
+             "Description": "The name of the S3 bucket that contains the source code of your Lambda function.",
+             "Type": "String"
+           },
+           "TransformLambdaS3Key": {
+             "Description": "The location and name of your source code .zip file.",
+             "Type": "String",
+             "Default": "rds.zip"
+       },
+       
+       
+         
+               "DqLambdaS3Bucket": {
+                 "Description": "The name of the S3 bucket that contains the source code of your Lambda function.",
+                 "Type": "String"
+               },
+               "DqLambdaS3Key": {
+                 "Description": "The location and name of your source code .zip file.",
+                 "Type": "String",
+                 "Default": "rds.zip"
+    },
+   
+   
+                        
+    "AccessControl": {
+      "Type": "String",
+      "Description": "Default permissions for the bucket",
+      "AllowedValues": [ "Private", "PublicRead", "PublicReadWrite", "AuthenticatedRead", "LogDeliveryWrite", "BucketOwnerRead", "BucketOwnerFullControl" ],
+      "Default": "Private"
+    },
+    
+
+    
+          "RegionName": {
+            "Description" : "Name of an existing Region vaialbles",
+            "Type": "String",
+            "AllowedValues": [ "us-east-1", "eu-west-1", "us-east-2", "eu-west-2" ],
+            "Default" : "us-east-1"
+   }
+    
+    
+  },
+  
+  
+
+  
+  "Mappings" : {  "Environments" : {
+      "Dev" : { 
+        "appid" : "devappid",
+        "SourceLambda" : "eu-dev-sqilupdb1-lambda-src",
+        "InfraLambda" : "eu-dev-sqilupdb1-lambda-infr",
+        "ExecutionLambda" : "eu-dev-sqilupdb1-lambda-exc",
+        "TopicSourceSUCCESS":"eu-dev-sqilupdb1-sns-topic-src-su",
+        "TopicSourceFAIL":"eu-dev-sqilupdb1-sns-topic-src-fa",
+        "TopicTransformSUCCESS":"eu-dev-sqilupdb1-sns-topic-trf-su",
+        "TopicTransformFAIL":"eu-dev-sqilupdb1-sns-topic-trf-fa",
+        "TopicDQSUCCESS":"eu-dev-sqilupdb1-sns-topic-dq-su",
+        "TopicDQFAIL":"eu-dev-sqilupdb1-sns-topic-dq-fa",
+        "SourceS3Bucket":"eu-dev-sqilupdb1-s3-bucket-src",
+        "TranfS3Bucket":"eu-dev-sqilupdb1-s3-bucket-trf",
+        "DqS3Bucket":"eu-dev-sqilupdb1-s3-bucket-dq"
+      },
+      
+      
+      "Test" : {
+        "appid" : "testappid",
+        "SourceLambda" : "eu-test-sqilupdb1-lambda-src",
+        "InfraLambda" : "eu-test-sqilupdb1-lambda-infr",
+        "ExecutionLambda" : "eu-test-sqilupdb1-lambda-exc",
+        "TopicSourceSUCCESS":"eu-test-sqilupdb1-sns-topic-src-su",
+        "TopicSourceFAIL":"eu-test-sqilupdb1-sns-topic-src-fa",
+        "TopicTransformSUCCESS":"eu-test-sqilupdb1-sns-topic-trf-su",
+        "TopicTransformFAIL":"eu-test-sqilupdb1-sns-topic-trf-fa",
+        "TopicDQSUCCESS":"eu-test-sqilupdb1-sns-topic-dq-su",
+        "TopicDQFAIL":"eu-test-sqilupdb1-sns-topic-dq-fa",
+        "SourceS3Bucket":"eu-test-sqilupdb1-s3-bucket-src",
+        "TranfS3Bucket":"eu-test-sqilupdb1-s3-bucket-trf",
+        "DqS3Bucket":"eu-test-sqilupdb1-s3-bucket-dq"
+      },
+      
+      
+      "QA" : {
+        "appid" : "qaappid",
+        "SourceLambda" : "eu-qa-sqilupdb1-lambda-src",
+        "InfraLambda" : "eu-qa-sqilupdb1-lambda-infr",
+        "ExecutionLambda" : "eu-qa-sqilupdb1-lambda-exc",
+        "TopicSourceSUCCESS":"eu-qa-sqilupdb1-sns-topic-src-su",
+        "TopicSourceFAIL":"eu-qa-sqilupdb1-sns-topic-src-fa",
+        "TopicTransformSUCCESS":"eu-qa-sqilupdb1-sns-topic-trf-su",
+        "TopicTransformFAIL":"eu-qa-sqilupdb1-sns-topic-trf-fa",
+        "TopicDQSUCCESS":"eu-qa-sqilupdb1-sns-topic-dq-su",
+        "TopicDQFAIL":"eu-qa-sqilupdb1-sns-topic-dq-fa",
+        "SourceS3Bucket":"eu-qa-sqilupdb1-s3-bucket-src",
+        "TranfS3Bucket":"eu-qa-sqilupdb1-s3-bucket-trf",
+        "DqS3Bucket":"eu-qa-sqilupdb1-s3-bucket-dq"
+      },
+      
+      
+      
+      "Prod" : { 
+        "appid" : "prodappid",
+        "SourceLambda" : "eu-prod-sqilupdb1-lambda-src",
+        "InfraLambda" : "eu-prod-sqilupdb1-lambda-infr",
+        "ExecutionLambda" : "eu-prod-sqilupdb1-lambda-exc",
+        "TopicSourceSUCCESS":"eu-prod-sqilupdb1-sns-topic-src-su",
+        "TopicSourceFAIL":"eu-prod-sqilupdb1-sns-topic-src-fa",
+        "TopicTransformSUCCESS":"eu-prod-sqilupdb1-sns-topic-trf-su",
+        "TopicTransformFAIL":"eu-prod-sqilupdb1-sns-topic-trf-fa",
+        "TopicDQSUCCESS":"eu-prod-sqilupdb1-sns-topic-dq-su",
+        "TopicDQFAIL":"eu-prod-sqilupdb1-sns-topic-dq-fa",
+        "SourceS3Bucket":"eu-prod-sqilupdb1-s3-bucket-src",
+        "TranfS3Bucket":"eu-prod-sqilupdb1-s3-bucket-trf",
+        "DqS3Bucket":"eu-prod-sqilupdb1-s3-bucket-dq"
+      }
+    }
+},
+  
+  
+  "Resources": {
+    
+    "IAMUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+      "UserName": {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "appid"]}}
+    },
+    "IAMAcessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": { "UserName": { "Ref": "IAMUser" } }
+    },
+    
+     
+        
+    "Sourcelambdafunction":{  
+         "Type":"AWS::Lambda::Function",
+         "Properties":{  
+            "FunctionName": {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "SourceLambda"]},
+            "Handler":"index.handler",
+            "Role":{  
+               "Fn::GetAtt":[  
+                  "AWSConfigRole",
+                  "Arn"
+               ]
+            },
+            "Code":{  
+          "S3Bucket": {"Ref": "SourceLambdaS3Bucket"},
+          "S3Key": {"Ref": "SourceLambdaS3Key"}
+            },
+            "Runtime":"python3.6",
+            "Timeout":"25"
+         }
+      },
+      
+      
+          "Infralambdafunction":{  
+               "Type":"AWS::Lambda::Function",
+               "Properties":{  
+                  "FunctionName": {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "InfraLambda"]},
+                  "Handler":"index.handler",
+                  "Role":{  
+                     "Fn::GetAtt":[  
+                        "AWSConfigRole",
+                        "Arn"
+                     ]
+                  },
+                  "Code":{  
+          "S3Bucket": {"Ref": "TransformLambdaS3Bucket"},
+          "S3Key": {"Ref": "TransformLambdaS3Key"}
+                  },
+                  "Runtime":"python3.6",
+                  "Timeout":"25"
+               }
+      },
+      
+      
+      
+          "Executionlambdafunction":{  
+               "Type":"AWS::Lambda::Function",
+               "Properties":{  
+                  "FunctionName": {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "ExecutionLambda"]},
+                  "Handler":"index.handler",
+                  "Role":{  
+                     "Fn::GetAtt":[  
+                        "AWSConfigRole",
+                        "Arn"
+                     ]
+                  },
+                  "Code":{  
+          "S3Bucket": {"Ref": "DqLambdaS3Bucket"},
+          "S3Key": {"Ref": "DqLambdaS3Key"}
+                  },
+                  "Runtime":"python3.6",
+                  "Timeout":"25"
+               }
+      },
+    
+    
+    
+    
+    
+    
+      "AWSConfigRole": {
+          "Type": "AWS::IAM::Role",
+          "Properties": {
+            "RoleName":"projectcftrole",
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [{
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "lambda.amazonaws.com"
+                },
+                "Action": ["sts:AssumeRole"]
+              }]
+            },
+            "Path": "/",
+            "Policies": [{
+              "PolicyName": "logs",
+              "PolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [{
+                  "Effect": "Allow",
+                  "Action": [
+                     "logs:*"
+                  ],
+                  "Resource": "arn:aws:logs:*:*:*"
+                }]
+              }
+            }, {
+              "PolicyName": "s3-original",
+              "PolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [{
+                  "Effect": "Allow",
+                  "Action": ["s3:*"],
+                  "Resource": "arn:aws:s3:::*"
+                 
+                }]
+              }
+            }]
+          }
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  "TopicSourceSU": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName" : {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicSourceSUCCESS"]},
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [ "Sourcelambdafunction", "Arn" ]
+            },
+            "Protocol": "lambda"
+          }
+        ]
+      }
+  },
+  
+  
+  
+  "TopicSourceFA": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName" : {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicSourceFAIL"]},
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [ "Sourcelambdafunction", "Arn" ]
+            },
+            "Protocol": "lambda"
+          }
+        ]
+      }
+  },
+  
+  
+      "TopicTransformSU": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" :  {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicTransformSUCCESS"]},
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Infralambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        }
+  },
+    
+    
+          "TopicTransformFA": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicTransformFAIL"]},
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Infralambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        }
+  },
+    
+    
+   
+              "TopicDQSU": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicDQSUCCESS"]},
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Executionlambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        }
+  },
+  
+  
+    "TopicDQFA": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : {"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TopicDQFAIL"]},
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Executionlambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        }
+  },
+    
+ 
+    "S3BucketSrc" : {
+      "Type": "AWS::S3::Bucket",
+      "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                      "BucketName":{"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "SourceS3Bucket"]}
+                                 
+       
+       }},
+    
+    "S3BucketTrf" : {
+      "Type": "AWS::S3::Bucket",
+      "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                      "BucketName":{"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "TranfS3Bucket"]}
+                              
+       
+       }},
+    
+     "S3BucketDq" : {
+       "Type": "AWS::S3::Bucket",
+       "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                       "BucketName":{"Fn::FindInMap" : ["Environments", { "Ref" : "EnvironmentValue"}, "DqS3Bucket"]}
+                      }
+    },
+    
+    
+    
+    
+    "SourceLambdaInvokePermission": {
+        	"Type": "AWS::Lambda::Permission",
+        	"Properties": {
+        		"FunctionName": {
+        			"Fn::GetAtt": [
+        				"Sourcelambdafunction",
+        				"Arn"
+        			]
+        		},
+        		"Action": "lambda:InvokeFunction",
+        		"Principal": "s3.amazonaws.com",
+        		
+        		"SourceArn": {
+        			"Fn::GetAtt": [
+        				"S3BucketSrc",
+        				"Arn"
+        			]
+        		}
+        	}
+    },
+    
+    
+    "InfraLambdaInvokePermission": {
+        	"Type": "AWS::Lambda::Permission",
+        	"Properties": {
+        		"FunctionName": {
+        			"Fn::GetAtt": [
+        				"Infralambdafunction",
+        				"Arn"
+        			]
+        		},
+        		"Action": "lambda:InvokeFunction",
+        		"Principal": "sns.amazonaws.com",
+        		
+        		
+        		"SourceArn": { "Ref": "TopicSourceSU" }
+        		
+        	}
+    },
+        
+        
+        "EexcutionLambdaInvokePermission": {
+            	"Type": "AWS::Lambda::Permission",
+            	"Properties": {
+            		"FunctionName": {
+            			"Fn::GetAtt": [
+            				"Executionlambdafunction",
+            				"Arn"
+            			]
+            		},
+            		"Action": "lambda:InvokeFunction",
+            		"Principal": "sns.amazonaws.com",
+            		
+            		"SourceArn": { "Ref": "TopicTransformSU" }
+            	}
+    },
+    
+    
+    
+    
+    "IAMPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "stbucketpermissions",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "stbucketpermissions",
+              "Effect": "Allow",
+              "Action": ["s3:*"],
+              "Resource": [
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketSrc" } ] ] },
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketTrf" } ] ] },
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketDq" }, "/*" ] ] }
+              ]
+            }
+          ]
+        },
+        "Users": [ { "Ref": "IAMUser" } ]
+      }
+    }
+  },
+  "Outputs" : {
+    "Region": {
+      "Value": { "Ref": "AWS::Region" }
+    },
+    "Username": {
+      "Value": { "Ref": "IAMUser" }
+    },
+    "AWSAccessKeyId": {
+      "Value": { "Ref": "IAMAcessKey" }
+    },
+    "AWSSecretAccessKey": {
+      "Value": { "Fn::GetAtt": [ "IAMAcessKey", "SecretAccessKey" ] }
+    },
+    "BucketNameSrc": {
+      "Value": { "Ref": "S3BucketSrc" }
+    }
+    
+    ,
+        "BucketNameTrf": {
+          "Value": { "Ref": "S3BucketTrf" }
+    }
+    ,
+        "BucketNameDq": {
+          "Value": { "Ref": "S3BucketDq" }
+    }    ,
+        "TopicSourceSU": {
+          "Value": { "Ref": "TopicSourceSU" }
+    },
+     
+        "TopicSourceFA": {
+          "Value": { "Ref": "TopicSourceFA" }
+    } ,
+        "TopicTransformSU": {
+          "Value": { "Ref": "TopicTransformSU" }
+    },
+     
+        "TopicTransformFA": {
+          "Value": { "Ref": "TopicTransformFA" }
+    }
+     ,
+        "TopicDQSU": {
+          "Value": { "Ref": "TopicDQSU" }
+    },
+     
+        "TopicDQFA": {
+          "Value": { "Ref": "TopicDQFA" }
+    },
+    
+     
+        "SourceLambdaFunction": {
+          "Value": { "Ref": "Sourcelambdafunction" }
+    },
+    
+     
+        "InfraLambdaFunction": {
+          "Value": { "Ref": "Infralambdafunction" }
+    },
+    
+     
+        "ExecutionLambdaFunction": {
+          "Value": { "Ref": "Executionlambdafunction" }
+    }
+  }
+}
+

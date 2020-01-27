@@ -1,0 +1,311 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "AWS CloudFormation Template CodePipeline.",
+    "Resources": {
+        "Application": {
+            "Type": "AWS::CodeDeploy::Application",
+            "Properties": {
+                "ApplicationName": "cloud-phoenix-kata",
+                "ComputePlatform": "Server"
+            },
+            "DependsOn": "CDRole"
+        },
+        "DeploymentGroup": {
+            "Type": "AWS::CodeDeploy::DeploymentGroup",
+            "DependsOn": "Application",
+            "Properties": {
+                "ApplicationName": "cloud-phoenix-kata",
+                "DeploymentConfigName": "CodeDeployDefault.AllAtOnce",
+                "DeploymentGroupName": "cloud-phoenix-kata",
+                "AutoScalingGroups": [
+                    "AutoScalingGroup-AppNodeJS"
+                ],
+                "ServiceRoleArn": "arn:aws:iam::093387872920:role/cloud-phoenix-kata-cd-Role"
+            }
+        },
+        "AppPipeline": {
+            "Type": "AWS::CodePipeline::Pipeline",
+            "Properties": {
+                "RoleArn": "arn:aws:iam::093387872920:role/cloud-phoenix-kata-cp-Role",
+                "Name": "cloud-phoenix-kata-pipeline",
+                "Stages": [
+                    {
+                        "Name": "Source",
+                        "Actions": [
+                            {
+                                "Name": "SourceAction",
+                                "ActionTypeId": {
+                                    "Category": "Source",
+                                    "Owner": "AWS",
+                                    "Version": "1",
+                                    "Provider": "S3"
+                                },
+                                "OutputArtifacts": [
+                                    {
+                                        "Name": "SourceArtifact"
+                                    }
+                                ],
+                                "Configuration": {
+                                    "S3Bucket": "codedeploy-cloud-phoenix-kata-releases",
+                                    "S3ObjectKey": "cloud-phoenix-kata/cloud-phoenix-kata.zip",
+                                    "PollForSourceChanges": false
+                                },
+                                "RunOrder": 1
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "DeployCode",
+                        "Actions": [
+                            {
+                                "Name": "Deploy",
+                                "InputArtifacts": [
+                                    {
+                                        "Name": "SourceArtifact"
+                                    }
+                                ],
+                                "ActionTypeId": {
+                                    "Category": "Deploy",
+                                    "Owner": "AWS",
+                                    "Version": "1",
+                                    "Provider": "CodeDeploy"
+                                },
+                                "Configuration": {
+                                    "ApplicationName": "cloud-phoenix-kata",
+                                    "DeploymentGroupName": "cloud-phoenix-kata"
+                                },
+                                "RunOrder": 1
+                            }
+                        ]
+                    }
+                ],
+                "ArtifactStore": {
+                    "Type": "S3",
+                    "Location": "cloud-phoenix-kata-repository"
+                }
+            },
+            "DependsOn": "CPRole"
+        },
+        "AmazonCloudWatchEventRule": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+                "Name": "startCodePipeline",
+                "EventPattern": {
+                    "source": [
+                        "aws.s3"
+                    ],
+                    "detail-type": [
+                        "AWS API Call via CloudTrail"
+                    ],
+                    "detail": {
+                        "eventSource": [
+                            "s3.amazonaws.com"
+                        ],
+                        "eventName": [
+                            "PutObject",
+                            "CompleteMultipartUpload",
+                            "CopyObject"
+                        ],
+                        "requestParameters": {
+                            "bucketName": [
+                                "codedeploy-cloud-phoenix-kata-releases"
+                            ],
+                            "key": [
+                                "cloud-phoenix-kata/cloud-phoenix-kata.zip"
+                            ]
+                        }
+                    }
+                },
+                "Targets": [
+                    {
+                        "Arn": "arn:aws:codepipeline:eu-west-1:093387872920:cloud-phoenix-kata-pipeline",
+                        "Id": "Id123",
+                        "RoleArn": "arn:aws:iam::093387872920:role/cloud-phoenix-kata-cw-Role"
+                    }
+                ]
+            },
+            "DependsOn": "CWRole"
+        },
+        "AmazonCloudTrail": {
+            "Type": "AWS::CloudTrail::Trail",
+            "Properties": {
+                "EnableLogFileValidation": true,
+                "EventSelectors": [
+                    {
+                        "DataResources": [
+                            {
+                                "Type": "AWS::S3::Object",
+                                "Values": [
+                                    "arn:aws:s3:::codedeploy-cloud-phoenix-kata-releases/cloud-phoenix-kata"
+                                ]
+                            }
+                        ],
+                        "ReadWriteType": "WriteOnly"
+                    }
+                ],
+                "IsLogging": true,
+                "S3BucketName": "logs-ct-cloud-phoenix-kata",
+                "TrailName": "ct-cloud-phoenix-kata"
+            },
+            "DependsOn": "BucketPolicyLogsCT"
+        },
+        "PolicyCW": {
+            "Type": "AWS::IAM::ManagedPolicy",
+            "Properties": {
+                "ManagedPolicyName": "cloud-phoenix-kata-cw-policy",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "codepipeline:StartPipelineExecution"
+                            ],
+                            "Resource": [
+                                "arn:aws:codepipeline:eu-west-1:093387872920:cloud-phoenix-kata-pipeline"
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "CWRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "events.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::093387872920:policy/cloud-phoenix-kata-cw-policy"
+                ],
+                "RoleName": "cloud-phoenix-kata-cw-Role"
+            },
+            "DependsOn": "PolicyCW"
+        },
+        "CDRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "codedeploy.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+                ],
+                "RoleName": "cloud-phoenix-kata-cd-Role"
+            }
+        },
+        "PolicyCP": {
+            "Type": "AWS::IAM::ManagedPolicy",
+            "Properties": {
+                "ManagedPolicyName": "cloud-phoenix-kata-cp-policy",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "iam:PassRole",
+                                "codedeploy:CreateDeployment",
+                                "s3:*",
+                                "codedeploy:GetApplicationRevision",
+                                "codedeploy:RegisterApplicationRevision",
+                                "cloudwatch:*",
+                                "codedeploy:GetDeploymentConfig",
+                                "codedeploy:GetDeployment",
+                                "events:*"
+                            ],
+                            "Resource": "*"
+                        }
+                    ]
+                }
+            }
+        },
+        "CPRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "codepipeline.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::093387872920:policy/cloud-phoenix-kata-cp-policy"
+                ],
+                "RoleName": "cloud-phoenix-kata-cp-Role"
+            },
+            "DependsOn": "PolicyCP"
+        },
+        "BucketLogsCT": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "logs-ct-cloud-phoenix-kata"
+            }
+        },
+        "BucketPolicyLogsCT": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": "logs-ct-cloud-phoenix-kata",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AWSCloudTrailAclCheck20150319",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "cloudtrail.amazonaws.com"
+                            },
+                            "Action": "s3:GetBucketAcl",
+                            "Resource": "arn:aws:s3:::logs-ct-cloud-phoenix-kata"
+                        },
+                        {
+                            "Sid": "AWSCloudTrailWrite20150319",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "cloudtrail.amazonaws.com"
+                            },
+                            "Action": "s3:PutObject",
+                            "Resource": "arn:aws:s3:::logs-ct-cloud-phoenix-kata/AWSLogs/093387872920/*",
+                            "Condition": {
+                                "StringEquals": {
+                                    "s3:x-amz-acl": "bucket-owner-full-control"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "DependsOn": "BucketLogsCT"
+        }
+    }
+}

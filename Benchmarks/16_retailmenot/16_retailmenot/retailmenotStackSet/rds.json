@@ -1,0 +1,59 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart rds stack",
+    "Parameters": {
+        "AvailabilityZone": { "Type": "String", "Description": "AvailabilityZone for this RDS instance" , "Default": "us-west-1a"},
+        "DBInstanceClass": { "Type": "String", "Description": "DBInstanceClass for this RDS instance", "Default": "db.m4.large"},
+        "VpcId": { "Type": "String", "Description": "ASG SecurityGroup VpcId" , "Default": "vpcid-83923"},
+        "AllocatedStorage": { "Type": "String", "Description": "RDS AllocatedStorage size", "Default": "100" }
+    },
+    "Resources": {
+        "DBInstance": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "AllocatedStorage": { "Ref": "AllocatedStorage"},
+                "DBSubnetGroupName": { "Ref": "DBSubnetGroup"},
+                "AvailabilityZone": { "Ref": "AvailabilityZone" },
+                "BackupRetentionPeriod": 14,
+                "DBInstanceClass": { "Ref": "DBInstanceClass" },
+                "DBName": "dart",
+                "Engine": "postgres",
+                "EngineVersion": "9.4.1",
+                "LicenseModel": "postgresql-license",
+                "MasterUsername": "dart",
+                "MasterUserPassword": "FakePassword",
+                "MultiAZ": false,
+                "Port": 5432,
+                "PreferredBackupWindow": "09:00-09:30",
+                "PreferredMaintenanceWindow": "sat:09:31-sat:10:01",
+                "VPCSecurityGroups": [ { "Ref": "SecurityGroup" } ]
+            }
+        },
+        "DBSubnetGroup": {
+            "Type": "AWS::RDS::DBSubnetGroup",
+            "Properties": {
+                "DBSubnetGroupDescription": "Dart RDS DBSubnetGroup",
+                "SubnetIds": ["subnet-838"]
+            }
+        },
+        "SecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "dart metadata store security group",
+                "VpcId": { "Ref": "VpcId" },
+                "SecurityGroupIngress": [
+                    { "IpProtocol": "tcp", "FromPort": 5432, "ToPort": 5432, "CidrIp": "10.0.0.0/8" },
+                    { "IpProtocol": "tcp", "FromPort": 5432, "ToPort": 5432, "CidrIp": "172.16.0.0/12" },
+                    { "IpProtocol": "tcp", "FromPort": 5432, "ToPort": 5432, "CidrIp": "12.12.12.12/11" },
+                    { "IpProtocol": "tcp", "FromPort": 5432, "ToPort": 5432, "CidrIp": "13.13.13.13/12" }
+                ]
+            }
+        }
+    },
+    "Outputs" : {
+        "DbHost" : {
+            "Description": "The connection endpoint for the database",
+            "Value" : { "Fn::GetAtt" : [ "DBInstance", "Endpoint.Address" ]}
+        }
+    }
+}

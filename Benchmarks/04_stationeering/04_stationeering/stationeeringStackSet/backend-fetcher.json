@@ -1,0 +1,722 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for the Steam depot to S3 backend fetcher.",
+    "Resources": {
+        "ECRRepository": {
+            "Type": "AWS::ECR::Repository",
+            "Properties": {
+                "RepositoryName": "backend/fetcher",
+                "LifecyclePolicy": {
+                    "LifecyclePolicyText": "{\"rules\":[{\"rulePriority\":10,\"description\":\"Remove old.\",\"selection\":{\"tagStatus\":\"untagged\",\"countType\":\"imageCountMoreThan\",\"countNumber\":4},\"action\":{\"type\":\"expire\"}}]}"
+                }
+            }
+        },
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "stationeering-gamedata",
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                },
+                "NotificationConfiguration": {
+                    "TopicConfigurations": [
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "VersionNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "suffix",
+                                            "Value": "version.ini"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "public/rocketstation_Data/StreamingAssets/Data"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "beta/rocketstation_Data/StreamingAssets/Data"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectRemoved:*",
+                            "Topic": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "public/rocketstation_Data/StreamingAssets/Data"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectRemoved:*",
+                            "Topic": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "beta/rocketstation_Data/StreamingAssets/Data"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "beta/rocketstation_Data/Managed"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".dll"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "LanguageNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "public/rocketstation_Data/StreamingAssets/Language"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Topic": {
+                                "Ref": "LanguageNotificationTopic"
+                            },
+                            "Filter": {
+                                "S3Key": {
+                                    "Rules": [
+                                        {
+                                            "Name": "prefix",
+                                            "Value": "beta/rocketstation_Data/StreamingAssets/Language"
+                                        },
+                                        {
+                                            "Name": "suffix",
+                                            "Value": ".xml"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "DependsOn": [
+                "VersionNotificationTopic",
+                "VersionNotificationTopicPolicy",
+                "GameDataNotificationTopic",
+                "GameDataNotificationTopicPolicy",
+                "LanguageNotificationTopic",
+                "LanguageNotificationTopicPolicy"
+            ]
+        },
+        "BackendFetcherTestUser": {
+            "Type": "AWS::IAM::User"
+        },
+        "S3Policy": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Ref": "FetcherTaskRole"
+                    }
+                ],
+                "Users": [
+                    {
+                        "Ref": "BackendFetcherTestUser"
+                    }
+                ],
+                "PolicyName": "PermitS3Sync",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Action": [
+                                "s3:DeleteObject",
+                                "s3:GetBucketLocation",
+                                "s3:GetObject",
+                                "s3:ListBucket",
+                                "s3:PutObject",
+                                "s3:ListObjects"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::Sub": [
+                                        "arn:aws:s3:::${BucketName}",
+                                        {
+                                            "BucketName": {
+                                                "Ref": "S3Bucket"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Fn::Sub": [
+                                        "arn:aws:s3:::${BucketName}/*",
+                                        {
+                                            "BucketName": {
+                                                "Ref": "S3Bucket"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Effect": "Allow"
+                        }
+                    ]
+                }
+            }
+        },
+        "SSMCredentialPolicy": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Ref": "FetcherTaskRole"
+                    }
+                ],
+                "Users": [
+                    {
+                        "Ref": "BackendFetcherTestUser"
+                    }
+                ],
+                "PolicyName": "GetSteamCredentialsFromSSM",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "ssm:GetParameter*"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/username"
+                                },
+                                {
+                                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/password"
+                                },
+                                {
+                                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/depot/*"
+                                }
+                            ]
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "ssm:PutParameter"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/depot/*"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "FetcherTaskRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "ECSAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/"
+            }
+        },
+        "ECSTask": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Cpu": "256",
+                "Memory": "0.5GB",
+                "ExecutionRoleArn": {
+                    "Fn::ImportValue": "ECSTaskExecutionRoleARN"
+                },
+                "TaskRoleArn": {
+                    "Fn::GetAtt": [
+                        "FetcherTaskRole",
+                        "Arn"
+                    ]
+                },
+                "NetworkMode": "awsvpc",
+                "RequiresCompatibilities": [
+                    "FARGATE"
+                ],
+                "ContainerDefinitions": [
+                    {
+                        "Memory": 512,
+                        "Environment": [
+                            {
+                                "Name": "S3_BUCKET_NAME",
+                                "Value": {
+                                    "Ref": "S3Bucket"
+                                }
+                            }
+                        ],
+                        "Essential": true,
+                        "Image": {
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.eu-west-1.amazonaws.com/backend/fetcher:latest"
+                        },
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-group": "backend",
+                                "awslogs-region": {
+                                    "Ref": "AWS::Region"
+                                },
+                                "awslogs-stream-prefix": "fetcher"
+                            }
+                        },
+                        "Name": "fetcher"
+                    }
+                ]
+            }
+        },
+        "LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": "backend",
+                "RetentionInDays": 7
+            }
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowLambdaToAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "RunTask",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ecs:RunTask"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Ref": "ECSTask"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "iam:PassRole"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::ImportValue": "ECSTaskExecutionRoleARN"
+                                        },
+                                        {
+                                            "Fn::GetAtt": [
+                                                "FetcherTaskRole",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "LoggingPolicy",
+                        "PolicyDocument": {
+                            "Id": "LoggingPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:logs:*:*:*"
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    },
+                    {
+                        "PolicyName": "SSMAccess",
+                        "PolicyDocument": {
+                            "Id": "SSMAccess",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ssm:PutParameter",
+                                        "ssm:GetParameter*"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/fetcher/last_poll"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "TaskInvokerLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Fn::ImportValue": "LambdaBucket"
+                    },
+                    "S3Key": "ecsinvoker-v06.zip"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": "5",
+                "Environment": {
+                    "Variables": {
+                        "task": {
+                            "Ref": "ECSTask"
+                        },
+                        "cluster": {
+                            "Fn::ImportValue": "BackEndClusterName"
+                        },
+                        "subnet1a": "subnet-10bd2f58",
+                        "subnet1b": "subnet-ddb27e87",
+                        "subnet1c": "subnet-d7ee6cb1"
+                    }
+                }
+            }
+        },
+        "LambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${functionName}",
+                        {
+                            "functionName": {
+                                "Ref": "TaskInvokerLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 7
+            }
+        },
+        "LambdaSchedule": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+                "Description": "ScheduledRule",
+                "ScheduleExpression": "rate(5 minutes)",
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "TaskInvokerLambda",
+                                "Arn"
+                            ]
+                        },
+                        "Id": "TargetFunctionV1",
+                        "Input": "{ \"interval\": 1500000 }"
+                    }
+                ]
+            }
+        },
+        "LambdaSchedulePermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "FunctionName": {
+                    "Ref": "TaskInvokerLambda"
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "events.amazonaws.com",
+                "SourceArn": {
+                    "Fn::GetAtt": [
+                        "LambdaSchedule",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "VersionNotificationTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "TopicName": "StationeersVersionChangeNotification"
+            }
+        },
+        "VersionNotificationTopicPolicy": {
+            "Type": "AWS::SNS::TopicPolicy",
+            "DependsOn": [
+                "VersionNotificationTopic"
+            ],
+            "Properties": {
+                "PolicyDocument": {
+                    "Id": "VersionNotificationTopicPolicy",
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "Statement-id",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": "sns:Publish",
+                            "Resource": {
+                                "Ref": "VersionNotificationTopic"
+                            },
+                            "Condition": {
+                                "ArnLike": {
+                                    "aws:SourceArn": "arn:aws:s3:::stationeering-gamedata"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Topics": [
+                    {
+                        "Ref": "VersionNotificationTopic"
+                    }
+                ]
+            }
+        },
+        "GameDataNotificationTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "TopicName": "StationeersDataChangeNotification"
+            }
+        },
+        "GameDataNotificationTopicPolicy": {
+            "Type": "AWS::SNS::TopicPolicy",
+            "DependsOn": [
+                "GameDataNotificationTopic"
+            ],
+            "Properties": {
+                "PolicyDocument": {
+                    "Id": "GameDataNotificationTopicPolicy",
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "Statement-id",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": "sns:Publish",
+                            "Resource": {
+                                "Ref": "GameDataNotificationTopic"
+                            },
+                            "Condition": {
+                                "ArnLike": {
+                                    "aws:SourceArn": "arn:aws:s3:::stationeering-gamedata"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Topics": [
+                    {
+                        "Ref": "GameDataNotificationTopic"
+                    }
+                ]
+            }
+        },
+        "LanguageNotificationTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "TopicName": "StationeersLanguageChangeNotification"
+            }
+        },
+        "LanguageNotificationTopicPolicy": {
+            "Type": "AWS::SNS::TopicPolicy",
+            "DependsOn": [
+                "LanguageNotificationTopic"
+            ],
+            "Properties": {
+                "PolicyDocument": {
+                    "Id": "LanguageNotificationTopicPolicy",
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "Statement-id",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": "sns:Publish",
+                            "Resource": {
+                                "Ref": "LanguageNotificationTopic"
+                            },
+                            "Condition": {
+                                "ArnLike": {
+                                    "aws:SourceArn": "arn:aws:s3:::stationeering-gamedata"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Topics": [
+                    {
+                        "Ref": "LanguageNotificationTopic"
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "GameDataBucket": {
+            "Export": {
+                "Name": "GameDataBucket"
+            },
+            "Value": {
+                "Ref": "S3Bucket"
+            }
+        },
+        "VersionNotificationTopicArn": {
+            "Export": {
+                "Name": "VersionNotificationTopicArn"
+            },
+            "Value": {
+                "Ref": "VersionNotificationTopic"
+            }
+        },
+        "GameDataNotificationTopicArn": {
+            "Export": {
+                "Name": "GameDataNotificationTopicArn"
+            },
+            "Value": {
+                "Ref": "GameDataNotificationTopic"
+            }
+        },
+        "LanguageNotificationTopicArn": {
+            "Export": {
+                "Name": "LanguageNotificationTopicArn"
+            },
+            "Value": {
+                "Ref": "LanguageNotificationTopic"
+            }
+        },
+        "FetcherInvokeLambdaArn": {
+            "Export": {
+                "Name": "FetcherInvokeLambdaArn"
+            },            
+            "Value": {
+                "Fn::GetAtt": [
+                    "TaskInvokerLambda",
+                    "Arn"
+                ]
+            }
+        }
+    }
+}

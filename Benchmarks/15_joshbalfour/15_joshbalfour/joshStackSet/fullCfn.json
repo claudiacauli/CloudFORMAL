@@ -1,0 +1,1814 @@
+{ "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "projectname Stack",
+
+  "Mappings" : {
+
+    "VpcCidrs" : {
+      "eu-central-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24", "redissubnet" : "10.0.4.0/24" },
+      "sa-east-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24"},
+      "ap-northeast-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "eu-west-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "us-east-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "us-west-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "us-west-2" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "ap-southeast-2" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" },
+      "ap-southeast-1" : { "vpc" : "10.0.0.0/16", "pubsubnet1" : "10.0.0.0/24", "pubsubnet2" : "10.0.1.0/24", "rdbmssubnet1" : "10.0.2.0/24", "rdbmssubnet2" : "10.0.3.0/24",  "redissubnet" : "10.0.4.0/24" }
+    },
+
+    "AWSRegionToAMI" : {
+      "us-east-1"      : { "AMIID" : "ami-67a3a90d" },
+      "us-west-1"      : { "AMIID" : "ami-b7d5a8d7" },
+      "us-west-2"      : { "AMIID" : "ami-c7a451a7" },
+      "eu-west-1"      : { "AMIID" : "ami-9c9819ef" },
+      "eu-central-1"   : { "AMIID" : "ami-9aeb0af5" },
+      "ap-northeast-1" : { "AMIID" : "ami-7e4a5b10" },
+      "ap-southeast-1" : { "AMIID" : "ami-be63a9dd" },
+      "ap-southeast-2" : { "AMIID" : "ami-b8cbe8db" }
+    }
+
+  },
+
+  "Parameters" : {
+    
+    "s3BucketName" : {
+      "Type" : "String",
+      "Description" : "S3 Bucket Name",
+      "Default" : "project.name"
+    },
+
+    "redisSize": {
+      "Type" : "String",
+      "Description" : "Redis Size",
+      "Default" : "cache.t2.micro"
+    },
+
+    "rdbmsSize": {
+      "Type" : "String",
+      "Description" : "RDBMS Size",
+      "Default" : "db.t2.micro"
+    },
+
+    "rdbmsName" : {
+      "Type" : "String",
+      "Description" : "RDBMS Name",
+      "Default" : "projectname"
+    },
+
+    "rdbmsUser" : {
+      "Type" : "String",
+      "Description" : "RDBMS Username",
+      "Default" : "steve"
+    },
+
+    "rdbmsPass" : {
+      "Type" : "String",
+      "Description" : "RDBMS Password",
+      "Default" : "supersecurepassword"
+    },
+
+    "rdbmsDBName" : {
+      "Type" : "String",
+      "Description" : "RDBMS Schema Name",
+      "Default" : "projectname"
+    },
+
+    "EcsInstanceType" : {
+      "Type" : "String",
+      "Description" : "ECS EC2 instance type",
+      "Default" : "t2.micro",
+      "AllowedValues" : [
+          "t2.micro","t2.small","t2.medium","t2.large","m4.large","m4.xlarge","m4.2xlarge","m4.4xlarge","m4.10xlarge","m3.medium","m3.large","m3.xlarge","m3.2xlarge","c4.large","c4.xlarge","c4.2xlarge","c4.4xlarge","c4.8xlarge","c3.large","c3.xlarge","c3.2xlarge","c3.4xlarge","c3.8xlarge","r3.large","r3.xlarge","r3.2xlarge","r3.4xlarge","r3.8xlarge","i2.xlarge","i2.2xlarge","i2.4xlarge","i2.8xlarge" ],
+      "ConstraintDescription" : "must be a valid EC2 instance type."
+    },
+
+    "KeyName" : {
+      "Type" : "String",
+      "Description" : "Optional - Name of an existing EC2 KeyPair to enable SSH access to the ECS instances",
+      "Default" : "projectname"
+    },
+
+    "AsgMaxSize" : {
+      "Type" : "Number",
+      "Description" : "Maximum size and initial Desired Capacity of ECS Auto Scaling Group",
+      "Default" : "1"
+    },
+
+    "AsgMinSize" : {
+      "Type" : "Number",
+      "Description" : "Minimum size of ECS Auto Scaling Group",
+      "Default" : "1"
+    },
+
+    "EcsPort" : {
+      "Type" : "String",
+      "Description" : "Optional - Security Group port to open on ECS instances - defaults to port 80",
+      "Default" : "80"
+    },
+
+    "ElbPort" : {
+      "Type" : "String",
+      "Description" : "Optional - Security Group port to open on ELB - port 80 will be open by default",
+      "Default" : "80"
+    },
+
+    "ElbProtocol" : {
+      "Type" : "String",
+      "Description" : "Optional - ELB Protocol - defaults to HTTP",
+      "Default" : "HTTP"
+    },
+
+    "ElbHealthCheckTarget" : {
+      "Type" : "String",
+      "Description" : "Optional - Health Check Target for ELB - defaults to HTTP:80/",
+      "Default" : "HTTP:80/elb-status"
+    },
+
+    "SourceCidr" : {
+      "Type" : "String",
+      "Description" : "Optional - CIDR/IP range for EcsPort and ElbPort - defaults to 0.0.0.0/0",
+      "Default" : "0.0.0.0/0"
+    },
+
+    "FacebookClientID" : {
+      "Type" : "String",
+      "Description" : "FACEBOOK_CLIENT_ID",
+      "Default" : "1234"
+    },
+
+    "FacebookClientSecret" : {
+      "Type" : "String",
+      "Description" : "FACEBOOK_CLIENT_SECRET",
+      "Default" : "1234"
+    },
+    "sessionSecret" : {
+      "Type" : "String",
+      "Description" : "SESSION_SECRET",
+      "Default" : "change-me-at-somepoint"
+    },
+    "serviceDesiredCount" : {
+      "Type" : "Number",
+      "Description" : "Desired number of services to have",
+      "Default" : 1
+    },
+    "getSentryEndpoint" : {
+      "Type" : "String",
+      "Description" : "GetSentry endpoint",
+      "Default" : "https://1234@app.getsentry.com/1234"
+    },
+    "GaTrackingId" : {
+      "Type" : "String",
+      "Description" : "Google Analytics tracking ID",
+      "Default" : "UA-12345-1"
+    },
+    "emailNotificationsFromUser" : {
+      "Type" : "String",
+      "Description" : "email from <value>@<s3bucketdomain>",
+      "Default" : "notification"
+    },
+    "emailNotificationsFromName" : {
+      "Type" : "String",
+      "Description" : "email from name",
+      "Default" : "project name Notification"
+    }
+  },
+
+  "Resources" : {
+
+    "EcsCluster": {
+      "Type": "AWS::ECS::Cluster"
+    },
+
+    "IamRole": {
+       "Type": "AWS::IAM::Role",
+       "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": {
+              "Effect": "Allow",
+              "Principal": {"Service": "ec2.amazonaws.com"},
+              "Action": "sts:AssumeRole"
+            }
+          }
+       }
+    },
+
+    "IamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "projectnameECSInstances",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogStreams",
+                "ecs:CreateCluster",
+                "ecs:DeregisterContainerInstance",
+                "ecs:DiscoverPollEndpoint",
+                "ecs:Poll",
+                "ecs:RegisterContainerInstance",
+                "ecs:StartTelemetrySession",
+                "ecs:Submit*",
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:Describe*",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                "elasticloadbalancing:Describe*",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "elasticache:DescribeCacheClusters"
+              ],
+              "Resource": [
+                  "*"
+              ]
+            }
+          ]
+        },
+        "Roles": [ {"Ref" : "IamRole"} ]
+      }
+    },
+
+    "dockerDevUser" : {
+       "Type" : "AWS::IAM::User",
+       "Properties" : {
+          "Path" : "/"
+        }
+    },
+
+    "dockerDevIamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "projectnameDeveloper",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:BatchGetImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload",
+                "ecr:PutImage"
+              ],
+              "Resource": [
+                  "*"
+              ]
+            }
+          ]
+        },
+        "Users": [ {"Ref" : "dockerDevUser"} ]
+      }
+    },
+
+    "dockerDevAccessKey" : {
+       "Type" : "AWS::IAM::AccessKey",
+       "Properties" : {
+          "UserName" : { "Ref" : "dockerDevUser" }
+       }
+    },
+
+    "IamRoleInstanceProfile" : {
+       "Type": "AWS::IAM::InstanceProfile",
+       "Properties": {
+          "Path": "/projectname/ECS/Instance/",
+          "Roles": [ {"Ref" : "IamRole"} ]
+       }
+    },
+
+    "sesUser" : {
+       "Type" : "AWS::IAM::User",
+       "Properties" : {
+          "Path" : "/"
+        }
+    },
+
+    "sesUserIamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "projectnameSES",
+        "PolicyDocument" : {
+            "Version": "2012-10-17",
+            "Statement":[{
+               "Effect": "Allow",
+               "Action": ["ses:SendEmail", "ses:SendRawEmail"],
+               "Resource":"*",
+               "Condition": {
+                   "ForAllValues:StringLike": {
+                     "ses:FromAddress": [{ "Fn::Join" : ["", [ { "Ref" : "emailNotificationsFromUser" }, "@", { "Ref" : "s3Bucket" } ]]}],
+                     "ses:FromDisplayName": { "Ref" : "emailNotificationsFromName" }
+                   }
+                }
+              }
+            ]
+         },
+        "Users": [ {"Ref" : "sesUser"} ]
+      }
+    },
+
+    "sesUserAccessKey" : {
+       "Type" : "AWS::IAM::AccessKey",
+       "Properties" : {
+          "UserName" : { "Ref" : "sesUser" }
+       }
+    },
+
+    "Vpc" : {
+      "Type" : "AWS::EC2::VPC",
+      "Properties" : {
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "vpc" ] },
+        "EnableDnsSupport" : "true",
+        "EnableDnsHostnames" : "true"
+      }
+    },
+
+    "PubSubnetAz1" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "pubsubnet1" ] },
+        "AvailabilityZone" : { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] }
+      }
+    },
+
+    "PubSubnetAz2" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "pubsubnet2" ] },
+        "AvailabilityZone" : { "Fn::Select" : [ "1", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] }
+      }
+    },
+
+    "InternetGateway" : {
+      "Type" : "AWS::EC2::InternetGateway"
+    },
+
+    "AttachGateway" : {
+      "Type" : "AWS::EC2::VPCGatewayAttachment",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "InternetGatewayId" : { "Ref" : "InternetGateway" }
+      }
+    },
+
+    "RouteViaIgw" : {
+      "Type" : "AWS::EC2::RouteTable",
+      "Properties" : {
+        "VpcId" : {"Ref" : "Vpc"}
+      }
+    },
+
+    "PublicRouteViaIgw" : {
+      "Type" : "AWS::EC2::Route",
+      "DependsOn" : "AttachGateway",
+      "Properties" : {
+        "RouteTableId" : { "Ref" : "RouteViaIgw" },
+        "DestinationCidrBlock" : "0.0.0.0/0",
+        "GatewayId" : { "Ref" : "InternetGateway" }
+      }
+    },
+
+    "PubSubnet1RouteTableAssociation" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PubSubnetAz1" },
+        "RouteTableId" : { "Ref" : "RouteViaIgw" }
+      }
+    },
+
+    "PubSubnet2RouteTableAssociation" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PubSubnetAz2" },
+        "RouteTableId" : { "Ref" : "RouteViaIgw" }
+      }
+    },
+
+    "ElbSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "ELB Allowed Ports",
+        "VpcId" : { "Ref" : "Vpc" },
+        "SecurityGroupIngress" : [
+          { "IpProtocol" : "tcp", "FromPort" : { "Ref" : "ElbPort" }, "ToPort" : { "Ref" : "ElbPort" },
+              "CidrIp" : { "Ref" : "SourceCidr" } }
+        ],
+        "SecurityGroupEgress" : [
+            { "IpProtocol" : "tcp", "FromPort" : "0",  "ToPort" : "65535",  "CidrIp" : "0.0.0.0/0"},
+            { "IpProtocol" : "udp", "FromPort" : "0",  "ToPort" : "65535",  "CidrIp" : "0.0.0.0/0"},
+            { "IpProtocol" : "icmp", "FromPort" : "8", "ToPort" : "-1", "CidrIp" : "0.0.0.0/0" }
+        ]
+      }
+    },
+
+    "EcsSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "ECS Allowed Ports",
+        "VpcId" : { "Ref" : "Vpc" },
+        "SecurityGroupIngress" : [
+            { "IpProtocol" : "tcp", "FromPort" : { "Ref" : "EcsPort" }, "ToPort" : { "Ref" : "EcsPort" },
+              "CidrIp" : { "Ref" : "SourceCidr" } },
+            { "IpProtocol" : "tcp", "FromPort" : "1", "ToPort" : "65535", "SourceSecurityGroupId" :  { "Ref" : "ElbSecurityGroup" } }
+        ],
+        "SecurityGroupEgress" : [
+            { "IpProtocol" : "tcp", "FromPort" : "0",  "ToPort" : "65535",  "CidrIp" : "0.0.0.0/0"}
+        ]
+      }
+    },
+
+    "EcsElasticLoadBalancer" : {
+      "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties" : {
+        "SecurityGroups" : [ { "Ref" : "ElbSecurityGroup" } ],
+        "Subnets" : [ { "Ref" : "PubSubnetAz1" }, { "Ref" : "PubSubnetAz2" } ],
+        "CrossZone" : "true",
+        "Listeners" : [ {
+          "LoadBalancerPort" : { "Ref" : "ElbPort" },
+          "InstancePort" : { "Ref" : "EcsPort" },
+          "Protocol" : { "Ref" : "ElbProtocol" }
+        } ],
+        "HealthCheck" : {
+          "Target" : { "Ref" : "ElbHealthCheckTarget" },
+          "HealthyThreshold" : "2",
+          "UnhealthyThreshold" : "10",
+          "Interval" : "30",
+          "Timeout" : "5"
+        }
+      }
+    },
+
+    "EcsInstanceLc" : {
+      "Type" : "AWS::AutoScaling::LaunchConfiguration",
+      "Properties" : {
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionToAMI", { "Ref" : "AWS::Region" }, "AMIID" ] },
+        "InstanceType" : { "Ref" : "EcsInstanceType" },
+        "AssociatePublicIpAddress" : true,
+        "IamInstanceProfile": { "Ref": "IamRoleInstanceProfile" },
+        "KeyName" : { "Ref" : "KeyName" },
+        "SecurityGroups" : [ { "Ref" : "EcsSecurityGroup" } ],
+        "InstanceMonitoring" : false,
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+            "#!/bin/bash\n",
+            "echo ECS_CLUSTER=", { "Ref": "EcsCluster" }, " >> /etc/ecs/ecs.config"
+          ] ] } }
+      }
+    },
+
+   "ScaleUpEcsServiceSNSTopic" : {
+      "Type" : "AWS::SNS::Topic",
+      "Properties" : {
+        "DisplayName" : "ECS Scale Up Service App Service Topic",
+        "Subscription" : [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [
+                "ScaleUpServiceAppServiceFunction",
+                "Arn"
+              ]
+            },
+            "Protocol": "lambda"
+          }
+        ],
+        "TopicName" : "ecs-service-app-service-scale-up-sns-topic"
+      }
+    },
+
+    "ScaleDownEcsServiceSNSTopic" : {
+      "Type" : "AWS::SNS::Topic",
+      "Properties" : {
+        "DisplayName" : "ECS Scale Down Service App Service Topic",
+        "Subscription" : [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [
+                  "ScaleDownServiceAppServiceFunction",
+                  "Arn"
+                ]
+              },
+              "Protocol": "lambda"
+            }
+          ],
+        "TopicName" : "ecs-service-app-service-scale-down-sns-topic"
+      }
+    },
+
+    "EcsInstanceAsg" : {
+      "Type" : "AWS::AutoScaling::AutoScalingGroup",
+      "Properties" : {
+        "VPCZoneIdentifier" : [ { "Fn::Join" : [",", [ { "Ref" : "PubSubnetAz1" }, { "Ref" : "PubSubnetAz2" } ] ] } ],
+        "LaunchConfigurationName" : { "Ref" : "EcsInstanceLc" },
+        "MinSize" : { "Ref" : "AsgMinSize"},
+        "MaxSize" : { "Ref" : "AsgMaxSize" },
+        "DesiredCapacity" : { "Ref" : "AsgMaxSize" },
+        "Tags" : [ { "Key" : "Name", "Value" : { "Fn::Join" : ["", [ "ECS Instance - ", { "Ref" : "AWS::StackName" } ] ] }, "PropagateAtLaunch" : "true" } ],
+        "NotificationConfigurations" : [
+          {
+            "TopicARN" : { "Ref" : "ScaleUpEcsServiceSNSTopic" },
+            "NotificationTypes" : [
+              "autoscaling:EC2_INSTANCE_LAUNCH"
+            ]
+          },
+          {
+            "TopicARN" : { "Ref" : "ScaleDownEcsServiceSNSTopic" },
+            "NotificationTypes" : [
+              "autoscaling:EC2_INSTANCE_TERMINATE"
+            ]
+          }
+        ]
+      }
+    },
+
+    "s3Bucket" : {
+      "Type" : "AWS::S3::Bucket",
+      "Properties" : {
+        "AccessControl" : "PublicRead",
+        "BucketName" : { "Ref" : "s3BucketName" },
+        "WebsiteConfiguration" : {
+           "ErrorDocument" : "error.html",
+           "IndexDocument" : "index.html"
+        }
+      }
+    },
+
+    "rdbmsSubnet1" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "rdbmssubnet1" ] },
+        "AvailabilityZone" : { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] }
+      }
+    },
+
+    "rdbmsSubnet2" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "rdbmssubnet2" ] },
+        "AvailabilityZone" : { "Fn::Select" : [ "1", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] }
+      }
+    },
+
+    "rdbmsSG" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "GroupDescription" : "RDBMS Security Group",
+        "SecurityGroupEgress" : [{
+           "IpProtocol" : "tcp",
+           "FromPort" : 0,
+           "ToPort" : 65535,
+           "CidrIp" : "0.0.0.0/0"
+         }],
+        "SecurityGroupIngress" : [{
+            "IpProtocol" : -1,
+            "FromPort" : 3306,
+            "ToPort" : 3306,
+            "SourceSecurityGroupId" : { "Ref" : "EcsSecurityGroup" }
+          }]
+      }
+    },
+
+    "rdbmsSubnetGroup" : {
+      "Type" : "AWS::RDS::DBSubnetGroup",
+      "Properties" : {
+        "DBSubnetGroupDescription": "RDBMS Subnet Group",
+        "SubnetIds": [{ "Ref" : "rdbmsSubnet1" }, { "Ref" : "rdbmsSubnet2" }]
+      }
+    },
+
+    "RDBMS" : {
+      "Type" : "AWS::RDS::DBInstance",
+      "Properties" : {
+        "AllocatedStorage" : "20",
+        "AllowMajorVersionUpgrade" : false,
+        "AutoMinorVersionUpgrade" : false,
+        "AvailabilityZone" : { "Fn::Select" : [ "1", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] },
+        "BackupRetentionPeriod" : 7,
+        "DBInstanceClass" : { "Ref" : "rdbmsSize" },
+        "DBInstanceIdentifier" : { "Ref" : "rdbmsName"},
+        "DBName" : { "Ref" : "rdbmsDBName"},
+        "DBSubnetGroupName" : { "Ref" : "rdbmsSubnetGroup" },
+        "Engine" : "mariadb",
+        "StorageType" : "gp2",
+        "MasterUsername" : { "Ref" : "rdbmsUser" },
+        "MasterUserPassword" : { "Ref" : "rdbmsPass" },
+        "PreferredMaintenanceWindow" : "sat:05:22-sat:05:52",
+        "PubliclyAccessible" : false,
+        "VPCSecurityGroups" : [{ "Ref" : "rdbmsSG"}]
+      }
+    },
+
+    "redisSubnet" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "CidrBlock" : { "Fn::FindInMap" : [ "VpcCidrs", { "Ref" : "AWS::Region" }, "redissubnet" ] },
+        "AvailabilityZone" : { "Fn::Select" : [ "0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] }
+      }
+    },
+
+    "redisSubnetGroup" : {
+      "Type" : "AWS::ElastiCache::SubnetGroup",
+      "Properties" : {
+        "Description": "Redis Subnet Group",
+        "SubnetIds": [{ "Ref" : "redisSubnet" }]
+      }
+    },
+
+    "redisSG" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "VpcId" : { "Ref" : "Vpc" },
+        "GroupDescription" : "Redis Security Group",
+        "SecurityGroupEgress" : [{
+           "IpProtocol" : "tcp",
+           "FromPort" : 0,
+           "ToPort" : 65535,
+           "CidrIp" : "0.0.0.0/0"
+         }],
+        "SecurityGroupIngress" : [{
+            "IpProtocol" : -1,
+            "FromPort" : 6379,
+            "ToPort" : 6379,
+            "SourceSecurityGroupId" : { "Ref" : "EcsSecurityGroup" }
+          }]
+      }
+    },
+
+    "redis" : {
+      "Type" : "AWS::ElastiCache::CacheCluster",
+      "Properties" : {
+        "AutoMinorVersionUpgrade" : true,
+        "CacheNodeType" : {"Ref" : "redisSize"},
+        "CacheSubnetGroupName" : { "Ref" : "redisSubnetGroup" },
+        "Engine" : "redis",
+        "NumCacheNodes" : 1,
+        "VpcSecurityGroupIds" : [{"Ref" : "redisSG"}]
+      }
+    },
+
+    "taskMigrateRepo" : {
+      "Type" : "AWS::ECR::Repository",
+      "Properties" : {
+        "RepositoryName" : "task-migrate-repo"
+      }
+    },
+
+    "serviceAppRepo" : {
+      "Type" : "AWS::ECR::Repository",
+      "Properties" : {
+        "RepositoryName" : "service-app-repo"
+      }
+    },
+
+    "serviceRouterRepo" : {
+      "Type" : "AWS::ECR::Repository",
+      "Properties" : {
+        "RepositoryName" : "service-router-repo"
+      }
+    },
+
+    "serviceUIRepo" : {
+      "Type" : "AWS::ECR::Repository",
+      "Properties" : {
+        "RepositoryName" : "service-ui-repo"
+      }
+    },
+
+    "routerLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "routerErrorLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "uiLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "uiErrorLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "chatLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "chatErrorLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "apiLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "apiErrorLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+
+    "migrateLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+    "migrateErrorLog": {
+        "Type": "AWS::Logs::LogGroup",
+        "Properties": {
+            "RetentionInDays": 30
+        }
+    },
+
+    "chatQueue" : {
+      "Type" : "AWS::SQS::Queue"
+    },
+    "apiQueue" : {
+      "Type" : "AWS::SQS::Queue"
+    },
+    "notificationsQueue" : {
+      "Type" : "AWS::SQS::Queue"
+    },
+
+    "SystemBusSNSTopic" : {
+      "Type" : "AWS::SNS::Topic",
+      "Properties" : {
+        "DisplayName" : "System Bus SNS Topic",
+        "TopicName" : "system-bus-sns-topic",
+        "Subscription" : [
+            {
+              "Endpoint" : { "Fn::GetAtt" : ["chatQueue", "Arn"]},
+              "Protocol" : "sqs"
+            },
+            {
+              "Endpoint" : { "Fn::GetAtt" : ["apiQueue", "Arn"]},
+              "Protocol" : "sqs"
+            },
+            {
+              "Endpoint" : { "Fn::GetAtt" : ["notificationsQueue", "Arn"]},
+              "Protocol" : "sqs"
+            }
+        ]
+      }
+    },
+
+
+
+    "SQSUser" : {
+       "Type" : "AWS::IAM::User",
+       "Properties" : {
+          "Path" : "/"
+        }
+    },
+
+    "SQSIamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "SQSUserPolicy",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect":"Allow",
+              "Action":"sqs:*",
+              "Resource": [
+                 { "Fn::GetAtt" : ["chatQueue", "Arn"]},
+                 { "Fn::GetAtt" : ["apiQueue", "Arn"]},
+                 { "Fn::GetAtt" : ["notificationsQueue", "Arn"]}
+              ]
+            }
+          ]
+        },
+        "Users": [ {"Ref" : "SQSUser"} ]
+      }
+    },
+
+    "SQSAccessKey" : {
+       "Type" : "AWS::IAM::AccessKey",
+       "Properties" : {
+          "UserName" : { "Ref" : "SQSUser" }
+       }
+    },
+
+    "SNSUser" : {
+       "Type" : "AWS::IAM::User",
+       "Properties" : {
+          "Path" : "/"
+        }
+    },
+
+    "SNSIamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "SNSUserPolicy",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect":"Allow",
+              "Action":"sns:*",
+              "Resource": [
+                  {"Ref" : "SystemBusSNSTopic"}
+              ]
+            }
+          ]
+        },
+        "Users": [ {"Ref" : "SNSUser"} ]
+      }
+    },
+
+    "SNSAccessKey" : {
+       "Type" : "AWS::IAM::AccessKey",
+       "Properties" : {
+          "UserName" : { "Ref" : "SNSUser" }
+       }
+    },
+
+    "serviceAppTaskDefinition" : {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties" : {
+        "ContainerDefinitions": [
+            {
+                "Name": "service-api-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "serviceAppRepo"}, ":latest"
+                ] ] },
+                "Memory": "275",
+                "Cpu": "1",
+                "Essential": true,
+                "PortMappings": [
+                ],
+                "Environment": [
+                    {
+                        "Name": "DB_HOSTNAME",
+                        "Value": {"Fn::GetAtt" : [ "RDBMS" , "Endpoint.Address" ]}
+                    },
+                    {
+                        "Name": "DB_DATABASE",
+                        "Value": { "Ref" : "rdbmsDBName"}
+                    },
+                    {
+                        "Name": "DB_USERNAME",
+                        "Value": { "Ref" : "rdbmsUser" }
+                    },
+                    {
+                        "Name": "DB_PASSWORD",
+                        "Value": { "Ref" : "rdbmsPass" }
+                    },
+                    {
+                        "Name": "WEB_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/" ]]}
+                    },
+                    {
+                        "Name": "API_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "api" ]]}
+                    },
+                    {
+                        "Name": "CHAT_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "chat" ]]}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_ID",
+                        "Value": {"Ref": "FacebookClientID"}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_SECRET",
+                        "Value": {"Ref": "FacebookClientSecret"}
+                    },
+                    {
+                        "Name": "SERVER_FILE",
+                        "Value": "api.js"
+                    },
+                    {
+                        "Name" : "CLOUD_HOST",
+                        "Value" : "AWS"
+                    },
+                    {
+                        "Name" : "REDIS_CACHE_CLUSTER_ID",
+                        "Value" : {"Ref" : "redis"}
+                    },
+                    {
+                      "Name" : "SESSION_SECRET",
+                      "Value" : {"Ref" : "sessionSecret"}
+                    },
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/api.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/api.err.log"
+                    },
+                    {
+                      "Name" : "GA_TRACKING_ID",
+                      "Value" : {"Ref" : "GaTrackingId"}
+                    },
+                    {
+                      "Name" : "SES_ACCESS_KEY",
+                      "Value":  { "Ref" : "sesUserAccessKey" }
+                    },
+                    {
+                      "Name" : "SES_ACCESS_SECRET",
+                      "Value" : {
+                        "Fn::GetAtt" : [ "sesUserAccessKey", "SecretAccessKey" ]
+                      }
+                    },
+                    {
+                      "Name" : "SES_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SES_SENDER",
+                      "Value" : { "Fn::Join" : ["", [ { "Ref" : "emailNotificationsFromName" }, " <", {"Ref" : "emailNotificationsFromUser"}, "@", {"Ref" : "s3Bucket"},">" ]]}
+                    },
+                    {
+                      "Name" : "SQS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SQS_ACCESS_KEY",
+                      "Value": { "Ref" : "SQSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SQS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SQSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SQS_QUEUE_URL",
+                      "Value" : { "Ref" : "apiQueue" }
+                    },
+                    {
+                      "Name" : "SNS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SNS_ACCESS_KEY",
+                      "Value": { "Ref" : "SNSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SNS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SNSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SNS_TOPIC_ARN",
+                      "Value" : { "Ref" : "SystemBusSNSTopic" }
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ]
+            },
+            {
+                "Name": "service-chat-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "serviceAppRepo"}, ":latest"
+                ] ] },
+                "Memory": "275",
+                "Cpu": "1",
+                "Essential": true,
+                "PortMappings": [
+                ],
+                "Environment": [
+                    {
+                        "Name": "DB_HOSTNAME",
+                        "Value": {"Fn::GetAtt" : [ "RDBMS" , "Endpoint.Address" ]}
+                    },
+                    {
+                        "Name": "DB_DATABASE",
+                        "Value": { "Ref" : "rdbmsDBName"}
+                    },
+                    {
+                        "Name": "DB_USERNAME",
+                        "Value": { "Ref" : "rdbmsUser" }
+                    },
+                    {
+                        "Name": "DB_PASSWORD",
+                        "Value": { "Ref" : "rdbmsPass" }
+                    },
+                    {
+                        "Name": "WEB_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/" ]]}
+                    },
+                    {
+                        "Name": "API_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "api" ]]}
+                    },
+                    {
+                        "Name": "CHAT_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "chat" ]]}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_ID",
+                        "Value": {"Ref": "FacebookClientID"}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_SECRET",
+                        "Value": {"Ref": "FacebookClientSecret"}
+                    },
+                    {
+                        "Name": "SERVER_FILE",
+                        "Value": "chat.js"
+                    },
+                    {
+                        "Name" : "CLOUD_HOST",
+                        "Value" : "AWS"
+                    },
+                    {
+                        "Name" : "REDIS_CACHE_CLUSTER_ID",
+                        "Value" : {"Ref" : "redis"}
+                    },
+                    {
+                      "Name" : "SESSION_SECRET",
+                      "Value" : {"Ref" : "sessionSecret"}
+                    },
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/chat.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/chat.err.log"
+                    },
+                    {
+                      "Name" : "GA_TRACKING_ID",
+                      "Value" : {"Ref" : "GaTrackingId"}
+                    },
+                    {
+                      "Name" : "SES_ACCESS_KEY",
+                      "Value":  { "Ref" : "sesUserAccessKey" }
+                    },
+                    {
+                      "Name" : "SES_ACCESS_SECRET",
+                      "Value" : {
+                        "Fn::GetAtt" : [ "sesUserAccessKey", "SecretAccessKey" ]
+                      }
+                    },
+                    {
+                      "Name" : "SES_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SES_SENDER",
+                      "Value" : { "Fn::Join" : ["", [ { "Ref" : "emailNotificationsFromName" }, " <", {"Ref" : "emailNotificationsFromUser"}, "@", {"Ref" : "s3Bucket"},">" ]]}
+                    },
+                    {
+                      "Name" : "SQS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SQS_ACCESS_KEY",
+                      "Value": { "Ref" : "SQSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SQS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SQSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SQS_QUEUE_URL",
+                      "Value" : { "Ref" : "chatQueue" }
+                    },
+                    {
+                      "Name" : "SNS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SNS_ACCESS_KEY",
+                      "Value": { "Ref" : "SNSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SNS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SNSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SNS_TOPIC_ARN",
+                      "Value" : { "Ref" : "SystemBusSNSTopic" }
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ]
+            },
+            {
+                "Name": "service-notifications-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "serviceAppRepo"}, ":latest"
+                ] ] },
+                "Memory": "200",
+                "Cpu": "1",
+                "Essential": true,
+                "PortMappings": [
+                ],
+                "Environment": [
+                    {
+                        "Name": "DB_HOSTNAME",
+                        "Value": {"Fn::GetAtt" : [ "RDBMS" , "Endpoint.Address" ]}
+                    },
+                    {
+                        "Name": "DB_DATABASE",
+                        "Value": { "Ref" : "rdbmsDBName"}
+                    },
+                    {
+                        "Name": "DB_USERNAME",
+                        "Value": { "Ref" : "rdbmsUser" }
+                    },
+                    {
+                        "Name": "DB_PASSWORD",
+                        "Value": { "Ref" : "rdbmsPass" }
+                    },
+                    {
+                        "Name": "WEB_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/" ]]}
+                    },
+                    {
+                        "Name": "API_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "api" ]]}
+                    },
+                    {
+                        "Name": "CHAT_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "chat" ]]}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_ID",
+                        "Value": {"Ref": "FacebookClientID"}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_SECRET",
+                        "Value": {"Ref": "FacebookClientSecret"}
+                    },
+                    {
+                        "Name": "SERVER_FILE",
+                        "Value": "notifications.js"
+                    },
+                    {
+                        "Name" : "CLOUD_HOST",
+                        "Value" : "AWS"
+                    },
+                    {
+                        "Name" : "REDIS_CACHE_CLUSTER_ID",
+                        "Value" : {"Ref" : "redis"}
+                    },
+                    {
+                      "Name" : "SESSION_SECRET",
+                      "Value" : {"Ref" : "sessionSecret"}
+                    },
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/notifications.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/notifications.err.log"
+                    },
+                    {
+                      "Name" : "GA_TRACKING_ID",
+                      "Value" : {"Ref" : "GaTrackingId"}
+                    },
+                    {
+                      "Name" : "SES_ACCESS_KEY",
+                      "Value":  { "Ref" : "sesUserAccessKey" }
+                    },
+                    {
+                      "Name" : "SES_ACCESS_SECRET",
+                      "Value" : {
+                        "Fn::GetAtt" : [ "sesUserAccessKey", "SecretAccessKey" ]
+                      }
+                    },
+                    {
+                      "Name" : "SES_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SES_SENDER",
+                      "Value" : { "Fn::Join" : ["", [ { "Ref" : "emailNotificationsFromName" }, " <", {"Ref" : "emailNotificationsFromUser"}, "@", {"Ref" : "s3Bucket"},">" ]]}
+                    },
+                    {
+                      "Name" : "SQS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SQS_ACCESS_KEY",
+                      "Value": { "Ref" : "SQSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SQS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SQSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SQS_QUEUE_URL",
+                      "Value" : { "Ref" : "notificationsQueue" }
+                    },
+                    {
+                      "Name" : "SNS_REGION",
+                      "Value" : { "Ref": "AWS::Region" }
+                    },
+                    {
+                      "Name" : "SNS_ACCESS_KEY",
+                      "Value": { "Ref" : "SNSAccessKey" }
+                    },
+                    { 
+                      "Name" : "SNS_ACCESS_SECRET",
+                      "Value" : { "Fn::GetAtt" : [ "SNSAccessKey", "SecretAccessKey" ] }
+                    },
+                    {
+                      "Name" : "SNS_TOPIC_ARN",
+                      "Value" : { "Ref" : "SystemBusSNSTopic" }
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ]
+            },
+            {
+                "Name": "service-ui-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "serviceUIRepo"}, ":latest"
+                ] ] },
+                "Memory": "10",
+                "Cpu": "1",
+                "Essential": true,
+                "Environment" : [
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/ui.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/ui.err.log"
+                    },
+                    {
+                        "Name": "WEB_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/" ]]}
+                    },
+                    {
+                        "Name": "API_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "api" ]]}
+                    },
+                    {
+                        "Name": "CHAT_ENDPOINT",
+                        "Value": { "Fn::Join" : ["", [ "//", { "Ref" : "s3Bucket" }, "/", "chat" ]]}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_ID",
+                        "Value": {"Ref": "FacebookClientID"}
+                    },
+                    {
+                        "Name": "FACEBOOK_CLIENT_SECRET",
+                        "Value": {"Ref": "FacebookClientSecret"}
+                    },
+                    {
+                        "Name" : "GETSENTRY_ENDPOINT",
+                        "Value" : {"Ref" : "getSentryEndpoint"}
+                    },
+                    {
+                      "Name" : "GA_TRACKING_ID",
+                      "Value" : {"Ref" : "GaTrackingId"}
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ]
+            },
+            {
+                "Name": "service-router-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "serviceRouterRepo"}, ":latest"
+                ] ] },
+                "Memory": "50",
+                "Cpu": "1",
+                "Essential": true,
+                "PortMappings": [
+                  {
+                      "HostPort": 80,
+                      "ContainerPort": 80,
+                      "Protocol": "tcp"
+                  }
+                ],
+                "Links" : [
+                  "service-api-container:api",
+                  "service-chat-container:chat",
+                  "service-ui-container:ui"
+                ],
+                "Environment" : [
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/router.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/router.err.log"
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ],
+                "VolumesFrom" : [
+                  { "SourceContainer" : "service-ui-container"   },
+                  { "SourceContainer" : "service-api-container"  },
+                  { "SourceContainer" : "service-chat-container" }
+                ]
+            },
+            {
+                "Name": "logging-container",
+                "Image" : "joshbalfour/cloudwatch-logs",
+                "Memory": "50",
+                "Cpu": "10",
+                "Essential": true,
+                "Environment" : [
+                  {
+                        "Name": "AWS_REGION",
+                        "Value": {"Ref": "AWS::Region"}
+                  }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs",
+                    "ReadOnly": true
+                  }
+                ],
+                "Command" : [
+
+                  { "Fn::Join" : [":", ["/mnt/logs/router.log", {"Ref" : "routerLog"} ] ] },
+                  { "Fn::Join" : [":", ["/mnt/logs/router.err.log", {"Ref" : "routerErrorLog"}] ] },
+
+                  { "Fn::Join" : [":", ["/mnt/logs/ui.log", {"Ref" : "uiLog"}] ] },
+                  { "Fn::Join" : [":", ["/mnt/logs/ui.err.log", {"Ref" : "uiErrorLog"}] ] },
+
+                  { "Fn::Join" : [":", ["/mnt/logs/chat.log", {"Ref" : "chatLog"}] ] },
+                  { "Fn::Join" : [":", ["/mnt/logs/chat.err.log", {"Ref" : "chatErrorLog"}] ] },
+
+                  { "Fn::Join" : [":", ["/mnt/logs/api.log", {"Ref" : "apiLog"}] ] },
+                  { "Fn::Join" : [":", ["/mnt/logs/api.err.log", {"Ref" : "apiErrorLog"}] ] },
+
+                  { "Fn::Join" : [":", ["/mnt/logs/migrate.log", {"Ref" : "migrateLog"}] ] },
+                  { "Fn::Join" : [":", ["/mnt/logs/migrate.err.log", {"Ref" : "migrateErrorLog"}] ] }
+                ]
+            },
+            {
+                "Name": "log-management-container",
+                "Image" : "tutum/logrotate",
+                "Memory": "10",
+                "Cpu": "10",
+                "Essential": true,
+                "Environment" : [],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/var/lib/docker/containers"
+                  }
+                ]
+            }
+        ],
+        "Volumes" : [
+          { 
+            "Name" : "logs", 
+            "Host" : {
+              "SourcePath" : "/var/log"
+            }
+          }
+        ]
+      }
+    },
+
+    "taskMigrateTaskDefinition" : {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties" : {
+        "ContainerDefinitions": [
+            {
+                "Name": "task-migrate-container",
+                "Image" : { "Fn::Join" : ["", [ 
+                  {"Ref" : "AWS::AccountId"}, ".dkr.ecr.", { "Ref" : "AWS::Region" }, ".amazonaws.com/", {"Ref" : "taskMigrateRepo"}, ":latest"
+                ] ] },
+                "Memory": "125",
+                "Cpu": "1",
+                "Essential": true,
+                "PortMappings": [
+                ],
+                "Environment": [
+                    {
+                        "Name": "DB_HOSTNAME",
+                        "Value": {"Fn::GetAtt" : [ "RDBMS" , "Endpoint.Address" ]}
+                    },
+                    {
+                        "Name": "DB_DATABASE",
+                        "Value": { "Ref" : "rdbmsDBName"}
+                    },
+                    {
+                        "Name": "DB_USERNAME",
+                        "Value": { "Ref" : "rdbmsUser" }
+                    },
+                    {
+                        "Name": "DB_PASSWORD",
+                        "Value": { "Ref" : "rdbmsPass" }
+                    },
+                    {
+                        "Name" : "CLOUD_HOST",
+                        "Value" : "AWS"
+                    },
+                    {
+                        "Name" : "LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/migrate.log"
+                    },
+                    {
+                        "Name" : "ERROR_LOG_FILE_LOCATION",
+                        "Value" : "/mnt/logs/migrate.err.log"
+                    }
+                ],
+                "MountPoints": [
+                  {
+                    "SourceVolume": "logs",
+                    "ContainerPath": "/mnt/logs"
+                  }
+                ]
+            }
+        ],
+        "Volumes" : [
+          { 
+            "Name" : "logs", 
+            "Host" : {
+              "SourcePath" : "/var/log"
+            }
+          }
+        ]
+      }
+    },
+
+    "EcsElbAccessRole": {
+       "Type": "AWS::IAM::Role",
+       "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Version": "2008-10-17",
+            "Statement": [
+              {
+                "Sid": "",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "ecs.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+              }
+            ]
+          }
+       }
+    },
+
+    "EcsElbAccessIamPolicy": {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "projectnameECSService",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:Describe*",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                "elasticloadbalancing:Describe*",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer"
+              ],
+              "Resource": "*"
+            }
+          ]
+        },
+        "Roles": [ {"Ref" : "EcsElbAccessRole"} ]
+      }
+    },
+
+    "serviceAppService" : {
+      "Type" : "AWS::ECS::Service",
+      "Properties" : {
+        "Cluster" : {"Ref": "EcsCluster"},
+        "DesiredCount" : {"Ref": "serviceDesiredCount"},
+        "LoadBalancers" : [ {
+          "ContainerName" : "service-router-container",
+          "ContainerPort" : 80,
+          "LoadBalancerName" : { "Ref" : "EcsElasticLoadBalancer" }
+        } ],
+        "Role" : {"Ref" : "EcsElbAccessRole"},
+        "TaskDefinition" : {"Ref": "serviceAppTaskDefinition"}
+      },
+      "DependsOn": "EcsElbAccessIamPolicy"
+    },
+
+    "lambdaEcsServiceIamRole": {
+       "Type": "AWS::IAM::Role",
+       "Properties": {
+          "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Sid": "",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "lambda.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+              }
+            ]
+          }
+       }
+    },
+
+    "lambdaEcsServiceIamPolicy" : {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "projectnameLambdaFunction",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:*"
+              ],
+              "Resource": "arn:aws:logs:*:*:*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ecs:DescribeServices",
+                "ecs:UpdateService"
+              ],
+              "Resource": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "Roles": [ {"Ref" : "lambdaEcsServiceIamRole"} ]
+      }
+    },
+
+    "ScaleUpServiceAppServiceFunction" : {
+      "Type" : "AWS::Lambda::Function",
+      "Properties" : {
+        "Code" : {
+          "ZipFile":  { "Fn::Join": ["", [
+              " ",
+              "console.log('Loading event');",
+              " ",
+              "var aws = require('aws-sdk');",
+              " ",
+              "exports.handler = function(event, context) {",
+              "  var ecsService = '",{ "Ref" : "serviceAppService" },"';",
+              "  var ecsRegion = '",{ "Ref" : "AWS::Region" },"';",
+              "  var maxCount = ",{ "Ref" : "AsgMaxSize" },";",
+              " ",
+              "  var ecs = new aws.ECS({region: ecsRegion});",
+              "  ecs.describeServices({services:[ecsService]}, function(err, data) {",
+              "    if (err) {",
+              "      console.log(err, err.stack);",
+              "    } else {",
+              "      var desiredCount = data.services[0].desiredCount;",
+              "      if (desiredCount < maxCount) {",
+              "        desiredCount++;",
+              "        var params = {",
+              "          service:      ecsService,",
+              "          desiredCount: desiredCount",
+              "        };",
+              "        ecs.updateService(params, function(err, data) {",
+              "          if (err) {",
+              "            console.log(err, err.stack);",
+              "          } else {",
+              "            console.log(data);",
+              "            context.succeed();",
+              "          }",
+              "        });",
+              "      } else {",
+              "        console.log('Service count is already max.');",
+              "        context.fail();",
+              "      }",
+              "    }",
+              "  });",
+              "};",
+              " "
+          ]]}
+        },
+        "Description" : "Scales up the Service App Service",
+        "FunctionName" : "ScaleUpServiceAppService",
+        "Handler": "index.handler",
+        "Role" : { "Fn::GetAtt" : ["lambdaEcsServiceIamRole", "Arn"] },
+        "Runtime": "nodejs"
+      }
+    },
+
+    "ScaleDownServiceAppServiceFunction" : {
+      "Type" : "AWS::Lambda::Function",
+      "Properties" : {
+        "Code" : {
+          "ZipFile":  { "Fn::Join": ["", [
+              " ",
+              "console.log('Loading event');",
+              " ",
+              "var aws = require('aws-sdk');",
+              " ",
+              "exports.handler = function(event, context) {",
+              "  var ecsService = '",{ "Ref" : "serviceAppService" },"';",
+              "  var ecsRegion = '",{ "Ref" : "AWS::Region" },"';",
+              "  var minCount = ",{ "Ref" : "AsgMinSize" },";",
+              " ",
+              "  var ecs = new aws.ECS({region: ecsRegion});",
+              "  ecs.describeServices({services:[ecsService]}, function(err, data) {",
+              "    if (err) {",
+              "      console.log(err, err.stack);",
+              "    } else {",
+              "      var desiredCount = data.services[0].desiredCount;",
+              "      if (desiredCount > minCount) {",
+              "        desiredCount--;",
+              "        var params = {",
+              "          service:      ecsService,",
+              "          desiredCount: desiredCount",
+              "        };",
+              "        ecs.updateService(params, function(err, data) {",
+              "          if (err) {",
+              "            console.log(err, err.stack);",
+              "          } else {",
+              "            console.log(data);",
+              "            context.succeed();",
+              "          }",
+              "        });",
+              "      } else {",
+              "        console.log('Service count is already min.');",
+              "        context.fail();",
+              "      }",
+              "    }",
+              "  });",
+              "};",
+              " "
+          ]]}
+        },
+        "Description" : "Scales Down the Service App Service",
+        "FunctionName" : "ScaleDownServiceAppService",
+        "Handler": "index.handler",
+        "Role" : { "Fn::GetAtt" : ["lambdaEcsServiceIamRole", "Arn"] },
+        "Runtime": "nodejs"
+      }
+    },
+
+    "ASGScaleUpPolicy" : {
+       "Type" : "AWS::AutoScaling::ScalingPolicy",
+       "Properties" : {
+          "AdjustmentType" : "ChangeInCapacity",
+          "AutoScalingGroupName" : { "Ref" : "EcsInstanceAsg" },
+          "Cooldown" : "120",
+          "ScalingAdjustment" : "1"
+       }
+    },
+
+    "CPUHighAlarm" : {
+      "Type" : "AWS::CloudWatch::Alarm",
+      "Properties" : {
+        "AlarmDescription" : "CPU high usage alarm for the ASG",
+        "AlarmActions": [ { "Ref": "ASGScaleUpPolicy" } ],
+        "MetricName" : "CPUUtilization",
+        "Namespace" : "AWS/EC2",
+        "Statistic" : "Average",
+        "Period" : "60",
+        "EvaluationPeriods" : "3",
+        "Threshold" : "90",
+        "ComparisonOperator" : "GreaterThanThreshold",
+        "Dimensions" : [ {
+          "Name" : "AutoScalingGroupName",
+          "Value" : { "Ref" : "EcsInstanceAsg" }
+        } ]
+      }
+    },
+
+    "ASGScaleDownPolicy" : {
+       "Type" : "AWS::AutoScaling::ScalingPolicy",
+       "Properties" : {
+          "AdjustmentType" : "ChangeInCapacity",
+          "AutoScalingGroupName" : { "Ref" : "EcsInstanceAsg" },
+          "Cooldown" : "30",
+          "ScalingAdjustment" : "-1"
+       }
+    },
+
+    "CPULowAlarm" : {
+      "Type" : "AWS::CloudWatch::Alarm",
+      "Properties" : {
+        "AlarmDescription" : "CPU low usage alarm for the ASG",
+        "AlarmActions": [ { "Ref": "ASGScaleDownPolicy" } ],
+        "MetricName" : "CPUUtilization",
+        "Namespace" : "AWS/EC2",
+        "Statistic" : "Average",
+        "Period" : "60",
+        "EvaluationPeriods" : "3",
+        "Threshold" : "20",
+        "ComparisonOperator" : "LessThanThreshold",
+        "Dimensions" : [ {
+          "Name" : "AutoScalingGroupName",
+          "Value" : { "Ref" : "EcsInstanceAsg" }
+        } ]
+      }
+    }
+  },
+
+  "Outputs" : {
+
+    "EcsInstanceAsgName" : {
+      "Description" : "Auto Scaling Group Name for ECS Instances",
+      "Value" : { "Ref" : "EcsInstanceAsg" }
+    },
+    "EcsElbName" : {
+      "Description" : "Load Balancer for ECS Service",
+      "Value" : { "Ref" : "EcsElasticLoadBalancer" }
+    },
+    "s3BucketId" : {
+      "Description" : "S3 Bucket",
+      "Value" : { "Ref" : "s3Bucket" }
+    },
+    "taskMigrateRepo" : {
+      "Description" : "Task Migrate Repo",
+      "Value" : { "Ref" : "taskMigrateRepo" }
+    },
+    "serviceAppRepo" : {
+      "Description" : "Service App Repo",
+      "Value" : { "Ref" : "serviceAppRepo" }
+    },
+    "serviceRouterRepo" : {
+      "Description" : "Service Router Repo",
+      "Value" : { "Ref" : "serviceRouterRepo" }
+    },
+    "serviceUIRepo" : {
+      "Description" : "Service UI Repo",
+      "Value" : { "Ref" : "serviceUIRepo" }
+    },
+    "rdbmsId" : {
+      "Description" : "RDBMS ID",
+      "Value" : { "Ref" : "RDBMS" }
+    },
+    "dockerDevAccessKey" : {
+      "Description" : "IAM Access Key for ECR access",
+      "Value" : { "Ref" : "dockerDevAccessKey" }
+    },
+    "dockerDevAccessSecret" : {
+      "Description" : "IAM Access Secret for ECR access",
+      "Value" : {
+        "Fn::GetAtt" : [ "dockerDevAccessKey", "SecretAccessKey" ]
+      }
+    },
+    "sesUserAccessKey" : {
+      "Description" : "IAM Access Key for SES access",
+      "Value" : { "Ref" : "sesUserAccessKey" }
+    },
+    "sesUserAccessSecret" : {
+      "Description" : "IAM Access Secret for SES access",
+      "Value" : {
+        "Fn::GetAtt" : [ "sesUserAccessKey", "SecretAccessKey" ]
+      }
+    }
+
+
+  }
+
+}

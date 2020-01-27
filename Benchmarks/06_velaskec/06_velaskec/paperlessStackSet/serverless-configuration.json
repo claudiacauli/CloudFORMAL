@@ -1,0 +1,182 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "LambdaRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": {
+                            "Fn::Sub": "${AWS::StackName}-Lambda"
+                        },
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Resource": "*"
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "lambda:InvokeFunction",
+                                        "lambda:UpdateFunctionConfiguration"
+                                    ],
+                                    "Resource": {
+                                        "Fn::Sub": "arn:aws:lambda:${AWS::Region}:*"
+                                    }
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ssm:GetParameter"
+                                    ],
+                                    "Resource": {
+                                        "Fn::Sub": "arn:aws:ssm:${AWS::Region}:*"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "ProductionLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "ZipFile": {
+                        "Fn::Sub": "exports.handler = (event, context, callback) => {\n  callback(null, process.env.test);\n};\n"
+                    }
+                },
+                "Runtime": "nodejs6.10"
+            }
+        },
+        "ProductionLambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${Function}",
+                        {
+                            "Function": {
+                                "Ref": "ProductionLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 1
+            }
+        },
+        "ConfigurationMonitorLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaRole",
+                        "Arn"
+                    ]
+                },
+                "Environment": {
+                    "Variables": {
+                        "target": {
+                            "Ref": "ProductionLambda"
+                        }
+                    }
+                },
+                "Code": {
+                    "ZipFile": {
+                        "Fn::Sub": "'use strict';\nconst AWS = require('aws-sdk');\nconst lambda = new AWS.Lambda();\nconst ssm = new AWS.SSM();\nexports.handler = (event, context, callback) => {\n    ssm.getParameter({\n      Name: event.detail.name\n    }, (err, data) => {\n      if (err) callback(err);\n      else {\n        const params = {\n            FunctionName: process.env.target,\n            Environment: {\n                Variables: { }\n            }\n        };\n        params.Environment.Variables[event.detail.name] = data.Parameter.Value;\n        lambda.updateFunctionConfiguration(params, (err, data) => {\n            if (err) callback(err);\n            else callback();\n        });\n      }\n    });\n};\n"
+                    }
+                },
+                "Runtime": "nodejs6.10",
+                "Timeout": 10
+            }
+        },
+        "ConfigurationMonitorLambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${Function}",
+                        {
+                            "Function": {
+                                "Ref": "ConfigurationMonitorLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 1
+            }
+        },
+        "ConfigurationMonitorLambdaInvokePermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "ConfigurationMonitorLambda",
+                        "Arn"
+                    ]
+                },
+                "Action": "lambda:InvokeFunction",
+                "Principal": "events.amazonaws.com"
+            }
+        },
+        "Rule": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+                "EventPattern": {
+                    "source": [
+                        "aws.ssm"
+                    ],
+                    "detail-type": [
+                        "Parameter Store Change"
+                    ]
+                },
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "ConfigurationMonitorLambda",
+                                "Arn"
+                            ]
+                        },
+                        "Id": {
+                            "Ref": "ConfigurationMonitorLambda"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

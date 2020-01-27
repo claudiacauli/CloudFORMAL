@@ -1,0 +1,62 @@
+
+Infrastructure: 13_happypeter, includes StackSets: 
+ - hpStackSet 
+
+	StackSet: hpStackSet, includes Templates: 
+		Template: kataCode
+		 Parameters: 
+			(aws::stackid -> 111111)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-east-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> kataCode)
+			(aws::notificationarns -> arn:aws:cnc:test:arn)
+		 Resources: 
+			Events::Rule(amazoncloudwatcheventrule)
+			CodeDeploy::DeploymentGroup(deploymentgroup)
+			CodePipeline::Pipeline(apppipeline)
+			IAM::Role(cwrole)
+			CloudTrail::Trail(amazoncloudtrail)
+			IAM::Role(cprole)
+			IAM::ManagedPolicy(policycp)
+			CodeDeploy::Application(application)
+			IAM::Role(cdrole)
+			IAM::ManagedPolicy(policycw)
+			S3::Bucket(bucketlogsct)
+			S3::BucketPolicy(bucketpolicylogsct)
+
+		Template: kataApp
+		 Parameters: 
+			(privatesubnet -> NoValue)
+			(aws::stackid -> 111111)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-east-1)
+			(vpc -> NoValue)
+			(aws::urlsuffix -> .aws)
+			(publicsubnet -> NoValue)
+			(aws::stackname -> kataApp)
+			(aws::notificationarns -> arn:aws:cnc:test:arn)
+		 Resources: 
+			CloudWatch::Alarm(cpualarm)
+			Lambda::Permission(permissionlambdastartacweventrule)
+			CloudWatch::Alarm(crashalarm)
+			S3::Bucket(s3bucket)
+			AutoScaling::AutoScalingGroup(asg)
+			IAM::InstanceProfile(ec2systemmanagercwprofile)
+			Events::Rule(acweventrule)
+			ElasticLoadBalancingV2::LoadBalancer(alb)
+			Lambda::Function(lfrestartnode)
+			Lambda::Permission(permissionlambdarestartsns)
+			AutoScaling::ScalingPolicy(asgpolicyscale)
+			ElasticLoadBalancingV2::Listener(alblistener)
+			IAM::Role(lfrole)
+			ElasticLoadBalancingV2::ListenerRule(alblistenerrule)
+			ElasticLoadBalancingV2::TargetGroup(albtg)
+			EC2::SecurityGroup(securitygroup)
+			IAM::Role(ec2ssmcwrole)
+			Lambda::Function(lfstartnode)
+			AutoScaling::LaunchConfiguration(lc)
+
+

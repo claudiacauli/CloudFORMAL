@@ -1,0 +1,108 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Certificates for CloudFront distributions, MUST be deployed in us-east-1.",
+  "Parameters": {
+    "BaseDomainName": {
+      "Type": "String",
+      "Default": "stationeering.com",
+      "Description": "Base domain name to use for website."
+    }
+  },
+  "Conditions": {
+    "InUsEast1": {
+      "Fn::Equals": [
+        {
+          "Ref": "AWS::Region"
+        },
+        "us-east-1"
+      ]
+    }
+  },
+  "Resources": {
+    "FrontEndCertificate": {
+      "Condition": "InUsEast1",
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": {
+          "Ref": "BaseDomainName"
+        },
+        "DomainValidationOptions": [
+          {
+            "DomainName": {
+              "Ref": "BaseDomainName"
+            },
+            "ValidationDomain": {
+              "Ref": "BaseDomainName"
+            }
+          }
+        ]
+      }
+    },
+    "BackEndCertificate": {
+      "Condition": "InUsEast1",
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": {
+          "Fn::Sub": [
+            "data.${Domain}",
+            {
+              "Domain": {
+                "Ref": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "DomainValidationOptions": [
+          {
+            "DomainName": {
+              "Fn::Sub": [
+                "data.${Domain}",
+                {
+                  "Domain": {
+                    "Ref": "BaseDomainName"
+                  }
+                }
+              ]
+            },
+            "ValidationDomain": {
+              "Ref": "BaseDomainName"
+            }
+          }
+        ]
+      }
+    },
+    "APICertificate": {
+      "Condition": "InUsEast1",
+      "Type": "AWS::CertificateManager::Certificate",
+      "Properties": {
+        "DomainName": {
+          "Fn::Sub": [
+            "api.${Domain}",
+            {
+              "Domain": {
+                "Ref": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "DomainValidationOptions": [
+          {
+            "DomainName": {
+              "Fn::Sub": [
+                "api.${Domain}",
+                {
+                  "Domain": {
+                    "Ref": "BaseDomainName"
+                  }
+                }
+              ]
+            },
+            "ValidationDomain": {
+              "Ref": "BaseDomainName"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

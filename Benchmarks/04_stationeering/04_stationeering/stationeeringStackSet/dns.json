@@ -1,0 +1,99 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Stack for managing domain names used for stationeering.com.",
+  "Parameters": {
+    "BaseDomainName": {
+      "Type": "String",
+      "Default": "stationeering.com",
+      "Description": "Base domain name to use for website."
+    }
+  },
+  "Resources": {
+    "StationeeringDotCom": {
+      "Type": "AWS::Route53::HostedZone",
+      "Properties": {
+        "Name": {
+          "Ref": "BaseDomainName"
+        }
+      }
+    },
+    "LoopbackBestPracticeIPv4": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": "${BaseDomainName}."
+        },
+        "Name": {
+          "Fn::Sub": "localhost.${BaseDomainName}"
+        },
+        "Type": "A",
+        "TTL": 900,
+        "ResourceRecords": [
+          "127.0.0.1"
+        ]
+      }
+    },
+    "LoopbackBestPracticeIPv6": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": "${BaseDomainName}."
+        },
+        "Name": {
+          "Fn::Sub": "localhost.${BaseDomainName}"
+        },
+        "Type": "AAAA",
+        "TTL": 900,
+        "ResourceRecords": [
+          "::1"
+        ]
+      }
+    },
+    "GoogleMailMX": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": "${BaseDomainName}."
+        },
+        "Name": {
+          "Ref": "BaseDomainName"
+        },
+        "Type": "MX",
+        "TTL": 3600,
+        "ResourceRecords": [
+          "1 ASPMX.L.GOOGLE.COM",
+          "5 ALT1.ASPMX.L.GOOGLE.COM",
+          "5 ALT2.ASPMX.L.GOOGLE.COM",
+          "10 ALT3.ASPMX.L.GOOGLE.COM",
+          "10 ALT4.ASPMX.L.GOOGLE.COM"
+        ]
+      }
+    },
+    "GoogleVerification": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": "${BaseDomainName}."
+        },
+        "Name": {
+          "Ref": "BaseDomainName"
+        },
+        "Type": "TXT",
+        "TTL": 3600,
+        "ResourceRecords": [
+          "\"google-site-verification=N2pFY6k_6L7Xpq15_mqM60bZoMdNeXWvDG2Re2HL_qI\""
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "ExportDomainName": {
+      "Export": {
+        "Name": "BaseDomainName"
+      },
+      "Value": {
+        "Ref": "BaseDomainName"
+      }
+    }
+  }
+}

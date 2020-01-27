@@ -1,0 +1,298 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "CloudFront configuration for front end data hosting.",
+  "Parameters": {
+    "CertificateARN": {
+      "Type": "String",
+      "Default": "arn:aws:acm:us-east-1:432708775807:certificate/f052dbe3-fdd8-4337-85ac-2019e0ee39b1",
+      "Description": "ARN of certificate to protect data."
+    }
+  },
+  "Resources": {
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "stationeering-data",
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "http://localhost:3000"
+              ]
+            },
+            {
+              "AllowedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                {
+                  "Fn::Sub": [
+                    "https://${Domain}",
+                    {
+                      "Domain": {
+                        "Fn::ImportValue": "BaseDomainName"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "AllowedMethods": [
+                "GET",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                {
+                  "Fn::Sub": [
+                    "http://dev.${Domain}:3000",
+                    {
+                      "Domain": {
+                        "Fn::ImportValue": "BaseDomainName"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "CloudFrontOAI": {
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "CloudFront identity for restricting access to S3 buckets purely to CF principal."
+        }
+      }
+    },
+    "S3CloudFrontAccessPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "S3Bucket"
+        },
+        "PolicyDocument": {
+          "Version": "2008-10-17",
+          "Id": "PolicyForCloudFrontPrivateContent",
+          "Statement": [
+            {
+              "Sid": "1",
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "CloudFrontOAI",
+                    "S3CanonicalUserId"
+                  ]
+                }
+              },
+              "Action": "s3:GetObject",
+              "Resource": {
+                "Fn::Sub": [
+                  "${Bucket}/*",
+                  {
+                    "Bucket": {
+                      "Fn::GetAtt": [
+                        "S3Bucket",
+                        "Arn"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "Sid": "2",
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "CloudFrontOAI",
+                    "S3CanonicalUserId"
+                  ]
+                }
+              },
+              "Action": "s3:ListBucket",
+              "Resource": {
+                "Fn::Sub": [
+                  "${Bucket}",
+                  {
+                    "Bucket": {
+                      "Fn::GetAtt": [
+                        "S3Bucket",
+                        "Arn"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "CloudFrontDistribution": {
+      "Type": "AWS::CloudFront::Distribution",
+      "Properties": {
+        "DistributionConfig": {
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "S3Bucket",
+                  "DomainName"
+                ]
+              },
+              "Id": "S3Origin",
+              "S3OriginConfig": {
+                "OriginAccessIdentity": {
+                  "Fn::Sub": [
+                    "origin-access-identity/cloudfront/${OAI}",
+                    {
+                      "OAI": {
+                        "Ref": "CloudFrontOAI"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "Enabled": "true",
+          "Comment": "Cloudfront distribution for front end application.",
+          "DefaultRootObject": "index.html",
+          "Aliases": [
+            {
+              "Fn::Sub": [
+                "data.${BaseDomainName}",
+                {
+                  "BaseDomainName": {
+                    "Fn::ImportValue": "BaseDomainName"
+                  }
+                }
+              ]
+            }
+          ],
+          "DefaultCacheBehavior": {
+            "AllowedMethods": [
+              "GET",
+              "HEAD",
+              "OPTIONS"
+            ],
+            "TargetOriginId": "S3Origin",
+            "ForwardedValues": {
+              "QueryString": "false",
+              "Cookies": {
+                "Forward": "none"
+              },
+              "Headers": [
+                "Origin"
+              ]
+            },
+            "ViewerProtocolPolicy": "redirect-to-https",
+            "Compress": true
+          },
+          "PriceClass": "PriceClass_100",
+          "ViewerCertificate": {
+            "SslSupportMethod": "sni-only",
+            "AcmCertificateArn": {
+              "Ref": "CertificateARN"
+            }
+          }
+        }
+      }
+    },
+    "FrontEndAlias": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": [
+            "${Domain}.",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Name": {
+          "Fn::Sub": [
+            "data.${Domain}",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Type": "A",
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        }
+      }
+    },
+    "FrontEndAliasV6": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": [
+            "${Domain}.",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Name": {
+          "Fn::Sub": [
+            "data.${Domain}",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Type": "AAAA",
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "CloudFrontDistribution",
+              "DomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "FrontendDataBucket": {
+      "Export": {
+        "Name": "FrontendDataBucket"
+      },
+      "Value": {
+        "Ref": "S3Bucket"
+      }
+    }
+  }
+}

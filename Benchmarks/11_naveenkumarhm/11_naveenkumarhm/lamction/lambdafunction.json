@@ -1,0 +1,154 @@
+{
+    "Description": "This CFN template create configure S3 event notification usign Lambda, SNS. Lambda is downloading the code from cross account S3 Bucket",
+    "Parameters": {
+        "Bucketname": {
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "LambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Code": {
+                    "S3Bucket": "naveenkumarhm2",
+                    "S3ObjectVersion": "enfU4wsfRHcJ3Tk1zNGfyvVKfGRU8A17",
+                    "S3Key": "snslambda.zip"
+                },
+                "DeadLetterConfig": {
+                    "TargetArn": {
+                        "Ref": "snstopic"
+                    }
+                },
+                "Description": "Simple lambda back sns service",
+                "Handler": "send_to_sns.send_to_sns",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "lambdaroleforsns",
+                        "Arn"
+                    ]
+                },
+                "MemorySize": 256,
+                "Runtime": "python3.6",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "simplesnslambdafunciton"
+                    }
+                ]
+            }
+        },
+        "lambdapermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "LambdaFunction",
+                        "Arn"
+                    ]
+                },
+                "Principal": "s3.amazonaws.com",
+                "SourceAccount": "<Account-xxxxx>",
+                "SourceArn": {
+                    "Fn::Sub": "arn:aws:s3:::${Bucketname}"
+                }
+            }
+        },
+        "snstopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "TopicName": "SNSLambdaTest",
+                "DisplayName": "SNSLambdaTest1"
+            }
+        },
+        "snssubscription": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+                "Protocol": "email",
+                "Endpoint": "nmunibac@amazon.com",
+                "TopicArn": {
+                    "Ref": "snstopic"
+                }
+            }
+        },
+        "s3bukcet": {
+            "DependsOn": "lambdapermission",
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {
+                    "Ref": "Bucketname"
+                },
+                "NotificationConfiguration": {
+                    "LambdaConfigurations": [
+                        {
+                            "Event": "s3:ObjectCreated:*",
+                            "Function": {
+                                "Fn::GetAtt": [
+                                    "LambdaFunction",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "lambdaroleforsns": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "lambdadelete",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "sns:Publish",
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "LambdafunctionName": {
+            "Description": "Lambda function which send message to sns",
+            "Value": {
+                "Ref": "LambdaFunction"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AWS::Region"
+                            },
+                            "mylambda"
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+}

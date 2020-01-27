@@ -1,0 +1,158 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for the scenario generator lambda fed off of S3 notifications.",
+    "Resources": {
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowLambdaToAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "S3Access",
+                        "PolicyDocument": {
+                            "Id": "S3Policy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "s3:GetObject",
+                                        "s3:GetObjectVersion"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Sub": [
+                                                "arn:aws:s3:::${BucketName}/*",
+                                                {
+                                                    "BucketName": {
+                                                        "Fn::ImportValue": "GameDataBucket"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Effect": "Allow"
+                                },
+                                {
+                                    "Action": [
+                                        "s3:PutObject"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Sub": [
+                                                "arn:aws:s3:::${BucketName}/scenarios/*",
+                                                {
+                                                    "BucketName": {
+                                                        "Fn::ImportValue": "FrontendDataBucket"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Effect": "Allow"
+                                }
+                            ]
+                        }
+                    },                
+                    {
+                        "PolicyName": "LoggingPolicy",
+                        "PolicyDocument": {
+                            "Id": "LoggingPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:logs:*:*:*"
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "ScenarioLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Fn::ImportValue": "LambdaBucket"
+                    },
+                    "S3Key": "scenarios-v02.zip"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": "300"
+            }
+        },
+        "LambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${functionName}",
+                        {
+                            "functionName": {
+                                "Ref": "ScenarioLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 7
+            }
+        },
+        "InvokeLambdaFromSNS": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+                "Endpoint": {
+                    "Fn::GetAtt": [
+                        "ScenarioLambda",
+                        "Arn"
+                    ]
+                },
+                "Protocol": "lambda",
+                "TopicArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                }
+            }
+        },
+        "SNSInvokeLambdaPermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "ScenarioLambda",
+                        "Arn"
+                    ]
+                }
+            }
+        }
+    }
+}

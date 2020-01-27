@@ -1,0 +1,244 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "CloudFront configuration for front end API.",
+  "Parameters": {
+    "CertificateARN": {
+      "Type": "String",
+      "Default": "arn:aws:acm:us-east-1:432708775807:certificate/30b931ba-3893-48e7-934c-730cb37b2c07",
+      "Description": "ARN of certificate to protect frontend."
+    }
+  },
+  "Resources": {
+    "StationeeringAPI": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "Stationeering API",
+        "Description": "API used for Stationeering frontend interaction.",
+        "FailOnWarnings": true
+      }
+    },
+    "ApiGatewayCloudWatchLogsRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "apigateway.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "ApiGatewayLogsPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:DescribeLogGroups",
+                    "logs:DescribeLogStreams",
+                    "logs:PutLogEvents",
+                    "logs:GetLogEvents",
+                    "logs:FilterLogEvents"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "StationeeringApiGatewayAccount": {
+      "Type": "AWS::ApiGateway::Account",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "ApiGatewayCloudWatchLogsRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "ApiDeployment": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "DependsOn": [
+        "StatusRequest"
+      ],
+      "Properties": {
+        "RestApiId": {
+          "Ref": "StationeeringAPI"
+        },
+        "StageName": "default"
+      }
+    },
+    "StationeeringAPILiveStage": {
+      "DependsOn": [
+        "StationeeringApiGatewayAccount"
+      ],
+      "Type": "AWS::ApiGateway::Stage",
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "ApiDeployment"
+        },
+        "MethodSettings": [
+          {
+            "DataTraceEnabled": true,
+            "HttpMethod": "*",
+            "LoggingLevel": "INFO",
+            "ResourcePath": "/*"
+          }
+        ],
+        "RestApiId": {
+          "Ref": "StationeeringAPI"
+        },
+        "StageName": "live"
+      }
+    },
+    "StatusResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "StationeeringAPI"
+        },
+        "ParentId": {
+          "Fn::GetAtt": [
+            "StationeeringAPI",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "status"
+      }
+    },
+    "StatusRequest": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": {
+          "Type": "MOCK",
+          "IntegrationResponses": [
+            {
+              "StatusCode": 200,
+              "ResponseTemplates": {
+                "application/json": "{\"status\": \"ok\"}"
+              }
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          }
+        },
+        "RequestParameters": {},
+        "ResourceId": {
+          "Ref": "StatusResource"
+        },
+        "RestApiId": {
+          "Ref": "StationeeringAPI"
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": 200
+          }
+        ]
+      }
+    },
+    "APIDomainName": {
+      "Type": "AWS::ApiGateway::DomainName",
+      "Properties": {
+        "CertificateArn": {
+          "Ref": "CertificateARN"
+        },
+        "DomainName": {
+          "Fn::Sub": [
+            "api.${Domain}",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "APIDomainMapping": {
+      "Type": "AWS::ApiGateway::BasePathMapping",
+      "Properties": {
+        "DomainName": {
+          "Ref": "APIDomainName"
+        },
+        "RestApiId": {
+          "Ref": "StationeeringAPI"
+        }
+      }
+    },
+    "FrontEndAlias": {
+      "Type": "AWS::Route53::RecordSet",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Sub": [
+            "${Domain}.",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Name": {
+          "Fn::Sub": [
+            "api.${Domain}",
+            {
+              "Domain": {
+                "Fn::ImportValue": "BaseDomainName"
+              }
+            }
+          ]
+        },
+        "Type": "A",
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "APIDomainName",
+              "DistributionDomainName"
+            ]
+          },
+          "HostedZoneId": "Z2FDTNDATAQYW2"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "StationeeringAPI": {
+      "Export": {
+        "Name": "StationeeringAPI"
+      },
+      "Value": {
+        "Ref": "StationeeringAPI"
+      }
+    },
+    "StationeeringAPIRoot": {
+      "Export": {
+        "Name": "StationeeringAPIRoot"
+      },
+      "Value": {
+        "Fn::GetAtt": [
+          "StationeeringAPI",
+          "RootResourceId"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart sns stack",
+    "Parameters": {
+        "DartAlertsEmailAddress": { "Type": "String", "Description": "Where to send dart alert emails", "Default": "dart@dart.com" },
+        "DartEnvironment": { "Type": "String", "Description": "E.g. prod, test, etc.", "Default": "prod" }
+    },
+    "Resources": {
+        "AlertsSNSTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "DisplayName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-alerts" ] ] },
+                "Subscription": [ { "Endpoint": { "Ref": "DartAlertsEmailAddress" }, "Protocol": "email" } ],
+                "TopicName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-alerts" ] ] }
+            }
+        }
+    },
+    "Outputs" : {
+        "AlertsSNSTopic" : { "Value": { "Ref" : "AlertsSNSTopic" }, "Description": "The resource name"}
+    }
+}

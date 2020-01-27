@@ -1,0 +1,115 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "LambdaRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
+      }
+    },
+    "LambdaPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "rs-lambda-execution",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:FilterLogEvents",
+                "s3:GetObject",
+                "cloudfront:CreateInvalidation"
+              ],
+              "Resource": "*"
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "LambdaRole"
+          }
+        ]
+      }
+    },
+     "Lambda": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "ZipFile": {
+            "Fn::Join": [
+              "\n",
+              [
+                "'use strict';",
+                "const aws = require('aws-sdk');",
+                "const cloudfront = new aws.CloudFront({apiVersion: '2016-09-29'});",
+                "exports.handler = (event, context, callback) => {",
+                " createInvalidation(process.env[event.Records[0].s3.bucket.name.replace(/-/g,'_').replace(/./g,'_')], context.awsRequestId, event.Records, (err) => {",
+                "   if (err) callback(err);",
+                "   else callback();",
+                " });",
+                "};",
+                "function createInvalidation(DistributionId, CallerReference, records, callback){",
+                " let _items = records.map((rec) => {",
+                "   return '/' + rec.s3.object.key;",
+                " });",
+                " let _params = {",
+                "   DistributionId,",
+                "   InvalidationBatch: {",
+                "     CallerReference,",
+                "     Paths: {",
+                "       Quantity: _items.length,",
+                "       Items: _items",
+                "     }",
+                "   }",
+                " };",
+                " cloudfront.createInvalidation(_params, (err, data) => {",
+                " if (err) callback(err);",
+                "   else callback();",
+                " });",
+                "}"
+              ]
+            ]
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs4.3",
+        "Timeout": "60",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "InvokePermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName" : { "Fn::GetAtt" : ["Lambda", "Arn"] },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "s3.amazonaws.com",
+        "SourceAccount": { "Ref" : "AWS::AccountId" }
+      }
+    }
+  }
+}

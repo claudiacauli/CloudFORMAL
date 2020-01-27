@@ -1,0 +1,393 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for the recipes generator lambda fed off of S3 notifications.",
+    "Resources": {
+        "ParserLambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowLambdaToAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "S3Access",
+                        "PolicyDocument": {
+                            "Id": "S3Policy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "s3:GetObject",
+                                        "s3:GetObjectVersion"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Sub": [
+                                                "arn:aws:s3:::${BucketName}/*",
+                                                {
+                                                    "BucketName": {
+                                                        "Fn::ImportValue": "GameDataBucket"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Effect": "Allow"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "DynamoDBPolicy",
+                        "PolicyDocument": {
+                            "Id": "DynamoDBPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "dynamodb:Query",
+                                        "dynamodb:Scan",
+                                        "dynamodb:GetItem",
+                                        "dynamodb:PutItem",
+                                        "dynamodb:UpdateItem",
+                                        "dynamodb:DeleteItem"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "RecipeTable",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    },
+                    {
+                        "PolicyName": "SQSSendPolicy",
+                        "PolicyDocument": {
+                            "Id": "SQSSendPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "sqs:SendMessage"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "RecipeUpdateQueue",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "LoggingPolicy",
+                        "PolicyDocument": {
+                            "Id": "LoggingPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:logs:*:*:*"
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "RecipesParserLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "ReservedConcurrentExecutions": 2,
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "ParserLambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Fn::ImportValue": "LambdaBucket"
+                    },
+                    "S3Key": "recipes-parser-v01.zip"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": "300",
+                "Environment": {
+                    "Variables": {
+                        "RecipeQueueURL": {
+                            "Ref": "RecipeUpdateQueue"
+                        }
+                    }
+                }
+            }
+        },
+        "LambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${functionName}",
+                        {
+                            "functionName": {
+                                "Ref": "RecipesParserLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 7
+            }
+        },
+        "InvokeLambdaFromSNS": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+                "Endpoint": {
+                    "Fn::GetAtt": [
+                        "RecipesParserLambda",
+                        "Arn"
+                    ]
+                },
+                "Protocol": "lambda",
+                "TopicArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                }
+            }
+        },
+        "SNSInvokeLambdaPermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "RecipesParserLambda",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "RecipeTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "manufactory",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "item",
+                        "AttributeType": "S"
+                    }
+                ],
+                "KeySchema": [
+                    {
+                        "AttributeName": "manufactory",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "item",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": "1",
+                    "WriteCapacityUnits": "2"
+                },
+                "TableName": "Recipes",
+                "PointInTimeRecoverySpecification": {
+                    "PointInTimeRecoveryEnabled": true
+                }
+            }
+        },
+        "RecipeUpdateQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {
+                "DelaySeconds": 60,
+                "VisibilityTimeout": 60,
+                "ReceiveMessageWaitTimeSeconds": 20
+            }
+        },        
+        "RenderLambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowLambdaToAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "SQSReadPolicy",
+                        "PolicyDocument": {
+                            "Id": "SQSReadPolicy",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "sqs:DeleteMessage",
+                                        "sqs:ChangeMessageVisibility",
+                                        "sqs:ReceiveMessage",
+                                        "sqs:GetQueueAttributes"
+                                    ],
+                                    "Resource": { "Fn::GetAtt": [ "RecipeUpdateQueue", "Arn"] }
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    },
+                    {
+                        "PolicyName": "DynamoDBPolicy",
+                        "PolicyDocument": {
+                            "Id": "DynamoDBPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "dynamodb:Query",
+                                        "dynamodb:Scan",
+                                        "dynamodb:GetItem"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "RecipeTable",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    },
+                    {
+                        "PolicyName": "S3Access",
+                        "PolicyDocument": {
+                            "Id": "S3Policy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "s3:PutObject"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Sub": [
+                                                "arn:aws:s3:::${BucketName}/recipes/*",
+                                                {
+                                                    "BucketName": {
+                                                        "Fn::ImportValue": "FrontendDataBucket"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Effect": "Allow"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "LoggingPolicy",
+                        "PolicyDocument": {
+                            "Id": "LoggingPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:logs:*:*:*"
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "RecipesRenderLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "RenderLambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Fn::ImportValue": "LambdaBucket"
+                    },
+                    "S3Key": "recipes-render-v01.zip"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": "60"
+            }
+        },
+        "RenderLambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${functionName}",
+                        {
+                            "functionName": {
+                                "Ref": "RecipesRenderLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 7
+            }
+        },
+        "RecipeLambdaEventSource": {
+            "Type": "AWS::Lambda::EventSourceMapping",
+            "Properties": {
+                "BatchSize": 1,
+                "EventSourceArn": { "Fn::GetAtt": [ "RecipeUpdateQueue", "Arn" ]},
+                "FunctionName": { "Ref": "RecipesRenderLambda" }
+            }
+        }
+    }
+}

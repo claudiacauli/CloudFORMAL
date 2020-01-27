@@ -1,0 +1,56 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart logs stack",
+    "Resources": {
+        "DartSyslog": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "RetentionInDays": { "Ref": "RetentionInDays" }
+            }
+        },
+        "DartMisc": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "RetentionInDays": 14
+            }
+        },
+        "TracebackMetricFilter": {
+            "Type": "AWS::Logs::MetricFilter",
+            "Properties": {
+                "LogGroupName": { "Ref": "DartSyslog" },
+                "FilterPattern": "Traceback",
+                "MetricTransformations": [
+                    {
+                        "MetricName": "TracebackInDartSyslog",
+                        "MetricNamespace": "Dart/LogMetrics",
+                        "MetricValue": 1
+                    }
+                ]
+            }
+        },
+        "TracebackInDartLogAlarm": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmDescription": "Alarm when exception count >= 1",
+                "MetricName": "TracebackInDartSyslog",
+                "Namespace": "Dart/LogMetrics",
+                "Statistic": "Sum",
+                "Period": 60,
+                "EvaluationPeriods": 1,
+                "Threshold": 1,
+                "AlarmActions": ["AlertsSNSTopic"],
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold"
+            }
+        }
+    },
+    "Outputs" : {
+        "DartSyslog" : {
+            "Description": "The resource name",
+            "Value" : { "Ref" : "DartSyslog" }
+        },
+        "DartMisc" : {
+            "Description": "The resource name",
+            "Value" : { "Ref" : "DartMisc" }
+        }
+    }
+}

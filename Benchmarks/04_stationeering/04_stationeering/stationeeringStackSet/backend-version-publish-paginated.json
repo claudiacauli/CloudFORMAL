@@ -1,0 +1,175 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Stack for the version lambda to publish paginated data.",
+  "Resources": {
+    "LambdaExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "AllowLambdaToAssume",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "S3Access",
+            "PolicyDocument": {
+              "Id": "S3Policy",
+              "Statement": [
+                {
+                  "Action": [
+                    "s3:PutObject"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:s3:::${BucketName}/versions/*",
+                        {
+                          "BucketName": {
+                            "Fn::ImportValue": "FrontendDataBucket"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "Effect": "Allow"
+                },
+                {
+                  "Action": [
+                    "s3:ListBucket"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:s3:::${BucketName}",
+                        {
+                          "BucketName": {
+                            "Fn::ImportValue": "FrontendDataBucket"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "Effect": "Allow"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "DynamoDBPolicy",
+            "PolicyDocument": {
+              "Id": "DynamoDBPolicy",
+              "Statement": [
+                {
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:UpdateItem"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    {
+                      "Fn::ImportValue": "VersionTableArn"
+                    }
+                  ]
+                }
+              ],
+              "Version": "2012-10-17"
+            }
+          },
+          {
+            "PolicyName": "LoggingPolicy",
+            "PolicyDocument": {
+              "Id": "LoggingPolicy",
+              "Statement": [
+                {
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    "arn:aws:logs:*:*:*"
+                  ]
+                }
+              ],
+              "Version": "2012-10-17"
+            }
+          }
+        ]
+      }
+    },
+    "AllowVersionParserToInvoke": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "AllowVersionParserToInvokeVersionPaginatedLambda",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:InvokeFunction"
+              ],
+              "Resource": {
+                "Fn::GetAtt": [
+                  "VersionPublishPaginatedLambda",
+                  "Arn"
+                ]
+              }
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Fn::ImportValue": "VersionParserLambdaExecutionRole"
+          }
+        ]
+      }
+    },
+    "VersionPublishPaginatedLambda": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaExecutionRole",
+            "Arn"
+          ]
+        },
+        "Code": {
+          "S3Bucket": {
+            "Fn::ImportValue": "LambdaBucket"
+          },
+          "S3Key": "version-publish-paginated-v01.zip"
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": "300"
+      }
+    },
+    "LambdaLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Sub": [
+            "/aws/lambda/${functionName}",
+            {
+              "functionName": {
+                "Ref": "VersionPublishPaginatedLambda"
+              }
+            }
+          ]
+        },
+        "RetentionInDays": 7
+      }
+    }
+  }
+}

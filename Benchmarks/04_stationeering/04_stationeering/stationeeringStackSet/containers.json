@@ -1,0 +1,74 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for ECS and ECR for running backend jobs.",
+    "Resources": {
+        "Cluster": {
+            "Type": "AWS::ECS::Cluster",
+            "Properties": {
+                "ClusterName": "stationeering-backend"
+            }
+        },
+        "ClusterTaskExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "PermitECRFetchAndLogging",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ecr:GetAuthorizationToken",
+                                        "ecr:BatchCheckLayerAvailability",
+                                        "ecr:GetDownloadUrlForLayer",
+                                        "ecr:BatchGetImage",
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {
+        "ECSTaskExecutionRole": {
+            "Export": {
+                "Name": "ECSTaskExecutionRoleARN"
+            },
+            "Value": {
+                "Fn::GetAtt": [
+                    "ClusterTaskExecutionRole",
+                    "Arn"
+                ]
+            }
+        },
+        "BackEndClusterName": {
+            "Export": {
+                "Name": "BackEndClusterName"
+            },
+            "Value": {
+                "Ref": "Cluster"
+            }
+        }
+    }
+}

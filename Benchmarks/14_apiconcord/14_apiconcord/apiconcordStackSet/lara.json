@@ -1,0 +1,1921 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "lara ecs stack with CloudFront",
+    "Parameters": {
+        "Environment": {
+            "Type": "String",
+            "Default": "qa",
+            "AllowedValues": [
+                "qa",
+                "staging",
+                "production"
+            ],
+            "Description": "Enter staging or production. Default is qa."
+        },
+        "SSLCertificateName": {
+            "Type": "String",
+            "AllowedValues": [
+                "star.concord.org",
+                "star.staging.concord.org",
+                "star.concordqa.org"
+            ],
+            "Description": "Certificates registered with AWS. Choose which one to use for the load balancer"
+        },
+        "DatabaseSecurityGroupId": {
+            "Type": "String",
+            "Description": "Select security group of the RDS database. This security group will be modified to allow access by the EC2 instances in this stack"
+        },
+        "DomainName": {
+            "Type": "String",
+            "Description": "The DNS name that will be created or updated to point at the load balancer"
+        },
+        "HostedZoneId": {
+            "Type": "String"
+        },
+        "ClusterStackName": {
+            "Type": "String",
+            "Description": "The name of the CloudFormation stack that manages the cluster you want this application deployed in.  The cluster security group, Vpc, and subnets will be be used by resources in this stack."
+        },
+        "AddFakeAuthProvider": {
+            "Type": "String",
+            "AllowedValues": [
+                "true",
+                "false"
+            ],
+            "Description": "The LARA Oauth2 code requires two authentication providers in some places of the code, so if you are only going to configure one then set this to true"
+        },
+        "PortalClientID": {
+            "Type": "String",
+            "Default": "authoring",
+            "Description": "Client ID used with OAuth2 connection to the portal. This is used globably for all of the Portals configured for this LARA instance."
+        },
+        "ITSITestSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via itsi-test. If this is not set, the portal will not be configured."
+        },
+        "LearnStemSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via learn-stem. If this is not set, the portal will not be configured."
+        },
+        "LearnStagingSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via learn.staging. If this is not set, the portal will not be configured."
+        },
+        "AssessmentPortalSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via asessment.portal. If this is not set, the portal will not be configured."
+        },
+        "HASPortalSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via has.portal. If this is not set, the portal will not be configured."
+        },
+        "ITSIPortalSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via itsi.portal. If this is not set, the portal will not be configured."
+        },
+        "LearnPortalSecret": {
+            "Type": "String",
+            "Description": "The OAuth2 key to authenticate via learn. If this is not set, the portal will not be configured."
+        },
+        "CRaterPassword": {
+            "Type": "String"
+        },
+        "CRaterUrl": {
+            "Type": "String"
+        },
+        "CRaterApiKey": {
+            "Type": "String"
+        },
+        "DbHost": {
+            "Type": "String",
+            "Description": "The hostname of the database. Template assumes database name is portal."
+        },
+        "DbPassword": {
+            "Type": "String",
+            "Description": "The password of the database. Template assumes username is master."
+        },
+        "NewRelicAppName": {
+            "Type": "String",
+            "Description": "App name to show in NewRelic"
+        },
+        "NewRelicLicenseKey": {
+            "Type": "String"
+        },
+        "RollbarsKey": {
+            "Type": "String"
+        },
+        "RailsSecretToken": {
+            "Type": "String"
+        },
+        "SesKey": {
+            "Type": "String",
+            "Description": "key to connect to AWS SES for email"
+        },
+        "SesSecret": {
+            "Type": "String"
+        },
+        "LabBookProviderURL": {
+            "Type": "String",
+            "Description": "URL to the labbook service for use in the labbook items"
+        },
+        "ModelJsonListURL": {
+            "Type": "String",
+            "Description": "URL of the model json used in ITSI authoring. It is typically a URL to a portal model library."
+        },
+        "CloudWatchLogGroup": {
+            "Type": "String",
+            "Description": "logging group in cloud watch where the aws logs will be sent"
+        },
+        "MaxNumLaraWebTasks": {
+            "Type": "String",
+            "Description": "maxium number of LARA Web tasks the autoscaler will spin up"
+        },
+        "MinNumLaraWebTasks": {
+            "Type": "String",
+            "Description": "minimum number of LARA Web tasks the autoscaler will spin up"
+        },
+        "LaraDockerImage": {
+            "Type": "String",
+            "Description": "docker image to use for the web container and worker container"
+        },
+        "GoogleAnalyticsAccount": {
+            "Type": "String",
+            "Description": "key for Google Analytics"
+        },
+        "NestedTemplatesFolder": {
+            "Type": "String",
+            "Default": "https://s3.amazonaws.com/concord-devops/cloud-formation"
+        },
+        "LoggerUri": {
+            "Type": "String",
+            "Default": "//cc-log-manager.herokuapp.com/api/logs",
+            "Description": "Protocol relative uri for log manager api endpoint. Default is //cc-log-manager.herokuapp.com/api/logs."
+        },
+        "ReportServiceToken": {
+            "Type": "String",
+            "Description": "secret key for LARA to use to send data to the report service"
+        },
+        "ReportServiceURL": {
+            "Type": "String",
+            "Description": "URL to the report service for importing activity structure",
+            "Default": "https://us-central1-report-service-dev.cloudfunctions.net/api"
+        }
+    },
+    "Conditions": {
+        "AddFakeAuthProviderCond": {
+            "Fn::Equals": [
+                {
+                    "Ref": "AddFakeAuthProvider"
+                },
+                "true"
+            ]
+        },
+        "AddITSITest": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ITSITestSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddLearnStem": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LearnStemSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddLearnStaging": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LearnStagingSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddAssessmentPortal": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "AssessmentPortalSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddHASPortal": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "HASPortalSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddITSIPortal": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "ITSIPortalSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        },
+        "AddLearnPortal": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "LearnPortalSecret"
+                        },
+                        ""
+                    ]
+                }
+            ]
+        }
+    },
+    "Resources": {
+        "LARADNS": {
+            "Type": "AWS::Route53::RecordSet",
+            "Properties": {
+                "AliasTarget": {
+                    "DNSName": {
+                        "Fn::GetAtt": [
+                            "CloudFrontDistribution",
+                            "DomainName"
+                        ]
+                    },
+                    "HostedZoneId": "Z2FDTNDATAQYW2"
+                },
+                "HostedZoneId": {
+                    "Ref": "HostedZoneId"
+                },
+                "Name": {
+                    "Ref": "DomainName"
+                },
+                "Type": "A",
+                "Weight": 100,
+                "SetIdentifier": {
+                    "Ref": "AWS::StackName"
+                }
+            }
+        },
+        "CloudFrontDistribution": {
+            "Type": "AWS::CloudFront::Distribution",
+            "Properties": {
+                "DistributionConfig": {
+                    "Aliases": [
+                        {
+                            "Ref": "DomainName"
+                        }
+                    ],
+                    "CacheBehaviors": [
+                        {
+                            "AllowedMethods": [
+                                "GET",
+                                "HEAD"
+                            ],
+                            "Compress": false,
+                            "ForwardedValues": {
+                                "QueryString": false
+                            },
+                            "PathPattern": "sensor-interactive/*",
+                            "TargetOriginId": "S3Origin",
+                            "ViewerProtocolPolicy": "redirect-to-https"
+                        }
+                    ],
+                    "Comment": {
+                        "Fn::Sub": "Cloudfront Distribution for ${DomainName} managed by CloudFormation"
+                    },
+                    "DefaultCacheBehavior": {
+                        "AllowedMethods": [
+                            "HEAD",
+                            "GET",
+                            "OPTIONS",
+                            "PUT",
+                            "POST",
+                            "PATCH",
+                            "DELETE"
+                        ],
+                        "Compress": false,
+                        "ForwardedValues": {
+                            "QueryString": true,
+                            "Cookies": {
+                                "Forward": "all"
+                            },
+                            "Headers": [
+                                "*"
+                            ]
+                        },
+                        "TargetOriginId": "LARAOrigin",
+                        "ViewerProtocolPolicy": "allow-all"
+                    },
+                    "Enabled": true,
+                    "HttpVersion": "http2",
+                    "PriceClass": "PriceClass_All",
+                    "Origins": [
+                        {
+                            "DomainName": {
+                                "Fn::GetAtt": [
+                                    "AppLoadBalancerStack",
+                                    "Outputs.ELBDNSName"
+                                ]
+                            },
+                            "Id": "LARAOrigin",
+                            "CustomOriginConfig": {
+                                "OriginProtocolPolicy": "http-only",
+                                "OriginReadTimeout": 60
+                            }
+                        },
+                        {
+                            "DomainName": "models-resources.s3-website-us-east-1.amazonaws.com",
+                            "Id": "S3Origin",
+                            "CustomOriginConfig": {
+                                "OriginProtocolPolicy": "https-only"
+                            }
+                        }
+                    ],
+                    "ViewerCertificate": {
+                        "AcmCertificateArn": {
+                            "Fn::FindInMap": [
+                                "SSLCertificateMap",
+                                {
+                                    "Ref": "SSLCertificateName"
+                                },
+                                "Id"
+                            ]
+                        },
+                        "SslSupportMethod": "sni-only"
+                    }
+                }
+            }
+        },
+        "AppLoadBalancerStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": {
+                    "Fn::Sub": "${NestedTemplatesFolder}/ecs-load-balancer.yml"
+                },
+                "Parameters": {
+                    "LoadBalancerIdleTimeout": "180",
+                    "DomainName": "",
+                    "ClusterSecurityGroupId": {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${ClusterStackName}-ClusterSecurityGroupId"
+                        }
+                    },
+                    "VpcId": {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${ClusterStackName}-ClusterVpcId"
+                        }
+                    },
+                    "Subnets": {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${ClusterStackName}-ClusterSubnets"
+                        }
+                    },
+                    "HostedZoneId": {
+                        "Ref": "HostedZoneId"
+                    }
+                }
+            }
+        },
+        "AppListener443": {
+            "Type": "AWS::ElasticLoadBalancingV2::Listener",
+            "Properties": {
+                "Certificates": [
+                    {
+                        "CertificateArn": {
+                            "Fn::FindInMap": [
+                                "SSLCertificateMap",
+                                {
+                                    "Ref": "SSLCertificateName"
+                                },
+                                "Id"
+                            ]
+                        }
+                    }
+                ],
+                "DefaultActions": [
+                    {
+                        "TargetGroupArn": {
+                            "Ref": "AppTargetGroup"
+                        },
+                        "Type": "forward"
+                    }
+                ],
+                "LoadBalancerArn": {
+                    "Fn::GetAtt": [
+                        "AppLoadBalancerStack",
+                        "Outputs.LoadBalancer"
+                    ]
+                },
+                "Port": "443",
+                "Protocol": "HTTPS"
+            }
+        },
+        "AppListener80": {
+            "Type": "AWS::ElasticLoadBalancingV2::Listener",
+            "Properties": {
+                "DefaultActions": [
+                    {
+                        "TargetGroupArn": {
+                            "Ref": "AppTargetGroup"
+                        },
+                        "Type": "forward"
+                    }
+                ],
+                "LoadBalancerArn": {
+                    "Fn::GetAtt": [
+                        "AppLoadBalancerStack",
+                        "Outputs.LoadBalancer"
+                    ]
+                },
+                "Port": "80",
+                "Protocol": "HTTP"
+            }
+        },
+        "AppService": {
+            "Type": "AWS::ECS::Service",
+            "DependsOn": [
+                "AppListener80"
+            ],
+            "Properties": {
+                "Role": "ecsServiceRole",
+                "TaskDefinition": {
+                    "Ref": "AppTaskDefinition"
+                },
+                "DesiredCount": {
+                    "Ref": "MinNumLaraWebTasks"
+                },
+                "HealthCheckGracePeriodSeconds": "60",
+                "LoadBalancers": [
+                    {
+                        "TargetGroupArn": {
+                            "Ref": "AppTargetGroup"
+                        },
+                        "ContainerPort": "80",
+                        "ContainerName": "App"
+                    }
+                ],
+                "Cluster": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${ClusterStackName}-ClusterName"
+                    }
+                }
+            }
+        },
+        "AppTargetGroup": {
+            "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+            "Properties": {
+                "HealthCheckIntervalSeconds": "30",
+                "HealthCheckProtocol": "HTTP",
+                "HealthyThresholdCount": "2",
+                "UnhealthyThresholdCount": "3",
+                "HealthCheckTimeoutSeconds": "5",
+                "Port": "80",
+                "Protocol": "HTTP",
+                "TargetGroupAttributes": [
+                    {
+                        "Key": "deregistration_delay.timeout_seconds",
+                        "Value": "120"
+                    }
+                ],
+                "VpcId": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${ClusterStackName}-ClusterVpcId"
+                    }
+                },
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-${AppLoadBalancerStack.Outputs.LoadBalancerEndingId}"
+                }
+            }
+        },
+        "AppTaskDefinition": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Family": {
+                    "Fn::Sub": "${AWS::StackName}-App"
+                },
+                "ContainerDefinitions": [
+                    {
+                        "Name": "App",
+                        "Image": {
+                            "Ref": "LaraDockerImage"
+                        },
+                        "Cpu": "256",
+                        "PortMappings": [
+                            {
+                                "ContainerPort": "80"
+                            }
+                        ],
+                        "Command": [
+                            "./docker/prod/run.sh"
+                        ],
+                        "Memory": "900",
+                        "Essential": "true",
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-region": "us-east-1",
+                                "awslogs-group": {
+                                    "Ref": "CloudWatchLogGroup"
+                                },
+                                "awslogs-stream-prefix": "lara"
+                            }
+                        },
+                        "Environment": [
+                            {
+                                "Name": "CONCORD_CONFIGURED_PORTALS",
+                                "Value": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            {
+                                                "Fn::If": [
+                                                    "AddFakeAuthProviderCond",
+                                                    "HAS_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnStaging",
+                                                    "LEARN_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnStem",
+                                                    "LEARN_STEM_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddITSITest",
+                                                    "ITSI_TEST",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddAssessmentPortal",
+                                                    "ASSESSMENT",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddHASPortal",
+                                                    "HAS",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddITSIPortal",
+                                                    "ITSI",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnPortal",
+                                                    "Learn",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_CLIENT_ID",
+                                        "Value": "localhost"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_CLIENT_SECRET",
+                                        "Value": "unknown"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_DISPLAY_NAME",
+                                        "Value": "Do NOT Use Please"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_URL",
+                                        "Value": "http://has.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "ITSITestSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_URL",
+                                        "Value": "https://itsi-test.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnStemSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_URL",
+                                        "Value": "https://learn-stem.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnStagingSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_URL",
+                                        "Value": "https://learn.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "AssessmentPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_URL",
+                                        "Value": "https://ngss-assessment.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "HASPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_DISPLAY_NAME",
+                                        "Value": "HAS"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_URL",
+                                        "Value": "https://has.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "ITSIPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_DISPLAY_NAME",
+                                        "Value": "ITSI"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_URL",
+                                        "Value": "https://itsi.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_URL",
+                                        "Value": "https://learn.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Name": "C_RATER_CLIENT_ID",
+                                "Value": "CONCORD"
+                            },
+                            {
+                                "Name": "C_RATER_PASSWORD",
+                                "Value": {
+                                    "Ref": "CRaterPassword"
+                                }
+                            },
+                            {
+                                "Name": "C_RATER_USERNAME",
+                                "Value": "extSysCRTR02dev"
+                            },
+                            {
+                                "Name": "C_RATER_URL",
+                                "Value": {
+                                    "Ref": "CRaterUrl"
+                                }
+                            },
+                            {
+                                "Name": "C_RATER_API_KEY",
+                                "Value": {
+                                    "Ref": "CRaterApiKey"
+                                }
+                            },
+                            {
+                                "Name": "DB_HOST",
+                                "Value": {
+                                    "Ref": "DbHost"
+                                }
+                            },
+                            {
+                                "Name": "DB_NAME",
+                                "Value": "portal"
+                            },
+                            {
+                                "Name": "DB_PASSWORD",
+                                "Value": {
+                                    "Ref": "DbPassword"
+                                }
+                            },
+                            {
+                                "Name": "DB_USER",
+                                "Value": "master"
+                            },
+                            {
+                                "Name": "NEW_RELIC_APP_NAME",
+                                "Value": {
+                                    "Ref": "NewRelicAppName"
+                                }
+                            },
+                            {
+                                "Name": "NEW_RELIC_LICENSE_KEY",
+                                "Value": {
+                                    "Ref": "NewRelicLicenseKey"
+                                }
+                            },
+                            {
+                                "Name": "NUM_UNICORN_PROCESSES",
+                                "Value": "2"
+                            },
+                            {
+                                "Name": "RAILS_STDOUT_LOGGING",
+                                "Value": "true"
+                            },
+                            {
+                                "Name": "ROLLBARS_KEY",
+                                "Value": {
+                                    "Ref": "RollbarsKey"
+                                }
+                            },
+                            {
+                                "Name": "SECRET_TOKEN",
+                                "Value": {
+                                    "Ref": "RailsSecretToken"
+                                }
+                            },
+                            {
+                                "Name": "SES_KEY",
+                                "Value": {
+                                    "Ref": "SesKey"
+                                }
+                            },
+                            {
+                                "Name": "SES_SECRET",
+                                "Value": {
+                                    "Ref": "SesSecret"
+                                }
+                            },
+                            {
+                                "Name": "UPLOAD_ONLY_MODEL_URLS",
+                                "Value": "https://models-resources.concord.org/itsi/upload_photo/index.html"
+                            },
+                            {
+                                "Name": "LABBOOK_PROVIDER_URL",
+                                "Value": {
+                                    "Ref": "LabBookProviderURL"
+                                }
+                            },
+                            {
+                                "Name": "MODEL_JSON_LIST_URL",
+                                "Value": {
+                                    "Ref": "ModelJsonListURL"
+                                }
+                            },
+                            {
+                                "Name": "LARA_VERSION",
+                                "Value": {
+                                    "Fn::Select": [
+                                        1,
+                                        {
+                                            "Fn::Split": [
+                                                ":",
+                                                {
+                                                    "Ref": "LaraDockerImage"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "Name": "GOOGLE_ANALYTICS_ACCOUNT",
+                                "Value": {
+                                    "Ref": "GoogleAnalyticsAccount"
+                                }
+                            },
+                            {
+                                "Name": "LOGGER_URI",
+                                "Value": {
+                                    "Ref": "LoggerUri"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_TOKEN",
+                                "Value": {
+                                    "Ref": "ReportServiceToken"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_URL",
+                                "Value": {
+                                    "Ref": "ReportServiceURL"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_SELF_URL",
+                                "Value": {
+                                    "Fn::Sub": "https://${DomainName}"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Ref": "CloudWatchLogGroup"
+                }
+            }
+        },
+        "DBIngress": {
+            "Type": "AWS::EC2::SecurityGroupIngress",
+            "Properties": {
+                "GroupId": {
+                    "Ref": "DatabaseSecurityGroupId"
+                },
+                "IpProtocol": "tcp",
+                "FromPort": "3306",
+                "ToPort": "3306",
+                "SourceSecurityGroupId": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${ClusterStackName}-ClusterSecurityGroupId"
+                    }
+                }
+            }
+        },
+        "AppScalingStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": {
+                    "Fn::Sub": "${NestedTemplatesFolder}/task-autoscale-2-step-up.yml"
+                },
+                "Parameters": {
+                    "ServiceName": {
+                        "Fn::GetAtt": [
+                            "AppService",
+                            "Name"
+                        ]
+                    },
+                    "ClusterName": {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${ClusterStackName}-ClusterName"
+                        }
+                    },
+                    "MaxNumTasks": {
+                        "Ref": "MaxNumLaraWebTasks"
+                    },
+                    "MinNumTasks": {
+                        "Ref": "MinNumLaraWebTasks"
+                    },
+                    "ScaleUpCooldown": "0",
+                    "ScaleUpStepBoundary": "25",
+                    "ScaleUpStepAdjustment1": "100",
+                    "ScaleUpStepAdjustment2": "200",
+                    "ScaleUpAlarmThreshold": "80",
+                    "ScaleUpAlarmEvaluationPeriods": "2",
+                    "ScaleUpAlarmPeriod": "60",
+                    "ScaleDownCooldown": "300",
+                    "ScaleDownStepAdjustment": "-1",
+                    "ScaleDownAlarmThreshold": "35",
+                    "ScaleDownAlarmEvaluationPeriods": "5",
+                    "ScaleDownAlarmPeriod": "60"
+                }
+            }
+        },
+        "WorkerTaskDefinition": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Family": {
+                    "Fn::Sub": "${AWS::StackName}-Worker"
+                },
+                "ContainerDefinitions": [
+                    {
+                        "Name": "Worker",
+                        "Image": {
+                            "Ref": "LaraDockerImage"
+                        },
+                        "Cpu": "64",
+                        "Command": [
+                            "script/delayed_job",
+                            "run"
+                        ],
+                        "Memory": "256",
+                        "Essential": "true",
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-region": "us-east-1",
+                                "awslogs-group": {
+                                    "Ref": "CloudWatchLogGroup"
+                                },
+                                "awslogs-stream-prefix": "lara"
+                            }
+                        },
+                        "Environment": [
+                            {
+                                "Name": "CONCORD_CONFIGURED_PORTALS",
+                                "Value": {
+                                    "Fn::Join": [
+                                        " ",
+                                        [
+                                            {
+                                                "Fn::If": [
+                                                    "AddFakeAuthProviderCond",
+                                                    "HAS_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnStaging",
+                                                    "LEARN_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnStem",
+                                                    "LEARN_STEM_STAGING",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddITSITest",
+                                                    "ITSI_TEST",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddAssessmentPortal",
+                                                    "ASSESSMENT",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddHASPortal",
+                                                    "HAS",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddITSIPortal",
+                                                    "ITSI",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "Fn::If": [
+                                                    "AddLearnPortal",
+                                                    "Learn",
+                                                    {
+                                                        "Ref": "AWS::NoValue"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    ]
+                                }
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_CLIENT_ID",
+                                        "Value": "localhost"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_CLIENT_SECRET",
+                                        "Value": "unknown"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_DISPLAY_NAME",
+                                        "Value": "Do NOT Use Please"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddFakeAuthProviderCond",
+                                    {
+                                        "Name": "CONCORD_HAS_STAGING_URL",
+                                        "Value": "http://has.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "ITSITestSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSITest",
+                                    {
+                                        "Name": "CONCORD_ITSI_TEST_URL",
+                                        "Value": "https://itsi-test.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnStemSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStem",
+                                    {
+                                        "Name": "CONCORD_LEARN_STEM_STAGING_URL",
+                                        "Value": "https://learn-stem.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnStagingSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnStaging",
+                                    {
+                                        "Name": "CONCORD_LEARN_STAGING_URL",
+                                        "Value": "https://learn.staging.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "AssessmentPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddAssessmentPortal",
+                                    {
+                                        "Name": "CONCORD_ASSESSMENT_URL",
+                                        "Value": "https://ngss-assessment.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "HASPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_DISPLAY_NAME",
+                                        "Value": "HAS"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddHASPortal",
+                                    {
+                                        "Name": "CONCORD_HAS_URL",
+                                        "Value": "https://has.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "ITSIPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_DISPLAY_NAME",
+                                        "Value": "ITSI"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddITSIPortal",
+                                    {
+                                        "Name": "CONCORD_ITSI_URL",
+                                        "Value": "https://itsi.portal.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_CLIENT_ID",
+                                        "Value": {
+                                            "Ref": "PortalClientID"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_CLIENT_SECRET",
+                                        "Value": {
+                                            "Ref": "LearnPortalSecret"
+                                        }
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Fn::If": [
+                                    "AddLearnPortal",
+                                    {
+                                        "Name": "CONCORD_LEARN_URL",
+                                        "Value": "https://learn.concord.org/"
+                                    },
+                                    {
+                                        "Ref": "AWS::NoValue"
+                                    }
+                                ]
+                            },
+                            {
+                                "Name": "C_RATER_CLIENT_ID",
+                                "Value": "CONCORD"
+                            },
+                            {
+                                "Name": "C_RATER_PASSWORD",
+                                "Value": {
+                                    "Ref": "CRaterPassword"
+                                }
+                            },
+                            {
+                                "Name": "C_RATER_USERNAME",
+                                "Value": "extSysCRTR02dev"
+                            },
+                            {
+                                "Name": "C_RATER_URL",
+                                "Value": {
+                                    "Ref": "CRaterUrl"
+                                }
+                            },
+                            {
+                                "Name": "C_RATER_API_KEY",
+                                "Value": {
+                                    "Ref": "CRaterApiKey"
+                                }
+                            },
+                            {
+                                "Name": "DB_HOST",
+                                "Value": {
+                                    "Ref": "DbHost"
+                                }
+                            },
+                            {
+                                "Name": "DB_NAME",
+                                "Value": "portal"
+                            },
+                            {
+                                "Name": "DB_PASSWORD",
+                                "Value": {
+                                    "Ref": "DbPassword"
+                                }
+                            },
+                            {
+                                "Name": "DB_USER",
+                                "Value": "master"
+                            },
+                            {
+                                "Name": "NEW_RELIC_APP_NAME",
+                                "Value": {
+                                    "Ref": "NewRelicAppName"
+                                }
+                            },
+                            {
+                                "Name": "NEW_RELIC_LICENSE_KEY",
+                                "Value": {
+                                    "Ref": "NewRelicLicenseKey"
+                                }
+                            },
+                            {
+                                "Name": "RAILS_STDOUT_LOGGING",
+                                "Value": "true"
+                            },
+                            {
+                                "Name": "ROLLBARS_KEY",
+                                "Value": {
+                                    "Ref": "RollbarsKey"
+                                }
+                            },
+                            {
+                                "Name": "SECRET_TOKEN",
+                                "Value": {
+                                    "Ref": "RailsSecretToken"
+                                }
+                            },
+                            {
+                                "Name": "SES_KEY",
+                                "Value": {
+                                    "Ref": "SesKey"
+                                }
+                            },
+                            {
+                                "Name": "SES_SECRET",
+                                "Value": {
+                                    "Ref": "SesSecret"
+                                }
+                            },
+                            {
+                                "Name": "UPLOAD_ONLY_MODEL_URLS",
+                                "Value": "https://models-resources.concord.org/itsi/upload_photo/index.html"
+                            },
+                            {
+                                "Name": "LABBOOK_PROVIDER_URL",
+                                "Value": {
+                                    "Ref": "LabBookProviderURL"
+                                }
+                            },
+                            {
+                                "Name": "MODEL_JSON_LIST_URL",
+                                "Value": {
+                                    "Ref": "ModelJsonListURL"
+                                }
+                            },
+                            {
+                                "Name": "LOGGER_URI",
+                                "Value": {
+                                    "Ref": "LoggerUri"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_TOKEN",
+                                "Value": {
+                                    "Ref": "ReportServiceToken"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_URL",
+                                "Value": {
+                                    "Ref": "ReportServiceURL"
+                                }
+                            },
+                            {
+                                "Name": "REPORT_SERVICE_SELF_URL",
+                                "Value": {
+                                    "Fn::Sub": "https://${DomainName}"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "WorkerService": {
+            "Type": "AWS::ECS::Service",
+            "Properties": {
+                "TaskDefinition": {
+                    "Ref": "WorkerTaskDefinition"
+                },
+                "DesiredCount": 1,
+                "Cluster": {
+                    "Fn::ImportValue": {
+                        "Fn::Sub": "${ClusterStackName}-ClusterName"
+                    }
+                }
+            }
+        },
+        "WorkerScalingStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": {
+                    "Fn::Sub": "${NestedTemplatesFolder}/task-autoscale-2-step-up.yml"
+                },
+                "Parameters": {
+                    "ServiceName": {
+                        "Fn::GetAtt": [
+                            "WorkerService",
+                            "Name"
+                        ]
+                    },
+                    "ClusterName": {
+                        "Fn::ImportValue": {
+                            "Fn::Sub": "${ClusterStackName}-ClusterName"
+                        }
+                    },
+                    "MaxNumTasks": "10",
+                    "MinNumTasks": "1",
+                    "ScaleUpCooldown": "240",
+                    "ScaleUpStepBoundary": "25",
+                    "ScaleUpStepAdjustment1": "100",
+                    "ScaleUpStepAdjustment2": "200",
+                    "ScaleUpAlarmThreshold": "70",
+                    "ScaleUpAlarmEvaluationPeriods": "1",
+                    "ScaleUpAlarmPeriod": "60",
+                    "ScaleDownCooldown": "300",
+                    "ScaleDownStepAdjustment": "-1",
+                    "ScaleDownAlarmThreshold": "20",
+                    "ScaleDownAlarmEvaluationPeriods": "5",
+                    "ScaleDownAlarmPeriod": "60"
+                }
+            }
+        }
+    },
+    "Mappings": {
+        "SSLCertificateMap": {
+            "star.concord.org": {
+                "Id": "arn:aws:acm:us-east-1:612297603577:certificate/2b62511e-ccc8-434b-ba6c-a8c33bbd509e"
+            },
+            "star.staging.concord.org": {
+                "Id": "arn:aws:acm:us-east-1:612297603577:certificate/8297f3b1-eb86-4f91-8035-3fbd2c9f5560"
+            },
+            "star.concordqa.org": {
+                "Id": "arn:aws:acm:us-east-1:816253370536:certificate/7b8bb00e-7aa4-4b9f-a722-f49c828af83c"
+            }
+        }
+    },
+    "Metadata": {
+        "AWS::CloudFormation::Interface": {
+            "ParameterGroups": [
+                {
+                    "Label": {
+                        "default": "App Config"
+                    },
+                    "Parameters": [
+                        "LaraDockerImage",
+                        "CRaterPassword",
+                        "CRaterUrl",
+                        "CRaterApiKey",
+                        "DbHost",
+                        "DbPassword",
+                        "GoogleAnalyticsAccount",
+                        "LabBookProviderURL",
+                        "ModelJsonListURL",
+                        "NewRelicAppName",
+                        "NewRelicLicenseKey",
+                        "RailsSecretToken",
+                        "RollbarsKey",
+                        "SesKey",
+                        "SesSecret"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Portals"
+                    },
+                    "Parameters": [
+                        "AddFakeAuthProvider",
+                        "PortalClientID",
+                        "AssessmentPortalSecret",
+                        "HASPortalSecret",
+                        "ITSITestSecret",
+                        "ITSIPortalSecret",
+                        "LearnStemSecret",
+                        "LearnPortalSecret",
+                        "LearnStagingSecret"
+                    ]
+                },
+                {
+                    "Label": {
+                        "default": "Infrastructure"
+                    },
+                    "Parameters": [
+                        "ClusterStackiName",
+                        "CloudWatchLogGroup",
+                        "DatabaseSecurityGroupId",
+                        "DomainName",
+                        "HostedZoneId",
+                        "Environment",
+                        "MaxNumLaraWebTasks",
+                        "MinNumLaraWebTasks",
+                        "SSLCertificateName"
+                    ]
+                }
+            ]
+        }
+    }
+}

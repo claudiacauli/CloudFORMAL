@@ -1,0 +1,1155 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "CreateGifLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/first-impression-transcoder-dev-createGif"
+      }
+    },
+    "CreateMobileVideoLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/first-impression-transcoder-dev-createMobileVideo"
+      }
+    },
+    "CreateThumbnailsLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/first-impression-transcoder-dev-createThumbnails"
+      }
+    },
+    "CreateWatermarkedLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/first-impression-transcoder-dev-createWatermarked"
+      }
+    },
+    "IamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-transcoder",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createGif:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createMobileVideo:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createThumbnails:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createWatermarked:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createGif:*:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createMobileVideo:*:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createThumbnails:*:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/first-impression-transcoder-dev-createWatermarked:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sns:Publish"
+                  ],
+                  "Resource": {
+                    "Ref": "CreateWatermarkedTopic"
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:GetObject"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "MediaSourceBucket",
+                              "Arn"
+                            ]
+                          },
+                          "*"
+                        ]
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "CreateGifBucket",
+                              "Arn"
+                            ]
+                          },
+                          "*"
+                        ]
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "CreateMobileVideoBucket",
+                              "Arn"
+                            ]
+                          },
+                          "*"
+                        ]
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "CreateThumbnailsBucket",
+                              "Arn"
+                            ]
+                          },
+                          "*"
+                        ]
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "CreateWatermarkedBucket",
+                              "Arn"
+                            ]
+                          },
+                          "*"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "first-impression-transcoder",
+              "dev",
+              "eu-central-1",
+              "lambdaRole"
+            ]
+          ]
+        }
+      }
+    },
+    "CreateGifLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "dev-first-impression-deployment",
+          "S3Key": "serverless/first-impression-transcoder/dev/1552408998389-2019-03-12T16:43:18.389Z/first-impression-transcoder.zip"
+        },
+        "FunctionName": "first-impression-transcoder-dev-createGif",
+        "Handler": "handlers/createGif.run",
+        "MemorySize": 512,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 10,
+        "Environment": {
+          "Variables": {
+            "REGION": "eu-central-1",
+            "SNS_TOPIC_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-media-in"
+                ]
+              ]
+            },
+            "SNS_TOPIC_CREATE_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-create-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-in"
+                ]
+              ]
+            },
+            "BUCKET_GIF": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-gif"
+                ]
+              ]
+            },
+            "BUCKET_MOBILE_VIDEO": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-mobile-video"
+                ]
+              ]
+            },
+            "BUCKET_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_THUMBNAILS": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-thumbnails"
+                ]
+              ]
+            },
+            "FFMPEG_LAYER_ARN": {
+              "Fn::ImportValue": "FfmpegLambdaLayer"
+            },
+            "FFMPEG_LAYER_EXPORT": "arn:aws:lambda:eu-central-1:842928896331:layer:ffmpeg:176"
+          }
+        },
+        "Layers": [
+          {
+            "Fn::ImportValue": "FfmpegLambdaLayer"
+          }
+        ]
+      },
+      "DependsOn": [
+        "CreateGifLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "CreateMobileVideoLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "dev-first-impression-deployment",
+          "S3Key": "serverless/first-impression-transcoder/dev/1552408998389-2019-03-12T16:43:18.389Z/first-impression-transcoder.zip"
+        },
+        "FunctionName": "first-impression-transcoder-dev-createMobileVideo",
+        "Handler": "handlers/createMobileVideo.run",
+        "MemorySize": 512,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 10,
+        "Environment": {
+          "Variables": {
+            "REGION": "eu-central-1",
+            "SNS_TOPIC_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-media-in"
+                ]
+              ]
+            },
+            "SNS_TOPIC_CREATE_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-create-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-in"
+                ]
+              ]
+            },
+            "BUCKET_GIF": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-gif"
+                ]
+              ]
+            },
+            "BUCKET_MOBILE_VIDEO": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-mobile-video"
+                ]
+              ]
+            },
+            "BUCKET_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_THUMBNAILS": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-thumbnails"
+                ]
+              ]
+            },
+            "FFMPEG_LAYER_ARN": {
+              "Fn::ImportValue": "FfmpegLambdaLayer"
+            },
+            "FFMPEG_LAYER_EXPORT": "arn:aws:lambda:eu-central-1:842928896331:layer:ffmpeg:176"
+          }
+        },
+        "Layers": [
+          {
+            "Fn::ImportValue": "FfmpegLambdaLayer"
+          }
+        ]
+      },
+      "DependsOn": [
+        "CreateMobileVideoLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "CreateThumbnailsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "dev-first-impression-deployment",
+          "S3Key": "serverless/first-impression-transcoder/dev/1552408998389-2019-03-12T16:43:18.389Z/first-impression-transcoder.zip"
+        },
+        "FunctionName": "first-impression-transcoder-dev-createThumbnails",
+        "Handler": "handlers/createThumbnails.run",
+        "MemorySize": 512,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 10,
+        "Environment": {
+          "Variables": {
+            "REGION": "eu-central-1",
+            "SNS_TOPIC_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-media-in"
+                ]
+              ]
+            },
+            "SNS_TOPIC_CREATE_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-create-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-in"
+                ]
+              ]
+            },
+            "BUCKET_GIF": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-gif"
+                ]
+              ]
+            },
+            "BUCKET_MOBILE_VIDEO": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-mobile-video"
+                ]
+              ]
+            },
+            "BUCKET_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_THUMBNAILS": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-thumbnails"
+                ]
+              ]
+            },
+            "FFMPEG_LAYER_ARN": {
+              "Fn::ImportValue": "FfmpegLambdaLayer"
+            },
+            "FFMPEG_LAYER_EXPORT": "arn:aws:lambda:eu-central-1:842928896331:layer:ffmpeg:176"
+          }
+        },
+        "Layers": [
+          {
+            "Fn::ImportValue": "FfmpegLambdaLayer"
+          },
+          {
+            "Fn::ImportValue": "GraphicsmagickLambdaLayer"
+          }
+        ]
+      },
+      "DependsOn": [
+        "CreateThumbnailsLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "CreateWatermarkedLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "dev-first-impression-deployment",
+          "S3Key": "serverless/first-impression-transcoder/dev/1552408998389-2019-03-12T16:43:18.389Z/first-impression-transcoder.zip"
+        },
+        "FunctionName": "first-impression-transcoder-dev-createWatermarked",
+        "Handler": "handlers/createWatermarked.run",
+        "MemorySize": 512,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs8.10",
+        "Timeout": 10,
+        "Environment": {
+          "Variables": {
+            "REGION": "eu-central-1",
+            "SNS_TOPIC_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-media-in"
+                ]
+              ]
+            },
+            "SNS_TOPIC_CREATE_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-sns-create-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_MEDIA_IN": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-in"
+                ]
+              ]
+            },
+            "BUCKET_GIF": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-gif"
+                ]
+              ]
+            },
+            "BUCKET_MOBILE_VIDEO": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-mobile-video"
+                ]
+              ]
+            },
+            "BUCKET_WATERMARKED": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-watermarked"
+                ]
+              ]
+            },
+            "BUCKET_THUMBNAILS": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "first-impression-media-thumbnails"
+                ]
+              ]
+            },
+            "FFMPEG_LAYER_ARN": {
+              "Fn::ImportValue": "FfmpegLambdaLayer"
+            },
+            "FFMPEG_LAYER_EXPORT": "arn:aws:lambda:eu-central-1:842928896331:layer:ffmpeg:176"
+          }
+        },
+        "Layers": [
+          {
+            "Fn::ImportValue": "FfmpegLambdaLayer"
+          },
+          {
+            "Fn::ImportValue": "GraphicsmagickLambdaLayer"
+          }
+        ]
+      },
+      "DependsOn": [
+        "CreateWatermarkedLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "MediaSourceTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-sns-media-in"
+            ]
+          ]
+        }
+      }
+    },
+    "MediaSourceTopicPolicy": {
+      "Type": "AWS::SNS::TopicPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "AllowBucketToPushNotificationEffect",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "s3.amazonaws.com"
+              },
+              "Action": "sns:Publish",
+              "Resource": "*"
+            }
+          ]
+        },
+        "Topics": [
+          {
+            "Ref": "MediaSourceTopic"
+          }
+        ]
+      }
+    },
+    "MediaSourceBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-media-in"
+            ]
+          ]
+        },
+        "NotificationConfiguration": {
+          "TopicConfigurations": [
+            {
+              "Event": "s3:ObjectCreated:*",
+              "Topic": {
+                "Ref": "MediaSourceTopic"
+              }
+            }
+          ]
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "PUT",
+                "GET",
+                "POST",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "AccessControl": "PublicReadWrite"
+      }
+    },
+    "MediaSourceBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": {
+            "Sid": "PublicReadForGetBucketObjects",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+              "s3:PutObject",
+              "s3:GetObject"
+            ],
+            "Resource": [
+              {
+                "Fn::Join": [
+                  "/",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "MediaSourceBucket",
+                        "Arn"
+                      ]
+                    },
+                    "*"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        "Bucket": {
+          "Ref": "MediaSourceBucket"
+        }
+      }
+    },
+    "CreateGifBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-media-gif"
+            ]
+          ]
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "PUT",
+                "GET",
+                "POST",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "AccessControl": "PublicRead"
+      }
+    },
+    "CreateGifSubscription": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "CreateGifLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "MediaSourceTopic"
+        }
+      }
+    },
+    "CreateGifLambdaFunctionPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "MediaSourceTopic"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateGifLambdaFunction",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "CreateGifBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CreateGifBucket",
+                          "Arn"
+                        ]
+                      },
+                      "*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "CreateGifBucket"
+        }
+      }
+    },
+    "CreateMobileVideoBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-mobile-video"
+            ]
+          ]
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "PUT",
+                "GET",
+                "POST",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "AccessControl": "PublicRead"
+      }
+    },
+    "CreateMobileVideoSubscription": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "CreateMobileVideoLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "MediaSourceTopic"
+        }
+      }
+    },
+    "CreateMobileVideoLambdaFunctionPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "MediaSourceTopic"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateMobileVideoLambdaFunction",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "CreateMobileVideoBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CreateMobileVideoBucket",
+                          "Arn"
+                        ]
+                      },
+                      "*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "CreateMobileVideoBucket"
+        }
+      }
+    },
+    "CreateThumbnailsBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-media-thumbnails"
+            ]
+          ]
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "PUT",
+                "GET",
+                "POST",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "AccessControl": "PublicRead"
+      }
+    },
+    "CreateThumbnailsSubscription": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "CreateThumbnailsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "MediaSourceTopic"
+        }
+      }
+    },
+    "CreateThumbnailsLambdaFunctionPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "MediaSourceTopic"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateThumbnailsLambdaFunction",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "CreateThumbnailsBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CreateThumbnailsBucket",
+                          "Arn"
+                        ]
+                      },
+                      "*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "CreateThumbnailsBucket"
+        }
+      }
+    },
+    "CreateWatermarkedTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-sns-create-watermarked"
+            ]
+          ]
+        }
+      }
+    },
+    "CreateWatermarkedBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Fn::Join": [
+            "-",
+            [
+              "dev",
+              "first-impression-media-watermarked"
+            ]
+          ]
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedMethods": [
+                "PUT",
+                "GET",
+                "POST",
+                "HEAD"
+              ],
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedHeaders": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "AccessControl": "PublicRead"
+      }
+    },
+    "CreateWatermarkedBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "CreateWatermarkedBucket",
+                          "Arn"
+                        ]
+                      },
+                      "*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Bucket": {
+          "Ref": "CreateWatermarkedBucket"
+        }
+      }
+    },
+    "CreateWatermarkedSubscription": {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Endpoint": {
+          "Fn::GetAtt": [
+            "CreateWatermarkedLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Protocol": "lambda",
+        "TopicArn": {
+          "Ref": "MediaSourceTopic"
+        }
+      }
+    },
+    "CreateWatermarkedLambdaFunctionPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "MediaSourceTopic"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "CreateWatermarkedLambdaFunction",
+            "Arn"
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": "dev-first-impression-deployment"
+    }
+  }
+}

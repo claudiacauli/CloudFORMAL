@@ -1,0 +1,54 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Creates api.concordqa.org API gateway domain and Route53 alias",
+    "Resources": {
+        "ApiGatewayDomain": {
+            "Type": "AWS::ApiGateway::DomainName",
+            "Properties": {
+                "CertificateArn": "arn:aws:acm:us-east-1:816253370536:certificate/7b8bb00e-7aa4-4b9f-a722-f49c828af83c",
+                "DomainName": "api.concordqa.org"
+            }
+        },
+        "ApiGatewayDNSRecord": {
+            "DependsOn": "ApiGatewayDomain",
+            "Type": "AWS::Route53::RecordSet",
+            "Properties": {
+                "HostedZoneId": "Z270F8MK5GG1RH",
+                "Name": "api.concordqa.org.",
+                "Type": "A",
+                "AliasTarget": {
+                    "DNSName": {
+                        "Fn::GetAtt": [
+                            "ApiGatewayDomain",
+                            "DistributionDomainName"
+                        ]
+                    },
+                    "EvaluateTargetHealth": false,
+                    "HostedZoneId": {
+                        "Fn::GetAtt": [
+                            "ApiGatewayDomain",
+                            "DistributionHostedZoneId"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "ApiDomainName": {
+            "Description": "Api domain name",
+            "Value": {
+                "Ref": "ApiGatewayDomain"
+            }
+        },
+        "ApiDistributionDomainName": {
+            "Description": "Api distribution domain name",
+            "Value": {
+                "Fn::GetAtt": [
+                    "ApiGatewayDomain",
+                    "DistributionDomainName"
+                ]
+            }
+        }
+    }
+}

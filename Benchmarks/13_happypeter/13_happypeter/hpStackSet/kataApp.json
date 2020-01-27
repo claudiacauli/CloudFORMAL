@@ -1,0 +1,457 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "AWS CloudFormation Template NodeJSApp.",
+    "Parameters": {
+        "VPC": {
+            "Type": "AWS::EC2::VPC::Id",
+            "Description": "VPC for Application Server"
+        },
+        "PrivateSubnet": {
+            "Type": "List<AWS::EC2::Subnet::Id>",
+            "Description": "Private Subnet for Autoscaling Group"
+        },
+        "PublicSubnet": {
+            "Type": "List<AWS::EC2::Subnet::Id>",
+            "Description": "Public Subnet for ALB"
+        }
+    },
+    "Resources": {
+        "LFRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/AmazonSSMFullAccess",
+                    "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
+                    "arn:aws:iam::aws:policy/AWSCodePipelineFullAccess"
+                ],
+                "RoleName": "lambdaRole-cloud-phoenix-kata"
+            }
+        },
+        "LFstartNode": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Code": {
+                    "S3Bucket": "lambda-functions-cloud-phoenix-kata",
+                    "S3Key": "startNodeJSApp-ASG.zip"
+                },
+                "FunctionName": "startNodeJSApp-ASG",
+                "Handler": "startNodeJSApp-ASG.startNodeJS",
+                "MemorySize": 128,
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LFRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "python3.7",
+                "Timeout": 300
+            },
+            "DependsOn": "LFRole"
+        },
+        "LFrestartNode": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Code": {
+                    "S3Bucket": "lambda-functions-cloud-phoenix-kata",
+                    "S3Key": "restartNodeJSApp-ASG.zip"
+                },
+                "FunctionName": "restartNodeJSApp-ASG",
+                "Handler": "restartNodeJSApp-ASG.restartNodeJSApp",
+                "MemorySize": 128,
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LFRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "python3.7",
+                "Timeout": 300
+            },
+            "DependsOn": "LFRole"
+        },
+        "SecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "String",
+                "GroupName": "SG-APPNODEJS",
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "SecurityGroupEgress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 0,
+                        "ToPort": 65535,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 8080,
+                        "ToPort": 8080,
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ]
+            }
+        },
+        "ALB": {
+            "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+            "Properties": {
+                "Name": "ALB-NodeJS",
+                "Scheme": "internet-facing",
+                "SecurityGroups": [
+                    {
+                        "Ref": "SecurityGroup"
+                    }
+                ],
+                "Subnets": {
+                    "Ref": "PublicSubnet"
+                },
+                "Type": "application"
+            }
+        },
+        "ALBListener": {
+            "Type": "AWS::ElasticLoadBalancingV2::Listener",
+            "Properties": {
+                "DefaultActions": [
+                    {
+                        "Type": "forward",
+                        "TargetGroupArn": {
+                            "Ref": "ALBTG"
+                        }
+                    }
+                ],
+                "LoadBalancerArn": {
+                    "Ref": "ALB"
+                },
+                "Port": 8080,
+                "Protocol": "HTTP"
+            },
+            "DependsOn": "ALB"
+        },
+        "ALBListenerRule": {
+            "Type": "AWS::ElasticLoadBalancingV2::ListenerRule",
+            "Properties": {
+                "Actions": [
+                    {
+                        "Type": "forward",
+                        "TargetGroupArn": {
+                            "Ref": "ALBTG"
+                        }
+                    }
+                ],
+                "Conditions": [
+                    {
+                        "Field": "http-request-method",
+                        "HttpRequestMethodConfig": {
+                            "Values": [
+                                "GET",
+                                "HEAD"
+                            ]
+                        }
+                    }
+                ],
+                "ListenerArn": {
+                    "Ref": "ALBListener"
+                },
+                "Priority": 1
+            },
+            "DependsOn": "ALBTG"
+        },
+        "ALBTG": {
+            "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+            "Properties": {
+                "HealthCheckEnabled": true,
+                "HealthCheckIntervalSeconds": 30,
+                "HealthCheckPath": "/",
+                "HealthCheckPort": 8080,
+                "HealthCheckProtocol": "HTTP",
+                "HealthCheckTimeoutSeconds": 5,
+                "HealthyThresholdCount": 5,
+                "Matcher": {
+                    "HttpCode": 200
+                },
+                "Name": "TG-UbuntuNodeJS",
+                "Port": 8080,
+                "Protocol": "HTTP",
+                "TargetType": "instance",
+                "UnhealthyThresholdCount": 2,
+                "VpcId": {
+                    "Ref": "VPC"
+                }
+            },
+            "DependsOn": "ALB"
+        },
+        "EC2SSMCWRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ec2.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
+                    "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy",
+                    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
+                    "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+                ],
+                "RoleName": "ec2-ssm-cw-role-phoenix-kata",
+                "Path": "/"
+            }
+        },
+        "EC2SystemManagerCWProfile": {
+            "Type": "AWS::IAM::InstanceProfile",
+            "Properties": {
+                "Path": "/",
+                "Roles": [
+                    {
+                        "Ref": "EC2SSMCWRole"
+                    }
+                ],
+                "InstanceProfileName": "ec2_phoenix_instance_profile"
+            },
+            "DependsOn": "EC2SSMCWRole"
+        },
+        "LC": {
+            "Type": "AWS::AutoScaling::LaunchConfiguration",
+            "Properties": {
+                "AssociatePublicIpAddress": false,
+                "IamInstanceProfile": {
+                    "Ref": "EC2SystemManagerCWProfile"
+                },
+                "ImageId": "ami-06358f49b5839867c",
+                "InstanceMonitoring": true,
+                "InstanceType": "c4.large",
+                "KeyName": "nodejs",
+                "LaunchConfigurationName": "LC-UbuntuNodeJS",
+                "SecurityGroups": [
+                    {
+                        "Ref": "SecurityGroup"
+                    }
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Sub": "#!/bin/bash\nsudo apt-get update\nsudo apt-get install -y git\nsudo apt-get install -y ruby\ncd /home/ubuntu\nmkdir /usr/local/cloud-phoenix-kata\nwget https://aws-codedeploy-eu-west-1.s3.eu-west-1.amazonaws.com/latest/install\nchmod +x ./install\nsudo ./install auto\nsudo service codedeploy-agent start\nsudo systemctl  enable codedeploy-agent\nsudo systemctl amazon-ssm-agent start\ncd ~ \nwget https://nodejs.org/dist/v4.2.3/node-v4.2.3-linux-x64.tar.gz \nmkdir node \ntar xvf node-v*.tar.?z --strip-components=1 -C ./node \ncd ~\nrm -rf node-v*\nmkdir node/etc\necho 'prefix=/usr/local' > node/etc/npmrc\nsudo mv node /opt/\nsudo chown -R root: /opt/node\nsudo ln -s /opt/node/bin/node /usr/local/bin/node\nsudo ln -s /opt/node/bin/npm /usr/local/bin/npm\n"
+                    }
+                }
+            },
+            "DependsOn": [
+                "EC2SystemManagerCWProfile"
+            ]
+        },
+        "ASG": {
+            "Type": "AWS::AutoScaling::AutoScalingGroup",
+            "Properties": {
+                "AutoScalingGroupName": "AutoScalingGroup-AppNodeJS",
+                "Cooldown": 300,
+                "DesiredCapacity": 0,
+                "HealthCheckGracePeriod": 300,
+                "HealthCheckType": "EC2",
+                "LaunchConfigurationName": {
+                    "Ref": "LC"
+                },
+                "MaxSize": 10,
+                "MinSize": 0,
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "UbuntuNodeJS",
+                        "PropagateAtLaunch": "true"
+                    }
+                ],
+                "TargetGroupARNs": [
+                    {
+                        "Ref": "ALBTG"
+                    }
+                ],
+                "TerminationPolicies": [
+                    "NewestInstance"
+                ],
+                "VPCZoneIdentifier": {
+                    "Ref": "PrivateSubnet"
+                }
+            },
+            "DependsOn": [
+                "ALB",
+                "ALBTG",
+                "LC"
+            ]
+        },
+        "ASGPolicyScale": {
+            "Type": "AWS::AutoScaling::ScalingPolicy",
+            "Properties": {
+                "AutoScalingGroupName": {
+                    "Ref": "ASG"
+                },
+                "Cooldown": 60,
+                "EstimatedInstanceWarmup": 60,
+                "PolicyType": "TargetTrackingScaling",
+                "TargetTrackingConfiguration": {
+                    "PredefinedMetricSpecification": {
+                        "PredefinedMetricType": "ALBRequestCountPerTarget",
+                        "ResourceLabel": {
+                            "Fn::Join": [
+                                "",
+                                [
+                                    {
+                                        "Fn::GetAtt": [
+                                            "ALB",
+                                            "LoadBalancerFullName"
+                                        ]
+                                    },
+                                    "/",
+                                    {
+                                        "Fn::GetAtt": [
+                                            "ALBTG",
+                                            "TargetGroupFullName"
+                                        ]
+                                    }
+                                ]
+                            ]
+                        }
+                    },
+                    "TargetValue": 600
+                }
+            },
+            "DependsOn": "ASG"
+        },
+        "S3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "codedeploy-cloud-phoenix-kata-releases",
+                "VersioningConfiguration": {
+                    "Status": "Enabled"
+                }
+            }
+        },
+        "CPUAlarm": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "ActionsEnabled": true,
+                "AlarmActions": [
+                    "arn:aws:sns:eu-west-1:093387872920:CheckNotify"
+                ],
+                "AlarmDescription": "CPU value too high !!",
+                "EvaluationPeriods": 1,
+                "AlarmName": "CPU-Alarm",
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "DatapointsToAlarm": 1,
+                "Dimensions": [
+                    {
+                        "Name": "AutoScalingGroupName",
+                        "Value": "AutoScalingGroup-AppNodeJS"
+                    }
+                ],
+                "MetricName": "CPUUtilization",
+                "Namespace": "AWS/EC2",
+                "Period": 60,
+                "Statistic": "Average",
+                "Threshold": 95
+            },
+            "DependsOn": "ASG"
+        },
+        "CrashAlarm": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "ActionsEnabled": true,
+                "AlarmActions": [
+                    "arn:aws:sns:eu-west-1:093387872920:RestartApp"
+                ],
+                "AlarmDescription": "Application Crashed !!",
+                "EvaluationPeriods": 1,
+                "AlarmName": "Crash-Alarm",
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "DatapointsToAlarm": 1,
+                "Dimensions": [
+                    {
+                        "Name": "LoadBalancer",
+                        "Value": {
+                            "Fn::GetAtt": [
+                                "ALB",
+                                "LoadBalancerFullName"
+                            ]
+                        }
+                    }
+                ],
+                "MetricName": "HTTPCode_ELB_502_Count",
+                "Namespace": "AWS/ApplicationELB",
+                "Period": 60,
+                "Statistic": "Average",
+                "Threshold": 1
+            },
+            "DependsOn": "ALB"
+        },
+        "ACWEventRule": {
+            "Type": "AWS::Events::Rule",
+            "Properties": {
+                "Name": "startAppAfterAutoscale",
+                "EventPattern": {
+                    "source": [
+                        "aws.autoscaling"
+                    ],
+                    "detail-type": [
+                        "EC2 Instance Launch Successful"
+                    ]
+                },
+                "Targets": [
+                    {
+                        "Arn": "arn:aws:lambda:eu-west-1:093387872920:function:startNodeJSApp-ASG",
+                        "Id": 1
+                    }
+                ]
+            },
+            "DependsOn": "LFstartNode"
+        },
+        "PermissionLambdaStartACWEventRule": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "FunctionName": "arn:aws:lambda:eu-west-1:093387872920:function:startNodeJSApp-ASG",
+                "Principal": "events.amazonaws.com",
+                "SourceArn": {
+                    "Fn::GetAtt": [
+                        "ACWEventRule",
+                        "Arn"
+                    ]
+                }
+            },
+            "DependsOn": [
+                "ACWEventRule",
+                "LFstartNode"
+            ]
+        },
+        "PermissionLambdaRestartSNS": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "FunctionName": "arn:aws:lambda:eu-west-1:093387872920:function:restartNodeJSApp-ASG",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": "arn:aws:sns:eu-west-1:093387872920:RestartApp"
+            },
+            "DependsOn": "LFrestartNode"
+        }
+    }
+}

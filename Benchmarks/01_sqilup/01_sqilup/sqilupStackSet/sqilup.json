@@ -1,0 +1,335 @@
+{
+  "AWSTemplateFormatVersion": "2018-03-17",
+  "Description": "This AWS CloudFormation Template used for the Sqilup DataBatch1 Infrastructure setup for DQ Model",
+  "Parameters": {
+    "AccessControl": {
+      "Type": "String",
+      "Description": "Default permissions for the bucket",
+      "AllowedValues": [ "Private", "PublicRead", "PublicReadWrite", "AuthenticatedRead", "LogDeliveryWrite", "BucketOwnerRead", "BucketOwnerFullControl" ],
+      "Default": "Private"
+    },
+    
+          "RegionName": {
+            "Description" : "Name of an existing Region vaialbles",
+            "Type": "String",
+            "AllowedValues": [ "us-east-1", "eu-west-1", "us-east-2", "eu-west-2" ],
+            "Default" : "us-east-1"
+   }
+    
+    
+  },
+  "Resources": {
+    
+    "IAMUser": {
+      "Type": "AWS::IAM::User"
+    },
+    "IAMAcessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": { "UserName": { "Ref": "IAMUser" } }
+    },
+    
+  
+   
+        
+        
+    "Sourcelambdafunction":{  
+         "Type":"AWS::Lambda::Function",
+         "Properties":{  
+            "FunctionName": "eu-dev-sqilupdb1-lambda-src",
+            "Handler":"index.handler",
+            "Role":{  
+               "Fn::GetAtt":[  
+                  "AWSConfigRole",
+                  "Arn"
+               ]
+            },
+            "Code":{  
+               "S3Bucket": "externalBucketName",
+               "S3Key":"lambda-zip"
+            },
+            "Runtime":"Python 3.6",
+            "Timeout":"25"
+         }
+      },
+      
+      
+          "Infralambdafunction":{  
+               "Type":"AWS::Lambda::Function",
+               "Properties":{  
+                  "FunctionName": "eu-dev-sqilupdb1-lambda-infr",
+                  "Handler":"index.handler",
+                  "Role":{  
+                     "Fn::GetAtt":[  
+                        "AWSConfigRole",
+                        "Arn"
+                     ]
+                  },
+                  "Code":{  
+                     "S3Bucket":"externalBucketName",
+                     "S3Key":"lambda-zip"
+                  },
+                  "Runtime":"Python 3.6",
+                  "Timeout":"25"
+               }
+      },
+      
+      
+      
+          "Executionlambdafunction":{  
+               "Type":"AWS::Lambda::Function",
+               "Properties":{  
+                  "FunctionName": "eu-dev-sqilupdb1-lambda-exc",
+                  "Handler":"index.handler",
+                  "Role":{  
+                     "Fn::GetAtt":[  
+                        "AWSConfigRole",
+                        "Arn"
+                     ]
+                  },
+                  "Code":{  
+                     "S3Bucket":"externalBucketName",
+                     "S3Key":"lambda-zip"
+                  },
+                  "Runtime":"Python 3.6",
+                  "Timeout":"25"
+               }
+      },
+    
+    
+    
+    "AWSConfigRole": {
+          "Type": "AWS::IAM::Role",
+          "Properties": {
+            "AssumeRolePolicyDocument": {
+              "Version": "2018-03-17",
+              "Statement": [ {
+                "Sid": "",
+                "Effect": "Allow",
+                "Principal": { "Service": "lambda.amazonaws.com"},
+                "Action": "sts:AssumeRole"
+              } ]
+            },
+            "Path": "/",
+            "Policies": [ {
+              "PolicyName": "InlinePolicy",
+              "PolicyDocument": {
+                "Version": "2018-03-17",
+                "Statement": [
+                  ""
+                ]
+              }
+            } ]
+          }
+    },
+    
+    
+    
+  "TopicSourceSU": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName" : "eu-dev-sqilupdb1-sns-topic-src-su",
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [ "Sourcelambdafunction", "Arn" ]
+            },
+            "Protocol": "lambda"
+          }
+        ]
+      },
+      "DependsOn": [ "Lambda" ]
+  },
+  
+  "TopicSourceFA": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName" : "eu-dev-sqilupdb1-sns-topic-src-fa",
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [ "Sourcelambdafunction", "Arn" ]
+            },
+            "Protocol": "lambda"
+          }
+        ]
+      },
+      "DependsOn": [ "Lambda" ]
+  },
+  
+  
+      "TopicTransformSU": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : "eu-dev-sqilupdb1-sns-topic-trf-su",
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Infralambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        },
+        "DependsOn": [ "Lambda" ]
+  },
+    
+          "TopicTransformFA": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : "eu-dev-sqilupdb1-sns-topic-trf-fa",
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Infralambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        },
+        "DependsOn": [ "Lambda" ]
+  },
+    
+    
+              "TopicDQSU": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : "eu-dev-sqilupdb1-sns-topic-dq-su",
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Executionlambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        },
+        "DependsOn": [ "Lambda" ]
+  },
+  
+  
+                "TopicDQFA": {
+        "Type": "AWS::SNS::Topic",
+        "Properties": {
+          "TopicName" : "eu-dev-sqilupdb1-sns-topic-dq-fa",
+          "Subscription": [
+            {
+              "Endpoint": {
+                "Fn::GetAtt": [ "Executionlambdafunction", "Arn" ]
+              },
+              "Protocol": "lambda"
+            }
+          ]
+        },
+        "DependsOn": [ "Lambda" ]
+  },
+    
+    
+    "S3BucketSrc" : {
+      "Type": "AWS::S3::Bucket",
+      "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                      "BucketName":"eu-dev-sqilupdb1-s3-bucket-src"
+                     }
+    },
+    
+    "S3BucketTrf" : {
+      "Type": "AWS::S3::Bucket",
+      "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                      "BucketName":"eu-dev-sqilupdb1-s3-bucket-trf"
+                     }
+    },
+    
+     "S3BucketDq" : {
+       "Type": "AWS::S3::Bucket",
+       "Properties": { "AccessControl": { "Ref": "AccessControl" },
+                       "BucketName":"eu-dev-sqilupdb1-s3-bucket-dq"
+                      }
+    },
+    
+    "IAMPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "S3BucketPermissions",
+        "PolicyDocument" : {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "S3BucketPermissions",
+              "Effect": "Allow",
+              "Action": ["s3:*"],
+              "Resource": [
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketSrc" } ] ] },
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketTrf" } ] ] },
+                { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "S3BucketDq" }, "/*" ] ] }
+              ]
+            }
+          ]
+        },
+        "Users": [ { "Ref": "IAMUser" } ]
+      }
+    }
+  },
+  "Outputs" : {
+    "Region": {
+      "Value": { "Ref": "AWS::Region" }
+    },
+    "Username": {
+      "Value": { "Ref": "IAMUser" }
+    },
+    "AWSAccessKeyId": {
+      "Value": { "Ref": "IAMAcessKey" }
+    },
+    "AWSSecretAccessKey": {
+      "Value": { "Fn::GetAtt": [ "IAMAcessKey", "SecretAccessKey" ] }
+    },
+    "BucketNameSrc": {
+      "Value": { "Ref": "S3BucketSrc" }
+    }
+    
+    ,
+        "BucketNameTrf": {
+          "Value": { "Ref": "S3BucketTrf" }
+    }
+    ,
+        "BucketNameDq": {
+          "Value": { "Ref": "S3BucketDq" }
+    }    ,
+        "TopicSourceSU": {
+          "Value": { "Ref": "TopicSourceSU" }
+    },
+     
+        "TopicSourceFA": {
+          "Value": { "Ref": "TopicSourceFA" }
+    } ,
+        "TopicTransformSU": {
+          "Value": { "Ref": "TopicTransformSU" }
+    },
+     
+        "TopicTransformFA": {
+          "Value": { "Ref": "TopicTransformFA" }
+    }
+     ,
+        "TopicDQSU": {
+          "Value": { "Ref": "TopicDQSU" }
+    },
+     
+        "TopicDQFA": {
+          "Value": { "Ref": "TopicDQFA" }
+    },
+    
+     
+        "SourceLambdaFunction": {
+          "Value": { "Ref": "Sourcelambdafunction" }
+    },
+    
+     
+        "InfraLambdaFunction": {
+          "Value": { "Ref": "Infralambdafunction" }
+    },
+    
+     
+        "ExecutionLambdaFunction": {
+          "Value": { "Ref": "Executionlambdafunction" }
+    }
+  }
+}
+

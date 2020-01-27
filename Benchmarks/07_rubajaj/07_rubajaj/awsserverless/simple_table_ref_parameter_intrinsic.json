@@ -1,0 +1,34 @@
+{
+  "Resources": {
+    "MinimalTableRefParamLongForm": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "ProvisionedThroughput": {
+          "WriteCapacityUnits": {
+            "Ref": "WriteCapacity"
+          },
+          "ReadCapacityUnits": {
+            "Ref": "ReadCapacity"
+          }
+        },
+        "SSESpecification": {
+          "SSEEnabled": {
+            "Ref": "EnableSSE"
+          }
+        },
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "KeyType": "HASH",
+            "AttributeName": "id"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,784 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Log ingester stack",
+    "Parameters": {
+        "Environment": {
+            "Type": "String",
+            "Description": "Lowercase name of environment (either staging or production)",
+            "Default": "staging",
+            "AllowedValues": [
+                "staging",
+                "production"
+            ]
+        },
+        "VpcId": {
+            "Type": "String",
+            "Description": "VPC Id of existing VPC",
+            "Default": "vpc-9c9714f9"
+        },
+        "DbUser": {
+            "Type": "String",
+            "Description": "Database admin account username",
+            "Default": "master",
+            "MinLength": 1,
+            "AllowedPattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+            "ConstraintDescription": "Must begin with a letter and contain only alphanumeric characters"
+        },
+        "DbPassword": {
+            "Type": "String",
+            "Description": "Database admin account password",
+            "NoEcho": true,
+            "MinLength": 1,
+            "AllowedPattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+            "ConstraintDescription": "Must begin with a letter and contain only alphanumeric characters"
+        },
+        "DbSize": {
+            "Type": "String",
+            "Description": "Database size in GB",
+            "Default": "300",
+            "MinLength": 1,
+            "AllowedPattern": "^[0-9]+$",
+            "ConstraintDescription": "Must be an integer"
+        },
+        "DbSubnetIds": {
+            "Type": "String",
+            "Description": "List of existing (public) VPC Subnet Ids",
+            "Default": "subnet-3ad53106,subnet-00fc2949"
+        },
+        "KinesisStreamShardCount": {
+            "Type": "String",
+            "Description": "Number of shards for Kinesis Stream (use > 1 for production)",
+            "Default": "1",
+            "MinLength": 1,
+            "AllowedPattern": "^[0-9]+$",
+            "ConstraintDescription": "Must be an integer"
+        },
+        "ApiGatewayBasePath": {
+            "Type": "String",
+            "Description": "Base path for API at https://api.concord.org/ or https://api.concordqa.org/",
+            "Default": "log"
+        },
+        "ApiDomain": {
+            "Type": "String",
+            "Description": "The domain of the api",
+            "Default": "api.concordqa.org",
+            "AllowedValues": [
+                "api.concord.org",
+                "api.concordqa.org"
+            ]
+        },
+        "AlarmEmail": {
+            "Type": "String",
+            "Description": "Email address to notify when the log ingester has triggered an alarm and for tags"
+        },
+        "LambdaZipBucket": {
+            "Type": "String",
+            "Description": "S3 bucket containing /log-ingester folder containing LambdaZipFilename",
+            "Default": "concord-devops"
+        },
+        "LambdaZipFilename": {
+            "Type": "String",
+            "Description": "Filename of lambda .zip file in log-ingester folder of the LambdaZipBucket",
+            "Default": "kinesis-to-rds.zip"
+        }
+    },
+    "Resources": {
+        "DBInstance": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "AllocatedStorage": {
+                    "Ref": "DbSize"
+                },
+                "DBInstanceClass": "db.t2.medium",
+                "AllowMajorVersionUpgrade": false,
+                "AutoMinorVersionUpgrade": true,
+                "DBInstanceIdentifier": {
+                    "Fn::Sub": "log-ingester-${Environment}"
+                },
+                "DBName": "log_manager",
+                "DBParameterGroupName": {
+                    "Ref": "DBParameterGroup"
+                },
+                "DBSubnetGroupName": {
+                    "Ref": "DBSubnetGroup"
+                },
+                "Engine": "postgres",
+                "EngineVersion": "10.10",
+                "MasterUsername": {
+                    "Ref": "DbUser"
+                },
+                "MasterUserPassword": {
+                    "Ref": "DbPassword"
+                },
+                "MultiAZ": true,
+                "Port": "5432",
+                "PubliclyAccessible": true,
+                "StorageEncrypted": true,
+                "StorageType": "gp2",
+                "VPCSecurityGroups": [
+                    {
+                        "Ref": "DBVPCSecurityGroup"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Contact",
+                        "Value": {
+                            "Ref": "AlarmEmail"
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "DBParameterGroup": {
+            "Type": "AWS::RDS::DBParameterGroup",
+            "Properties": {
+                "Description": {
+                    "Fn::Sub": "Parameter group for log-ingester-${Environment} database"
+                },
+                "Family": "postgres10",
+                "Tags": [
+                    {
+                        "Key": "Contact",
+                        "Value": {
+                            "Ref": "AlarmEmail"
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "DBVPCSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupName": {
+                    "Fn::Sub": "log-ingester-${Environment}"
+                },
+                "GroupDescription": {
+                    "Fn::Sub": "VPC security group for log-ingester-${Environment} database"
+                },
+                "VpcId": {
+                    "Ref": "VpcId"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 5432,
+                        "ToPort": 5432
+                    }
+                ],
+                "SecurityGroupEgress": [
+                    {
+                        "IpProtocol": "-1",
+                        "CidrIp": "0.0.0.0/0"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Contact",
+                        "Value": {
+                            "Ref": "AlarmEmail"
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "DBSubnetGroup": {
+            "Type": "AWS::RDS::DBSubnetGroup",
+            "Properties": {
+                "DBSubnetGroupName": {
+                    "Fn::Sub": "log-ingester-${Environment}"
+                },
+                "DBSubnetGroupDescription": {
+                    "Fn::Sub": "Subnet group for log-ingester-${Environment} database"
+                },
+                "SubnetIds": {
+                    "Ref": "DbSubnetIds"
+                },
+                "Tags": [
+                    {
+                        "Key": "Contact",
+                        "Value": {
+                            "Ref": "AlarmEmail"
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "KinesisStream": {
+            "Type": "AWS::Kinesis::Stream",
+            "Properties": {
+                "Name": {
+                    "Fn::Sub": "log-ingester-${Environment}-api-gateway-stream"
+                },
+                "RetentionPeriodHours": 24,
+                "ShardCount": {
+                    "Ref": "KinesisStreamShardCount"
+                },
+                "StreamEncryption": {
+                    "EncryptionType": "KMS",
+                    "KeyId": "alias/aws/kinesis"
+                }
+            }
+        },
+        "KinesisEventSource": {
+            "Type": "AWS::Lambda::EventSourceMapping",
+            "Properties": {
+                "BatchSize": 100,
+                "Enabled": true,
+                "EventSourceArn": {
+                    "Fn::GetAtt": [
+                        "KinesisStream",
+                        "Arn"
+                    ]
+                },
+                "FunctionName": {
+                    "Ref": "KinesisToRDSLambdaFunction"
+                },
+                "StartingPosition": "TRIM_HORIZON"
+            }
+        },
+        "KinesisToRDSLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Description": "Inserts Kinesis records from log-ingester gateway into RDS",
+                "FunctionName": {
+                    "Fn::Sub": "log-ingester-${Environment}"
+                },
+                "Handler": "index.handler",
+                "MemorySize": 128,
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaIamRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "nodejs10.x",
+                "Timeout": 60,
+                "VpcConfig": {
+                    "SecurityGroupIds": [
+                        {
+                            "Ref": "KinesisToRDSLambdaFunctionSecurityGroup"
+                        }
+                    ],
+                    "SubnetIds": {
+                        "Ref": "DbSubnetIds"
+                    }
+                },
+                "Environment": {
+                    "Variables": {
+                        "RDS_DATABASE_URL": {
+                            "Fn::Sub": "postgres://${DbUser}:${DbPassword}@${DBInstance.Endpoint.Address}/log_manager"
+                        }
+                    }
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Ref": "LambdaZipBucket"
+                    },
+                    "S3Key": {
+                        "Fn::Sub": "log-ingester/${LambdaZipFilename}"
+                    }
+                },
+                "Tags": [
+                    {
+                        "Key": "Contact",
+                        "Value": {
+                            "Ref": "AlarmEmail"
+                        }
+                    },
+                    {
+                        "Key": "Environment",
+                        "Value": {
+                            "Ref": "Environment"
+                        }
+                    }
+                ]
+            }
+        },
+        "KinesisToRDSLambdaFunctionSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupName": {
+                    "Fn::Sub": "log-ingester-${Environment}-kinesis-to-rds-lambda"
+                },
+                "GroupDescription": "Kinesis to RDS Lambda Function security group",
+                "VpcId": {
+                    "Ref": "VpcId"
+                }
+            }
+        },
+        "KinesisToRDSLambdaFunctionDBIngress": {
+            "Type": "AWS::EC2::SecurityGroupIngress",
+            "Properties": {
+                "Description": "Adds log ingester lambda to RDS security group",
+                "GroupId": {
+                    "Ref": "DBVPCSecurityGroup"
+                },
+                "IpProtocol": "tcp",
+                "FromPort": 5432,
+                "ToPort": 5432,
+                "SourceSecurityGroupId": {
+                    "Ref": "KinesisToRDSLambdaFunctionSecurityGroup"
+                }
+            }
+        },
+        "LambdaIamRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": {
+                    "Fn::Sub": "log-ingester-${Environment}-kinesis-lambda"
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": {
+                            "Fn::Sub": "log-ingester-${Environment}-access-kinesis-from-lambda"
+                        },
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "kinesis:GetRecords",
+                                        "kinesis:GetShardIterator",
+                                        "kinesis:DescribeStream",
+                                        "kinesis:ListStreams"
+                                    ],
+                                    "Resource": {
+                                        "Fn::GetAtt": [
+                                            "KinesisStream",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                ]
+            }
+        },
+        "ApiGateway": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+                "Name": {
+                    "Fn::Sub": "log-ingester-${Environment}"
+                },
+                "Description": "Accepts log post bodies (JSON) and proxies them to Kinesis",
+                "ApiKeySourceType": "HEADER",
+                "EndpointConfiguration": {
+                    "Types": [
+                        "EDGE"
+                    ]
+                },
+                "FailOnWarnings": true
+            }
+        },
+        "ApiGatewayAccount": {
+            "Type": "AWS::ApiGateway::Account",
+            "Properties": {
+                "CloudWatchRoleArn": {
+                    "Fn::GetAtt": [
+                        "ApiGatewayCloudWatchLogsRole",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "ApiGatewayCloudWatchLogsRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "apigateway.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "RoleName": {
+                    "Fn::Sub": "log-ingester-${Environment}-api-cloudwatch"
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+                ]
+            }
+        },
+        "ApiGatewayStage": {
+            "DependsOn": "ApiGatewayAccount",
+            "Type": "AWS::ApiGateway::Stage",
+            "Properties": {
+                "DeploymentId": {
+                    "Ref": "ApiGatewayDeployment"
+                },
+                "MethodSettings": [
+                    {
+                        "DataTraceEnabled": true,
+                        "HttpMethod": "*",
+                        "LoggingLevel": "INFO",
+                        "ResourcePath": "/*"
+                    }
+                ],
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                },
+                "StageName": "latest"
+            }
+        },
+        "ApiGatewayDeployment": {
+            "Type": "AWS::ApiGateway::Deployment",
+            "DependsOn": [
+                "ApiGatewayLogOptionsRequest",
+                "ApiGatewayLogPostRequest"
+            ],
+            "Properties": {
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                }
+            }
+        },
+        "ApiGatewayLogResource": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                },
+                "ParentId": {
+                    "Fn::GetAtt": [
+                        "ApiGateway",
+                        "RootResourceId"
+                    ]
+                },
+                "PathPart": "logs"
+            }
+        },
+        "ApiGatewayLogOptionsRequest": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+                "AuthorizationType": "NONE",
+                "HttpMethod": "OPTIONS",
+                "Integration": {
+                    "IntegrationResponses": [
+                        {
+                            "ResponseParameters": {
+                                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                                "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "StatusCode": "200"
+                        }
+                    ],
+                    "PassthroughBehavior": "WHEN_NO_MATCH",
+                    "RequestTemplates": {
+                        "application/json": "{\"statusCode\": 200}"
+                    },
+                    "Type": "MOCK"
+                },
+                "MethodResponses": [
+                    {
+                        "ResponseParameters": {
+                            "method.response.header.Access-Control-Allow-Headers": true,
+                            "method.response.header.Access-Control-Allow-Methods": true,
+                            "method.response.header.Access-Control-Allow-Origin": true
+                        },
+                        "StatusCode": "200"
+                    }
+                ],
+                "ResourceId": {
+                    "Ref": "ApiGatewayLogResource"
+                },
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                }
+            }
+        },
+        "ApiGatewayLogPostRequestRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "apigateway.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "RoleName": {
+                    "Fn::Sub": "log-ingester-${Environment}-api-log-post"
+                },
+                "Policies": [
+                    {
+                        "PolicyName": {
+                            "Fn::Sub": "log-ingester-${Environment}-api-log-post"
+                        },
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "kinesis:*"
+                                    ],
+                                    "Resource": {
+                                        "Fn::GetAtt": [
+                                            "KinesisStream",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "ApiGatewayLogPostRequest": {
+            "DependsOn": "KinesisStream",
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+                "AuthorizationType": "NONE",
+                "HttpMethod": "POST",
+                "Integration": {
+                    "Credentials": {
+                        "Fn::GetAtt": [
+                            "ApiGatewayLogPostRequestRole",
+                            "Arn"
+                        ]
+                    },
+                    "IntegrationHttpMethod": "POST",
+                    "IntegrationResponses": [
+                        {
+                            "SelectionPattern": "200",
+                            "ResponseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "StatusCode": "201"
+                        },
+                        {
+                            "ResponseParameters": {
+                                "method.response.header.Access-Control-Allow-Origin": "'*'"
+                            },
+                            "StatusCode": "200"
+                        }
+                    ],
+                    "PassthroughBehavior": "WHEN_NO_TEMPLATES",
+                    "RequestTemplates": {
+                        "application/json": {
+                            "Fn::Sub": "#set($semicolon =';')\n#set($data = \"$context.requestTimeEpoch$semicolon$input.json('$')\")\n{\n    \"StreamName\": \"log-ingester-${Environment}-api-gateway-stream\",\n    \"Data\": \"$util.base64Encode($data)\",\n    \"PartitionKey\": \"todo\"\n}\n"
+                        }
+                    },
+                    "Type": "AWS",
+                    "Uri": {
+                        "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:kinesis:action/PutRecord"
+                    }
+                },
+                "MethodResponses": [
+                    {
+                        "ResponseParameters": {
+                            "method.response.header.Access-Control-Allow-Origin": true
+                        },
+                        "StatusCode": "200"
+                    },
+                    {
+                        "ResponseParameters": {
+                            "method.response.header.Access-Control-Allow-Origin": true
+                        },
+                        "StatusCode": "201"
+                    }
+                ],
+                "ResourceId": {
+                    "Ref": "ApiGatewayLogResource"
+                },
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                }
+            }
+        },
+        "ApiGatewayMapping": {
+            "Type": "AWS::ApiGateway::BasePathMapping",
+            "DependsOn": "ApiGatewayStage",
+            "Properties": {
+                "BasePath": {
+                    "Ref": "ApiGatewayBasePath"
+                },
+                "DomainName": {
+                    "Ref": "ApiDomain"
+                },
+                "RestApiId": {
+                    "Ref": "ApiGateway"
+                },
+                "Stage": "latest"
+            }
+        },
+        "AlarmNotificationTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "Subscription": [
+                    {
+                        "Endpoint": {
+                            "Ref": "AlarmEmail"
+                        },
+                        "Protocol": "email"
+                    }
+                ]
+            }
+        },
+        "ApiGatewayErrorAlarm": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmName": {
+                    "Fn::Sub": "log-ingester-${Environment}-api-alarm"
+                },
+                "AlarmDescription": "Alarms when an API call results in a 5xx error",
+                "AlarmActions": [
+                    {
+                        "Ref": "AlarmNotificationTopic"
+                    }
+                ],
+                "Dimensions": [
+                    {
+                        "Name": "ApiName",
+                        "Value": {
+                            "Fn::Sub": "log-ingester-${Environment}"
+                        }
+                    }
+                ],
+                "MetricName": "5XXError",
+                "Namespace": "AWS/ApiGateway",
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "EvaluationPeriods": 1,
+                "Period": 300,
+                "Statistic": "Sum",
+                "Threshold": 1
+            }
+        },
+        "ApiGatewayKinesisLambdaErrorAlarm": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmName": {
+                    "Fn::Sub": "log-ingester-${Environment}-kinesis-lambda-alarm"
+                },
+                "AlarmDescription": "Alarms when the Kinesis lambda call results in an error",
+                "AlarmActions": [
+                    {
+                        "Ref": "AlarmNotificationTopic"
+                    }
+                ],
+                "Dimensions": [
+                    {
+                        "Name": "Resource",
+                        "Value": {
+                            "Fn::Sub": "log-ingester-${Environment}"
+                        }
+                    }
+                ],
+                "MetricName": "Errors",
+                "Namespace": "AWS/Lambda",
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "EvaluationPeriods": 1,
+                "Period": 300,
+                "Statistic": "Sum",
+                "Threshold": 1
+            }
+        }
+    },
+    "Outputs": {
+        "RawIngestionUrl": {
+            "Description": "Raw URL of the API gateway log ingester",
+            "Value": {
+                "Fn::Sub": "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/latest/logs"
+            }
+        },
+        "NiceIngestionUrl": {
+            "Description": "Nice URL of the API gateway log ingester",
+            "Value": {
+                "Fn::Sub": "https://${ApiDomain}/${ApiGatewayBasePath}/logs"
+            }
+        },
+        "RdsDatabaseUrl": {
+            "Description": "Connection string for Heroku log-puller",
+            "Value": {
+                "Fn::Sub": "postgres://${DbUser}:${DbPassword}@${DBInstance.Endpoint.Address}/log_manager"
+            }
+        },
+        "RdsSecurityGroup": {
+            "Description": "RDS VPC security group",
+            "Value": {
+                "Ref": "DBVPCSecurityGroup"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Join": [
+                        ":",
+                        [
+                            {
+                                "Ref": "AWS::StackName"
+                            },
+                            "RdsSecurityGroup"
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+}

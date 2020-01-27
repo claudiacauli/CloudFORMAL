@@ -1,0 +1,123 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "LambdaRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
+      }
+    },
+    "LambdaPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": { "Ref" : "AWS::StackName" },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:FilterLogEvents",
+                "iam:ListAccountAliases"
+              ],
+              "Resource": "*"
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "LambdaRole"
+          }
+        ]
+      }
+    },
+    "SlackPublisher": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "ZipFile": {
+            "Fn::Join": [
+              "\n",
+              [
+                "'use strict';",
+                "const AWS = require('aws-sdk');",
+                "const iam = new AWS.IAM();",
+                "const https = require('https');",
+                "exports.handler = (event, context, callback) => {",
+                " let text = event.Records[0].Sns.Message;",
+                " iam.listAccountAliases({}, (err, data) => {",
+                "   if (err) callback(err);",
+                "   else {",
+                "     if(data.AccountAliases.length > 0){",
+                "       text = `\\`${data.AccountAliases[0]}\\`: ${text}`;",
+                "     }",
+                "     const req = https.request({",
+                "       hostname: 'hooks.slack.com',",
+                "       path: event.Records[0].Sns.MessageAttributes.webhook.Value,",
+                "       method: 'POST'",
+                "     }, (res) => {",
+                "       let body = '';",
+                "       res.setEncoding('utf8');",
+                "       res.on('data', (chunk) => body += chunk);",
+                "       res.on('end', () => {",
+                "         // If we know it's JSON, parse it",
+                "         if (res.headers['content-type'] === 'application/json') {",
+                "           body = JSON.parse(body);",
+                "         }",
+                "         callback(null, body);",
+                "       });",
+                "     });",
+                "     req.on('error', callback);",
+                "     req.write(JSON.stringify( { text } ));",
+                "     req.end();",
+                "   }",
+                " });",
+                "};"
+              ]
+            ]
+          }
+        },
+        "Handler": "index.handler",
+        "Runtime": "nodejs4.3",
+        "Timeout": "30",
+        "Role": {
+          "Fn::GetAtt": [
+            "LambdaRole",
+            "Arn"
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "SlackPublisher": {
+      "Value": {
+        "Fn::GetAtt": [ "SlackPublisher", "Arn" ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,381 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart iam stack",
+    "Resources": {
+        "EcsServiceRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "ecs.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "dart-ecs-service-elb-ec2",
+                        "PolicyDocument": {
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "elasticloadbalancing:Describe*",
+                                        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                                        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                                        "ec2:Describe*",
+                                        "ec2:AuthorizeSecurityGroupIngress"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "EcsContainerInstanceProfile" : {
+            "Type" : "AWS::IAM::InstanceProfile",
+            "Properties" : {
+                "Path" : "/",
+                "Roles" : [ { "Ref": "EcsContainerInstanceProfileRole" } ]
+            }
+        },
+        "EcsContainerInstanceProfileRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument": {
+                    "Version" : "2012-10-17",
+                    "Statement" : [ {
+                        "Effect" : "Allow",
+                        "Principal" : {
+                            "Service" : [ "ec2.amazonaws.com" ]
+                        },
+                        "Action" : [ "sts:AssumeRole" ]
+                    } ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole",
+                    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+                ],
+                "Path" : "/",
+                "Policies" : [
+                    {
+                        "PolicyName" : "dart-iam-passrole",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect" : "Allow",
+                                    "Action" : "iam:PassRole",
+                                    "Resource" : [
+                                        { "Fn::GetAtt" : [ "EcsServiceRole", "Arn" ] },
+                                        { "Fn::GetAtt" : [ "UdsInstanceProfileRole", "Arn" ] },
+                                        { "Fn::GetAtt" : [ "UdsEc2InstanceProfileRole", "Arn" ] }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-events",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect" : "Allow",
+                                    "Action" : ["events:*"],
+                                    "Resource" : "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-autoscaling",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect" : "Allow",
+                                    "Action" : [ "autoscaling:*" ],
+                                    "Resource" : "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-full-access-to-ecs-emr-reshift-dynamodb",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect" : "Allow",
+                                    "Action" : [ "ecs:*", "elasticmapreduce:*", "redshift:*", "dynamodb:*" ],
+                                    "Resource" : "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-sqs-rw",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "sqs:*",
+                                    "Resource": "arn:aws:sqs:{DART_REGION}:{DART_AWS_ACCOUNT}:{DART_QUEUE_PREFIX}*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-cloudwatch-logs-create-and-put",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Action": [
+                                        "logs:Create*",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": "arn:aws:logs:*:*:*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-ec2-tags-rw",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ec2:DescribeTags",
+                                        "ec2:CreateTags"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-ec2-describe-all",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ec2:Describe*"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-iam-get-instance-profile",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "iam:GetInstanceProfile"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-s3-buckets-all",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "s3:*",
+                                    "Resource": [
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}",
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}/*",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}/*"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "UdsInstanceProfile" : {
+            "Type" : "AWS::IAM::InstanceProfile",
+            "Properties" : {
+                "Path" : "/",
+                "Roles" : [ { "Ref": "UdsInstanceProfileRole" } ]
+            }
+        },
+        "UdsInstanceProfileRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument": {
+                    "Version" : "2012-10-17",
+                    "Statement" : [ {
+                        "Effect" : "Allow",
+                        "Principal" : {
+                            "Service" : [ "elasticmapreduce.amazonaws.com" ]
+                        },
+                        "Action" : [ "sts:AssumeRole" ]
+                    } ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceRole"
+                ],
+                "Path" : "/",
+                "Policies" : [
+                    {
+                        "PolicyName" : "dart-passrole-to-ec2-instances",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect" : "Allow",
+                                    "Action" : "iam:PassRole",
+                                    "Resource" : { "Fn::GetAtt" : [ "UdsEc2InstanceProfileRole", "Arn" ] }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-s3-buckets-all",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "s3:*",
+                                    "Resource": [
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}",
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}/*",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}/*"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "UdsEc2InstanceProfile" : {
+            "Type" : "AWS::IAM::InstanceProfile",
+            "Properties" : {
+                "Path" : "/",
+                "Roles" : [ { "Ref": "UdsEc2InstanceProfileRole" } ]
+            }
+        },
+        "UdsEc2InstanceProfileRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "AssumeRolePolicyDocument": {
+                    "Version" : "2012-10-17",
+                    "Statement" : [ {
+                        "Effect" : "Allow",
+                        "Principal" : {
+                            "Service" : [ "ec2.amazonaws.com", "elasticmapreduce.amazonaws.com" ]
+                        },
+                        "Action" : [ "sts:AssumeRole" ]
+                    } ]
+                },
+                "ManagedPolicyArns": [
+                    "arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role"
+                ],
+                "Path" : "/",
+                "Policies" : [
+                    {
+                        "PolicyName" : "dart-ecr-get-authorization-token",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "ecr:GetAuthorizationToken",
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName" : "dart-sqs-rw",
+                        "PolicyDocument": {
+                            "Version" : "2012-10-17",
+                            "Statement" : [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "sqs:*",
+                                    "Resource": "arn:aws:sqs:{DART_REGION}:{DART_AWS_ACCOUNT}:{DART_QUEUE_PREFIX}*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-ec2-tags-rw",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ec2:DescribeTags",
+                                        "ec2:CreateTags"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "dart-s3-buckets-all",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": "s3:*",
+                                    "Resource": [
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}",
+                                        "arn:aws:s3:::{DART_CONFIG_BUCKET}/*",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}",
+                                        "arn:aws:s3:::{DART_DATA_BUCKET}/*"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs" : {
+        "EcsServiceRole" : { "Value": { "Ref" : "EcsServiceRole" }, "Description": "The resource name"},
+        "EcsContainerInstanceProfile" : { "Value": { "Ref" : "EcsContainerInstanceProfile" }, "Description": "The resource name"},
+        "EcsContainerInstanceProfileRole" : { "Value": { "Ref" : "EcsContainerInstanceProfileRole" }, "Description": "The resource name"},
+        "UdsInstanceProfile" : { "Value": { "Ref" : "UdsInstanceProfile" }, "Description": "The resource name"},
+        "UdsInstanceProfileRole" : { "Value": { "Ref" : "UdsInstanceProfileRole" }, "Description": "The resource name"},
+        "UdsEc2InstanceProfile" : { "Value": { "Ref" : "UdsEc2InstanceProfile" }, "Description": "The resource name"},
+        "UdsEc2InstanceProfileRole" : { "Value": { "Ref" : "UdsEc2InstanceProfileRole" }, "Description": "The resource name"}
+    }
+}

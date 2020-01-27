@@ -1,0 +1,22 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Stack for the external notifications SNS topic.",
+  "Resources": {
+    "ExternalNotification": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": "ExternalNotification"
+      }
+    }
+  },
+  "Outputs": {
+    "ExternalNotificationArn": {
+      "Export": {
+        "Name": "ExternalNotificationArn"
+      },
+      "Value": {
+        "Ref": "ExternalNotification"
+      }
+    }
+  }
+}

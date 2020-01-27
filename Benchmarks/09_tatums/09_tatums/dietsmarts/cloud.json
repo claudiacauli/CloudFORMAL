@@ -1,0 +1,248 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template",
+  "Resources": {
+    "RootS3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "dietsmarts.info",
+        "WebsiteConfiguration": {
+          "RedirectAllRequestsTo": {
+            "HostName": "www.dietsmarts.info"
+          }
+        }
+      }
+    },
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "PublicRead",
+        "BucketName": "www.dietsmarts.info",
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "error.html"
+        },
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedHeaders": [ "*" ],
+              "AllowedMethods": [ "GET" ],
+              "AllowedOrigins": [ "*" ],
+              "ExposedHeaders": [ "Date" ],
+              "Id": "myCORSRuleId1",
+              "MaxAge": "3600"
+            }
+          ]
+        }
+      }
+    },
+    "S3BucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "S3Bucket"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [ "s3:GetObject" ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    { "Ref": "S3Bucket" },
+                    "/*"
+                  ]
+                ]
+              },
+              "Principal": "*"
+            }
+          ]
+        }
+      }
+    },
+    "PublishUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "publish-to-s3-bucket",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "s3:ListObject",
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:aws:s3:::",
+                        { "Ref": "S3Bucket" },
+                        "/*"
+                      ]
+                    ]
+                  }
+                },
+                {
+                  "Action": [ "sns:Publish" ],
+                  "Effect": "Allow",
+                  "Resource": { "Ref": "SnsTopic" }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "PublishUserAccessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": {
+        "UserName": {
+          "Ref": "PublishUser"
+        }
+      }
+    },
+    "SnsTopic": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "TopicName": "GithubPublisherDietSmartsInfo",
+        "Subscription": [
+          {
+            "Endpoint": {
+              "Fn::GetAtt": [
+                "LambdaPublisher",
+                "Arn"
+              ]
+            },
+            "Protocol": "lambda"
+          }
+        ]
+      }
+    },
+    "LambdaPublisher": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": {
+          "Fn::Join": [
+            "-",
+            [
+              { "Ref": "AWS::StackName" },
+              "publishLambda"
+            ]
+          ]
+        },
+        "Handler": "lambda/index.handler",
+        "Role": {
+          "Fn::GetAtt": [ "IamRoleLambda", "Arn" ]
+        },
+        "Code": {
+          "ZipFile": "exports.handler = function(event, context, cb) { return cb(null, {message:'Hello World'}); };"
+        },
+        "Runtime": "nodejs4.3",
+        "MemorySize": 512,
+        "Timeout": 20
+      }
+    },
+    "IamRoleLambda": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [ "lambda.amazonaws.com" ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
+      }
+    },
+    "IamPolicyLambda": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": {
+          "Fn::Join": [
+            "-",
+            [
+              { "Ref": "AWS::StackName" },
+              "lambda"
+            ]
+          ]
+        },
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": {
+                "Fn::Join": [
+                  ":",
+                  [
+                    "arn:aws:logs",
+                    { "Ref": "AWS::Region" },
+                    "*:*"
+                  ]
+                ]
+              }
+            }
+          ]
+        },
+        "Roles": [ {
+            "Ref": "IamRoleLambda"
+          } ]
+      }
+    },
+    "SNSLambdaInvokePermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "Principal": "sns.amazonaws.com",
+        "SourceArn": {
+          "Ref": "SnsTopic"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaPublisher",
+            "Arn"
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "PublishUserAccessKeyId": {
+      "Value": {
+        "Ref": "PublishUserAccessKey"
+      },
+      "Description": "The IAM AccessKeyId"
+    },
+    "PublishUserSecretAccessKey": {
+      "Value": {
+        "Fn::GetAtt": [
+          "PublishUserAccessKey",
+          "SecretAccessKey"
+        ]
+      },
+      "Description": "The IAM AccessSecretKey (shhhhhhh)"
+    }
+  }
+}

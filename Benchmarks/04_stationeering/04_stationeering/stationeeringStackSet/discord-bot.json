@@ -1,0 +1,174 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for managing resources for the Stationeering discord bot.",
+    "Resources": {
+        "DiscordBotUser": {
+            "Type": "AWS::IAM::User",
+            "Properties": {
+                "Groups": [
+                    {
+                        "Ref": "DiscordBotGroup"
+                    }
+                ]
+            }
+        },
+        "DiscordBotGroup": {
+            "Type": "AWS::IAM::Group",
+            "Properties": {
+                "Policies": [
+                    {
+                        "PolicyName": "SQSReadPolicy",
+                        "PolicyDocument": {
+                            "Id": "SQSReadPolicy",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "sqs:DeleteMessage",
+                                        "sqs:ChangeMessageVisibility",
+                                        "sqs:ReceiveMessage",
+                                        "sqs:GetQueueAttributes"
+                                    ],
+                                    "Resource": {
+                                        "Fn::GetAtt": [
+                                            "VersionNotificationQueue",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    },
+                    {
+                        "PolicyName": "DynamoDBPolicy",
+                        "PolicyDocument": {
+                            "Id": "DynamoDBPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "dynamodb:Query",
+                                        "dynamodb:GetItem",
+                                        "dynamodb:PutItem",
+                                        "dynamodb:DeleteItem",
+                                        "dynamodb:UpdateItem"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "DiscordGuildTable",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "VersionNotificationQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {
+                "VisibilityTimeout": 60,
+                "ReceiveMessageWaitTimeSeconds": 20,
+                "MessageRetentionPeriod": 1209600,
+                "RedrivePolicy": {
+                    "deadLetterTargetArn": {
+                        "Fn::GetAtt": [
+                            "VersionNotificationQueueDeadLetterQueue",
+                            "Arn"
+                        ]
+                    },
+                    "maxReceiveCount": 5
+                }
+            }
+        },
+        "VersionNotificationQueueDeadLetterQueue": {
+            "Type": "AWS::SQS::Queue",
+            "Properties": {
+                "VisibilityTimeout": 60,
+                "ReceiveMessageWaitTimeSeconds": 20,
+                "MessageRetentionPeriod": 1209600
+            }
+        },
+        "VersionNotificationSubscription": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+                "Endpoint": {
+                    "Fn::GetAtt": [
+                        "VersionNotificationQueue",
+                        "Arn"
+                    ]
+                },
+                "Protocol": "sqs",
+                "RawMessageDelivery": "true",
+                "TopicArn": {
+                    "Fn::ImportValue": "ExternalNotificationArn"
+                }
+            }
+        },
+        "VersionNotificationQueuePolicy": {
+            "Type": "AWS::SQS::QueuePolicy",
+            "Properties": {
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "PermitSNS",
+                            "Effect": "Allow",
+                            "Principal": "*",
+                            "Action": "sqs:SendMessage",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "VersionNotificationQueue",
+                                    "Arn"
+                                ]
+                            },
+                            "Condition": {
+                                "ArnEquals": {
+                                    "aws:SourceArn": {
+                                        "Fn::ImportValue": "ExternalNotificationArn"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                "Queues": [
+                    {
+                        "Ref": "VersionNotificationQueue"
+                    }
+                ]
+            }
+        },
+        "DiscordGuildTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "guild_id",
+                        "AttributeType": "N"
+                    }
+                ],
+                "KeySchema": [
+                    {
+                        "AttributeName": "guild_id",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "ProvisionedThroughput": {
+                    "ReadCapacityUnits": "1",
+                    "WriteCapacityUnits": "1"
+                },
+                "TableName": "DiscordGuilds",
+                "PointInTimeRecoverySpecification": {
+                    "PointInTimeRecoveryEnabled": true
+                }
+            }
+        }
+    }
+}

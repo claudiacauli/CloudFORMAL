@@ -1,0 +1,163 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart subscription worker stack",
+    "Parameters": {
+        "IamInstanceProfile": { "Type": "String", "Description": "ASG LaunchConfiguration IamInstanceProfile", "Default": "iamInstanceProfile9823" },
+        "KeyName": { "Type": "String", "Description": "ASG LaunchConfiguration KeyName" , "Default": "ASGKey34737" },
+        "EcsAmiId": { "Type": "String", "Description": "ECS AMI ImageId", "Default": "ami-23923" },
+        "InstanceType": { "Type": "String", "Description": "ASG LaunchConfiguration InstanceType" , "Default": "it-38474"},
+        "VpcId": { "Type": "String", "Description": "ASG SecurityGroup VpcId", "Default": "vpcid-83923" },
+        "SubscriptionWorkerDockerImage": { "Type": "String", "Description": "subscription worker docker image", "Default": "di-72643724"  },
+        "CloudWatchLogsDockerImage": { "Type": "String", "Description": "cloudwatchlogs docker image", "Default": "di-347673"  },
+        "DartConfig": { "Type": "String", "Description": "DART_CONFIG environment variable for the subscription worker", "Default": "tre"  },
+        "AwsDefaultRegion": { "Type": "String", "Description": "AWS_DEFAULT_REGION environment variable for the subscription worker", "Default": "us-west-1"  },
+        "SqsQueueName": { "Type": "String", "Description": "subscription worker sqs queue name", "Default": "subworQueue" }
+    },
+    "Resources": {
+        "EcsCluster": {
+            "Type": "AWS::ECS::Cluster"
+        },
+        "SubscriptionWorkerTaskDefinition": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Volumes": [ { "Name": "ecs-agent-data", "Host": { "SourcePath": "/var/lib/ecs/data" } } ],
+                "ContainerDefinitions": [
+                    {
+                        "Name": "dart-subscription-worker",
+                        "Image": { "Ref": "SubscriptionWorkerDockerImage" },
+                        "Cpu": 64,
+                        "Memory": 256,
+                        "MountPoints": [ { "SourceVolume": "ecs-agent-data", "ContainerPath": "/mnt/ecs_agent_data", "ReadOnly": true } ],
+                        "Environment": [
+                            { "Name": "DART_ROLE", "Value": "worker:subscription" },
+                            { "Name": "DART_CONFIG", "Value": { "Ref": "DartConfig" } },
+                            { "Name": "AWS_DEFAULT_REGION", "Value": { "Ref": "AwsDefaultRegion" } }
+                        ]
+                    }
+                ]
+            }
+        },
+        "CloudWatchLogsTaskDefinition": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Volumes": [ { "Name": "ecs-instance-logs", "Host": { "SourcePath": "/var/log" } } ],
+                "ContainerDefinitions": [
+                    {
+                        "Name": "cloudwatchlogs",
+                        "Image": { "Ref": "CloudWatchLogsDockerImage" },
+                        "Cpu": 50,
+                        "Memory": 64,
+                        "PortMappings": [ { "HostPort": 9999, "ContainerPort": 9999 } ],
+                        "MountPoints": [ { "SourceVolume": "ecs-instance-logs", "ContainerPath": "/mnt/ecs_instance_logs", "ReadOnly": true } ]
+                    }
+                ]
+            }
+        },
+         "SubscriptionWorkerEcsService": {
+            "Type": "AWS::ECS::Service",
+            "Properties": {
+                "Cluster": { "Ref": "EcsCluster" },
+                "DesiredCount": 0,
+                "TaskDefinition": { "Ref": "SubscriptionWorkerTaskDefinition" }
+            }
+        },
+         "CloudWatchLogsEcsService": {
+            "Type": "AWS::ECS::Service",
+            "Properties": {
+                "Cluster": { "Ref": "EcsCluster" },
+                "DesiredCount": 0,
+                "TaskDefinition": { "Ref": "CloudWatchLogsTaskDefinition" }
+            }
+        },
+        "AutoScalingGroup": {
+            "Type": "AWS::AutoScaling::AutoScalingGroup",
+            "Properties": {
+                "LaunchConfigurationName": { "Ref": "LaunchConfiguration" },
+                "VPCZoneIdentifier": ["subnet-1388"],
+                "AvailabilityZones": ["us-west-1a","uswest-1b"],
+                "MinSize": 1,
+                "MaxSize": 5,
+                "HealthCheckType": "EC2",
+                "HealthCheckGracePeriod": 900,
+                "Tags": [
+                    { "Key": "dart:ecs-cluster", "Value": { "Ref": "EcsCluster" }, "PropagateAtLaunch": true },
+                    { "Key": "dart:ecs-service-and-increment-1", "Value": { "Fn::Join": [ "|", [ { "Ref": "CloudWatchLogsEcsService" }, "1" ] ] }, "PropagateAtLaunch": true },
+                    { "Key": "dart:ecs-service-and-increment-2", "Value": { "Fn::Join": [ "|", [ { "Ref": "SubscriptionWorkerEcsService" }, "15" ] ] }, "PropagateAtLaunch": true }
+                ]
+            }
+        },
+        "LaunchConfiguration": {
+            "Type": "AWS::AutoScaling::LaunchConfiguration",
+            "Properties": {
+                "KeyName": { "Ref": "KeyName" },
+                "ImageId": { "Ref": "EcsAmiId" },
+                "AssociatePublicIpAddress": true,
+                "SecurityGroups": [ { "Ref": "SecurityGroup" } ],
+                "IamInstanceProfile": { "Ref": "IamInstanceProfile" },
+                "InstanceType": { "Ref": "InstanceType" },
+                "UserData": "{USER_DATA_CONTENTS}"
+            }
+        },
+        "SecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "dart subscription worker security group",
+                "VpcId": { "Ref": "VpcId" },
+                "SecurityGroupIngress": [
+                    { "IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "CidrIp": "10.0.0.0/8" },
+                    { "IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "CidrIp": "172.16.0.0/12" },
+                    { "IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "CidrIp": "12.12.12.12./11" },
+                    { "IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "CidrIp": "13.13.13.13./12" }
+                ]
+            }
+        },
+        "ScaleUpPolicy": {
+            "Type": "AWS::AutoScaling::ScalingPolicy",
+            "Properties": {
+                "AdjustmentType": "ChangeInCapacity",
+                "AutoScalingGroupName": { "Ref": "AutoScalingGroup" },
+                "Cooldown": 60,
+                "ScalingAdjustment": 1
+            }
+        },
+        "ScaleDownPolicy": {
+            "Type": "AWS::AutoScaling::ScalingPolicy",
+            "Properties": {
+                "AdjustmentType": "ChangeInCapacity",
+                "AutoScalingGroupName": { "Ref": "AutoScalingGroup" },
+                "Cooldown": 60,
+                "ScalingAdjustment": -1
+            }
+        },
+        "SubscriptionQueueDepthHigh": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmDescription": "Scale-up if subscription queue depth > 3 for 5 minutes",
+                "MetricName": "ApproximateNumberOfMessagesVisible",
+                "Namespace": "AWS/SQS",
+                "Statistic": "Average",
+                "Period": 300,
+                "EvaluationPeriods": 1,
+                "Threshold": 3,
+                "AlarmActions": [ { "Ref": "ScaleUpPolicy" } ],
+                "Dimensions": [ { "Name": "QueueName", "Value": { "Ref": "SqsQueueName" } } ],
+                "ComparisonOperator": "GreaterThanThreshold"
+            }
+        },
+        "SubscriptionQueueDepthLow": {
+            "Type": "AWS::CloudWatch::Alarm",
+            "Properties": {
+                "AlarmDescription": "Scale-down if subscription queue depth < 1 for 50 minutes",
+                "MetricName": "ApproximateNumberOfMessagesVisible",
+                "Namespace": "AWS/SQS",
+                "Statistic": "Average",
+                "Period": 300,
+                "EvaluationPeriods": 10,
+                "Threshold": 1,
+                "AlarmActions": [ { "Ref": "ScaleDownPolicy" } ],
+                "Dimensions": [ { "Name": "QueueName", "Value": { "Ref": "SqsQueueName" } } ],
+                "ComparisonOperator": "LessThanThreshold"
+            }
+        }
+    }
+}

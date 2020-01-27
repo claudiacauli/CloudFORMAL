@@ -1,0 +1,421 @@
+
+Infrastructure: 04_stationeering, includes StackSets: 
+ - stationeeringStackSet 
+
+	StackSet: stationeeringStackSet, includes Templates: 
+		Template: discord-bot
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> discord-bot)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Group(discordbotgroup)
+			SQS::QueuePolicy(versionnotificationqueuepolicy)
+			SQS::Queue(versionnotificationqueue)
+			SQS::Queue(versionnotificationqueuedeadletterqueue)
+			DynamoDB::Table(discordguildtable)
+			IAM::User(discordbotuser)
+			SNS::Subscription(versionnotificationsubscription)
+
+		Template: backend-version-publish-paginated
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-version-publish-paginated)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(lambdaexecutionrole)
+			IAM::Policy(allowversionparsertoinvoke)
+			Lambda::Function(versionpublishpaginatedlambda)
+			Logs::LogGroup(lambdaloggroup)
+
+		Template: lambda-storage
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> lambda-storage)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(s3bucket)
+		 Outputs By ID: 
+			(lambdabucket -> S3::Bucket(s3bucket))
+		 Outputs By Export Name: 
+			(lambdabucket -> S3::Bucket(s3bucket))
+
+		Template: backend-scenarios
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-scenarios)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(scenariolambda)
+			SNS::Subscription(invokelambdafromsns)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			Lambda::Permission(snsinvokelambdapermission)
+
+		Template: backend-recipes
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-recipes)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			SNS::Subscription(invokelambdafromsns)
+			IAM::Role(renderlambdaexecutionrole)
+			Logs::LogGroup(renderlambdaloggroup)
+			Lambda::Function(recipesparserlambda)
+			DynamoDB::Table(recipetable)
+			SQS::Queue(recipeupdatequeue)
+			Lambda::EventSourceMapping(recipelambdaeventsource)
+			IAM::Role(parserlambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			Lambda::Function(recipesrenderlambda)
+			Lambda::Permission(snsinvokelambdapermission)
+
+		Template: backend-version-parser
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-version-parser)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			SNS::Subscription(invokelambdafromsns)
+			Lambda::Function(versionparserlambda)
+			DynamoDB::Table(versiontable)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			Lambda::Permission(snsinvokelambdapermission)
+		 Outputs By ID: 
+			(versiontablearn -> DynamoDB::Table(versiontable))
+			(lambdaexecutionrole -> IAM::Role(lambdaexecutionrole))
+		 Outputs By Export Name: 
+			(versiontablearn -> DynamoDB::Table(versiontable))
+			(versionparserlambdaexecutionrole -> IAM::Role(lambdaexecutionrole))
+
+		Template: certificates
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(basedomainname -> stationeering.com)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> certificates)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Conditions: 
+			(inuseast1 -> false)
+
+		Template: frontend-api-notify
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> frontend-api-notify)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Resource(updatenotifyresource)
+			ApiGateway::Method(updatenotifymethod)
+			Logs::LogGroup(updatenotifylambdaloggroup)
+			IAM::Role(updatenotifylambdaexecutionrole)
+			ApiGateway::Resource(userupdatenotifyresource)
+			Lambda::Permission(updatenotifylambdapermission)
+			ApiGateway::Resource(keyupdatenotifyresource)
+			Lambda::Function(updatenotifylambda)
+
+		Template: dns
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(basedomainname -> stationeering.com)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> dns)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Route53::RecordSet(googlemailmx)
+			Route53::HostedZone(stationeeringdotcom)
+			Route53::RecordSet(loopbackbestpracticeipv6)
+			Route53::RecordSet(googleverification)
+			Route53::RecordSet(loopbackbestpracticeipv4)
+		 Outputs By ID: 
+			(exportdomainname -> stationeering.com)
+		 Outputs By Export Name: 
+			(basedomainname -> stationeering.com)
+
+		Template: external-notifications
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> external-notifications)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			SNS::Topic(externalnotification)
+		 Outputs By ID: 
+			(externalnotificationarn -> SNS::Topic(externalnotification))
+		 Outputs By Export Name: 
+			(externalnotificationarn -> SNS::Topic(externalnotification))
+
+		Template: backend-external-ping
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-external-ping)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(lambdaschedulepermission)
+			Events::Rule(lambdaschedule)
+			Lambda::Function(externalpinglambda)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+
+		Template: containers
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> containers)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ECS::Cluster(cluster)
+			IAM::Role(clustertaskexecutionrole)
+		 Outputs By ID: 
+			(ecstaskexecutionrole -> IAM::Role(clustertaskexecutionrole))
+			(backendclustername -> ECS::Cluster(cluster))
+		 Outputs By Export Name: 
+			(ecstaskexecutionrolearn -> IAM::Role(clustertaskexecutionrole))
+			(backendclustername -> ECS::Cluster(cluster))
+
+		Template: cloudformation-user
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudformation-user)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::User(cloudformationuser)
+			IAM::Group(cloudformationgroup)
+
+		Template: frontend-data
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(certificatearn -> arn:aws:acm:us-east-1:432708775807:certificate/f052dbe3-fdd8-4337-85ac-2019e0ee39b1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> frontend-data)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Route53::RecordSet(frontendaliasv6)
+			CloudFront::Distribution(cloudfrontdistribution)
+			S3::Bucket(s3bucket)
+			Route53::RecordSet(frontendalias)
+			CloudFront::CloudFrontOriginAccessIdentity(cloudfrontoai)
+			S3::BucketPolicy(s3cloudfrontaccesspolicy)
+		 Outputs By ID: 
+			(frontenddatabucket -> S3::Bucket(s3bucket))
+		 Outputs By Export Name: 
+			(frontenddatabucket -> S3::Bucket(s3bucket))
+
+		Template: frontend-api-permalink
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> frontend-api-permalink)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(permalinktable)
+			ApiGateway::Method(permalinkpublishcorsoptionmethod)
+			Lambda::Function(permalinkpublishlambda)
+			Lambda::Permission(permalinkretrievelambdapermission)
+			IAM::Role(permalinkretrievelambdaexecutionrole)
+			ApiGateway::Method(permalinkretrievemethod)
+			ApiGateway::Resource(linkpermalinkresource)
+			ApiGateway::Model(permalinkcreateresponsemodel)
+			Logs::LogGroup(permalinkpublishlambdaloggroup)
+			ApiGateway::Model(permalinkmodel)
+			ApiGateway::Resource(permalinkresource)
+			IAM::Role(permalinkpublishlambdaexecutionrole)
+			Lambda::Function(permalinkretrievelambda)
+			Logs::LogGroup(permalinkretrievelambdaloggroup)
+			ApiGateway::Method(permalinkpublishmethod)
+			Lambda::Permission(permalinkpublishlambdapermission)
+
+		Template: backend-fetcher
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-fetcher)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ECR::Repository(ecrrepository)
+			IAM::User(backendfetchertestuser)
+			Events::Rule(lambdaschedule)
+			IAM::Role(fetchertaskrole)
+			Lambda::Function(taskinvokerlambda)
+			SNS::Topic(languagenotificationtopic)
+			SNS::Topic(gamedatanotificationtopic)
+			SNS::TopicPolicy(versionnotificationtopicpolicy)
+			SNS::Topic(versionnotificationtopic)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			ECS::TaskDefinition(ecstask)
+			Lambda::Permission(lambdaschedulepermission)
+			IAM::Policy(ssmcredentialpolicy)
+			SNS::TopicPolicy(languagenotificationtopicpolicy)
+			Logs::LogGroup(loggroup)
+			S3::Bucket(s3bucket)
+			IAM::Policy(s3policy)
+			SNS::TopicPolicy(gamedatanotificationtopicpolicy)
+		 Outputs By ID: 
+			(fetcherinvokelambdaarn -> Lambda::Function(taskinvokerlambda))
+			(versionnotificationtopicarn -> SNS::Topic(versionnotificationtopic))
+			(gamedatanotificationtopicarn -> SNS::Topic(gamedatanotificationtopic))
+			(gamedatabucket -> S3::Bucket(s3bucket))
+			(languagenotificationtopicarn -> SNS::Topic(languagenotificationtopic))
+		 Outputs By Export Name: 
+			(fetcherinvokelambdaarn -> Lambda::Function(taskinvokerlambda))
+			(versionnotificationtopicarn -> SNS::Topic(versionnotificationtopic))
+			(gamedatanotificationtopicarn -> SNS::Topic(gamedatanotificationtopic))
+			(gamedatabucket -> S3::Bucket(s3bucket))
+			(languagenotificationtopicarn -> SNS::Topic(languagenotificationtopic))
+
+		Template: deploy-user
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> deploy-user)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::User(deployuser)
+			IAM::Group(deploygroup)
+
+		Template: frontend-app
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(certificatearn -> arn:aws:acm:us-east-1:432708775807:certificate/e37b362f-4bb0-424f-9e40-163ca164e8da)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> frontend-app)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Route53::RecordSet(frontendaliasv6)
+			CloudFront::Distribution(cloudfrontdistribution)
+			S3::Bucket(s3bucket)
+			Route53::RecordSet(frontendalias)
+			CloudFront::CloudFrontOriginAccessIdentity(cloudfrontoai)
+			S3::BucketPolicy(s3cloudfrontaccesspolicy)
+
+		Template: backend-languages
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-languages)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			SNS::Subscription(invokelambdafromsns)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			Lambda::Permission(snsinvokelambdapermission)
+			Lambda::Function(languagelambda)
+
+		Template: backend-decompiler
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> backend-decompiler)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ECR::Repository(ecrrepository)
+			IAM::Policy(ssmcredentialpolicy)
+			Lambda::Function(decompilerinvokerlambda)
+			Logs::LogGroup(loggroup)
+			IAM::Role(decompilertaskrole)
+			IAM::Policy(s3policy)
+			IAM::Role(lambdaexecutionrole)
+			Logs::LogGroup(lambdaloggroup)
+			Lambda::Permission(snsinvokelambdapermission)
+			ECS::TaskDefinition(ecstask)
+			SNS::Subscription(invokelambdafromsns)
+
+		Template: frontend-api
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(certificatearn -> arn:aws:acm:us-east-1:432708775807:certificate/30b931ba-3893-48e7-934c-730cb37b2c07)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> frontend-api)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(apigatewaycloudwatchlogsrole)
+			ApiGateway::Account(stationeeringapigatewayaccount)
+			ApiGateway::RestApi(stationeeringapi)
+			ApiGateway::Deployment(apideployment)
+			ApiGateway::BasePathMapping(apidomainmapping)
+			ApiGateway::Method(statusrequest)
+			ApiGateway::Resource(statusresource)
+			ApiGateway::Stage(stationeeringapilivestage)
+			Route53::RecordSet(frontendalias)
+			ApiGateway::DomainName(apidomainname)
+		 Outputs By ID: 
+			(stationeeringapi -> ApiGateway::RestApi(stationeeringapi))
+			(stationeeringapiroot -> stationeeringapi_attribute_rootresourceid)
+		 Outputs By Export Name: 
+			(stationeeringapi -> ApiGateway::RestApi(stationeeringapi))
+			(stationeeringapiroot -> stationeeringapi_attribute_rootresourceid)
+
+

@@ -1,0 +1,49 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "Bucket": {
+            "Type": "AWS::S3::Bucket"
+        },
+        "BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "Bucket"
+                },
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "s3:GetObject"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Sub": [
+                                    "arn:aws:s3:::${Bucket}/*",
+                                    {
+                                        "Bucket": {
+                                            "Ref": "Bucket"
+                                        }
+                                    }
+                                ]
+                            },
+                            "Principal": "*"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "CloudFrontOrigin": {
+            "Value": {
+                "Ref": "Bucket"
+            },
+            "Export": {
+                "Name": {
+                    "Ref": "AWS::StackName"
+                }
+            }
+        }
+    }
+}

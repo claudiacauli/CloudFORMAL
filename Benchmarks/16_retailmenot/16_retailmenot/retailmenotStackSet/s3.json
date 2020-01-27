@@ -1,0 +1,134 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart s3 stack",
+    "Parameters": {
+        "DartEnvironment": { "Type": "String", "Description": "E.g. prod, test, etc.", "Default": "prod" },
+        "DartConfigBucket": { "Type": "String", "Description": "dart bucket for configuration" , "Default":  "DartConfigS3Bucket"},
+        "DartDataBucket": { "Type": "String", "Description": "dart bucket for data" , "Default": "DartDataS3Bucket"},
+        "SubscriptionQueueUrl": { "Type": "String", "Description": "the url of the subscription queue" , "Default": "subworQueue" },
+        "SubscriptionQueueArn": { "Type": "String", "Description": "the arn of the subscription queue" , "Default": "subworQueue" }
+    },
+    "Resources": {
+        "ConfigS3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": {"Ref": "DartConfigBucket"},
+                "AccessControl": "LogDeliveryWrite",
+                "LoggingConfiguration": {
+                    "DestinationBucketName": { "Ref": "DartConfigBucket" },
+                    "LogFilePrefix": "dart-config-bucket-logs/"
+                }
+            },
+            "DeletionPolicy" : "Retain"
+        },
+        "ConfigS3BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": { "Ref": "ConfigS3Bucket" },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Id": "PutObjPolicy",
+                    "Statement": [
+                        {
+                            "Sid": "DenyUnEncryptedObjectUploads",
+                            "Effect": "Deny",
+                            "Principal": "*",
+                            "Action": "s3:PutObject",
+                            "Resource": { "Fn::Join": [ "", [ "arn:aws:s3:::", { "Ref": "ConfigS3Bucket" }, "/secrets/*" ] ] },
+                            "Condition": {
+                                "StringNotEquals": {
+                                    "s3:x-amz-server-side-encryption": "aws:kms"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "DataS3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": { "Ref": "DartDataBucket" },
+                "LoggingConfiguration": {
+                    "DestinationBucketName": { "Ref": "DartConfigBucket" },
+                    "LogFilePrefix": "dart-data-bucket-logs/"
+                },
+                "NotificationConfiguration": {
+                    "TopicConfigurations": [
+                        {
+                            "Topic": { "Ref": "ObjectCreationEventsSNSTopic" },
+                            "Event": "s3:ObjectCreated:*"
+                        }
+                    ]
+                }
+            },
+            "DeletionPolicy" : "Retain"
+        },
+        "ObjectCreationEventsSNSTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "DisplayName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-object-creation-events" ] ] },
+                "TopicName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-object-creation-events" ] ] },
+                "Subscription" : [
+                    { "Endpoint" : { "Ref": "SubscriptionQueueArn" }, "Protocol" : "sqs" }
+                ]
+            }
+        },
+        "ObjectCreationEventsSNSTopicPolicy": {
+            "Type" : "AWS::SNS::TopicPolicy",
+            "Properties" : {
+                "Topics" : [ { "Ref": "ObjectCreationEventsSNSTopic" } ],
+                "PolicyDocument" : {
+                    "Version": "2008-10-17",
+                    "Id": "dart-data-s3-object-creation-events",
+                    "Statement": [
+                        {
+                            "Sid": "dart-data-s3-object-creation-events",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS":"*"
+                            },
+                            "Action": [
+                                "SNS:Publish"
+                            ],
+                            "Resource": { "Ref": "ObjectCreationEventsSNSTopic" },
+                            "Condition": {
+                                "ArnLike": {
+                                    "aws:SourceArn": { "Fn::Join": [ "", [ "arn:aws:s3:*:*:", "DartDataS3Bucket" ] ] }
+                                }
+                            }
+                        }
+                    ]
+                }
+
+            }
+        },
+        "SubscriptionQueuePolicy" : {
+            "Type" : "AWS::SQS::QueuePolicy",
+            "Properties" : {
+                "Queues" : [ { "Ref": "SubscriptionQueueUrl" } ],
+                "PolicyDocument" : {
+                    "Version": "2012-10-17",
+                    "Id": "dart-subscription-sqs-policy",
+                    "Statement": [
+                        {
+                            "Sid": "dart-subscription-allow-dart-data-s3-object-creation-events",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": "SQS:SendMessage",
+                            "Resource": { "Ref": "SubscriptionQueueArn" },
+                            "Condition": {
+                                "ArnEquals": {
+                                    "aws:SourceArn": { "Ref": "ObjectCreationEventsSNSTopic" }
+                                }
+                            }
+                        }
+                    ]
+                }
+
+            }
+        }
+    }
+}

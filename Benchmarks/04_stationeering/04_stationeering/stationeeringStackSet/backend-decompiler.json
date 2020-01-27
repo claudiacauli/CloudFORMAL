@@ -1,0 +1,307 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Stack for the Assembly decompiler.",
+    "Resources": {
+        "ECRRepository": {
+            "Type": "AWS::ECR::Repository",
+            "Properties": {
+                "RepositoryName": "backend/decompiler",
+                "LifecyclePolicy": {
+                    "LifecyclePolicyText": "{\"rules\":[{\"rulePriority\":10,\"description\":\"Remove old.\",\"selection\":{\"tagStatus\":\"untagged\",\"countType\":\"imageCountMoreThan\",\"countNumber\":4},\"action\":{\"type\":\"expire\"}}]}"
+                }
+            }
+        },
+        "DecompilerTaskRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "ECSAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/"
+            }
+        },
+        "S3Policy": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Ref": "DecompilerTaskRole"
+                    }
+                ],
+                "PolicyName": "PermitS3Retrieval",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Action": [
+                                "s3:GetObject",
+                                "s3:HeadObject"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::Sub": [
+                                        "arn:aws:s3:::${BucketName}/beta/rocketstation_Data/*",
+                                        {
+                                            "BucketName": {
+                                                "Fn::ImportValue": "GameDataBucket"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "Effect": "Allow"
+                        }
+                    ]
+                }
+            }
+        },
+        "SSMCredentialPolicy": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "Roles": [
+                    {
+                        "Ref": "DecompilerTaskRole"
+                    }
+                ],
+                "PolicyName": "GetGitCredentialsFromSSM",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "ssm:GetParameter*"
+                            ],
+                            "Resource": [
+                                {
+                                    "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/decompiler/git/*"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "LogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": "decompiler",
+                "RetentionInDays": 7
+            }
+        },
+        "ECSTask": {
+            "Type": "AWS::ECS::TaskDefinition",
+            "Properties": {
+                "Cpu": "256",
+                "Memory": "0.5GB",
+                "ExecutionRoleArn": {
+                    "Fn::ImportValue": "ECSTaskExecutionRoleARN"
+                },
+                "TaskRoleArn": {
+                    "Fn::GetAtt": [
+                        "DecompilerTaskRole",
+                        "Arn"
+                    ]
+                },
+                "NetworkMode": "awsvpc",
+                "RequiresCompatibilities": [
+                    "FARGATE"
+                ],
+                "ContainerDefinitions": [
+                    {
+                        "Memory": 512,
+                        "Environment": [],
+                        "Essential": true,
+                        "Image": {
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.eu-west-1.amazonaws.com/backend/decompiler:latest"
+                        },
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-group": "decompiler",
+                                "awslogs-region": {
+                                    "Ref": "AWS::Region"
+                                },
+                                "awslogs-stream-prefix": "decompiler"
+                            }
+                        },
+                        "Name": "decompiler"
+                    }
+                ]
+            }
+        },
+        "LambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowLambdaToAssume",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "RunTask",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "ecs:RunTask"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Ref": "ECSTask"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "iam:PassRole"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::ImportValue": "ECSTaskExecutionRoleARN"
+                                        },
+                                        {
+                                            "Fn::GetAtt": [
+                                                "DecompilerTaskRole",
+                                                "Arn"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "LoggingPolicy",
+                        "PolicyDocument": {
+                            "Id": "LoggingPolicy",
+                            "Statement": [
+                                {
+                                    "Action": [
+                                        "logs:CreateLogStream",
+                                        "logs:PutLogEvents"
+                                    ],
+                                    "Effect": "Allow",
+                                    "Resource": [
+                                        "arn:aws:logs:*:*:*"
+                                    ]
+                                }
+                            ],
+                            "Version": "2012-10-17"
+                        }
+                    }
+                ]
+            }
+        },
+        "DecompilerInvokerLambda": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+                "Handler": "index.handler",
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Code": {
+                    "S3Bucket": {
+                        "Fn::ImportValue": "LambdaBucket"
+                    },
+                    "S3Key": "decompiler-invoker-v01.zip"
+                },
+                "Runtime": "nodejs8.10",
+                "Timeout": "5",
+                "Environment": {
+                    "Variables": {
+                        "CONFIG": {
+                            "Fn::Sub": [
+                                "{ \"task\": \"${task}\", \"cluster\": \"${cluster}\", \"subnets\": [ \"${subnet1a}\", \"${subnet1b}\", \"${subnet1c}\" ] }",
+                                {
+                                    "task": {
+                                        "Ref": "ECSTask"
+                                    },
+                                    "cluster": {
+                                        "Fn::ImportValue": "BackEndClusterName"
+                                    },
+                                    "subnet1a": "subnet-10bd2f58",
+                                    "subnet1b": "subnet-ddb27e87",
+                                    "subnet1c": "subnet-d7ee6cb1"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "LambdaLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+                "LogGroupName": {
+                    "Fn::Sub": [
+                        "/aws/lambda/${functionName}",
+                        {
+                            "functionName": {
+                                "Ref": "DecompilerInvokerLambda"
+                            }
+                        }
+                    ]
+                },
+                "RetentionInDays": 7
+            }
+        },
+        "SNSInvokeLambdaPermission": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+                "Action": "lambda:InvokeFunction",
+                "Principal": "sns.amazonaws.com",
+                "SourceArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                },
+                "FunctionName": {
+                    "Fn::GetAtt": [
+                        "DecompilerInvokerLambda",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "InvokeLambdaFromSNS": {
+            "Type": "AWS::SNS::Subscription",
+            "Properties": {
+                "Endpoint": {
+                    "Fn::GetAtt": [
+                        "DecompilerInvokerLambda",
+                        "Arn"
+                    ]
+                },
+                "Protocol": "lambda",
+                "TopicArn": {
+                    "Fn::ImportValue": "GameDataNotificationTopicArn"
+                }
+            }
+        }
+    }
+}

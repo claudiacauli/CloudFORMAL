@@ -1,0 +1,50 @@
+
+Infrastructure: 01_sqilup, includes StackSets: 
+ - sqilupStackSet 
+
+	StackSet: sqilupStackSet, includes Templates: 
+		Template: sqilup
+		 Parameters: 
+			(aws::stackname -> sqilup)
+			(aws::accountid -> 112233445566)
+			(accesscontrol -> Private)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(regionname -> us-east-1)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			Lambda::Function(sourcelambdafunction)
+			SNS::Topic(topicdqsu)
+			S3::Bucket(s3bucketdq)
+			SNS::Topic(topictransformfa)
+			SNS::Topic(topicsourcefa)
+			Lambda::Function(infralambdafunction)
+			IAM::User(iamuser)
+			IAM::Role(awsconfigrole)
+			SNS::Topic(topicsourcesu)
+			IAM::AccessKey(iamacesskey)
+			IAM::Policy(iampolicy)
+			S3::Bucket(s3buckettrf)
+			S3::Bucket(s3bucketsrc)
+			SNS::Topic(topicdqfa)
+			Lambda::Function(executionlambdafunction)
+			SNS::Topic(topictransformsu)
+		 Outputs By ID: 
+			(awssecretaccesskey -> iamacesskey_attribute_secretaccesskey)
+			(sourcelambdafunction -> Lambda::Function(sourcelambdafunction))
+			(topicdqsu -> SNS::Topic(topicdqsu))
+			(username -> IAM::User(iamuser))
+			(bucketnamedq -> S3::Bucket(s3bucketdq))
+			(topictransformfa -> SNS::Topic(topictransformfa))
+			(topicsourcefa -> SNS::Topic(topicsourcefa))
+			(infralambdafunction -> Lambda::Function(infralambdafunction))
+			(awsaccesskeyid -> IAM::AccessKey(iamacesskey))
+			(topicdqfa -> SNS::Topic(topicdqfa))
+			(bucketnametrf -> S3::Bucket(s3buckettrf))
+			(region -> us-west-1)
+			(topicsourcesu -> SNS::Topic(topicsourcesu))
+			(bucketnamesrc -> S3::Bucket(s3bucketsrc))
+			(executionlambdafunction -> Lambda::Function(executionlambdafunction))
+			(topictransformsu -> SNS::Topic(topictransformsu))
+
+

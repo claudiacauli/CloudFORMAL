@@ -1,0 +1,118 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Stack for managing user, groups and policies which will be used for deploying the frontend and backend via S3 and CloudFront.",
+  "Resources": {
+    "DeployUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Groups": [
+          {
+            "Ref": "DeployGroup"
+          }
+        ]
+      }
+    },
+    "DeployGroup": {
+      "Type": "AWS::IAM::Group",
+      "Properties": {
+        "Policies": [
+          {
+            "PolicyName": "WriteSteamCredentialsToSSM",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ssm:PutParameter"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/username"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/steam/password"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "DeployToS3",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Action": [
+                    "cloudfront:CreateInvalidation"
+                  ],
+                  "Resource": "*",
+                  "Effect": "Allow"
+                },
+                {
+                  "Action": [
+                    "s3:DeleteObject",
+                    "s3:GetBucketLocation",
+                    "s3:GetObject",
+                    "s3:ListBucket",
+                    "s3:PutObject",
+                    "s3:ListObjects"
+                  ],
+                  "Resource": [
+                    "arn:aws:s3:::stationeering-app",
+                    "arn:aws:s3:::stationeering-app/*",
+                    "arn:aws:s3:::stationeering-data",
+                    "arn:aws:s3:::stationeering-data/*",
+                    "arn:aws:s3:::stationeering-lambda",
+                    "arn:aws:s3:::stationeering-lambda/*"
+                  ],
+                  "Effect": "Allow"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "DeployToECR",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "AllowLogin",
+                  "Effect": "Allow",
+                  "Action": [
+                    "ecr:GetAuthorizationToken"
+                  ],
+                  "Resource": [
+                    "*"
+                  ]
+                },
+                {
+                  "Sid": "AllowPushPull",
+                  "Effect": "Allow",
+                  "Action": [
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:BatchGetImage",
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:PutImage",
+                    "ecr:InitiateLayerUpload",
+                    "ecr:UploadLayerPart",
+                    "ecr:CompleteLayerUpload"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:ecr:eu-west-1:${AWS::AccountId}:repository/backend/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:ecr:eu-west-1:${AWS::AccountId}:repository/decompiler/*"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

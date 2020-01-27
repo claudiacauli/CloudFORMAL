@@ -1,0 +1,98 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Dart events stack",
+    "Parameters": {
+        "DartEnvironment": { "Type": "String", "Description": "E.g. prod, test, etc.", "Default": "prod" },
+        "TriggerQueueUrl": { "Type": "String", "Description": "the url of the trigger queue", "Default": "triggerQueue"  },
+        "TriggerQueueArn": { "Type": "String", "Description": "the arn of the trigger queue", "Default": "triggerQueue" }
+    },
+    "Resources": {
+        "CloudWatchScheduledEventsSNSTopic": {
+            "Type": "AWS::SNS::Topic",
+            "Properties": {
+                "DisplayName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-cloudwatch-scheduled-events" ] ] },
+                "TopicName": { "Fn::Join": [ "", [ "dart-", { "Ref": "DartEnvironment" }, "-cloudwatch-scheduled-events" ] ] },
+                "Subscription" : [
+                    { "Endpoint" : { "Ref" : "TriggerQueueArn" }, "Protocol" : "sqs" }
+                ]
+            }
+        },
+        "CloudWatchScheduledEventsSNSTopicPolicy": {
+            "Type" : "AWS::SNS::TopicPolicy",
+            "Properties" : {
+                "Topics" : [ { "Ref": "CloudWatchScheduledEventsSNSTopic" } ],
+                "PolicyDocument" : {
+                    "Version": "2008-10-17",
+                    "Id": "dart-cloudwatch-scheduled-events",
+                    "Statement": [
+                        {
+                            "Sid": "dart-allow-same-account-actions",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": "*"
+                            },
+                            "Action": [
+                                "SNS:Subscribe",
+                                "SNS:ListSubscriptionsByTopic",
+                                "SNS:DeleteTopic",
+                                "SNS:GetTopicAttributes",
+                                "SNS:Publish",
+                                "SNS:RemovePermission",
+                                "SNS:AddPermission",
+                                "SNS:Receive",
+                                "SNS:SetTopicAttributes"
+                            ],
+                            "Resource": { "Ref": "CloudWatchScheduledEventsSNSTopic" },
+                            "Condition": {
+                                "StringEquals": {
+                                    "AWS:SourceOwner": { "Ref": "AWS::AccountId" }
+                                }
+                            }
+                        },
+                        {
+                            "Sid": "dart-allow-aws-events-publish",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "events.amazonaws.com"
+                            },
+                            "Action": "sns:Publish",
+                            "Resource": { "Ref": "CloudWatchScheduledEventsSNSTopic" }
+                        }
+                    ]
+                }
+
+            }
+        },
+        "TriggerQueuePolicy" : {
+            "Type" : "AWS::SQS::QueuePolicy",
+            "Properties" : {
+                "Queues" : [ { "Ref": "TriggerQueueUrl" } ],
+                "PolicyDocument" : {
+                    "Version": "2012-10-17",
+                    "Id": "dart-trigger-sqs-policy",
+                    "Statement": [
+                        {
+                            "Sid": "dart-trigger-allow-cloudwatch-scheduled-events",
+                            "Effect": "Allow",
+                            "Principal": "*",
+                            "Action": "SQS:SendMessage",
+                            "Resource": { "Ref": "TriggerQueueArn" },
+                            "Condition": {
+                                "ArnEquals": {
+                                    "aws:SourceArn": { "Ref": "CloudWatchScheduledEventsSNSTopic" }
+                                }
+                            }
+                        }
+                    ]
+                }
+
+            }
+        }
+    },
+    "Outputs" : {
+        "CloudWatchScheduledEventsSNSTopic" : {
+            "Description": "The resource name",
+            "Value" : { "Ref" : "CloudWatchScheduledEventsSNSTopic" }
+        }
+    }
+}
