@@ -26,7 +26,7 @@ class PropertyEval(val r: Reasoner, val o: OWLOntology, val df: OWLDataFactory, 
 //      if (printEnabled && hasRequiredResourceTypes(o,p))
 //        println(p.id+"\t" + makeQuery(p))
       val outcome = evalProperty(p)(runQueryFun)(satCheckFun)
-      if (printEnabled) println(p.id + "," + p.getOutcomePrint(outcome))
+      if (printEnabled) println(p.getPassOrFilePrint(outcome)+","+p.id + "," + p.getOutcomePrint(outcome))
       Some(outcome)
     } catch {
       case e: ParserException =>

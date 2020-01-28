@@ -13,36 +13,38 @@
   }
   ,
   {
-    "ID": "44_AM_RDS_MINORUPGRADE",
+    "ID": "44_AM_RDS_MINORUPGRADE_DISABLED",
     "type": "TTF",
     "requiredResourceTypes": ["rdsdbinstance"],
-    "propQuery": ["dbinstance and not (dbinstance_autominorversionupgrade value true)"],
-    "description": ["All declared RDS::DBInstance should have auto minor version upgrade enabled"],
-    "unsatPrint": ["All RDS::DBInstance have auto minor upgrade enabled"],
-    "sat0print": ["All declared RDS::DBInstances have auto minor upgrade enabled"],
-    "sat1print": ["There exists at least one declared RDS::DBInstance that has auto minor version upgrade disabled"]
+    "propQuery": ["dbinstance and (dbinstance_autominorversionupgrade value true)"],
+    "description": ["All declared RDS::DBInstance might have auto minor version upgrade disabled"],
+    "unsatPrint": ["All RDS::DBInstance must have auto minor upgrade disabled"],
+    "sat0print": ["All declared RDS::DBInstances might have auto minor upgrade disabled"],
+    "sat1print": ["There exists at least one declared RDS::DBInstance that has auto minor version upgrade enabled"]
   }
   ,
   {
-    "ID": "45_EM_RDS_SHORT_BACKUP",
-    "type": "FFT",
+    "ID": "45_AKM_RDS_SHORT_BACKUP",
+    "type": "TFF",
     "requiredResourceTypes": ["rdsdbinstance"],
-    "propQuery": ["dbinstance and (dbinstance_backupretentionperiod value 1)"],
-    "description": ["There exists a declared RDS::DBInstance with a too short backup retention of 1 day"],
-    "unsatPrint": ["There is no RDS::DBInstance that retains backups for one day"],
-    "sat0print": ["There is no declared RDS::DBInstance that retains backups for one day"],
-    "sat1print": ["There exists at least one declared RDS::DBInstance that retains backups for one day."]
+    "instQuery": "dbinstance",
+    "queryBuildType": "nominalProp",
+    "propQuery": ["(dbinstance_backupretentionperiod value 1)"],
+    "description": ["All known RDS::DBInstances must not have short backup retention of 1 day"],
+    "unsatPrint": ["All RDS::DBInstances - if any - certainly do not have short backup retention"],
+    "sat0print": ["There are RDS::DBInstances - pointed by this template - that might have short backup retention of one day"],
+    "sat1print": ["There exists at least one RDS::DBInstance that certainly has short backup retention of one day"]
   }
   ,
   {
     "ID": "46_EM_DECLARED_RDS_ONEAZ",
     "type": "FFT",
     "requiredResourceTypes": ["rdsdbinstance"],
-    "propQuery": ["dbinstance and ((dbinstance_multiaz value false) or (dbinstance_availabilityzone some xsd:string))"],
-    "description": ["There is some declared RDS::DBInstance that is not across availability zones"],
-    "unsatPrint": ["There is not RDS::DBInstance replicated only on one availability zone"],
-    "sat0print": ["There is no declared RDS::DBInstance that is replicated only on one availability zone"],
-    "sat1print": ["There is at least one declared RDS::DBInstance that is not replicated in different Availability Zones"]
+    "propQuery": ["dbinstance and not ((dbinstance_multiaz value false) or (dbinstance_availabilityzone some xsd:string))"],
+    "description": ["There is some RDS::DBInstance that is replicated across multiple availability zones"],
+    "unsatPrint": ["All RDS::DBInstances are not replicated in different Availability Zones"],
+    "sat0print": ["There are RDS::DBInstances that might not be replicated in different Availability Zones"],
+    "sat1print": ["There is at least one RDS::DBInstance that is replicated in different Availability Zones"]
   }
   ,
   {
@@ -71,13 +73,11 @@
       " (ingress_ec2securitygroupid some",
       " (securitygroup_securitygroupingress some ((ingress_cidrip value \"0.0.0.0/0\") or (ingress_cidrip value \"::/0\")))",
       ") )))"],
-    "description": ["There exists a known RDS::DBInstance",
-    " that might be linked to a open security group"],
-    "unsatPrint": ["All known RDS::DBInstances are not",
-      " linked to an open security group"],
-    "sat0print": ["There is not declared RDS::DBInstance",
-      " linked to an open security group - but there might be referenced ones"],
-    "sat1print": ["There is at least one declared RDS::DBInstance",
-      " that is linked to an open security group"]
+    "description": ["There might be an RDS::DBInstance",
+    " linked to an open security group"],
+    "unsatPrint": ["If there are RDS::DBinstances - they are certainly not linked to an open security group"],
+    "sat0print": ["There are RDS::DBInstances - pointed by this template - that might be linked to an open security group"],
+    "sat1print": ["There is at least one RDS::DBInstance",
+      " that is certainly linked to an open security group"]
   }
 ]

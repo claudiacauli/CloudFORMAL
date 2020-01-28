@@ -27,7 +27,7 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
         outcome match {
           case None      => reportString += (p._2.id+","+"N/A\n")
           case Some(oc)  =>
-            reportString += (p._2.id + "," + p._2.getOutcomePrint(oc)+"\n")
+            reportString += (p._2.getPassOrFilePrint(oc)+","+p._2.id + "," + p._2.getOutcomePrint(oc)+"\n")
         }
       })
       pw.write(reportString)

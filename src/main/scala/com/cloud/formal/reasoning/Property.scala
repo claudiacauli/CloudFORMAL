@@ -42,6 +42,7 @@ sealed trait Property {
   def falseBWPrint(print: String) =
     s"FALSE,$print"
 
+  def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
   def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
 }
 
@@ -56,6 +57,10 @@ case class TFFproperty(id: String,
                       sat1print: Option[String]) extends Property
 {
   val propType: PropertyType = PropertyType.TFF
+
+  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if (outcome._1==QueryOutcome.UNSAT) "PASS"
+    else "FAIL"
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -80,6 +85,10 @@ case class TTFproperty(id: String,
                   sat1print: Option[String]) extends Property
 {
   val propType: PropertyType = PropertyType.TTF
+
+  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if (outcome._1==QueryOutcome.SAT1) "PASS"
+    else "FAIL"
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -106,6 +115,10 @@ case class FTTproperty(id: String,
 {
   val propType: PropertyType = PropertyType.FTT
 
+  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if (outcome._1==QueryOutcome.UNSAT) "PASS"
+    else "FAIL"
+
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>
@@ -129,6 +142,11 @@ case class FFTproperty(id: String,
                   sat1print: Option[String]) extends Property
 {
   val propType: PropertyType = PropertyType.FFT
+
+  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if (outcome._1==QueryOutcome.SAT1) "PASS"
+    else "FAIL"
+
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>

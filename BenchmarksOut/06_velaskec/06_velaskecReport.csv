@@ -1,53 +1,53 @@
-01_AM_BUCKETS_SHOULD_LOG,FALSE,There are S3::Buckets in this template that do not keep logs.,(paperlessstackset_cloudfront-distribution_defaultorigin *** paperlessstackset_cloudfront-origin_bucket)
-02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
-03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
-04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted.,(paperlessstackset_cloudfront-distribution_defaultorigin *** paperlessstackset_cloudfront-origin_bucket)
-05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
-06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code.
-07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted.
-08_EM_ALARM_ACTION,FALSE,There is no CloudWatch::Alarm that performs an action when triggered
-09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is configured to record changes of all resource types.
-10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services.
-11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,There is no EC2::SecurityGroup that opens all ports to all.
-12_EKM_SHARED_BY_MULTIPLE_POLICIES,FALSE,There is certainly no IAM::User that is shared by two or more policies.
-13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,There is certainly no un-encrypted SQS::Queue that receives notifications from a bucket.
-14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to an encrypted resource.
-15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
-16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group
-17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled
-18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas
-19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function
-20_EM_SECURITYGROUP_OPENTOALL,FALSE,There is no EC2::SecurityGroup known to open to all IPs
-21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no known Lambda::Function that is triggered by a bucket.
-22_EKM_TRAIL_CARRYING_NOTHING,FALSE,There is no CloudTrail::Trail carrying no data logs
-23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,There is no CloudTrail::Trail with log file validation certainly disabled.
-24_AKM_TRAIL_LOG,TRUE,All CloudTrail::Trails are keeping logs
-25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,All known CloudTrail::Trail log events from all regions
-26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes are not-encrypted
-27_EKM_INSTANCE_PUBLIC,FALSE,There is no EC2::Instance associated with public IP
-28_EKM_INSTANCE_USERDATA,FALSE,There is no EC2::Instance with user data
-29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,There is no EC2::SecurityGroup that opens all ports to self
-30_EM_DECLARED_SECURITYGROUP_UNUSED,FALSE,There is no EC2::SecurityGroup not used
-31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,There is no LoadBalancer with Access Logging Policy enabled
-32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no LoadBalancer with S3 Access Logs enabled
-33_EM_LOADBALANCER_DELETION_PROTECTED,FALSE,There is no LoadBalancer with Deletion Protection enabled
-34_EM_LISTENER_NO_OLD_POLICIES,FALSE,There is no LoadBalancingV2::Listener not using old SSL policies
-35_EM_GROUP_INLINE_POLICIES,FALSE,There is no IAM::Group with inline policies
-36_EM_GROUP_NO_USERS,FALSE,There is no IAM::Group that is not linked to any user
-37_AKM_USERS_PWDRESET,TRUE,All known IAM::Users have password reset required
-38_EM_ROLE_INLINE_POLICIES,TRUE,There is at least one IAM::Role with inline policies,(paperlessstackset_serverless-configuration_lambdarole)
-39_EM_USER_WITH_LOGINPROFILE,FALSE,There is no IAM::User with password in template
-40_EM_ACCESSKEY_ROTATING,FALSE,There is no IAM::User that is linked to a key that is rotating
-41_AKM_USER_ONE_ACCESSKEY,TRUE,All IAM::Users have max one access key
-42_EM_USER_INLINE_POLICIES,FALSE,There is no IAM::User with inline policies
-43_AKM_RDS_BACKUP,TRUE,All known RDS::DBInstances have backup retention different from 0
-44_AM_RDS_MINORUPGRADE,TRUE,All RDS::DBInstance have auto minor upgrade enabled
-45_EM_RDS_SHORT_BACKUP,FALSE,There is no RDS::DBInstance that retains backups for one day
-46_EM_DECLARED_RDS_ONEAZ,FALSE,There is not RDS::DBInstance replicated only on one availability zone
-47_AKM_RDS_ENCRYPTED,TRUE,All known RDS::DBInstances are encrypted
-48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,All known RDS::DBInstances are not linked to an open security group
-49_AKM_BUCKETS_VERSIONING,FALSE,There are S3::Buckets - declared in this template - that have versioning disabled.,(paperlessstackset_cloudfront-distribution_defaultorigin *** paperlessstackset_cloudfront-origin_bucket)
-50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,There is no known EC2::VPC with a Network Acl that is open to all
-51_EM_NETWORKACL_NOT_USED,FALSE,There is not EC2::NetworkAcl that is not used
-52_EM_SUBNET_BAD_ACL,FALSE,There is no EC2::Subnet with bad ACL
-53_EM_SUBNET_NO_FLOWLOG,FALSE,There is no EC2::Subnet without FlowLog
+FAIL,01_AM_BUCKETS_SHOULD_LOG,TRUE,If there are S3::Buckets - they might not keep logs
+PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
+PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
+FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted.,(paperlessstackset_cloudfront-distribution_defaultorigin *** paperlessstackset_cloudfront-origin_bucket)
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code.
+PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted
+FAIL,08_EM_ALARM_ACTION,FALSE,There is no CloudWatch::Alarm that performs an action when triggered
+FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types
+FAIL,10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services
+PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to all
+PASS,12_EKM_SHARED_BY_MULTIPLE_POLICIES,FALSE,If there are IAM::Users - they are certainly not shared by two or more policies
+PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted
+FAIL,14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all.
+PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
+PASS,16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group
+PASS,17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled
+FAIL,18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas
+FAIL,19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function
+FAIL,20_EM_SECURITYGROUP_OPENTOALL,FALSE,If there are EC2::SecurityGroups, they must be open to all IPs
+FAIL,21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no known Lambda::Function that is triggered by a bucket
+PASS,22_EKM_TRAIL_CARRYING_NOTHING,FALSE,If there are CloudTrail::Trails - they all certainly carry logs about data events
+PASS,23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,If there are CloudTrail::Trails - they all certainly have log file validation enabled
+PASS,24_AKM_TRAIL_LOG,TRUE,If there are CloudTrail::Trails - they all certainly keep logs
+PASS,25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,If there are CloudTrail::Trails - they all certainly log events from all regions
+FAIL,26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes certainly are not-encrypted
+PASS,27_EKM_INSTANCE_PUBLIC,FALSE,If there are EC2::Instances - they certainly do not allow public IPs
+FAIL,28_EM_INSTANCE_USERDATA,FALSE,If there are EC2::Instances - they certainly have user data on template
+PASS,29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to self
+FAIL,30_AM_SECURITYGROUP_UNUSED,TRUE,If there are EC2::SecurityGroups - they are all unused
+FAIL,31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,If there are ElasticLoadBalancing::LoadBalancer - they all have access logging policy disabled
+FAIL,32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no ElasticLoadBalancingv2::LoadBalancer with S3 Access Logs enabled
+PASS,33_AKM_LOADBALANCER_DELETION_PROTECTED,TRUE,All ElasticLoadBalancingv2::LoadBalancers - if any - certainly have deletion protection enabled
+PASS,34_AKM_LISTENER_NO_OLD_POLICIES,TRUE,All LoadBalancingV2::Listeners - if any - certainly do not use old SSL policies
+FAIL,35_EM_GROUP_INLINE_POLICIES,FALSE,There is no IAM::Group with inline policies
+PASS,36_AKM_GROUP_NO_USERS,TRUE,All IAM::Groups - if any - are linked to some user
+PASS,37_AKM_USERS_PWDRESET,TRUE,All known IAM::Users have password reset required
+PASS,38_EM_ROLE_INLINE_POLICIES,TRUE,There is at least one IAM::Role with inline policies,(paperlessstackset_serverless-configuration_lambdarole)
+FAIL,39_AM_USER_WITH_LOGINPROFILE,TRUE,All IAM::Users - if any - might have password in template
+FAIL,40_EM_ACCESSKEY_ROTATING,FALSE,There is no IAM::User that is linked to a key that is rotating
+PASS,41_AKM_USER_ONE_ACCESSKEY,TRUE,All IAM::Users have max one access key
+FAIL,42_EM_USER_INLINE_POLICIES,FALSE,There is no IAM::User with inline policies
+PASS,43_AKM_RDS_BACKUP,TRUE,All known RDS::DBInstances have backup retention different from 0
+FAIL,44_AM_RDS_MINORUPGRADE_DISABLED,TRUE,All RDS::DBInstance must have auto minor upgrade disabled
+PASS,45_AKM_RDS_SHORT_BACKUP,TRUE,All RDS::DBInstances - if any - certainly do not have short backup retention
+FAIL,46_EM_DECLARED_RDS_ONEAZ,FALSE,All RDS::DBInstances are not replicated in different Availability Zones
+PASS,47_AKM_RDS_ENCRYPTED,TRUE,All known RDS::DBInstances are encrypted
+PASS,48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,If there are RDS::DBinstances - they are certainly not linked to an open security group
+FAIL,49_AKM_BUCKETS_VERSIONING,FALSE,There are S3::Buckets - declared in this template - that have versioning disabled,(paperlessstackset_cloudfront-distribution_defaultorigin *** paperlessstackset_cloudfront-origin_bucket)
+PASS,50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl
+FAIL,51_AM_NETWORKACL_NOT_USED,TRUE,If there are EC2::NetworkAcls - they are all unused
+FAIL,52_AM_SUBNET_BAD_ACL,TRUE,If there are EC2::Subnets - they all have bad ACLs
+FAIL,53_AM_SUBNET_NO_FLOWLOG,TRUE,If there are EC::Subnets -- they all have no FlowLog

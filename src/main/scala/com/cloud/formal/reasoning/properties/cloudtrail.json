@@ -8,11 +8,11 @@
     "description": ["There is a CloudTrail::Trail that logs",
       " events from global services (e.g., IAM)"],
     "unsatPrint": ["There is no CloudTrail::Trail that logs",
-      " events from global services."],
+      " events from global services"],
     "sat0print": ["There is no CloudTrail::Trail that logs",
-      " events from global services."],
-    "sat1print": ["There is a CloudTrail::Trail that logs",
-      " events from global services."]
+      " events from global services"],
+    "sat1print": ["There exists at least one CloudTrail::Trail that logs",
+      " events from global services"]
   }
   ,
   {
@@ -23,14 +23,12 @@
     "instQuery": ["trail"],
     "propQuery": ["not (trail_eventselectors some",
       " (eventselector_dataresources some dataresource))"],
-    "description": ["There certainly is a CloudTrail::Trail",
-      " that does not carry logs about data events"],
-    "unsatPrint": ["There is no CloudTrail::Trail carrying",
-      " no data logs"],
-    "sat0print": ["There is no CloudTrail::Trail certainly",
+    "description": ["There might be a CloudTrail::Trail",
       " not carrying logs about data events"],
+    "unsatPrint": ["If there are CloudTrail::Trails - they all certainly carry logs about data events"],
+    "sat0print": ["The known CloudTrail::Trails might not carry any logs abouts data events"],
     "sat1print": ["There is at least one CloudTrail::Trail",
-      " that does not carry logs about data events"]
+      " that certainly does not carry any logs about data events"]
   }
   ,
   {
@@ -40,12 +38,10 @@
     "instQuery": ["trail"],
     "requiredResourceTypes": ["cloudtrailtrail"],
     "propQuery": ["not (trail_enablelogfilevalidation value true)"],
-    "description": ["There is a CloudTrail::Trail that certainly has",
+    "description": ["There might be a CloudTrail::Trail that has",
       " log file validation disabled"],
-    "unsatPrint": ["There is no CloudTrail::Trail with log file ",
-      "validation certainly disabled."],
-    "sat0print": ["There is no CloudTrail::Trail with log file",
-      " validation certainly disabled"],
+    "unsatPrint": ["If there are CloudTrail::Trails - they all certainly have log file validation enabled"],
+    "sat0print": ["There are known CloudTrail::Trails that might have log file validation disabled"],
     "sat1print": ["There is at least one CloudTrail::Trail with",
       " log file validation disabled"]
   }
@@ -57,12 +53,11 @@
     "requiredResourceTypes": ["cloudtrailtrail"],
     "queryBuildType": "nominalProp",
     "propQuery": ["not (trail_islogging value true)"],
-    "description": ["All CloudTrail::Trails must be keeping logs"],
-    "unsatPrint": ["All CloudTrail::Trails are keeping logs"],
-    "sat0print": ["All CloudTrail::Trails declared in this template ",
-      "keep logs. BUT, there might be referenced Trails that do not."],
+    "description": ["All known CloudTrail::Trail must keep logs"],
+    "unsatPrint": ["If there are CloudTrail::Trails - they all certainly keep logs"],
+    "sat0print": ["There are CloudTrail::Trails - referenced by this template - that might not keep logs"],
     "sat1print": ["There is at least one CloudTrail::Trail that ",
-      "does not keep logs"]
+      "certainly does not keep logs"]
   }
   ,
   {
@@ -72,14 +67,12 @@
     "requiredResourceTypes": ["cloudtrailtrail"],
     "queryBuildType": "nominalProp",
     "propQuery": ["not (trail_ismultiregiontrail value true)"],
-    "description": ["There might exist a CloudTrail::Trail",
+    "description": ["There might be a CloudTrail::Trail",
       " that does not log events from all regions"],
-    "unsatPrint": ["All known CloudTrail::Trail log events",
-      " from all regions"],
-    "sat0print": ["All CloudTrail::Trail declared in this template",
-      " log events from all region - but there might be",
-      " referenced ones that do not"],
+    "unsatPrint": ["If there are CloudTrail::Trails - they all certainly log events from all regions"],
+    "sat0print": ["There are CloudTrail::Trails - referenced by this template - that might",
+      " not log events from all region"],
     "sat1print": ["There is at least one CloudTrail::Trail",
-      " that certainly do not log events from all regions"]
+      " that certainly does not log events from all regions"]
   }
 ]

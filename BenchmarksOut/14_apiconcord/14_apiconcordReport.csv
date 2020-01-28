@@ -1,53 +1,53 @@
-01_AM_BUCKETS_SHOULD_LOG,TRUE,All S3::Buckets declared must keep logs.
-02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
-03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
-04_AKM_BUCKETS_ENCRYPTED,TRUE,All known S3::Buckets are indeed encrypted.
-05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
-06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code.
-07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted.
-08_EM_ALARM_ACTION,TRUE,There are CloudWatch::Alarms that perform an action when triggered,(apiconcordstackset_logingester_apigatewayerroralarm *** apiconcordstackset_logingester_apigatewaykinesislambdaerroralarm)
-09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is configured to record changes of all resource types.
-10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services.
-11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,There is no EC2::SecurityGroup that opens all ports to all.
-12_EKM_SHARED_BY_MULTIPLE_POLICIES,UNKNOWN\TRUE,There is no IAM::User declared in this template that is shared, BUT there are referenced users that might be.
-13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,There is certainly no un-encrypted SQS::Queue that receives notifications from a bucket.
-14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to an encrypted resource.
-15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
-16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group
-17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled
-18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas
-19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function
-20_EM_SECURITYGROUP_OPENTOALL,FALSE,There is no known EC2::SecurityGroup that is open to all IPs
-21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no Lambda::Function triggered by a bucket.
-22_EKM_TRAIL_CARRYING_NOTHING,FALSE,There is no CloudTrail::Trail carrying no data logs
-23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,There is no CloudTrail::Trail with log file validation certainly disabled.
-24_AKM_TRAIL_LOG,TRUE,All CloudTrail::Trails are keeping logs
-25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,All known CloudTrail::Trail log events from all regions
-26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes are not-encrypted
-27_EKM_INSTANCE_PUBLIC,FALSE,There is no EC2::Instance associated with public IP
-28_EKM_INSTANCE_USERDATA,FALSE,There is no EC2::Instance with user data
-29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,There is no EC2::SecurityGroup that opens all ports to self
-30_EM_DECLARED_SECURITYGROUP_UNUSED,FALSE,There is no declared EC2::SecurityGroup that is unused
-31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,There is no LoadBalancer with Access Logging Policy enabled
-32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no LoadBalancer with S3 Access Logs enabled
-33_EM_LOADBALANCER_DELETION_PROTECTED,FALSE,There is no LoadBalancer with Deletion Protection enabled
-34_EM_LISTENER_NO_OLD_POLICIES,TRUE,There is at least one LoadBalancingV2::Listener that does not use old policies,(apiconcordstackset_lara_applistener443 *** apiconcordstackset_lara_applistener80)
-35_EM_GROUP_INLINE_POLICIES,FALSE,There is no declared IAM::Group with inline policies
-36_EM_GROUP_NO_USERS,FALSE,There is no IAM::Group that is not linked to any user
-37_AKM_USERS_PWDRESET,FALSE,There exists at least one declared IAM::User that does not have password reset required flag,(apiconcordstackset_tokenaccess_tokenserviceuser)
-38_EM_ROLE_INLINE_POLICIES,FALSE,There is no declared IAM::Role with inline policies
-39_EM_USER_WITH_LOGINPROFILE,FALSE,There is no declared IAM::User with password in template
-40_EM_ACCESSKEY_ROTATING,TRUE,There is at least one declared IAM::User linked to a rotating access key,(ext_token-service-staging)
-41_AKM_USER_ONE_ACCESSKEY,UNKNOWN\FALSE,All declared IAM::Users have max one access key - but there are referenced ones that might have more
-42_EM_USER_INLINE_POLICIES,FALSE,There is no declared IAM::User with inline policies
-43_AKM_RDS_BACKUP,FALSE,There exists at least one declared RDS::DBInstance that has backup retention set to 0,(apiconcordstackset_logingester_dbinstance)
-44_AM_RDS_MINORUPGRADE,TRUE,All declared RDS::DBInstances have auto minor upgrade enabled
-45_EM_RDS_SHORT_BACKUP,TRUE,There exists at least one declared RDS::DBInstance that retains backups for one day.,(apiconcordstackset_logingester_dbinstance)
-46_EM_DECLARED_RDS_ONEAZ,FALSE,There is no declared RDS::DBInstance that is replicated only on one availability zone
-47_AKM_RDS_ENCRYPTED,TRUE,All known RDS::DBInstances are encrypted
-48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,All known RDS::DBInstances are not linked to an open security group
-49_AKM_BUCKETS_VERSIONING,TRUE,All S3::Buckets have versioning enabled.
-50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,There is no known EC2::VPC with a Network Acl that is open to all
-51_EM_NETWORKACL_NOT_USED,FALSE,There is not EC2::NetworkAcl that is not used
-52_EM_SUBNET_BAD_ACL,FALSE,There is no EC2::Subnet with bad ACL
-53_EM_SUBNET_NO_FLOWLOG,FALSE,There is no EC2::Subnet without FlowLog
+FAIL,01_AM_BUCKETS_SHOULD_LOG,TRUE,If there are S3::Buckets - they certainly do not keep logs
+PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
+PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
+PASS,04_AKM_BUCKETS_ENCRYPTED,TRUE,All known S3::Buckets are indeed encrypted.
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code.
+PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted
+PASS,08_EM_ALARM_ACTION,TRUE,There are CloudWatch::Alarms that certainly perform an action when triggered,(apiconcordstackset_logingester_apigatewayerroralarm *** apiconcordstackset_logingester_apigatewaykinesislambdaerroralarm)
+FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types
+FAIL,10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services
+PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to all
+FAIL,12_EKM_SHARED_BY_MULTIPLE_POLICIES,UNKNOWN\TRUE,There are IAM::Users - pointed by this template - that might be shared by two or more policies
+PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted
+FAIL,14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all.
+PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
+PASS,16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group
+PASS,17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled
+FAIL,18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas
+FAIL,19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function
+PASS,20_EM_SECURITYGROUP_OPENTOALL,TRUE,There is at least one EC2::SecurityGroup that is certainly not open to all IPs,(apiconcordstackset_logingester_dbvpcsecuritygroup *** apiconcordstackset_logingester_kinesistordslambdafunctionsecuritygroup)
+FAIL,21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no Lambda::Function triggered by a bucket
+PASS,22_EKM_TRAIL_CARRYING_NOTHING,FALSE,If there are CloudTrail::Trails - they all certainly carry logs about data events
+PASS,23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,If there are CloudTrail::Trails - they all certainly have log file validation enabled
+PASS,24_AKM_TRAIL_LOG,TRUE,If there are CloudTrail::Trails - they all certainly keep logs
+PASS,25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,If there are CloudTrail::Trails - they all certainly log events from all regions
+FAIL,26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes certainly are not-encrypted
+PASS,27_EKM_INSTANCE_PUBLIC,FALSE,If there are EC2::Instances - they certainly do not allow public IPs
+FAIL,28_EM_INSTANCE_USERDATA,FALSE,If there are EC2::Instances - they certainly have user data on template
+PASS,29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to self
+PASS,30_AM_SECURITYGROUP_UNUSED,FALSE,There exists at least one EC2::SecurityGroup that is used,(apiconcordstackset_logingester_dbvpcsecuritygroup *** apiconcordstackset_logingester_kinesistordslambdafunctionsecuritygroup)
+FAIL,31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,If there are ElasticLoadBalancing::LoadBalancer - they all have access logging policy disabled
+FAIL,32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no ElasticLoadBalancingv2::LoadBalancer with S3 Access Logs enabled
+PASS,33_AKM_LOADBALANCER_DELETION_PROTECTED,TRUE,All ElasticLoadBalancingv2::LoadBalancers - if any - certainly have deletion protection enabled
+PASS,34_AKM_LISTENER_NO_OLD_POLICIES,TRUE,All LoadBalancingV2::Listeners - if any - certainly do not use old SSL policies
+FAIL,35_EM_GROUP_INLINE_POLICIES,FALSE,There is no IAM::Group with inline policies
+PASS,36_AKM_GROUP_NO_USERS,TRUE,All IAM::Groups - if any - are linked to some user
+FAIL,37_AKM_USERS_PWDRESET,FALSE,There exists at least one declared IAM::User that does not have password reset required flag,(apiconcordstackset_tokenaccess_tokenserviceuser)
+FAIL,38_EM_ROLE_INLINE_POLICIES,FALSE,There is no IAM::Role with inline policies
+PASS,39_AM_USER_WITH_LOGINPROFILE,FALSE,There exists at least one IAM::User that does not have password in template,(apiconcordstackset_tokenaccess_tokenserviceuser)
+PASS,40_EM_ACCESSKEY_ROTATING,TRUE,There is at least one declared IAM::User linked to a rotating access key,(ext_token-service-staging)
+FAIL,41_AKM_USER_ONE_ACCESSKEY,UNKNOWN\FALSE,All declared IAM::Users have max one access key - but there are referenced ones that might have more
+FAIL,42_EM_USER_INLINE_POLICIES,FALSE,There is no declared IAM::User with inline policies
+FAIL,43_AKM_RDS_BACKUP,FALSE,There exists at least one declared RDS::DBInstance that has backup retention set to 0,(apiconcordstackset_logingester_dbinstance)
+PASS,44_AM_RDS_MINORUPGRADE_DISABLED,FALSE,There exists at least one declared RDS::DBInstance that has auto minor version upgrade enabled,(apiconcordstackset_logingester_dbinstance)
+FAIL,45_AKM_RDS_SHORT_BACKUP,FALSE,There exists at least one RDS::DBInstance that certainly has short backup retention of one day,(apiconcordstackset_logingester_dbinstance)
+PASS,46_EM_DECLARED_RDS_ONEAZ,TRUE,There is at least one RDS::DBInstance that is replicated in different Availability Zones,(apiconcordstackset_logingester_dbinstance)
+PASS,47_AKM_RDS_ENCRYPTED,TRUE,All known RDS::DBInstances are encrypted
+PASS,48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,If there are RDS::DBinstances - they are certainly not linked to an open security group
+PASS,49_AKM_BUCKETS_VERSIONING,TRUE,All S3::Buckets have versioning enabled
+PASS,50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl
+FAIL,51_AM_NETWORKACL_NOT_USED,TRUE,If there are EC2::NetworkAcls - they are all unused
+FAIL,52_AM_SUBNET_BAD_ACL,TRUE,If there are EC2::Subnets - they all have bad ACLs
+FAIL,53_AM_SUBNET_NO_FLOWLOG,TRUE,If there are EC::Subnets -- they all have no FlowLog

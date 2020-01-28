@@ -3,12 +3,12 @@
     "ID": "01_AM_BUCKETS_SHOULD_LOG",
     "type": "TTF",
     "requiredResourceTypes": ["s3bucket"],
-    "propQuery": ["bucket and not (bucket_loggingconfiguration some",
+    "propQuery": ["bucket and (bucket_loggingconfiguration some",
       " (loggingconfiguration_destinationbucketname some bucket))"],
-    "description": ["All S3::Buckets DECLARED in this template should keep logs."],
-    "unsatPrint": ["All S3::Buckets declared must keep logs."],
-    "sat0print": ["All S3::Buckets declared in this template must keep logs."],
-    "sat1print": ["There are S3::Buckets in this template that do not keep logs."]
+    "description": ["All S3::Buckets might not keep logs"],
+    "unsatPrint": ["If there are S3::Buckets - they certainly do not keep logs"],
+    "sat0print": ["If there are S3::Buckets - they might not keep logs"],
+    "sat1print": ["There exist at least one S3::Buckets that keep logs"]
   }
 ,
   {
@@ -134,10 +134,10 @@
       "some (serversideencryptionrule_serversideencryptionbydefault some ",
       "((serversideencryptionbydefault_ssealgorithm value \"aws:kms\") and ",
       "(serversideencryptionbydefault_kmsmasterkeyid some key)))))))"],
-    "description": "All S3::Buckets that store logs must be encrypted.",
-    "unsatPrint": "All S3::Buckets known to store logs are encrypted.",
+    "description": "All S3::Buckets that store logs must be encrypted",
+    "unsatPrint": "All S3::Buckets known to store logs are encrypted",
     "sat0print": ["None of the buckets declared in this template break this ",
-      "property - but there are buckets pointed at by this template for which the information is not known."],
+      "property - but there are buckets pointed at by this template for which the information is not known"],
     "sat1print": ["There are S3::Buckets in this template that store logs and are not encrypted"]
   }
     ,
@@ -150,9 +150,9 @@
     "propQuery": ["not (",
       "bucket_versioningconfiguration some (versioningconfiguration_status value \"enabled\"))"],
     "description": ["All S3::Buckets must have versioning enabled"],
-    "unsatPrint": ["All S3::Buckets have versioning enabled."],
+    "unsatPrint": ["All S3::Buckets have versioning enabled"],
     "sat0print": ["None of the S3::Buckets declared have versioning disabled ",
-      " - but there are buckets pointed by the template for which this info is not known."],
-    "sat1print": ["There are S3::Buckets - declared in this template - that have versioning disabled."]
+      " - but there are buckets pointed by the template for which this info is not known"],
+    "sat1print": ["There are S3::Buckets - declared in this template - that have versioning disabled"]
   }
 ]

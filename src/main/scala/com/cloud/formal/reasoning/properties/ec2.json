@@ -9,11 +9,10 @@
       "(ingress_cidrip value \"0.0.0.0/0\") and ",
       "(ingress_fromport value \"0\") and ",
       "(ingress_toport value \"65535\")))"],
-    "description": ["There might be a known EC2::SecurityGroup that opens all ports to all."],
-    "unsatPrint": ["There is no EC2::SecurityGroup that opens all ports to all."],
-    "sat0print": ["There is no EC2::SecurityGroup open declared in this template,",
-      " BUT there are referenced security groups that might open all ports to all."],
-    "sat1print": ["There is at least one EC2::SecurityGroup that opens all ports to all."]
+    "description": ["There is a known EC2::SecurityGroup that might open all ports to all"],
+    "unsatPrint": ["If there are EC2::SecurityGroups - they certainly do not open all ports to all"],
+    "sat0print": ["There are EC2::SecurityGroup - referenced by this template - that might open all ports to all"],
+    "sat1print": ["There is at least one EC2::SecurityGroup that certainly opens all ports to all"]
   },
   {
     "ID": "16_AKM_VPC_NO_DEFAULT_SECURITYGROUP",
@@ -25,7 +24,7 @@
     "description": "No VPC::EC2 should use a default security group",
     "unsatPrint": "All VPC::EC2 are associated with a security group",
     "sat0print": ["All declared VPC::EC2 are associated with a security",
-    " group - but there are EC2::VPC referenced by this template that might use a default one."],
+    " group - but there are EC2::VPC referenced by this template that might use a default one"],
     "sat1print": "There is a VPC::EC2 that use a default security group"
   },
   {
@@ -33,12 +32,12 @@
     "type": "FFT",
     "requiredResourceTypes": ["ec2securitygroup"],
     "propQuery": [
-      "securitygroup and (securitygroup_securitygroupingress some (ingress_cidrip value \"0.0.0.0/0\"))"
+      "securitygroup and not (securitygroup_securitygroupingress some (ingress_cidrip value \"0.0.0.0/0\"))"
     ],
-    "description": "There is an EC2::SecurityGroup known to be open to all IPs",
-    "unsatPrint": "There is no EC2::SecurityGroup known to open to all IPs",
-    "sat0print": "There is no known EC2::SecurityGroup that is open to all IPs",
-    "sat1print": "There is a EC2::SecurityGroup that is open to all IPs"
+    "description": "There is an EC2::SecurityGroup certainly not open to all IPs",
+    "unsatPrint": "If there are EC2::SecurityGroups, they must be open to all IPs",
+    "sat0print": "If there are EC2::SecurityGroups, they might be open to all IPs",
+    "sat1print": "There is at least one EC2::SecurityGroup that is certainly not open to all IPs"
   }
   ,
   {
@@ -47,9 +46,9 @@
     "requiredResourceTypes": ["ec2volume"],
     "propQuery": ["volume and (volume_encrypted value true)"],
     "description": "All EC2::Volumes might be not-encrypted",
-    "unsatPrint": "All EC2::Volumes are not-encrypted",
+    "unsatPrint": "All EC2::Volumes certainly are not-encrypted",
     "sat0print": "All EC2::Volumes might not be encrypted",
-    "sat1print": "There exists at least one EC2::Volume that is encrypted"
+    "sat1print": "There exists at least one EC2::Volume that is certainly encrypted"
   }
   ,
   {
@@ -60,27 +59,22 @@
     "instQuery": "instance",
     "propQuery": ["(instance_networkinterfaces some",
       " (networkinterface_associatepublicipaddress value true))"],
-    "description": "There might exist a known EC2::Instance that allow public IPs",
-    "unsatPrint": "There is no EC2::Instance associated with public IP",
-    "sat0print": ["There is no EC2::Instance declared in this template",
-      " that has public IP - but there might be referenced ones that do"],
-    "sat1print": ["There is at least one EC2::Instance declared",
-      " in this template associated with a public IP"]
+    "description": "There might be an EC2::Instance that allows public IPs",
+    "unsatPrint": "If there are EC2::Instances - they certainly do not allow public IPs",
+    "sat0print": ["There are EC2::Instances - pointed by this template - that might allow public IPs"],
+    "sat1print": ["There is at least one declared EC2::Instance that allows public IPs"]
   }
   ,
   {
-    "ID": "28_EKM_INSTANCE_USERDATA",
-    "type": "FTT",
+    "ID": "28_EM_INSTANCE_USERDATA",
+    "type": "FFT",
     "requiredResourceTypes": ["ec2instance"],
-    "queryBuildType": "nominalProp",
-    "instQuery": "instance",
-    "propQuery": ["instance_userdata some String"],
-    "description": "There might exist a known EC2::Instance with user data",
-    "unsatPrint": "There is no EC2::Instance with user data",
-    "sat0print": ["There are no EC2::Instances with user data",
-    " in this template - but there might be referenced ones"],
+    "propQuery": ["instance and not instance_userdata some String"],
+    "description": "There is an EC2::Instance that certainly does not have user data on template",
+    "unsatPrint": "If there are EC2::Instances - they certainly have user data on template",
+    "sat0print": ["There are EC2::Instances - in this template - that might have user data on template"],
     "sat1print": ["There is at least one EC2::Instance",
-      " that certainly has user data"]
+      " that certainly does not have user data on template"]
   }
   ,
   {
@@ -93,23 +87,22 @@
       " some ( (ingress_fromport value 0) and (ingress_toport value",
       " 65535) and ( (ingress_sourcesecuritygroupid some {${x}}) or",
       " (ingress_sourcesecuritygroupname some {${x}})))))"],
-    "description": ["There might exist an EC2::Security",
-      " group that opens all ports to self"],
-    "unsatPrint": "There is no EC2::SecurityGroup that opens all ports to self",
-    "sat0print": ["There is no EC2::SecurityGroup that opens all ports",
-    " to self declared in this template - but there are referenced ones that might do it."],
-    "sat1print": ["There is at least one EC2::SecurityGroup declared in this template that opens all ports to all"]
+    "description": ["There might be an EC2::SecurityGroup",
+      " that opens all ports to self"],
+    "unsatPrint": "If there are EC2::SecurityGroups - they certainly do not open all ports to self",
+    "sat0print": ["There are EC2::SecurityGroups - pointed by this template - that might open all ports to self"],
+    "sat1print": ["There is at least one EC2::SecurityGroup that opens all ports to self"]
   }
   ,
   {
-    "ID": "30_EM_DECLARED_SECURITYGROUP_UNUSED",
-    "type": "FFT",
+    "ID": "30_AM_SECURITYGROUP_UNUSED",
+    "type": "TTF",
     "requiredResourceTypes": ["ec2securitygroup"],
-    "propQuery": ["securitygroup and not(securitygroup_vpcid some vpc)"],
-    "description": "There exists a just-declared EC2::SecurityGroup not used",
-    "unsatPrint": ["There is no EC2::SecurityGroup not used"],
-    "sat0print": ["There is no declared EC2::SecurityGroup that is unused"],
-    "sat1print": ["There is a declared EC2::SecurityGroup that is unused"]
+    "propQuery": ["securitygroup and (securitygroup_vpcid some vpc)"],
+    "description": "All EC2::SecurityGroups may be unused",
+    "unsatPrint": ["If there are EC2::SecurityGroups - they are all unused"],
+    "sat0print": ["All EC2::SecurityGroups may be unused"],
+    "sat1print": ["There exists at least one EC2::SecurityGroup that is used"]
   }
   ,
   {
@@ -121,47 +114,47 @@
     "propQuery": ["(inverse networkacl_vpcid some (inverse",
       " networkaclentry_networkdaclid some ( (networkaclentry_cidrblock",
       " value \"0.0.0.0/0\") and (networkaclentry_ruleaction value \"allow\") ) ) )"],
-    "description": ["There might exist known EC2::VPC with open to all Network Acl"],
-    "unsatPrint": ["There is no known EC2::VPC with a Network Acl that is open to all"],
-    "sat0print": ["There might be EC2::VPC with a Network Acl open to all among the referenced VPCs"],
-    "sat1print": ["There is an EC2::VPC declared in this template linked to a Network Acl open to all"]
+    "description": ["There might be an EC2::VPC with an open-to-all Network Acl"],
+    "unsatPrint": ["If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl"],
+    "sat0print": ["There are EC2::VPCs - referenced by this template - that might have an open-to-all Network Acl"],
+    "sat1print": ["There exist at least one EC2::VPC that has an open-to-all Network Acl"]
   }
   ,
   {
-    "ID": "51_EM_NETWORKACL_NOT_USED",
-    "type": "FFT",
+    "ID": "51_AM_NETWORKACL_NOT_USED",
+    "type": "TTF",
     "requiredResourceTypes": ["ec2networkacl"],
     "instQuery": ["networkacl"],
-    "propQuery": ["networkacl and not (networkacl_vpcid some vpc)"],
-    "description": ["There might exists an EC2::NetworkAcl that is not used"],
-    "unsatPrint": ["There is not EC2::NetworkAcl that is not used"],
-    "sat0print": ["There is no known EC2::NetworkAcl that is not used"],
-    "sat1print": ["There is a declared EC2::NetworkAcl that is not used"]
+    "propQuery": ["networkacl and (networkacl_vpcid some vpc)"],
+    "description": ["All EC2::NetworkAcls may be unused"],
+    "unsatPrint": ["If there are EC2::NetworkAcls - they are all unused"],
+    "sat0print": ["All EC2::NetworkAcls may be unused"],
+    "sat1print": ["There exists at least one EC2::NetworkAcl that is used"]
   }
   ,
   {
-    "ID": "52_EM_SUBNET_BAD_ACL",
-    "type": "FFT",
+    "ID": "52_AM_SUBNET_BAD_ACL",
+    "type": "TTF",
     "requiredResourceTypes": ["ec2networkacl","ec2subnet"],
-    "propQuery": ["networkacl and (inverse networkaclentry_networkdaclid",
+    "propQuery": ["networkacl and not (inverse networkaclentry_networkdaclid",
       " some ( (networkaclentry_cidrblock value \"0.0.0.0/0\") and",
       " (networkaclentry_ruleaction value \"allow\") ) ) and",
       " ((networkacl_vpcid some vpc) or ( inverse",
       " subnetnetworkaclassociation_networkaclid some (subnetid some subnet) ))"],
-    "description": "There might exist an EC2::Subnet with bad ACL",
-    "unsatPrint": ["There is no EC2::Subnet with bad ACL"],
-    "sat0print": ["There is no declared EC2::Subnet with bad ACL"],
-    "sat1print": ["There is at least one declared EC2::Subnet with bad ACL"]
+    "description": "All EC2::Subnets might have bad ACL",
+    "unsatPrint": ["If there are EC2::Subnets - they all have bad ACLs"],
+    "sat0print": ["All EC2::Subnets have bad ACLs"],
+    "sat1print": ["There exists at least one EC2::Subnet with good ACL"]
   }
   ,
   {
-    "ID": "53_EM_SUBNET_NO_FLOWLOG",
-    "type": "FFT",
+    "ID": "53_AM_SUBNET_NO_FLOWLOG",
+    "type": "TTF",
     "requiredResourceTypes": ["ec2subnet", "ec2flowlog"],
     "propQuery": ["subnet and (inverse flowlog_resourceid some flowlog)"],
-    "description": ["There is a known EC2::Subnet without a FlowLog"],
-    "unsatPrint": ["There is no EC2::Subnet without FlowLog"],
-    "sat0print": ["There is no declared EC2::Subnet without FlowLog"],
-    "sat1print": ["There is at least a declared EC2::Subnet without FlowLog"]
+    "description": ["All EC2::Subnets might have no FlowLog"],
+    "unsatPrint": ["If there are EC::Subnets -- they all have no FlowLog"],
+    "sat0print": ["All EC2::Subnets have no FlowLog"],
+    "sat1print": ["There exists at least one EC2::Subnet with FlowLog"]
   }
 ]

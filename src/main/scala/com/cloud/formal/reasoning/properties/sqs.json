@@ -3,16 +3,14 @@
     "ID": "13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED",
     "type": "FTT",
     "queryBuildType": "nominalProp",
-    "requiredResourceTypes": ["sqsqueue"],
-    "instQuery": "queue",
-    "propQuery": ["(inverse queueconfiguration_queue some ",
-      "(inverse notificationconfiguration_queueconfigurations some ",
-      "(inverse bucket_notificationconfiguration some bucket))) and not ",
-      "(queue_kmsmasterkeyid some key)"],
-    "description": ["There is an SQS::Queue that receives notification from a bucket and is not encrypted."],
-    "unsatPrint": ["There is certainly no un-encrypted SQS::Queue that receives notifications from a bucket."],
-    "sat0print": ["There is no SQS::Queue declared in this template that is ",
-      "un-encrypted and receives bucket notifications - but there are referenced queues that might be."],
-    "sat1print": ["There is an SQS::Queue that receives notifications and is not encrypted."]
+    "requiredResourceTypes": ["sqsqueue", "s3bucket"],
+    "instQuery": ["queue and (inverse queueconfiguration_queue some ",
+    "(inverse notificationconfiguration_queueconfigurations some ",
+    "(inverse bucket_notificationconfiguration some bucket)))"],
+    "propQuery": [" not (queue_kmsmasterkeyid some key)"],
+    "description": ["There might be a non-encrypted SQS::Queue receiving notifications from a bucket"],
+    "unsatPrint": ["If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted"],
+    "sat0print": ["There are SQS::Queues receiving notifications from a bucket - pointed by this template - that might be non-encrypted"],
+    "sat1print": ["There exists at least on SQS::Queue receiving notifications from a bucket that is not encrypted"]
   }
 ]
