@@ -19,32 +19,53 @@ package com.cloud
 import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.vocab.OWL2Datatype
 
-import Console.{BLUE,RESET}
 
 package object formal
 {
 
 
   private[formal]
-  object Extension extends Enumeration {
+  object Extension extends Enumeration
+  {
     val Json  = ".json"
     val Owl   = ".owl"
+    val Csv   = ".csv"
   }
 
 
   private[formal]
-  object OntologySuffix extends Enumeration{
+  object OntologySuffix extends Enumeration
+  {
     val StackSet        = "_stackset"
     val Infrastructure  = "_infrastructure"
   }
 
+  private[formal]
+  object SysUtil extends Enumeration
+  {
+    val UserHome        = "user.home"
+    val DSStore         = "DS_Store"
+  }
+
 
   private[formal]
-  object FilePath {
+  object FileSuffix extends Enumeration
+  {
+    val Descriptor                = "Descriptor"
+    val Report                    = "Report"
+    val DescriptorJson: String    = Descriptor + Extension.Json
+    val ReportCsv: String         = Report + Extension.Csv
+  }
 
+
+  private[formal]
+  object FilePath
+  {
     val ResourceSpecs = "src/main/resources/specifications/CloudFormationResourceSpecification/"
     val ResourceTerms = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology   = "src/main/resources/terminology/aws.owl"
+    val BenchmarksOut = "BenchmarksOut/"
+    val BenchmarksIn  = "Benchmarks/"
 
     val ResourceTerminology: (String,String) => String
     = (service,resource) =>
@@ -53,7 +74,8 @@ package object formal
 
 
   private[formal]
-  object ModelType {
+  object ModelType
+  {
 
     val OwlString   = OWL2Datatype.XSD_STRING
     val OwlLong     = OWL2Datatype.XSD_LONG
@@ -63,7 +85,8 @@ package object formal
     val OwlDouble   = OWL2Datatype.XSD_DOUBLE
 
     def fromString(stringType : String) : OWL2Datatype =
-      stringType match {
+      stringType match
+      {
         case "boolean"  => OwlBool
         case "float"    => OwlFloat
         case "double"   => OwlDouble
@@ -73,7 +96,8 @@ package object formal
       }
 
     def stringOf(owlDataType : OWL2Datatype) : String =
-      owlDataType match {
+      owlDataType match
+      {
         case OwlLong    => "long"
         case OwlBool    => "boolean"
         case OwlInt     => "integer"
@@ -85,12 +109,14 @@ package object formal
 
 
   private[formal]
-  object Ontology {
+  object Ontology
+  {
     val BaseStringIRI   = "http://www.claudiacauli.com/aws/cfn/2019/"
     val Version         = "1.0"
     val VersionStringIRI: String  = BaseStringIRI + "v" + Version + "/"
     val VersionIRI : IRI          = IRI.create(VersionStringIRI)
     val Pound = "#"
+    val OWLOntologyStringIRI      = "http://www.w3.org/2002/07/owl#"
 
     val MapEntryPrefix    = "mapentry_"
     val MapKeySuffix      = "_key"
@@ -101,7 +127,8 @@ package object formal
 
 
   private[formal]
-  object AwsOntology {
+  object AwsOntology
+  {
     val Name  = "aws"
     val StringIRI:String  = Ontology.VersionIRI + Name
     val Pound: String     = Ontology.Pound

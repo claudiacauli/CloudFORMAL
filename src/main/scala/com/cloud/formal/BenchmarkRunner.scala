@@ -192,7 +192,7 @@ object BenchmarkRunner extends App {
 
   private def BenchmarkEncoding()
   : Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] =
-    Interface.modelAndSaveAllTemplates(Array{"Benchmarks/"}, createAndBenchmarkInfrastructure)
+    Interface.modelAndSaveAllTemplates(Array{FilePath.BenchmarksIn}, createAndBenchmarkInfrastructure)
 
 
   private def BenchmarkSingleEncoding(dirPath: String) =
@@ -281,7 +281,7 @@ object BenchmarkRunner extends App {
   private def loadSingleModelAndCreateModelData(inPath: String)
   : Vector[(String,OWLOntology,OWLDataFactory,OWLOntologyManager)] = {
     val dir = new File(inPath)
-        val f = dir.listFiles().filter(_.getName.endsWith(".owl")).head
+        val f = dir.listFiles().filter(_.getName.endsWith(Extension.Owl)).head
         val im = Interface.loadModel(f.getAbsolutePath, printEnabled = false)
         benchmarkResults ++= Vector(
           new ModelData(im._4,resN = 0, resTypeN = 0,
@@ -293,10 +293,10 @@ object BenchmarkRunner extends App {
 
   private def loadModelsAndCreateModelData()
   : Vector[(String,OWLOntology,OWLDataFactory,OWLOntologyManager)] = {
-    new File("BenchmarksOut/")
+    new File(FilePath.BenchmarksOut)
       .listFiles().filter(_.isDirectory)
       .map( dir => {
-        val f = dir.listFiles().filter(_.getName.endsWith(".owl")).head
+        val f = dir.listFiles().filter(_.getName.endsWith(Extension.Owl)).head
         val im = Interface.loadModel(f.getAbsolutePath, printEnabled = false)
         benchmarkResults ++= Vector(
           new ModelData(im._4,resN = 0, resTypeN = 0,

@@ -18,6 +18,7 @@ package com.cloud.formal.reasoning
 
 import java.io.{File, PrintWriter}
 
+import com.cloud.formal.FileSuffix
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model.{OWLClassExpression, OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
 import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet}
@@ -34,7 +35,7 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
   def run(printEnabled: Boolean)(runQueryFun: ((=> OWLClassExpression) => Boolean) => (=>OWLClassExpression) => (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) )
          (satCheckFun: Boolean => (=> OWLClassExpression) => Boolean): Unit =
   {
-    val pw = new PrintWriter(new File(dir+"/"+name+"Report.csv"))
+    val pw = new PrintWriter(new File(dir+"/"+name+FileSuffix.ReportCsv))
     var reportString = ""
     try {
       classify()

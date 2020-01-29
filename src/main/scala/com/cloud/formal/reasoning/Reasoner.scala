@@ -16,7 +16,6 @@
 
 package com.cloud.formal.reasoning
 
-import com.cloud.formal.BenchmarkRunner
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.model.parameters.Imports

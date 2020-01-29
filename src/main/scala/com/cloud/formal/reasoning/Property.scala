@@ -37,26 +37,26 @@ sealed trait Property {
   val sat1print: Option[String]
 
   def truePrint(print: String) =
-    s"$RESET$BOLD${Color.Green}TRUE$RESET,$print"
+    s"$RESET$BOLD${Color.Green}${FourValues.TRUE}$RESET,$print"
   def trueBWPrint(print: String) =
-    s"TRUE,$print"
+    s"${FourValues.TRUE},$print"
 
 //  def unknownPrint(print: String) =
 //    s"$RESET$BOLD${Color.LightRed}UNKNOWN$RESET\t$print"
   def unknownFalsePrint(print: String) =
-    s"$RESET$BOLD${Color.LightRed}UNKNOWN\\FALSE$RESET,$print"
+    s"$RESET$BOLD${Color.LightRed}${FourValues.MAYBE_FALSE}$RESET,$print"
   def unknownFalseBWPrint(print: String) =
-    s"UNKNOWN\\FALSE,$print"
+    s"${FourValues.MAYBE_FALSE},$print"
 
   def unknownTruePrint(print: String) =
-    s"$RESET$BOLD${Color.LightGreen}UNKNOWN\\TRUE$RESET,$print"
+    s"$RESET$BOLD${Color.LightGreen}${FourValues.MAYBE_TRUE}$RESET,$print"
   def unknownTrueBWPrint(print: String) =
-    s"UNKNOWN\\TRUE,$print"
+    s"${FourValues.MAYBE_TRUE},$print"
 
   def falsePrint(print: String) =
-    s"$RESET$BOLD${Color.Red}FALSE$RESET,$print"
+    s"$RESET$BOLD${Color.Red}${FourValues.FALSE}$RESET,$print"
   def falseBWPrint(print: String) =
-    s"FALSE,$print"
+    s"${FourValues.FALSE},$print"
 
   def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
   def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
@@ -75,8 +75,8 @@ case class TFFproperty(id: String,
   val propType: PropertyType = PropertyType.TFF
 
   override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.UNSAT) "PASS"
-    else "FAIL"
+    if (outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
+    else PassFailOutcome.FAIL
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -103,8 +103,8 @@ case class TTFproperty(id: String,
   val propType: PropertyType = PropertyType.TTF
 
   override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.SAT1) "PASS"
-    else "FAIL"
+    if (outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
+    else PassFailOutcome.FAIL
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -132,8 +132,8 @@ case class FTTproperty(id: String,
   val propType: PropertyType = PropertyType.FTT
 
   override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.UNSAT) "PASS"
-    else "FAIL"
+    if (outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
+    else PassFailOutcome.FAIL
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -160,8 +160,8 @@ case class FFTproperty(id: String,
   val propType: PropertyType = PropertyType.FFT
 
   override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.SAT1) "PASS"
-    else "FAIL"
+    if (outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
+    else PassFailOutcome.FAIL
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {

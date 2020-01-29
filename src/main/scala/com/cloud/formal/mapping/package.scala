@@ -25,7 +25,8 @@ package object mapping{
 
 
   private[mapping]
-  object CFnType {
+  object CFnType
+  {
     val String  = "string"
     val Float   = "float"
     val Double  = "double"
@@ -44,7 +45,8 @@ package object mapping{
 
 
   private[mapping]
-  object Specification extends Enumeration {
+  object Specification extends Enumeration
+  {
     val ResourceType       	  = "ResourceType"
     val PropertyTypes         = "PropertyTypes"
     val PrimitiveItemType 	  = "PrimitiveItemType"
@@ -67,7 +69,8 @@ package object mapping{
 
 
   private[mapping]
-  object Renaming {
+  object Renaming
+  {
     val AttributePrefix       = "attribute_"
     val Delimiter             = "_"
     val ResSpecName: String => String =
@@ -125,7 +128,8 @@ package object mapping{
         None
 
     def subFieldNames(j: Json): List[String] =
-      j.objectFields match {
+      j.objectFields match
+      {
         case None     => List()
         case Some(l)  => l map (_.toString.toLowerCase)
       }

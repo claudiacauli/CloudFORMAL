@@ -9,7 +9,7 @@ FAIL,08_EM_ALARM_ACTION,FALSE,There is no CloudWatch::Alarm that performs an act
 FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types
 FAIL,10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services
 PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to all
-FAIL,12_EKM_SHARED_BY_MULTIPLE_POLICIES,UNKNOWN\TRUE,There are IAM::Users - pointed by this template - that might be shared by two or more policies
+FAIL,12_EKM_SHARED_BY_MULTIPLE_POLICIES,UNKNOWN-TRUE,There are IAM::Users - pointed by this template - that might be shared by two or more policies
 PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted
 FAIL,14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all
 PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
@@ -38,7 +38,7 @@ FAIL,37_AKM_USERS_PWDRESET,FALSE,There exists at least one declared IAM::User th
 PASS,38_EM_ROLE_INLINE_POLICIES,TRUE,There is at least one IAM::Role with inline policies,(data1_dqmodel_awsconfigrole)
 PASS,39_AM_USER_WITH_LOGINPROFILE,FALSE,There exists at least one IAM::User that does not have password in template,(data1_dqmodel_iamuser)
 FAIL,40_EM_ACCESSKEY_ROTATING,FALSE,There is no declared IAM::User that is linked to a key that is rotating
-FAIL,41_AKM_USER_ONE_ACCESSKEY,UNKNOWN\FALSE,All declared IAM::Users have max one access key - but there are referenced ones that might have more
+FAIL,41_AKM_USER_ONE_ACCESSKEY,UNKNOWN-FALSE,All declared IAM::Users have max one access key - but there are referenced ones that might have more
 FAIL,42_EM_USER_INLINE_POLICIES,FALSE,There is no declared IAM::User with inline policies
 PASS,43_AKM_RDS_BACKUP,TRUE,All known RDS::DBInstances have backup retention different from 0
 FAIL,44_AM_RDS_MINORUPGRADE_DISABLED,TRUE,All RDS::DBInstance must have auto minor upgrade disabled

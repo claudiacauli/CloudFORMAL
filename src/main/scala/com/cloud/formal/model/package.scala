@@ -20,7 +20,8 @@ package object model{
 
 
   private[model]
-  object Format extends  Enumeration {
+  object Format extends  Enumeration
+  {
     val Rdf         = "rdf"
     val Xml         = "xml"
     val Turtle      = "ttl"
@@ -30,21 +31,24 @@ package object model{
 
 
   private[model]
-  object ModelSuffix extends Enumeration {
+  object ModelSuffix extends Enumeration
+  {
     val StackSet        = "_StackSetModel"
     val Infrastructure  = "_InfrastructureModel"
   }
 
 
-  private[model]
-  object ModelFileSuffix extends Enumeration {
+  private[formal]
+  object ModelFileSuffix extends Enumeration
+  {
     val StackSet: String        = ModelSuffix.StackSet + Extension.Owl
     val Infrastructure: String  = ModelSuffix.Infrastructure + Extension.Owl
   }
 
 
   private[model]
-  object ProtegeCatalogue {
+  object ProtegeCatalogue
+  {
     val FileName: String = "catalog-v001.xml"
   }
 

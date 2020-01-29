@@ -20,7 +20,8 @@ package object templates{
 
 
   private[templates]
-  object TemplateTag extends Enumeration {
+  object TemplateTag extends Enumeration
+  {
     val Condition    = "Condition"
     val Conditions   = "Conditions"
     val Parameters   = "Parameters"
@@ -39,7 +40,8 @@ package object templates{
 
 
   private[templates]
-  object ParameterType extends Enumeration {
+  object ParameterType extends Enumeration
+  {
     val String = "string"
     val Number = "number"
     val ListOfNumber = "list<number>"
@@ -48,7 +50,8 @@ package object templates{
 
 
   private[templates]
-  object PseudoParameter extends Enumeration {
+  object PseudoParameter extends Enumeration
+  {
     val AccountId         : String = "aws::accountid"
     val StackName         : String = "aws::stackname"
     val StackId           : String = "aws::stackid"
@@ -61,7 +64,8 @@ package object templates{
 
 
   private[templates]
-  object CFnFunTag extends Enumeration {
+  object CFnFunTag extends Enumeration
+  {
 
     val FunTagRegex     = "^(Fn::|Ref).*"
 
@@ -100,12 +104,12 @@ package object templates{
     val Sub: String         = SubUC.toLowerCase
     val Transform: String   = TransformUC.toLowerCase
     val Ref: String         = RefUC.toLowerCase
-
   }
 
 
   private[templates]
-  object Policy extends Enumeration {
+  object Policy extends Enumeration
+  {
     val StatementTag      = "Statement"
     val EffectTag         = "Effect"
     val AllowValue        = "allow"
@@ -125,7 +129,8 @@ package object templates{
 
 
   private[templates]
-  object SummaryFileName extends Enumeration {
+  object SummaryFileName extends Enumeration
+  {
     val Infrastructure   = "InfrastructureSummary.txt"
     val Permissions      = "PermissionsSummary.txt"
   }

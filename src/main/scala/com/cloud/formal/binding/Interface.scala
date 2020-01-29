@@ -22,16 +22,15 @@ import java.nio.file.{Files, Paths}
 import java.util
 
 import argonaut.{Json, Parse}
-import com.cloud.formal.{BenchmarkRunner, FilePath}
+import com.cloud.formal.{FileSuffix, Extension, FilePath, Ontology, SysUtil}
 import com.cloud.formal.mapping.specifications.ResourceSpecificationModel
 import com.cloud.formal.mapping.templates.mapping.InfrastructureModel
 import com.cloud.formal.mapping.templates.{Infrastructure, Json2InfrastructureEncoder}
-import com.cloud.formal.model.{Model, ModelIRI}
+import com.cloud.formal.model.{Model, ModelFileSuffix, ModelIRI}
 import com.typesafe.scalalogging.LazyLogging
 import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model
 import org.semanticweb.owlapi.model._
-import org.semanticweb.owlapi.model.parameters.Imports
 
 import Console.{BOLD, RESET}
 import scala.io.Source
@@ -45,7 +44,7 @@ object Interface extends LazyLogging{
 
   def compileAndSaveSpecification(inPath: String, printEnabled: Boolean = true): Unit = {
 
-    val inputPath = inPath.replace("~",System.getProperty("user.home"))
+    val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
     val dir = new File(inputPath)
 
     if ( !dir.exists || !dir.isDirectory )
@@ -117,17 +116,17 @@ object Interface extends LazyLogging{
     val stackSetName = file.getName
 
     (file.listFiles().toVector
-      .filter(_.getAbsolutePath.endsWith(".json"))
+      .filter(_.getAbsolutePath.endsWith(Extension.Json))
       flatMap (f => {
-      val templateName = f.getName.split(".json").head
+      val templateName = f.getName.split(Extension.Json).head
       if (!templateName
-        .endsWith("Descriptor") && !templateName.endsWith("DS_Store"))
+        .endsWith(FileSuffix.Descriptor) && !templateName.endsWith(SysUtil.DSStore))
       {
         var descriptor: File = null
         try {
-          descriptor = new File(inputPath + "/" + iN +"/" +stackSetName + "/" + templateName + "Descriptor.json")
+          descriptor = new File(inputPath + "/" + iN +"/" +stackSetName + "/" + templateName + FileSuffix.DescriptorJson)
           if (!descriptor.exists)
-            createDescriptorForTemplateName(templateName, file.getAbsolutePath())
+            createDescriptorForTemplateName(templateName, file.getAbsolutePath)
         } catch {
           case e: FileNotFoundException => descriptor = null
         }
@@ -143,10 +142,10 @@ object Interface extends LazyLogging{
 
   def compileAndSaveTemplates(inPath: String,
                               infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager),
-                              outputPath: String = "BenchmarksOut/")
+                              outputPath: String = FilePath.BenchmarksOut)
   : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
 
-    val inputPath = inPath.replace("~",System.getProperty("user.home"))
+    val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
 
     new File(inputPath)
       .listFiles()
@@ -162,13 +161,13 @@ object Interface extends LazyLogging{
     infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)) :
    Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] = {
 
-    val inputPath = values(0).replace("~",System.getProperty("user.home"))
+    val inputPath = values(0).replace("~",System.getProperty(SysUtil.UserHome))
 
     val outputPath =
       if (values.size == 2)
-        values(1).replace("~", System.getProperty("user.home"))
+        values(1).replace("~", System.getProperty(SysUtil.UserHome))
       else
-        "BenchmarksOut/"
+        FilePath.BenchmarksOut
 
     new File(inputPath)
       .listFiles()
@@ -182,13 +181,13 @@ object Interface extends LazyLogging{
       infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager))
   : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
 
-    val inputPath = values(0).replace("~",System.getProperty("user.home"))
+    val inputPath = values(0).replace("~",System.getProperty(SysUtil.UserHome))
 
     val outputPath =
       if (values.size == 2)
-        values(1).replace("~", System.getProperty("user.home"))
+        values(1).replace("~", System.getProperty(SysUtil.UserHome))
       else
-        "BenchmarksOut/"
+        FilePath.BenchmarksOut
 
      compileAndSaveTemplates(inputPath, infrastructureCreationFunction, outputPath)
   }
@@ -196,11 +195,11 @@ object Interface extends LazyLogging{
 
 
   def loadModel(inPath: String, printEnabled: Boolean = true): (OWLOntology, OWLDataFactory, OWLOntologyManager, String) = {
-    val inputPath = inPath.replace("~",System.getProperty("user.home"))
+    val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
     val m = OWLManager.createOWLOntologyManager()
     val df = m.getOWLDataFactory
 
-    val name = inputPath.split("_InfrastructureModel.owl")(0).split("/").last
+    val name = inputPath.split(ModelFileSuffix.Infrastructure)(0).split("/").last
 
     val preDir = new File( inPath.split("/").dropRight(1).mkString("/") )
 
@@ -208,16 +207,16 @@ object Interface extends LazyLogging{
       s"*******************************************")
 
     preDir.listFiles().filter(_.isDirectory)
-      .foreach(_.listFiles().filter(f => f.getName.endsWith(".owl") && !f.getName.endsWith("StackSetModel.owl"))
+      .foreach(_.listFiles().filter(f => f.getName.endsWith(Extension.Owl) && !f.getName.endsWith(ModelFileSuffix.StackSet))
         .foreach( f => {
           m.loadOntologyFromOntologyDocument(f)
         }))
 
     preDir.listFiles().filter(_.isDirectory)
-      .foreach(_.listFiles().filter(_.getName.endsWith("StackSetModel.owl"))
+      .foreach(_.listFiles().filter(_.getName.endsWith(ModelFileSuffix.StackSet))
         .foreach( f => {
           val o = m.loadOntologyFromOntologyDocument(f)
-          val ssName = f.getAbsolutePath.split("_StackSetModel.owl")(0).split("/").last
+          val ssName = f.getAbsolutePath.split(ModelFileSuffix.StackSet)(0).split("/").last
           if (o.getOntologyID.isAnonymous)
             o.getOWLOntologyManager
               .applyChange(
@@ -230,7 +229,7 @@ object Interface extends LazyLogging{
               df.getOWLImportsDeclaration(io.getOntologyID.getOntologyIRI.get))))
 
           m.applyChange(new model.AddImport(
-            o, df.getOWLImportsDeclaration(IRI.create("http://www.w3.org/2002/07/owl#"))
+            o, df.getOWLImportsDeclaration(IRI.create(Ontology.OWLOntologyStringIRI))
           ))
         }))
 
@@ -253,13 +252,13 @@ object Interface extends LazyLogging{
   (Vector[(String, Json, Option[Json])], String) =
   {
     val ssName = ssDir.getName
-    val inputPath = inPath.replace("~",System.getProperty("user.home"))
+    val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
 
     (ssDir
       .listFiles().toVector
       .filter( f => (
-        !f.getName.contains("DS_Store")) &&
-        !f.getName.endsWith("Descriptor.json"))
+        !f.getName.contains(SysUtil.DSStore)) &&
+        !f.getName.endsWith(FileSuffix.DescriptorJson))
       .flatMap( templateFile =>
         jsonsFromFile(templateFile,infrName,inputPath,ssName)),
       ssName)
@@ -275,9 +274,9 @@ object Interface extends LazyLogging{
   {
 
     val templateName  =
-      templateFile.getName.split(".json").head
+      templateFile.getName.split(Extension.Json).head
     val descrFileName =
-      s"$inputPath$stacksetName/${templateName}Descriptor.json"
+      s"$inputPath$stacksetName/$templateName${FileSuffix.DescriptorJson}"
     var descrFile: Option[File] = None
 
     try
@@ -318,7 +317,7 @@ object Interface extends LazyLogging{
       "\"AWS::URLSuffix\" : \".aws\"\n}"
 
     Files.write(
-      Paths.get(inputDir + "/" + templateName + "Descriptor.json"),
+      Paths.get(inputDir + "/" + templateName + FileSuffix.DescriptorJson),
       ds.getBytes(StandardCharsets.UTF_8)
     )
   }
