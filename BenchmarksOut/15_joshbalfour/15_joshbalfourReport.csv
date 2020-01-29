@@ -1,9 +1,9 @@
 FAIL,01_AM_BUCKETS_SHOULD_LOG,TRUE,If there are S3::Buckets - they might not keep logs
-PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
+PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs
 PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
-FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted.,(joshstackset_fullcfn_s3bucket)
-PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
-PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code.
+FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted,(joshstackset_fullcfn_s3bucket)
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code
 PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted
 PASS,08_EM_ALARM_ACTION,TRUE,There are CloudWatch::Alarms that certainly perform an action when triggered,(joshstackset_fullcfn_cpuhighalarm *** joshstackset_fullcfn_cpulowalarm)
 FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types

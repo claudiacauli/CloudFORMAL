@@ -5,31 +5,50 @@
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": ["kmskey"],
     "instQuery": "key",
-    "propQuery": ["not( key_enabled value true) "],
-    "description": "All KMS::Key must be enabled",
-    "unsatPrint": "All KMS::Keys are enabled",
-    "sat0print": "All declared KMS::Key are enabled - but there are referenced ones that might not be enabled",
-    "sat1print": "There is a KMS::Key that is not enabled"
-  },
+    "propQuery": [
+      "not( key_enabled value true) "],
+    "description": [
+      "All KMS::Key must be enabled"],
+    "unsatPrint": [
+      "All KMS::Keys are enabled"],
+    "sat0print": [
+      "All declared KMS::Key are enabled",
+      " - but there are referenced ones that might not be enabled"],
+    "sat1print": [
+      "There is a KMS::Key that is",
+      " not enabled"]
+  }
+,
   {
     "ID": "18_EM_KEY_FOR_REPLICA",
     "type": "FFT",
     "requiredResourceTypes": ["kmskey","s3bucket"],
-    "propQuery": ["key and inverse encryptionconfiguration_replicakmskeyid",
+    "propQuery": [
+      "key and inverse encryptionconfiguration_replicakmskeyid",
       " some (replicationdestination_bucket some bucket)"],
-    "description": "There exists a KMS::Key used to encrypted buckets replicas.",
-    "unsatPrint": "There is no KMS::Key used to encrypt buckets replicas",
-    "sat0print": "There is no KMS::Key that certainly encrypts buckets replicas",
-    "sat1print": "There is a KMS::Key that encrypts buckets replicas"
-  },
+    "description": [
+      "There exists a KMS::Key used to encrypted buckets replicas."],
+    "unsatPrint": [
+      "There is no KMS::Key used to encrypt buckets replicas"],
+    "sat0print": [
+      "There is no KMS::Key that certainly encrypts buckets replicas"],
+    "sat1print": [
+      "There is a KMS::Key that encrypts buckets replicas"]
+  }
+,
   {
     "ID": "19_EM_KEY_ENCR_FUNCTION",
     "type": "FFT",
     "requiredResourceTypes": ["kmskey","lambdafunction"],
-    "propQuery": ["key and inverse function_kmskeyarn some function"],
-    "description": "There is a KMS::Key used to encrypt a Lambda::Function",
-    "unsatPrint": "There is no KMS::Key used to encrypt a Lambda::Function",
-    "sat0print": "There is no KMS::Key that certainly encrypts a Lambda::Function",
-    "sat1print": "There is a KMS::Key that encrypts a Lambda::Function"
+    "propQuery": [
+      "key and inverse function_kmskeyarn some function"],
+    "description": [
+      "There is a KMS::Key used to encrypt a Lambda::Function"],
+    "unsatPrint": [
+      "There is no KMS::Key used to encrypt a Lambda::Function"],
+    "sat0print": [
+      "There is no KMS::Key that certainly encrypts a Lambda::Function"],
+    "sat1print": [
+      "There is a KMS::Key that encrypts a Lambda::Function"]
   }
 ]

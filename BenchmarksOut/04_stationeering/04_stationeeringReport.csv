@@ -1,9 +1,9 @@
 FAIL,01_AM_BUCKETS_SHOULD_LOG,TRUE,If there are S3::Buckets - they might not keep logs
-PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs.
+PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,All S3::Buckets declared in this template do not store their own logs
 PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
-FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted.,(stationeeringstackset_backend-fetcher_s3bucket *** stationeeringstackset_frontend-app_s3bucket *** stationeeringstackset_frontend-data_s3bucket *** stationeeringstackset_lambda-storage_s3bucket)
-PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found.
-FAIL,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,FALSE,There are S3::Buckets in this template that are not encrypted or do not keep logs despite storing lambda code.,(stationeeringstackset_lambda-storage_s3bucket)
+FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted,(stationeeringstackset_backend-fetcher_s3bucket *** stationeeringstackset_frontend-app_s3bucket *** stationeeringstackset_frontend-data_s3bucket *** stationeeringstackset_lambda-storage_s3bucket)
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found
+FAIL,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,FALSE,There are S3::Buckets in this template that are not encrypted or do not keep logs despite storing lambda code,(stationeeringstackset_lambda-storage_s3bucket)
 PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,All S3::Buckets known to store logs are encrypted
 FAIL,08_EM_ALARM_ACTION,FALSE,There is no CloudWatch::Alarm that performs an action when triggered
 FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types

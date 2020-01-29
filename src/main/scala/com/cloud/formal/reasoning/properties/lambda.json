@@ -3,23 +3,39 @@
     "ID": "14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED",
     "type": "TTF",
     "requiredResourceTypes": ["lambdafunction","sqsqueue","snstopic"],
-    "propQuery": ["function and (function_deadletterconfig ",
+    "propQuery": [
+      "function and (function_deadletterconfig ",
       "some (deadletterconfig_targetarn some ((queue and ",
       "(queue_kmsmasterkeyid some key)) or (topic and (topic_kmsmasterkeyid ",
       "some key)))))"],
-    "description": ["All Lambda::Function's failed input might be sent to a non-encrypted resource"],
-    "unsatPrint": ["All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all."],
-    "sat0print": ["All Lambda::Functions might send failed input to a non-encrypted resource"],
-    "sat1print": ["There is a Lambda::Function that sends failed inputs to an encrypted resource"]
-  },
+    "description": [
+      "All Lambda::Function's failed input might be",
+      " sent to a non-encrypted resource"],
+    "unsatPrint": [
+      "All Lambda::Functions send failed input to a",
+      " non-encrypted resource or do not send it at all"],
+    "sat0print": [
+      "All Lambda::Functions might send failed input",
+      " to a non-encrypted resource"],
+    "sat1print": [
+      "There is a Lambda::Function that sends failed",
+      " inputs to an encrypted resource"]
+  }
+,
   {
     "ID": "21_EM_LAMBDA_TRIGGERED_BUCKET",
     "type": "FFT",
     "requiredResourceTypes": ["lambdafunction","s3bucket"],
-    "propQuery": ["function and ( inverse lambdaconfiguration_function some lambdaconfiguration)"],
-    "description": ["There is a Lambda::Function that is triggered by a bucket"],
-    "unsatPrint": ["There is no Lambda::Function triggered by a bucket"],
-    "sat0print": ["There is no known Lambda::Function that is triggered by a bucket"],
-    "sat1print": ["There is a Lambda::Function that is triggered by a bucket"]
+    "propQuery": [
+      "function and ( inverse lambdaconfiguration_function",
+      " some lambdaconfiguration)"],
+    "description": [
+      "There is a Lambda::Function that is triggered by a bucket"],
+    "unsatPrint": [
+      "There is no Lambda::Function triggered by a bucket"],
+    "sat0print": [
+      "There is no known Lambda::Function that is triggered by a bucket"],
+    "sat1print": [
+      "There is a Lambda::Function that is triggered by a bucket"]
   }
 ]
