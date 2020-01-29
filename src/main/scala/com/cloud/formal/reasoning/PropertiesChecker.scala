@@ -23,7 +23,7 @@ import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model.{OWLClassExpression, OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
 import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet}
 
-class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager, dir: String = ".") {
+class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager, dir: String) {
 
   private[formal] val propsVec  = PropertiesGenerator.init()
   private[formal] val r         = Reasoner.create(o, df, m)

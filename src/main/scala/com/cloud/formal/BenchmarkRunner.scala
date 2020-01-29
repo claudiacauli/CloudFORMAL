@@ -215,7 +215,7 @@ object BenchmarkRunner extends App {
         val r = Reasoner.create(p._1._2, p._1._3, p._1._4)
         try {
           r.classify(printEnabled = false)(computeAllInferencesAndBenchmark(p._2, r))
-          val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4)
+          val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4,".")
           pc.classify(printEnabled = false)
           println(s"\tAxioms: ${p._2.logicalAxsN}")
         }
@@ -245,7 +245,7 @@ object BenchmarkRunner extends App {
         val r = Reasoner.create(p._1._2, p._1._3, p._1._4)
         try {
           r.classify(printEnabled = false)(r.computeAllInferences)
-          val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4)
+          val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4,".")
           pc.classify(printEnabled = false)
           println(s"\tAxioms: ${p._2.logicalAxsN}")
           println(s"[Benchmarking Query Answering ${p._1._1}]")

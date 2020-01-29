@@ -211,7 +211,6 @@ extends LazyLogging
       resource = StackSetResource(
         resourceLogicalId, serviceType, resourceType,
         tE.ssE.stackSet, tE.template, attributesFromResourceJsonNode)
-      updateResourceName()
       importResourceSpecificationOntology()
 
       Map(resourceLogicalId -> resource)

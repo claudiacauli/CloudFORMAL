@@ -1,0 +1,64 @@
+
+Infrastructure: 08_sqilupinc, includes StackSets: 
+ - data1 
+
+	StackSet: data1, includes Templates: 
+		Template: dqmodel
+		 Parameters: 
+			(sourcelambdas3bucket -> NoValue)
+			(dqlambdas3bucket -> NoValue)
+			(aws::stackid -> 121213)
+			(dqlambdas3key -> rds.zip)
+			(transformlambdas3bucket -> NoValue)
+			(accesscontrol -> Private)
+			(aws::partition -> aws)
+			(environmentvalue -> Dev)
+			(aws::region -> us-east-1)
+			(regionname -> us-east-1)
+			(transformlambdas3key -> rds.zip)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> dqmodel)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+			(aws::accountid -> 999999999999)
+			(sourcelambdas3key -> rds.zip)
+		 Mappings: 
+			(environments -> Map(dev -> Right(HashMap(executionlambda -> eu-dev-sqilupdb1-lambda-exc, infralambda -> eu-dev-sqilupdb1-lambda-infr, topicsourcefail -> eu-dev-sqilupdb1-sns-topic-src-fa, appid -> devappid, sourcelambda -> eu-dev-sqilupdb1-lambda-src, topicdqsuccess -> eu-dev-sqilupdb1-sns-topic-dq-su, tranfs3bucket -> eu-dev-sqilupdb1-s3-bucket-trf, topictransformfail -> eu-dev-sqilupdb1-sns-topic-trf-fa, sources3bucket -> eu-dev-sqilupdb1-s3-bucket-src, dqs3bucket -> eu-dev-sqilupdb1-s3-bucket-dq, topicdqfail -> eu-dev-sqilupdb1-sns-topic-dq-fa, topictransformsuccess -> eu-dev-sqilupdb1-sns-topic-trf-su, topicsourcesuccess -> eu-dev-sqilupdb1-sns-topic-src-su)), test -> Right(HashMap(executionlambda -> eu-test-sqilupdb1-lambda-exc, infralambda -> eu-test-sqilupdb1-lambda-infr, topicsourcefail -> eu-test-sqilupdb1-sns-topic-src-fa, appid -> testappid, sourcelambda -> eu-test-sqilupdb1-lambda-src, topicdqsuccess -> eu-test-sqilupdb1-sns-topic-dq-su, tranfs3bucket -> eu-test-sqilupdb1-s3-bucket-trf, topictransformfail -> eu-test-sqilupdb1-sns-topic-trf-fa, sources3bucket -> eu-test-sqilupdb1-s3-bucket-src, dqs3bucket -> eu-test-sqilupdb1-s3-bucket-dq, topicdqfail -> eu-test-sqilupdb1-sns-topic-dq-fa, topictransformsuccess -> eu-test-sqilupdb1-sns-topic-trf-su, topicsourcesuccess -> eu-test-sqilupdb1-sns-topic-src-su)), qa -> Right(HashMap(executionlambda -> eu-qa-sqilupdb1-lambda-exc, infralambda -> eu-qa-sqilupdb1-lambda-infr, topicsourcefail -> eu-qa-sqilupdb1-sns-topic-src-fa, appid -> qaappid, sourcelambda -> eu-qa-sqilupdb1-lambda-src, topicdqsuccess -> eu-qa-sqilupdb1-sns-topic-dq-su, tranfs3bucket -> eu-qa-sqilupdb1-s3-bucket-trf, topictransformfail -> eu-qa-sqilupdb1-sns-topic-trf-fa, sources3bucket -> eu-qa-sqilupdb1-s3-bucket-src, dqs3bucket -> eu-qa-sqilupdb1-s3-bucket-dq, topicdqfail -> eu-qa-sqilupdb1-sns-topic-dq-fa, topictransformsuccess -> eu-qa-sqilupdb1-sns-topic-trf-su, topicsourcesuccess -> eu-qa-sqilupdb1-sns-topic-src-su)), prod -> Right(HashMap(executionlambda -> eu-prod-sqilupdb1-lambda-exc, infralambda -> eu-prod-sqilupdb1-lambda-infr, topicsourcefail -> eu-prod-sqilupdb1-sns-topic-src-fa, appid -> prodappid, sourcelambda -> eu-prod-sqilupdb1-lambda-src, topicdqsuccess -> eu-prod-sqilupdb1-sns-topic-dq-su, tranfs3bucket -> eu-prod-sqilupdb1-s3-bucket-trf, topictransformfail -> eu-prod-sqilupdb1-sns-topic-trf-fa, sources3bucket -> eu-prod-sqilupdb1-s3-bucket-src, dqs3bucket -> eu-prod-sqilupdb1-s3-bucket-dq, topicdqfail -> eu-prod-sqilupdb1-sns-topic-dq-fa, topictransformsuccess -> eu-prod-sqilupdb1-sns-topic-trf-su, topicsourcesuccess -> eu-prod-sqilupdb1-sns-topic-src-su))))
+		 Resources: 
+			Lambda::Permission(sourcelambdainvokepermission)
+			Lambda::Function(sourcelambdafunction)
+			Lambda::Permission(eexcutionlambdainvokepermission)
+			SNS::Topic(topicdqsu)
+			S3::Bucket(s3bucketdq)
+			SNS::Topic(topictransformfa)
+			SNS::Topic(topicsourcefa)
+			Lambda::Function(infralambdafunction)
+			IAM::User(iamuser)
+			IAM::Role(awsconfigrole)
+			SNS::Topic(topicsourcesu)
+			IAM::AccessKey(iamacesskey)
+			Lambda::Permission(infralambdainvokepermission)
+			IAM::Policy(iampolicy)
+			S3::Bucket(s3buckettrf)
+			S3::Bucket(s3bucketsrc)
+			SNS::Topic(topicdqfa)
+			Lambda::Function(executionlambdafunction)
+			SNS::Topic(topictransformsu)
+		 Outputs By ID: 
+			(awssecretaccesskey -> iamacesskey_attribute_secretaccesskey)
+			(sourcelambdafunction -> Lambda::Function(sourcelambdafunction))
+			(topicdqsu -> SNS::Topic(topicdqsu))
+			(username -> IAM::User(iamuser))
+			(bucketnamedq -> S3::Bucket(s3bucketdq))
+			(topictransformfa -> SNS::Topic(topictransformfa))
+			(topicsourcefa -> SNS::Topic(topicsourcefa))
+			(infralambdafunction -> Lambda::Function(infralambdafunction))
+			(awsaccesskeyid -> IAM::AccessKey(iamacesskey))
+			(topicdqfa -> SNS::Topic(topicdqfa))
+			(bucketnametrf -> S3::Bucket(s3buckettrf))
+			(region -> us-east-1)
+			(topicsourcesu -> SNS::Topic(topicsourcesu))
+			(bucketnamesrc -> S3::Bucket(s3bucketsrc))
+			(executionlambdafunction -> Lambda::Function(executionlambdafunction))
+			(topictransformsu -> SNS::Topic(topictransformsu))
+
+

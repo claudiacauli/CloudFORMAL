@@ -52,6 +52,7 @@ extends StrictLogging
   private[templates] val stackSet = new StackSet(stackSetName, iE.infrastructure, manager)
   private[templates] val templatesEncoders    = getTemplateEncoders
   private[templates] val outputsByExportName  = getOutputsByExport
+  updateResourcesNames()
   private[templates] var foreignResourcesByArn : Map[String,ExternalResource] = Map()
 
 

@@ -18,7 +18,7 @@ package com.cloud.formal.cli
 
 import java.io.File
 
-import com.cloud.formal.{Extension, SysUtil}
+import com.cloud.formal.{Extension, FilePath, SysUtil}
 import com.cloud.formal.binding.Interface
 import com.cloud.formal.reasoning.PropertiesChecker
 import com.typesafe.scalalogging.LazyLogging
@@ -41,11 +41,14 @@ object CLI  extends LazyLogging{
             case "m" => Interface.modelAndSaveTemplates(o.getValues, Interface.createInfrastructure)
             case "ma" => Interface.modelAndSaveAllTemplates(o.getValues, Interface.createInfrastructure)
             case "r" => val t = Interface.loadModel(o.getValue())
-              val pc = new PropertiesChecker(t._4,t._1,t._2,t._3)
+              val pathArray = o.getValue.split("/")
+              val dir = pathArray(0)+"/"+pathArray(1)
+              val pc = new PropertiesChecker(t._4,t._1,t._2,t._3,dir)
               pc.run(true)(pc.r.runQuery)(pc.r.isSat)
             case "mr" =>
+              val dir = FilePath.BenchmarksOut + "/" + o.getValue().split("/").last
               val m = Interface.compileAndSaveTemplates(o.getValue, Interface.createInfrastructure)
-              val pc = new PropertiesChecker(m._1,m._2,m._3,m._4)
+              val pc = new PropertiesChecker(m._1,m._2,m._3,m._4,dir)
               pc.run(true)(pc.r.runQuery)(pc.r.isSat)
             case "ra" =>
               new File(o.getValue.replace("~",System.getProperty(SysUtil.UserHome)))

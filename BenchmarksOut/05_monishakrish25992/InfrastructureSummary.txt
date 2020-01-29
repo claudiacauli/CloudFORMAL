@@ -1,0 +1,30 @@
+
+Infrastructure: 05_monishakrish25992, includes StackSets: 
+ - lambda-ses 
+
+	StackSet: lambda-ses, includes Templates: 
+		Template: lambda-to-ses
+		 Parameters: 
+			(bucketname1 -> lambda-s3zipfile-access)
+			(s3key -> test)
+			(aws::stackid -> 121213)
+			(toaddress -> cauli@chalmers.se)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(topicname -> aws-sns-topic)
+			(aws::region -> us-west-1)
+			(bucketname -> lambda-s3zipfile-access)
+			(aws::urlsuffix -> .aws)
+			(mylambda -> lambda-s3access)
+			(fromaddress -> cauli@chalmers.se)
+			(aws::stackname -> lambda-to-ses)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(mybucket)
+			SNS::Topic(snstopic)
+			SNS::TopicPolicy(snstopicpolicy)
+			Lambda::Function(lambdafunction)
+			Lambda::Permission(lambdafunctionpermission)
+			IAM::Role(lambdarole)
+
+

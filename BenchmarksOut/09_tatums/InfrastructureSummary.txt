@@ -1,0 +1,30 @@
+
+Infrastructure: 09_tatums, includes StackSets: 
+ - dietsmarts 
+
+	StackSet: dietsmarts, includes Templates: 
+		Template: cloud
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-east-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloud)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Policy(iampolicylambda)
+			IAM::User(publishuser)
+			IAM::Role(iamrolelambda)
+			SNS::Topic(snstopic)
+			S3::Bucket(s3bucket)
+			IAM::AccessKey(publishuseraccesskey)
+			S3::BucketPolicy(s3bucketpolicy)
+			Lambda::Permission(snslambdainvokepermission)
+			S3::Bucket(roots3bucket)
+			Lambda::Function(lambdapublisher)
+		 Outputs By ID: 
+			(publishuseraccesskeyid -> IAM::AccessKey(publishuseraccesskey))
+			(publishusersecretaccesskey -> publishuseraccesskey_attribute_secretaccesskey)
+
+

@@ -1,0 +1,120 @@
+
+Infrastructure: 06_velaskec, includes StackSets: 
+ - paperlessStackSet 
+
+	StackSet: paperlessStackSet, includes Templates: 
+		Template: cloudfront-invalidator
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudfront-invalidator)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(lambdarole)
+			IAM::Policy(lambdapolicy)
+			Lambda::Function(lambda)
+			Lambda::Permission(invokepermission)
+
+		Template: cloudfront-distribution
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudfront-distribution)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(invokepermission)
+			Lambda::Function(lambda)
+			S3::BucketPolicy(bucketpolicy)
+			IAM::Policy(lambdapolicy)
+			IAM::Role(lambdarole)
+			SNS::TopicPolicy(snspolicy)
+			S3::Bucket(defaultorigin)
+			SNS::Topic(snstopic)
+			SNS::Subscription(subscibelambda)
+			CloudFront::Distribution(cloudfront)
+		 Outputs By ID: 
+			(cloudfront -> CloudFront::Distribution(cloudfront))
+			(snstopic -> SNS::Topic(snstopic))
+		 Outputs By Export Name: 
+			(cloudfront-distribution -> CloudFront::Distribution(cloudfront))
+			(cloudfront-distribution-sns -> SNS::Topic(snstopic))
+
+		Template: codepipeline-notifications
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> codepipeline-notifications)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			SNS::Topic(snstopic)
+			IAM::Role(lambdarole)
+			IAM::Policy(lambdapolicy)
+			Lambda::Function(codepipelinenotifications)
+		 Outputs By ID: 
+			(codepipelinenotifications -> Lambda::Function(codepipelinenotifications))
+		 Outputs By Export Name: 
+			(codepipeline-notifications -> Lambda::Function(codepipelinenotifications))
+
+		Template: stack-publisher
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> stack-publisher)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(lambdarole)
+			IAM::Policy(lambdapolicy)
+			Lambda::Function(slackpublisher)
+		 Outputs By ID: 
+			(slackpublisher -> Lambda::Function(slackpublisher))
+		 Outputs By Export Name: 
+			(stack-publisher -> Lambda::Function(slackpublisher))
+
+		Template: serverless-configuration
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> serverless-configuration)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(configurationmonitorlambdainvokepermission)
+			Events::Rule(rule)
+			Lambda::Function(productionlambda)
+			IAM::Role(lambdarole)
+			Logs::LogGroup(configurationmonitorlambdaloggroup)
+			Lambda::Function(configurationmonitorlambda)
+			Logs::LogGroup(productionlambdaloggroup)
+
+		Template: cloudfront-origin
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudfront-origin)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(bucket)
+			S3::BucketPolicy(bucketpolicy)
+		 Outputs By ID: 
+			(cloudfrontorigin -> S3::Bucket(bucket))
+		 Outputs By Export Name: 
+			(cloudfront-origin -> S3::Bucket(bucket))
+
+

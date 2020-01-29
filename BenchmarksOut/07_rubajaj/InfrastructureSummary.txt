@@ -1,0 +1,1625 @@
+
+Infrastructure: 07_rubajaj, includes StackSets: 
+ - awsserverless 
+
+	StackSet: awsserverless, includes Templates: 
+		Template: function_concurrency
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(concurrency -> NoValue)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_concurrency)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(concurrentfunctionrole)
+			Lambda::Function(concurrentfunction)
+			IAM::Role(anotherfunctionrole)
+			Lambda::Function(anotherfunction)
+
+		Template: error_invalid_template
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_invalid_template)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: function_managed_inline_policy
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_managed_inline_policy)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(function)
+			IAM::Role(functionrole)
+
+		Template: api_with_cors_and_only_methods
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors_and_only_methods)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Deployment(serverlessrestapideploymentfd83ca0941)
+			Lambda::Function(implicitapifunction)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+			ApiGateway::RestApi(serverlessrestapi)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+
+		Template: error_missing_queue
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_missing_queue)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: api_with_cors_and_only_headers
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors_and_only_headers)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			Lambda::Permission(implicitapifunctionposthtmlpermissionprod)
+			ApiGateway::Deployment(explicitapideployment03e65d7ea2)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::RestApi(serverlessrestapi)
+			ApiGateway::Deployment(serverlessrestapideployment602730b2df)
+			Lambda::Permission(implicitapifunctionposthtmlpermissiontest)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: function_with_disabled_deployment_preference
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_disabled_deployment_preference)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Version(minimalfunctionversion640128d35d)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+
+		Template: error_api_duplicate_methods_same_path
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_api_duplicate_methods_same_path)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: globals_for_function
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> globals_for_function)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Version(functionwithoverridesversion640128d35d)
+			IAM::Role(functionwithoverridesrole)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Version(minimalfunctionversionfb7aeaa544)
+			Lambda::Function(functionwithoverrides)
+			Lambda::Alias(functionwithoverridesaliasprod)
+
+		Template: error_globals_is_not_dict
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_globals_is_not_dict)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: s3_existing_other_notification_configuration
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_existing_other_notification_configuration)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(images)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			Lambda::Function(thumbnailfunction)
+
+		Template: function_with_resource_refs
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_resource_refs)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(functionwithoutalias)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Version(minimalfunctionversion640128d35d)
+			S3::Bucket(mybucket)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+			IAM::Role(functionwithoutaliasrole)
+		 Outputs By ID: 
+			(versionarn -> Lambda::Version(minimalfunctionversion640128d35d))
+			(aliasname -> minimalfunctionaliaslive_attribute_name)
+			(mustnotresolve -> functionwithoutalias_attribute_alias.name)
+			(unresolvedversion -> NoValue)
+			(aliasarn -> Lambda::Alias(minimalfunctionaliaslive))
+			(versionnumber -> minimalfunctionversion640128d35d_attribute_version)
+			(aliasinsub -> hello minimalfunctionaliaslive minimalfunctionaliaslive.name world)
+
+		Template: streams
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> streams)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::EventSourceMapping(kinesisfunctionmykinesisstream)
+			IAM::Role(dynamodbfunctionrole)
+			Lambda::EventSourceMapping(dynamodbfunctionmyddbstream)
+			Lambda::Function(kinesisfunction)
+			Lambda::Function(dynamodbfunction)
+			IAM::Role(kinesisfunctionrole)
+
+		Template: error_multiple_resource_errors
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_multiple_resource_errors)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: globals_for_simpletable
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> globals_for_simpletable)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(minimaltable)
+
+		Template: error_function_no_codeuri
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_no_codeuri)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: implicit_api_with_serverless_rest_api_resource
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> implicit_api_with_serverless_rest_api_resource)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissionprod)
+			Lambda::Function(gethtmlfunction)
+			ApiGateway::Deployment(serverlessrestapideployment127e3fb911)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissiontest)
+			Lambda::Function(restapifunction)
+			Lambda::Permission(restapifunctiongetlistpermissionprod)
+			Lambda::Permission(restapifunctionadditempermissionprod)
+			Lambda::Permission(restapifunctioncompleteitempermissionprod)
+			Lambda::Permission(restapifunctiongetlistpermissiontest)
+			Lambda::Permission(restapifunctionadditempermissiontest)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Permission(restapifunctioncompleteitempermissiontest)
+			IAM::Role(restapifunctionrole)
+			IAM::Role(gethtmlfunctionrole)
+
+		Template: error_invalid_properties
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_invalid_properties)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: api_endpoint_configuration
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_endpoint_configuration)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			ApiGateway::Deployment(explicitapideploymentf117c932f7)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::RestApi(serverlessrestapi)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Deployment(serverlessrestapideployment62b96c1a61)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: sns_existing_other_subscription
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> sns_existing_other_subscription)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(savenotificationfunctionrole)
+			Lambda::Function(savenotificationfunction)
+			Lambda::Permission(savenotificationfunctionnotificationtopicpermission)
+			SNS::Subscription(savenotificationfunctionnotificationtopic)
+			SNS::Topic(notifications)
+
+		Template: s3_create_remove
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_create_remove)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(images)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			Lambda::Function(thumbnailfunction)
+
+		Template: sns_topic_outside_template
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> sns_topic_outside_template)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+			(snstopicarn -> NoValue)
+			(aws::accountid -> 999999999999)
+		 Resources: 
+			SNS::Subscription(savenotificationfunctionnotificationtopic)
+			IAM::Role(savenotificationfunctionrole)
+			Lambda::Permission(savenotificationfunctionnotificationtopicpermission)
+			Lambda::Function(savenotificationfunction)
+
+		Template: error_cors_on_external_swagger
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_cors_on_external_swagger)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_missing_stream
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_missing_stream)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: existing_event_logical_id
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> existing_event_logical_id)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: function_with_deployment_no_service_role
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_deployment_no_service_role)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			CodeDeploy::DeploymentGroup(minimalfunctiondeploymentgroup)
+			Lambda::Function(minimalfunction)
+			IAM::Role(deploymentrole)
+			CodeDeploy::DeploymentGroup(otherfunctiondeploymentgroup)
+			IAM::Role(otherfunctionrole)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Function(otherfunction)
+			CodeDeploy::Application(serverlessdeploymentapplication)
+			Lambda::Alias(otherfunctionaliaslive)
+			Lambda::Version(minimalfunctionversion640128d35d)
+			IAM::Role(minimalfunctionrole)
+			Lambda::Version(otherfunctionversion640128d35d)
+
+		Template: no_implicit_api_with_serverless_rest_api_resource
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> no_implicit_api_with_serverless_rest_api_resource)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Function(thumbnailfunction)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			ApiGateway::RestApi(serverlessrestapi)
+			S3::Bucket(images)
+
+		Template: s3_existing_lambda_notification_configuration
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_existing_lambda_notification_configuration)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(images)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			Lambda::Function(thumbnailfunction)
+
+		Template: function_with_alias_and_event_sources
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_alias_and_event_sources)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Events::Rule(myawesomefunctioncwevent)
+			Lambda::Permission(myawesomefunctionimplicitapipermissiontest)
+			ApiGateway::Stage(gethtmlapistage)
+			Lambda::Permission(myawesomefunctionnotificationtopicpermission)
+			Logs::SubscriptionFilter(myawesomefunctioncwlog)
+			Lambda::Permission(myawesomefunctionexplicitapipermissionstage)
+			ApiGateway::Deployment(gethtmlapideploymentf117c932f7)
+			Lambda::Permission(myawesomefunctioncweventpermission)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Function(myawesomefunction)
+			IAM::Role(myawesomefunctionrole)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			IoT::TopicRule(myawesomefunctioniotrule)
+			Lambda::EventSourceMapping(myawesomefunctionddbstream)
+			Lambda::Permission(myawesomefunctioncwschedulepermission)
+			Lambda::Alias(myawesomefunctionaliaslive)
+			Lambda::Permission(myawesomefunctionimplicitapipermissionprod)
+			Lambda::Permission(myawesomefunctions3triggerpermission)
+			SNS::Subscription(myawesomefunctionnotificationtopic)
+			Events::Rule(myawesomefunctioncwschedule)
+			Lambda::Permission(myawesomefunctioniotrulepermission)
+			Lambda::Permission(myawesomefunctionexplicitapipermissiontest)
+			Lambda::Version(myawesomefunctionversion640128d35d)
+			ApiGateway::Deployment(serverlessrestapideployment79e6116109)
+			SNS::Topic(notifications)
+			S3::Bucket(images)
+			Lambda::Permission(myawesomefunctioncwlogpermission)
+			Lambda::EventSourceMapping(myawesomefunctionkinesisstream)
+			ApiGateway::RestApi(gethtmlapi)
+
+		Template: error_function_with_deployment_preference_missing_alias
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_with_deployment_preference_missing_alias)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: basic_function_with_tags
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(tagvalueparam -> Val)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> basic_function_with_tags)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(alexaskillfuncrole)
+			Lambda::Permission(alexaskillfuncalexaskilleventpermission)
+			Lambda::Function(alexaskillfunc)
+
+		Template: error_function_policy_template_invalid_value
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_policy_template_invalid_value)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: alexa_skill_with_skill_id
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> alexa_skill_with_skill_id)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(alexaskillfuncrole)
+			Lambda::Permission(alexaskillfuncalexaskilleventpermission)
+			Lambda::Function(alexaskillfunc)
+
+		Template: function_with_deployment_preference
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_deployment_preference)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			CodeDeploy::DeploymentGroup(minimalfunctiondeploymentgroup)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+			Lambda::Alias(minimalfunctionaliaslive)
+			IAM::Role(codedeployservicerole)
+			CodeDeploy::Application(serverlessdeploymentapplication)
+			Lambda::Version(minimalfunctionversion640128d35d)
+
+		Template: s3_with_dependsOn
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_with_dependsOn)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Function(thumbnailfunction)
+			S3::Bucket(images)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			SNS::Topic(topic)
+
+		Template: error_function_no_runtime
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_no_runtime)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: function_with_dlq
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_dlq)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(mysnsdlqlambdafunctionrole)
+			IAM::Role(mysqsdlqlambdafunctionrole)
+			Lambda::Function(mysqsdlqlambdafunction)
+			Lambda::Function(mysnsdlqlambdafunction)
+
+		Template: globals_for_api
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> globals_for_api)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(implicitapifunction)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+			ApiGateway::RestApi(serverlessrestapi)
+			ApiGateway::Stage(explicitapisomestagestage)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Deployment(serverlessrestapideployment62b96c1a61)
+			ApiGateway::RestApi(explicitapi)
+			ApiGateway::Deployment(explicitapideployment359f256a3b)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+
+		Template: api_with_resource_refs
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_resource_refs)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			ApiGateway::RestApi(myapi)
+			Lambda::Function(myfunction)
+			IAM::Role(myfunctionrole)
+			ApiGateway::Deployment(myapideployment359f256a3b)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Permission(myfunctiongethtmlpermissiontest)
+			ApiGateway::Stage(myapifoostage)
+			ApiGateway::Deployment(serverlessrestapideploymente468b80e17)
+			Lambda::Permission(myfunctiongethtmlpermissionprod)
+		 Outputs By ID: 
+			(implicitapideployment -> ApiGateway::Deployment(serverlessrestapideploymente468b80e17))
+			(explicitapideployment -> ApiGateway::Deployment(myapideployment359f256a3b))
+			(explicitapistage -> ApiGateway::Stage(myapifoostage))
+			(implicitapistage -> ApiGateway::Stage(serverlessrestapiprodstage))
+
+		Template: function_with_alias_intrinsics
+		 Parameters: 
+			(aliasname -> live)
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_alias_intrinsics)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Version(minimalfunctionversion640128d35d)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+
+		Template: api_with_cors_and_only_origins
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors_and_only_origins)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			Lambda::Permission(implicitapifunctionposthtmlpermissionprod)
+			ApiGateway::Deployment(explicitapideploymenta7a992bbb6)
+			ApiGateway::Deployment(serverlessrestapideployment4be3cdc28b)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Permission(implicitapifunctionposthtmlpermissiontest)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: cloudwatchlog
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudwatchlog)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Logs::SubscriptionFilter(triggeredfunctioncwlogevent)
+			Lambda::Function(triggeredfunction)
+			IAM::Role(triggeredfunctionrole)
+			Lambda::Permission(triggeredfunctioncwlogeventpermission)
+
+		Template: iot_rule
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> iot_rule)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(iotrulefuncmyiotrulepermission)
+			Lambda::Permission(iotrulefuncmyotheriotrulepermission)
+			IoT::TopicRule(iotrulefuncmyotheriotrule)
+			Lambda::Function(iotrulefunc)
+			IoT::TopicRule(iotrulefuncmyiotrule)
+			IAM::Role(iotrulefuncrole)
+
+		Template: api_with_binary_media_types
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_binary_media_types)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			ApiGateway::Deployment(explicitapideploymentf117c932f7)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::RestApi(serverlessrestapi)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Deployment(serverlessrestapideployment62b96c1a61)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: simple_table_with_extra_tags
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> simple_table_with_extra_tags)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(minimaltablewithtags)
+
+		Template: simple_table_with_table_name
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> simple_table_with_table_name)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(minimaltablewithtablename)
+			DynamoDB::Table(minimaltablewithreftablename)
+			DynamoDB::Table(minimaltablewithsubtablename)
+
+		Template: s3_filter
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_filter)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(images)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			Lambda::Function(thumbnailfunction)
+
+		Template: api_with_cors_no_definitionbody
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors_no_definitionbody)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			Lambda::Permission(implicitapifunctionposthtmlpermissionprod)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::Deployment(explicitapideployment4be3cdc28b)
+			Lambda::Permission(implicitapifunctionposthtmlpermissiontest)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: api_with_cors
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Deployment(serverlessrestapideploymente13d39e2d1)
+			Lambda::Function(implicitapifunction)
+			Lambda::Permission(implicitapifunctionanyapipermissionprod)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Permission(implicitapifunctionanyapipermissiontest)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::RestApi(explicitapi)
+			ApiGateway::Deployment(explicitapideployment673f662a8e)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: s3_multiple_events_same_bucket
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_multiple_events_same_bucket)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(thumbnailfunctionimagebucketcreatespermission)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Function(thumbnailfunction)
+			Lambda::Permission(thumbnailfunctionimagebucketdeletespermission)
+			S3::Bucket(images)
+
+		Template: api_with_auth_all_maximum
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_auth_all_maximum)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(myfunctionwithlambdatokenauthorizerpermissiontest)
+			Lambda::Permission(myapimylambdatokenauthnonefunctioninvokeroleauthorizerpermission)
+			ApiGateway::Deployment(myapideployment22f365e69f)
+			ApiGateway::RestApi(myapi)
+			Lambda::Permission(myfunctionwithcognitomultipleuserpoolsauthorizerpermissionprod)
+			Lambda::Function(myfunction)
+			IAM::Role(myfunctionrole)
+			Lambda::Permission(myfunctionwithlambdatokenauthorizerpermissionprod)
+			Lambda::Permission(myfunctionwithdefaultauthorizerpermissiontest)
+			Lambda::Permission(myfunctionwithnoauthorizerpermissionprod)
+			Lambda::Permission(myapimylambdatokenauthauthorizerpermission)
+			Lambda::Permission(myfunctionwithdefaultauthorizerpermissionprod)
+			Lambda::Permission(myapimylambdarequestauthauthorizerpermission)
+			Lambda::Permission(myfunctionwithlambdarequestauthorizerpermissionprod)
+			ApiGateway::Stage(myapiprodstage)
+			Lambda::Permission(myfunctionwithlambdarequestauthorizerpermissiontest)
+			Lambda::Permission(myfunctionwithcognitomultipleuserpoolsauthorizerpermissiontest)
+			Lambda::Permission(myfunctionwithnoauthorizerpermissiontest)
+
+		Template: error_globals_unsupported_property
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_globals_unsupported_property)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: function_with_deployment_preference_all_parameters
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_deployment_preference_all_parameters)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			CodeDeploy::DeploymentGroup(minimalfunctiondeploymentgroup)
+			CloudWatch::Alarm(mycloudwatchalarm)
+			Lambda::Function(minimalfunction)
+			IAM::Role(myvalidationtestfunctionrole)
+			IAM::Role(minimalfunctionrole)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Function(myvalidationtestfunction)
+			Lambda::Version(minimalfunctionversion640128d35d)
+			IAM::Role(codedeployservicerole)
+			IAM::Role(mysanitytestfunctionrole)
+			Lambda::Function(mysanitytestfunction)
+			CodeDeploy::Application(serverlessdeploymentapplication)
+
+		Template: error_invalid_logical_id
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_invalid_logical_id)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: intrinsic_functions
+		 Parameters: 
+			(functionname -> MySuperFunctionName)
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(tracingconfigparam -> PassThrough)
+			(codebucket -> sam-demo-bucket)
+			(myexplicitapiname -> SomeName)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> intrinsic_functions)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Deployment(myexplicitapideployment31ec20c228)
+			ApiGateway::RestApi(apiwithexplicits3uri)
+			Lambda::Function(functionwithexplicits3uri)
+			Lambda::Permission(myfunctionmyapipermissiondev)
+			IAM::Role(mysqsdlqlambdafunctionrole)
+			Lambda::Permission(myfunctionmyapipermissiontest)
+			ApiGateway::Deployment(apiwithexplicits3urideploymenta227798f00)
+			Lambda::EventSourceMapping(dynamodbfunctionmyddbstream)
+			IAM::Role(dynamodbfunctionrole)
+			IAM::Role(functionwithexplicits3urirole)
+			DynamoDB::Table(mytable)
+			SQS::Queue(sqsdlqqueue)
+			ApiGateway::Stage(myexplicitapidevstage)
+			Lambda::Function(mysqsdlqlambdafunction)
+			Lambda::Function(myfunction)
+			SNS::Topic(snsdlqqueue)
+			IAM::Role(mysnsdlqlambdafunctionrole)
+			ApiGateway::Stage(apiwithexplicits3uridevstage)
+			Lambda::Function(dynamodbfunction)
+			ApiGateway::RestApi(myexplicitapi)
+			Lambda::Function(mysnsdlqlambdafunction)
+
+		Template: s3
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(images)
+			IAM::Role(thumbnailfunctionrole)
+			Lambda::Permission(thumbnailfunctionimagebucketpermission)
+			Lambda::Function(thumbnailfunction)
+
+		Template: api_cache
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_cache)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Stage(htmlapiprodstage)
+			IAM::Role(htmlfunctionrole)
+			Lambda::Permission(htmlfunctiongethtmlpermissiontest)
+			Lambda::Function(htmlfunction)
+			Lambda::Permission(htmlfunctiongethtmlpermissionprod)
+			ApiGateway::RestApi(htmlapi)
+			ApiGateway::Deployment(htmlapideploymentf117c932f7)
+
+		Template: error_api_invalid_auth
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_api_invalid_auth)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_api_invalid_restapiid
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_api_invalid_restapiid)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_sns_not_in_template
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_sns_not_in_template)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_globals_unsupported_type
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_globals_unsupported_type)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_function_policy_template_with_missing_parameter
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_policy_template_with_missing_parameter)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: simpletable_with_sse
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> simpletable_with_sse)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(tablewithsse)
+
+		Template: explicit_api_with_invalid_events_config
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> explicit_api_with_invalid_events_config)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(myfunctionaddapipermissionprod)
+			Lambda::Function(myfunction)
+			IAM::Role(myfunctionrole)
+			ApiGateway::RestApi(apiwithinlineswagger)
+			Lambda::Permission(myfunctionaddapipermissiontest)
+			ApiGateway::Deployment(apiwithinlineswaggerdeployment22d399868d)
+			ApiGateway::Stage(apiwithinlineswaggerprodstage)
+
+		Template: api_with_cors_and_only_maxage
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_cors_and_only_maxage)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Deployment(explicitapideploymentb61cfb7d60)
+			ApiGateway::Stage(explicitapiprodstage)
+			ApiGateway::RestApi(explicitapi)
+
+		Template: error_api_invalid_definitionbody
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_api_invalid_definitionbody)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: cloudwatchevent
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloudwatchevent)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(scheduledfunctionrole)
+			Lambda::Permission(scheduledfunctionschedulepermission)
+			IAM::Role(triggeredfunctionrole)
+			Lambda::Function(scheduledfunction)
+			Events::Rule(triggeredfunctiononterminate)
+			Lambda::Function(triggeredfunction)
+			Events::Rule(scheduledfunctionschedule)
+			Lambda::Permission(triggeredfunctiononterminatepermission)
+
+		Template: s3_multiple_functions
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> s3_multiple_functions)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(functiontwoimagebucketpermission)
+			Lambda::Function(functionone)
+			IAM::Role(functiontworole)
+			IAM::Role(functiononerole)
+			Lambda::Permission(functiononeimagebucketpermission)
+			S3::Bucket(images)
+			Lambda::Function(functiontwo)
+
+		Template: api_with_method_settings
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_method_settings)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::RestApi(explicitapi)
+			ApiGateway::Deployment(explicitapideploymentf117c932f7)
+			Lambda::Function(implicitapifunction)
+			ApiGateway::RestApi(serverlessrestapi)
+			IAM::Role(implicitapifunctionrole)
+			ApiGateway::Deployment(serverlessrestapideployment62b96c1a61)
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissionprod)
+			ApiGateway::Stage(explicitapiprodstage)
+			Lambda::Permission(implicitapifunctiongethtmlpermissiontest)
+
+		Template: function_with_deployment_preference_multiple_combinations
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_deployment_preference_multiple_combinations)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(minimalfunctionwithdeploymentpreferencewithhooksandalarms)
+			CodeDeploy::DeploymentGroup(minimalfunctionwithminimaldeploymentpreferencedeploymentgroup)
+			CloudWatch::Alarm(mycloudwatchalarm)
+			IAM::Role(minimalfunctionrole)
+			Lambda::Version(minimalfunctionwithdeploymentpreferencewithhooksandalarmsversion640128d35d)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Version(minimalfunctionwithminimaldeploymentpreferenceversion640128d35d)
+			IAM::Role(minimalfunctionwithminimaldeploymentpreferencerole)
+			Lambda::Function(minimalfunctionwithminimaldeploymentpreference)
+			IAM::Role(minimalfunctionwithdeploymentpreferencewithhooksandalarmsrole)
+			Lambda::Function(minimalfunction)
+			Lambda::Alias(minimalfunctionwithdeploymentpreferencewithhooksandalarmsaliaslivewithdeploymentwithhooksandalarms)
+			IAM::Role(myvalidationtestfunctionrole)
+			IAM::Role(codedeployservicerole)
+			IAM::Role(mysanitytestfunctionrole)
+			Lambda::Function(mysanitytestfunction)
+			CodeDeploy::Application(serverlessdeploymentapplication)
+			CodeDeploy::DeploymentGroup(minimalfunctionwithdeploymentpreferencewithhooksandalarmsdeploymentgroup)
+			Lambda::Function(myvalidationtestfunction)
+			Lambda::Version(minimalfunctionversion640128d35d)
+			Lambda::Alias(minimalfunctionwithminimaldeploymentpreferencealiaslivewithdeployment)
+
+		Template: error_invalid_cors_dict
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_invalid_cors_dict)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_function_no_handler
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_no_handler)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: explicit_api
+		 Parameters: 
+			(mystagename -> Production)
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> explicit_api)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(gethtmlfunction)
+			ApiGateway::Stage(gethtmlapistage)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissiontest)
+			ApiGateway::Stage(apiwithinlineswaggerstage)
+			IAM::Role(gethtmlfunctionrole)
+			ApiGateway::RestApi(gethtmlapi)
+			ApiGateway::RestApi(apiwithinlineswagger)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissionstage)
+			ApiGateway::Deployment(gethtmlapideploymentf117c932f7)
+			ApiGateway::Deployment(apiwithinlineswaggerdeployment09cda3d97b)
+
+		Template: basic_function
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> basic_function)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(functionwithinlinecode)
+			Lambda::Function(functionwithpolicydocument)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+			IAM::Role(functionwithpolicydocumentrole)
+			IAM::Role(myfunctionrole)
+			IAM::Role(functionwithtracingrole)
+			IAM::Role(functionwithcodeuriobjectrole)
+			Lambda::Function(functionwithpolicies)
+			Lambda::Function(functionwithtracing)
+			IAM::Role(functionwithinlinecoderole)
+			Lambda::Function(completefunction)
+			Lambda::Function(functionwithcodeuriobject)
+			Lambda::Function(functionwithroleref)
+			IAM::Role(functionwithpoliciesrole)
+
+		Template: error_function_invalid_codeuri
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_invalid_codeuri)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: implicit_api
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> implicit_api)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Stage(serverlessrestapiprodstage)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissionprod)
+			Lambda::Function(gethtmlfunction)
+			ApiGateway::Deployment(serverlessrestapideployment127e3fb911)
+			Lambda::Permission(gethtmlfunctiongethtmlpermissiontest)
+			Lambda::Function(restapifunction)
+			Lambda::Permission(restapifunctiongetlistpermissionprod)
+			Lambda::Permission(restapifunctionadditempermissionprod)
+			Lambda::Permission(restapifunctioncompleteitempermissionprod)
+			Lambda::Permission(restapifunctiongetlistpermissiontest)
+			Lambda::Permission(restapifunctionadditempermissiontest)
+			ApiGateway::RestApi(serverlessrestapi)
+			Lambda::Permission(restapifunctioncompleteitempermissiontest)
+			IAM::Role(restapifunctionrole)
+			IAM::Role(gethtmlfunctionrole)
+
+		Template: sqs
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> sqs)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(sqsfunctionrole)
+			Lambda::Function(sqsfunction)
+			Lambda::EventSourceMapping(sqsfunctionmysqsqueue)
+
+		Template: error_table_invalid_attributetype
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_table_invalid_attributetype)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_reserved_sam_tag
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_reserved_sam_tag)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_s3_not_in_template
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_s3_not_in_template)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_missing_startingposition
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_missing_startingposition)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: function_with_policy_templates
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(functionnameparam -> NoValue)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_policy_templates)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(onepolicytemplaterole)
+			IAM::Role(allcombinationsrole)
+			Lambda::Function(onepolicytemplate)
+			IAM::Role(multiplepolicytemplatesrole)
+			Lambda::Function(multiplepolicytemplates)
+			Lambda::Function(allcombinations)
+
+		Template: function_with_deployment_and_custom_role
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_deployment_and_custom_role)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			CodeDeploy::DeploymentGroup(minimalfunctiondeploymentgroup)
+			Lambda::Function(minimalfunction)
+			IAM::Role(deploymentrole)
+			IAM::Role(minimalfunctionrole)
+			CodeDeploy::DeploymentGroup(functionwithroledeploymentgroup)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Version(functionwithroleversion640128d35d)
+			IAM::Role(codedeployservicerole)
+			CodeDeploy::Application(serverlessdeploymentapplication)
+			Lambda::Alias(functionwithrolealiaslive)
+			Lambda::Function(functionwithrole)
+			Lambda::Version(minimalfunctionversion640128d35d)
+
+		Template: error_function_with_unknown_policy_template
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_with_unknown_policy_template)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: api_with_auth_all_minimum
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_auth_all_minimum)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(myfnlambdatokenpermissiontest)
+			Lambda::Permission(myfncognitopermissionprod)
+			Lambda::Permission(myfnlambdarequestpermissionprod)
+			Lambda::Permission(myfnlambdarequestpermissiontest)
+			ApiGateway::RestApi(myapiwithlambdatokenauth)
+			ApiGateway::Deployment(myapiwithlambdarequestauthdeployment6e52add211)
+			ApiGateway::RestApi(myapiwithlambdarequestauth)
+			ApiGateway::RestApi(myapiwithcognitoauth)
+			ApiGateway::Deployment(myapiwithcognitoauthdeployment62312fa971)
+			ApiGateway::Stage(myapiwithlambdarequestauthprodstage)
+			IAM::Role(myfnrole)
+			Lambda::Permission(myfncognitopermissiontest)
+			Lambda::Function(myfn)
+			Lambda::Permission(myapiwithlambdatokenauthmylambdatokenauthauthorizerpermission)
+			Lambda::Permission(myapiwithlambdarequestauthmylambdarequestauthauthorizerpermission)
+			ApiGateway::Stage(myapiwithlambdatokenauthprodstage)
+			ApiGateway::Stage(myapiwithcognitoauthprodstage)
+			Lambda::Permission(myfnlambdatokenpermissionprod)
+			ApiGateway::Deployment(myapiwithlambdatokenauthdeployment445c6c96e7)
+
+		Template: function_with_alias
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_alias)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Version(minimalfunctionversion640128d35d)
+			Lambda::Alias(minimalfunctionaliaslive)
+			Lambda::Function(minimalfunction)
+			IAM::Role(minimalfunctionrole)
+
+		Template: function_with_kmskeyarn
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> function_with_kmskeyarn)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(functionwithkeyarnrole)
+			Lambda::Function(functionwithkeyarn)
+			KMS::Key(mykey)
+			Lambda::Function(functionwithreferencetokeyarn)
+			IAM::Role(functionwithreferencetokeyarnrole)
+
+		Template: existing_permission_logical_id
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> existing_permission_logical_id)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: existing_role_logical_id
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> existing_role_logical_id)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: cloudwatch_logs_with_ref
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(loggroupname -> MyCWLogGroup)
+			(aws::stackname -> cloudwatch_logs_with_ref)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+			(filterpattern -> My filter pattern)
+			(aws::urlsuffix -> .aws)
+		 Resources: 
+			Logs::SubscriptionFilter(triggeredfunctioncwlogevent)
+			Lambda::Function(triggeredfunction)
+			IAM::Role(triggeredfunctionrole)
+			Lambda::Permission(triggeredfunctioncwlogeventpermission)
+
+		Template: error_globals_api_with_stage_name
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_globals_api_with_stage_name)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_api_invalid_definitionuri
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_api_invalid_definitionuri)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: all_policy_templates
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> all_policy_templates)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Function(kitchensinkfunction)
+			IAM::Role(kitchensinkfunctionrole)
+
+		Template: depends_on
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> depends_on)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			ApiGateway::Stage(myexplicitapidevstage)
+			Lambda::Permission(myfunctionmyapipermissiondev)
+			Lambda::Function(myfunction)
+			IAM::Role(myfunctionrole)
+			Lambda::Permission(myfunctionmyapipermissiontest)
+			ApiGateway::Deployment(myexplicitapideployment74b681ce04)
+			ApiGateway::RestApi(myexplicitapi)
+			DynamoDB::Table(myothertable)
+			DynamoDB::Table(mysamtable)
+
+		Template: error_function_with_invalid_policy_statement
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_with_invalid_policy_statement)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: error_invalid_resource_parameters
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_invalid_resource_parameters)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+		Template: simple_table_ref_parameter_intrinsic
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> simple_table_ref_parameter_intrinsic)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(minimaltablerefparamlongform)
+
+		Template: sns
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> sns)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(savenotificationfunctionrole)
+			Lambda::Function(savenotificationfunction)
+			Lambda::Permission(savenotificationfunctionnotificationtopicpermission)
+			SNS::Subscription(savenotificationfunctionnotificationtopic)
+			SNS::Topic(notifications)
+
+		Template: api_with_auth_no_default
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> api_with_auth_no_default)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(myfnlambdatokenpermissiontest)
+			Lambda::Permission(myfncognitopermissionprod)
+			Lambda::Permission(myfnlambdarequestpermissionprod)
+			ApiGateway::RestApi(myapiwithlambdatokenauth)
+			ApiGateway::RestApi(myapiwithcognitoauth)
+			ApiGateway::Stage(myapiwithlambdarequestauthprodstage)
+			IAM::Role(myfnrole)
+			ApiGateway::Deployment(myapiwithcognitoauthdeployment039b508d89)
+			Lambda::Permission(myfncognitopermissiontest)
+			ApiGateway::Deployment(myapiwithlambdatokenauthdeployment50695ee60b)
+			Lambda::Permission(myfnlambdarequestpermissiontest)
+			ApiGateway::Deployment(myapiwithlambdarequestauthdeployment7d0d103fdf)
+			ApiGateway::RestApi(myapiwithlambdarequestauth)
+			Lambda::Function(myfn)
+			Lambda::Permission(myapiwithlambdatokenauthmylambdatokenauthauthorizerpermission)
+			Lambda::Permission(myapiwithlambdarequestauthmylambdarequestauthauthorizerpermission)
+			ApiGateway::Stage(myapiwithlambdatokenauthprodstage)
+			ApiGateway::Stage(myapiwithcognitoauthprodstage)
+			Lambda::Permission(myfnlambdatokenpermissionprod)
+
+		Template: simpletable
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> simpletable)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			DynamoDB::Table(minimaltable)
+			DynamoDB::Table(completetable)
+
+		Template: alexa_skill
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> alexa_skill)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			IAM::Role(alexaskillfuncrole)
+			Lambda::Permission(alexaskillfuncalexaskilleventpermission)
+			Lambda::Function(alexaskillfunc)
+
+		Template: error_function_with_invalid_deployment_preference_hook_property
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> error_function_with_invalid_deployment_preference_hook_property)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+
+

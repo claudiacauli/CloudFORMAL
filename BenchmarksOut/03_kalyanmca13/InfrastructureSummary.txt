@@ -1,0 +1,29 @@
+
+Infrastructure: 03_kalyanmca13, includes StackSets: 
+ - kalyanmca13awsservStackSet 
+
+	StackSet: kalyanmca13awsservStackSet, includes Templates: 
+		Template: kalyanmca13
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(codebucket -> awslambda-reference-architectures)
+			(codekeyprefix -> file-processing)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> kalyanmca13)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(lambdainvokepermissionone)
+			Lambda::Function(processorfunctiontwo)
+			S3::Bucket(outputbucket)
+			S3::Bucket(inputbucket)
+			Lambda::Permission(lambdainvokepermissiontwo)
+			IAM::Policy(rolepolicy)
+			IAM::Role(lambdaexecutionrole)
+			Lambda::Function(processorfunctionone)
+			SNS::TopicPolicy(notificationpolicy)
+			SNS::Topic(inputnotificationtopic)
+
+

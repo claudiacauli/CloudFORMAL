@@ -50,6 +50,7 @@ extends StrictLogging
   private[templates] val outputByExportName = getOutputsMapByExportName
 
 
+
   def updateResourcesNames() : Unit = {
     resourceEncoders foreach (rE => {
       if (rE._2 == null) println ("Resource encoder has encoder null!")

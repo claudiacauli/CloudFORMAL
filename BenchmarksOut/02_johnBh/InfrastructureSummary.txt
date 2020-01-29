@@ -1,0 +1,28 @@
+
+Infrastructure: 02_johnBh, includes StackSets: 
+ - johnBhStackSet 
+
+	StackSet: johnBhStackSet, includes Templates: 
+		Template: johnBh
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> johnBh)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			Lambda::Permission(uploadedfilesbucketpermission)
+			ApiGateway::Method(videosgetmethod)
+			Lambda::Function(updatedynamodblambda)
+			ApiGateway::RestApi(restapi)
+			S3::Bucket(uploadedfiles)
+			SNS::Topic(transcodingfailed)
+			Lambda::Function(transcodelambda)
+			ApiGateway::Resource(videosresource)
+			DynamoDB::Table(videos)
+			S3::Bucket(transcodedfiles)
+			SNS::Topic(transcodingcomplete)
+
+

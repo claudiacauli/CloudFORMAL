@@ -1,0 +1,49 @@
+
+Infrastructure: 10_samuelweckstrom, includes StackSets: 
+ - firstImpressions 
+
+	StackSet: firstImpressions, includes Templates: 
+		Template: cloud
+		 Parameters: 
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(aws::partition -> aws)
+			(aws::region -> us-east-1)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> cloud)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+		 Resources: 
+			S3::Bucket(createwatermarkedbucket)
+			S3::BucketPolicy(createwatermarkedbucketpolicy)
+			SNS::Subscription(createthumbnailssubscription)
+			Logs::LogGroup(createthumbnailsloggroup)
+			Lambda::Function(createwatermarkedlambdafunction)
+			S3::BucketPolicy(createmobilevideobucketpolicy)
+			Lambda::Permission(creategiflambdafunctionpermission)
+			S3::Bucket(createmobilevideobucket)
+			Lambda::Permission(createwatermarkedlambdafunctionpermission)
+			Logs::LogGroup(creategifloggroup)
+			SNS::TopicPolicy(mediasourcetopicpolicy)
+			Lambda::Permission(createthumbnailslambdafunctionpermission)
+			Lambda::Permission(createmobilevideolambdafunctionpermission)
+			SNS::Subscription(createwatermarkedsubscription)
+			S3::BucketPolicy(createthumbnailsbucketpolicy)
+			S3::Bucket(mediasourcebucket)
+			Lambda::Function(createmobilevideolambdafunction)
+			S3::Bucket(createthumbnailsbucket)
+			S3::BucketPolicy(creategifbucketpolicy)
+			Logs::LogGroup(createmobilevideologgroup)
+			S3::BucketPolicy(mediasourcebucketpolicy)
+			IAM::Role(iamrolelambdaexecution)
+			SNS::Topic(mediasourcetopic)
+			Lambda::Function(createthumbnailslambdafunction)
+			Logs::LogGroup(createwatermarkedloggroup)
+			SNS::Topic(createwatermarkedtopic)
+			SNS::Subscription(creategifsubscription)
+			Lambda::Function(creategiflambdafunction)
+			S3::Bucket(creategifbucket)
+			SNS::Subscription(createmobilevideosubscription)
+		 Outputs By ID: 
+			(serverlessdeploymentbucketname -> dev-first-impression-deployment)
+
+
