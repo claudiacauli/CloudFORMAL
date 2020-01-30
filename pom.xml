@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>default</groupId>
-    <artifactId>cloudformal_2.13</artifactId>
-    <packaging>jar</packaging>
+    <groupId>com.cloud.formal</groupId>
+    <artifactId>CloudFORMAL</artifactId>
     <description>CloudFORMAL</description>
-    <version>0.1</version>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <licenses>
         <license>
             <name>Apache-2.0</name>
@@ -15,7 +18,7 @@
     </licenses>
     <name>CloudFORMAL</name>
     <organization>
-        <name>default</name>
+        <name>Claudia Cauli</name>
     </organization>
     <dependencies>
         <dependency>
@@ -82,22 +85,62 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>CloudFORMAL</finalName>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <plugins>
+
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>4.2.0</version>
-                        <configuration>
-                            <launchers>
-                                <launcher>
-                                    <id>Main</id>
-                                    <mainClass>com.cloud.formal.Main</mainClass>
-                                </launcher>
-                            </launchers>
-                        </configuration>
+                <configuration>
+                    <launchers>
+                        <launcher>
+                            <id>Main</id>
+                            <mainClass>com.cloud.formal.Main</mainClass>
+                        </launcher>
+                    </launchers>
+                    <args>
+                        <arg>-deprecation</arg>
+                    </args>
+                </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <finalName>ExecCloudFORMAL</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <attach>false</attach>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.cloud.formal.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.8.2</version>
+            </plugin>
+
         </plugins>
     </build>
 </project>
