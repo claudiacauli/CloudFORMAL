@@ -37,10 +37,30 @@
     "AWS::Transfer::Server.EndpointDetails": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-endpointdetails.html",
       "Properties": {
+        "AddressAllocationIds": {
+          "PrimitiveItemType": "String",
+          "Type": "List",
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-endpointdetails.html#cfn-transfer-server-endpointdetails-addressallocationids",
+          "UpdateType": "Mutable"
+        },
+        "VpcId": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-endpointdetails.html#cfn-transfer-server-endpointdetails-vpcid",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
         "VpcEndpointId": {
-          "Required": true,
+          "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-endpointdetails.html#cfn-transfer-server-endpointdetails-vpcendpointid",
           "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "SubnetIds": {
+          "PrimitiveItemType": "String",
+          "Type": "List",
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-transfer-server-endpointdetails.html#cfn-transfer-server-endpointdetails-subnetids",
           "UpdateType": "Mutable"
         }
       }
@@ -54,6 +74,9 @@
           "PrimitiveType": "String"
         },
         "Arn": {
+          "PrimitiveType": "String"
+        },
+        "VpcEndpointId": {
           "PrimitiveType": "String"
         }
       },
@@ -98,5 +121,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "10.3.0"
+  "ResourceSpecificationVersion": "10.4.0"
 }
