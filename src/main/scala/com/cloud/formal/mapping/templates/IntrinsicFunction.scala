@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets
 import java.util.Base64
 
 import com.cloud.formal.mapping.Specification
-import com.typesafe.scalalogging.StrictLogging
+import com.typesafe.scalalogging.{LazyLogging, StrictLogging}
 
 import scala.language.postfixOps
 
@@ -116,7 +116,7 @@ private final case class GetAttFunction ( optRE: Option[Json2ResourceEncoder],
             logger.warn(s"Cannot evaluate Fn::GetAtt(${resourceName.v},${attributeName.v}). " +
               "If you wish to evaluate attributes add an \"Attributes\" block in addition to " +
               "the \"Properties\" block under the target resource.")
-            StringNode(resourceName + "_attribute_" + attributeName)
+            StringNode(resourceName.v + "_attribute_" + attributeName.v)
         }
     }
     else NoValue
@@ -136,7 +136,7 @@ private final case class GetAZsFunction() extends
   {
     //println("Need to implement a GetAZ Function")
     // TODO: This is an absolutely fake list
-    ListNode[StringNode]( Vector(StringNode(reg+"a"), StringNode(reg+"b"), StringNode(reg+"c")) )
+    ListNode[StringNode]( Vector(StringNode(reg.v+"a"), StringNode(reg.v+"b"), StringNode(reg.v+"c")) )
   }
 }
 
@@ -175,6 +175,7 @@ private final case class ImportValueFunction( tE: Json2TemplateEncoder,
 private final case class JoinFunction()
   extends IntrinsicFunction
   with ((StringNode, ListNode[Node]) => Node)
+  with LazyLogging
 {
   def apply(delimiter: StringNode, segments: ListNode[Node]): StringNode =
   {
@@ -184,9 +185,12 @@ private final case class JoinFunction()
       case FloatNode(f)                 => f.toString
       case LongNode(f)                  => f.toString
       case DoubleNode(d)                => d.toString
+      case BooleanNode(b)               => b.toString
       case ExternalResource(n,_)        => n
       case StackSetResource(id,_,_,_,_,_) => id
       case NoValue => ""
+      case _ => logger.warn(s"Cannot Evaluate Fn::Joing function. Received unexpected value")
+        ""
       }).mkString(delimiter.value))
   }
 }
@@ -291,7 +295,7 @@ private final case class RefFunction(optRE: Option[Json2ResourceEncoder],
       case StringNode(s) if s.startsWith(Specification.ArnHead) =>
         ArnFunction(optRE,tE)(s) match {
           case ListOfResources(v) if v.size==1 =>
-            println("Here the Ref Function is returning only one resource!")
+            //println("Here the Ref Function is returning only one resource!")
             updateResourceByArnMap(optRE,v.head,s)
             v.head
           case l:ListOfResources => l
@@ -306,7 +310,8 @@ private final case class RefFunction(optRE: Option[Json2ResourceEncoder],
             if (tE.resources!=null)
             tE.resources.find(_._2.resourceName ==
               node.v.toLowerCase) match {
-              case None => tE.parameters(s)
+              case None =>
+                tE.parameters(s)
               case Some(p) => p._2
           } else tE.parameters(s)
           case _ => tE.parameters(s)

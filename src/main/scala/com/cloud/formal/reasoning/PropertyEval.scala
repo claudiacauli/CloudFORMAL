@@ -27,7 +27,7 @@ import org.semanticweb.owlapi.model.{OWLClassExpression, _}
 import org.semanticweb.owlapi.reasoner.NodeSet
 import org.semanticweb.owlapi.util.{BidirectionalShortFormProviderAdapter, SimpleShortFormProvider}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 
 class PropertyEval(val r: Reasoner, val o: OWLOntology, val df: OWLDataFactory, val m: OWLOntologyManager) {
@@ -38,13 +38,17 @@ class PropertyEval(val r: Reasoner, val o: OWLOntology, val df: OWLDataFactory, 
   (runQueryFun: ((=> OWLClassExpression) => Boolean) => (=>OWLClassExpression) => (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) )
   (satCheckFun: Boolean => (=>OWLClassExpression) => Boolean) = {
 
-    try {
-//      if (printEnabled && hasRequiredResourceTypes(o,p))
-//        println(p.id+"\t" + makeQuery(p))
-      val outcome = evalProperty(p)(runQueryFun)(satCheckFun)
-      if (printEnabled) println(p.getPassOrFilePrint(outcome)+","+p.id + "," + p.getOutcomePrint(outcome))
-      Some(outcome)
-    } catch {
+    try
+    {
+      val oc = evalProperty(p)(runQueryFun)(satCheckFun)
+
+      if (printEnabled)
+        printf(s" %7s\t%-55s%-8s\n",p.getPassOrFilePrint(color = true,oc),p.id,p.getTrueOrFalsePrint(oc))
+
+      Some(oc)
+    }
+    catch
+    {
       case e: ParserException =>
         println("\t\t Could not parse the string expression " + makeQuery(p))
         println(e.getMessage)

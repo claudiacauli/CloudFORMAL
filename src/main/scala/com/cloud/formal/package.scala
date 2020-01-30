@@ -44,6 +44,7 @@ package object formal
   object SysUtil extends Enumeration
   {
     val UserHome        = "user.home"
+    val CurrentDir      = "user.dir"
     val DSStore         = "DS_Store"
   }
 
@@ -130,7 +131,7 @@ package object formal
   object AwsOntology
   {
     val Name  = "aws"
-    val StringIRI:String  = Ontology.VersionIRI + Name
+    val StringIRI:String  = Ontology.VersionIRI.getIRIString + Name
     val Pound: String     = Ontology.Pound
 
     val ExternalResource  = "ExternalResource"

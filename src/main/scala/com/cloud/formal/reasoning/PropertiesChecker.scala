@@ -18,10 +18,12 @@ package com.cloud.formal.reasoning
 
 import java.io.{File, PrintWriter}
 
-import com.cloud.formal.FileSuffix
+import com.cloud.formal.{FileSuffix, SysUtil}
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model.{OWLClassExpression, OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
 import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet}
+
+import Console.{RESET, UNDERLINED}
 
 class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager, dir: String) {
 
@@ -35,7 +37,8 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
   def run(printEnabled: Boolean)(runQueryFun: ((=> OWLClassExpression) => Boolean) => (=>OWLClassExpression) => (QueryOutcome,Option[NodeSet[OWLNamedIndividual]]) )
          (satCheckFun: Boolean => (=> OWLClassExpression) => Boolean): Unit =
   {
-    val pw = new PrintWriter(new File(dir+"/"+name+FileSuffix.ReportCsv))
+    val reportFileName = dir+"/"+name+FileSuffix.ReportCsv
+    val pw = new PrintWriter(new File(reportFileName))
     var reportString = ""
     try {
       classify()
@@ -44,9 +47,13 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
         outcome match {
           case None      => reportString += (p._2.id+","+"N/A\n")
           case Some(oc)  =>
-            reportString += (p._2.getPassOrFilePrint(oc)+","+p._2.id + "," + p._2.getOutcomePrint(oc)+"\n")
+            reportString += (p._2.getPassOrFilePrint(color = false, oc)+","+p._2.id + "," + p._2.getOutcomePrint(oc)+"\n")
         }
       })
+
+      if (printEnabled)
+        println(s"\n See report file: $UNDERLINED${reportFileName.replace(System.getProperty(SysUtil.UserHome),"~")}$RESET\n")
+
       pw.write(reportString)
     } catch {
       case e: InconsistentOntologyException

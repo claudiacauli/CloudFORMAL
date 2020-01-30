@@ -43,7 +43,7 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
   {
 
     val axiomsCountPrint = "[Logical Axioms Count: "+ontology.getLogicalAxiomCount(Imports.INCLUDED)+"]"
-    if (printEnabled) println(f"\t\t$axiomsCountPrint%-5s")
+    if (printEnabled) println(f"\t\t\t$axiomsCountPrint%-5s")
 
     classificationFunction(reasoner)
 
@@ -51,10 +51,10 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
       .getUnsatisfiableClasses.getEntitiesMinusBottom
 
     if (!unsatisfiable.isEmpty) {
-      println("The model is inconsistent. The following classes are unsatisfiable: ")
+      println("\tThe model is inconsistent. The following classes are unsatisfiable: ")
       unsatisfiable.forEach(c => println(c.getIRI.getFragment))
     }
-    else if (printEnabled) println("The model is consistent and there are no unsatisfiable classes\n")
+    else if (printEnabled) println("\t (The model is consistent: no unsatisfiable classes)\n")
   }
 
 

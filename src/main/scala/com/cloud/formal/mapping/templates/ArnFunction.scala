@@ -33,6 +33,7 @@ private final case class ArnFunction(optRE:Option[Json2ResourceEncoder],
           case v => //ListOfResources(v)
             v.head
         }
+      case _ => ExternalResource("UnresolvedArn")
     }
 }
 

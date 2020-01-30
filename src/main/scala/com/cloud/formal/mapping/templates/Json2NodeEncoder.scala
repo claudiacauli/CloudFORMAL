@@ -94,21 +94,25 @@ extends LazyLogging
 
 
   private def encodeValueNode(j: Json, spT: Option[(String,String)])=
-    spT match {
+  {
+    val ret = spT match {
       case Some((_, spt))
       => matchNodeBySubpropType(j, spt)
       case None
       => matchNodeByJsonType(j)
     }
+    ret
+  }
+
 
 
 
   private def encodeArrayNode(j: Json, spT:Option[(String,String)]) =
-    ListNode(
-      j.array.get
-        .map (ji => encode(ji,spT))
-        .toVector
-    )
+  {
+    val vec = j.array.get.map (ji => encode(ji,spT)).toVector
+    ListNode(vec)
+  }
+
 
 
   private def encodeMapProperty(j: Json, spT: String) = {

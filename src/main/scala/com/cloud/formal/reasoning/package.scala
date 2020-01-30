@@ -17,6 +17,7 @@
 package com.cloud.formal
 
 import argonaut.Json
+import Console.{GREEN,RED,RESET}
 
 package object reasoning {
 
@@ -46,6 +47,8 @@ package object reasoning {
   {
     final val PASS = "PASS"
     final val FAIL = "FAIL"
+    final val greenPASS = s"${GREEN}PASS$RESET"
+    final val redFAIL = s"${RED}FAIL$RESET"
   }
 
   private[formal]

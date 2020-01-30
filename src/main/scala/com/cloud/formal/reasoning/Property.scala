@@ -17,12 +17,11 @@
 package com.cloud.formal.reasoning
 
 import com.cloud.formal.reasoning.PropertyType.PropertyType
-import com.cloud.formal.reasoning.QueryBuildType.QueryBuildType
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
 import org.semanticweb.owlapi.model.OWLNamedIndividual
 import org.semanticweb.owlapi.reasoner.NodeSet
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import Console.{BOLD, RESET}
 
 
@@ -37,28 +36,27 @@ sealed trait Property {
   val sat1print: Option[String]
 
   def truePrint(print: String) =
-    s"$RESET$BOLD${Color.Green}${FourValues.TRUE}$RESET,$print"
+    s"$BOLD${Color.Green}${FourValues.TRUE}$RESET,$print"
   def trueBWPrint(print: String) =
     s"${FourValues.TRUE},$print"
 
-//  def unknownPrint(print: String) =
-//    s"$RESET$BOLD${Color.LightRed}UNKNOWN$RESET\t$print"
   def unknownFalsePrint(print: String) =
-    s"$RESET$BOLD${Color.LightRed}${FourValues.MAYBE_FALSE}$RESET,$print"
+    s"$BOLD${Color.LightRed}${FourValues.MAYBE_FALSE}$RESET,$print"
   def unknownFalseBWPrint(print: String) =
     s"${FourValues.MAYBE_FALSE},$print"
 
   def unknownTruePrint(print: String) =
-    s"$RESET$BOLD${Color.LightGreen}${FourValues.MAYBE_TRUE}$RESET,$print"
+    s"$BOLD${Color.LightGreen}${FourValues.MAYBE_TRUE}$RESET,$print"
   def unknownTrueBWPrint(print: String) =
     s"${FourValues.MAYBE_TRUE},$print"
 
   def falsePrint(print: String) =
-    s"$RESET$BOLD${Color.Red}${FourValues.FALSE}$RESET,$print"
+    s"$BOLD${Color.Red}${FourValues.FALSE}$RESET,$print"
   def falseBWPrint(print: String) =
     s"${FourValues.FALSE},$print"
 
-  def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
+  def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
+  def getTrueOrFalsePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
   def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
 }
 
@@ -74,9 +72,19 @@ case class TFFproperty(id: String,
 {
   val propType: PropertyType = PropertyType.TFF
 
-  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
-    else PassFailOutcome.FAIL
+  override def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if      (!color && outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
+    else if (!color) PassFailOutcome.FAIL
+    else if (color && outcome._1==QueryOutcome.UNSAT) PassFailOutcome.greenPASS
+    else    PassFailOutcome.redFAIL
+
+  override def getTrueOrFalsePrint(outcome:(QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) = {
+    outcome._1 match {
+      case QueryOutcome.UNSAT => FourValues.TRUE
+      case QueryOutcome.SAT0  => FourValues.MAYBE_FALSE
+      case QueryOutcome.SAT1  => FourValues.FALSE
+    }
+  }
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -87,13 +95,14 @@ case class TFFproperty(id: String,
           s.entities().iterator().asScala.
             foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
+      case _ => ""
     }
   }
 
 }
 
 case class TTFproperty(id: String,
-                       reqResTypes: Option[Vector[String]],
+                  reqResTypes: Option[Vector[String]],
                   propQuery:String,
                   description: Option[String],
                   unsatPrint: Option[String],
@@ -102,9 +111,19 @@ case class TTFproperty(id: String,
 {
   val propType: PropertyType = PropertyType.TTF
 
-  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
-    else PassFailOutcome.FAIL
+  override def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if      (!color && outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
+    else if (!color) PassFailOutcome.FAIL
+    else if (color && outcome._1==QueryOutcome.SAT1) PassFailOutcome.greenPASS
+    else    PassFailOutcome.redFAIL
+
+  override def getTrueOrFalsePrint(outcome:(QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) = {
+    outcome._1 match {
+      case QueryOutcome.UNSAT => FourValues.TRUE
+      case QueryOutcome.SAT0  => FourValues.TRUE
+      case QueryOutcome.SAT1  => FourValues.FALSE
+    }
+  }
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -115,6 +134,8 @@ case class TTFproperty(id: String,
           s.entities().iterator().asScala.
             foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
+      case _ => ""
+
     }
   }
 }
@@ -131,9 +152,19 @@ case class FTTproperty(id: String,
 {
   val propType: PropertyType = PropertyType.FTT
 
-  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
-    else PassFailOutcome.FAIL
+  override def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if      (!color && outcome._1==QueryOutcome.UNSAT) PassFailOutcome.PASS
+    else if (!color) PassFailOutcome.FAIL
+    else if (color && outcome._1==QueryOutcome.UNSAT) PassFailOutcome.greenPASS
+    else    PassFailOutcome.redFAIL
+
+  override def getTrueOrFalsePrint(outcome:(QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) = {
+    outcome._1 match {
+      case QueryOutcome.UNSAT => FourValues.FALSE
+      case QueryOutcome.SAT0  => FourValues.MAYBE_TRUE
+      case QueryOutcome.SAT1  => FourValues.TRUE
+    }
+  }
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -145,6 +176,8 @@ case class FTTproperty(id: String,
           s.entities().iterator().asScala.
             foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
+      case _ => ""
+
     }
   }
 }
@@ -159,9 +192,19 @@ case class FFTproperty(id: String,
 {
   val propType: PropertyType = PropertyType.FFT
 
-  override def getPassOrFilePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
-    if (outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
-    else PassFailOutcome.FAIL
+  override def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) =
+    if      (!color && outcome._1==QueryOutcome.SAT1) PassFailOutcome.PASS
+    else if (!color) PassFailOutcome.FAIL
+    else if (color && outcome._1==QueryOutcome.SAT1) PassFailOutcome.greenPASS
+    else    PassFailOutcome.redFAIL
+
+  override def getTrueOrFalsePrint(outcome:(QueryOutcome, Option[NodeSet[OWLNamedIndividual]])) = {
+    outcome._1 match {
+      case QueryOutcome.UNSAT => FourValues.FALSE
+      case QueryOutcome.SAT0  => FourValues.FALSE
+      case QueryOutcome.SAT1  => FourValues.TRUE
+    }
+  }
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
@@ -173,6 +216,8 @@ case class FFTproperty(id: String,
           s.entities().iterator().asScala.
             foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
+      case _ => ""
+
     }
   }
 }

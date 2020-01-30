@@ -22,7 +22,7 @@ import java.nio.file.{Files, Paths}
 import java.util
 
 import argonaut.{Json, Parse}
-import com.cloud.formal.{FileSuffix, Extension, FilePath, Ontology, SysUtil}
+import com.cloud.formal.{Extension, FilePath, FileSuffix, Ontology, SysUtil}
 import com.cloud.formal.mapping.specifications.ResourceSpecificationModel
 import com.cloud.formal.mapping.templates.mapping.InfrastructureModel
 import com.cloud.formal.mapping.templates.{Infrastructure, Json2InfrastructureEncoder}
@@ -32,7 +32,7 @@ import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.model
 import org.semanticweb.owlapi.model._
 
-import Console.{BOLD, RESET}
+import Console.{BOLD, RESET, UNDERLINED}
 import scala.io.Source
 
 
@@ -42,7 +42,7 @@ object Interface extends LazyLogging{
 
 
 
-  def compileAndSaveSpecification(inPath: String, printEnabled: Boolean = true): Unit = {
+  def compileAndSaveSpecification(inPath: String, outPath: String = FilePath.ResourceTerms, printEnabled: Boolean = true): Unit = {
 
     val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
     val dir = new File(inputPath)
@@ -51,37 +51,44 @@ object Interface extends LazyLogging{
       exitWithMessage("Argument does not point " +
         "to an existing and valid directory.")
 
+    if (printEnabled)
+      println("\n Compiling CloudFormation Resource Specification...\n")
+
     val specModels =
       dir.listFiles().toVector
         .filter(!_.getName.startsWith("CloudFormationResource"))
-        .map(f =>
-          ResourceSpecificationModel
-            .fromResourceSpecificationFile(f))
+        .map(f => {
+          if (printEnabled) println(s" [Spec -> OWL] ${f.getName.split("Specification.json").head}")
+            ResourceSpecificationModel
+            .fromResourceSpecificationFile(f)
+        })
 
     specModels.foreach( sm => {
-      if (printEnabled) println(s" [Spec-OWL] ${sm.name}")
-      val dir = new File(FilePath.ResourceTerms)
+      val dir = new File(outPath)
       if (!dir.exists())
         dir.mkdir()
-      sm.writeToOutputFolder(FilePath.ResourceTerms)
+      sm.writeToOutputFolder(outPath)
     })
+
+    if (printEnabled)
+      println(s"\n See Folder: " +
+        s"$UNDERLINED${outPath.replace(System.getProperty(SysUtil.UserHome),"~")}$RESET\n")
 
   }
 
 
-  private[formal] def createInfrastructure(file: File, inputPath: String, outputPath: String)
+  private[formal] def createInfrastructure(printEnabled: Boolean)(file: File, inputPath: String, outputPath: String)
   : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
     val infrastructureName = file.getName
 
-    println("\n "+ infrastructureName)
-
     //  val p = Benchmarking.timeN(10, 100)("Encoding", encodeInfrastructure(file,infrastructureName))
-    val p = encodeInfrastructure(file,infrastructureName, inputPath)
+    val p = encodeInfrastructure(printEnabled)(file,infrastructureName, inputPath)
     val i = p._1
     val im = p._2
 
-    println(s" - [Encoding] Resources count: ${i.getResourcesCount}")
-    println(s" - [Encoding] Resource types count: ${i.getResourceTypesCount}")
+    if (printEnabled)
+      println(s"\n See Model Files: $UNDERLINED"+
+        s"${outputPath.replace(System.getProperty(SysUtil.UserHome),"~")}$infrastructureName/$RESET\n")
 
     im.writeToOutputFolder(outputPath)
     i.writeInfrastructureSummaryToFolder(outputPath)
@@ -91,15 +98,25 @@ object Interface extends LazyLogging{
 
 
   private[formal]
-  def encodeInfrastructure(file: File, infrastructureName: String, inputPath: String): (Infrastructure, Model) = {
+  def encodeInfrastructure(printEnabled: Boolean)(file: File, infrastructureName: String, inputPath: String): (Infrastructure, Model) = {
+
+    if (printEnabled) print(
+      s"\n ******************************************" +
+        s"***********************************\n\n\t$BOLD$infrastructureName$RESET...")
+
+    if (printEnabled)
+      println(s" Modeling\n\n Mapping all StackSets Folders:")
 
     val i =
       Json2InfrastructureEncoder.encode(
         file.listFiles()
           .filter(_.isDirectory)
           .map ( f =>
-            createStackSetFiles(f,infrastructureName, inputPath)).toVector,
+            createStackSetFiles(printEnabled)(f,infrastructureName, inputPath)).toVector,
         infrastructureName)
+
+    if (printEnabled)
+      println(s" Infrastructure Obj created: [${i.getResourcesCount} resources, ${i.getResourceTypesCount} resource types]")
 
     val im =
       InfrastructureModel.fromInfrastructure(i)
@@ -110,10 +127,13 @@ object Interface extends LazyLogging{
 
 
 
-  private def createStackSetFiles(file: File, iN:String, inputPath:String):
+  private def createStackSetFiles(printEnabled: Boolean)(file: File, iN:String, inputPath:String):
   (Vector[(String, Json, Option[Json])], String) =
   {
     val stackSetName = file.getName
+
+    if (printEnabled)
+      println(s" - StackSet $BOLD$stackSetName$RESET" )
 
     (file.listFiles().toVector
       .filter(_.getAbsolutePath.endsWith(Extension.Json))
@@ -157,81 +177,52 @@ object Interface extends LazyLogging{
 
 
 
-  def modelAndSaveAllTemplates(values: Array[String],
+  def modelAndSaveAllTemplates(inPath: String, outPath: String,
     infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager)) :
    Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] = {
 
-    val inputPath = values(0).replace("~",System.getProperty(SysUtil.UserHome))
-
     val outputPath =
-      if (values.size == 2)
-        values(1).replace("~", System.getProperty(SysUtil.UserHome))
-      else
-        FilePath.BenchmarksOut
+      if (!outPath.endsWith("/")) outPath+"/"
+      else outPath
 
-    new File(inputPath)
+    new File(inPath)
       .listFiles()
       .filter(_.isDirectory)
-      .map(iF => modelAndSaveTemplates(Array(iF.getAbsolutePath,outputPath),infrastructureCreationFunction))
+      .sortBy(_.getName)
+      .map(iF => modelAndSaveTemplates(iF.getAbsolutePath,outputPath,infrastructureCreationFunction))
       .toVector
   }
 
 
-  def modelAndSaveTemplates(values: Array[String],
+  def modelAndSaveTemplates(inPath: String, outPath: String,
       infrastructureCreationFunction: (File,String, String) => (String, OWLOntology, OWLDataFactory, OWLOntologyManager))
   : (String, OWLOntology, OWLDataFactory, OWLOntologyManager) = {
 
-    val inputPath = values(0).replace("~",System.getProperty(SysUtil.UserHome))
-
     val outputPath =
-      if (values.size == 2)
-        values(1).replace("~", System.getProperty(SysUtil.UserHome))
-      else
-        FilePath.BenchmarksOut
+      if (!outPath.endsWith("/")) outPath+"/"
+      else outPath
 
-     compileAndSaveTemplates(inputPath, infrastructureCreationFunction, outputPath)
+     compileAndSaveTemplates(inPath, infrastructureCreationFunction, outputPath)
   }
 
 
 
-  def loadModel(inPath: String, printEnabled: Boolean = true): (OWLOntology, OWLDataFactory, OWLOntologyManager, String) = {
+  def loadModel(inPath: String, printEnabled: Boolean = true)
+  : (OWLOntology, OWLDataFactory, OWLOntologyManager, String) =
+  {
     val inputPath = inPath.replace("~",System.getProperty(SysUtil.UserHome))
-    val m = OWLManager.createOWLOntologyManager()
-    val df = m.getOWLDataFactory
+    val name      = inputPath.split(ModelFileSuffix.Infrastructure)(0).split("/").last
+    val parentDir = new File( inPath.split("/").dropRight(1).mkString("/") )
 
-    val name = inputPath.split(ModelFileSuffix.Infrastructure)(0).split("/").last
+    val m   = OWLManager.createOWLOntologyManager()
+    val df  = m.getOWLDataFactory
 
-    val preDir = new File( inPath.split("/").dropRight(1).mkString("/") )
+    if (printEnabled) print(
+      s"\n ******************************************" +
+      s"***********************************\n\n\t$BOLD$name$RESET...")
 
-    if (printEnabled) print(s"\n******************************************" +
-      s"*******************************************")
-
-    preDir.listFiles().filter(_.isDirectory)
-      .foreach(_.listFiles().filter(f => f.getName.endsWith(Extension.Owl) && !f.getName.endsWith(ModelFileSuffix.StackSet))
-        .foreach( f => {
-          m.loadOntologyFromOntologyDocument(f)
-        }))
-
-    preDir.listFiles().filter(_.isDirectory)
-      .foreach(_.listFiles().filter(_.getName.endsWith(ModelFileSuffix.StackSet))
-        .foreach( f => {
-          val o = m.loadOntologyFromOntologyDocument(f)
-          val ssName = f.getAbsolutePath.split(ModelFileSuffix.StackSet)(0).split("/").last
-          if (o.getOntologyID.isAnonymous)
-            o.getOWLOntologyManager
-              .applyChange(
-                new SetOntologyID(
-                  o, new OWLOntologyID(ModelIRI.stackSetIRI(ssName),null)
-                ))
-          m.ontologies()
-            .filter(!_.getOntologyID.getOntologyIRI.get().getIRIString.endsWith("stackset#"))
-            .forEach(io => m.applyChange(new model.AddImport(o,
-              df.getOWLImportsDeclaration(io.getOntologyID.getOntologyIRI.get))))
-
-          m.applyChange(new model.AddImport(
-            o, df.getOWLImportsDeclaration(IRI.create(Ontology.OWLOntologyStringIRI))
-          ))
-        }))
+    loadImportedOwlTerminologies(parentDir,m)
+    loadImportedOwlStackSets(parentDir, m, df)
 
     val o = m.loadOntologyFromOntologyDocument(new File(inputPath))
 
@@ -241,11 +232,50 @@ object Interface extends LazyLogging{
     is.forEach(i => ai.add(i))
     o.add(df.getOWLDifferentIndividualsAxiom(ai))
 
-    if (printEnabled) print(f"\n\n $RESET$BOLD$name$RESET\twas loaded.")
+    if (printEnabled) println(f" loaded")
     (o,df,m,name)
   }
 
 
+
+  private def loadImportedOwlTerminologies(parentDir: File, m: OWLOntologyManager): Unit =
+  {
+    parentDir.listFiles().filter(_.isDirectory)
+      .foreach(_.listFiles()
+        .filter(f => f.getName.endsWith(Extension.Owl) && !f.getName.endsWith(ModelFileSuffix.StackSet))
+        .foreach( f => m.loadOntologyFromOntologyDocument(f)))
+  }
+
+
+
+  private def loadImportedOwlStackSets(parentDir: File, m: OWLOntologyManager, df: OWLDataFactory): Unit =
+  {
+    parentDir.listFiles().filter(_.isDirectory)
+      .foreach(_.listFiles().filter(_.getName.endsWith(ModelFileSuffix.StackSet))
+        .foreach( f =>
+        {
+          val o = m.loadOntologyFromOntologyDocument(f)
+          val ssName = f.getAbsolutePath.split(ModelFileSuffix.StackSet)(0).split("/").last
+
+          if (o.getOntologyID.isAnonymous)
+            o.getOWLOntologyManager
+              .applyChange(
+                new SetOntologyID(
+                  o, new OWLOntologyID(ModelIRI.stackSetIRI(ssName),null)
+                ))
+
+          m.ontologies()
+            .filter(!_.getOntologyID.getOntologyIRI.get().getIRIString.endsWith("stackset#"))
+            .forEach(io => m.applyChange(new model.AddImport(o,
+              df.getOWLImportsDeclaration(io.getOntologyID.getOntologyIRI.get))))
+
+          m.applyChange(new model.AddImport(
+            o, df.getOWLImportsDeclaration(IRI.create(Ontology.OWLOntologyStringIRI))
+          ))
+
+        }
+        ))
+  }
 
 
   private def fetchStackSetFiles(ssDir: File, infrName:String, inPath: String):

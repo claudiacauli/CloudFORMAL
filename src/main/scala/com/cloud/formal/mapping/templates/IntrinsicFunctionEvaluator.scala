@@ -148,7 +148,7 @@ extends LazyLogging
 
     encodedJson match {
       case bn : BooleanNode                        => NotFunction()(bn)
-      case l  : ListNode[BooleanNode]             => NotFunction()(l.value.head)
+      case l : ListNode[BooleanNode] => NotFunction()(l.value.head)
       case _ =>
         logger.debug(s"Value of Fn::Not node $j does not evaluate " +
           "to a BooleanNode. Returning NoValue")

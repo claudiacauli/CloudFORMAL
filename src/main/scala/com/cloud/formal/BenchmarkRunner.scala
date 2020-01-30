@@ -192,11 +192,11 @@ object BenchmarkRunner extends App {
 
   private def BenchmarkEncoding()
   : Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] =
-    Interface.modelAndSaveAllTemplates(Array{FilePath.BenchmarksIn}, createAndBenchmarkInfrastructure)
+    Interface.modelAndSaveAllTemplates(FilePath.BenchmarksIn, FilePath.BenchmarksOut, createAndBenchmarkInfrastructure)
 
 
   private def BenchmarkSingleEncoding(dirPath: String) =
-    Interface.modelAndSaveTemplates(Array{dirPath}, createAndBenchmarkInfrastructure)
+    Interface.modelAndSaveTemplates(dirPath, FilePath.BenchmarksOut, createAndBenchmarkInfrastructure)
 
 
   private def BenchmarkSingleClassification(inPath: String) = {
@@ -294,7 +294,7 @@ object BenchmarkRunner extends App {
   private def loadModelsAndCreateModelData()
   : Vector[(String,OWLOntology,OWLDataFactory,OWLOntologyManager)] = {
     new File(FilePath.BenchmarksOut)
-      .listFiles().filter(_.isDirectory)
+      .listFiles().filter(_.isDirectory).sortBy(_.getName)
       .map( dir => {
         val f = dir.listFiles().filter(_.getName.endsWith(Extension.Owl)).head
         val im = Interface.loadModel(f.getAbsolutePath, printEnabled = false)
@@ -381,8 +381,8 @@ object BenchmarkRunner extends App {
   {
     val infrastrName = file.getName
     val p = BenchmarkUtils.ProfileFunction("Template Encoding "+infrastrName,
-      BenchmarkUtils.time(Interface.encodeInfrastructure(file,infrastrName, inputPath)),
-      BenchmarkUtils.warmUp(Interface.encodeInfrastructure(file,infrastrName, inputPath)))
+      BenchmarkUtils.time(Interface.encodeInfrastructure(printEnabled = false)(file,infrastrName, inputPath)),
+      BenchmarkUtils.warmUp(Interface.encodeInfrastructure(printEnabled =false)(file,infrastrName, inputPath)))
     val i : Infrastructure = p._2._1
     val im = p._2._2
     im.writeToOutputFolder(outputPath)

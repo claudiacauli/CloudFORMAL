@@ -32,7 +32,7 @@ trait Model {
   private[formal] val ontology  : OWLOntology
 
 
-  def writeToOutputFolder (destinationFolder: String)
+  def writeToOutputFolder (destinationFolder: String): Unit
 
 
   def importOntology(model: Model, o: OWLOntology): Unit =
