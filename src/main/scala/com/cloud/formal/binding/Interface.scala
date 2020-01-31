@@ -56,9 +56,10 @@ object Interface extends LazyLogging{
 
     val specModels =
       dir.listFiles().toVector
-        .filter(!_.getName.startsWith("CloudFormationResource"))
+        .filter(!_.getName.startsWith("CloudFormationResource")).filter(!_.getName.endsWith(SysUtil.DSStore))
+        .filter(_.getName.endsWith(FileSuffix.SpecificationJson))
         .map(f => {
-          if (printEnabled) println(s" [Spec -> OWL] ${f.getName.split("Specification.json").head}")
+          if (printEnabled) println(s" [Spec -> OWL] ${f.getName.split(FileSuffix.SpecificationJson).head}")
             ResourceSpecificationModel
             .fromResourceSpecificationFile(f)
         })

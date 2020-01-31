@@ -56,6 +56,7 @@ package object formal
     val Report                    = "Report"
     val DescriptorJson: String    = Descriptor + Extension.Json
     val ReportCsv: String         = Report + Extension.Csv
+    val SpecificationJson: String = "Specification" + Extension.Json
   }
 
 
