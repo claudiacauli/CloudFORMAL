@@ -144,7 +144,8 @@ object CLI  extends LazyLogging
       "\n -r  ~/Outputs/16_retailmenot/16_retailmenot_InfrastructureModel.owl" +
       "\n -ma Benchmarks/ ~/Outputs/" +
       "\n -mr Benchmarks/16_retailmenot/" +
-      "\n -ra BenchmarksOut/"
+      "\n -ra BenchmarksOut/" +
+      "\n "
     val formatter = new HelpFormatter
     formatter.printHelp("CloudFORMAL",
       header, options(), footer, true)
