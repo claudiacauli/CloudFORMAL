@@ -38,22 +38,22 @@ sealed trait Property {
   def truePrint(print: String) =
     s"$BOLD${Color.Green}${FourValues.TRUE}$RESET,$print"
   def trueBWPrint(print: String) =
-    s"${FourValues.TRUE},$print"
+    s"${FourValues.TRUE},$print,"
 
   def unknownFalsePrint(print: String) =
     s"$BOLD${Color.LightRed}${FourValues.MAYBE_FALSE}$RESET,$print"
   def unknownFalseBWPrint(print: String) =
-    s"${FourValues.MAYBE_FALSE},$print"
+    s"${FourValues.MAYBE_FALSE},$print,"
 
   def unknownTruePrint(print: String) =
     s"$BOLD${Color.LightGreen}${FourValues.MAYBE_TRUE}$RESET,$print"
   def unknownTrueBWPrint(print: String) =
-    s"${FourValues.MAYBE_TRUE},$print"
+    s"${FourValues.MAYBE_TRUE},$print,"
 
   def falsePrint(print: String) =
     s"$BOLD${Color.Red}${FourValues.FALSE}$RESET,$print"
   def falseBWPrint(print: String) =
-    s"${FourValues.FALSE},$print"
+    s"${FourValues.FALSE},$print,"
 
   def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
   def getTrueOrFalsePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
@@ -88,12 +88,12 @@ case class TFFproperty(id: String,
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
-      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)
-      case (QueryOutcome.SAT0, _) => unknownFalseBWPrint(sat0print.get)
+      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => unknownFalseBWPrint(sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
         falseBWPrint(sat1print.get) +
           s.entities().iterator().asScala.
-            foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
       case _ => ""
     }
@@ -127,12 +127,12 @@ case class TTFproperty(id: String,
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
-      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)
-      case (QueryOutcome.SAT0, _) => trueBWPrint(sat0print.get)
+      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => trueBWPrint(sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
         falseBWPrint(sat1print.get) +
           s.entities().iterator().asScala.
-            foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
       case _ => ""
 
@@ -169,12 +169,12 @@ case class FTTproperty(id: String,
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>
-        falseBWPrint(unsatPrint.get)
-      case (QueryOutcome.SAT0, _) => unknownTrueBWPrint(sat0print.get)
+        falseBWPrint(unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => unknownTrueBWPrint(sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
         trueBWPrint(sat1print.get)  +
           s.entities().iterator().asScala.
-            foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
       case _ => ""
 
@@ -209,12 +209,12 @@ case class FFTproperty(id: String,
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>
-        falseBWPrint(unsatPrint.get)
-      case (QueryOutcome.SAT0, _) => falseBWPrint(sat0print.get)
+        falseBWPrint(unsatPrint.get) + "N/A"
+      case (QueryOutcome.SAT0, _) => falseBWPrint(sat0print.get) + "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
         trueBWPrint(sat1print.get)  +
           s.entities().iterator().asScala.
-            foldLeft(",(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
             .dropRight(5) + ")"
       case _ => ""
 

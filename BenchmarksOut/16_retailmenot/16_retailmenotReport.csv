@@ -1,53 +1,53 @@
 PASS,01_AM_BUCKETS_SHOULD_LOG,FALSE,There exist at least one S3::Buckets that keep logs,(retailmenotstackset_s3_configs3bucket *** retailmenotstackset_s3_datas3bucket)
 FAIL,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,FALSE,There are S3::Buckets declared in this template that store their own logs,(retailmenotstackset_s3_configs3bucket)
-PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found
+PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,No bucket that store logs and is public can be found,N/A
 FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,There are S3::Buckets - declared in this template - that are not encrypted,(retailmenotstackset_s3_configs3bucket *** retailmenotstackset_s3_datas3bucket)
-PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found
-PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,No bucket that does not host a website or allow CORS and is public can be found,N/A
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code,N/A
 FAIL,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,FALSE,There are S3::Buckets in this template that store logs and are not encrypted,(retailmenotstackset_s3_configs3bucket)
 PASS,08_EM_ALARM_ACTION,TRUE,There are CloudWatch::Alarms that certainly perform an action when triggered,(retailmenotstackset_enginetaskrunner_cpureservationtoohighalarm *** retailmenotstackset_enginetaskrunner_memoryreservationtoohighalarm *** retailmenotstackset_logs_tracebackindartlogalarm *** retailmenotstackset_subscriptionworker_subscriptionqueuedepthhigh *** retailmenotstackset_subscriptionworker_subscriptionqueuedepthlow *** retailmenotstackset_web_cpualarmhigh *** retailmenotstackset_web_cpualarmlow)
-FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types
-FAIL,10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services
-PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to all
-PASS,12_EKM_SHARED_BY_MULTIPLE_POLICIES,FALSE,If there are IAM::Users - they are certainly not shared by two or more policies
-PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted
-FAIL,14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all
-PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something
-PASS,16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group
-PASS,17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled
-FAIL,18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas
-FAIL,19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function
+FAIL,09_EM_CONFIG_RECORDER,FALSE,There is no Config::ConfigurationRecorder that is recording changes of all resource types,N/A
+FAIL,10_EM_GLOBAL_SERVICES_TRAIL,FALSE,There is no CloudTrail::Trail that logs events from global services,N/A
+PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to all,N/A
+PASS,12_EKM_SHARED_BY_MULTIPLE_POLICIES,FALSE,If there are IAM::Users - they are certainly not shared by two or more policies,N/A
+PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted,N/A
+FAIL,14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,All Lambda::Functions send failed input to a non-encrypted resource or do not send it at all,N/A
+PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,All IAM::Policys are attached to something,N/A
+PASS,16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,All VPC::EC2 are associated with a security group,N/A
+PASS,17_AKM_KEYS_ENABLED,TRUE,All KMS::Keys are enabled,N/A
+FAIL,18_EM_KEY_FOR_REPLICA,FALSE,There is no KMS::Key used to encrypt buckets replicas,N/A
+FAIL,19_EM_KEY_ENCR_FUNCTION,FALSE,There is no KMS::Key used to encrypt a Lambda::Function,N/A
 PASS,20_EM_SECURITYGROUP_OPENTOALL,TRUE,There is at least one EC2::SecurityGroup that is certainly not open to all IPs,(retailmenotstackset_elb_elbsecuritygroup *** retailmenotstackset_elbinternal_elbsecuritygroup *** retailmenotstackset_enginetaskrunner_securitygroup *** retailmenotstackset_engineworker_securitygroup *** retailmenotstackset_rds_securitygroup *** retailmenotstackset_subscriptionworker_securitygroup *** retailmenotstackset_triggerworker_securitygroup *** retailmenotstackset_web_securitygroup)
-FAIL,21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no Lambda::Function triggered by a bucket
-PASS,22_EKM_TRAIL_CARRYING_NOTHING,FALSE,If there are CloudTrail::Trails - they all certainly carry logs about data events
-PASS,23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,If there are CloudTrail::Trails - they all certainly have log file validation enabled
-PASS,24_AKM_TRAIL_LOG,TRUE,If there are CloudTrail::Trails - they all certainly keep logs
-PASS,25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,If there are CloudTrail::Trails - they all certainly log events from all regions
-FAIL,26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes certainly are not-encrypted
-PASS,27_EKM_INSTANCE_PUBLIC,FALSE,If there are EC2::Instances - they certainly do not allow public IPs
-FAIL,28_EM_INSTANCE_USERDATA,FALSE,If there are EC2::Instances - they certainly have user data on template
-PASS,29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to self
+FAIL,21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,There is no Lambda::Function triggered by a bucket,N/A
+PASS,22_EKM_TRAIL_CARRYING_NOTHING,FALSE,If there are CloudTrail::Trails - they all certainly carry logs about data events,N/A
+PASS,23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,If there are CloudTrail::Trails - they all certainly have log file validation enabled,N/A
+PASS,24_AKM_TRAIL_LOG,TRUE,If there are CloudTrail::Trails - they all certainly keep logs,N/A
+PASS,25_EKM_TRAIL_NOT_ALL_REGIONS,FALSE,If there are CloudTrail::Trails - they all certainly log events from all regions,N/A
+FAIL,26_AM_VOLUME_NOT_ENCRYPTED,TRUE,All EC2::Volumes certainly are not-encrypted,N/A
+PASS,27_EKM_INSTANCE_PUBLIC,FALSE,If there are EC2::Instances - they certainly do not allow public IPs,N/A
+FAIL,28_EM_INSTANCE_USERDATA,FALSE,If there are EC2::Instances - they certainly have user data on template,N/A
+PASS,29_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,If there are EC2::SecurityGroups - they certainly do not open all ports to self,N/A
 PASS,30_AM_SECURITYGROUP_UNUSED,FALSE,There exists at least one EC2::SecurityGroup that is used,(retailmenotstackset_elb_elbsecuritygroup *** retailmenotstackset_elbinternal_elbsecuritygroup *** retailmenotstackset_enginetaskrunner_securitygroup *** retailmenotstackset_engineworker_securitygroup *** retailmenotstackset_rds_securitygroup *** retailmenotstackset_subscriptionworker_securitygroup *** retailmenotstackset_triggerworker_securitygroup *** retailmenotstackset_web_securitygroup)
-FAIL,31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,There is no LoadBalancer with Access Logging Policy enabled
-FAIL,32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no ElasticLoadBalancingv2::LoadBalancer with S3 Access Logs enabled
-PASS,33_AKM_LOADBALANCER_DELETION_PROTECTED,TRUE,All ElasticLoadBalancingv2::LoadBalancers - if any - certainly have deletion protection enabled
-PASS,34_AKM_LISTENER_NO_OLD_POLICIES,TRUE,All LoadBalancingV2::Listeners - if any - certainly do not use old SSL policies
-FAIL,35_EM_GROUP_INLINE_POLICIES,FALSE,There is no IAM::Group with inline policies
-PASS,36_AKM_GROUP_NO_USERS,TRUE,All IAM::Groups - if any - are linked to some user
-PASS,37_AKM_USERS_PWDRESET,TRUE,All known IAM::Users have password reset required
+FAIL,31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY,FALSE,There is no LoadBalancer with Access Logging Policy enabled,N/A
+FAIL,32_EM_LOADBALANCER_S3ACCESSLOGS,FALSE,There is no ElasticLoadBalancingv2::LoadBalancer with S3 Access Logs enabled,N/A
+PASS,33_AKM_LOADBALANCER_DELETION_PROTECTED,TRUE,All ElasticLoadBalancingv2::LoadBalancers - if any - certainly have deletion protection enabled,N/A
+PASS,34_AKM_LISTENER_NO_OLD_POLICIES,TRUE,All LoadBalancingV2::Listeners - if any - certainly do not use old SSL policies,N/A
+FAIL,35_EM_GROUP_INLINE_POLICIES,FALSE,There is no IAM::Group with inline policies,N/A
+PASS,36_AKM_GROUP_NO_USERS,TRUE,All IAM::Groups - if any - are linked to some user,N/A
+PASS,37_AKM_USERS_PWDRESET,TRUE,All known IAM::Users have password reset required,N/A
 PASS,38_EM_ROLE_INLINE_POLICIES,TRUE,There is at least one IAM::Role with inline policies,(retailmenotstackset_iamtemplate_ecscontainerinstanceprofilerole *** retailmenotstackset_iamtemplate_ecsservicerole *** retailmenotstackset_iamtemplate_udsec2instanceprofilerole *** retailmenotstackset_iamtemplate_udsinstanceprofilerole)
-FAIL,39_AM_USER_WITH_LOGINPROFILE,TRUE,All IAM::Users - if any - might have password in template
-FAIL,40_EM_ACCESSKEY_ROTATING,FALSE,There is no IAM::User that is linked to a key that is rotating
-PASS,41_AKM_USER_ONE_ACCESSKEY,TRUE,All IAM::Users have max one access key
-FAIL,42_EM_USER_INLINE_POLICIES,FALSE,There is no IAM::User with inline policies
+FAIL,39_AM_USER_WITH_LOGINPROFILE,TRUE,All IAM::Users - if any - might have password in template,N/A
+FAIL,40_EM_ACCESSKEY_ROTATING,FALSE,There is no IAM::User that is linked to a key that is rotating,N/A
+PASS,41_AKM_USER_ONE_ACCESSKEY,TRUE,All IAM::Users have max one access key,N/A
+FAIL,42_EM_USER_INLINE_POLICIES,FALSE,There is no IAM::User with inline policies,N/A
 FAIL,43_AKM_RDS_BACKUP,FALSE,There exists at least one declared RDS::DBInstance that has backup retention set to 0,(retailmenotstackset_rds_dbinstance)
 PASS,44_AM_RDS_MINORUPGRADE_DISABLED,FALSE,There exists at least one declared RDS::DBInstance that has auto minor version upgrade enabled,(retailmenotstackset_rds_dbinstance)
-PASS,45_AKM_RDS_SHORT_BACKUP,TRUE,All RDS::DBInstances - if any - certainly do not have short backup retention
-FAIL,46_EM_DECLARED_RDS_ONEAZ,FALSE,There are RDS::DBInstances that might not be replicated in different Availability Zones
+PASS,45_AKM_RDS_SHORT_BACKUP,TRUE,All RDS::DBInstances - if any - certainly do not have short backup retention,N/A
+FAIL,46_EM_DECLARED_RDS_ONEAZ,FALSE,There are RDS::DBInstances that might not be replicated in different Availability Zones,N/A
 FAIL,47_AKM_RDS_ENCRYPTED,FALSE,There exists at least one declared RDS::DBInstance that is not encrypted,(retailmenotstackset_rds_dbinstance)
-PASS,48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,If there are RDS::DBinstances - they are certainly not linked to an open security group
+PASS,48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,If there are RDS::DBinstances - they are certainly not linked to an open security group,N/A
 FAIL,49_AKM_BUCKETS_VERSIONING,FALSE,There are S3::Buckets - declared in this template - that have versioning disabled,(retailmenotstackset_s3_configs3bucket *** retailmenotstackset_s3_datas3bucket)
-PASS,50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl
-FAIL,51_AM_NETWORKACL_NOT_USED,TRUE,If there are EC2::NetworkAcls - they are all unused
-FAIL,52_AM_SUBNET_BAD_ACL,TRUE,If there are EC2::Subnets - they all have bad ACLs
-FAIL,53_AM_SUBNET_NO_FLOWLOG,TRUE,If there are EC::Subnets -- they all have no FlowLog
+PASS,50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl,N/A
+FAIL,51_AM_NETWORKACL_NOT_USED,TRUE,If there are EC2::NetworkAcls - they are all unused,N/A
+FAIL,52_AM_SUBNET_BAD_ACL,TRUE,If there are EC2::Subnets - they all have bad ACLs,N/A
+FAIL,53_AM_SUBNET_NO_FLOWLOG,TRUE,If there are EC::Subnets -- they all have no FlowLog,N/A
