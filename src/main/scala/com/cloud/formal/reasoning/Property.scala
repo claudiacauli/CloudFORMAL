@@ -37,23 +37,23 @@ sealed trait Property {
 
   def truePrint(print: String) =
     s"$BOLD${Color.Green}${FourValues.TRUE}$RESET,$print"
-  def trueBWPrint(print: String) =
-    s"${FourValues.TRUE},$print,"
+  def trueBWPrint(qOut:String,print: String) =
+    s"${FourValues.TRUE},$qOut,$print,"
 
   def unknownFalsePrint(print: String) =
     s"$BOLD${Color.LightRed}${FourValues.MAYBE_FALSE}$RESET,$print"
-  def unknownFalseBWPrint(print: String) =
-    s"${FourValues.MAYBE_FALSE},$print,"
+  def unknownFalseBWPrint(qOut:String,print: String) =
+    s"${FourValues.MAYBE_FALSE},$qOut,$print,"
 
   def unknownTruePrint(print: String) =
     s"$BOLD${Color.LightGreen}${FourValues.MAYBE_TRUE}$RESET,$print"
-  def unknownTrueBWPrint(print: String) =
-    s"${FourValues.MAYBE_TRUE},$print,"
+  def unknownTrueBWPrint(qOut:String,print: String) =
+    s"${FourValues.MAYBE_TRUE},$qOut,$print,"
 
   def falsePrint(print: String) =
     s"$BOLD${Color.Red}${FourValues.FALSE}$RESET,$print"
-  def falseBWPrint(print: String) =
-    s"${FourValues.FALSE},$print,"
+  def falseBWPrint(qOut:String,print: String) =
+    s"${FourValues.FALSE},$qOut,$print,"
 
   def getPassOrFilePrint(color: Boolean, outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
   def getTrueOrFalsePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String
@@ -88,13 +88,13 @@ case class TFFproperty(id: String,
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
-      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)+ "N/A"
-      case (QueryOutcome.SAT0, _) => unknownFalseBWPrint(sat0print.get)+ "N/A"
+      case (QueryOutcome.UNSAT, _) => trueBWPrint(QueryOutcome.UNSAT,unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => unknownFalseBWPrint(QueryOutcome.SAT0,sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
-        falseBWPrint(sat1print.get) +
+        falseBWPrint(QueryOutcome.SAT1,sat1print.get) +
           s.entities().iterator().asScala.
-            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
-            .dropRight(5) + ")"
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" - ")
+            .dropRight(3) + ")"
       case _ => ""
     }
   }
@@ -127,13 +127,13 @@ case class TTFproperty(id: String,
 
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
-      case (QueryOutcome.UNSAT, _) => trueBWPrint(unsatPrint.get)+ "N/A"
-      case (QueryOutcome.SAT0, _) => trueBWPrint(sat0print.get)+ "N/A"
+      case (QueryOutcome.UNSAT, _) => trueBWPrint(QueryOutcome.UNSAT,unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => trueBWPrint(QueryOutcome.SAT0,sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
-        falseBWPrint(sat1print.get) +
+        falseBWPrint(QueryOutcome.SAT1,sat1print.get) +
           s.entities().iterator().asScala.
-            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
-            .dropRight(5) + ")"
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" - ")
+            .dropRight(3) + ")"
       case _ => ""
 
     }
@@ -169,13 +169,13 @@ case class FTTproperty(id: String,
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>
-        falseBWPrint(unsatPrint.get)+ "N/A"
-      case (QueryOutcome.SAT0, _) => unknownTrueBWPrint(sat0print.get)+ "N/A"
+        falseBWPrint(QueryOutcome.UNSAT,unsatPrint.get)+ "N/A"
+      case (QueryOutcome.SAT0, _) => unknownTrueBWPrint(QueryOutcome.SAT0,sat0print.get)+ "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
-        trueBWPrint(sat1print.get)  +
+        trueBWPrint(QueryOutcome.SAT1,sat1print.get)  +
           s.entities().iterator().asScala.
-            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
-            .dropRight(5) + ")"
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" - ")
+            .dropRight(3) + ")"
       case _ => ""
 
     }
@@ -209,13 +209,13 @@ case class FFTproperty(id: String,
   override def getOutcomePrint(outcome: (QueryOutcome, Option[NodeSet[OWLNamedIndividual]])): String = {
     outcome match {
       case (QueryOutcome.UNSAT, _) =>
-        falseBWPrint(unsatPrint.get) + "N/A"
-      case (QueryOutcome.SAT0, _) => falseBWPrint(sat0print.get) + "N/A"
+        falseBWPrint(QueryOutcome.UNSAT,unsatPrint.get) + "N/A"
+      case (QueryOutcome.SAT0, _) => falseBWPrint(QueryOutcome.SAT0,sat0print.get) + "N/A"
       case (QueryOutcome.SAT1, Some(s)) =>
-        trueBWPrint(sat1print.get)  +
+        trueBWPrint(QueryOutcome.SAT1,sat1print.get)  +
           s.entities().iterator().asScala.
-            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" *** ")
-            .dropRight(5) + ")"
+            foldLeft("(")( (a,e) => a + e.getIRI.toString.split("#").last+" - ")
+            .dropRight(3) + ")"
       case _ => ""
 
     }

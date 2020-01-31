@@ -39,7 +39,7 @@ class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OW
   {
     val reportFileName = dir+"/"+name+FileSuffix.ReportCsv
     val pw = new PrintWriter(new File(reportFileName))
-    var reportString = ""
+    var reportString = "Pass/Fail,Property ID,True/False,Outcome,Outcome Description,Instances\n"
     try {
       classify()
       propsVec.sortBy(_._1).foreach( p => {
