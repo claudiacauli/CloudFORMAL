@@ -1,3 +1,7 @@
+![Build](https://github.com/claudiacauli/CloudFORMAL/workflows/Build/badge.svg)
+[![License](https://img.shields.io/badge/Licence-Apache%202.0-blue.svg)](./LICENSE.txt)
+
+
 # CloudFORMAL
 CloudFORMAL is a prototype Scala tool to encode **AWS CloudFormation**
 Templates into **Description Logic** models. It maps the CFn Resource
