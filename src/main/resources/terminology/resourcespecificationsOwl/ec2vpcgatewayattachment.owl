@@ -1,105 +1,78 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_internetgatewayid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_internetgatewayid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2internetgateway#internetgateway"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_vpcid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_vpcid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_vpngatewayid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_vpngatewayid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpngateway#vpngateway"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2internetgateway#internetgateway -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2internetgateway#internetgateway"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#vpcgatewayattachment_vpcid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpngateway#vpngateway -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpngateway#vpngateway"/>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcgatewayattachment#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="vpcgatewayattachment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcgatewayattachment_internetgatewayid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcgatewayattachment_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcgatewayattachment_vpngatewayid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpngateway#vpngateway"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2internetgateway#internetgateway"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="vpcgatewayattachment"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="vpcgatewayattachment_vpcid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcgatewayattachment_internetgatewayid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcgatewayattachment_vpcid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcgatewayattachment_vpngatewayid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcgatewayattachment_internetgatewayid"/>
+        <Class IRI="vpcgatewayattachment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcgatewayattachment_vpcid"/>
+        <Class IRI="vpcgatewayattachment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcgatewayattachment_vpngatewayid"/>
+        <Class IRI="vpcgatewayattachment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcgatewayattachment_internetgatewayid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2internetgateway#internetgateway"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcgatewayattachment_vpcid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcgatewayattachment_vpngatewayid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpngateway#vpngateway"/>
+    </ObjectPropertyRange>
+</Ontology>
 
 
 

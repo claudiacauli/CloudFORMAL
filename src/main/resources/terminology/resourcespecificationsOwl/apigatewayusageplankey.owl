@@ -1,96 +1,83 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keyid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keyid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keytype -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keytype">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_usageplanid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_usageplanid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keyid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_keytype"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#usageplankey_usageplanid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplankey#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="usageplankey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usageplankey_keyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usageplankey_keytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usageplankey_usageplanid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="usageplankey"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="usageplankey_keyid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="usageplankey"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="usageplankey_keytype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="usageplankey"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="usageplankey_usageplanid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usageplankey_keyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usageplankey_keytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usageplankey_usageplanid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="usageplankey_keyid"/>
+        <Class IRI="usageplankey"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usageplankey_keytype"/>
+        <Class IRI="usageplankey"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usageplankey_usageplanid"/>
+        <Class IRI="usageplankey"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="usageplankey_keyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usageplankey_keytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usageplankey_usageplanid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 

@@ -1,92 +1,58 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock_subnetid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock_subnetid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock_ipv6cidrblock -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock_ipv6cidrblock">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#subnetcidrblock_ipv6cidrblock"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetcidrblock#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="subnetcidrblock"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subnetcidrblock_subnetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subnetcidrblock_ipv6cidrblock"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="subnetcidrblock"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="subnetcidrblock_ipv6cidrblock"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="subnetcidrblock_subnetid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subnetcidrblock_subnetid"/>
+        <Class IRI="subnetcidrblock"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="subnetcidrblock_subnetid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subnetcidrblock_ipv6cidrblock"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="subnetcidrblock_ipv6cidrblock"/>
+        <Class IRI="subnetcidrblock"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="subnetcidrblock_ipv6cidrblock"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 

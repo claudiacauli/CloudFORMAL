@@ -1,640 +1,699 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_attributes -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_attributes">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_chefconfiguration -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_chefconfiguration">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_configurationmanager -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_configurationmanager">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_customcookbookssource -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_customcookbookssource">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_elasticips -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_elasticips">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_rdsdbinstances -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_rdsdbinstances">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_tags -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_tags">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration_berkshelfversion -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration_berkshelfversion">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration_manageberkshelf -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration_manageberkshelf">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip_ip -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip_ip">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip_name -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip_name">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string_key -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string_key">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string_value -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string_value">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbpassword -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbpassword">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbuser -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbuser">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_rdsdbinstancearn -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_rdsdbinstancearn">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_password -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_password">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_revision -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_revision">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_sshkey -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_sshkey">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_type -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_type">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_url -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_url">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_username -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source_username">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_agentversion -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_agentversion">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_cloneappids -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_cloneappids">
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_clonepermissions -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_clonepermissions">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_customjson -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_customjson">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultavailabilityzone -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultavailabilityzone">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultinstanceprofilearn -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultinstanceprofilearn">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultos -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultos">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultrootdevicetype -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultrootdevicetype">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultsshkeyname -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultsshkeyname">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultsubnetid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultsubnetid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_ecsclusterarn -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_ecsclusterarn">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_hostnametheme -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_hostnametheme">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_name -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_name">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_servicerolearn -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_servicerolearn">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_sourcestackid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_sourcestackid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_usecustomcookbooks -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_usecustomcookbooks">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_useopsworkssecuritygroups -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_useopsworkssecuritygroups">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_vpcid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_vpcid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager_name -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager_name">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager_version -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager_version">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_key -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_key">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_value -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_value">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#chefconfiguration"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#elasticip_ip"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#mapentry_string"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbpassword"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_dbuser"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#rdsdbinstance_rdsdbinstancearn"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#source"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_defaultinstanceprofilearn"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_name"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stack_servicerolearn"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#stackconfigurationmanager"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_key"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#tag_value"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworksstack#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="chefconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="elasticip"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rdsdbinstance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="source"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stack"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stackconfigurationmanager"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_attributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_chefconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_configurationmanager"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_customcookbookssource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_elasticips"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_rdsdbinstances"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="chefconfiguration_berkshelfversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="chefconfiguration_manageberkshelf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticip_ip"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticip_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdsdbinstance_dbpassword"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdsdbinstance_dbuser"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdsdbinstance_rdsdbinstancearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_password"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_revision"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_sshkey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="source_username"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_agentversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_cloneappids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_clonepermissions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_customjson"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultavailabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultinstanceprofilearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultos"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultrootdevicetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultsshkeyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_defaultsubnetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_ecsclusterarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_hostnametheme"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_servicerolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_sourcestackid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_usecustomcookbooks"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_useopsworkssecuritygroups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackconfigurationmanager_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackconfigurationmanager_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="elasticip"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="elasticip_ip"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdsdbinstance"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdsdbinstance_dbpassword"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdsdbinstance"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdsdbinstance_dbuser"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdsdbinstance"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdsdbinstance_rdsdbinstancearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stack"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stack_defaultinstanceprofilearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stack"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stack_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stack"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stack_servicerolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stack_chefconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stack_configurationmanager"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stack_customcookbookssource"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_attributes"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_chefconfiguration"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_configurationmanager"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_customcookbookssource"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_elasticips"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_rdsdbinstances"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_tags"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_attributes"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_chefconfiguration"/>
+        <Class IRI="chefconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_configurationmanager"/>
+        <Class IRI="stackconfigurationmanager"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_customcookbookssource"/>
+        <Class IRI="source"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_elasticips"/>
+        <Class IRI="elasticip"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_rdsdbinstances"/>
+        <Class IRI="rdsdbinstance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="chefconfiguration_berkshelfversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="chefconfiguration_manageberkshelf"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticip_ip"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticip_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdsdbinstance_dbpassword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdsdbinstance_dbuser"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdsdbinstance_rdsdbinstancearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_password"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_revision"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_sshkey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="source_username"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_agentversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_clonepermissions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_customjson"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultavailabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultinstanceprofilearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultos"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultrootdevicetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultsshkeyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_defaultsubnetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_ecsclusterarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_hostnametheme"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_servicerolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_sourcestackid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_usecustomcookbooks"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_useopsworkssecuritygroups"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_vpcid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackconfigurationmanager_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackconfigurationmanager_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="chefconfiguration_berkshelfversion"/>
+        <Class IRI="chefconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="chefconfiguration_manageberkshelf"/>
+        <Class IRI="chefconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticip_ip"/>
+        <Class IRI="elasticip"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticip_name"/>
+        <Class IRI="elasticip"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdsdbinstance_dbpassword"/>
+        <Class IRI="rdsdbinstance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdsdbinstance_dbuser"/>
+        <Class IRI="rdsdbinstance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdsdbinstance_rdsdbinstancearn"/>
+        <Class IRI="rdsdbinstance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_password"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_revision"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_sshkey"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_type"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_url"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="source_username"/>
+        <Class IRI="source"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_agentversion"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_cloneappids"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_clonepermissions"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_customjson"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultavailabilityzone"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultinstanceprofilearn"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultos"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultrootdevicetype"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultsshkeyname"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_defaultsubnetid"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_ecsclusterarn"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_hostnametheme"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_name"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_servicerolearn"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_sourcestackid"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_usecustomcookbooks"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_useopsworkssecuritygroups"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_vpcid"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackconfigurationmanager_name"/>
+        <Class IRI="stackconfigurationmanager"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackconfigurationmanager_version"/>
+        <Class IRI="stackconfigurationmanager"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="chefconfiguration_berkshelfversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="chefconfiguration_manageberkshelf"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticip_ip"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticip_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdsdbinstance_dbpassword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdsdbinstance_dbuser"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdsdbinstance_rdsdbinstancearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_password"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_revision"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_sshkey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="source_username"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_agentversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_cloneappids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_clonepermissions"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_customjson"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultavailabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultinstanceprofilearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultos"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultrootdevicetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultsshkeyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_defaultsubnetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_ecsclusterarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_hostnametheme"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_servicerolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_sourcestackid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_usecustomcookbooks"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_useopsworkssecuritygroups"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_vpcid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackconfigurationmanager_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackconfigurationmanager_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 

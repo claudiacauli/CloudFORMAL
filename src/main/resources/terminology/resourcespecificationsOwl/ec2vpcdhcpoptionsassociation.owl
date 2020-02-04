@@ -1,93 +1,68 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_dhcpoptionsid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_dhcpoptionsid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2dhcpoptions#dhcpoptions"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_vpcid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_vpcid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2dhcpoptions#dhcpoptions -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2dhcpoptions#dhcpoptions"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_dhcpoptionsid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#vpcdhcpoptionsassociation_vpcid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcdhcpoptionsassociation#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="vpcdhcpoptionsassociation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_dhcpoptionsid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2dhcpoptions#dhcpoptions"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="vpcdhcpoptionsassociation"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="vpcdhcpoptionsassociation_dhcpoptionsid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcdhcpoptionsassociation"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="vpcdhcpoptionsassociation_vpcid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_dhcpoptionsid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_vpcid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_dhcpoptionsid"/>
+        <Class IRI="vpcdhcpoptionsassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_vpcid"/>
+        <Class IRI="vpcdhcpoptionsassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_dhcpoptionsid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2dhcpoptions#dhcpoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcdhcpoptionsassociation_vpcid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </ObjectPropertyRange>
+</Ontology>
 
 
 

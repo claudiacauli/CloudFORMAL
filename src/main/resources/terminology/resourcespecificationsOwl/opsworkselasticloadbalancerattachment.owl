@@ -1,79 +1,62 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_elasticloadbalancername -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_elasticloadbalancername">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_layerid -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_layerid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_elasticloadbalancername"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#elasticloadbalancerattachment_layerid"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkselasticloadbalancerattachment#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="elasticloadbalancerattachment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticloadbalancerattachment_elasticloadbalancername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticloadbalancerattachment_layerid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="elasticloadbalancerattachment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="elasticloadbalancerattachment_elasticloadbalancername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="elasticloadbalancerattachment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="elasticloadbalancerattachment_layerid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticloadbalancerattachment_elasticloadbalancername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticloadbalancerattachment_layerid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticloadbalancerattachment_elasticloadbalancername"/>
+        <Class IRI="elasticloadbalancerattachment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticloadbalancerattachment_layerid"/>
+        <Class IRI="elasticloadbalancerattachment"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticloadbalancerattachment_elasticloadbalancername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticloadbalancerattachment_layerid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 
