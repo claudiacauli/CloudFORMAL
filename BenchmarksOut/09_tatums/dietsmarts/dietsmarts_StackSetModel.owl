@@ -1,1176 +1,1223 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts_stackset#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts_stackset"
-     xmlns:aws="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts_stackset#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:iamrole="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#"
-     xmlns:iamuser="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#"
-     xmlns:s3bucket="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#"
-     xmlns:snstopic="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#"
-     xmlns:iampolicy="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#"
-     xmlns:iamaccesskey="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#"
-     xmlns:lambdafunction="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#"
-     xmlns:s3bucketpolicy="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#"
-     xmlns:lambdapermission="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts_stackset#">
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#"/>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <iampolicy:policy_roles rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        <iampolicy:policy_policydocument>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Action&quot;:[&quot;logs:CreateLogGroup&quot;,&quot;logs:CreateLogStream&quot;,&quot;logs:PutLogEvents&quot;],&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;:&quot;,[&quot;arn:aws:logs&quot;,{&quot;Ref&quot;:&quot;AWS::Region&quot;},&quot;*:*&quot;]]}}]}</iampolicy:policy_policydocument>
-        <iampolicy:policy_policyname>cloud-lambda</iampolicy:policy_policyname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <iamrole:role_assumerolepolicydocument>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:[&quot;lambda.amazonaws.com&quot;]},&quot;Action&quot;:[&quot;sts:AssumeRole&quot;]}]}</iamrole:role_assumerolepolicydocument>
-        <iamrole:role_maxsessionduration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3600</iamrole:role_maxsessionduration>
-        <iamrole:role_path>/</iamrole:role_path>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <lambdafunction:function_code rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227"/>
-        <lambdafunction:function_role rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        <lambdafunction:function_functionname>cloud-publishlambda</lambdafunction:function_functionname>
-        <lambdafunction:function_handler>lambda/index.handler</lambdafunction:function_handler>
-        <lambdafunction:function_memorysize rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">512</lambdafunction:function_memorysize>
-        <lambdafunction:function_runtime>nodejs4.3</lambdafunction:function_runtime>
-        <lambdafunction:function_timeout rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</lambdafunction:function_timeout>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <iamuser:user_policies rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_65a6a1f1-dfaa-4186-9fba-4f9eb704053b"/>
-        <iamuser:user_path>/</iamuser:user_path>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <iamaccesskey:accesskey_username rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <s3bucket:bucket_websiteconfiguration rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce"/>
-        <s3bucket:bucket_accesscontrol>private</s3bucket:bucket_accesscontrol>
-        <s3bucket:bucket_bucketname>dietsmarts.info</s3bucket:bucket_bucketname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <s3bucket:bucket_corsconfiguration rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_84ec8526-cd07-4990-aefa-0d67c00649ab"/>
-        <s3bucket:bucket_websiteconfiguration rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6729010d-a1b5-402e-9cac-6e3d5fc1b46a"/>
-        <s3bucket:bucket_accesscontrol>publicread</s3bucket:bucket_accesscontrol>
-        <s3bucket:bucket_bucketname>www.dietsmarts.info</s3bucket:bucket_bucketname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <s3bucketpolicy:bucketpolicy_bucket rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        <s3bucketpolicy:bucketpolicy_policydocument>{&quot;Statement&quot;:[{&quot;Action&quot;:[&quot;s3:GetObject&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;&quot;,[&quot;arn:aws:s3:::&quot;,{&quot;Ref&quot;:&quot;S3Bucket&quot;},&quot;/*&quot;]]},&quot;Principal&quot;:&quot;*&quot;}]}</s3bucketpolicy:bucketpolicy_policydocument>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <lambdapermission:permission_functionname rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        <lambdapermission:permission_sourcearn rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
-        <lambdapermission:permission_action>lambda:invokefunction</lambdapermission:permission_action>
-        <lambdapermission:permission_principal>sns.amazonaws.com</lambdapermission:permission_principal>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
-        <snstopic:topic_subscription rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_0fa34d72-42c2-4bc0-a3a3-a5e05ce23e79"/>
-        <snstopic:topic_topicname>githubpublisherdietsmartsinfo</snstopic:topic_topicname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stack"/>
-        <aws:isdeployedin rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_0fa34d72-42c2-4bc0-a3a3-a5e05ce23e79 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_0fa34d72-42c2-4bc0-a3a3-a5e05ce23e79">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
-        <snstopic:subscription_endpoint rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        <snstopic:subscription_protocol>lambda</snstopic:subscription_protocol>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_65a6a1f1-dfaa-4186-9fba-4f9eb704053b -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_65a6a1f1-dfaa-4186-9fba-4f9eb704053b">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#policy"/>
-        <iamuser:policy_policydocument>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Action&quot;:[&quot;s3:ListObject&quot;,&quot;s3:GetObject&quot;,&quot;s3:PutObject&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;&quot;,[&quot;arn:aws:s3:::&quot;,{&quot;Ref&quot;:&quot;S3Bucket&quot;},&quot;/*&quot;]]}},{&quot;Action&quot;:[&quot;sns:Publish&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Ref&quot;:&quot;SnsTopic&quot;}}]}</iamuser:policy_policydocument>
-        <iamuser:policy_policyname>publish-to-s3-bucket</iamuser:policy_policyname>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6729010d-a1b5-402e-9cac-6e3d5fc1b46a -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6729010d-a1b5-402e-9cac-6e3d5fc1b46a">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration"/>
-        <s3bucket:websiteconfiguration_errordocument>error.html</s3bucket:websiteconfiguration_errordocument>
-        <s3bucket:websiteconfiguration_indexdocument>index.html</s3bucket:websiteconfiguration_indexdocument>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6c851cfc-b3c1-4910-b93b-2ea563bf979e -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6c851cfc-b3c1-4910-b93b-2ea563bf979e">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule"/>
-        <s3bucket:corsrule_allowedheaders>*</s3bucket:corsrule_allowedheaders>
-        <s3bucket:corsrule_allowedmethods>get</s3bucket:corsrule_allowedmethods>
-        <s3bucket:corsrule_allowedorigins>*</s3bucket:corsrule_allowedorigins>
-        <s3bucket:corsrule_exposedheaders>date</s3bucket:corsrule_exposedheaders>
-        <s3bucket:corsrule_id>mycorsruleid1</s3bucket:corsrule_id>
-        <s3bucket:corsrule_maxage rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3600</s3bucket:corsrule_maxage>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_84ec8526-cd07-4990-aefa-0d67c00649ab -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_84ec8526-cd07-4990-aefa-0d67c00649ab">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration"/>
-        <s3bucket:corsconfiguration_corsrules rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6c851cfc-b3c1-4910-b93b-2ea563bf979e"/>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration"/>
-        <s3bucket:websiteconfiguration_redirectallrequeststo rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f277a1d5-cc61-4d1e-8853-dac1a4a8d7ed"/>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f277a1d5-cc61-4d1e-8853-dac1a4a8d7ed -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f277a1d5-cc61-4d1e-8853-dac1a4a8d7ed">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo"/>
-        <s3bucket:redirectallrequeststo_hostname>www.dietsmarts.info</s3bucket:redirectallrequeststo_hostname>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
-        <lambdafunction:code_zipfile>exports.handler = function(event, context, cb) { return cb(null, {message:&apos;hello world&apos;}); };</lambdafunction:code_zipfile>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_groups"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_users"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_roles"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_description"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_rolename"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_managedpolicyarns"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_permissionsboundary"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_description"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_layers"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_reservedconcurrentexecutions"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_deadletterconfig"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_environment"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_kmskeyarn"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tracingconfig"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_username"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_groups"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_loginprofile"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_managedpolicyarns"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_permissionsboundary"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_policies"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey_serial"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey_status"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_displayname"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_kmsmasterkeyid"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6729010d-a1b5-402e-9cac-6e3d5fc1b46a"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_6729010d-a1b5-402e-9cac-6e3d5fc1b46a"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_84ec8526-cd07-4990-aefa-0d67c00649ab"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration_corsrules"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_errordocument"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_indexdocument"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_ea8e0801-85f7-4d03-a94d-c5f9c7ff65ce"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f277a1d5-cc61-4d1e-8853-dac1a4a8d7ed"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo_protocol"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3key"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3objectversion"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_f4ef1b25-a133-4268-8642-1f9694eef227"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts_stackset#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#</Import>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+    </Declaration>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_groups"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_users"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_roles"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_description"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_rolename"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_managedpolicyarns"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_permissionsboundary"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_description"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_layers"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_reservedconcurrentexecutions"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_deadletterconfig"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_environment"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_kmskeyarn"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tracingconfig"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_username"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_groups"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_loginprofile"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_managedpolicyarns"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_permissionsboundary"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_policies"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey_serial"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey_status"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_displayname"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_kmsmasterkeyid"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration_corsrules"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo_protocol"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3key"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3objectversion"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_errordocument"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_indexdocument"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#policy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_roles"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_code"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_role"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_policies"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamaccesskey#accesskey_username"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy_bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourcearn"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isdeployedin"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_stack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration_corsrules"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_policydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Action&quot;:[&quot;logs:CreateLogGroup&quot;,&quot;logs:CreateLogStream&quot;,&quot;logs:PutLogEvents&quot;],&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;:&quot;,[&quot;arn:aws:logs&quot;,{&quot;Ref&quot;:&quot;AWS::Region&quot;},&quot;*:*&quot;]]}}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy_policyname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda"/>
+        <Literal>cloud-lambda</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_assumerolepolicydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:[&quot;lambda.amazonaws.com&quot;]},&quot;Action&quot;:[&quot;sts:AssumeRole&quot;]}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_maxsessionduration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_path"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda"/>
+        <Literal>/</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_functionname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <Literal>cloud-publishlambda</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_handler"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <Literal>lambda/index.handler</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_memorysize"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">512</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_runtime"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <Literal>nodejs4.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_timeout"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user_path"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser"/>
+        <Literal>/</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accesscontrol"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        <Literal>private</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket"/>
+        <Literal>dietsmarts.info</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accesscontrol"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        <Literal>publicread</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket"/>
+        <Literal>www.dietsmarts.info</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy_policydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy"/>
+        <Literal>{&quot;Statement&quot;:[{&quot;Action&quot;:[&quot;s3:GetObject&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;&quot;,[&quot;arn:aws:s3:::&quot;,{&quot;Ref&quot;:&quot;S3Bucket&quot;},&quot;/*&quot;]]},&quot;Principal&quot;:&quot;*&quot;}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_action"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        <Literal>lambda:invokefunction</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_principal"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission"/>
+        <Literal>sns.amazonaws.com</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_topicname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic"/>
+        <Literal>githubpublisherdietsmartsinfo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo_hostname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40"/>
+        <Literal>www.dietsmarts.info</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_zipfile"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6"/>
+        <Literal>exports.handler = function(event, context, cb) { return cb(null, {message:&apos;hello world&apos;}); };</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609"/>
+        <Literal>lambda</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#policy_policydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563"/>
+        <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Action&quot;:[&quot;s3:ListObject&quot;,&quot;s3:GetObject&quot;,&quot;s3:PutObject&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Fn::Join&quot;:[&quot;&quot;,[&quot;arn:aws:s3:::&quot;,{&quot;Ref&quot;:&quot;S3Bucket&quot;},&quot;/*&quot;]]}},{&quot;Action&quot;:[&quot;sns:Publish&quot;],&quot;Effect&quot;:&quot;Allow&quot;,&quot;Resource&quot;:{&quot;Ref&quot;:&quot;SnsTopic&quot;}}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#policy_policyname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563"/>
+        <Literal>publish-to-s3-bucket</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedheaders"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal>*</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedmethods"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal>get</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedorigins"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal>*</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_exposedheaders"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal>date</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_id"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal>mycorsruleid1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_maxage"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_errordocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+        <Literal>error.html</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_indexdocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e"/>
+        <Literal>index.html</Literal>
+    </DataPropertyAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iampolicylambda</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_iamrolelambda</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_lambdapublisher</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuser</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_publishuseraccesskey</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_roots3bucket</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucket</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_s3bucketpolicy</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snslambdainvokepermission</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#dietsmarts_cloud_snstopic</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1c846534-336e-4d0d-b715-662cbfa80217</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_1dfbb052-2272-4500-a978-d6aa6f28af40</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_28d6824a-13b5-4ebb-be09-58c90db3e3c6</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_47535bd3-23f4-4360-95c6-7458fcf24609</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_4d969a8c-19cc-4bec-9b6f-1f5a176fe563</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_66bed3df-2eac-4906-b911-598714e817be</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_911508be-4bc1-4044-b67c-77c043c6ca07</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/dietsmarts#subproperty_e0b045b5-19a4-478d-86c9-cc9029ab7d7e</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+</Ontology>
 
 
 

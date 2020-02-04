@@ -1,80 +1,54 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation_routetableid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation_routetableid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation_subnetid -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation_subnetid">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#subnetroutetableassociation"/>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnetroutetableassociation#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="subnetroutetableassociation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subnetroutetableassociation_routetableid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subnetroutetableassociation_subnetid"/>
+    </Declaration>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="subnetroutetableassociation_routetableid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="subnetroutetableassociation_subnetid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subnetroutetableassociation_routetableid"/>
+        <Class IRI="subnetroutetableassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subnetroutetableassociation_subnetid"/>
+        <Class IRI="subnetroutetableassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="subnetroutetableassociation_routetableid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="subnetroutetableassociation_subnetid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </ObjectPropertyRange>
+</Ontology>
 
 
 

@@ -1,147 +1,124 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Object Properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourcearn -->
-
-
-    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourcearn">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_action -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_action">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_principal -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_principal">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount -->
-
-
-    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Classes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission -->
-
-
-    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_action"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_principal"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="permission"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="permission_functionname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="permission_sourcearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permission_action"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permission_eventsourcetoken"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permission_principal"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permission_sourceaccount"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="permission"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="permission_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="permission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="permission_action"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="permission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="permission_principal"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="permission_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="permission_sourcearn"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="permission_functionname"/>
+        <Class IRI="permission"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="permission_sourcearn"/>
+        <Class IRI="permission"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="permission_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="permission_action"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="permission_eventsourcetoken"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="permission_principal"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="permission_sourceaccount"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="permission_action"/>
+        <Class IRI="permission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="permission_eventsourcetoken"/>
+        <Class IRI="permission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="permission_principal"/>
+        <Class IRI="permission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="permission_sourceaccount"/>
+        <Class IRI="permission"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="permission_action"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="permission_eventsourcetoken"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="permission_principal"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="permission_sourceaccount"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
 
 
 

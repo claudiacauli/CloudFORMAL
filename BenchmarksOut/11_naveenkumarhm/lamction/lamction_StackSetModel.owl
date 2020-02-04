@@ -1,801 +1,830 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction_stackset#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction_stackset"
-     xmlns:aws="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction_stackset#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:iamrole="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#"
-     xmlns:s3bucket="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#"
-     xmlns:snstopic="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#"
-     xmlns:lambdafunction="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#"
-     xmlns:snssubscription="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#"
-     xmlns:lambdapermission="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#">
-    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction_stackset#">
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#"/>
-        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#"/>
-    </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_naveenkumarhm2 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_naveenkumarhm2"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#externalresource"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <lambdafunction:function_code rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_09496ff1-f228-48ea-ab82-0bd030dd14c5"/>
-        <lambdafunction:function_deadletterconfig rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_62f9ffa2-0951-4971-89b9-7aeb78f7824d"/>
-        <lambdafunction:function_role rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        <lambdafunction:function_tags rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_be88a471-03f2-49e3-ae5c-d9ae63c5d3b3"/>
-        <lambdafunction:function_description>simple lambda back sns service</lambdafunction:function_description>
-        <lambdafunction:function_handler>send_to_sns.send_to_sns</lambdafunction:function_handler>
-        <lambdafunction:function_memorysize rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">256</lambdafunction:function_memorysize>
-        <lambdafunction:function_runtime>python3.6</lambdafunction:function_runtime>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <lambdapermission:permission_functionname rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        <lambdapermission:permission_sourcearn rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        <lambdapermission:permission_action>lambda:invokefunction</lambdapermission:permission_action>
-        <lambdapermission:permission_principal>s3.amazonaws.com</lambdapermission:permission_principal>
-        <lambdapermission:permission_sourceaccount>&lt;account-xxxxx&gt;</lambdapermission:permission_sourceaccount>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <iamrole:role_policies rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_b037548f-3d5d-4871-bc46-1e2d2bffce4a"/>
-        <iamrole:role_assumerolepolicydocument>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:[&quot;lambda.amazonaws.com&quot;]},&quot;Action&quot;:[&quot;sts:AssumeRole&quot;]}]}</iamrole:role_assumerolepolicydocument>
-        <iamrole:role_maxsessionduration rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3600</iamrole:role_maxsessionduration>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <s3bucket:bucket_notificationconfiguration rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4"/>
-        <s3bucket:bucket_accesscontrol>private</s3bucket:bucket_accesscontrol>
-        <s3bucket:bucket_bucketname>lamfunbucket</s3bucket:bucket_bucketname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <snssubscription:subscription_endpoint rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com"/>
-        <snssubscription:subscription_topicarn rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
-        <snssubscription:subscription_protocol>email</snssubscription:subscription_protocol>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
-        <aws:isinstack rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
-        <snstopic:topic_displayname>snslambdatest1</snstopic:topic_displayname>
-        <snstopic:topic_topicname>snslambdatest</snstopic:topic_topicname>
-        <rdfs:comment>Resource</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stack"/>
-        <aws:isdeployedin rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_09496ff1-f228-48ea-ab82-0bd030dd14c5 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_09496ff1-f228-48ea-ab82-0bd030dd14c5">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
-        <lambdafunction:code_s3bucket rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_naveenkumarhm2"/>
-        <lambdafunction:code_s3key>snslambda.zip</lambdafunction:code_s3key>
-        <lambdafunction:code_s3objectversion>enfu4wsfrhcj3tk1zngfyvvkfgru8a17</lambdafunction:code_s3objectversion>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_52e079b5-71ff-42c5-8c3d-a559b805dbad -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_52e079b5-71ff-42c5-8c3d-a559b805dbad">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration"/>
-        <s3bucket:lambdaconfiguration_function rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        <s3bucket:lambdaconfiguration_event>s3:objectcreated:*</s3bucket:lambdaconfiguration_event>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_62f9ffa2-0951-4971-89b9-7aeb78f7824d -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_62f9ffa2-0951-4971-89b9-7aeb78f7824d">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#deadletterconfig"/>
-        <lambdafunction:deadletterconfig_targetarn rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration"/>
-        <s3bucket:notificationconfiguration_lambdaconfigurations rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_52e079b5-71ff-42c5-8c3d-a559b805dbad"/>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_b037548f-3d5d-4871-bc46-1e2d2bffce4a -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_b037548f-3d5d-4871-bc46-1e2d2bffce4a">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy"/>
-        <iamrole:policy_policydocument>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Action&quot;:&quot;sns:Publish&quot;,&quot;Resource&quot;:&quot;*&quot;}]}</iamrole:policy_policydocument>
-        <iamrole:policy_policyname>lambdadelete</iamrole:policy_policyname>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_be88a471-03f2-49e3-ae5c-d9ae63c5d3b3 -->
-
-
-    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_be88a471-03f2-49e3-ae5c-d9ae63c5d3b3">
-        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#tag"/>
-        <lambdafunction:tag_key>name</lambdafunction:tag_key>
-        <lambdafunction:tag_value>simplesnslambdafunciton</lambdafunction:tag_value>
-        <rdfs:comment>Subproperty</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // General axioms
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_functionname"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_layers"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_reservedconcurrentexecutions"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_timeout"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_environment"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_kmskeyarn"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tracingconfig"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tags"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_description"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_path"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_rolename"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_managedpolicyarns"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_permissionsboundary"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_deliverypolicy"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_filterpolicy"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_rawmessagedelivery"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_redrivepolicy"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_region"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_kmsmasterkeyid"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_tags"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_09496ff1-f228-48ea-ab82-0bd030dd14c5"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_zipfile"/>
-                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
-                    </owl:Restriction>
-                </owl:complementOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_52e079b5-71ff-42c5-8c3d-a559b805dbad"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_filter"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
-                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_aaa37085-b4b4-42cb-8146-3b2c3c924cc4"/>
-        </owl:oneOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-</rdf:RDF>
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction_stackset#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#</Import>
+    <Import>http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#</Import>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_3d70e77b-d313-4189-8f4d-3ccc67d8adea"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_naveenkumarhm2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+    </Declaration>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_functionname"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_layers"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_reservedconcurrentexecutions"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_timeout"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_environment"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_kmskeyarn"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tracingconfig"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tags"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_eventsourcetoken"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_description"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_path"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_rolename"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_managedpolicyarns"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_permissionsboundary"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockenabled"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accelerateconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_analyticsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketencryption"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_lifecycleconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_metricsconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_objectlockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_publicaccessblockconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_versioningconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_deliverypolicy"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_filterpolicy"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_rawmessagedelivery"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_redrivepolicy"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_region"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_kmsmasterkeyid"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_tags"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_filter"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+        </ObjectOneOf>
+        <ObjectComplementOf>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_zipfile"/>
+                <Datatype abbreviatedIRI="rdfs:Literal"/>
+            </DataSomeValuesFrom>
+        </ObjectComplementOf>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#externalresource"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#deadletterconfig"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_3d70e77b-d313-4189-8f4d-3ccc67d8adea"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#tag"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_code"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_deadletterconfig"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_3d70e77b-d313-4189-8f4d-3ccc67d8adea"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_role"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_tags"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourcearn"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_nmunibac@amazon.com"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isdeployedin"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_stack"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#deadletterconfig_targetarn"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_3d70e77b-d313-4189-8f4d-3ccc67d8adea"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_function"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/11_naveenkumarhm_infrastructure#ext_naveenkumarhm2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_description"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <Literal>simple lambda back sns service</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_handler"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <Literal>send_to_sns.send_to_sns</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_memorysize"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">256</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_runtime"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction"/>
+        <Literal>python3.6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_action"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <Literal>lambda:invokefunction</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_principal"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <Literal>s3.amazonaws.com</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission"/>
+        <Literal>&lt;account-xxxxx&gt;</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_assumerolepolicydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:[&quot;lambda.amazonaws.com&quot;]},&quot;Action&quot;:[&quot;sts:AssumeRole&quot;]}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_maxsessionduration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3600</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_accesscontrol"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        <Literal>private</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_bucketname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet"/>
+        <Literal>lamfunbucket</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription"/>
+        <Literal>email</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_displayname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        <Literal>snslambdatest1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_topicname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic"/>
+        <Literal>snslambdatest</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#policy_policydocument"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00"/>
+        <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Action&quot;:&quot;sns:Publish&quot;,&quot;Resource&quot;:&quot;*&quot;}]}</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#policy_policyname"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00"/>
+        <Literal>lambdadelete</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#tag_key"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2"/>
+        <Literal>name</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#tag_value"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2"/>
+        <Literal>simplesnslambdafunciton</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_event"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a"/>
+        <Literal>s3:objectcreated:*</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3key"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+        <Literal>snslambda.zip</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3objectversion"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6"/>
+        <Literal>enfu4wsfrhcj3tk1zngfyvvkfgru8a17</Literal>
+    </DataPropertyAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdafunction</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdapermission</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_lambdaroleforsns</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_s3bukcet</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snssubscription</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#lamction_lambdafunction_snstopic</IRI>
+        <Literal>Resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_3d70e77b-d313-4189-8f4d-3ccc67d8adea</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_a3773b46-50ae-43ac-9db0-a12a0c1d6a00</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_bbc3a676-d4d8-472c-a1ed-d5f7eb438ac2</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_d959a100-fbb1-4a78-9dc3-c61e8c5ea87a</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_eadd7407-1681-434b-9a53-c7699824e8c6</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lamction#subproperty_ed11d255-d4b9-4dc8-baca-55a962a21ada</IRI>
+        <Literal>Subproperty</Literal>
+    </AnnotationAssertion>
+</Ontology>
 
 
 
