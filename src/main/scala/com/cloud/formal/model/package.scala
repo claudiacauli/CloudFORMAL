@@ -22,11 +22,11 @@ package object model{
   private[model]
   object Format extends  Enumeration
   {
-    val Rdf         = "rdf"
-    val Xml         = "xml"
+    val RdfXml         = "rdf"
+    val OwlXml         = "xml"
     val Turtle      = "ttl"
     val Functional  = "fun"
-    val DefaultFormat: String = Rdf
+    val DefaultFormat: String = OwlXml
   }
 
 

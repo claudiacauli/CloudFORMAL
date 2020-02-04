@@ -190,7 +190,7 @@ object ModelWriter extends StrictLogging{
         m.manager.setOntologyDocumentIRI(ontology,newDocIRI)
 
         m.manager.getIRIMappers.add(new AutoIRIMapper(new File(folder),false))
-        m.manager.loadOntologyFromOntologyDocument(new File(folder+"/"+fileName))
+        ModelUtils.loadOntologyFromOntologyDocument(m.manager,new File(folder+"/"+fileName))
         m.manager.applyChange(
             new AddImport(m.ontology,
                 m.df.getOWLImportsDeclaration( oIRI )))
@@ -207,7 +207,7 @@ object ModelWriter extends StrictLogging{
 
     private def documentFormat(format: String) =
         format match {
-            case Format.Xml         => new OWLXMLDocumentFormat
+            case Format.OwlXml      => new OWLXMLDocumentFormat
             case Format.Turtle      => new TurtleDocumentFormat
             case Format.Functional  => new FunctionalSyntaxDocumentFormat
             case _                  => new RDFXMLDocumentFormat

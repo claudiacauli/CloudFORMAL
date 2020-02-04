@@ -19,16 +19,29 @@ package com.cloud.formal.model
 import java.io.File
 
 import com.cloud.formal.FilePath
-import org.semanticweb.owlapi.model.OWLOntologyManager
+import org.semanticweb.owlapi.model.{OWLOntologyAlreadyExistsException, OWLOntologyManager}
 
 object ModelUtils {
 
 
   def loadResourceSpecificationModelFromSpec
-  (service: String, resource: String, m: OWLOntologyManager): Unit = {
-    m.loadOntologyFromOntologyDocument(
-      new File(FilePath.ResourceTerminology(service,resource))
-    )
+  (service: String, resource: String, m: OWLOntologyManager): Unit =
+  {
+    loadOntologyFromOntologyDocument(m,
+      new File(FilePath.ResourceTerminology(service,resource)))
+  }
+
+
+  def loadOntologyFromOntologyDocument(m: OWLOntologyManager, file: File): Unit =
+  {
+    try
+    {
+      m.loadOntologyFromOntologyDocument(file)
+    }
+    catch
+      {
+        case _:OWLOntologyAlreadyExistsException =>
+      }
   }
 
 

@@ -119,17 +119,17 @@ object ModelIRI {
 
   private def iri(ontologyName:String, entityName:String = "") =
     IRI.create( 
-      Ontology.VersionStringIRI +
+      (Ontology.VersionStringIRI +
         ontologyName.toLowerCase +
         Ontology.Pound + 
-        entityName.toLowerCase )
+        entityName.toLowerCase).replace(" ","_") )
 
   
   private def awsIri(entityName: String ) =
     IRI.create(
-      AwsOntology.StringIRI + 
+      (AwsOntology.StringIRI +
         Ontology.Pound + 
-        entityName.toLowerCase)
+        entityName.toLowerCase).replace(" ","_"))
 
   
 }
