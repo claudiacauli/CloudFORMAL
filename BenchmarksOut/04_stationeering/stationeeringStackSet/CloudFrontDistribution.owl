@@ -51,10 +51,28 @@
         <Class IRI="origincustomheader"/>
     </Declaration>
     <Declaration>
+        <Class IRI="origingroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="origingroupfailovercriteria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="origingroupmember"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="origingroupmembers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="origingroups"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="restrictions"/>
     </Declaration>
     <Declaration>
         <Class IRI="s3originconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statuscodes"/>
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
@@ -93,6 +111,9 @@
         <ObjectProperty IRI="distributionconfig_logging"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="distributionconfig_origingroups"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="distributionconfig_origins"/>
     </Declaration>
     <Declaration>
@@ -112,6 +133,21 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="origin_s3originconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="origingroup_failovercriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="origingroup_members"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="origingroupfailovercriteria_statuscodes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="origingroupmembers_items"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="origingroups_items"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="restrictions_georestriction"/>
@@ -267,6 +303,9 @@
         <DataProperty IRI="lambdafunctionassociation_eventtype"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="lambdafunctionassociation_includebody"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="lambdafunctionassociation_lambdafunctionarn"/>
     </Declaration>
     <Declaration>
@@ -294,7 +333,25 @@
         <DataProperty IRI="origincustomheader_headervalue"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="origingroup_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="origingroupmember_originid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="origingroupmembers_quantity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="origingroups_quantity"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statuscodes_items"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statuscodes_quantity"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_key"/>
@@ -451,11 +508,81 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="origingroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="origingroup_failovercriteria"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="origingroup_members"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="origingroup_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroupfailovercriteria"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="origingroupfailovercriteria_statuscodes"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroupmember"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="origingroupmember_originid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroupmembers"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="origingroupmembers_items"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroupmembers"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="origingroupmembers_quantity"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="origingroups"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="origingroups_quantity"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="restrictions"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="restrictions_georestriction"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statuscodes"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statuscodes_items"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statuscodes"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statuscodes_quantity"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="tag"/>
@@ -487,6 +614,9 @@
         <ObjectProperty IRI="distributionconfig_logging"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="distributionconfig_origingroups"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="distributionconfig_restrictions"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -500,6 +630,15 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="origin_s3originconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="origingroup_failovercriteria"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="origingroup_members"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="origingroupfailovercriteria_statuscodes"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="restrictions_georestriction"/>
@@ -545,6 +684,10 @@
         <Class IRI="distributionconfig"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="distributionconfig_origingroups"/>
+        <Class IRI="distributionconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="distributionconfig_origins"/>
         <Class IRI="distributionconfig"/>
     </ObjectPropertyDomain>
@@ -571,6 +714,26 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="origin_s3originconfig"/>
         <Class IRI="origin"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origingroup_failovercriteria"/>
+        <Class IRI="origingroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origingroup_members"/>
+        <Class IRI="origingroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origingroupfailovercriteria_statuscodes"/>
+        <Class IRI="origingroupfailovercriteria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origingroupmembers_items"/>
+        <Class IRI="origingroupmembers"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origingroups_items"/>
+        <Class IRI="origingroups"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="restrictions_georestriction"/>
@@ -617,6 +780,10 @@
         <Class IRI="logging"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="distributionconfig_origingroups"/>
+        <Class IRI="origingroups"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="distributionconfig_origins"/>
         <Class IRI="origin"/>
     </ObjectPropertyRange>
@@ -643,6 +810,26 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="origin_s3originconfig"/>
         <Class IRI="s3originconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="origingroup_failovercriteria"/>
+        <Class IRI="origingroupfailovercriteria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="origingroup_members"/>
+        <Class IRI="origingroupmembers"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="origingroupfailovercriteria_statuscodes"/>
+        <Class IRI="statuscodes"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="origingroupmembers_items"/>
+        <Class IRI="origingroupmember"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="origingroups_items"/>
+        <Class IRI="origingroup"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="restrictions_georestriction"/>
@@ -763,6 +950,9 @@
         <DataProperty IRI="lambdafunctionassociation_eventtype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="lambdafunctionassociation_includebody"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="lambdafunctionassociation_lambdafunctionarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -790,7 +980,22 @@
         <DataProperty IRI="origincustomheader_headervalue"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="origingroup_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="origingroupmember_originid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="origingroupmembers_quantity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="origingroups_quantity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statuscodes_quantity"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -1014,6 +1219,10 @@
         <Class IRI="lambdafunctionassociation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="lambdafunctionassociation_includebody"/>
+        <Class IRI="lambdafunctionassociation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="lambdafunctionassociation_lambdafunctionarn"/>
         <Class IRI="lambdafunctionassociation"/>
     </DataPropertyDomain>
@@ -1050,8 +1259,32 @@
         <Class IRI="origincustomheader"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="origingroup_id"/>
+        <Class IRI="origingroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="origingroupmember_originid"/>
+        <Class IRI="origingroupmember"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="origingroupmembers_quantity"/>
+        <Class IRI="origingroupmembers"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="origingroups_quantity"/>
+        <Class IRI="origingroups"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
         <Class IRI="s3originconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statuscodes_items"/>
+        <Class IRI="statuscodes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statuscodes_quantity"/>
+        <Class IRI="statuscodes"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
@@ -1282,6 +1515,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="lambdafunctionassociation_includebody"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="lambdafunctionassociation_lambdafunctionarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1318,8 +1555,32 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="origingroup_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="origingroupmember_originid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="origingroupmembers_quantity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="origingroups_quantity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statuscodes_items"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statuscodes_quantity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="tag_key"/>

@@ -15,6 +15,15 @@
         <Class IRI="action"/>
     </Declaration>
     <Declaration>
+        <Class IRI="assetpropertytimestamp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="assetpropertyvalue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="assetpropertyvariant"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="cloudwatchalarmaction"/>
     </Declaration>
     <Declaration>
@@ -33,13 +42,31 @@
         <Class IRI="firehoseaction"/>
     </Declaration>
     <Declaration>
+        <Class IRI="httpaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpactionheader"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpauthorization"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="iotanalyticsaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ioteventsaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="iotsitewiseaction"/>
     </Declaration>
     <Declaration>
         <Class IRI="kinesisaction"/>
     </Declaration>
     <Declaration>
         <Class IRI="lambdaaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="putassetpropertyvalueentry"/>
     </Declaration>
     <Declaration>
         <Class IRI="putiteminput"/>
@@ -49,6 +76,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="s3action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sigv4authorization"/>
     </Declaration>
     <Declaration>
         <Class IRI="snsaction"/>
@@ -84,7 +114,16 @@
         <ObjectProperty IRI="action_firehose"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="action_http"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="action_iotanalytics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_iotevents"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_iotsitewise"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="action_kinesis"/>
@@ -108,7 +147,28 @@
         <ObjectProperty IRI="action_stepfunctions"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="assetpropertyvalue_timestamp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assetpropertyvalue_value"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="dynamodbv2action_putitem"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpaction_auth"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpaction_headers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpauthorization_sigv4"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="iotsitewiseaction_putassetpropertyvalueentries"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="putassetpropertyvalueentry_propertyvalues"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="topicrule_topicrulepayload"/>
@@ -118,6 +178,27 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="topicrulepayload_erroraction"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertytimestamp_offsetinnanos"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertytimestamp_timeinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertyvalue_quality"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertyvariant_booleanvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertyvariant_doublevalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertyvariant_integervalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetpropertyvariant_stringvalue"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_topicrule_arn"/>
@@ -207,10 +288,34 @@
         <DataProperty IRI="firehoseaction_separator"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="httpaction_confirmationurl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpaction_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpactionheader_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpactionheader_value"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="iotanalyticsaction_channelname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="iotanalyticsaction_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ioteventsaction_inputname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ioteventsaction_messageid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ioteventsaction_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="iotsitewiseaction_rolearn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="kinesisaction_partitionkey"/>
@@ -225,7 +330,22 @@
         <DataProperty IRI="lambdaaction_functionarn"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="putassetpropertyvalueentry_assetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="putassetpropertyvalueentry_entryid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyalias"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="putiteminput_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="republishaction_qos"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="republishaction_rolearn"/>
@@ -241,6 +361,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3action_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sigv4authorization_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sigv4authorization_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sigv4authorization_signingregion"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="snsaction_messageformat"/>
@@ -284,6 +413,27 @@
     <Declaration>
         <DataProperty IRI="topicrulepayload_sql"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="assetpropertytimestamp"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetpropertytimestamp_timeinseconds"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetpropertyvalue"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="assetpropertyvalue_timestamp"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetpropertyvalue"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="assetpropertyvalue_value"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="cloudwatchalarmaction"/>
         <DataSomeValuesFrom>
@@ -425,6 +575,27 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="httpaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpaction_url"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpactionheader"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpactionheader_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpactionheader"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpactionheader_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="iotanalyticsaction"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="iotanalyticsaction_channelname"/>
@@ -435,6 +606,34 @@
         <Class IRI="iotanalyticsaction"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="iotanalyticsaction_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ioteventsaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ioteventsaction_inputname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ioteventsaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ioteventsaction_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="iotsitewiseaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="iotsitewiseaction_putassetpropertyvalueentries"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="iotsitewiseaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="iotsitewiseaction_rolearn"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -451,6 +650,13 @@
             <DataProperty IRI="kinesisaction_streamname"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="putassetpropertyvalueentry"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="putassetpropertyvalueentry_propertyvalues"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="putiteminput"/>
@@ -491,6 +697,27 @@
         <Class IRI="s3action"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="s3action_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sigv4authorization"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sigv4authorization_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sigv4authorization"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sigv4authorization_servicename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sigv4authorization"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sigv4authorization_signingregion"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -583,7 +810,16 @@
         <ObjectProperty IRI="action_firehose"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_http"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="action_iotanalytics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_iotevents"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_iotsitewise"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="action_kinesis"/>
@@ -607,7 +843,19 @@
         <ObjectProperty IRI="action_stepfunctions"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="assetpropertyvalue_timestamp"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="assetpropertyvalue_value"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="dynamodbv2action_putitem"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpaction_auth"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpauthorization_sigv4"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="topicrule_topicrulepayload"/>
@@ -640,7 +888,19 @@
         <Class IRI="action"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_http"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="action_iotanalytics"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_iotevents"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_iotsitewise"/>
         <Class IRI="action"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -672,8 +932,36 @@
         <Class IRI="action"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetpropertyvalue_timestamp"/>
+        <Class IRI="assetpropertyvalue"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetpropertyvalue_value"/>
+        <Class IRI="assetpropertyvalue"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="dynamodbv2action_putitem"/>
         <Class IRI="dynamodbv2action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpaction_auth"/>
+        <Class IRI="httpaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpaction_headers"/>
+        <Class IRI="httpaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpauthorization_sigv4"/>
+        <Class IRI="httpauthorization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="iotsitewiseaction_putassetpropertyvalueentries"/>
+        <Class IRI="iotsitewiseaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="putassetpropertyvalueentry_propertyvalues"/>
+        <Class IRI="putassetpropertyvalueentry"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="topicrule_topicrulepayload"/>
@@ -712,8 +1000,20 @@
         <Class IRI="firehoseaction"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="action_http"/>
+        <Class IRI="httpaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="action_iotanalytics"/>
         <Class IRI="iotanalyticsaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_iotevents"/>
+        <Class IRI="ioteventsaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_iotsitewise"/>
+        <Class IRI="iotsitewiseaction"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="action_kinesis"/>
@@ -744,8 +1044,36 @@
         <Class IRI="stepfunctionsaction"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="assetpropertyvalue_timestamp"/>
+        <Class IRI="assetpropertytimestamp"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assetpropertyvalue_value"/>
+        <Class IRI="assetpropertyvariant"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="dynamodbv2action_putitem"/>
         <Class IRI="putiteminput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpaction_auth"/>
+        <Class IRI="httpauthorization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpaction_headers"/>
+        <Class IRI="httpactionheader"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpauthorization_sigv4"/>
+        <Class IRI="sigv4authorization"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="iotsitewiseaction_putassetpropertyvalueentries"/>
+        <Class IRI="putassetpropertyvalueentry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="putassetpropertyvalueentry_propertyvalues"/>
+        <Class IRI="assetpropertyvalue"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="topicrule_topicrulepayload"/>
@@ -759,6 +1087,27 @@
         <ObjectProperty IRI="topicrulepayload_erroraction"/>
         <Class IRI="action"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertytimestamp_offsetinnanos"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertytimestamp_timeinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertyvalue_quality"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertyvariant_booleanvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertyvariant_doublevalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertyvariant_integervalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetpropertyvariant_stringvalue"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_topicrule_arn"/>
     </FunctionalDataProperty>
@@ -847,10 +1196,34 @@
         <DataProperty IRI="firehoseaction_separator"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="httpaction_confirmationurl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpaction_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpactionheader_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpactionheader_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="iotanalyticsaction_channelname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="iotanalyticsaction_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ioteventsaction_inputname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ioteventsaction_messageid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ioteventsaction_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="iotsitewiseaction_rolearn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="kinesisaction_partitionkey"/>
@@ -865,7 +1238,22 @@
         <DataProperty IRI="lambdaaction_functionarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="putassetpropertyvalueentry_assetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="putassetpropertyvalueentry_entryid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyalias"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="putiteminput_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="republishaction_qos"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="republishaction_rolearn"/>
@@ -881,6 +1269,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="s3action_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sigv4authorization_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sigv4authorization_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sigv4authorization_signingregion"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="snsaction_messageformat"/>
@@ -925,6 +1322,34 @@
         <DataProperty IRI="topicrulepayload_sql"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="assetpropertytimestamp_offsetinnanos"/>
+        <Class IRI="assetpropertytimestamp"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertytimestamp_timeinseconds"/>
+        <Class IRI="assetpropertytimestamp"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertyvalue_quality"/>
+        <Class IRI="assetpropertyvalue"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertyvariant_booleanvalue"/>
+        <Class IRI="assetpropertyvariant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertyvariant_doublevalue"/>
+        <Class IRI="assetpropertyvariant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertyvariant_integervalue"/>
+        <Class IRI="assetpropertyvariant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetpropertyvariant_stringvalue"/>
+        <Class IRI="assetpropertyvariant"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="attribute_topicrule_arn"/>
         <Class IRI="topicrule"/>
     </DataPropertyDomain>
@@ -1041,12 +1466,44 @@
         <Class IRI="firehoseaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="httpaction_confirmationurl"/>
+        <Class IRI="httpaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpaction_url"/>
+        <Class IRI="httpaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpactionheader_key"/>
+        <Class IRI="httpactionheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpactionheader_value"/>
+        <Class IRI="httpactionheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="iotanalyticsaction_channelname"/>
         <Class IRI="iotanalyticsaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="iotanalyticsaction_rolearn"/>
         <Class IRI="iotanalyticsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ioteventsaction_inputname"/>
+        <Class IRI="ioteventsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ioteventsaction_messageid"/>
+        <Class IRI="ioteventsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ioteventsaction_rolearn"/>
+        <Class IRI="ioteventsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="iotsitewiseaction_rolearn"/>
+        <Class IRI="iotsitewiseaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="kinesisaction_partitionkey"/>
@@ -1065,8 +1522,28 @@
         <Class IRI="lambdaaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="putassetpropertyvalueentry_assetid"/>
+        <Class IRI="putassetpropertyvalueentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="putassetpropertyvalueentry_entryid"/>
+        <Class IRI="putassetpropertyvalueentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyalias"/>
+        <Class IRI="putassetpropertyvalueentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyid"/>
+        <Class IRI="putassetpropertyvalueentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="putiteminput_tablename"/>
         <Class IRI="putiteminput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="republishaction_qos"/>
+        <Class IRI="republishaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="republishaction_rolearn"/>
@@ -1087,6 +1564,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="s3action_rolearn"/>
         <Class IRI="s3action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sigv4authorization_rolearn"/>
+        <Class IRI="sigv4authorization"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sigv4authorization_servicename"/>
+        <Class IRI="sigv4authorization"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sigv4authorization_signingregion"/>
+        <Class IRI="sigv4authorization"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="snsaction_messageformat"/>
@@ -1144,6 +1633,34 @@
         <DataProperty IRI="topicrulepayload_sql"/>
         <Class IRI="topicrulepayload"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertytimestamp_offsetinnanos"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertytimestamp_timeinseconds"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertyvalue_quality"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertyvariant_booleanvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertyvariant_doublevalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertyvariant_integervalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetpropertyvariant_stringvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="attribute_topicrule_arn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -1261,11 +1778,43 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="httpaction_confirmationurl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpaction_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpactionheader_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpactionheader_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="iotanalyticsaction_channelname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="iotanalyticsaction_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ioteventsaction_inputname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ioteventsaction_messageid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ioteventsaction_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="iotsitewiseaction_rolearn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1285,8 +1834,28 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="putassetpropertyvalueentry_assetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="putassetpropertyvalueentry_entryid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyalias"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="putassetpropertyvalueentry_propertyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="putiteminput_tablename"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="republishaction_qos"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="republishaction_rolearn"/>
@@ -1306,6 +1875,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3action_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sigv4authorization_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sigv4authorization_servicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sigv4authorization_signingregion"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

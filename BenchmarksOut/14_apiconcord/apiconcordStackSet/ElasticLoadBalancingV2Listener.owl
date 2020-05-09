@@ -27,6 +27,9 @@
         <Class IRI="fixedresponseconfig"/>
     </Declaration>
     <Declaration>
+        <Class IRI="forwardconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="listener"/>
     </Declaration>
     <Declaration>
@@ -34,6 +37,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="redirectconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targetgroupstickinessconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targetgrouptuple"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="action_authenticatecognitoconfig"/>
@@ -45,6 +54,9 @@
         <ObjectProperty IRI="action_fixedresponseconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="action_forwardconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="action_redirectconfig"/>
     </Declaration>
     <Declaration>
@@ -52,6 +64,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="authenticateoidcconfig_authenticationrequestextraparams"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="forwardconfig_targetgroups"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="forwardconfig_targetgroupstickinessconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="listener_certificates"/>
@@ -166,6 +184,18 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="redirectconfig_statuscode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetgroupstickinessconfig_durationseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetgroupstickinessconfig_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetgrouptuple_targetgrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetgrouptuple_weight"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="action"/>
@@ -289,7 +319,13 @@
         <ObjectProperty IRI="action_fixedresponseconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_forwardconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="action_redirectconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="forwardconfig_targetgroupstickinessconfig"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="action_authenticatecognitoconfig"/>
@@ -304,6 +340,10 @@
         <Class IRI="action"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_forwardconfig"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="action_redirectconfig"/>
         <Class IRI="action"/>
     </ObjectPropertyDomain>
@@ -314,6 +354,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="authenticateoidcconfig_authenticationrequestextraparams"/>
         <Class IRI="authenticateoidcconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="forwardconfig_targetgroups"/>
+        <Class IRI="forwardconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="forwardconfig_targetgroupstickinessconfig"/>
+        <Class IRI="forwardconfig"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="listener_certificates"/>
@@ -336,6 +384,10 @@
         <Class IRI="fixedresponseconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="action_forwardconfig"/>
+        <Class IRI="forwardconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="action_redirectconfig"/>
         <Class IRI="redirectconfig"/>
     </ObjectPropertyRange>
@@ -346,6 +398,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="authenticateoidcconfig_authenticationrequestextraparams"/>
         <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="forwardconfig_targetgroups"/>
+        <Class IRI="targetgrouptuple"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="forwardconfig_targetgroupstickinessconfig"/>
+        <Class IRI="targetgroupstickinessconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="listener_certificates"/>
@@ -457,6 +517,18 @@
     <FunctionalDataProperty>
         <DataProperty IRI="redirectconfig_statuscode"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetgroupstickinessconfig_durationseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetgroupstickinessconfig_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetgrouptuple_targetgrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetgrouptuple_weight"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="action_order"/>
         <Class IRI="action"/>
@@ -601,6 +673,22 @@
         <DataProperty IRI="redirectconfig_statuscode"/>
         <Class IRI="redirectconfig"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetgroupstickinessconfig_durationseconds"/>
+        <Class IRI="targetgroupstickinessconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetgroupstickinessconfig_enabled"/>
+        <Class IRI="targetgroupstickinessconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetgrouptuple_targetgrouparn"/>
+        <Class IRI="targetgrouptuple"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetgrouptuple_weight"/>
+        <Class IRI="targetgrouptuple"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="action_order"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -744,6 +832,22 @@
     <DataPropertyRange>
         <DataProperty IRI="redirectconfig_statuscode"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetgroupstickinessconfig_durationseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetgroupstickinessconfig_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetgrouptuple_targetgrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetgrouptuple_weight"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
 </Ontology>
 

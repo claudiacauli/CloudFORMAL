@@ -21,6 +21,9 @@
         <ObjectProperty IRI="permission_functionname"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="permission_principal"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="permission_sourcearn"/>
     </Declaration>
     <Declaration>
@@ -28,9 +31,6 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="permission_eventsourcetoken"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="permission_principal"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="permission_sourceaccount"/>
@@ -49,21 +49,21 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <SubClassOf>
-        <Class IRI="permission"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="permission_principal"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="permission_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="permission_principal"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="permission_sourcearn"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="permission_functionname"/>
+        <Class IRI="permission"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="permission_principal"/>
         <Class IRI="permission"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -81,9 +81,6 @@
         <DataProperty IRI="permission_eventsourcetoken"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="permission_principal"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="permission_sourceaccount"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
@@ -92,10 +89,6 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="permission_eventsourcetoken"/>
-        <Class IRI="permission"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="permission_principal"/>
         <Class IRI="permission"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -108,10 +101,6 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="permission_eventsourcetoken"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="permission_principal"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
