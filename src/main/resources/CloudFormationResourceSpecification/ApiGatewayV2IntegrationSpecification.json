@@ -1,4 +1,17 @@
 {
+  "PropertyTypes": {
+    "AWS::ApiGatewayV2::Integration.TlsConfig": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apigatewayv2-integration-tlsconfig.html",
+      "Properties": {
+        "ServerNameToVerify": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-apigatewayv2-integration-tlsconfig.html#cfn-apigatewayv2-integration-tlsconfig-servernametoverify",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        }
+      }
+    }
+  },
   "ResourceType": {
     "AWS::ApiGatewayV2::Integration": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-integration.html",
@@ -39,6 +52,12 @@
           "PrimitiveType": "Json",
           "UpdateType": "Mutable"
         },
+        "ConnectionId": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-integration.html#cfn-apigatewayv2-integration-connectionid",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
         "IntegrationUri": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-integration.html#cfn-apigatewayv2-integration-integrationuri",
@@ -69,6 +88,12 @@
           "PrimitiveType": "Integer",
           "UpdateType": "Mutable"
         },
+        "TlsConfig": {
+          "Type": "TlsConfig",
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-integration.html#cfn-apigatewayv2-integration-tlsconfig",
+          "UpdateType": "Mutable"
+        },
         "ContentHandlingStrategy": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-integration.html#cfn-apigatewayv2-integration-contenthandlingstrategy",
@@ -90,5 +115,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "10.4.0"
+  "ResourceSpecificationVersion": "14.2.0"
 }

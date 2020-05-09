@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cassandratable#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cassandratable#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="billingmode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="clusteringkeycolumn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="column"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provisionedthroughput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="table"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="billingmode_provisionedthroughput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="clusteringkeycolumn_column"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_billingmode"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_clusteringkeycolumns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_partitionkeycolumns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_regularcolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="billingmode_mode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clusteringkeycolumn_orderby"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_columnname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_columntype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="table_keyspacename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="table_tablename"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="billingmode"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="billingmode_mode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="clusteringkeycolumn"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="clusteringkeycolumn_column"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="column"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="column_columnname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="column"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="column_columntype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionedthroughput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionedthroughput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="table"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="table_partitionkeycolumns"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="table"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="table_keyspacename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="billingmode_provisionedthroughput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="clusteringkeycolumn_column"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_billingmode"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="billingmode_provisionedthroughput"/>
+        <Class IRI="billingmode"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="clusteringkeycolumn_column"/>
+        <Class IRI="clusteringkeycolumn"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_billingmode"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_clusteringkeycolumns"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_partitionkeycolumns"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_regularcolumns"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="billingmode_provisionedthroughput"/>
+        <Class IRI="provisionedthroughput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="clusteringkeycolumn_column"/>
+        <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_billingmode"/>
+        <Class IRI="billingmode"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_clusteringkeycolumns"/>
+        <Class IRI="clusteringkeycolumn"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_partitionkeycolumns"/>
+        <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_regularcolumns"/>
+        <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="billingmode_mode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clusteringkeycolumn_orderby"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_columnname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_columntype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="table_keyspacename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="table_tablename"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="billingmode_mode"/>
+        <Class IRI="billingmode"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clusteringkeycolumn_orderby"/>
+        <Class IRI="clusteringkeycolumn"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_columnname"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_columntype"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+        <Class IRI="provisionedthroughput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+        <Class IRI="provisionedthroughput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="table_keyspacename"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="table_tablename"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="billingmode_mode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clusteringkeycolumn_orderby"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="column_columnname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="column_columntype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="table_keyspacename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="table_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/ -->
+
+

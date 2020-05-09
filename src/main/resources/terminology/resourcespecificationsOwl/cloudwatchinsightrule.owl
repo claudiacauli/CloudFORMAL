@@ -15,6 +15,15 @@
         <Class IRI="insightrule"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="insightrule_tags"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="attribute_insightrule_arn"/>
     </Declaration>
     <Declaration>
@@ -28,6 +37,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="insightrule_rulestate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="insightrule"/>
@@ -50,6 +65,31 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="insightrule_tags"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="insightrule_tags"/>
+        <Class IRI="insightrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="insightrule_tags"/>
+        <Class IRI="tags"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_insightrule_arn"/>
     </FunctionalDataProperty>
@@ -65,6 +105,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="insightrule_rulestate"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_insightrule_arn"/>
         <Class IRI="insightrule"/>
@@ -85,6 +131,14 @@
         <DataProperty IRI="insightrule_rulestate"/>
         <Class IRI="insightrule"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="attribute_insightrule_arn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -103,6 +157,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="insightrule_rulestate"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

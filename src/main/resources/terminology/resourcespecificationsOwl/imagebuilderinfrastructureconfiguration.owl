@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuilderinfrastructureconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuilderinfrastructureconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="infrastructureconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="logging"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3logs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="infrastructureconfiguration_logging"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="infrastructureconfiguration_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="logging_s3logs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_infrastructureconfiguration_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_instanceprofilename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_instancetypes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_keypair"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_snstopicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_subnetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="infrastructureconfiguration_terminateinstanceonfailure"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3logs_s3bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3logs_s3keyprefix"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="infrastructureconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="infrastructureconfiguration_instanceprofilename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="infrastructureconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="infrastructureconfiguration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="infrastructureconfiguration_logging"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="logging_s3logs"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="infrastructureconfiguration_logging"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="infrastructureconfiguration_tags"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="logging_s3logs"/>
+        <Class IRI="logging"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="infrastructureconfiguration_logging"/>
+        <Class IRI="logging"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="infrastructureconfiguration_tags"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="logging_s3logs"/>
+        <Class IRI="s3logs"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_infrastructureconfiguration_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_instanceprofilename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_keypair"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_snstopicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_subnetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="infrastructureconfiguration_terminateinstanceonfailure"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3logs_s3bucketname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3logs_s3keyprefix"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_infrastructureconfiguration_arn"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_description"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_instanceprofilename"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_instancetypes"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_keypair"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_name"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_securitygroupids"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_snstopicarn"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_subnetid"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="infrastructureconfiguration_terminateinstanceonfailure"/>
+        <Class IRI="infrastructureconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3logs_s3bucketname"/>
+        <Class IRI="s3logs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3logs_s3keyprefix"/>
+        <Class IRI="s3logs"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_infrastructureconfiguration_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_instanceprofilename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_instancetypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_keypair"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_snstopicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_subnetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="infrastructureconfiguration_terminateinstanceonfailure"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3logs_s3bucketname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3logs_s3keyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/ -->
+
+

@@ -24,6 +24,15 @@
         <Class IRI="backend"/>
     </Declaration>
     <Declaration>
+        <Class IRI="backenddefaults"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="clientpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="clientpolicytls"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="dnsservicediscovery"/>
     </Declaration>
     <Declaration>
@@ -36,6 +45,18 @@
         <Class IRI="listener"/>
     </Declaration>
     <Declaration>
+        <Class IRI="listenertls"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="listenertlsacmcertificate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="listenertlscertificate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="listenertlsfilecertificate"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="logging"/>
     </Declaration>
     <Declaration>
@@ -46,6 +67,18 @@
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tlsvalidationcontext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tlsvalidationcontextacmtrust"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tlsvalidationcontextfiletrust"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tlsvalidationcontexttrust"/>
     </Declaration>
     <Declaration>
         <Class IRI="virtualnode"/>
@@ -66,10 +99,31 @@
         <ObjectProperty IRI="backend_virtualservice"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="backenddefaults_clientpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="clientpolicy_tls"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="clientpolicytls_validation"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="listener_healthcheck"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="listener_portmapping"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="listener_tls"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="listenertls_certificate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="listenertlscertificate_acm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="listenertlscertificate_file"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="logging_accesslog"/>
@@ -81,10 +135,22 @@
         <ObjectProperty IRI="servicediscovery_dns"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="tlsvalidationcontext_trust"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_acm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_file"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="virtualnode_spec"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="virtualnode_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="virtualnodespec_backenddefaults"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="virtualnodespec_backends"/>
@@ -99,10 +165,19 @@
         <ObjectProperty IRI="virtualnodespec_servicediscovery"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="virtualservicebackend_clientpolicy"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="attribute_virtualnode_arn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_virtualnode_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualnode_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualnode_resourceowner"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_virtualnode_uid"/>
@@ -121,6 +196,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="awscloudmapservicediscovery_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clientpolicytls_enforce"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clientpolicytls_ports"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="dnsservicediscovery_hostname"/>
@@ -150,6 +231,18 @@
         <DataProperty IRI="healthcheck_unhealthythreshold"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="listenertls_mode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="listenertlsacmcertificate_certificatearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="listenertlsfilecertificate_certificatechain"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="listenertlsfilecertificate_privatekey"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="portmapping_port"/>
     </Declaration>
     <Declaration>
@@ -162,7 +255,16 @@
         <DataProperty IRI="tag_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="tlsvalidationcontextacmtrust_certificateauthorityarns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tlsvalidationcontextfiletrust_certificatechain"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="virtualnode_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="virtualnode_meshowner"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="virtualnode_virtualnodename"/>
@@ -197,6 +299,13 @@
             <DataProperty IRI="awscloudmapservicediscovery_servicename"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="clientpolicytls"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="clientpolicytls_validation"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="dnsservicediscovery"/>
@@ -255,6 +364,41 @@
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="listenertls"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="listenertls_certificate"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="listenertls"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="listenertls_mode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="listenertlsacmcertificate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="listenertlsacmcertificate_certificatearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="listenertlsfilecertificate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="listenertlsfilecertificate_certificatechain"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="listenertlsfilecertificate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="listenertlsfilecertificate_privatekey"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="portmapping"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="portmapping_port"/>
@@ -279,6 +423,27 @@
         <Class IRI="tag"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tlsvalidationcontext"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="tlsvalidationcontext_trust"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tlsvalidationcontextacmtrust"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tlsvalidationcontextacmtrust_certificateauthorityarns"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tlsvalidationcontextfiletrust"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tlsvalidationcontextfiletrust_certificatechain"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -317,10 +482,31 @@
         <ObjectProperty IRI="backend_virtualservice"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="backenddefaults_clientpolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="clientpolicy_tls"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="clientpolicytls_validation"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="listener_healthcheck"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="listener_portmapping"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="listener_tls"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="listenertls_certificate"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="listenertlscertificate_acm"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="listenertlscertificate_file"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="logging_accesslog"/>
@@ -332,13 +518,28 @@
         <ObjectProperty IRI="servicediscovery_dns"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="tlsvalidationcontext_trust"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_acm"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_file"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="virtualnode_spec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="virtualnodespec_backenddefaults"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="virtualnodespec_logging"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="virtualnodespec_servicediscovery"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="virtualservicebackend_clientpolicy"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="accesslog_file"/>
@@ -353,12 +554,40 @@
         <Class IRI="backend"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="backenddefaults_clientpolicy"/>
+        <Class IRI="backenddefaults"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="clientpolicy_tls"/>
+        <Class IRI="clientpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="clientpolicytls_validation"/>
+        <Class IRI="clientpolicytls"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="listener_healthcheck"/>
         <Class IRI="listener"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="listener_portmapping"/>
         <Class IRI="listener"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="listener_tls"/>
+        <Class IRI="listener"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="listenertls_certificate"/>
+        <Class IRI="listenertls"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="listenertlscertificate_acm"/>
+        <Class IRI="listenertlscertificate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="listenertlscertificate_file"/>
+        <Class IRI="listenertlscertificate"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="logging_accesslog"/>
@@ -373,12 +602,28 @@
         <Class IRI="servicediscovery"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="tlsvalidationcontext_trust"/>
+        <Class IRI="tlsvalidationcontext"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_acm"/>
+        <Class IRI="tlsvalidationcontexttrust"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_file"/>
+        <Class IRI="tlsvalidationcontexttrust"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="virtualnode_spec"/>
         <Class IRI="virtualnode"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="virtualnode_tags"/>
         <Class IRI="virtualnode"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualnodespec_backenddefaults"/>
+        <Class IRI="virtualnodespec"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="virtualnodespec_backends"/>
@@ -396,6 +641,10 @@
         <ObjectProperty IRI="virtualnodespec_servicediscovery"/>
         <Class IRI="virtualnodespec"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualservicebackend_clientpolicy"/>
+        <Class IRI="virtualservicebackend"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="accesslog_file"/>
         <Class IRI="fileaccesslog"/>
@@ -409,12 +658,40 @@
         <Class IRI="virtualservicebackend"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="backenddefaults_clientpolicy"/>
+        <Class IRI="clientpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="clientpolicy_tls"/>
+        <Class IRI="clientpolicytls"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="clientpolicytls_validation"/>
+        <Class IRI="tlsvalidationcontext"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="listener_healthcheck"/>
         <Class IRI="healthcheck"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="listener_portmapping"/>
         <Class IRI="portmapping"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="listener_tls"/>
+        <Class IRI="listenertls"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="listenertls_certificate"/>
+        <Class IRI="listenertlscertificate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="listenertlscertificate_acm"/>
+        <Class IRI="listenertlsacmcertificate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="listenertlscertificate_file"/>
+        <Class IRI="listenertlsfilecertificate"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="logging_accesslog"/>
@@ -429,12 +706,28 @@
         <Class IRI="dnsservicediscovery"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="tlsvalidationcontext_trust"/>
+        <Class IRI="tlsvalidationcontexttrust"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_acm"/>
+        <Class IRI="tlsvalidationcontextacmtrust"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tlsvalidationcontexttrust_file"/>
+        <Class IRI="tlsvalidationcontextfiletrust"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="virtualnode_spec"/>
         <Class IRI="virtualnodespec"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="virtualnode_tags"/>
         <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualnodespec_backenddefaults"/>
+        <Class IRI="backenddefaults"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="virtualnodespec_backends"/>
@@ -452,11 +745,21 @@
         <ObjectProperty IRI="virtualnodespec_servicediscovery"/>
         <Class IRI="servicediscovery"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualservicebackend_clientpolicy"/>
+        <Class IRI="clientpolicy"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_virtualnode_arn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_virtualnode_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualnode_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualnode_resourceowner"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_virtualnode_uid"/>
@@ -475,6 +778,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="awscloudmapservicediscovery_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clientpolicytls_enforce"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="dnsservicediscovery_hostname"/>
@@ -504,6 +810,18 @@
         <DataProperty IRI="healthcheck_unhealthythreshold"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="listenertls_mode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="listenertlsacmcertificate_certificatearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="listenertlsfilecertificate_certificatechain"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="listenertlsfilecertificate_privatekey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="portmapping_port"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -516,7 +834,13 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="tlsvalidationcontextfiletrust_certificatechain"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="virtualnode_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="virtualnode_meshowner"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="virtualnode_virtualnodename"/>
@@ -530,6 +854,14 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_virtualnode_meshname"/>
+        <Class IRI="virtualnode"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualnode_meshowner"/>
+        <Class IRI="virtualnode"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualnode_resourceowner"/>
         <Class IRI="virtualnode"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -555,6 +887,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="awscloudmapservicediscovery_servicename"/>
         <Class IRI="awscloudmapservicediscovery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clientpolicytls_enforce"/>
+        <Class IRI="clientpolicytls"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clientpolicytls_ports"/>
+        <Class IRI="clientpolicytls"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="dnsservicediscovery_hostname"/>
@@ -593,6 +933,22 @@
         <Class IRI="healthcheck"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="listenertls_mode"/>
+        <Class IRI="listenertls"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="listenertlsacmcertificate_certificatearn"/>
+        <Class IRI="listenertlsacmcertificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="listenertlsfilecertificate_certificatechain"/>
+        <Class IRI="listenertlsfilecertificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="listenertlsfilecertificate_privatekey"/>
+        <Class IRI="listenertlsfilecertificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="portmapping_port"/>
         <Class IRI="portmapping"/>
     </DataPropertyDomain>
@@ -609,7 +965,19 @@
         <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="tlsvalidationcontextacmtrust_certificateauthorityarns"/>
+        <Class IRI="tlsvalidationcontextacmtrust"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tlsvalidationcontextfiletrust_certificatechain"/>
+        <Class IRI="tlsvalidationcontextfiletrust"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="virtualnode_meshname"/>
+        <Class IRI="virtualnode"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="virtualnode_meshowner"/>
         <Class IRI="virtualnode"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -626,6 +994,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="attribute_virtualnode_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualnode_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualnode_resourceowner"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -651,6 +1027,14 @@
     <DataPropertyRange>
         <DataProperty IRI="awscloudmapservicediscovery_servicename"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clientpolicytls_enforce"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clientpolicytls_ports"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="dnsservicediscovery_hostname"/>
@@ -689,6 +1073,22 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="listenertls_mode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="listenertlsacmcertificate_certificatearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="listenertlsfilecertificate_certificatechain"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="listenertlsfilecertificate_privatekey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="portmapping_port"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
@@ -705,7 +1105,19 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="tlsvalidationcontextacmtrust_certificateauthorityarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tlsvalidationcontextfiletrust_certificatechain"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="virtualnode_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="virtualnode_meshowner"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

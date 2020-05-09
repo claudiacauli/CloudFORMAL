@@ -87,7 +87,13 @@
         <Class IRI="sqlapplicationconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="application_applicationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="application_tags"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="applicationcodeconfiguration_codecontent"/>
@@ -268,6 +274,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3contentlocation_objectversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="application"/>
@@ -416,6 +428,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="application_applicationconfiguration"/>
     </FunctionalObjectProperty>
@@ -481,6 +507,10 @@
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="application_applicationconfiguration"/>
+        <Class IRI="application"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="application_tags"/>
         <Class IRI="application"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -578,6 +608,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="application_applicationconfiguration"/>
         <Class IRI="applicationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="application_tags"/>
+        <Class IRI="tag"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="applicationcodeconfiguration_codecontent"/>
@@ -782,6 +816,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="s3contentlocation_objectversion"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="application_applicationdescription"/>
         <Class IRI="application"/>
@@ -930,6 +970,14 @@
         <DataProperty IRI="s3contentlocation_objectversion"/>
         <Class IRI="s3contentlocation"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="application_applicationdescription"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -1076,6 +1124,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3contentlocation_objectversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

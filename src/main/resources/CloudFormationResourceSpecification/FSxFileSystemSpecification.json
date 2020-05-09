@@ -63,10 +63,22 @@
           "PrimitiveType": "Integer",
           "UpdateType": "Immutable"
         },
+        "DeploymentType": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-deploymenttype",
+          "PrimitiveType": "String",
+          "UpdateType": "Immutable"
+        },
         "ExportPath": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-exportpath",
           "PrimitiveType": "String",
+          "UpdateType": "Immutable"
+        },
+        "PerUnitStorageThroughput": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-fsx-filesystem-lustreconfiguration.html#cfn-fsx-filesystem-lustreconfiguration-perunitstoragethroughput",
+          "PrimitiveType": "Integer",
           "UpdateType": "Immutable"
         }
       }
@@ -151,7 +163,18 @@
   "ResourceType": {
     "AWS::FSx::FileSystem": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html",
+      "Attributes": {
+        "LustreMountName": {
+          "PrimitiveType": "String"
+        }
+      },
       "Properties": {
+        "StorageType": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-storagetype",
+          "PrimitiveType": "String",
+          "UpdateType": "Immutable"
+        },
         "KmsKeyId": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-fsx-filesystem.html#cfn-fsx-filesystem-kmskeyid",
@@ -212,5 +235,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "10.4.0"
+  "ResourceSpecificationVersion": "14.2.0"
 }

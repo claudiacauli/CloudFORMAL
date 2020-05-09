@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="capacityreservationoptionsrequest"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="ec2fleet"/>
     </Declaration>
     <Declaration>
@@ -27,10 +30,13 @@
         <Class IRI="ondemandoptionsrequest"/>
     </Declaration>
     <Declaration>
+        <Class IRI="placement"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="spotoptionsrequest"/>
     </Declaration>
     <Declaration>
-        <Class IRI="tagrequest"/>
+        <Class IRI="tag"/>
     </Declaration>
     <Declaration>
         <Class IRI="tagspecification"/>
@@ -60,7 +66,16 @@
         <ObjectProperty IRI="fleetlaunchtemplateconfigrequest_overrides"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="fleetlaunchtemplateoverridesrequest_placement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ondemandoptionsrequest_capacityreservationoptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="tagspecification_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityreservationoptionsrequest_usagestrategy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ec2fleet_excesscapacityterminationpolicy"/>
@@ -111,6 +126,42 @@
         <DataProperty IRI="ondemandoptionsrequest_allocationstrategy"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="ondemandoptionsrequest_maxtotalprice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ondemandoptionsrequest_mintargetcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ondemandoptionsrequest_singleavailabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ondemandoptionsrequest_singleinstancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_affinity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_availabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_groupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_hostid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_partitionnumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_spreaddomain"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_tenancy"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="spotoptionsrequest_allocationstrategy"/>
     </Declaration>
     <Declaration>
@@ -120,10 +171,22 @@
         <DataProperty IRI="spotoptionsrequest_instancepoolstousecount"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="tagrequest_key"/>
+        <DataProperty IRI="spotoptionsrequest_maxtotalprice"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="tagrequest_value"/>
+        <DataProperty IRI="spotoptionsrequest_mintargetcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotoptionsrequest_singleavailabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotoptionsrequest_singleinstancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tagspecification_resourcetype"/>
@@ -155,6 +218,20 @@
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="targetcapacityspecificationrequest"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="targetcapacityspecificationrequest_totaltargetcapacity"/>
@@ -173,6 +250,12 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="fleetlaunchtemplateconfigrequest_launchtemplatespecification"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleetlaunchtemplateoverridesrequest_placement"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ondemandoptionsrequest_capacityreservationoptions"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="ec2fleet_launchtemplateconfigs"/>
         <Class IRI="ec2fleet"/>
@@ -200,6 +283,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="fleetlaunchtemplateconfigrequest_overrides"/>
         <Class IRI="fleetlaunchtemplateconfigrequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleetlaunchtemplateoverridesrequest_placement"/>
+        <Class IRI="fleetlaunchtemplateoverridesrequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ondemandoptionsrequest_capacityreservationoptions"/>
+        <Class IRI="ondemandoptionsrequest"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="tagspecification_tags"/>
@@ -234,9 +325,20 @@
         <Class IRI="fleetlaunchtemplateoverridesrequest"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty IRI="tagspecification_tags"/>
-        <Class IRI="tagrequest"/>
+        <ObjectProperty IRI="fleetlaunchtemplateoverridesrequest_placement"/>
+        <Class IRI="placement"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ondemandoptionsrequest_capacityreservationoptions"/>
+        <Class IRI="capacityreservationoptionsrequest"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tagspecification_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityreservationoptionsrequest_usagestrategy"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="ec2fleet_excesscapacityterminationpolicy"/>
     </FunctionalDataProperty>
@@ -286,6 +388,42 @@
         <DataProperty IRI="ondemandoptionsrequest_allocationstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="ondemandoptionsrequest_maxtotalprice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ondemandoptionsrequest_mintargetcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ondemandoptionsrequest_singleavailabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ondemandoptionsrequest_singleinstancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_affinity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_availabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_groupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_hostid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_partitionnumber"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_spreaddomain"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_tenancy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="spotoptionsrequest_allocationstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -295,10 +433,22 @@
         <DataProperty IRI="spotoptionsrequest_instancepoolstousecount"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="tagrequest_key"/>
+        <DataProperty IRI="spotoptionsrequest_maxtotalprice"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="tagrequest_value"/>
+        <DataProperty IRI="spotoptionsrequest_mintargetcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotoptionsrequest_singleavailabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotoptionsrequest_singleinstancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tagspecification_resourcetype"/>
@@ -315,6 +465,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="targetcapacityspecificationrequest_totaltargetcapacity"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityreservationoptionsrequest_usagestrategy"/>
+        <Class IRI="capacityreservationoptionsrequest"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="ec2fleet_excesscapacityterminationpolicy"/>
         <Class IRI="ec2fleet"/>
@@ -380,6 +534,54 @@
         <Class IRI="ondemandoptionsrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="ondemandoptionsrequest_maxtotalprice"/>
+        <Class IRI="ondemandoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ondemandoptionsrequest_mintargetcapacity"/>
+        <Class IRI="ondemandoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ondemandoptionsrequest_singleavailabilityzone"/>
+        <Class IRI="ondemandoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ondemandoptionsrequest_singleinstancetype"/>
+        <Class IRI="ondemandoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_affinity"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_availabilityzone"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_groupname"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_hostid"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_partitionnumber"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_spreaddomain"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_tenancy"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="spotoptionsrequest_allocationstrategy"/>
         <Class IRI="spotoptionsrequest"/>
     </DataPropertyDomain>
@@ -392,12 +594,28 @@
         <Class IRI="spotoptionsrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="tagrequest_key"/>
-        <Class IRI="tagrequest"/>
+        <DataProperty IRI="spotoptionsrequest_maxtotalprice"/>
+        <Class IRI="spotoptionsrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="tagrequest_value"/>
-        <Class IRI="tagrequest"/>
+        <DataProperty IRI="spotoptionsrequest_mintargetcapacity"/>
+        <Class IRI="spotoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotoptionsrequest_singleavailabilityzone"/>
+        <Class IRI="spotoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotoptionsrequest_singleinstancetype"/>
+        <Class IRI="spotoptionsrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tagspecification_resourcetype"/>
@@ -419,6 +637,10 @@
         <DataProperty IRI="targetcapacityspecificationrequest_totaltargetcapacity"/>
         <Class IRI="targetcapacityspecificationrequest"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityreservationoptionsrequest_usagestrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="ec2fleet_excesscapacityterminationpolicy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -481,6 +703,54 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="ondemandoptionsrequest_allocationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ondemandoptionsrequest_maxtotalprice"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ondemandoptionsrequest_mintargetcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ondemandoptionsrequest_singleavailabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ondemandoptionsrequest_singleinstancetype"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_affinity"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_availabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_groupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_hostid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_partitionnumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_spreaddomain"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_tenancy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -496,11 +766,27 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="tagrequest_key"/>
+        <DataProperty IRI="spotoptionsrequest_maxtotalprice"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="tagrequest_value"/>
+        <DataProperty IRI="spotoptionsrequest_mintargetcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotoptionsrequest_singleavailabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotoptionsrequest_singleinstancetype"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

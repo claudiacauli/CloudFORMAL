@@ -1,5 +1,8 @@
 {
   "PropertyTypes": {
+    "AWS::SSM::PatchBaseline.PatchStringDate": {
+      "PrimitiveType": "String"
+    },
     "AWS::SSM::PatchBaseline.PatchFilterGroup": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-patchbaseline-patchfiltergroup.html",
       "Properties": {
@@ -15,6 +18,12 @@
     "AWS::SSM::PatchBaseline.Rule": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-patchbaseline-rule.html",
       "Properties": {
+        "ApproveUntilDate": {
+          "Type": "PatchStringDate",
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-patchbaseline-rule.html#cfn-ssm-patchbaseline-rule-approveuntildate",
+          "UpdateType": "Mutable"
+        },
         "EnableNonSecurity": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-patchbaseline-rule.html#cfn-ssm-patchbaseline-rule-enablenonsecurity",
@@ -203,5 +212,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "10.4.0"
+  "ResourceSpecificationVersion": "14.2.0"
 }

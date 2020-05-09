@@ -21,10 +21,16 @@
         <Class IRI="s3reportexportconfig"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="reportexportconfig_s3destination"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="reportgroup_exportconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="reportgroup_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_reportgroup_arn"/>
@@ -52,6 +58,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3reportexportconfig_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="reportexportconfig"/>
@@ -81,6 +93,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="reportexportconfig_s3destination"/>
     </FunctionalObjectProperty>
@@ -95,6 +121,10 @@
         <ObjectProperty IRI="reportgroup_exportconfig"/>
         <Class IRI="reportgroup"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="reportgroup_tags"/>
+        <Class IRI="reportgroup"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="reportexportconfig_s3destination"/>
         <Class IRI="s3reportexportconfig"/>
@@ -102,6 +132,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="reportgroup_exportconfig"/>
         <Class IRI="reportexportconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="reportgroup_tags"/>
+        <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_reportgroup_arn"/>
@@ -130,6 +164,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="s3reportexportconfig_path"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_reportgroup_arn"/>
         <Class IRI="reportgroup"/>
@@ -165,6 +205,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="s3reportexportconfig_path"/>
         <Class IRI="s3reportexportconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="attribute_reportgroup_arn"/>
@@ -200,6 +248,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3reportexportconfig_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

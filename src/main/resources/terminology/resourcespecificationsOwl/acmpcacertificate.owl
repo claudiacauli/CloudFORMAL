@@ -15,6 +15,12 @@
         <Class IRI="certificate"/>
     </Declaration>
     <Declaration>
+        <Class IRI="validity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="certificate_validity"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="attribute_certificate_arn"/>
     </Declaration>
     <Declaration>
@@ -33,8 +39,18 @@
         <DataProperty IRI="certificate_templatearn"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="certificate_validity"/>
+        <DataProperty IRI="validity_type"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="validity_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="certificate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="certificate_validity"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="certificate"/>
         <DataSomeValuesFrom>
@@ -57,12 +73,30 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="certificate"/>
+        <Class IRI="validity"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="certificate_validity"/>
+            <DataProperty IRI="validity_type"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="validity"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="validity_value"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="certificate_validity"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="certificate_validity"/>
+        <Class IRI="certificate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="certificate_validity"/>
+        <Class IRI="validity"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_certificate_arn"/>
     </FunctionalDataProperty>
@@ -82,7 +116,10 @@
         <DataProperty IRI="certificate_templatearn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="certificate_validity"/>
+        <DataProperty IRI="validity_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="validity_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_certificate_arn"/>
@@ -109,8 +146,12 @@
         <Class IRI="certificate"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="certificate_validity"/>
-        <Class IRI="certificate"/>
+        <DataProperty IRI="validity_type"/>
+        <Class IRI="validity"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="validity_value"/>
+        <Class IRI="validity"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="attribute_certificate_arn"/>
@@ -137,8 +178,12 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="certificate_validity"/>
+        <DataProperty IRI="validity_type"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="validity_value"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
 </Ontology>
 

@@ -12,25 +12,13 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
-        <Class IRI="ipaddresses"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="ipset"/>
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
-        <Class IRI="taglist"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="ipset_addresses"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="ipset_tags"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="taglist_taglist"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_ipset_arn"/>
@@ -39,7 +27,7 @@
         <DataProperty IRI="attribute_ipset_id"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="ipaddresses_ipaddresses"/>
+        <DataProperty IRI="ipset_addresses"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ipset_description"/>
@@ -61,10 +49,10 @@
     </Declaration>
     <SubClassOf>
         <Class IRI="ipset"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="ipset_addresses"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ipset_addresses"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="ipset"/>
@@ -94,34 +82,12 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="ipset_addresses"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="ipset_tags"/>
-    </FunctionalObjectProperty>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="ipset_addresses"/>
-        <Class IRI="ipset"/>
-    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="ipset_tags"/>
         <Class IRI="ipset"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="taglist_taglist"/>
-        <Class IRI="taglist"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="ipset_addresses"/>
-        <Class IRI="ipaddresses"/>
-    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="ipset_tags"/>
-        <Class IRI="taglist"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="taglist_taglist"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
@@ -157,8 +123,8 @@
         <Class IRI="ipset"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="ipaddresses_ipaddresses"/>
-        <Class IRI="ipaddresses"/>
+        <DataProperty IRI="ipset_addresses"/>
+        <Class IRI="ipset"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="ipset_description"/>
@@ -193,7 +159,7 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="ipaddresses_ipaddresses"/>
+        <DataProperty IRI="ipset_addresses"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

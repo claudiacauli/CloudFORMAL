@@ -15,10 +15,28 @@
         <Class IRI="certificateauthority"/>
     </Declaration>
     <Declaration>
+        <Class IRI="crlconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="revocationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="subject"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="certificateauthority_subject"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="certificateauthority_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_certificateauthority_arn"/>
@@ -30,16 +48,64 @@
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="certificateauthority_revocationconfiguration"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="certificateauthority_signingalgorithm"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="certificateauthority_subject"/>
+        <DataProperty IRI="certificateauthority_type"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="certificateauthority_type"/>
+        <DataProperty IRI="crlconfiguration_customcname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crlconfiguration_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crlconfiguration_expirationindays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crlconfiguration_s3bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_commonname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_country"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_distinguishednamequalifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_generationqualifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_givenname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_initials"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_locality"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_organization"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_organizationalunit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_pseudonym"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_serialnumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_state"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_surname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subject_title"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_key"/>
@@ -47,6 +113,13 @@
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="certificateauthority"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="certificateauthority_subject"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="certificateauthority"/>
         <DataSomeValuesFrom>
@@ -58,13 +131,6 @@
         <Class IRI="certificateauthority"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="certificateauthority_signingalgorithm"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="certificateauthority"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="certificateauthority_subject"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -89,13 +155,46 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="certificateauthority_subject"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
+        <Class IRI="certificateauthority"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="certificateauthority_subject"/>
+        <Class IRI="certificateauthority"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="certificateauthority_tags"/>
         <Class IRI="certificateauthority"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
+        <Class IRI="revocationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
+        <Class IRI="revocationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="certificateauthority_subject"/>
+        <Class IRI="subject"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="certificateauthority_tags"/>
         <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
+        <Class IRI="crlconfiguration"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_certificateauthority_arn"/>
@@ -107,16 +206,64 @@
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="certificateauthority_revocationconfiguration"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="certificateauthority_signingalgorithm"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="certificateauthority_subject"/>
+        <DataProperty IRI="certificateauthority_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="certificateauthority_type"/>
+        <DataProperty IRI="crlconfiguration_customcname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crlconfiguration_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crlconfiguration_expirationindays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crlconfiguration_s3bucketname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_commonname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_country"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_distinguishednamequalifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_generationqualifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_givenname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_initials"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_locality"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_organization"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_organizationalunit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_pseudonym"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_serialnumber"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_state"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_surname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subject_title"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -137,20 +284,84 @@
         <Class IRI="certificateauthority"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="certificateauthority_revocationconfiguration"/>
-        <Class IRI="certificateauthority"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="certificateauthority_signingalgorithm"/>
-        <Class IRI="certificateauthority"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="certificateauthority_subject"/>
         <Class IRI="certificateauthority"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="certificateauthority_type"/>
         <Class IRI="certificateauthority"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crlconfiguration_customcname"/>
+        <Class IRI="crlconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crlconfiguration_enabled"/>
+        <Class IRI="crlconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crlconfiguration_expirationindays"/>
+        <Class IRI="crlconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crlconfiguration_s3bucketname"/>
+        <Class IRI="crlconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_commonname"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_country"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_distinguishednamequalifier"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_generationqualifier"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_givenname"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_initials"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_locality"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_organization"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_organizationalunit"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_pseudonym"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_serialnumber"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_state"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_surname"/>
+        <Class IRI="subject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subject_title"/>
+        <Class IRI="subject"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
@@ -173,19 +384,83 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="certificateauthority_revocationconfiguration"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="certificateauthority_signingalgorithm"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="certificateauthority_subject"/>
+        <DataProperty IRI="certificateauthority_type"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="certificateauthority_type"/>
+        <DataProperty IRI="crlconfiguration_customcname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crlconfiguration_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crlconfiguration_expirationindays"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crlconfiguration_s3bucketname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_commonname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_country"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_distinguishednamequalifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_generationqualifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_givenname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_initials"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_locality"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_organization"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_organizationalunit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_pseudonym"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_serialnumber"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_state"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_surname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subject_title"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

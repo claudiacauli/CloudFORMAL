@@ -15,10 +15,22 @@
         <Class IRI="aggregationauthorization"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="aggregationauthorization_tags"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="aggregationauthorization_authorizedaccountid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="aggregationauthorization_authorizedawsregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="aggregationauthorization"/>
@@ -34,11 +46,39 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="aggregationauthorization_tags"/>
+        <Class IRI="aggregationauthorization"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="aggregationauthorization_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="aggregationauthorization_authorizedaccountid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="aggregationauthorization_authorizedawsregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="aggregationauthorization_authorizedaccountid"/>
@@ -47,6 +87,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="aggregationauthorization_authorizedawsregion"/>
         <Class IRI="aggregationauthorization"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="aggregationauthorization_authorizedaccountid"/>
@@ -54,6 +102,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="aggregationauthorization_authorizedawsregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

@@ -18,7 +18,13 @@
         <Class IRI="server"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="server_engineattributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_server_arn"/>
@@ -89,6 +95,12 @@
     <Declaration>
         <DataProperty IRI="server_subnetids"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="server"/>
         <DataSomeValuesFrom>
@@ -110,13 +122,35 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="server_engineattributes"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_tags"/>
         <Class IRI="server"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="server_engineattributes"/>
         <Class IRI="engineattribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_tags"/>
+        <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_server_arn"/>
@@ -181,6 +215,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="server_servicerolearn"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_server_arn"/>
         <Class IRI="server"/>
@@ -272,6 +312,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="server_subnetids"/>
         <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="attribute_server_arn"/>
@@ -363,6 +411,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="server_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

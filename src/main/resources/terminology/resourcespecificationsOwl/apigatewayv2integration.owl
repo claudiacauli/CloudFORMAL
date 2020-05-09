@@ -15,7 +15,16 @@
         <Class IRI="integration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tlsconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integration_tlsconfig"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="integration_apiid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_connectionid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="integration_connectiontype"/>
@@ -55,6 +64,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="integration_timeoutinmillis"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tlsconfig_servernametoverify"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="integration"/>
@@ -70,8 +82,22 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="integration_tlsconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integration_tlsconfig"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integration_tlsconfig"/>
+        <Class IRI="tlsconfig"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="integration_apiid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_connectionid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="integration_connectiontype"/>
@@ -112,8 +138,15 @@
     <FunctionalDataProperty>
         <DataProperty IRI="integration_timeoutinmillis"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tlsconfig_servernametoverify"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="integration_apiid"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_connectionid"/>
         <Class IRI="integration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -167,9 +200,17 @@
     <DataPropertyDomain>
         <DataProperty IRI="integration_timeoutinmillis"/>
         <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tlsconfig_servernametoverify"/>
+        <Class IRI="tlsconfig"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="integration_apiid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_connectionid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -223,6 +264,10 @@
     <DataPropertyRange>
         <DataProperty IRI="integration_timeoutinmillis"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tlsconfig_servernametoverify"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>
 

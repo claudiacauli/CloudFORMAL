@@ -21,6 +21,9 @@
         <Class IRI="backupruleresourcetype"/>
     </Declaration>
     <Declaration>
+        <Class IRI="copyactionresourcetype"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="lifecycleresourcetype"/>
     </Declaration>
     <Declaration>
@@ -30,7 +33,13 @@
         <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_backupplan_backupplanarn"/>
@@ -64,6 +73,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
@@ -106,11 +118,21 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="copyactionresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="backupplan_backupplan"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="backupplan_backupplan"/>
@@ -121,8 +143,16 @@
         <Class IRI="backupplanresourcetype"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+        <Class IRI="backupruleresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
         <Class IRI="backupruleresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+        <Class IRI="copyactionresourcetype"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="backupplan_backupplan"/>
@@ -133,7 +163,15 @@
         <Class IRI="backupruleresourcetype"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+        <Class IRI="copyactionresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+        <Class IRI="lifecycleresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
         <Class IRI="lifecycleresourcetype"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
@@ -168,6 +206,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
@@ -220,6 +261,10 @@
         <Class IRI="backupruleresourcetype"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+        <Class IRI="copyactionresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
         <Class IRI="lifecycleresourcetype"/>
     </DataPropertyDomain>
@@ -269,6 +314,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

@@ -27,6 +27,9 @@
         <Class IRI="resourcedefinitionversion"/>
     </Declaration>
     <Declaration>
+        <Class IRI="resourcedownloadownersetting"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="resourceinstance"/>
     </Declaration>
     <Declaration>
@@ -66,6 +69,12 @@
         <ObjectProperty IRI="resourceinstance_resourcedatacontainer"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="s3machinelearningmodelresourcedata_ownersetting"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="sagemakermachinelearningmodelresourcedata_ownersetting"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="groupownersetting_autoaddgroupowner"/>
     </Declaration>
     <Declaration>
@@ -82,6 +91,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="resourcedefinitionversion_resourcedefinitionid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcedownloadownersetting_groupowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcedownloadownersetting_grouppermission"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="resourceinstance_id"/>
@@ -146,6 +161,20 @@
         <Class IRI="resourcedefinitionversion"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="resourcedefinitionversion_resourcedefinitionid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcedownloadownersetting"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcedownloadownersetting_groupowner"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcedownloadownersetting"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcedownloadownersetting_grouppermission"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -229,6 +258,12 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="resourceinstance_resourcedatacontainer"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="s3machinelearningmodelresourcedata_ownersetting"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="sagemakermachinelearningmodelresourcedata_ownersetting"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="localdeviceresourcedata_groupownersetting"/>
         <Class IRI="localdeviceresourcedata"/>
@@ -264,6 +299,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="resourceinstance_resourcedatacontainer"/>
         <Class IRI="resourceinstance"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="s3machinelearningmodelresourcedata_ownersetting"/>
+        <Class IRI="s3machinelearningmodelresourcedata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="sagemakermachinelearningmodelresourcedata_ownersetting"/>
+        <Class IRI="sagemakermachinelearningmodelresourcedata"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="localdeviceresourcedata_groupownersetting"/>
@@ -301,6 +344,14 @@
         <ObjectProperty IRI="resourceinstance_resourcedatacontainer"/>
         <Class IRI="resourcedatacontainer"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="s3machinelearningmodelresourcedata_ownersetting"/>
+        <Class IRI="resourcedownloadownersetting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="sagemakermachinelearningmodelresourcedata_ownersetting"/>
+        <Class IRI="resourcedownloadownersetting"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="groupownersetting_autoaddgroupowner"/>
     </FunctionalDataProperty>
@@ -318,6 +369,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="resourcedefinitionversion_resourcedefinitionid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcedownloadownersetting_groupowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcedownloadownersetting_grouppermission"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="resourceinstance_id"/>
@@ -363,6 +420,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="resourcedefinitionversion_resourcedefinitionid"/>
         <Class IRI="resourcedefinitionversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcedownloadownersetting_groupowner"/>
+        <Class IRI="resourcedownloadownersetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcedownloadownersetting_grouppermission"/>
+        <Class IRI="resourcedownloadownersetting"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="resourceinstance_id"/>
@@ -418,6 +483,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="resourcedefinitionversion_resourcedefinitionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcedownloadownersetting_groupowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcedownloadownersetting_grouppermission"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

@@ -15,9 +15,6 @@
         <Class IRI="blockdevicemapping"/>
     </Declaration>
     <Declaration>
-        <Class IRI="capacityreservationpreference"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="capacityreservationspecification"/>
     </Declaration>
     <Declaration>
@@ -60,6 +57,9 @@
         <Class IRI="licensespecification"/>
     </Declaration>
     <Declaration>
+        <Class IRI="metadataoptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="monitoring"/>
     </Declaration>
     <Declaration>
@@ -82,9 +82,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="blockdevicemapping_ebs"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="capacityreservationspecification_capacityreservationtarget"/>
@@ -132,6 +129,9 @@
         <ObjectProperty IRI="launchtemplatedata_licensespecifications"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="launchtemplatedata_metadataoptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="launchtemplatedata_monitoring"/>
     </Declaration>
     <Declaration>
@@ -172,6 +172,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="blockdevicemapping_virtualname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="capacityreservationtarget_capacityreservationid"/>
@@ -255,10 +258,22 @@
         <DataProperty IRI="launchtemplatedata_userdata"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="launchtemplateelasticinferenceaccelerator_count"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="launchtemplateelasticinferenceaccelerator_type"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="licensespecification_licenseconfigurationarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httptokens"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="monitoring_enabled"/>
@@ -301,6 +316,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="placement_hostid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_partitionnumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="placement_spreaddomain"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="placement_tenancy"/>
@@ -365,9 +389,6 @@
         <ObjectProperty IRI="blockdevicemapping_ebs"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="capacityreservationspecification_capacityreservationtarget"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -401,6 +422,9 @@
         <ObjectProperty IRI="launchtemplatedata_instancemarketoptions"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="launchtemplatedata_metadataoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="launchtemplatedata_monitoring"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -412,10 +436,6 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="blockdevicemapping_ebs"/>
         <Class IRI="blockdevicemapping"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
-        <Class IRI="capacityreservationspecification"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="capacityreservationspecification_capacityreservationtarget"/>
@@ -478,6 +498,10 @@
         <Class IRI="launchtemplatedata"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="launchtemplatedata_metadataoptions"/>
+        <Class IRI="launchtemplatedata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="launchtemplatedata_monitoring"/>
         <Class IRI="launchtemplatedata"/>
     </ObjectPropertyDomain>
@@ -516,10 +540,6 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="blockdevicemapping_ebs"/>
         <Class IRI="ebs"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
-        <Class IRI="capacityreservationpreference"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="capacityreservationspecification_capacityreservationtarget"/>
@@ -582,6 +602,10 @@
         <Class IRI="licensespecification"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="launchtemplatedata_metadataoptions"/>
+        <Class IRI="metadataoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="launchtemplatedata_monitoring"/>
         <Class IRI="monitoring"/>
     </ObjectPropertyRange>
@@ -631,6 +655,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="blockdevicemapping_virtualname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="capacityreservationtarget_capacityreservationid"/>
@@ -708,10 +735,22 @@
         <DataProperty IRI="launchtemplatedata_userdata"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplateelasticinferenceaccelerator_count"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="launchtemplateelasticinferenceaccelerator_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="licensespecification_licenseconfigurationarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httptokens"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="monitoring_enabled"/>
@@ -754,6 +793,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="placement_hostid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_partitionnumber"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="placement_spreaddomain"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="placement_tenancy"/>
@@ -807,6 +855,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="blockdevicemapping_virtualname"/>
         <Class IRI="blockdevicemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
+        <Class IRI="capacityreservationspecification"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="capacityreservationtarget_capacityreservationid"/>
@@ -917,12 +969,28 @@
         <Class IRI="launchtemplatedata"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="launchtemplateelasticinferenceaccelerator_count"/>
+        <Class IRI="launchtemplateelasticinferenceaccelerator"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="launchtemplateelasticinferenceaccelerator_type"/>
         <Class IRI="launchtemplateelasticinferenceaccelerator"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="licensespecification_licenseconfigurationarn"/>
         <Class IRI="licensespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+        <Class IRI="metadataoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+        <Class IRI="metadataoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httptokens"/>
+        <Class IRI="metadataoptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="monitoring_enabled"/>
@@ -978,6 +1046,18 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="placement_hostid"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_partitionnumber"/>
+        <Class IRI="placement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="placement_spreaddomain"/>
         <Class IRI="placement"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1042,6 +1122,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="blockdevicemapping_virtualname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityreservationspecification_capacityreservationpreference"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1153,11 +1237,27 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="launchtemplateelasticinferenceaccelerator_count"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="launchtemplateelasticinferenceaccelerator_type"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="licensespecification_licenseconfigurationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httptokens"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1214,6 +1314,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="placement_hostid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_hostresourcegrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_partitionnumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="placement_spreaddomain"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

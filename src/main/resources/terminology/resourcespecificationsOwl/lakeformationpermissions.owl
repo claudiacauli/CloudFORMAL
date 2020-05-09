@@ -12,10 +12,16 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="columnwildcard"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="databaseresource"/>
     </Declaration>
     <Declaration>
         <Class IRI="datalakeprincipal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datalocationresource"/>
     </Declaration>
     <Declaration>
         <Class IRI="permissions"/>
@@ -27,6 +33,9 @@
         <Class IRI="tableresource"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tablewithcolumnsresource"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="permissions_datalakeprincipal"/>
     </Declaration>
     <Declaration>
@@ -36,13 +45,28 @@
         <ObjectProperty IRI="resource_databaseresource"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="resource_tableresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="databaseresource_name"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datalocationresource_s3resource"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="permissions_permissions"/>
@@ -55,6 +79,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="tableresource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="permissions"/>
@@ -80,7 +113,16 @@
         <ObjectProperty IRI="resource_databaseresource"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="resource_tableresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="permissions_datalakeprincipal"/>
@@ -95,8 +137,20 @@
         <Class IRI="resource"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="resource_tableresource"/>
         <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+        <Class IRI="tablewithcolumnsresource"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="permissions_datalakeprincipal"/>
@@ -111,8 +165,20 @@
         <Class IRI="databaseresource"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+        <Class IRI="datalocationresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="resource_tableresource"/>
         <Class IRI="tableresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+        <Class IRI="columnwildcard"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="databaseresource_name"/>
@@ -121,11 +187,24 @@
         <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="tableresource_databasename"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tableresource_name"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
+        <Class IRI="columnwildcard"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="databaseresource_name"/>
         <Class IRI="databaseresource"/>
@@ -135,6 +214,10 @@
         <Class IRI="datalakeprincipal"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+        <Class IRI="datalocationresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="permissions_permissions"/>
         <Class IRI="permissions"/>
     </DataPropertyDomain>
@@ -150,6 +233,22 @@
         <DataProperty IRI="tableresource_name"/>
         <Class IRI="tableresource"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="databaseresource_name"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -159,6 +258,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="permissions_permissions"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -172,6 +275,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="tableresource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

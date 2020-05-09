@@ -1,62 +1,54 @@
 {
   "PropertyTypes": {
-    "AWS::SSM::Association.InstanceAssociationOutputLocation": {
-      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-instanceassociationoutputlocation.html",
+    "AWS::SSM::Association.Target": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html",
       "Properties": {
-        "S3Location": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-instanceassociationoutputlocation.html#cfn-ssm-association-instanceassociationoutputlocation-s3location",
-          "Required": false,
-          "Type": "S3OutputLocation",
-          "UpdateType": "Mutable"
-        }
-      }
-    },
-    "AWS::SSM::Association.ParameterValues": {
-      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-parametervalues.html",
-      "Properties": {
-        "ParameterValues": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-parametervalues.html#cfn-ssm-association-parametervalues-parametervalues",
-          "DuplicatesAllowed": false,
-          "PrimitiveItemType": "String",
+        "Key": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html#cfn-ssm-association-target-key",
+          "UpdateType": "Mutable",
+          "Required": true,
+          "PrimitiveType": "String"
+        },
+        "Values": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html#cfn-ssm-association-target-values",
+          "UpdateType": "Mutable",
           "Required": true,
           "Type": "List",
-          "UpdateType": "Mutable"
+          "PrimitiveItemType": "String"
         }
       }
     },
     "AWS::SSM::Association.S3OutputLocation": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-s3outputlocation.html",
       "Properties": {
+        "OutputS3Region": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-s3outputlocation.html#cfn-ssm-association-s3outputlocation-outputs3region",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
         "OutputS3BucketName": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-s3outputlocation.html#cfn-ssm-association-s3outputlocation-outputs3bucketname",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         },
         "OutputS3KeyPrefix": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-s3outputlocation.html#cfn-ssm-association-s3outputlocation-outputs3keyprefix",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         }
       }
     },
-    "AWS::SSM::Association.Target": {
-      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html",
+    "AWS::SSM::Association.InstanceAssociationOutputLocation": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-instanceassociationoutputlocation.html",
       "Properties": {
-        "Key": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html#cfn-ssm-association-target-key",
-          "PrimitiveType": "String",
-          "Required": true,
-          "UpdateType": "Immutable"
-        },
-        "Values": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-target.html#cfn-ssm-association-target-values",
-          "DuplicatesAllowed": false,
-          "PrimitiveItemType": "String",
-          "Required": true,
-          "Type": "List",
-          "UpdateType": "Immutable"
+        "S3Location": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ssm-association-instanceassociationoutputlocation.html#cfn-ssm-association-instanceassociationoutputlocation-s3location",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "S3OutputLocation"
         }
       }
     }
@@ -67,58 +59,97 @@
       "Properties": {
         "AssociationName": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-associationname",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         },
         "DocumentVersion": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-documentversion",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         },
         "InstanceId": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-instanceid",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Immutable"
+          "PrimitiveType": "String"
         },
         "Name": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-name",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": true,
-          "UpdateType": "Immutable"
-        },
-        "OutputLocation": {
-          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-outputlocation",
-          "Required": false,
-          "Type": "InstanceAssociationOutputLocation",
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         },
         "Parameters": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-parameters",
-          "DuplicatesAllowed": false,
-          "ItemType": "ParameterValues",
+          "UpdateType": "Mutable",
           "Required": false,
           "Type": "Map",
-          "UpdateType": "Mutable"
+          "ItemType": "ParameterValues"
         },
         "ScheduleExpression": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-scheduleexpression",
-          "PrimitiveType": "String",
+          "UpdateType": "Mutable",
           "Required": false,
-          "UpdateType": "Mutable"
+          "PrimitiveType": "String"
         },
         "Targets": {
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-targets",
-          "DuplicatesAllowed": false,
-          "ItemType": "Target",
+          "UpdateType": "Mutable",
           "Required": false,
           "Type": "List",
-          "UpdateType": "Immutable"
+          "ItemType": "Target"
+        },
+        "OutputLocation": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-outputlocation",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "Type": "InstanceAssociationOutputLocation"
+        },
+        "AutomationTargetParameterName": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-automationtargetparametername",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "MaxErrors": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-maxerrors",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "MaxConcurrency": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-maxconcurrency",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "ComplianceSeverity": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-complianceseverity",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "SyncCompliance": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-synccompliance",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "WaitForSuccessTimeoutSeconds": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-association.html#cfn-ssm-association-waitforsuccesstimeoutseconds",
+          "UpdateType": "Mutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        }
+      },
+      "Attributes": {
+        "AssociationId": {
+          "PrimitiveType": "String"
         }
       }
     }
   },
-  "ResourceSpecificationVersion": "10.4.0"
+  "ResourceSpecificationVersion": "14.2.0"
 }

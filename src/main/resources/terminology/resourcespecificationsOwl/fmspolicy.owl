@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/fmspolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/fmspolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="iemap"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="policy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="policytag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcetag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policy_excludemap"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policy_includemap"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policy_resourcetags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policy_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_policy_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_policy_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="iemap_account"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_deleteallpolicyresources"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_excluderesourcetags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_policyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_remediationenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_resourcetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_resourcetypelist"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_securityservicepolicydata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policytag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policytag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcetag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcetag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_excluderesourcetags"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_policyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_remediationenabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_resourcetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_securityservicepolicydata"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policytag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policytag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policytag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policytag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcetag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcetag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="policy_excludemap"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="policy_includemap"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policy_excludemap"/>
+        <Class IRI="policy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policy_includemap"/>
+        <Class IRI="policy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policy_resourcetags"/>
+        <Class IRI="policy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policy_tags"/>
+        <Class IRI="policy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policy_excludemap"/>
+        <Class IRI="iemap"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policy_includemap"/>
+        <Class IRI="iemap"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policy_resourcetags"/>
+        <Class IRI="resourcetag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policy_tags"/>
+        <Class IRI="policytag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_policy_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_policy_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_deleteallpolicyresources"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_excluderesourcetags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_policyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_remediationenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_resourcetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_securityservicepolicydata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policytag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policytag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcetag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcetag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_policy_arn"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_policy_id"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="iemap_account"/>
+        <Class IRI="iemap"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_deleteallpolicyresources"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_excluderesourcetags"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_policyname"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_remediationenabled"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_resourcetype"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_resourcetypelist"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_securityservicepolicydata"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policytag_key"/>
+        <Class IRI="policytag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policytag_value"/>
+        <Class IRI="policytag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcetag_key"/>
+        <Class IRI="resourcetag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcetag_value"/>
+        <Class IRI="resourcetag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_policy_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_policy_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="iemap_account"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_deleteallpolicyresources"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_excluderesourcetags"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_policyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_remediationenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_resourcetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_resourcetypelist"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_securityservicepolicydata"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policytag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policytag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcetag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcetag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/ -->
+
+

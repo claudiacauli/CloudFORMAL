@@ -21,9 +21,6 @@
         <Class IRI="mapentry_parametervalues"/>
     </Declaration>
     <Declaration>
-        <Class IRI="parametervalues"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="s3outputlocation"/>
     </Declaration>
     <Declaration>
@@ -45,10 +42,22 @@
         <DataProperty IRI="association_associationname"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="association_automationtargetparametername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="association_complianceseverity"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="association_documentversion"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="association_instanceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="association_maxconcurrency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="association_maxerrors"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="association_name"/>
@@ -57,19 +66,28 @@
         <DataProperty IRI="association_scheduleexpression"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="association_synccompliance"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="association_waitforsuccesstimeoutseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_association_associationid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="mapentry_parametervalues_key"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_parametervalues_value"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="parametervalues_parametervalues"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3outputlocation_outputs3keyprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3outputlocation_outputs3region"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="target_key"/>
@@ -81,13 +99,6 @@
         <Class IRI="association"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="association_name"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="parametervalues"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="parametervalues_parametervalues"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -147,10 +158,22 @@
         <DataProperty IRI="association_associationname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="association_automationtargetparametername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="association_complianceseverity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="association_documentversion"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="association_instanceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="association_maxconcurrency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="association_maxerrors"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="association_name"/>
@@ -159,10 +182,22 @@
         <DataProperty IRI="association_scheduleexpression"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="association_synccompliance"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="association_waitforsuccesstimeoutseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_association_associationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="s3outputlocation_outputs3keyprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3outputlocation_outputs3region"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="target_key"/>
@@ -172,6 +207,14 @@
         <Class IRI="association"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="association_automationtargetparametername"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="association_complianceseverity"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="association_documentversion"/>
         <Class IRI="association"/>
     </DataPropertyDomain>
@@ -180,11 +223,31 @@
         <Class IRI="association"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="association_maxconcurrency"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="association_maxerrors"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="association_name"/>
         <Class IRI="association"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="association_scheduleexpression"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="association_synccompliance"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="association_waitforsuccesstimeoutseconds"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_association_associationid"/>
         <Class IRI="association"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -196,15 +259,15 @@
         <Class IRI="mapentry_parametervalues"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="parametervalues_parametervalues"/>
-        <Class IRI="parametervalues"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
         <Class IRI="s3outputlocation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="s3outputlocation_outputs3keyprefix"/>
+        <Class IRI="s3outputlocation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3outputlocation_outputs3region"/>
         <Class IRI="s3outputlocation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -220,11 +283,27 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="association_automationtargetparametername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="association_complianceseverity"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="association_documentversion"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="association_instanceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="association_maxconcurrency"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="association_maxerrors"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -236,6 +315,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="association_synccompliance"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="association_waitforsuccesstimeoutseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_association_associationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="mapentry_parametervalues_key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -244,15 +335,15 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="parametervalues_parametervalues"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3outputlocation_outputs3keyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3outputlocation_outputs3region"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

@@ -15,10 +15,22 @@
         <Class IRI="cluster"/>
     </Declaration>
     <Declaration>
+        <Class IRI="encryptionconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provider"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="resourcesvpcconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_cluster_arn"/>
@@ -28,6 +40,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_cluster_endpoint"/>
@@ -40,6 +55,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="cluster_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionconfig_resources"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provider_keyarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="resourcesvpcconfig_securitygroupids"/>
@@ -71,13 +92,32 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+        <Class IRI="encryptionconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+        <Class IRI="encryptionconfig"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
         <Class IRI="resourcesvpcconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+        <Class IRI="provider"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_cluster_arn"/>
@@ -89,6 +129,9 @@
         <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="attribute_cluster_endpoint"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -99,6 +142,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="cluster_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provider_keyarn"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="attribute_cluster_arn"/>
@@ -113,6 +159,10 @@
         <Class IRI="cluster"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="attribute_cluster_endpoint"/>
         <Class IRI="cluster"/>
     </DataPropertyDomain>
@@ -127,6 +177,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="cluster_version"/>
         <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionconfig_resources"/>
+        <Class IRI="encryptionconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provider_keyarn"/>
+        <Class IRI="provider"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="resourcesvpcconfig_securitygroupids"/>
@@ -149,6 +207,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="attribute_cluster_endpoint"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -162,6 +224,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="cluster_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionconfig_resources"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provider_keyarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

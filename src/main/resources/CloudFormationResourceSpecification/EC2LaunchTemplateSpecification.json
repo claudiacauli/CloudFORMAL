@@ -15,6 +15,18 @@
           "PrimitiveType": "String",
           "UpdateType": "Mutable"
         },
+        "SpreadDomain": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-placement.html#cfn-ec2-launchtemplate-launchtemplatedata-placement-spreaddomain",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "PartitionNumber": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-placement.html#cfn-ec2-launchtemplate-launchtemplatedata-placement-partitionnumber",
+          "PrimitiveType": "Integer",
+          "UpdateType": "Mutable"
+        },
         "AvailabilityZone": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-placement.html#cfn-ec2-launchtemplate-launchtemplatedata-placement-availabilityzone",
@@ -30,6 +42,12 @@
         "HostId": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-placement.html#cfn-ec2-launchtemplate-launchtemplatedata-placement-hostid",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "HostResourceGroupArn": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-placement.html#cfn-ec2-launchtemplate-launchtemplatedata-placement-hostresourcegrouparn",
           "PrimitiveType": "String",
           "UpdateType": "Mutable"
         }
@@ -120,9 +138,6 @@
           "UpdateType": "Mutable"
         }
       }
-    },
-    "AWS::EC2::LaunchTemplate.CapacityReservationPreference": {
-      "PrimitiveType": "String"
     },
     "AWS::EC2::LaunchTemplate.PrivateIpAdd": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-privateipadd.html",
@@ -251,6 +266,12 @@
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-hibernationoptions",
           "UpdateType": "Mutable"
         },
+        "MetadataOptions": {
+          "Type": "MetadataOptions",
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata.html#cfn-ec2-launchtemplate-launchtemplatedata-metadataoptions",
+          "UpdateType": "Mutable"
+        },
         "LicenseSpecifications": {
           "Type": "List",
           "Required": false,
@@ -319,9 +340,9 @@
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-capacityreservationspecification.html",
       "Properties": {
         "CapacityReservationPreference": {
-          "Type": "CapacityReservationPreference",
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-capacityreservationspecification.html#cfn-ec2-launchtemplate-launchtemplatedata-capacityreservationspecification-capacityreservationpreference",
+          "PrimitiveType": "String",
           "UpdateType": "Mutable"
         },
         "CapacityReservationTarget": {
@@ -382,6 +403,35 @@
         "Type": {
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator.html#cfn-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator-type",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "Count": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator.html#cfn-ec2-launchtemplate-launchtemplateelasticinferenceaccelerator-count",
+          "PrimitiveType": "Integer",
+          "UpdateType": "Mutable"
+        }
+      }
+    },
+    "AWS::EC2::LaunchTemplate.MetadataOptions": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-metadataoptions.html",
+      "Properties": {
+        "HttpPutResponseHopLimit": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-metadataoptions.html#cfn-ec2-launchtemplate-launchtemplatedata-metadataoptions-httpputresponsehoplimit",
+          "PrimitiveType": "Integer",
+          "UpdateType": "Mutable"
+        },
+        "HttpTokens": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-metadataoptions.html#cfn-ec2-launchtemplate-launchtemplatedata-metadataoptions-httptokens",
+          "PrimitiveType": "String",
+          "UpdateType": "Mutable"
+        },
+        "HttpEndpoint": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-launchtemplate-launchtemplatedata-metadataoptions.html#cfn-ec2-launchtemplate-launchtemplatedata-metadataoptions-httpendpoint",
           "PrimitiveType": "String",
           "UpdateType": "Mutable"
         }
@@ -634,5 +684,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "10.4.0"
+  "ResourceSpecificationVersion": "14.2.0"
 }

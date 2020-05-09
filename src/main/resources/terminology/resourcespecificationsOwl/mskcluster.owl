@@ -12,10 +12,16 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="brokerlogs"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="brokernodegroupinfo"/>
     </Declaration>
     <Declaration>
         <Class IRI="clientauthentication"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="cloudwatchlogs"/>
     </Declaration>
     <Declaration>
         <Class IRI="cluster"/>
@@ -36,7 +42,13 @@
         <Class IRI="encryptionintransit"/>
     </Declaration>
     <Declaration>
+        <Class IRI="firehose"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="jmxexporter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="logginginfo"/>
     </Declaration>
     <Declaration>
         <Class IRI="nodeexporter"/>
@@ -48,10 +60,22 @@
         <Class IRI="prometheus"/>
     </Declaration>
     <Declaration>
+        <Class IRI="s3"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="storageinfo"/>
     </Declaration>
     <Declaration>
         <Class IRI="tls"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="brokerlogs_cloudwatchlogs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="brokerlogs_firehose"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="brokerlogs_s3"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="brokernodegroupinfo_storageinfo"/>
@@ -72,6 +96,9 @@
         <ObjectProperty IRI="cluster_encryptioninfo"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="cluster_logginginfo"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="cluster_openmonitoring"/>
     </Declaration>
     <Declaration>
@@ -79,6 +106,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="encryptioninfo_encryptionintransit"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="logginginfo_brokerlogs"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="openmonitoring_prometheus"/>
@@ -103,6 +133,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="brokernodegroupinfo_securitygroups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cloudwatchlogs_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cloudwatchlogs_loggroup"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cluster_clustername"/>
@@ -138,10 +174,25 @@
         <DataProperty IRI="encryptionintransit_incluster"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="firehose_deliverystream"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="firehose_enabled"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="jmxexporter_enabledinbroker"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="nodeexporter_enabledinbroker"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3_prefix"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tls_certificateauthorityarnlist"/>
@@ -158,6 +209,13 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="brokernodegroupinfo_instancetype"/>
             <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cloudwatchlogs"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cloudwatchlogs_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -210,11 +268,25 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="firehose"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="firehose_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="jmxexporter"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="jmxexporter_enabledinbroker"/>
             <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logginginfo"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="logginginfo_brokerlogs"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="nodeexporter"/>
@@ -230,6 +302,22 @@
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="brokerlogs_cloudwatchlogs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="brokerlogs_firehose"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="brokerlogs_s3"/>
+    </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="brokernodegroupinfo_storageinfo"/>
     </FunctionalObjectProperty>
@@ -249,6 +337,9 @@
         <ObjectProperty IRI="cluster_encryptioninfo"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_logginginfo"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="cluster_openmonitoring"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -256,6 +347,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="encryptioninfo_encryptionintransit"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="logginginfo_brokerlogs"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="openmonitoring_prometheus"/>
@@ -269,6 +363,18 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="storageinfo_ebsstorageinfo"/>
     </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="brokerlogs_cloudwatchlogs"/>
+        <Class IRI="brokerlogs"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="brokerlogs_firehose"/>
+        <Class IRI="brokerlogs"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="brokerlogs_s3"/>
+        <Class IRI="brokerlogs"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="brokernodegroupinfo_storageinfo"/>
         <Class IRI="brokernodegroupinfo"/>
@@ -294,6 +400,10 @@
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_logginginfo"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="cluster_openmonitoring"/>
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
@@ -304,6 +414,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="encryptioninfo_encryptionintransit"/>
         <Class IRI="encryptioninfo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="logginginfo_brokerlogs"/>
+        <Class IRI="logginginfo"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="openmonitoring_prometheus"/>
@@ -321,6 +435,18 @@
         <ObjectProperty IRI="storageinfo_ebsstorageinfo"/>
         <Class IRI="storageinfo"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="brokerlogs_cloudwatchlogs"/>
+        <Class IRI="cloudwatchlogs"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="brokerlogs_firehose"/>
+        <Class IRI="firehose"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="brokerlogs_s3"/>
+        <Class IRI="s3"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="brokernodegroupinfo_storageinfo"/>
         <Class IRI="storageinfo"/>
@@ -346,6 +472,10 @@
         <Class IRI="encryptioninfo"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_logginginfo"/>
+        <Class IRI="logginginfo"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_openmonitoring"/>
         <Class IRI="openmonitoring"/>
     </ObjectPropertyRange>
@@ -356,6 +486,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="encryptioninfo_encryptionintransit"/>
         <Class IRI="encryptionintransit"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="logginginfo_brokerlogs"/>
+        <Class IRI="brokerlogs"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="openmonitoring_prometheus"/>
@@ -380,6 +514,12 @@
         <DataProperty IRI="brokernodegroupinfo_instancetype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="cloudwatchlogs_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cloudwatchlogs_loggroup"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cluster_clustername"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -413,10 +553,25 @@
         <DataProperty IRI="encryptionintransit_incluster"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="firehose_deliverystream"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="firehose_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="jmxexporter_enabledinbroker"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="nodeexporter_enabledinbroker"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3_prefix"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="brokernodegroupinfo_brokerazdistribution"/>
@@ -433,6 +588,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="brokernodegroupinfo_securitygroups"/>
         <Class IRI="brokernodegroupinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cloudwatchlogs_enabled"/>
+        <Class IRI="cloudwatchlogs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cloudwatchlogs_loggroup"/>
+        <Class IRI="cloudwatchlogs"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cluster_clustername"/>
@@ -479,12 +642,32 @@
         <Class IRI="encryptionintransit"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="firehose_deliverystream"/>
+        <Class IRI="firehose"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="firehose_enabled"/>
+        <Class IRI="firehose"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="jmxexporter_enabledinbroker"/>
         <Class IRI="jmxexporter"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="nodeexporter_enabledinbroker"/>
         <Class IRI="nodeexporter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3_bucket"/>
+        <Class IRI="s3"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3_enabled"/>
+        <Class IRI="s3"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3_prefix"/>
+        <Class IRI="s3"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tls_certificateauthorityarnlist"/>
@@ -507,6 +690,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="cloudwatchlogs_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cloudwatchlogs_loggroup"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cluster_clustername"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -551,12 +742,32 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="firehose_deliverystream"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="firehose_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="jmxexporter_enabledinbroker"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="nodeexporter_enabledinbroker"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="tls_certificateauthorityarnlist"/>

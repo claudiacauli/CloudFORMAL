@@ -12,31 +12,13 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
-        <Class IRI="regex"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="regexpatternset"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="regularexpressionlist"/>
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
-        <Class IRI="taglist"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="regexpatternset_regularexpressionlist"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="regexpatternset_tags"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="regularexpressionlist_regularexpressionlist"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="taglist_taglist"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="attribute_regexpatternset_arn"/>
@@ -45,13 +27,13 @@
         <DataProperty IRI="attribute_regexpatternset_id"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="regex_regexstring"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="regexpatternset_description"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="regexpatternset_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="regexpatternset_regularexpressionlist"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="regexpatternset_scope"/>
@@ -64,10 +46,10 @@
     </Declaration>
     <SubClassOf>
         <Class IRI="regexpatternset"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="regexpatternset_regularexpressionlist"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="regexpatternset_regularexpressionlist"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="regexpatternset"/>
@@ -90,42 +72,12 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="regexpatternset_regularexpressionlist"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="regexpatternset_tags"/>
-    </FunctionalObjectProperty>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="regexpatternset_regularexpressionlist"/>
-        <Class IRI="regexpatternset"/>
-    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="regexpatternset_tags"/>
         <Class IRI="regexpatternset"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="regularexpressionlist_regularexpressionlist"/>
-        <Class IRI="regularexpressionlist"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="taglist_taglist"/>
-        <Class IRI="taglist"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="regexpatternset_regularexpressionlist"/>
-        <Class IRI="regularexpressionlist"/>
-    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="regexpatternset_tags"/>
-        <Class IRI="taglist"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="regularexpressionlist_regularexpressionlist"/>
-        <Class IRI="regex"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="taglist_taglist"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
@@ -133,9 +85,6 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_regexpatternset_id"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="regex_regexstring"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="regexpatternset_description"/>
@@ -161,15 +110,15 @@
         <Class IRI="regexpatternset"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="regex_regexstring"/>
-        <Class IRI="regex"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="regexpatternset_description"/>
         <Class IRI="regexpatternset"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="regexpatternset_name"/>
+        <Class IRI="regexpatternset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="regexpatternset_regularexpressionlist"/>
         <Class IRI="regexpatternset"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -193,15 +142,15 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="regex_regexstring"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="regexpatternset_description"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="regexpatternset_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="regexpatternset_regularexpressionlist"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>

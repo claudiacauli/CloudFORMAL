@@ -1,0 +1,71 @@
+{
+  "PropertyTypes": {
+    "AWS::ImageBuilder::Image.ImageTestsConfiguration": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagetestsconfiguration.html",
+      "Properties": {
+        "ImageTestsEnabled": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagetestsconfiguration.html#cfn-imagebuilder-image-imagetestsconfiguration-imagetestsenabled",
+          "UpdateType": "Immutable",
+          "Required": false,
+          "PrimitiveType": "Boolean"
+        },
+        "TimeoutMinutes": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-imagebuilder-image-imagetestsconfiguration.html#cfn-imagebuilder-image-imagetestsconfiguration-timeoutminutes",
+          "UpdateType": "Immutable",
+          "Required": false,
+          "PrimitiveType": "Integer"
+        }
+      }
+    }
+  },
+  "ResourceType": {
+    "AWS::ImageBuilder::Image": {
+      "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html",
+      "Properties": {
+        "ImageTestsConfiguration": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-imagetestsconfiguration",
+          "UpdateType": "Immutable",
+          "Required": false,
+          "Type": "ImageTestsConfiguration"
+        },
+        "ImageRecipeArn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-imagerecipearn",
+          "UpdateType": "Immutable",
+          "Required": true,
+          "PrimitiveType": "String"
+        },
+        "DistributionConfigurationArn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-distributionconfigurationarn",
+          "UpdateType": "Immutable",
+          "Required": false,
+          "PrimitiveType": "String"
+        },
+        "InfrastructureConfigurationArn": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-infrastructureconfigurationarn",
+          "UpdateType": "Immutable",
+          "Required": true,
+          "PrimitiveType": "String"
+        },
+        "Tags": {
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-imagebuilder-image.html#cfn-imagebuilder-image-tags",
+          "UpdateType": "Immutable",
+          "Required": false,
+          "Type": "Map",
+          "PrimitiveItemType": "String"
+        }
+      },
+      "Attributes": {
+        "Arn": {
+          "PrimitiveType": "String"
+        },
+        "OutputResources": {
+          "Type": "OutputResources"
+        },
+        "ImageId": {
+          "PrimitiveType": "String"
+        }
+      }
+    }
+  },
+  "ResourceSpecificationVersion": "14.2.0"
+}

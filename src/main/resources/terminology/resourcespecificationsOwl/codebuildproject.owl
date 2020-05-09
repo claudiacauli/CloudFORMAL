@@ -39,6 +39,9 @@
         <Class IRI="projectcache"/>
     </Declaration>
     <Declaration>
+        <Class IRI="projectfilesystemlocation"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="projectsourceversion"/>
     </Declaration>
     <Declaration>
@@ -85,6 +88,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="project_environment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="project_filesystemlocations"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="project_logsconfig"/>
@@ -220,6 +226,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="projectcache_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectfilesystemlocation_identifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectfilesystemlocation_location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectfilesystemlocation_mountoptions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectfilesystemlocation_mountpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectfilesystemlocation_type"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="projectsourceversion_sourceidentifier"/>
@@ -388,6 +409,34 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="projectfilesystemlocation"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="projectfilesystemlocation_identifier"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="projectfilesystemlocation"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="projectfilesystemlocation_location"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="projectfilesystemlocation"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="projectfilesystemlocation_mountpoint"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="projectfilesystemlocation"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="projectfilesystemlocation_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="projectsourceversion"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="projectsourceversion_sourceidentifier"/>
@@ -522,6 +571,10 @@
         <Class IRI="project"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="project_filesystemlocations"/>
+        <Class IRI="project"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="project_logsconfig"/>
         <Class IRI="project"/>
     </ObjectPropertyDomain>
@@ -592,6 +645,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="project_environment"/>
         <Class IRI="environment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="project_filesystemlocations"/>
+        <Class IRI="projectfilesystemlocation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="project_logsconfig"/>
@@ -735,6 +792,21 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="projectcache_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectfilesystemlocation_identifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectfilesystemlocation_location"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectfilesystemlocation_mountoptions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectfilesystemlocation_mountpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectfilesystemlocation_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="projectsourceversion_sourceidentifier"/>
@@ -940,6 +1012,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="projectcache_type"/>
         <Class IRI="projectcache"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectfilesystemlocation_identifier"/>
+        <Class IRI="projectfilesystemlocation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectfilesystemlocation_location"/>
+        <Class IRI="projectfilesystemlocation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectfilesystemlocation_mountoptions"/>
+        <Class IRI="projectfilesystemlocation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectfilesystemlocation_mountpoint"/>
+        <Class IRI="projectfilesystemlocation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectfilesystemlocation_type"/>
+        <Class IRI="projectfilesystemlocation"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="projectsourceversion_sourceidentifier"/>
@@ -1175,6 +1267,26 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="projectcache_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectfilesystemlocation_identifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectfilesystemlocation_location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectfilesystemlocation_mountoptions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectfilesystemlocation_mountpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectfilesystemlocation_type"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
