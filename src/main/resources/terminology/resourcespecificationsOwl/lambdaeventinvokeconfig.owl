@@ -33,7 +33,13 @@
         <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="eventinvokeconfig_functionname"/>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="onfailure_destination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="onsuccess_destination"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
@@ -45,17 +51,14 @@
         <DataProperty IRI="eventinvokeconfig_qualifier"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="onfailure_destination"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="onsuccess_destination"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="eventinvokeconfig"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="eventinvokeconfig_functionname"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="eventinvokeconfig"/>
@@ -66,17 +69,17 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="onfailure"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="onfailure_destination"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="onfailure_destination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="onsuccess"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="onsuccess_destination"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="onsuccess_destination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
@@ -87,6 +90,15 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="onfailure_destination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="onsuccess_destination"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
         <Class IRI="destinationconfig"/>
@@ -98,6 +110,18 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
         <Class IRI="eventinvokeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+        <Class IRI="eventinvokeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="onfailure_destination"/>
+        <Class IRI="onfailure"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="onsuccess_destination"/>
+        <Class IRI="onsuccess"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
@@ -111,9 +135,10 @@
         <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
         <Class IRI="destinationconfig"/>
     </ObjectPropertyRange>
-    <FunctionalDataProperty>
-        <DataProperty IRI="eventinvokeconfig_functionname"/>
-    </FunctionalDataProperty>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
     </FunctionalDataProperty>
@@ -123,16 +148,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="eventinvokeconfig_qualifier"/>
     </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="onfailure_destination"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="onsuccess_destination"/>
-    </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="eventinvokeconfig_functionname"/>
-        <Class IRI="eventinvokeconfig"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
         <Class IRI="eventinvokeconfig"/>
@@ -145,18 +160,6 @@
         <DataProperty IRI="eventinvokeconfig_qualifier"/>
         <Class IRI="eventinvokeconfig"/>
     </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="onfailure_destination"/>
-        <Class IRI="onfailure"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="onsuccess_destination"/>
-        <Class IRI="onsuccess"/>
-    </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="eventinvokeconfig_functionname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -167,14 +170,6 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="eventinvokeconfig_qualifier"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="onfailure_destination"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="onsuccess_destination"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
 </Ontology>

@@ -47,6 +47,7 @@ private object ResourcesNameFieldsMap {
     "events::rule"      -> "Name",
     "dynamodb::table"   -> "TableName",
     "cloudwatch::alarm" -> "AlarmName",
+    "cloudtrail::trail" -> "TrailName",
     "config::configurationrecorder"   -> "Name",
     "config::deliverychannel"         -> "Name",
     "config::configrule"    -> "ConfigRuleName",

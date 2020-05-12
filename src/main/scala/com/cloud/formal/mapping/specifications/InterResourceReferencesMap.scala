@@ -323,12 +323,24 @@ private object InterResourceReferencesMap{
     "lambdaeventsourcemapping_eventsourcemapping_functionname"
       -> ("lambdafunction", "function", true, true ),
 
+    "lambdaeventinvokeconfig_eventinvokeconfig_functionname"
+     -> ("lambdafunction","function",true,true),
+    "lambdaeventinvokeconfig_onfailure_destination"
+      -> ("null","null",true,true),
+    "lambdaeventinvokeconfig_onsuccess_destination"
+      -> ("null","null",true,true),
+
+
     "lambdaalias_alias_functionname"
       -> ("lambdafunction", "function", true, true ),
 
     "lambdapermission_permission_functionname"
       -> ("lambdafunction", "function", true, true ),
     "lambdapermission_permission_sourcearn"
+      -> ("null", "null", false, true ),
+    "lambdapermission_permission_sourceaccount"
+      -> ("null", "null", false, true ),
+    "lambdapermission_permission_principal"
       -> ("null", "null", false, true ),
 
     "lambdaversion_version_functionname"
@@ -385,7 +397,17 @@ private object InterResourceReferencesMap{
       -> ("iamrole","role",true,true),
 
     "cloudwatchalarm_alarm_alarmactions"
-      -> ("snstopic", "topic", false, false),
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
+    "cloudwatchalarm_alarm_okactions"
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
+    "cloudwatchalarm_alarm_insufficientdataactions"
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
+    "cloudwatchcompositealarm_compositealarm_alarmactions"
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
+    "cloudwatchcompositealarm_compositealarm_okactions"
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
+    "cloudwatchcompositealarm_compositealarm_insufficientdataactions"
+      -> (null.asInstanceOf[String],null.asInstanceOf[String], false, false),
     "cloudwatchalarm_dimension_value"
       -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
 
@@ -473,7 +495,24 @@ private object InterResourceReferencesMap{
       -> ( "s3bucket","bucket",true,true),
 
     "cloudtrailtrail_dataresource_values"
-     -> (null.asInstanceOf[String],null.asInstanceOf[String],false,false)
+     -> (null.asInstanceOf[String],null.asInstanceOf[String],false,false),
+
+    "cloudtrailtrail_trail_cloudwatchlogsloggrouparn"
+    -> ("cloudwatchloggroup", "loggroup",false, true),
+
+    "cloudtrailtrail_trail_cloudwatchlogsrolearn"
+    -> ("iamrole","role",false,true),
+
+    "cloudtrailtrail_trail_kmskeyid"
+    -> ("kmskey", "key", false, true),
+
+    "cloudtrailtrail_trail_s3bucketname"
+    -> ("s3bucket","bucket",true,true),
+
+    "cloudtrailtrail_trail_snstopicname"
+    -> ("snstopic","topic",false,true)
+
+
 
   )
 

@@ -76,7 +76,7 @@ object DefaultsMap {
 
     "elasticLoadbalancing" -> Map(),
 
-    "iam" -> Map("role_maxsessionduration" -> 3600),
+    "iam" -> Map("role_maxsessionduration" -> 3600, "accesskey_status" -> "active"),
 
     "kinesis" -> Map(),
 

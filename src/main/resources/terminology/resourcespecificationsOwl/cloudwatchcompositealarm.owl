@@ -15,13 +15,13 @@
         <Class IRI="compositealarm"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="compositealarm_alarmactions"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="attribute_compositealarm_arn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="compositealarm_actionsenabled"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="compositealarm_alarmactions"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="compositealarm_alarmdescription"/>
@@ -52,6 +52,10 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="compositealarm_alarmactions"/>
+        <Class IRI="compositealarm"/>
+    </ObjectPropertyDomain>
     <FunctionalDataProperty>
         <DataProperty IRI="attribute_compositealarm_arn"/>
     </FunctionalDataProperty>
@@ -73,10 +77,6 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="compositealarm_actionsenabled"/>
-        <Class IRI="compositealarm"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="compositealarm_alarmactions"/>
         <Class IRI="compositealarm"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -106,10 +106,6 @@
     <DataPropertyRange>
         <DataProperty IRI="compositealarm_actionsenabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="compositealarm_alarmactions"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="compositealarm_alarmdescription"/>
