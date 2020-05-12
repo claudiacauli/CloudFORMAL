@@ -2,9 +2,9 @@ Pass/Fail,Property ID,True/False,Outcome,Outcome Description,Instances
 FAIL,01_AM_BUCKETS_SHOULD_LOG,TRUE,SAT/0,If there are S3::Buckets - they might not keep logs,N/A
 PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,UNSAT,All S3::Buckets declared in this template do not store their own logs,N/A
 PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,UNSAT,No bucket that store logs and is public can be found,N/A
-FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,SAT/+,There are S3::Buckets - declared in this template - that are not encrypted,(lamction_lambdafunction_s3bukcet)
-FAIL,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,UNKNOWN-FALSE,SAT/0,None of the buckets declared in the template break this property - but there are buckets pointed by it for which the information is unknown,N/A
-FAIL,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,UNKNOWN-FALSE,SAT/0,None of the S3::Buckets declared in the template breaks this property - but there are buckets pointed by the template for which this information is not known,N/A
+PASS,04_AKM_BUCKETS_ENCRYPTED,TRUE,UNSAT,All known S3::Buckets are indeed encrypted,N/A
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,UNSAT,No bucket that does not host a website or allow CORS and is public can be found,N/A
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,UNSAT,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code,N/A
 PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,UNSAT,All S3::Buckets known to store logs are encrypted,N/A
 FAIL,08_EM_ALARM_ACTION,FALSE,UNSAT,There is no CloudWatch::Alarm that performs an action when triggered,N/A
 FAIL,09_EM_CONFIG_RECORDER,FALSE,UNSAT,There is no Config::ConfigurationRecorder that is recording changes of all resource types,N/A
@@ -19,7 +19,7 @@ PASS,17_AKM_KEYS_ENABLED,TRUE,UNSAT,All KMS::Keys are enabled,N/A
 FAIL,18_EM_KEY_FOR_REPLICA,FALSE,UNSAT,There is no KMS::Key used to encrypt buckets replicas,N/A
 FAIL,19_EM_KEY_ENCR_FUNCTION,FALSE,UNSAT,There is no KMS::Key used to encrypt a Lambda::Function,N/A
 FAIL,20_EM_SECURITYGROUP_OPENTOALL,FALSE,UNSAT,If there are EC2::SecurityGroups - they must be open to all IPs,N/A
-PASS,21_EM_LAMBDA_TRIGGERED_BUCKET,TRUE,SAT/+,There is a Lambda::Function that is triggered by a bucket,(lamction_lambdafunction_lambdafunction)
+FAIL,21_EM_LAMBDA_TRIGGERED_BUCKET,FALSE,SAT/0,There is no known Lambda::Function that is triggered by a bucket,N/A
 PASS,22_EKM_TRAIL_CARRYING_NOTHING,FALSE,UNSAT,If there are CloudTrail::Trails - they all certainly carry logs about data events,N/A
 PASS,23_EKM_TRAIL_NO_LOGFILE_VALIDATION,FALSE,UNSAT,If there are CloudTrail::Trails - they all certainly have log file validation enabled,N/A
 PASS,24_AKM_TRAIL_LOG,TRUE,UNSAT,If there are CloudTrail::Trails - they all certainly keep logs,N/A
@@ -36,7 +36,7 @@ PASS,34_AKM_LISTENER_NO_OLD_POLICIES,TRUE,UNSAT,All LoadBalancingV2::Listeners -
 FAIL,35_EM_GROUP_INLINE_POLICIES,FALSE,UNSAT,There is no IAM::Group with inline policies,N/A
 PASS,36_AKM_GROUP_NO_USERS,TRUE,UNSAT,All IAM::Groups - if any - are linked to some user,N/A
 PASS,37_AKM_USERS_PWDRESET,TRUE,UNSAT,All known IAM::Users have password reset required,N/A
-PASS,38_EM_ROLE_INLINE_POLICIES,TRUE,SAT/+,There is at least one IAM::Role with inline policies,(lamction_lambdafunction_lambdaroleforsns)
+FAIL,38_EM_ROLE_INLINE_POLICIES,FALSE,SAT/0,There is no IAM::Role with inline policies,N/A
 FAIL,39_AM_USER_WITH_LOGINPROFILE,TRUE,UNSAT,All IAM::Users - if any - might have password in template,N/A
 FAIL,40_EM_ACCESSKEY_ROTATING,FALSE,UNSAT,There is no IAM::User that is linked to a key that is rotating,N/A
 PASS,41_AKM_USER_ONE_ACCESSKEY,TRUE,UNSAT,All IAM::Users have max one access key,N/A
@@ -47,7 +47,7 @@ PASS,45_AKM_RDS_SHORT_BACKUP,TRUE,UNSAT,All RDS::DBInstances - if any - certainl
 FAIL,46_EM_DECLARED_RDS_ONEAZ,FALSE,UNSAT,All RDS::DBInstances are not replicated in different Availability Zones,N/A
 PASS,47_AKM_RDS_ENCRYPTED,TRUE,UNSAT,All known RDS::DBInstances are encrypted,N/A
 PASS,48_EKM_RDS_SECURITYGROUP_OPEN,FALSE,UNSAT,If there are RDS::DBinstances - they are certainly not linked to an open security group,N/A
-FAIL,49_AKM_BUCKETS_VERSIONING,FALSE,SAT/+,There are S3::Buckets - declared in this template - that have versioning disabled,(lamction_lambdafunction_s3bukcet)
+PASS,49_AKM_BUCKETS_VERSIONING,TRUE,UNSAT,All S3::Buckets have versioning enabled,N/A
 PASS,50_EKM_VPC_OPEN_NETWORK_ACL,FALSE,UNSAT,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl,N/A
 FAIL,51_AM_NETWORKACL_NOT_USED,TRUE,UNSAT,If there are EC2::NetworkAcls - they are all unused,N/A
 FAIL,52_AM_SUBNET_BAD_ACL,TRUE,UNSAT,If there are EC2::Subnets - they all have bad ACLs,N/A

@@ -22,13 +22,7 @@
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/05_monishakrish25992_infrastructure#ext_sns.amazonaws.com"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_b3f7516d-eee9-4df3-bf9b-4adaab8b95d5"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_snstopicpolicy"/>
@@ -37,7 +31,13 @@
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_mybucket"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9431dd4d-9be0-41e7-9969-b5aed7604b68"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
@@ -46,16 +46,16 @@
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_stack"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5"/>
-    </Declaration>
-    <Declaration>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdafunction"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_snstopic"/>
     </Declaration>
     <Declaration>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdarole"/>
@@ -178,12 +178,10 @@
         <ObjectOneOf>
             <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdafunctionpermission"/>
         </ObjectOneOf>
-        <ObjectComplementOf>
-            <DataSomeValuesFrom>
-                <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
-                <Datatype abbreviatedIRI="rdfs:Literal"/>
-            </DataSomeValuesFrom>
-        </ObjectComplementOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <ObjectOneOf>
@@ -437,7 +435,42 @@
     </SubClassOf>
     <SubClassOf>
         <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
+        </ObjectOneOf>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
+        </ObjectOneOf>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_filter"/>
+            <Class abbreviatedIRI="owl:Nothing"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <ObjectOneOf>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
         </ObjectOneOf>
         <ObjectComplementOf>
             <DataSomeValuesFrom>
@@ -448,7 +481,7 @@
     </SubClassOf>
     <SubClassOf>
         <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
+            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
         </ObjectOneOf>
         <ObjectComplementOf>
             <DataSomeValuesFrom>
@@ -456,41 +489,6 @@
                 <Datatype abbreviatedIRI="rdfs:Literal"/>
             </DataSomeValuesFrom>
         </ObjectComplementOf>
-    </SubClassOf>
-    <SubClassOf>
-        <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
-        </ObjectOneOf>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_filter"/>
-            <Class abbreviatedIRI="owl:Nothing"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
-        </ObjectOneOf>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
-            <Class abbreviatedIRI="owl:Nothing"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
-        </ObjectOneOf>
-        <ObjectAllValuesFrom>
-            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
-            <Class abbreviatedIRI="owl:Nothing"/>
-        </ObjectAllValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <ObjectOneOf>
-            <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
-        </ObjectOneOf>
-        <ObjectMaxCardinality cardinality="1">
-            <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
-        </ObjectMaxCardinality>
     </SubClassOf>
     <ClassAssertion>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#externalresource"/>
@@ -525,28 +523,28 @@
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_stack"/>
     </ClassAssertion>
     <ClassAssertion>
-        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
-    </ClassAssertion>
-    <ClassAssertion>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#environment"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_b3f7516d-eee9-4df3-bf9b-4adaab8b95d5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iampolicy#policy"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#environment"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9431dd4d-9be0-41e7-9969-b5aed7604b68"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
     </ClassAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
@@ -556,12 +554,12 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_code"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdafunction"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_environment"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdafunction"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_b3f7516d-eee9-4df3-bf9b-4adaab8b95d5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9431dd4d-9be0-41e7-9969-b5aed7604b68"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_role"/>
@@ -596,7 +594,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role_policies"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdarole"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
@@ -606,7 +604,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_mybucket"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
@@ -616,7 +614,7 @@
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_snstopic"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#isinstack"/>
@@ -634,24 +632,24 @@
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#999999999999"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_mybucket"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_topic"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_snstopic"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf"/>
         <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_lambdafunction"/>
     </ObjectPropertyAssertion>
     <ObjectPropertyAssertion>
         <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_topic"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_snstopic"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#lambda-ses_lambda-to-ses_mybucket"/>
     </ObjectPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_handler"/>
@@ -704,29 +702,29 @@
         <Literal>{&quot;Id&quot;:&quot;MyTopicPolicy&quot;,&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;s3.amazonaws.com&quot;},&quot;Action&quot;:[&quot;SNS:Publish&quot;],&quot;Resource&quot;:&quot;*&quot;,&quot;Condition&quot;:{&quot;ArnLike&quot;:{&quot;aws:SourceArn&quot;:{&quot;Fn::Join&quot;:[&quot;&quot;,[&quot;arn:aws:s3:*:*:&quot;,{&quot;Ref&quot;:&quot;BucketName&quot;}]]}}}}]}</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
-        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3key"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065"/>
-        <Literal>test</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_event"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227"/>
-        <Literal>s3:objectcreated:*</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
         <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf"/>
         <Literal>lambda</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#policy_policydocument"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f"/>
         <Literal>{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Action&quot;:[&quot;logs:CreateLogGroup&quot;,&quot;logs:CreateLogStream&quot;,&quot;logs:PutLogEvents&quot;,&quot;s3:*&quot;,&quot;ses:*&quot;],&quot;Resource&quot;:&quot;*&quot;}]}</Literal>
     </DataPropertyAssertion>
     <DataPropertyAssertion>
         <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#policy_policyname"/>
-        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f"/>
         <Literal>lambdapolicy</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_event"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c"/>
+        <Literal>s3:objectcreated:*</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3key"/>
+        <NamedIndividual IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769"/>
+        <Literal>test</Literal>
     </DataPropertyAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
@@ -760,38 +758,38 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_051f3ac3-9c8d-4b7c-bc55-0a401e10d065</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1da940c5-544c-469c-a514-545930d141cf</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_1ffa242a-a590-4d67-beef-21baf0729227</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_2ffed7a7-3b18-4afb-ba2e-939ab43c8ccb</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_5c5fd77d-ff37-4b0e-bc46-9d83921c84c5</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_57c0e574-b703-491b-a1a0-001a1673937f</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_92822c48-b319-47d5-9eac-ab0176d617c3</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9431dd4d-9be0-41e7-9969-b5aed7604b68</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_b3f7516d-eee9-4df3-bf9b-4adaab8b95d5</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_9b055fa6-8d1b-4642-acb4-66f20aca3f6c</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_cd228523-fb42-4356-bc1c-645bcfd7a01b</IRI>
+        <IRI>http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambda-ses#subproperty_ad768ad4-7619-4952-85b7-498ec22b5769</IRI>
         <Literal>Subproperty</Literal>
     </AnnotationAssertion>
 </Ontology>
 
 
 
-<!-- Generated by the OWL API (version 5.1.11) https://github.com/owlcs/owlapi/ -->
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
 
 
