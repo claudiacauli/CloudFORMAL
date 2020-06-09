@@ -240,11 +240,20 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
   private def addPropertyToOntology(pName: String, isObjProp: Boolean) =
     if (isObjProp) {
       val oProp = m.df.getOWLObjectProperty(ModelIRI.propertyTypeIRI(m.name, pName))
+
       m.ontology.add(m.df.getOWLDeclarationAxiom(oProp))
+
+      m.ontology.addAxiom(
+        m.df.getOWLAnnotationAssertionAxiom(
+          oProp.getIRI,m.df.getRDFSLabel(resSpec.name+":"+pName)))
     }
     else {
       val dProp = m.df.getOWLDataProperty(ModelIRI.propertyTypeIRI(m.name, pName))
       m.ontology.add(m.df.getOWLDeclarationAxiom(dProp))
+
+      m.ontology.addAxiom(
+        m.df.getOWLAnnotationAssertionAxiom(
+          dProp.getIRI,m.df.getRDFSLabel(resSpec.name+":"+pName)))
     }
 
 
@@ -255,6 +264,10 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
   private def addResourceTypeToOntology(resName: String) = {
     val concept = m.df.getOWLClass(ModelIRI.resourceTypeIRI(m.name, resName))
     m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
+
+    m.ontology.addAxiom(
+      m.df.getOWLAnnotationAssertionAxiom(
+        concept.getIRI,m.df.getRDFSLabel(resSpec.name+":"+resName)))
   }
 
 
@@ -266,6 +279,9 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
   private def addSubpropertyTypeToOntology(subpName: String)  = {
     val concept = m.df.getOWLClass(ModelIRI.subpropertyTypeIRI(m.name, subpName))
     m.ontology.add(m.df.getOWLDeclarationAxiom(concept))
+    m.ontology.addAxiom(
+      m.df.getOWLAnnotationAssertionAxiom(
+        concept.getIRI,m.df.getRDFSLabel(resSpec.name+":"+subpName)))
   }
 
 
