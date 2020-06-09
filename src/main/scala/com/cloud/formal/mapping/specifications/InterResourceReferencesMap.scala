@@ -376,6 +376,10 @@ private object InterResourceReferencesMap{
       -> ("iamrole", "role", true, true ),
     "s3bucket_replicationdestination_bucket"
       -> ("s3bucket", "bucket", true, true ),
+    "s3bucket_redirectallrequeststo_hostname"
+      -> (null.asInstanceOf[String], null.asInstanceOf[String], false, true),
+    "s3bucket_redirectrule_hostname"
+      -> (null.asInstanceOf[String], null.asInstanceOf[String], false, true),
     "s3bucket_lambdaconfiguration_function"
       -> ("lambdafunction", "function", true, true ),
     "s3bucket_queueconfiguration_queue"
@@ -384,6 +388,8 @@ private object InterResourceReferencesMap{
       -> ("snstopic", "topic", true, true ),
     "s3bucketpolicy_bucketpolicy_bucket"
       -> ("s3bucket", "bucket", true, true ),
+    "s3bucket_corsrule_allowedorigins"
+    -> ("null","null",true,false),
 
     "cloudformationcustomresource_customresource_servicetoken"
       -> (null.asInstanceOf[String],null.asInstanceOf[String],true,true),
