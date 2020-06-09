@@ -30,7 +30,7 @@ import org.semanticweb.owlapi.util.{BidirectionalShortFormProviderAdapter, Simpl
 import scala.jdk.CollectionConverters._
 
 
-class PropertyEval(val r: Reasoner, val o: OWLOntology, val df: OWLDataFactory, val m: OWLOntologyManager) {
+class PropertyEval(val r: ReasonerWrapper, val o: OWLOntology, val df: OWLDataFactory, val m: OWLOntologyManager) {
 
 
   private[formal]

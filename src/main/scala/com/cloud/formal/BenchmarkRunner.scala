@@ -22,7 +22,7 @@ import com.cloud.formal.binding.Interface
 import com.cloud.formal.mapping.templates.Infrastructure
 import com.cloud.formal.reasoning.PropertyType.PropertyType
 import com.cloud.formal.reasoning.QueryOutcome.QueryOutcome
-import com.cloud.formal.reasoning.{PropertiesChecker, PropertyType, QueryOutcome, Reasoner}
+import com.cloud.formal.reasoning.{PropertiesChecker, PropertyType, QueryOutcome, ReasonerWrapper}
 import org.semanticweb.owlapi.model.{OWLClassExpression, OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
 import org.semanticweb.owlapi.model.parameters.Imports
 import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet, OWLReasoner}
@@ -212,7 +212,7 @@ object BenchmarkRunner extends App {
     (vm zip benchmarkResults)
       .foreach( p =>
       {
-        val r = Reasoner.create(p._1._2, p._1._3, p._1._4)
+        val r = ReasonerWrapper.create(p._1._2, p._1._3, p._1._4)
         try {
           r.classify(printEnabled = false)(computeAllInferencesAndBenchmark(p._2, r))
           val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4,".")
@@ -242,7 +242,7 @@ object BenchmarkRunner extends App {
     (vm zip benchmarkResults)
       .foreach( p =>
       {
-        val r = Reasoner.create(p._1._2, p._1._3, p._1._4)
+        val r = ReasonerWrapper.create(p._1._2, p._1._3, p._1._4)
         try {
           r.classify(printEnabled = false)(r.computeAllInferences)
           val pc = new PropertiesChecker(p._1._1, p._1._2, p._1._3, p._1._4,".")
@@ -352,7 +352,7 @@ object BenchmarkRunner extends App {
 
 
 
-  private def runAndBenchmarkQuery(qd: QueryData, r: Reasoner)
+  private def runAndBenchmarkQuery(qd: QueryData, r: ReasonerWrapper)
                                   (satFun: (=> OWLClassExpression) => Boolean)
                                   (expr: => OWLClassExpression):
   (QueryOutcome, Option[NodeSet[OWLNamedIndividual]]) =
@@ -365,7 +365,7 @@ object BenchmarkRunner extends App {
   }
 
 
-  private def computeAllInferencesAndBenchmark(md: ModelData, r: Reasoner)
+  private def computeAllInferencesAndBenchmark(md: ModelData, r: ReasonerWrapper)
                                               (re: OWLReasoner) :Unit =
   {
     val res = BenchmarkUtils.ProfileFunction("Classification "+md.infrastrName,

@@ -25,17 +25,17 @@ import uk.ac.manchester.cs.jfact.kernel.options.JFactReasonerConfiguration
 
 
 
-object Reasoner {
+object ReasonerWrapper {
 
   def create(o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager) =
-    new Reasoner(o,df,m)
+    new ReasonerWrapper(o,df,m)
 
 }
 
-class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyManager)
+class ReasonerWrapper(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyManager)
 {
 
-  private val reasoner: OWLReasoner = jFactReasoner()
+  private[formal] val reasonerEngine: OWLReasoner = jFactReasoner()
 
 
 
@@ -45,9 +45,9 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
     val axiomsCountPrint = "[Logical Axioms Count: "+ontology.getLogicalAxiomCount(Imports.INCLUDED)+"]"
     if (printEnabled) println(f"\t\t\t$axiomsCountPrint%-5s")
 
-    classificationFunction(reasoner)
+    classificationFunction(reasonerEngine)
 
-    val unsatisfiable = reasoner
+    val unsatisfiable = reasonerEngine
       .getUnsatisfiableClasses.getEntitiesMinusBottom
 
     if (!unsatisfiable.isEmpty) {
@@ -97,7 +97,7 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
   def isSat(hasReqResources: Boolean)(expr: => OWLClassExpression): Boolean = {
     val t = System.nanoTime()
     if (hasReqResources)
-      reasoner.isSatisfiable(expr)
+      reasonerEngine.isSatisfiable(expr)
     else {
       false
     }
@@ -119,7 +119,7 @@ class Reasoner(ontology: OWLOntology, df: OWLDataFactory, manager: OWLOntologyMa
 
 
   def getInstances(expr: OWLClassExpression) = {
-    reasoner.getInstances(expr, InferenceDepth.ALL)
+    reasonerEngine.getInstances(expr, InferenceDepth.ALL)
   }
 
 

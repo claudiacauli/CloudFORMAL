@@ -28,7 +28,7 @@ import Console.{RESET, UNDERLINED}
 class PropertiesChecker (name: String, o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager, dir: String) {
 
   private[formal] val propsVec  = PropertiesGenerator.init()
-  private[formal] val r         = Reasoner.create(o, df, m)
+  private[formal] val r         = ReasonerWrapper.create(o, df, m)
   private[formal] val pE        = new PropertyEval(r,o,df,m)
 
   def classify(printEnabled: Boolean = true): Unit =
