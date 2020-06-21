@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecscapacityprovider#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecscapacityprovider#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="autoscalinggroupprovider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="capacityprovider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="managedscaling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="autoscalinggroupprovider_managedscaling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="capacityprovider_autoscalinggroupprovider"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="capacityprovider_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalinggroupprovider_autoscalinggrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalinggroupprovider_managedterminationprotection"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityprovider_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedscaling_maximumscalingstepsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedscaling_minimumscalingstepsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedscaling_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedscaling_targetcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="autoscalinggroupprovider"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="autoscalinggroupprovider_autoscalinggrouparn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="capacityprovider"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="capacityprovider_autoscalinggroupprovider"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="autoscalinggroupprovider_managedscaling"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="capacityprovider_autoscalinggroupprovider"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="autoscalinggroupprovider_managedscaling"/>
+        <Class IRI="autoscalinggroupprovider"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="capacityprovider_autoscalinggroupprovider"/>
+        <Class IRI="capacityprovider"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="capacityprovider_tags"/>
+        <Class IRI="capacityprovider"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="autoscalinggroupprovider_managedscaling"/>
+        <Class IRI="managedscaling"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="capacityprovider_autoscalinggroupprovider"/>
+        <Class IRI="autoscalinggroupprovider"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="capacityprovider_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalinggroupprovider_autoscalinggrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalinggroupprovider_managedterminationprotection"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityprovider_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedscaling_maximumscalingstepsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedscaling_minimumscalingstepsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedscaling_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedscaling_targetcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalinggroupprovider_autoscalinggrouparn"/>
+        <Class IRI="autoscalinggroupprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalinggroupprovider_managedterminationprotection"/>
+        <Class IRI="autoscalinggroupprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityprovider_name"/>
+        <Class IRI="capacityprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedscaling_maximumscalingstepsize"/>
+        <Class IRI="managedscaling"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedscaling_minimumscalingstepsize"/>
+        <Class IRI="managedscaling"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedscaling_status"/>
+        <Class IRI="managedscaling"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedscaling_targetcapacity"/>
+        <Class IRI="managedscaling"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalinggroupprovider_autoscalinggrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalinggroupprovider_managedterminationprotection"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityprovider_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedscaling_maximumscalingstepsize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedscaling_minimumscalingstepsize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedscaling_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedscaling_targetcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroupprovider</IRI>
+        <Literal>ecscapacityprovider:autoscalinggroupprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroupprovider_autoscalinggrouparn</IRI>
+        <Literal>ecscapacityprovider:autoscalinggroupprovider_autoscalinggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroupprovider_managedscaling</IRI>
+        <Literal>ecscapacityprovider:autoscalinggroupprovider_managedscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroupprovider_managedterminationprotection</IRI>
+        <Literal>ecscapacityprovider:autoscalinggroupprovider_managedterminationprotection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityprovider</IRI>
+        <Literal>ecscapacityprovider:capacityprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityprovider_autoscalinggroupprovider</IRI>
+        <Literal>ecscapacityprovider:capacityprovider_autoscalinggroupprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityprovider_name</IRI>
+        <Literal>ecscapacityprovider:capacityprovider_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityprovider_tags</IRI>
+        <Literal>ecscapacityprovider:capacityprovider_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscaling</IRI>
+        <Literal>ecscapacityprovider:managedscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscaling_maximumscalingstepsize</IRI>
+        <Literal>ecscapacityprovider:managedscaling_maximumscalingstepsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscaling_minimumscalingstepsize</IRI>
+        <Literal>ecscapacityprovider:managedscaling_minimumscalingstepsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscaling_status</IRI>
+        <Literal>ecscapacityprovider:managedscaling_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscaling_targetcapacity</IRI>
+        <Literal>ecscapacityprovider:managedscaling_targetcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>ecscapacityprovider:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>ecscapacityprovider:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>ecscapacityprovider:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

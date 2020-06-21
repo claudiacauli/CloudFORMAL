@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/maciefindingsfilter#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/maciefindingsfilter#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="criterion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="findingcriteria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="findingsfilter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="findingcriteria_criterion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="findingsfilter_findingcriteria"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="findingsfilter_action"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="findingsfilter_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="findingsfilter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="findingsfilter_position"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="findingsfilter"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="findingsfilter_findingcriteria"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="findingsfilter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="findingsfilter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="findingcriteria_criterion"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="findingsfilter_findingcriteria"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="findingcriteria_criterion"/>
+        <Class IRI="findingcriteria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="findingsfilter_findingcriteria"/>
+        <Class IRI="findingsfilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="findingcriteria_criterion"/>
+        <Class IRI="criterion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="findingsfilter_findingcriteria"/>
+        <Class IRI="findingcriteria"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="findingsfilter_action"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="findingsfilter_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="findingsfilter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="findingsfilter_position"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="findingsfilter_action"/>
+        <Class IRI="findingsfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="findingsfilter_description"/>
+        <Class IRI="findingsfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="findingsfilter_name"/>
+        <Class IRI="findingsfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="findingsfilter_position"/>
+        <Class IRI="findingsfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="findingsfilter_action"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="findingsfilter_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="findingsfilter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="findingsfilter_position"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>criterion</IRI>
+        <Literal>maciefindingsfilter:criterion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingcriteria</IRI>
+        <Literal>maciefindingsfilter:findingcriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingcriteria_criterion</IRI>
+        <Literal>maciefindingsfilter:findingcriteria_criterion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter</IRI>
+        <Literal>maciefindingsfilter:findingsfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter_action</IRI>
+        <Literal>maciefindingsfilter:findingsfilter_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter_description</IRI>
+        <Literal>maciefindingsfilter:findingsfilter_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter_findingcriteria</IRI>
+        <Literal>maciefindingsfilter:findingsfilter_findingcriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter_name</IRI>
+        <Literal>maciefindingsfilter:findingsfilter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingsfilter_position</IRI>
+        <Literal>maciefindingsfilter:findingsfilter_position</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotprovisioningtemplate#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotprovisioningtemplate#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="provisioninghook"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provisioningtemplate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="provisioningtemplate_preprovisioninghook"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="provisioningtemplate_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioninghook_payloadversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioninghook_targetarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioningtemplate_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioningtemplate_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioningtemplate_provisioningrolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioningtemplate_templatebody"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisioningtemplate_templatename"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="json"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="provisioningtemplate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisioningtemplate_provisioningrolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisioningtemplate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisioningtemplate_templatebody"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="provisioningtemplate_preprovisioninghook"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="provisioningtemplate_preprovisioninghook"/>
+        <Class IRI="provisioningtemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="provisioningtemplate_tags"/>
+        <Class IRI="provisioningtemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="provisioningtemplate_preprovisioninghook"/>
+        <Class IRI="provisioninghook"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="provisioningtemplate_tags"/>
+        <Class IRI="json"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioninghook_payloadversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioninghook_targetarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioningtemplate_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioningtemplate_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioningtemplate_provisioningrolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioningtemplate_templatebody"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisioningtemplate_templatename"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioninghook_payloadversion"/>
+        <Class IRI="provisioninghook"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioninghook_targetarn"/>
+        <Class IRI="provisioninghook"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioningtemplate_description"/>
+        <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioningtemplate_enabled"/>
+        <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioningtemplate_provisioningrolearn"/>
+        <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioningtemplate_templatebody"/>
+        <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisioningtemplate_templatename"/>
+        <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioninghook_payloadversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioninghook_targetarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioningtemplate_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioningtemplate_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioningtemplate_provisioningrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioningtemplate_templatebody"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisioningtemplate_templatename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioninghook</IRI>
+        <Literal>iotprovisioningtemplate:provisioninghook</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioninghook_payloadversion</IRI>
+        <Literal>iotprovisioningtemplate:provisioninghook_payloadversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioninghook_targetarn</IRI>
+        <Literal>iotprovisioningtemplate:provisioninghook_targetarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_description</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_enabled</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_preprovisioninghook</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_preprovisioninghook</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_provisioningrolearn</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_provisioningrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_tags</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_templatebody</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_templatebody</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisioningtemplate_templatename</IRI>
+        <Literal>iotprovisioningtemplate:provisioningtemplate_templatename</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

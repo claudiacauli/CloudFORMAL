@@ -33,21 +33,6 @@
         <ObjectProperty IRI="loadbalancer_tags"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_loadbalancer_canonicalhostedzoneid"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_loadbalancer_dnsname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancerfullname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancername"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_loadbalancer_securitygroups"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="loadbalancer_ipaddresstype"/>
     </Declaration>
     <Declaration>
@@ -75,6 +60,9 @@
         <DataProperty IRI="subnetmapping_allocationid"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="subnetmapping_privateipv4address"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="subnetmapping_subnetid"/>
     </Declaration>
     <Declaration>
@@ -83,13 +71,6 @@
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="subnetmapping"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="subnetmapping_allocationid"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
     <SubClassOf>
         <Class IRI="subnetmapping"/>
         <DataSomeValuesFrom>
@@ -136,18 +117,6 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_loadbalancer_canonicalhostedzoneid"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_loadbalancer_dnsname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancerfullname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancername"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="loadbalancer_ipaddresstype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -169,6 +138,9 @@
         <DataProperty IRI="subnetmapping_allocationid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="subnetmapping_privateipv4address"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="subnetmapping_subnetid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -177,26 +149,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_loadbalancer_canonicalhostedzoneid"/>
-        <Class IRI="loadbalancer"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_loadbalancer_dnsname"/>
-        <Class IRI="loadbalancer"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancerfullname"/>
-        <Class IRI="loadbalancer"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancername"/>
-        <Class IRI="loadbalancer"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_loadbalancer_securitygroups"/>
-        <Class IRI="loadbalancer"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="loadbalancer_ipaddresstype"/>
         <Class IRI="loadbalancer"/>
@@ -234,6 +186,10 @@
         <Class IRI="subnetmapping"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="subnetmapping_privateipv4address"/>
+        <Class IRI="subnetmapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="subnetmapping_subnetid"/>
         <Class IRI="subnetmapping"/>
     </DataPropertyDomain>
@@ -245,26 +201,6 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_loadbalancer_canonicalhostedzoneid"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_loadbalancer_dnsname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancerfullname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_loadbalancer_loadbalancername"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_loadbalancer_securitygroups"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="loadbalancer_ipaddresstype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -302,6 +238,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="subnetmapping_privateipv4address"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="subnetmapping_subnetid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -313,31 +253,6 @@
         <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_loadbalancer_canonicalhostedzoneid</IRI>
-        <Literal>elasticloadbalancingv2loadbalancer:attribute_loadbalancer_canonicalhostedzoneid</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_loadbalancer_dnsname</IRI>
-        <Literal>elasticloadbalancingv2loadbalancer:attribute_loadbalancer_dnsname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_loadbalancer_loadbalancerfullname</IRI>
-        <Literal>elasticloadbalancingv2loadbalancer:attribute_loadbalancer_loadbalancerfullname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_loadbalancer_loadbalancername</IRI>
-        <Literal>elasticloadbalancingv2loadbalancer:attribute_loadbalancer_loadbalancername</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_loadbalancer_securitygroups</IRI>
-        <Literal>elasticloadbalancingv2loadbalancer:attribute_loadbalancer_securitygroups</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>loadbalancer</IRI>
@@ -412,6 +327,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>subnetmapping_allocationid</IRI>
         <Literal>elasticloadbalancingv2loadbalancer:subnetmapping_allocationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subnetmapping_privateipv4address</IRI>
+        <Literal>elasticloadbalancingv2loadbalancer:subnetmapping_privateipv4address</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

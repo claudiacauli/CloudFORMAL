@@ -27,6 +27,9 @@
         <Class IRI="directoryserviceauthenticationrequest"/>
     </Declaration>
     <Declaration>
+        <Class IRI="federatedauthenticationrequest"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
@@ -34,6 +37,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="clientauthenticationrequest_activedirectory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="clientauthenticationrequest_federatedauthentication"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="clientauthenticationrequest_mutualauthentication"/>
@@ -94,6 +100,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="directoryserviceauthenticationrequest_directoryid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_key"/>
@@ -161,6 +170,13 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="federatedauthenticationrequest"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="tag"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="tag_key"/>
@@ -192,6 +208,9 @@
         <ObjectProperty IRI="clientauthenticationrequest_activedirectory"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="clientauthenticationrequest_federatedauthentication"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="clientauthenticationrequest_mutualauthentication"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -199,6 +218,10 @@
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="clientauthenticationrequest_activedirectory"/>
+        <Class IRI="clientauthenticationrequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="clientauthenticationrequest_federatedauthentication"/>
         <Class IRI="clientauthenticationrequest"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -224,6 +247,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="clientauthenticationrequest_activedirectory"/>
         <Class IRI="directoryserviceauthenticationrequest"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="clientauthenticationrequest_federatedauthentication"/>
+        <Class IRI="federatedauthenticationrequest"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="clientauthenticationrequest_mutualauthentication"/>
@@ -283,6 +310,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="directoryserviceauthenticationrequest_directoryid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -352,6 +382,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="directoryserviceauthenticationrequest_directoryid"/>
         <Class IRI="directoryserviceauthenticationrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
+        <Class IRI="federatedauthenticationrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
@@ -426,6 +460,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="tag_key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -456,6 +494,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>clientauthenticationrequest_activedirectory</IRI>
         <Literal>ec2clientvpnendpoint:clientauthenticationrequest_activedirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientauthenticationrequest_federatedauthentication</IRI>
+        <Literal>ec2clientvpnendpoint:clientauthenticationrequest_federatedauthentication</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -561,6 +604,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>directoryserviceauthenticationrequest_directoryid</IRI>
         <Literal>ec2clientvpnendpoint:directoryserviceauthenticationrequest_directoryid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>federatedauthenticationrequest</IRI>
+        <Literal>ec2clientvpnendpoint:federatedauthenticationrequest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>federatedauthenticationrequest_samlproviderarn</IRI>
+        <Literal>ec2clientvpnendpoint:federatedauthenticationrequest_samlproviderarn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

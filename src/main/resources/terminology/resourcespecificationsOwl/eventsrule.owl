@@ -27,6 +27,9 @@
         <Class IRI="ecsparameters"/>
     </Declaration>
     <Declaration>
+        <Class IRI="httpparameters"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="inputtransformer"/>
     </Declaration>
     <Declaration>
@@ -63,6 +66,12 @@
         <ObjectProperty IRI="ecsparameters_networkconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="httpparameters_headerparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpparameters_querystringparameters"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="inputtransformer_inputpathsmap"/>
     </Declaration>
     <Declaration>
@@ -84,6 +93,9 @@
         <ObjectProperty IRI="target_ecsparameters"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="target_httpparameters"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="target_inputtransformer"/>
     </Declaration>
     <Declaration>
@@ -94,9 +106,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="target_sqsparameters"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_rule_arn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
@@ -133,6 +142,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="ecsparameters_taskdefinitionarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpparameters_pathparametervalues"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="inputtransformer_inputtemplate"/>
@@ -291,6 +303,9 @@
         <ObjectProperty IRI="target_ecsparameters"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="target_httpparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="target_inputtransformer"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -313,6 +328,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="ecsparameters_networkconfiguration"/>
         <Class IRI="ecsparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpparameters_headerparameters"/>
+        <Class IRI="httpparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpparameters_querystringparameters"/>
+        <Class IRI="httpparameters"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="inputtransformer_inputpathsmap"/>
@@ -343,6 +366,10 @@
         <Class IRI="target"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="target_httpparameters"/>
+        <Class IRI="target"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="target_inputtransformer"/>
         <Class IRI="target"/>
     </ObjectPropertyDomain>
@@ -371,6 +398,14 @@
         <Class IRI="networkconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="httpparameters_headerparameters"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpparameters_querystringparameters"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="inputtransformer_inputpathsmap"/>
         <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
@@ -395,6 +430,10 @@
         <Class IRI="ecsparameters"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="target_httpparameters"/>
+        <Class IRI="httpparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="target_inputtransformer"/>
         <Class IRI="inputtransformer"/>
     </ObjectPropertyRange>
@@ -410,9 +449,6 @@
         <ObjectProperty IRI="target_sqsparameters"/>
         <Class IRI="sqsparameters"/>
     </ObjectPropertyRange>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_rule_arn"/>
-    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
     </FunctionalDataProperty>
@@ -488,10 +524,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="target_rolearn"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_rule_arn"/>
-        <Class IRI="rule"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
         <Class IRI="awsvpcconfiguration"/>
@@ -541,6 +573,10 @@
         <Class IRI="ecsparameters"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="httpparameters_pathparametervalues"/>
+        <Class IRI="httpparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="inputtransformer_inputtemplate"/>
         <Class IRI="inputtransformer"/>
     </DataPropertyDomain>
@@ -613,10 +649,6 @@
         <Class IRI="target"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_rule_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -662,6 +694,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="ecsparameters_taskdefinitionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpparameters_pathparametervalues"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -736,11 +772,6 @@
         <DataProperty IRI="target_rolearn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_rule_arn</IRI>
-        <Literal>eventsrule:attribute_rule_arn</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>awsvpcconfiguration</IRI>
@@ -840,6 +871,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ecsparameters_taskdefinitionarn</IRI>
         <Literal>eventsrule:ecsparameters_taskdefinitionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpparameters</IRI>
+        <Literal>eventsrule:httpparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpparameters_headerparameters</IRI>
+        <Literal>eventsrule:httpparameters_headerparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpparameters_pathparametervalues</IRI>
+        <Literal>eventsrule:httpparameters_pathparametervalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpparameters_querystringparameters</IRI>
+        <Literal>eventsrule:httpparameters_querystringparameters</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -975,6 +1026,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>target_ecsparameters</IRI>
         <Literal>eventsrule:target_ecsparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>target_httpparameters</IRI>
+        <Literal>eventsrule:target_httpparameters</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -30,6 +30,9 @@
         <Class IRI="mongodbsettings"/>
     </Declaration>
     <Declaration>
+        <Class IRI="neptunesettings"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="s3settings"/>
     </Declaration>
     <Declaration>
@@ -51,13 +54,13 @@
         <ObjectProperty IRI="endpoint_mongodbsettings"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="endpoint_neptunesettings"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="endpoint_s3settings"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="endpoint_tags"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_endpoint_externalid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="dynamodbsettings_serviceaccessrolearn"/>
@@ -157,6 +160,27 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mongodbsettings_username"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_errorretryduration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_iamauthenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_maxfilesize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_maxretrycount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_s3bucketfolder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_s3bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="neptunesettings_serviceaccessrolearn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3settings_bucketfolder"/>
@@ -229,6 +253,9 @@
         <ObjectProperty IRI="endpoint_mongodbsettings"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="endpoint_neptunesettings"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="endpoint_s3settings"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
@@ -252,6 +279,10 @@
         <Class IRI="endpoint"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="endpoint_neptunesettings"/>
+        <Class IRI="endpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="endpoint_s3settings"/>
         <Class IRI="endpoint"/>
     </ObjectPropertyDomain>
@@ -280,6 +311,10 @@
         <Class IRI="mongodbsettings"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="endpoint_neptunesettings"/>
+        <Class IRI="neptunesettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="endpoint_s3settings"/>
         <Class IRI="s3settings"/>
     </ObjectPropertyRange>
@@ -287,9 +322,6 @@
         <ObjectProperty IRI="endpoint_tags"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_endpoint_externalid"/>
-    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="dynamodbsettings_serviceaccessrolearn"/>
     </FunctionalDataProperty>
@@ -390,6 +422,27 @@
         <DataProperty IRI="mongodbsettings_username"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_errorretryduration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_iamauthenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_maxfilesize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_maxretrycount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_s3bucketfolder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_s3bucketname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="neptunesettings_serviceaccessrolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="s3settings_bucketfolder"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -416,10 +469,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_endpoint_externalid"/>
-        <Class IRI="endpoint"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="dynamodbsettings_serviceaccessrolearn"/>
         <Class IRI="dynamodbsettings"/>
@@ -553,6 +602,34 @@
         <Class IRI="mongodbsettings"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_errorretryduration"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_iamauthenabled"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_maxfilesize"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_maxretrycount"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_s3bucketfolder"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_s3bucketname"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="neptunesettings_serviceaccessrolearn"/>
+        <Class IRI="neptunesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="s3settings_bucketfolder"/>
         <Class IRI="s3settings"/>
     </DataPropertyDomain>
@@ -588,10 +665,6 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_endpoint_externalid"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="dynamodbsettings_serviceaccessrolearn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -725,6 +798,34 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_errorretryduration"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_iamauthenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_maxfilesize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_maxretrycount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_s3bucketfolder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_s3bucketname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="neptunesettings_serviceaccessrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="s3settings_bucketfolder"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -760,11 +861,6 @@
         <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_endpoint_externalid</IRI>
-        <Literal>dmsendpoint:attribute_endpoint_externalid</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dynamodbsettings</IRI>
@@ -864,6 +960,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>endpoint_mongodbsettings</IRI>
         <Literal>dmsendpoint:endpoint_mongodbsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoint_neptunesettings</IRI>
+        <Literal>dmsendpoint:endpoint_neptunesettings</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -994,6 +1095,46 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>mongodbsettings_username</IRI>
         <Literal>dmsendpoint:mongodbsettings_username</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings</IRI>
+        <Literal>dmsendpoint:neptunesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_errorretryduration</IRI>
+        <Literal>dmsendpoint:neptunesettings_errorretryduration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_iamauthenabled</IRI>
+        <Literal>dmsendpoint:neptunesettings_iamauthenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_maxfilesize</IRI>
+        <Literal>dmsendpoint:neptunesettings_maxfilesize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_maxretrycount</IRI>
+        <Literal>dmsendpoint:neptunesettings_maxretrycount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_s3bucketfolder</IRI>
+        <Literal>dmsendpoint:neptunesettings_s3bucketfolder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_s3bucketname</IRI>
+        <Literal>dmsendpoint:neptunesettings_s3bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>neptunesettings_serviceaccessrolearn</IRI>
+        <Literal>dmsendpoint:neptunesettings_serviceaccessrolearn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

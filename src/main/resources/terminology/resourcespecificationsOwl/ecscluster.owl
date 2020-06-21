@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="cluster"/>
     </Declaration>
     <Declaration>
@@ -24,10 +27,22 @@
         <ObjectProperty IRI="cluster_clustersettings"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="cluster_defaultcapacityproviderstrategy"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="cluster_tags"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_cluster_arn"/>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_capacityproviders"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cluster_clustername"/>
@@ -63,6 +78,10 @@
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_defaultcapacityproviderstrategy"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="cluster_tags"/>
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
@@ -71,11 +90,21 @@
         <Class IRI="clustersettings"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_defaultcapacityproviderstrategy"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_tags"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_cluster_arn"/>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="cluster_clustername"/>
@@ -93,7 +122,19 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
-        <DataProperty IRI="attribute_cluster_arn"/>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_capacityproviders"/>
         <Class IRI="cluster"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -117,7 +158,19 @@
         <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_cluster_arn"/>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_capacityproviders"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -142,13 +195,33 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_cluster_arn</IRI>
-        <Literal>ecscluster:attribute_cluster_arn</Literal>
+        <IRI>capacityproviderstrategyitem</IRI>
+        <Literal>ecscluster:capacityproviderstrategyitem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_base</IRI>
+        <Literal>ecscluster:capacityproviderstrategyitem_base</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_capacityprovider</IRI>
+        <Literal>ecscluster:capacityproviderstrategyitem_capacityprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_weight</IRI>
+        <Literal>ecscluster:capacityproviderstrategyitem_weight</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster</IRI>
         <Literal>ecscluster:cluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_capacityproviders</IRI>
+        <Literal>ecscluster:cluster_capacityproviders</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -159,6 +232,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster_clustersettings</IRI>
         <Literal>ecscluster:cluster_clustersettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_defaultcapacityproviderstrategy</IRI>
+        <Literal>ecscluster:cluster_defaultcapacityproviderstrategy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

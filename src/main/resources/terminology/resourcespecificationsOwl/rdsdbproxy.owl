@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/rdsdbproxy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/rdsdbproxy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="authformat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dbproxy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tagformat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dbproxy_auth"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dbproxy_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authformat_authscheme"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authformat_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authformat_iamauth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authformat_secretarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authformat_username"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_dbproxyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_debuglogging"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_enginefamily"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_idleclienttimeout"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_requiretls"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_vpcsecuritygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxy_vpcsubnetids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagformat_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagformat_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="dbproxy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="dbproxy_auth"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dbproxy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbproxy_dbproxyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dbproxy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbproxy_enginefamily"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dbproxy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbproxy_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dbproxy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbproxy_vpcsubnetids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dbproxy_auth"/>
+        <Class IRI="dbproxy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dbproxy_tags"/>
+        <Class IRI="dbproxy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dbproxy_auth"/>
+        <Class IRI="authformat"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dbproxy_tags"/>
+        <Class IRI="tagformat"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authformat_authscheme"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authformat_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authformat_iamauth"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authformat_secretarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authformat_username"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_dbproxyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_debuglogging"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_enginefamily"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_idleclienttimeout"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_requiretls"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxy_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagformat_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagformat_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="authformat_authscheme"/>
+        <Class IRI="authformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authformat_description"/>
+        <Class IRI="authformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authformat_iamauth"/>
+        <Class IRI="authformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authformat_secretarn"/>
+        <Class IRI="authformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authformat_username"/>
+        <Class IRI="authformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_dbproxyname"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_debuglogging"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_enginefamily"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_idleclienttimeout"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_requiretls"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_rolearn"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_vpcsecuritygroupids"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxy_vpcsubnetids"/>
+        <Class IRI="dbproxy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagformat_key"/>
+        <Class IRI="tagformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagformat_value"/>
+        <Class IRI="tagformat"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="authformat_authscheme"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authformat_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authformat_iamauth"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authformat_secretarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authformat_username"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_dbproxyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_debuglogging"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_enginefamily"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_idleclienttimeout"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_requiretls"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_vpcsecuritygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxy_vpcsubnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagformat_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagformat_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat</IRI>
+        <Literal>rdsdbproxy:authformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat_authscheme</IRI>
+        <Literal>rdsdbproxy:authformat_authscheme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat_description</IRI>
+        <Literal>rdsdbproxy:authformat_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat_iamauth</IRI>
+        <Literal>rdsdbproxy:authformat_iamauth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat_secretarn</IRI>
+        <Literal>rdsdbproxy:authformat_secretarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authformat_username</IRI>
+        <Literal>rdsdbproxy:authformat_username</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy</IRI>
+        <Literal>rdsdbproxy:dbproxy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_auth</IRI>
+        <Literal>rdsdbproxy:dbproxy_auth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_dbproxyname</IRI>
+        <Literal>rdsdbproxy:dbproxy_dbproxyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_debuglogging</IRI>
+        <Literal>rdsdbproxy:dbproxy_debuglogging</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_enginefamily</IRI>
+        <Literal>rdsdbproxy:dbproxy_enginefamily</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_idleclienttimeout</IRI>
+        <Literal>rdsdbproxy:dbproxy_idleclienttimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_requiretls</IRI>
+        <Literal>rdsdbproxy:dbproxy_requiretls</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_rolearn</IRI>
+        <Literal>rdsdbproxy:dbproxy_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_tags</IRI>
+        <Literal>rdsdbproxy:dbproxy_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_vpcsecuritygroupids</IRI>
+        <Literal>rdsdbproxy:dbproxy_vpcsecuritygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxy_vpcsubnetids</IRI>
+        <Literal>rdsdbproxy:dbproxy_vpcsubnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagformat</IRI>
+        <Literal>rdsdbproxy:tagformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagformat_key</IRI>
+        <Literal>rdsdbproxy:tagformat_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagformat_value</IRI>
+        <Literal>rdsdbproxy:tagformat_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

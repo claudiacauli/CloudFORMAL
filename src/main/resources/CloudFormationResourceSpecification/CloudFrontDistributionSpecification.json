@@ -45,11 +45,23 @@
     "AWS::CloudFront::Distribution.Origin": {
       "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html",
       "Properties": {
+        "ConnectionTimeout": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html#cfn-cloudfront-distribution-origin-connectiontimeout",
+          "PrimitiveType": "Integer",
+          "UpdateType": "Mutable"
+        },
         "OriginCustomHeaders": {
           "Type": "List",
           "Required": false,
           "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html#cfn-cloudfront-distribution-origin-origincustomheaders",
           "ItemType": "OriginCustomHeader",
+          "UpdateType": "Mutable"
+        },
+        "ConnectionAttempts": {
+          "Required": false,
+          "Documentation": "http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-origin.html#cfn-cloudfront-distribution-origin-connectionattempts",
+          "PrimitiveType": "Integer",
           "UpdateType": "Mutable"
         },
         "DomainName": {
@@ -727,5 +739,5 @@
       }
     }
   },
-  "ResourceSpecificationVersion": "14.2.0"
+  "ResourceSpecificationVersion": "15.3.0"
 }

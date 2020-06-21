@@ -15,10 +15,10 @@
         <Class IRI="privatednsnamespace"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_privatednsnamespace_arn"/>
+        <Class IRI="tag"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_privatednsnamespace_id"/>
+        <ObjectProperty IRI="privatednsnamespace_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="privatednsnamespace_description"/>
@@ -28,6 +28,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="privatednsnamespace_vpc"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="privatednsnamespace"/>
@@ -43,12 +49,28 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_privatednsnamespace_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_privatednsnamespace_id"/>
-    </FunctionalDataProperty>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="privatednsnamespace_tags"/>
+        <Class IRI="privatednsnamespace"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="privatednsnamespace_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="privatednsnamespace_description"/>
     </FunctionalDataProperty>
@@ -58,14 +80,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="privatednsnamespace_vpc"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_privatednsnamespace_arn"/>
-        <Class IRI="privatednsnamespace"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_privatednsnamespace_id"/>
-        <Class IRI="privatednsnamespace"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="privatednsnamespace_description"/>
         <Class IRI="privatednsnamespace"/>
@@ -78,14 +98,14 @@
         <DataProperty IRI="privatednsnamespace_vpc"/>
         <Class IRI="privatednsnamespace"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_privatednsnamespace_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_privatednsnamespace_id"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="privatednsnamespace_description"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -98,16 +118,14 @@
         <DataProperty IRI="privatednsnamespace_vpc"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_privatednsnamespace_arn</IRI>
-        <Literal>servicediscoveryprivatednsnamespace:attribute_privatednsnamespace_arn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_privatednsnamespace_id</IRI>
-        <Literal>servicediscoveryprivatednsnamespace:attribute_privatednsnamespace_id</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>privatednsnamespace</IRI>
@@ -125,8 +143,28 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>privatednsnamespace_tags</IRI>
+        <Literal>servicediscoveryprivatednsnamespace:privatednsnamespace_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>privatednsnamespace_vpc</IRI>
         <Literal>servicediscoveryprivatednsnamespace:privatednsnamespace_vpc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>servicediscoveryprivatednsnamespace:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>servicediscoveryprivatednsnamespace:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>servicediscoveryprivatednsnamespace:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

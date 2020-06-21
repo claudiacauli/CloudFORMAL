@@ -18,10 +18,25 @@
         <Class IRI="corsrule"/>
     </Declaration>
     <Declaration>
+        <Class IRI="metricpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metricpolicyrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="container_corspolicy"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_container_endpoint"/>
+        <ObjectProperty IRI="container_metricpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="container_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metricpolicy_metricpolicyrules"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="container_accessloggingenabled"/>
@@ -49,6 +64,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="corsrule_maxageseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricpolicy_containerlevelmetrics"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricpolicyrule_objectgroup"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricpolicyrule_objectgroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="container"/>
@@ -57,17 +87,76 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricpolicy_containerlevelmetrics"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricpolicyrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricpolicyrule_objectgroup"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricpolicyrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricpolicyrule_objectgroupname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="container_metricpolicy"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="container_corspolicy"/>
         <Class IRI="container"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="container_metricpolicy"/>
+        <Class IRI="container"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="container_tags"/>
+        <Class IRI="container"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metricpolicy_metricpolicyrules"/>
+        <Class IRI="metricpolicy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="container_corspolicy"/>
         <Class IRI="corsrule"/>
     </ObjectPropertyRange>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_container_endpoint"/>
-    </FunctionalDataProperty>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="container_metricpolicy"/>
+        <Class IRI="metricpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="container_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metricpolicy_metricpolicyrules"/>
+        <Class IRI="metricpolicyrule"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="container_accessloggingenabled"/>
     </FunctionalDataProperty>
@@ -83,10 +172,21 @@
     <FunctionalDataProperty>
         <DataProperty IRI="corsrule_maxageseconds"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_container_endpoint"/>
-        <Class IRI="container"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricpolicy_containerlevelmetrics"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricpolicyrule_objectgroup"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricpolicyrule_objectgroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="container_accessloggingenabled"/>
         <Class IRI="container"/>
@@ -123,10 +223,26 @@
         <DataProperty IRI="corsrule_maxageseconds"/>
         <Class IRI="corsrule"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_container_endpoint"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricpolicy_containerlevelmetrics"/>
+        <Class IRI="metricpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricpolicyrule_objectgroup"/>
+        <Class IRI="metricpolicyrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricpolicyrule_objectgroupname"/>
+        <Class IRI="metricpolicyrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="container_accessloggingenabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -163,11 +279,26 @@
         <DataProperty IRI="corsrule_maxageseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_container_endpoint</IRI>
-        <Literal>mediastorecontainer:attribute_container_endpoint</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="metricpolicy_containerlevelmetrics"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricpolicyrule_objectgroup"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricpolicyrule_objectgroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>container</IRI>
@@ -195,8 +326,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>container_metricpolicy</IRI>
+        <Literal>mediastorecontainer:container_metricpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>container_policy</IRI>
         <Literal>mediastorecontainer:container_policy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>container_tags</IRI>
+        <Literal>mediastorecontainer:container_tags</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -227,6 +368,51 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>corsrule_maxageseconds</IRI>
         <Literal>mediastorecontainer:corsrule_maxageseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicy</IRI>
+        <Literal>mediastorecontainer:metricpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicy_containerlevelmetrics</IRI>
+        <Literal>mediastorecontainer:metricpolicy_containerlevelmetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicy_metricpolicyrules</IRI>
+        <Literal>mediastorecontainer:metricpolicy_metricpolicyrules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicyrule</IRI>
+        <Literal>mediastorecontainer:metricpolicyrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicyrule_objectgroup</IRI>
+        <Literal>mediastorecontainer:metricpolicyrule_objectgroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricpolicyrule_objectgroupname</IRI>
+        <Literal>mediastorecontainer:metricpolicyrule_objectgroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>mediastorecontainer:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>mediastorecontainer:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>mediastorecontainer:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

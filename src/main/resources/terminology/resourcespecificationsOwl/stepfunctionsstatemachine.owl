@@ -15,10 +15,16 @@
         <Class IRI="cloudwatchlogsloggroup"/>
     </Declaration>
     <Declaration>
+        <Class IRI="definitionsubstitutions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="logdestination"/>
     </Declaration>
     <Declaration>
         <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3location"/>
     </Declaration>
     <Declaration>
         <Class IRI="statemachine"/>
@@ -33,13 +39,16 @@
         <ObjectProperty IRI="loggingconfiguration_destinations"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="statemachine_definitions3location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="statemachine_loggingconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="statemachine_tags"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_statemachine_name"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
@@ -49,6 +58,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="loggingconfiguration_level"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_version"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="statemachine_definitionstring"/>
@@ -76,9 +94,16 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="statemachine"/>
+        <Class IRI="s3location"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="statemachine_definitionstring"/>
+            <DataProperty IRI="s3location_bucket"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_key"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -107,6 +132,12 @@
         <ObjectProperty IRI="logdestination_cloudwatchlogsloggroup"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="statemachine_definitions3location"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="statemachine_loggingconfiguration"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
@@ -118,6 +149,14 @@
         <Class IRI="loggingconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="statemachine_definitions3location"/>
+        <Class IRI="statemachine"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
+        <Class IRI="statemachine"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="statemachine_loggingconfiguration"/>
         <Class IRI="statemachine"/>
     </ObjectPropertyDomain>
@@ -134,6 +173,14 @@
         <Class IRI="logdestination"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="statemachine_definitions3location"/>
+        <Class IRI="s3location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
+        <Class IRI="definitionsubstitutions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="statemachine_loggingconfiguration"/>
         <Class IRI="loggingconfiguration"/>
     </ObjectPropertyRange>
@@ -142,9 +189,6 @@
         <Class IRI="tagsentry"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_statemachine_name"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -152,6 +196,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="loggingconfiguration_level"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_version"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="statemachine_definitionstring"/>
@@ -171,10 +224,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tagsentry_value"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_statemachine_name"/>
-        <Class IRI="statemachine"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
         <Class IRI="cloudwatchlogsloggroup"/>
@@ -188,6 +237,18 @@
         <Class IRI="loggingconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="s3location_bucket"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_key"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_version"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="statemachine_definitionstring"/>
         <Class IRI="statemachine"/>
     </DataPropertyDomain>
@@ -211,10 +272,6 @@
         <DataProperty IRI="tagsentry_value"/>
         <Class IRI="tagsentry"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_statemachine_name"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -228,6 +285,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="s3location_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="statemachine_definitionstring"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -253,11 +322,6 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_statemachine_name</IRI>
-        <Literal>stepfunctionsstatemachine:attribute_statemachine_name</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cloudwatchlogsloggroup</IRI>
         <Literal>stepfunctionsstatemachine:cloudwatchlogsloggroup</Literal>
     </AnnotationAssertion>
@@ -265,6 +329,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cloudwatchlogsloggroup_loggrouparn</IRI>
         <Literal>stepfunctionsstatemachine:cloudwatchlogsloggroup_loggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>definitionsubstitutions</IRI>
+        <Literal>stepfunctionsstatemachine:definitionsubstitutions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -298,13 +367,43 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location</IRI>
+        <Literal>stepfunctionsstatemachine:s3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_bucket</IRI>
+        <Literal>stepfunctionsstatemachine:s3location_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_key</IRI>
+        <Literal>stepfunctionsstatemachine:s3location_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_version</IRI>
+        <Literal>stepfunctionsstatemachine:s3location_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>statemachine</IRI>
         <Literal>stepfunctionsstatemachine:statemachine</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statemachine_definitions3location</IRI>
+        <Literal>stepfunctionsstatemachine:statemachine_definitions3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>statemachine_definitionstring</IRI>
         <Literal>stepfunctionsstatemachine:statemachine_definitionstring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statemachine_definitionsubstitutions</IRI>
+        <Literal>stepfunctionsstatemachine:statemachine_definitionsubstitutions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

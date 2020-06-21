@@ -75,7 +75,7 @@
         <ObjectProperty IRI="schedule_variabletags"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_lifecyclepolicy_arn"/>
+        <DataProperty IRI="createrule_cronexpression"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="createrule_interval"/>
@@ -156,16 +156,30 @@
         <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="createrule"/>
+        <Class IRI="crossregioncopyretainrule"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="createrule_interval"/>
+            <DataProperty IRI="crossregioncopyretainrule_interval"/>
             <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="createrule"/>
+        <Class IRI="crossregioncopyretainrule"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="createrule_intervalunit"/>
+            <DataProperty IRI="crossregioncopyretainrule_intervalunit"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="crossregioncopyrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="crossregioncopyrule_encrypted"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="crossregioncopyrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="crossregioncopyrule_targetregion"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -311,7 +325,7 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_lifecyclepolicy_arn"/>
+        <DataProperty IRI="createrule_cronexpression"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="createrule_interval"/>
@@ -383,8 +397,8 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
-        <DataProperty IRI="attribute_lifecyclepolicy_arn"/>
-        <Class IRI="lifecyclepolicy"/>
+        <DataProperty IRI="createrule_cronexpression"/>
+        <Class IRI="createrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="createrule_interval"/>
@@ -491,7 +505,7 @@
         <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_lifecyclepolicy_arn"/>
+        <DataProperty IRI="createrule_cronexpression"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -600,13 +614,13 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_lifecyclepolicy_arn</IRI>
-        <Literal>dlmlifecyclepolicy:attribute_lifecyclepolicy_arn</Literal>
+        <IRI>createrule</IRI>
+        <Literal>dlmlifecyclepolicy:createrule</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>createrule</IRI>
-        <Literal>dlmlifecyclepolicy:createrule</Literal>
+        <IRI>createrule_cronexpression</IRI>
+        <Literal>dlmlifecyclepolicy:createrule_cronexpression</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

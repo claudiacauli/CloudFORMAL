@@ -53,7 +53,7 @@ private class ResourceSpecificationModelMapper(resSpec : ResourceSpecification)
     
     addResourceTypeToOntology(resourceType.name)
     
-    (resourceType.attributes flatMap owlPropertyFromGenericAttributeType) ++
+    //(resourceType.attributes flatMap owlPropertyFromGenericAttributeType) ++
       (resourceType.properties flatMap owlPropertyFromGenericPropertyType)
   
   }

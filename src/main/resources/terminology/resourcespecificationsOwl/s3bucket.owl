@@ -42,6 +42,9 @@
         <Class IRI="defaultretention"/>
     </Declaration>
     <Declaration>
+        <Class IRI="deletemarkerreplication"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="destination"/>
     </Declaration>
     <Declaration>
@@ -61,6 +64,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metrics"/>
     </Declaration>
     <Declaration>
         <Class IRI="metricsconfiguration"/>
@@ -100,6 +106,18 @@
     </Declaration>
     <Declaration>
         <Class IRI="replicationrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationruleandoperator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationrulefilter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationtime"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationtimevalue"/>
     </Declaration>
     <Declaration>
         <Class IRI="routingrule"/>
@@ -231,6 +249,9 @@
         <ObjectProperty IRI="loggingconfiguration_destinationbucketname"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
     </Declaration>
     <Declaration>
@@ -279,10 +300,34 @@
         <ObjectProperty IRI="replicationdestination_encryptionconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="replicationrule_destination"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="replicationrule_filter"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationtime_time"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -351,21 +396,6 @@
         <DataProperty IRI="analyticsconfiguration_prefix"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_bucket_arn"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="bucket_accesscontrol"/>
     </Declaration>
     <Declaration>
@@ -400,6 +430,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="defaultretention_years"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deletemarkerreplication_status"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -439,6 +472,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metrics_status"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="metricsconfiguration_id"/>
@@ -498,7 +534,22 @@
         <DataProperty IRI="replicationrule_prefix"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="replicationrule_priority"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="replicationrule_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationtime_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -747,6 +798,20 @@
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="metrics"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="metrics_eventthreshold"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metrics"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metrics_status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="metricsconfiguration"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="metricsconfiguration_id"/>
@@ -819,15 +884,29 @@
     <SubClassOf>
         <Class IRI="replicationrule"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="replicationrule_prefix"/>
+            <DataProperty IRI="replicationrule_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="replicationrule"/>
+        <Class IRI="replicationtime"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="replicationtime_time"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationtime"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="replicationrule_status"/>
+            <DataProperty IRI="replicationtime_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationtimevalue"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="replicationtimevalue_minutes"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -986,6 +1065,9 @@
         <ObjectProperty IRI="loggingconfiguration_destinationbucketname"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="notificationfilter_s3key"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -1019,10 +1101,31 @@
         <ObjectProperty IRI="replicationdestination_encryptionconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="replicationrule_destination"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrule_filter"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationtime_time"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1173,6 +1276,10 @@
         <Class IRI="loggingconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+        <Class IRI="metrics"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
         <Class IRI="metricsconfiguration"/>
     </ObjectPropertyDomain>
@@ -1237,12 +1344,44 @@
         <Class IRI="replicationdestination"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+        <Class IRI="replicationdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+        <Class IRI="replicationdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="replicationrule_destination"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrule_filter"/>
         <Class IRI="replicationrule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
         <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+        <Class IRI="replicationruleandoperator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationtime_time"/>
+        <Class IRI="replicationtime"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1421,6 +1560,10 @@
         <Class IRI="bucket"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+        <Class IRI="replicationtimevalue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
         <Class IRI="tagfilter"/>
     </ObjectPropertyRange>
@@ -1477,12 +1620,44 @@
         <Class IRI="encryptionconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+        <Class IRI="metrics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+        <Class IRI="replicationtime"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+        <Class IRI="deletemarkerreplication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="replicationrule_destination"/>
         <Class IRI="replicationdestination"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrule_filter"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
         <Class IRI="sourceselectioncriteria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+        <Class IRI="tagfilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+        <Class IRI="replicationruleandoperator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+        <Class IRI="tagfilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationtime_time"/>
+        <Class IRI="replicationtimevalue"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1568,21 +1743,6 @@
         <DataProperty IRI="analyticsconfiguration_prefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="bucket_accesscontrol"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1608,6 +1768,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="defaultretention_years"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deletemarkerreplication_status"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -1644,6 +1807,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metrics_status"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="metricsconfiguration_id"/>
@@ -1703,7 +1869,22 @@
         <DataProperty IRI="replicationrule_prefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="replicationrule_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="replicationrule_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationtime_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -1789,26 +1970,6 @@
         <Class IRI="analyticsconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_arn"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="bucket_accesscontrol"/>
         <Class IRI="bucket"/>
     </DataPropertyDomain>
@@ -1855,6 +2016,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="defaultretention_years"/>
         <Class IRI="defaultretention"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deletemarkerreplication_status"/>
+        <Class IRI="deletemarkerreplication"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -1907,6 +2072,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
         <Class IRI="loggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metrics_status"/>
+        <Class IRI="metrics"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="metricsconfiguration_id"/>
@@ -1985,8 +2154,28 @@
         <Class IRI="replicationrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="replicationrule_priority"/>
+        <Class IRI="replicationrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="replicationrule_status"/>
         <Class IRI="replicationrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+        <Class IRI="replicationruleandoperator"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+        <Class IRI="replicationrulefilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationtime_status"/>
+        <Class IRI="replicationtime"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
+        <Class IRI="replicationtimevalue"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -2093,26 +2282,6 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="bucket_accesscontrol"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -2159,6 +2328,10 @@
     <DataPropertyRange>
         <DataProperty IRI="defaultretention_years"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deletemarkerreplication_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -2210,6 +2383,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metrics_status"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -2289,8 +2466,28 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="replicationrule_priority"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="replicationrule_status"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationtime_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -2430,31 +2627,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>analyticsconfiguration_tagfilters</IRI>
         <Literal>s3bucket:analyticsconfiguration_tagfilters</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_bucket_arn</IRI>
-        <Literal>s3bucket:attribute_bucket_arn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_bucket_domainname</IRI>
-        <Literal>s3bucket:attribute_bucket_domainname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_bucket_dualstackdomainname</IRI>
-        <Literal>s3bucket:attribute_bucket_dualstackdomainname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_bucket_regionaldomainname</IRI>
-        <Literal>s3bucket:attribute_bucket_regionaldomainname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_bucket_websiteurl</IRI>
-        <Literal>s3bucket:attribute_bucket_websiteurl</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2643,6 +2815,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deletemarkerreplication</IRI>
+        <Literal>s3bucket:deletemarkerreplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deletemarkerreplication_status</IRI>
+        <Literal>s3bucket:deletemarkerreplication_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>destination</IRI>
         <Literal>s3bucket:destination</Literal>
     </AnnotationAssertion>
@@ -2775,6 +2957,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>loggingconfiguration_logfileprefix</IRI>
         <Literal>s3bucket:loggingconfiguration_logfileprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics</IRI>
+        <Literal>s3bucket:metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics_eventthreshold</IRI>
+        <Literal>s3bucket:metrics_eventthreshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics_status</IRI>
+        <Literal>s3bucket:metrics_status</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2998,6 +3195,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_metrics</IRI>
+        <Literal>s3bucket:replicationdestination_metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_replicationtime</IRI>
+        <Literal>s3bucket:replicationdestination_replicationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>replicationdestination_storageclass</IRI>
         <Literal>s3bucket:replicationdestination_storageclass</Literal>
     </AnnotationAssertion>
@@ -3008,8 +3215,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_deletemarkerreplication</IRI>
+        <Literal>s3bucket:replicationrule_deletemarkerreplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>replicationrule_destination</IRI>
         <Literal>s3bucket:replicationrule_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_filter</IRI>
+        <Literal>s3bucket:replicationrule_filter</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3023,6 +3240,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_priority</IRI>
+        <Literal>s3bucket:replicationrule_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>replicationrule_sourceselectioncriteria</IRI>
         <Literal>s3bucket:replicationrule_sourceselectioncriteria</Literal>
     </AnnotationAssertion>
@@ -3030,6 +3252,66 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>replicationrule_status</IRI>
         <Literal>s3bucket:replicationrule_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator</IRI>
+        <Literal>s3bucket:replicationruleandoperator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator_prefix</IRI>
+        <Literal>s3bucket:replicationruleandoperator_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator_tagfilters</IRI>
+        <Literal>s3bucket:replicationruleandoperator_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter</IRI>
+        <Literal>s3bucket:replicationrulefilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_and</IRI>
+        <Literal>s3bucket:replicationrulefilter_and</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_prefix</IRI>
+        <Literal>s3bucket:replicationrulefilter_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_tagfilter</IRI>
+        <Literal>s3bucket:replicationrulefilter_tagfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime</IRI>
+        <Literal>s3bucket:replicationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime_status</IRI>
+        <Literal>s3bucket:replicationtime_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime_time</IRI>
+        <Literal>s3bucket:replicationtime_time</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtimevalue</IRI>
+        <Literal>s3bucket:replicationtimevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtimevalue_minutes</IRI>
+        <Literal>s3bucket:replicationtimevalue_minutes</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

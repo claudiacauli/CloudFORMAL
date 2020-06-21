@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/efsaccesspoint#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/efsaccesspoint#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="accesspoint"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accesspointtag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="creationinfo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="posixuser"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rootdirectory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspoint_accesspointtags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspoint_posixuser"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspoint_rootdirectory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rootdirectory_creationinfo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesspoint_clienttoken"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesspoint_filesystemid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesspointtag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesspointtag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="creationinfo_ownergid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="creationinfo_owneruid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="creationinfo_permissions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixuser_gid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixuser_secondarygids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixuser_uid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rootdirectory_path"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="accesspoint"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="accesspoint_filesystemid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="creationinfo"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="creationinfo_ownergid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="creationinfo"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="creationinfo_owneruid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="creationinfo"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="creationinfo_permissions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="posixuser"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="posixuser_gid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="posixuser"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="posixuser_uid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspoint_posixuser"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspoint_rootdirectory"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rootdirectory_creationinfo"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspoint_accesspointtags"/>
+        <Class IRI="accesspoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspoint_posixuser"/>
+        <Class IRI="accesspoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspoint_rootdirectory"/>
+        <Class IRI="accesspoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rootdirectory_creationinfo"/>
+        <Class IRI="rootdirectory"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspoint_accesspointtags"/>
+        <Class IRI="accesspointtag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspoint_posixuser"/>
+        <Class IRI="posixuser"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspoint_rootdirectory"/>
+        <Class IRI="rootdirectory"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rootdirectory_creationinfo"/>
+        <Class IRI="creationinfo"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesspoint_clienttoken"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesspoint_filesystemid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesspointtag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesspointtag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="creationinfo_ownergid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="creationinfo_owneruid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="creationinfo_permissions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="posixuser_gid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="posixuser_uid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rootdirectory_path"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesspoint_clienttoken"/>
+        <Class IRI="accesspoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesspoint_filesystemid"/>
+        <Class IRI="accesspoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesspointtag_key"/>
+        <Class IRI="accesspointtag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesspointtag_value"/>
+        <Class IRI="accesspointtag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="creationinfo_ownergid"/>
+        <Class IRI="creationinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="creationinfo_owneruid"/>
+        <Class IRI="creationinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="creationinfo_permissions"/>
+        <Class IRI="creationinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixuser_gid"/>
+        <Class IRI="posixuser"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixuser_secondarygids"/>
+        <Class IRI="posixuser"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixuser_uid"/>
+        <Class IRI="posixuser"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rootdirectory_path"/>
+        <Class IRI="rootdirectory"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="accesspoint_clienttoken"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accesspoint_filesystemid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accesspointtag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accesspointtag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="creationinfo_ownergid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="creationinfo_owneruid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="creationinfo_permissions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixuser_gid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixuser_secondarygids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixuser_uid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rootdirectory_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint</IRI>
+        <Literal>efsaccesspoint:accesspoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint_accesspointtags</IRI>
+        <Literal>efsaccesspoint:accesspoint_accesspointtags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint_clienttoken</IRI>
+        <Literal>efsaccesspoint:accesspoint_clienttoken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint_filesystemid</IRI>
+        <Literal>efsaccesspoint:accesspoint_filesystemid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint_posixuser</IRI>
+        <Literal>efsaccesspoint:accesspoint_posixuser</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspoint_rootdirectory</IRI>
+        <Literal>efsaccesspoint:accesspoint_rootdirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspointtag</IRI>
+        <Literal>efsaccesspoint:accesspointtag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspointtag_key</IRI>
+        <Literal>efsaccesspoint:accesspointtag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspointtag_value</IRI>
+        <Literal>efsaccesspoint:accesspointtag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>creationinfo</IRI>
+        <Literal>efsaccesspoint:creationinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>creationinfo_ownergid</IRI>
+        <Literal>efsaccesspoint:creationinfo_ownergid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>creationinfo_owneruid</IRI>
+        <Literal>efsaccesspoint:creationinfo_owneruid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>creationinfo_permissions</IRI>
+        <Literal>efsaccesspoint:creationinfo_permissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixuser</IRI>
+        <Literal>efsaccesspoint:posixuser</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixuser_gid</IRI>
+        <Literal>efsaccesspoint:posixuser_gid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixuser_secondarygids</IRI>
+        <Literal>efsaccesspoint:posixuser_secondarygids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixuser_uid</IRI>
+        <Literal>efsaccesspoint:posixuser_uid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rootdirectory</IRI>
+        <Literal>efsaccesspoint:rootdirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rootdirectory_creationinfo</IRI>
+        <Literal>efsaccesspoint:rootdirectory_creationinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rootdirectory_path</IRI>
+        <Literal>efsaccesspoint:rootdirectory_path</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

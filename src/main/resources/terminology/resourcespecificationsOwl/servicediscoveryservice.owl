@@ -27,6 +27,9 @@
         <Class IRI="service"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="dnsconfig_dnsrecords"/>
     </Declaration>
     <Declaration>
@@ -39,13 +42,7 @@
         <ObjectProperty IRI="service_healthcheckcustomconfig"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_service_arn"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_service_id"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_service_name"/>
+        <ObjectProperty IRI="service_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="dnsconfig_namespaceid"/>
@@ -79,6 +76,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="service_namespaceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="dnsconfig"/>
@@ -108,6 +111,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="service_dnsconfig"/>
     </FunctionalObjectProperty>
@@ -133,6 +150,10 @@
         <ObjectProperty IRI="service_healthcheckcustomconfig"/>
         <Class IRI="service"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="service_tags"/>
+        <Class IRI="service"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="dnsconfig_dnsrecords"/>
         <Class IRI="dnsrecord"/>
@@ -149,15 +170,10 @@
         <ObjectProperty IRI="service_healthcheckcustomconfig"/>
         <Class IRI="healthcheckcustomconfig"/>
     </ObjectPropertyRange>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_service_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_service_id"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_service_name"/>
-    </FunctionalDataProperty>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="service_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="dnsconfig_namespaceid"/>
     </FunctionalDataProperty>
@@ -191,18 +207,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="service_namespaceid"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_service_arn"/>
-        <Class IRI="service"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_service_id"/>
-        <Class IRI="service"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_service_name"/>
-        <Class IRI="service"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="dnsconfig_namespaceid"/>
         <Class IRI="dnsconfig"/>
@@ -247,18 +257,14 @@
         <DataProperty IRI="service_namespaceid"/>
         <Class IRI="service"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_service_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_service_id"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_service_name"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="dnsconfig_namespaceid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -303,21 +309,14 @@
         <DataProperty IRI="service_namespaceid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_service_arn</IRI>
-        <Literal>servicediscoveryservice:attribute_service_arn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_service_id</IRI>
-        <Literal>servicediscoveryservice:attribute_service_id</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_service_name</IRI>
-        <Literal>servicediscoveryservice:attribute_service_name</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dnsconfig</IRI>
@@ -417,6 +416,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>service_namespaceid</IRI>
         <Literal>servicediscoveryservice:service_namespaceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>service_tags</IRI>
+        <Literal>servicediscoveryservice:service_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>servicediscoveryservice:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>servicediscoveryservice:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>servicediscoveryservice:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

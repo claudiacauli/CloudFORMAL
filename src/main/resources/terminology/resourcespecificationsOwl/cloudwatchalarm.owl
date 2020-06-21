@@ -102,9 +102,6 @@
         <DataProperty IRI="alarm_unit"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_alarm_arn"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="dimension_name"/>
     </Declaration>
     <Declaration>
@@ -121,6 +118,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="metricdataquery_label"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdataquery_period"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="metricdataquery_returndata"/>
@@ -304,9 +304,6 @@
         <DataProperty IRI="alarm_unit"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_alarm_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="dimension_name"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -323,6 +320,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="metricdataquery_label"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdataquery_period"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="metricdataquery_returndata"/>
@@ -401,10 +401,6 @@
         <Class IRI="alarm"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="attribute_alarm_arn"/>
-        <Class IRI="alarm"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="dimension_name"/>
         <Class IRI="dimension"/>
     </DataPropertyDomain>
@@ -426,6 +422,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="metricdataquery_label"/>
+        <Class IRI="metricdataquery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdataquery_period"/>
         <Class IRI="metricdataquery"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -509,10 +509,6 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_alarm_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="dimension_name"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -535,6 +531,10 @@
     <DataPropertyRange>
         <DataProperty IRI="metricdataquery_label"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdataquery_period"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="metricdataquery_returndata"/>
@@ -664,11 +664,6 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_alarm_arn</IRI>
-        <Literal>cloudwatchalarm:attribute_alarm_arn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dimension</IRI>
         <Literal>cloudwatchalarm:dimension</Literal>
     </AnnotationAssertion>
@@ -726,6 +721,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>metricdataquery_metricstat</IRI>
         <Literal>cloudwatchalarm:metricdataquery_metricstat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_period</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_period</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

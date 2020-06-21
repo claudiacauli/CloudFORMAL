@@ -27,6 +27,12 @@
         <ObjectProperty IRI="certificate_tags"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="certificate_certificateauthorityarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="certificate_certificatetransparencyloggingpreference"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="certificate_domainname"/>
     </Declaration>
     <Declaration>
@@ -37,6 +43,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="domainvalidationoption_domainname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainvalidationoption_hostedzoneid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="domainvalidationoption_validationdomain"/>
@@ -58,13 +67,6 @@
         <Class IRI="domainvalidationoption"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="domainvalidationoption_domainname"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="domainvalidationoption"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="domainvalidationoption_validationdomain"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -99,6 +101,12 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="certificate_certificateauthorityarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="certificate_certificatetransparencyloggingpreference"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="certificate_domainname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -106,6 +114,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="domainvalidationoption_domainname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainvalidationoption_hostedzoneid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="domainvalidationoption_validationdomain"/>
@@ -116,6 +127,14 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="certificate_certificateauthorityarn"/>
+        <Class IRI="certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="certificate_certificatetransparencyloggingpreference"/>
+        <Class IRI="certificate"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="certificate_domainname"/>
         <Class IRI="certificate"/>
@@ -133,6 +152,10 @@
         <Class IRI="domainvalidationoption"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="domainvalidationoption_hostedzoneid"/>
+        <Class IRI="domainvalidationoption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="domainvalidationoption_validationdomain"/>
         <Class IRI="domainvalidationoption"/>
     </DataPropertyDomain>
@@ -144,6 +167,14 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="certificate_certificateauthorityarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="certificate_certificatetransparencyloggingpreference"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="certificate_domainname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -158,6 +189,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="domainvalidationoption_domainname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainvalidationoption_hostedzoneid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -176,6 +211,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>certificate</IRI>
         <Literal>certificatemanagercertificate:certificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificate_certificateauthorityarn</IRI>
+        <Literal>certificatemanagercertificate:certificate_certificateauthorityarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificate_certificatetransparencyloggingpreference</IRI>
+        <Literal>certificatemanagercertificate:certificate_certificatetransparencyloggingpreference</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -211,6 +256,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>domainvalidationoption_domainname</IRI>
         <Literal>certificatemanagercertificate:domainvalidationoption_domainname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainvalidationoption_hostedzoneid</IRI>
+        <Literal>certificatemanagercertificate:domainvalidationoption_hostedzoneid</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

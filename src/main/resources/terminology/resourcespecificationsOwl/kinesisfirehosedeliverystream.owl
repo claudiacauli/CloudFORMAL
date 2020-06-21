@@ -84,6 +84,9 @@
         <Class IRI="redshiftdestinationconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="redshiftretryoptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="s3destinationconfiguration"/>
     </Declaration>
     <Declaration>
@@ -97,6 +100,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="splunkretryoptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vpcconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="dataformatconversionconfiguration_inputformatconfiguration"/>
@@ -147,6 +153,9 @@
         <ObjectProperty IRI="elasticsearchdestinationconfiguration_s3configuration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="elasticsearchdestinationconfiguration_vpcconfiguration"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="encryptionconfiguration_kmsencryptionconfig"/>
     </Declaration>
     <Declaration>
@@ -192,6 +201,12 @@
         <ObjectProperty IRI="redshiftdestinationconfiguration_processingconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_retryoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_s3backupconfiguration"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="redshiftdestinationconfiguration_s3configuration"/>
     </Declaration>
     <Declaration>
@@ -220,9 +235,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="splunkdestinationconfiguration_s3configuration"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_deliverystream_arn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="bufferinghints_intervalinseconds"/>
@@ -262,6 +274,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="elasticsearchbufferinghints_sizeinmbs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticsearchdestinationconfiguration_clusterendpoint"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="elasticsearchdestinationconfiguration_domainarn"/>
@@ -399,7 +414,13 @@
         <DataProperty IRI="redshiftdestinationconfiguration_rolearn"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="redshiftdestinationconfiguration_s3backupmode"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="redshiftdestinationconfiguration_username"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
@@ -452,82 +473,21 @@
     <Declaration>
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="bufferinghints"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="bufferinghints_intervalinseconds"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="bufferinghints"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="bufferinghints_sizeinmbs"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
+    <Declaration>
+        <DataProperty IRI="vpcconfiguration_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfiguration_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfiguration_subnetids"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="copycommand"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="copycommand_datatablename"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="dataformatconversionconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="dataformatconversionconfiguration_inputformatconfiguration"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="dataformatconversionconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="dataformatconversionconfiguration_outputformatconfiguration"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="dataformatconversionconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="dataformatconversionconfiguration_schemaconfiguration"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="dataformatconversionconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="dataformatconversionconfiguration_enabled"/>
-            <Datatype abbreviatedIRI="xsd:boolean"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchbufferinghints"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchbufferinghints_intervalinseconds"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchbufferinghints"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchbufferinghints_sizeinmbs"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="elasticsearchdestinationconfiguration_bufferinghints"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="elasticsearchdestinationconfiguration_retryoptions"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="elasticsearchdestinationconfiguration"/>
@@ -539,21 +499,7 @@
     <SubClassOf>
         <Class IRI="elasticsearchdestinationconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchdestinationconfiguration_domainarn"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="elasticsearchdestinationconfiguration_indexname"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchdestinationconfiguration_indexrotationperiod"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -565,34 +511,6 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchdestinationconfiguration_s3backupmode"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchdestinationconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchdestinationconfiguration_typename"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="elasticsearchretryoptions"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="elasticsearchretryoptions_durationinseconds"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="extendeds3destinationconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="extendeds3destinationconfiguration_bufferinghints"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="extendeds3destinationconfiguration"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="extendeds3destinationconfiguration_bucketarn"/>
@@ -602,23 +520,9 @@
     <SubClassOf>
         <Class IRI="extendeds3destinationconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="extendeds3destinationconfiguration_compressionformat"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="extendeds3destinationconfiguration"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="extendeds3destinationconfiguration_rolearn"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="inputformatconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="inputformatconfiguration_deserializer"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="kinesisstreamsourceconfiguration"/>
@@ -640,20 +544,6 @@
             <DataProperty IRI="kmsencryptionconfig_awskmskeyarn"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="outputformatconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="outputformatconfiguration_serializer"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="processor"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="processor_parameters"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="processor"/>
@@ -720,13 +610,6 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="s3destinationconfiguration"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="s3destinationconfiguration_bufferinghints"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="s3destinationconfiguration"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
             <Datatype abbreviatedIRI="xsd:string"/>
@@ -735,56 +618,7 @@
     <SubClassOf>
         <Class IRI="s3destinationconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="s3destinationconfiguration_compressionformat"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="s3destinationconfiguration"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="s3destinationconfiguration_rolearn"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_catalogid"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_databasename"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_region"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_rolearn"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_tablename"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schemaconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schemaconfiguration_versionid"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -817,10 +651,24 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="splunkretryoptions"/>
+        <Class IRI="vpcconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="splunkretryoptions_durationinseconds"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
+            <DataProperty IRI="vpcconfiguration_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpcconfiguration_securitygroupids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpcconfiguration_subnetids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
@@ -872,6 +720,9 @@
         <ObjectProperty IRI="elasticsearchdestinationconfiguration_s3configuration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="elasticsearchdestinationconfiguration_vpcconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="encryptionconfiguration_kmsencryptionconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -906,6 +757,12 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="redshiftdestinationconfiguration_processingconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_retryoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_s3backupconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="redshiftdestinationconfiguration_s3configuration"/>
@@ -1002,6 +859,10 @@
         <Class IRI="elasticsearchdestinationconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="elasticsearchdestinationconfiguration_vpcconfiguration"/>
+        <Class IRI="elasticsearchdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="encryptionconfiguration_kmsencryptionconfig"/>
         <Class IRI="encryptionconfiguration"/>
     </ObjectPropertyDomain>
@@ -1059,6 +920,14 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="redshiftdestinationconfiguration_processingconfiguration"/>
+        <Class IRI="redshiftdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_retryoptions"/>
+        <Class IRI="redshiftdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_s3backupconfiguration"/>
         <Class IRI="redshiftdestinationconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -1166,6 +1035,10 @@
         <Class IRI="s3destinationconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="elasticsearchdestinationconfiguration_vpcconfiguration"/>
+        <Class IRI="vpcconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="encryptionconfiguration_kmsencryptionconfig"/>
         <Class IRI="kmsencryptionconfig"/>
     </ObjectPropertyRange>
@@ -1226,6 +1099,14 @@
         <Class IRI="processingconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_retryoptions"/>
+        <Class IRI="redshiftretryoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="redshiftdestinationconfiguration_s3backupconfiguration"/>
+        <Class IRI="s3destinationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="redshiftdestinationconfiguration_s3configuration"/>
         <Class IRI="s3destinationconfiguration"/>
     </ObjectPropertyRange>
@@ -1266,9 +1147,6 @@
         <Class IRI="s3destinationconfiguration"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_deliverystream_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="bufferinghints_intervalinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1306,6 +1184,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="elasticsearchbufferinghints_sizeinmbs"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchdestinationconfiguration_clusterendpoint"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="elasticsearchdestinationconfiguration_domainarn"/>
@@ -1431,7 +1312,13 @@
         <DataProperty IRI="redshiftdestinationconfiguration_rolearn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdestinationconfiguration_s3backupmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="redshiftdestinationconfiguration_username"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
@@ -1484,10 +1371,9 @@
     <FunctionalDataProperty>
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_deliverystream_arn"/>
-        <Class IRI="deliverystream"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcconfiguration_rolearn"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="bufferinghints_intervalinseconds"/>
         <Class IRI="bufferinghints"/>
@@ -1539,6 +1425,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="elasticsearchbufferinghints_sizeinmbs"/>
         <Class IRI="elasticsearchbufferinghints"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchdestinationconfiguration_clusterendpoint"/>
+        <Class IRI="elasticsearchdestinationconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="elasticsearchdestinationconfiguration_domainarn"/>
@@ -1721,8 +1611,16 @@
         <Class IRI="redshiftdestinationconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="redshiftdestinationconfiguration_s3backupmode"/>
+        <Class IRI="redshiftdestinationconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="redshiftdestinationconfiguration_username"/>
         <Class IRI="redshiftdestinationconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
+        <Class IRI="redshiftretryoptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
@@ -1792,10 +1690,18 @@
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
         <Class IRI="splunkretryoptions"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_deliverystream_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfiguration_rolearn"/>
+        <Class IRI="vpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfiguration_securitygroupids"/>
+        <Class IRI="vpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfiguration_subnetids"/>
+        <Class IRI="vpcconfiguration"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="bufferinghints_intervalinseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -1847,6 +1753,10 @@
     <DataPropertyRange>
         <DataProperty IRI="elasticsearchbufferinghints_sizeinmbs"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticsearchdestinationconfiguration_clusterendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="elasticsearchdestinationconfiguration_domainarn"/>
@@ -2029,8 +1939,16 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="redshiftdestinationconfiguration_s3backupmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="redshiftdestinationconfiguration_username"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
@@ -2100,11 +2018,18 @@
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_deliverystream_arn</IRI>
-        <Literal>kinesisfirehosedeliverystream:attribute_deliverystream_arn</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfiguration_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfiguration_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfiguration_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>bufferinghints</IRI>
@@ -2277,6 +2202,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchdestinationconfiguration_clusterendpoint</IRI>
+        <Literal>kinesisfirehosedeliverystream:elasticsearchdestinationconfiguration_clusterendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>elasticsearchdestinationconfiguration_domainarn</IRI>
         <Literal>kinesisfirehosedeliverystream:elasticsearchdestinationconfiguration_domainarn</Literal>
     </AnnotationAssertion>
@@ -2319,6 +2249,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>elasticsearchdestinationconfiguration_typename</IRI>
         <Literal>kinesisfirehosedeliverystream:elasticsearchdestinationconfiguration_typename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchdestinationconfiguration_vpcconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:elasticsearchdestinationconfiguration_vpcconfiguration</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2652,8 +2587,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdestinationconfiguration_retryoptions</IRI>
+        <Literal>kinesisfirehosedeliverystream:redshiftdestinationconfiguration_retryoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>redshiftdestinationconfiguration_rolearn</IRI>
         <Literal>kinesisfirehosedeliverystream:redshiftdestinationconfiguration_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdestinationconfiguration_s3backupconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:redshiftdestinationconfiguration_s3backupconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdestinationconfiguration_s3backupmode</IRI>
+        <Literal>kinesisfirehosedeliverystream:redshiftdestinationconfiguration_s3backupmode</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2664,6 +2614,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>redshiftdestinationconfiguration_username</IRI>
         <Literal>kinesisfirehosedeliverystream:redshiftdestinationconfiguration_username</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftretryoptions</IRI>
+        <Literal>kinesisfirehosedeliverystream:redshiftretryoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftretryoptions_durationinseconds</IRI>
+        <Literal>kinesisfirehosedeliverystream:redshiftretryoptions_durationinseconds</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2819,6 +2779,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>splunkretryoptions_durationinseconds</IRI>
         <Literal>kinesisfirehosedeliverystream:splunkretryoptions_durationinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:vpcconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfiguration_rolearn</IRI>
+        <Literal>kinesisfirehosedeliverystream:vpcconfiguration_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfiguration_securitygroupids</IRI>
+        <Literal>kinesisfirehosedeliverystream:vpcconfiguration_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfiguration_subnetids</IRI>
+        <Literal>kinesisfirehosedeliverystream:vpcconfiguration_subnetids</Literal>
     </AnnotationAssertion>
 </Ontology>
 

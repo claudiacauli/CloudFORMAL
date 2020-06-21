@@ -45,12 +45,6 @@
         <ObjectProperty IRI="canary_vpcconfig"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_canary_id"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_canary_state"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="canary_artifacts3location"/>
     </Declaration>
     <Declaration>
@@ -114,6 +108,13 @@
         <Class IRI="canary"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="canary_code"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="canary"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="canary_runconfig"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
@@ -261,12 +262,6 @@
         <Class IRI="vpcconfig"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_canary_id"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_canary_state"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="canary_artifacts3location"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -320,14 +315,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="vpcconfig_vpcid"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_canary_id"/>
-        <Class IRI="canary"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_canary_state"/>
-        <Class IRI="canary"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="canary_artifacts3location"/>
         <Class IRI="canary"/>
@@ -409,14 +396,6 @@
         <Class IRI="vpcconfig"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_canary_id"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_canary_state"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="canary_artifacts3location"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -496,16 +475,6 @@
         <DataProperty IRI="vpcconfig_vpcid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_canary_id</IRI>
-        <Literal>syntheticscanary:attribute_canary_id</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_canary_state</IRI>
-        <Literal>syntheticscanary:attribute_canary_state</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>canary</IRI>

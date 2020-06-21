@@ -15,16 +15,22 @@
         <Class IRI="httpnamespace"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_httpnamespace_arn"/>
+        <Class IRI="tag"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_httpnamespace_id"/>
+        <ObjectProperty IRI="httpnamespace_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="httpnamespace_description"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="httpnamespace_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="httpnamespace"/>
@@ -33,26 +39,40 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_httpnamespace_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_httpnamespace_id"/>
-    </FunctionalDataProperty>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpnamespace_tags"/>
+        <Class IRI="httpnamespace"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpnamespace_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="httpnamespace_description"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="httpnamespace_name"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_httpnamespace_arn"/>
-        <Class IRI="httpnamespace"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_httpnamespace_id"/>
-        <Class IRI="httpnamespace"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="httpnamespace_description"/>
         <Class IRI="httpnamespace"/>
@@ -61,14 +81,14 @@
         <DataProperty IRI="httpnamespace_name"/>
         <Class IRI="httpnamespace"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_httpnamespace_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_httpnamespace_id"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="httpnamespace_description"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -77,16 +97,14 @@
         <DataProperty IRI="httpnamespace_name"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_httpnamespace_arn</IRI>
-        <Literal>servicediscoveryhttpnamespace:attribute_httpnamespace_arn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_httpnamespace_id</IRI>
-        <Literal>servicediscoveryhttpnamespace:attribute_httpnamespace_id</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>httpnamespace</IRI>
@@ -101,6 +119,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>httpnamespace_name</IRI>
         <Literal>servicediscoveryhttpnamespace:httpnamespace_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpnamespace_tags</IRI>
+        <Literal>servicediscoveryhttpnamespace:httpnamespace_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>servicediscoveryhttpnamespace:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>servicediscoveryhttpnamespace:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>servicediscoveryhttpnamespace:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

@@ -61,7 +61,7 @@ private class ResourceSpecificationMapper
   private def encodeResourceTypeWithName(j: Json, resourceType: String) = {
     val resource = ResourceValueType(Renaming.ResTypeName(resourceType))
     resource.properties = mapProperties(j, resource)
-    resource.attributes = mapAttributes(j, resource)
+    //resource.attributes = mapAttributes(j, resource)
     resource
   }
 
@@ -82,13 +82,13 @@ private class ResourceSpecificationMapper
   }
 
 
-  private def mapAttributes(j:Json, domain: ResourceValueType)= {
-    toListOf(
-      JsonUtils.getNodesAsMapOfJsons(
-        j.field(Specification.Attributes)
-          .getOrElse(Json.jEmptyObject)),
-      attributeMapper(j,domain))
-  }
+//  private def mapAttributes(j:Json, domain: ResourceValueType)= {
+//    toListOf(
+//      JsonUtils.getNodesAsMapOfJsons(
+//        j.field(Specification.Attributes)
+//          .getOrElse(Json.jEmptyObject)),
+//      attributeMapper(j,domain))
+//  }
 
 
   private def toListOf[T<:GenericAttributeOrPropertyType]
@@ -151,32 +151,32 @@ private class ResourceSpecificationMapper
 
 
 
-  private def attributeMapper(j: Json, domain: ResourceValueType)
-  : ((String,Json)) => GenericAttributeType
-  = pair =>
-  {
-    val attrName = Renaming.AttrName(domain.name,pair._1)
-
-    if (JsonUtils.isList(pair._2) && JsonUtils.ofPrimitive(pair._2))
-      ListOfPrimitiveAttribute(
-        JsonUtils.getLCStringField(pair._2, Specification.PrimitiveItemType),
-        attrName,
-        domain)
-    else
-      JsonUtils.getPrimitiveType(pair._2) match {
-      case Some(CFnType.String)         => StringAttribute(attrName,domain)
-      case Some(CFnType.Float)          => FloatAttribute(attrName,domain)
-      case Some(CFnType.Double)         => DoubleAttribute(attrName,domain)
-      case Some(CFnType.Long)           => LongAttribute(attrName,domain)
-      case Some(CFnType.Int)            => IntAttribute(attrName,domain)
-      case Some(CFnType.Bool)           => BooleanAttribute(attrName,domain)
-      case Some(CFnType.Timestamp)      => TimeStamp(attrName,domain)
-      case Some(CFnType.Cdl)            => CommaDelimitedListAttribute(attrName,domain)
-      case Some(CFnType.Json)           => JsonAttribute(attrName,domain)
-      case _                      => println("Function EncodeUtils.getPrimitive should not return this.")
-        StringAttribute(attrName, domain)
-    }
-  }
+//  private def attributeMapper(j: Json, domain: ResourceValueType)
+//  : ((String,Json)) => GenericAttributeType
+//  = pair =>
+//  {
+//    val attrName = Renaming.AttrName(domain.name,pair._1)
+//
+//    if (JsonUtils.isList(pair._2) && JsonUtils.ofPrimitive(pair._2))
+//      ListOfPrimitiveAttribute(
+//        JsonUtils.getLCStringField(pair._2, Specification.PrimitiveItemType),
+//        attrName,
+//        domain)
+//    else
+//      JsonUtils.getPrimitiveType(pair._2) match {
+//      case Some(CFnType.String)         => StringAttribute(attrName,domain)
+//      case Some(CFnType.Float)          => FloatAttribute(attrName,domain)
+//      case Some(CFnType.Double)         => DoubleAttribute(attrName,domain)
+//      case Some(CFnType.Long)           => LongAttribute(attrName,domain)
+//      case Some(CFnType.Int)            => IntAttribute(attrName,domain)
+//      case Some(CFnType.Bool)           => BooleanAttribute(attrName,domain)
+//      case Some(CFnType.Timestamp)      => TimeStamp(attrName,domain)
+//      case Some(CFnType.Cdl)            => CommaDelimitedListAttribute(attrName,domain)
+//      case Some(CFnType.Json)           => JsonAttribute(attrName,domain)
+//      case _                      => println("Function EncodeUtils.getPrimitive should not return this. Failing on input: " + JsonUtils.getPrimitiveType(pair._2) + " for pair " + pair)
+//        StringAttribute(attrName, domain)
+//    }
+//  }
 
 
 

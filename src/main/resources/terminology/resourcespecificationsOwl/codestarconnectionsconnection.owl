@@ -15,19 +15,22 @@
         <Class IRI="connection"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_connection_connectionarn"/>
+        <Class IRI="tag"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_connection_connectionstatus"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_connection_owneraccountid"/>
+        <ObjectProperty IRI="connection_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="connection_connectionname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="connection_providertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="connection"/>
@@ -43,33 +46,40 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_connection_connectionarn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_connection_connectionstatus"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_connection_owneraccountid"/>
-    </FunctionalDataProperty>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="connection_tags"/>
+        <Class IRI="connection"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="connection_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="connection_connectionname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="connection_providertype"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_connection_connectionarn"/>
-        <Class IRI="connection"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_connection_connectionstatus"/>
-        <Class IRI="connection"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_connection_owneraccountid"/>
-        <Class IRI="connection"/>
-    </DataPropertyDomain>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="connection_connectionname"/>
         <Class IRI="connection"/>
@@ -78,18 +88,14 @@
         <DataProperty IRI="connection_providertype"/>
         <Class IRI="connection"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_connection_connectionarn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_connection_connectionstatus"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_connection_owneraccountid"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="connection_connectionname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -98,21 +104,14 @@
         <DataProperty IRI="connection_providertype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_connection_connectionarn</IRI>
-        <Literal>codestarconnectionsconnection:attribute_connection_connectionarn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_connection_connectionstatus</IRI>
-        <Literal>codestarconnectionsconnection:attribute_connection_connectionstatus</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>attribute_connection_owneraccountid</IRI>
-        <Literal>codestarconnectionsconnection:attribute_connection_owneraccountid</Literal>
-    </AnnotationAssertion>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>connection</IRI>
@@ -127,6 +126,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>connection_providertype</IRI>
         <Literal>codestarconnectionsconnection:connection_providertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connection_tags</IRI>
+        <Literal>codestarconnectionsconnection:connection_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>codestarconnectionsconnection:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>codestarconnectionsconnection:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>codestarconnectionsconnection:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 
