@@ -1,41 +1,43 @@
 [
   {
-    "ID": "14_AM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED",
-    "type": "TTF",
+    "ID": "14_AKM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED",
+    "type": "TFF",
     "requiredResourceTypes": ["lambdafunction","sqsqueue","snstopic"],
+    "instQuery": "function and function_deadletterconfig some (deadletterconfig_targetarn some (queue or topic))",
+    "queryBuildType": "nominalProp",
     "propQuery": [
-      "function and (function_deadletterconfig ",
+      "not (function_deadletterconfig ",
       "some (deadletterconfig_targetarn some ((queue and ",
       "(queue_kmsmasterkeyid some key)) or (topic and (topic_kmsmasterkeyid ",
       "some key)))))"],
     "description": [
-      "All Lambda::Function's failed input might be",
-      " sent to a non-encrypted resource"],
+      "All Lambda::Function's failed input should be",
+      " sent to an encrypted resource"],
     "unsatPrint": [
-      "All Lambda::Functions send failed input to a",
-      " non-encrypted resource or do not send it at all"],
+      "Either there are no Lambda::Functions or they all send failed input to an encrypted resource"],
     "sat0print": [
       "All Lambda::Functions might send failed input",
       " to a non-encrypted resource"],
     "sat1print": [
-      "There is a Lambda::Function that sends failed",
+      "There is a Lambda::Function that does not send failed",
       " inputs to an encrypted resource"]
   }
 ,
   {
-    "ID": "21_EM_LAMBDA_TRIGGERED_BUCKET",
-    "type": "FFT",
-    "requiredResourceTypes": ["lambdafunction","s3bucket"],
+    "ID": "19_AKM_LAMBDAS_ENCRYPTED",
+    "type": "TFF",
+    "requiredResourceTypes": ["kmskey","lambdafunction"],
+    "instQuery": "function",
+    "queryBuildType": "nominalProp",
     "propQuery": [
-      "function and ( inverse lambdaconfiguration_function",
-      " some lambdaconfiguration)"],
+      "not (function_kmskeyarn some key)"],
     "description": [
-      "There is a Lambda::Function that is triggered by a bucket"],
+      "All Lambda::Functions should be encrypted"],
     "unsatPrint": [
-      "There is no Lambda::Function triggered by a bucket"],
+      "Either there are no Lambda::Functions or they are all encrypted"],
     "sat0print": [
-      "There is no known Lambda::Function that is triggered by a bucket"],
+      "There are some referenced Lambda::Functions that might not be encrypted"],
     "sat1print": [
-      "There is a Lambda::Function that is triggered by a bucket"]
+      "There is a Lambda::Function that is certainly not encrypted"]
   }
 ]

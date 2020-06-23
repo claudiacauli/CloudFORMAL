@@ -10,7 +10,7 @@
     "description": [
       "There might be IAM::Users shared by two or more policies"],
     "unsatPrint": [
-      "If there are IAM::Users - they are certainly not",
+      "Either there are no IAM::Users or there are some and they are certainly not",
       " shared by two or more policies"],
     "sat0print": [
       "There are IAM::Users - pointed by this template -",
@@ -37,10 +37,10 @@
     "description": [
       "All IAM::Policys must be attached to something"],
     "unsatPrint": [
-      "All IAM::Policys are attached to something"],
+      "Either there are no IAM::Policys or they are all attached to something"],
     "sat0print": [
       "All IAM::Policy declared in the template are",
-      " attached to something, BUT there are be referenced",
+      " attached to something BUT there are referenced",
       " ones that might not be"],
     "sat1print": [
       "There is an IAM::Policy that is not attached",
@@ -48,23 +48,26 @@
   }
 ,
   {
-    "ID": "35_EM_GROUP_INLINE_POLICIES",
-    "type": "FFT",
-    "requiredResourceTypes": ["iamgroup"],
+    "ID": "34_AKM_POLICIES_ATTACHED_TO_GROUPS_ONLY",
+    "type": "TFF",
+    "queryBuildType": "nominalProp",
+    "requiredResourceTypes": ["iampolicy","iamuser","iamgroup"],
+    "instQuery": "policy",
     "propQuery": [
-      "group and (group_policies some policy)"],
+      "(policy_roles some role) or (policy_users some user) or ",
+      "(inverse role_policies some role)"],
     "description": [
-      "There is a declared IAM::Group with inline policies"],
+      "All IAM::Policies should be attached to groups (and not users or roles) for higher manageability"],
     "unsatPrint": [
-      "There is no IAM::Group with inline policies"],
+      "Either there are no IAM::Policies or they are all attached to groups"],
     "sat0print": [
-      "There is no IAM::Group with inline policies"],
+      "There are IAM::Policies that might be attached to users or roles"],
     "sat1print": [
-      "There is at least one IAM::Group with inline policies"]
+      "There is at least one IAM::Policy attached to a user or group"]
   }
 ,
   {
-    "ID": "36_AKM_GROUP_NO_USERS",
+    "ID": "35_AKM_GROUP_NO_USERS",
     "type": "TFF",
     "requiredResourceTypes": ["iamgroup","iamusertogroupaddition"],
     "instQuery": "group",
@@ -85,7 +88,7 @@
   }
 ,
   {
-    "ID": "37_AKM_USERS_PWDRESET",
+    "ID": "36_AKM_USERS_PWDRESET",
     "type": "TFF",
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": ["iamuser"],
@@ -101,71 +104,59 @@
       " required"],
     "sat0print": [
       "All declared IAM::Users have password reset",
-      " required, but there are referenced users that might not"],
+      " required but there are referenced users that might not"],
     "sat1print": [
       "There exists at least one declared IAM::User",
       " that does not have password reset required flag"]
   }
 ,
   {
-    "ID": "38_EM_ROLE_INLINE_POLICIES",
-    "type": "FFT",
-    "requiredResourceTypes": ["iamrole"],
-    "propQuery": [
-      "role and (role_policies some policy)"],
-    "description": [
-      "There is a IAM::Role with inline policies"],
-    "unsatPrint": [
-      "There is no IAM::Role with inline policies"],
-    "sat0print": [
-      "There is no IAM::Role with inline policies"],
-    "sat1print": [
-      "There is at least one IAM::Role with inline policies"]
-  }
-,
-  {
-    "ID": "39_AM_USER_WITH_LOGINPROFILE",
-    "type": "TTF",
+    "ID": "37_EKM_USER_WITH_LOGINPROFILE",
+    "type": "FTT",
     "requiredResourceTypes": ["iamuser"],
+    "queryBuildType": "nominalProp",
+    "instQuery": ["user"],
     "propQuery": [
-      "user and not (user_loginprofile some",
+      "(user_loginprofile some",
       " (loginprofile_password some xsd:string))"],
     "description": [
-      "All IAM::Users may have password passed",
+      "There might be IAM::Users with password passed",
       " (or written!) to the template"],
     "unsatPrint": [
-      "All IAM::Users - if any - might have password",
+      "Either there are no IAM::Users or they all have password",
       " in template"],
     "sat0print": [
-      "All IAM::Users might have password in template"],
+      "There are referenced IAM::Users that might have password in template"],
     "sat1print": [
-      "There exists at least one IAM::User that does",
-      " not have password in template"]
+      "There exists at least one IAM::User that certainly has",
+      " password in template"]
   }
 ,
   {
-    "ID": "40_EM_ACCESSKEY_ROTATING",
-    "type": "FFT",
+    "ID": "38_AKM_ACCESSKEY_ROTATING",
+    "type": "TFF",
     "requiredResourceTypes": ["iamuser","iamaccesskey"],
+    "queryBuildType": "nominalProp",
+    "instQuery": ["user"],
     "propQuery": [
-      "user and (inverse accesskey_username some",
+      "not (inverse accesskey_username some",
       " (accesskey_serial some xsd:int))"],
     "description": [
-      "There is a declared IAM::User linked to",
+      "All IAM::Users should linked to",
       " a key that is rotating"],
     "unsatPrint": [
-      "There is no IAM::User that is linked to",
+      "Either there are no IAM::Users or they are all linked to",
       " a key that is rotating"],
     "sat0print": [
-      "There is no declared IAM::User that is",
-      " linked to a key that is rotating"],
+      "There are referenced IAM::Users that might be",
+      " linked to a key that is not rotating"],
     "sat1print": [
       "There is at least one declared IAM::User",
-      " linked to a rotating access key"]
+      " linked to a non-rotating access key"]
   }
 ,
   {
-    "ID": "41_AKM_USER_ONE_ACCESSKEY",
+    "ID": "39_AKM_USER_ONE_ACCESSKEY",
     "type": "TFF",
     "requiredResourceTypes": ["iamuser","iamaccesskey"],
     "queryBuildType": "nominalProp",
@@ -181,20 +172,5 @@
     "sat1print": ["There exists at least one IAM::User",
       " with more than one access key"]
   }
-,
-  {
-    "ID": "42_EM_USER_INLINE_POLICIES",
-    "type": "FFT",
-    "requiredResourceTypes": ["iamuser"],
-    "propQuery": [
-      "user and (user_policies some policy)"],
-    "description": [
-      "There is a declared IAM::User with inline policies"],
-    "unsatPrint": [
-      "There is no IAM::User with inline policies"],
-    "sat0print": [
-      "There is no declared IAM::User with inline policies"],
-    "sat1print": [
-      "There is at least one IAM::User with inline policies"]
-  }
+
 ]

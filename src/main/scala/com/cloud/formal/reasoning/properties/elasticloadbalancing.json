@@ -1,22 +1,24 @@
 [
   {
-    "ID": "31_EM_LOADBALANCER_ACCESSLOGGINGPOLICY",
-    "type": "FFT",
+    "ID": "30_AKM_LOADBALANCER_ACCESSLOGGINGPOLICY",
+    "type": "TFF",
     "requiredResourceTypes": ["elasticloadbalancingloadbalancer"],
+    "instQuery": "loadbalancer",
+    "queryBuildType": "nominalProp",
     "propQuery": [
-      "loadbalancer and (loadbalancer_accessloggingpolicy",
+      "not (loadbalancer_accessloggingpolicy",
       " some (accessloggingpolicy_enabled value true))"],
     "description": [
-      "There exists an ElasticLoadBalancing::LoadBalancer",
-      " that certainly has access logging policy enabled"],
+      "All ElasticLoadBalancing::LoadBalancer",
+      " must have access logging policy enabled"],
     "unsatPrint": [
-      "If there are ElasticLoadBalancing::LoadBalancer -",
+      "Either there are no ElasticLoadBalancing::LoadBalancer or there are some and",
       " they all have access logging policy disabled"],
     "sat0print": [
-      "There is no LoadBalancer with Access Logging",
-      " Policy enabled"],
+      "There are LoadBalancer - referenced by this template - with Access Logging",
+      " Policy disabled"],
     "sat1print": [
       "There is at least one ElasticLoadBalancing::LoadBalancer",
-      " that certainly has Access Logging Policy enabled"]
+      " that certainly has Access Logging Policy disabled"]
   }
 ]

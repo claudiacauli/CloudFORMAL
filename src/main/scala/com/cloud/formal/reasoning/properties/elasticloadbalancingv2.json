@@ -1,29 +1,31 @@
 [
   {
-    "ID": "32_EM_LOADBALANCER_S3ACCESSLOGS",
-    "type": "FFT",
+    "ID": "31_AKM_LOADBALANCER_S3ACCESSLOGS",
+    "type": "TFF",
     "requiredResourceTypes": ["elasticloadbalancingv2loadbalancer"],
+    "queryBuildType": "nominalProp",
+    "instQuery": ["loadbalancer"],
     "propQuery": [
-      "loadbalancer and (loadbalancer_loadbalance",
+      "not (loadbalancer_loadbalance",
       "rattributes some (loadbalancerattribute_key value \"acc",
       "ess_logs.s3.enabled\") and (loadbalancerattribute_value",
       " value true)) "],
     "description": [
-      "There exist an ElasticLoadBalancingv2::LoadBalancer",
-      " that certainly has S3 Access Logs enabled"],
+      "All ElasticLoadBalancingv2::LoadBalancers",
+      " should have S3 Access Logs enabled"],
     "unsatPrint": [
-      "There is no ElasticLoadBalancingv2::LoadBalancer",
-      " with S3 Access Logs enabled"],
+      "Either there is no ElasticLoadBalancingv2::LoadBalancer or there are some and they all ",
+      " have S3 Access Logs enabled"],
     "sat0print": [
-      "There is no ElasticLoadBalancingv2::LoadBalancer",
-      " with S3 Access Logs enabled"],
+      "There is an ElasticLoadBalancingv2::LoadBalancer - pointed by this template - ",
+      "that might have S3 Access Logs disabled"],
     "sat1print": [
       "There is at least one ElasticLoadBalancingv2::LoadBalancer",
-      " that certainly has S3 Access Logs enabled"]
+      " that certainly has S3 Access Logs disabled"]
   }
 ,
   {
-    "ID": "33_AKM_LOADBALANCER_DELETION_PROTECTED",
+    "ID": "32_AKM_LOADBALANCER_DELETION_PROTECTED",
     "type": "TFF",
     "requiredResourceTypes": ["elasticloadbalancingv2loadbalancer"],
     "queryBuildType": "nominalProp",
@@ -49,7 +51,7 @@
   }
 ,
   {
-    "ID": "34_AKM_LISTENER_NO_OLD_POLICIES",
+    "ID": "33_AKM_LISTENER_NO_OLD_POLICIES",
     "type": "TFF",
     "requiredResourceTypes": ["elasticloadbalancingv2listener"],
     "queryBuildType": "nominalProp",

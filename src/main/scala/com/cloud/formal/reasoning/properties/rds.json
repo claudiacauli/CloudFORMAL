@@ -1,6 +1,6 @@
 [
   {
-    "ID": "43_AKM_RDS_BACKUP",
+    "ID": "40_AKM_RDS_BACKUP",
     "type": "TFF",
     "requiredResourceTypes": ["rdsdbinstance"],
     "queryBuildType": "nominalProp",
@@ -23,28 +23,30 @@
   }
 ,
   {
-    "ID": "44_AM_RDS_MINORUPGRADE_DISABLED",
-    "type": "TTF",
+    "ID": "41_AKM_RDS_MINORUPGRADE_DISABLED",
+    "type": "TFF",
     "requiredResourceTypes": ["rdsdbinstance"],
+    "instQuery": "dbinstance",
+    "queryBuildType": "nominalProp",
     "propQuery": [
-      "dbinstance and (dbinstance_autominorversionupgrade",
+      "not (dbinstance_autominorversionupgrade",
       " value true)"],
     "description": [
-      "All declared RDS::DBInstance might have auto",
-      " minor version upgrade disabled"],
+      "All declared RDS::DBInstance should have auto",
+      " minor version upgrade enabled"],
     "unsatPrint": [
-      "All RDS::DBInstance must have auto minor",
+      "Either there are no RDS::DBInstances or they all have auto minor",
       " upgrade disabled"],
     "sat0print": [
-      "All declared RDS::DBInstances might have",
+      "There might be referenced RDS::DBInstances that might have",
       " auto minor upgrade disabled"],
     "sat1print": [
       "There exists at least one declared RDS::DBInstance",
-      " that has auto minor version upgrade enabled"]
+      " that certainly has auto minor version upgrade disabled"]
   }
 ,
   {
-    "ID": "45_AKM_RDS_SHORT_BACKUP",
+    "ID": "42_AKM_RDS_SHORT_BACKUP",
     "type": "TFF",
     "requiredResourceTypes": ["rdsdbinstance"],
     "instQuery": "dbinstance",
@@ -66,28 +68,30 @@
   }
 ,
   {
-    "ID": "46_EM_DECLARED_RDS_ONEAZ",
-    "type": "FFT",
+    "ID": "43_AKM_DECLARED_RDS_ONEAZ",
+    "type": "TFF",
     "requiredResourceTypes": ["rdsdbinstance"],
+    "instQuery": ["dbinstance"],
+    "queryBuildType": "nominalProp",
     "propQuery": [
-      "dbinstance and not ((dbinstance_multiaz value",
+      "((dbinstance_multiaz value",
       " false) or (dbinstance_availabilityzone some xsd:string))"],
     "description": [
-      "There is some RDS::DBInstance that is replicated",
+      "RDS::DBInstances should be replicated",
       " across multiple availability zones"],
     "unsatPrint": [
-      "All RDS::DBInstances are not replicated in",
+      "Either there are no RDS::DBInstances or they are replicated in",
       " different Availability Zones"],
     "sat0print": [
-      "There are RDS::DBInstances that might not be",
+      "There are referenced RDS::DBInstances that might not be",
       " replicated in different Availability Zones"],
     "sat1print": [
       "There is at least one RDS::DBInstance that is",
-      " replicated in different Availability Zones"]
+      " certainly not replicated in different Availability Zones"]
   }
 ,
   {
-    "ID": "47_AKM_RDS_ENCRYPTED",
+    "ID": "44_AKM_RDS_ENCRYPTED",
     "type": "TFF",
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": ["rdsdbinstance"],
@@ -107,7 +111,7 @@
   }
 ,
   {
-    "ID": "48_EKM_RDS_SECURITYGROUP_OPEN",
+    "ID": "45_EKM_RDS_SECURITYGROUP_OPEN",
     "type": "FTT",
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": [

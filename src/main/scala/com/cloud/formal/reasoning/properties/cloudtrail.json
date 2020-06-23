@@ -21,7 +21,7 @@
   }
 ,
   {
-    "ID": "22_EKM_TRAIL_CARRYING_NOTHING",
+    "ID": "21_EKM_TRAIL_CARRYING_NOTHING",
     "type": "FTT",
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": ["cloudtrailtrail"],
@@ -33,17 +33,17 @@
       "There might be a CloudTrail::Trail",
       " not carrying logs about data events"],
     "unsatPrint": [
-      "If there are CloudTrail::Trails - they all certainly",
+      "Either there are no CloudTrail::Trails or there are some and they all certainly",
       " carry logs about data events"],
     "sat0print": [
-      "The known CloudTrail::Trails might not",
+      "There are known CloudTrail::Trails that might not",
       " carry any logs abouts data events"],
     "sat1print": ["There is at least one CloudTrail::Trail",
       " that certainly does not carry any logs about data events"]
   }
 ,
   {
-    "ID": "23_EKM_TRAIL_NO_LOGFILE_VALIDATION",
+    "ID": "22_EKM_TRAIL_NO_LOGFILE_VALIDATION",
     "type": "FTT",
     "queryBuildType": "nominalProp",
     "instQuery": ["trail"],
@@ -52,7 +52,7 @@
     "description": [
       "There might be a CloudTrail::Trail that has",
       " log file validation disabled"],
-    "unsatPrint": ["If there are CloudTrail::Trails -",
+    "unsatPrint": ["Either there are no CloudTrail::Trails or there are some and",
       " they all certainly have log file validation enabled"],
     "sat0print": ["There are known CloudTrail::Trails",
       " that might have log file validation disabled"],
@@ -61,7 +61,7 @@
   }
 ,
   {
-    "ID": "24_AKM_TRAIL_LOG",
+    "ID": "23_AKM_TRAIL_LOG",
     "type": "TFF",
     "instQuery": ["trail"],
     "requiredResourceTypes": ["cloudtrailtrail"],
@@ -70,7 +70,7 @@
     "description": [
       "All known CloudTrail::Trail must keep logs"],
     "unsatPrint": [
-      "If there are CloudTrail::Trails -",
+      "Either there are no CloudTrail::Trails or there are some and",
       " they all certainly keep logs"],
     "sat0print": [
       "There are CloudTrail::Trails - referenced",
@@ -81,7 +81,7 @@
   }
 ,
   {
-    "ID": "25_EKM_TRAIL_NOT_ALL_REGIONS",
+    "ID": "24_EKM_TRAIL_NOT_ALL_REGIONS",
     "type": "FTT",
     "instQuery": ["trail"],
     "requiredResourceTypes": ["cloudtrailtrail"],
@@ -92,7 +92,7 @@
       "There might be a CloudTrail::Trail",
       " that does not log events from all regions"],
     "unsatPrint": [
-      "If there are CloudTrail::Trails - they all",
+      "Either there are no CloudTrail::Trails or there are some and they all",
       " certainly log events from all regions"],
     "sat0print": [
       "There are CloudTrail::Trails - referenced by",

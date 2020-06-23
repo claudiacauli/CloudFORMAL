@@ -1,22 +1,24 @@
 [
   {
-    "ID": "01_AM_BUCKETS_SHOULD_LOG",
-    "type": "TTF",
+    "ID": "01_AKM_BUCKETS_SHOULD_LOG",
+    "type": "TFF",
     "requiredResourceTypes": ["s3bucket"],
+    "queryBuildType": "nominalProp",
+    "instQuery": "bucket",
     "propQuery": [
-      "bucket and (bucket_loggingconfiguration some",
+      "not (bucket_loggingconfiguration some",
       " (loggingconfiguration_destinationbucketname some bucket))"],
     "description": [
-      "All S3::Buckets might not keep logs"],
+      "All S3::Buckets must keep logs"],
     "unsatPrint": [
-      "If there are S3::Buckets - they certainly",
-      " do not keep logs"],
+      "Either there are no S3::Buckets or there are some and they certainly",
+      " not keep logs"],
     "sat0print": [
-      "If there are S3::Buckets - they might",
+      "There are referenced S3::Buckets that they might",
       " not keep logs"],
     "sat1print": [
       "There exist at least one S3::Buckets",
-      " that keep logs"]
+      " that certainly does not keep logs"]
   }
 ,
   {
@@ -199,7 +201,7 @@
   }
 ,
   {
-    "ID": "49_AKM_BUCKETS_VERSIONING",
+    "ID": "46_AKM_BUCKETS_VERSIONING",
     "type": "TFF",
     "queryBuildType": "nominalProp",
     "requiredResourceTypes": ["s3bucket"],
@@ -220,4 +222,23 @@
       "There are S3::Buckets - declared in this",
       " template - that have versioning disabled"]
   }
+,
+  {
+    "ID": "18_AKM_REPLICAS_ENCRYPTED",
+    "type": "TFF",
+    "requiredResourceTypes": ["kmskey","s3bucket"],
+    "queryBuildType": "nominalProp",
+    "instQuery": ["replicationdestination_bucket some bucket"],
+    "propQuery": [
+      "not encryptionconfiguration_replicakmskeyid some key"],
+    "description": [
+      "All S3::Bucket replicas should be key encrypted"],
+    "unsatPrint": [
+      "Either there are no bucket replicas or they are all encrypted"],
+    "sat0print": [
+      "There might be bucket replicas that are not encrypted"],
+    "sat1print": [
+      "There certainly is a bucket replica that is not encrypted"]
+  }
+
 ]
