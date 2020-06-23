@@ -1,0 +1,29 @@
+
+Infrastructure: 11_widdix, includes StackSets: 
+ - awsTagWatch 
+
+	StackSet: awsTagWatch, includes Templates: 
+		Template: tmpl
+		 Parameters: 
+			(lambdas3objectversion -> NoValue)
+			(aws::stackid -> 121213)
+			(aws::accountid -> 999999999999)
+			(lambdas3bucket -> NoValue)
+			(aws::partition -> aws)
+			(alerttopicarn -> NoValue)
+			(aws::urlsuffix -> .aws)
+			(aws::stackname -> tmpl)
+			(aws::notificationarns -> arn:aws:cnc:sjkjs:as)
+			(aws::region -> us-east-1)
+			(lambdas3key -> aws-tag-watch.zip)
+		 Resources: 
+			S3::Bucket(trailbucket)
+			CloudTrail::Trail(trail)
+			Lambda::Function(lambda)
+			Lambda::Permission(lambdapermission)
+			IAM::Role(lambdarole)
+			S3::BucketPolicy(trailbucketpolicy)
+			SNS::Topic(trailtopic)
+			SNS::TopicPolicy(trailtopicpolicy)
+
+

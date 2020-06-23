@@ -1,0 +1,51 @@
+Pass/Fail,Property ID,True/False,Outcome,Outcome Description,Instances
+FAIL,01_AKM_BUCKETS_SHOULD_LOG,FALSE,SAT/+,There exist at least one S3::Buckets that certainly does not keep logs,(awstagwatch_tmpl_trailbucket)
+PASS,02_AKM_NO_BUCKETS_STORING_OWN_LOGS,TRUE,UNSAT,All S3::Buckets declared in this template do not store their own logs,N/A
+PASS,03_AKM_BUCKET_STORING_LOGS_NOT_PUBLIC,TRUE,UNSAT,No bucket that store logs and is public can be found,N/A
+FAIL,04_AKM_BUCKETS_ENCRYPTED,FALSE,SAT/+,There are S3::Buckets - declared in this template - that are not encrypted,(awstagwatch_tmpl_trailbucket)
+PASS,05_AKM_BUCKET_NOT_PUBLIC_UNLESS_WEBSITE_OR_CORS,TRUE,UNSAT,No bucket that does not host a website or allow CORS and is public can be found,N/A
+PASS,06_AKM_CRITICAL_LAMBDA_BUCKETS_ENCRYPTED_ROTATING,TRUE,UNSAT,All S3::Bucket declared in the template are encrypted and keep logs whenever they store lambda code,N/A
+PASS,07_AKM_LOGS_STORED_ON_ENCRYPTED_BUCKETS,TRUE,UNSAT,All S3::Buckets known to store logs are encrypted,N/A
+FAIL,08_EM_ALARM_ACTION,FALSE,UNSAT,There is no CloudWatch::Alarm that performs an action when triggered,N/A
+FAIL,09_EM_CONFIG_RECORDER,FALSE,UNSAT,There is no Config::ConfigurationRecorder that is recording changes of all resource types,N/A
+PASS,10_EM_GLOBAL_SERVICES_TRAIL,TRUE,SAT/+,There exists at least one CloudTrail::Trail that logs events from global services,(awstagwatch_tmpl_trail)
+PASS,11_EKM_SECURITYGROUP_ALL_PORTS_TO_ALL,FALSE,UNSAT,Either there are no EC2::SecurityGroups or there are some and they certainly do not open all ports to all,N/A
+PASS,12_EKM_SHARED_BY_MULTIPLE_POLICIES,FALSE,UNSAT,Either there are no IAM::Users or there are some and they are certainly not shared by two or more policies,N/A
+PASS,13_EKM_QUEUE_CRITICAL_NOT_ENCRYPTED,FALSE,UNSAT,If there are SQS::Queues receiving notifications from a bucket - they certainly are encrypted,N/A
+PASS,14_AKM_LAMBDA_FAILED_INPUT_TO_ENCRYPTED,TRUE,UNSAT,Either there are no Lambda::Functions or they all send failed input to an encrypted resource,N/A
+PASS,15_AKM_IAM_POLICIES_MUST_BE_ATTACHED_TO_SOMETHING,TRUE,UNSAT,Either there are no IAM::Policys or they are all attached to something,N/A
+PASS,16_AKM_VPC_NO_DEFAULT_SECURITYGROUP,TRUE,UNSAT,Either there are not VPC::EC2 or there are some and they are all associated with a security group,N/A
+PASS,17_AKM_KEYS_ENABLED,TRUE,UNSAT,All KMS::Keys are enabled,N/A
+PASS,18_AKM_REPLICAS_ENCRYPTED,TRUE,UNSAT,Either there are no bucket replicas or they are all encrypted,N/A
+PASS,19_AKM_LAMBDAS_ENCRYPTED,TRUE,UNSAT,Either there are no Lambda::Functions or they are all encrypted,N/A
+PASS,20_EKM_SECURITYGROUP_OPENTOALL,FALSE,UNSAT,Either there are no EC2::SecurityGroups or there are some and they are certainly not open to all IPs,N/A
+FAIL,21_EKM_TRAIL_CARRYING_NOTHING,TRUE,SAT/+,There is at least one CloudTrail::Trail that certainly does not carry any logs about data events,(awstagwatch_tmpl_trail)
+FAIL,22_EKM_TRAIL_NO_LOGFILE_VALIDATION,TRUE,SAT/+,There is at least one CloudTrail::Trail with log file validation disabled,(awstagwatch_tmpl_trail)
+PASS,23_AKM_TRAIL_LOG,TRUE,UNSAT,Either there are no CloudTrail::Trails or there are some and they all certainly keep logs,N/A
+FAIL,24_EKM_TRAIL_NOT_ALL_REGIONS,TRUE,SAT/+,There is at least one CloudTrail::Trail that certainly does not log events from all regions,(awstagwatch_tmpl_trail)
+PASS,25_EKM_VOLUME_NOT_ENCRYPTED,FALSE,UNSAT,Either there are no EC2::Volumes or there are some and they are all certainly encrypted,N/A
+PASS,26_EKM_INSTANCE_PUBLIC,FALSE,UNSAT,Either there are not EC2::Instances or there are some and they certainly do not allow public IPs,N/A
+PASS,27_EKM_INSTANCE_USERDATA,FALSE,UNSAT,Either there are no EC2::Instances or they don't have user data on template,N/A
+PASS,28_EKM_SECURITY_GROUP_OPEN_PORTS_SELF,FALSE,UNSAT,Either there are no EC2::SecurityGroups or there are some and  they certainly do not open all ports to self,N/A
+PASS,29_EKM_SECURITYGROUP_UNUSED,FALSE,UNSAT,Either there are no EC2::SecurityGroups or there are some and they are all linked to a VPC,N/A
+PASS,30_AKM_LOADBALANCER_ACCESSLOGGINGPOLICY,TRUE,UNSAT,Either there are no ElasticLoadBalancing::LoadBalancer or there are some and they all have access logging policy disabled,N/A
+PASS,31_AKM_LOADBALANCER_S3ACCESSLOGS,TRUE,UNSAT,Either there is no ElasticLoadBalancingv2::LoadBalancer or there are some and they all  have S3 Access Logs enabled,N/A
+PASS,32_AKM_LOADBALANCER_DELETION_PROTECTED,TRUE,UNSAT,All ElasticLoadBalancingv2::LoadBalancers - if any - certainly have deletion protection enabled,N/A
+PASS,33_AKM_LISTENER_NO_OLD_POLICIES,TRUE,UNSAT,All LoadBalancingV2::Listeners - if any - certainly do not use old SSL policies,N/A
+PASS,34_AKM_POLICIES_ATTACHED_TO_GROUPS_ONLY,TRUE,UNSAT,Either there are no IAM::Policies or they are all attached to groups,N/A
+PASS,35_AKM_GROUP_NO_USERS,TRUE,UNSAT,All IAM::Groups - if any - are linked to some user,N/A
+PASS,36_AKM_USERS_PWDRESET,TRUE,UNSAT,All known IAM::Users have password reset required,N/A
+PASS,37_EKM_USER_WITH_LOGINPROFILE,FALSE,UNSAT,Either there are no IAM::Users or they all have password in template,N/A
+PASS,38_AKM_ACCESSKEY_ROTATING,TRUE,UNSAT,Either there are no IAM::Users or they are all linked to a key that is rotating,N/A
+PASS,39_AKM_USER_ONE_ACCESSKEY,TRUE,UNSAT,All IAM::Users have max one access key,N/A
+PASS,40_AKM_RDS_BACKUP,TRUE,UNSAT,All known RDS::DBInstances have backup retention different from 0,N/A
+PASS,41_AKM_RDS_MINORUPGRADE_DISABLED,TRUE,UNSAT,Either there are no RDS::DBInstances or they all have auto minor upgrade disabled,N/A
+PASS,42_AKM_RDS_SHORT_BACKUP,TRUE,UNSAT,All RDS::DBInstances - if any - certainly do not have short backup retention,N/A
+PASS,43_AKM_DECLARED_RDS_ONEAZ,TRUE,UNSAT,Either there are no RDS::DBInstances or they are replicated in different Availability Zones,N/A
+PASS,44_AKM_RDS_ENCRYPTED,TRUE,UNSAT,All known RDS::DBInstances are encrypted,N/A
+PASS,45_EKM_RDS_SECURITYGROUP_OPEN,FALSE,UNSAT,If there are RDS::DBinstances - they are certainly not linked to an open security group,N/A
+FAIL,46_AKM_BUCKETS_VERSIONING,FALSE,SAT/+,There are S3::Buckets - declared in this template - that have versioning disabled,(awstagwatch_tmpl_trailbucket)
+PASS,47_EKM_VPC_OPEN_NETWORK_ACL,FALSE,UNSAT,If there are EC2::VPCs - they certainly do not have an open-to-all Network Acl,N/A
+PASS,48_EKM_NETWORKACL_NOT_USED,FALSE,UNSAT,Either there are not EC2::NetworkAcl or there are some and they are all linked to a VPC,N/A
+PASS,49_EKM_SUBNET_BAD_ACL,FALSE,UNSAT,Either there are no EC2::Subnets or there are some and they all have good ACLs,N/A
+PASS,50_EKM_SUBNET_NO_FLOWLOG,FALSE,UNSAT,If there are EC::Subnets - they all have FlowLog,N/A

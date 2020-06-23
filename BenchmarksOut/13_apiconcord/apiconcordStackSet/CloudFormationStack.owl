@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudformationstack#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudformationstack#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stack"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_parameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stack_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_notificationarns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_templateurl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stack_timeoutinminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="stack"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stack_templateurl"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_parameters"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stack_tags"/>
+        <Class IRI="stack"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_parameters"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stack_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_templateurl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stack_timeoutinminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_notificationarns"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_templateurl"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stack_timeoutinminutes"/>
+        <Class IRI="stack"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_notificationarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_templateurl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stack_timeoutinminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack</IRI>
+        <Literal>cloudformationstack:stack</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack_notificationarns</IRI>
+        <Literal>cloudformationstack:stack_notificationarns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack_parameters</IRI>
+        <Literal>cloudformationstack:stack_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack_tags</IRI>
+        <Literal>cloudformationstack:stack_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack_templateurl</IRI>
+        <Literal>cloudformationstack:stack_templateurl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stack_timeoutinminutes</IRI>
+        <Literal>cloudformationstack:stack_timeoutinminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>cloudformationstack:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>cloudformationstack:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>cloudformationstack:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

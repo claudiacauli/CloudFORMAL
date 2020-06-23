@@ -153,9 +153,6 @@
         <ObjectProperty IRI="restrictions_georestriction"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_distribution_domainname"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="cachebehavior_allowedmethods"/>
     </Declaration>
     <Declaration>
@@ -316,6 +313,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="logging_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="origin_connectionattempts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="origin_connectiontimeout"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="origin_domainname"/>
@@ -836,9 +839,6 @@
         <Class IRI="georestriction"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_distribution_domainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="cachebehavior_compress"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -965,6 +965,12 @@
         <DataProperty IRI="logging_prefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="origin_connectionattempts"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="origin_connectiontimeout"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="origin_domainname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1018,10 +1024,6 @@
     <FunctionalDataProperty>
         <DataProperty IRI="viewercertificate_sslsupportmethod"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_distribution_domainname"/>
-        <Class IRI="distribution"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cachebehavior_allowedmethods"/>
         <Class IRI="cachebehavior"/>
@@ -1237,6 +1239,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="logging_prefix"/>
         <Class IRI="logging"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="origin_connectionattempts"/>
+        <Class IRI="origin"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="origin_connectiontimeout"/>
+        <Class IRI="origin"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="origin_domainname"/>
@@ -1315,10 +1325,6 @@
         <Class IRI="viewercertificate"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_distribution_domainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="cachebehavior_allowedmethods"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1535,6 +1541,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="origin_connectionattempts"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="origin_connectiontimeout"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="origin_domainname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1610,6 +1624,616 @@
         <DataProperty IRI="viewercertificate_sslsupportmethod"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_allowedmethods</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_allowedmethods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_cachedmethods</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_cachedmethods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_compress</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_compress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_defaultttl</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_defaultttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_fieldlevelencryptionid</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_fieldlevelencryptionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_forwardedvalues</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_forwardedvalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_lambdafunctionassociations</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_lambdafunctionassociations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_maxttl</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_maxttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_minttl</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_minttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_pathpattern</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_pathpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_smoothstreaming</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_smoothstreaming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_targetoriginid</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_targetoriginid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_trustedsigners</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_trustedsigners</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_viewerprotocolpolicy</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_viewerprotocolpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookies</IRI>
+        <Literal>cloudfrontdistribution:cookies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookies_forward</IRI>
+        <Literal>cloudfrontdistribution:cookies_forward</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookies_whitelistednames</IRI>
+        <Literal>cloudfrontdistribution:cookies_whitelistednames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customerrorresponse</IRI>
+        <Literal>cloudfrontdistribution:customerrorresponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customerrorresponse_errorcachingminttl</IRI>
+        <Literal>cloudfrontdistribution:customerrorresponse_errorcachingminttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customerrorresponse_errorcode</IRI>
+        <Literal>cloudfrontdistribution:customerrorresponse_errorcode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customerrorresponse_responsecode</IRI>
+        <Literal>cloudfrontdistribution:customerrorresponse_responsecode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customerrorresponse_responsepagepath</IRI>
+        <Literal>cloudfrontdistribution:customerrorresponse_responsepagepath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_httpport</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_httpport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_httpsport</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_httpsport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_originkeepalivetimeout</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_originkeepalivetimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_originprotocolpolicy</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_originprotocolpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_originreadtimeout</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_originreadtimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customoriginconfig_originsslprotocols</IRI>
+        <Literal>cloudfrontdistribution:customoriginconfig_originsslprotocols</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_allowedmethods</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_allowedmethods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_cachedmethods</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_cachedmethods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_compress</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_compress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_defaultttl</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_defaultttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_fieldlevelencryptionid</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_fieldlevelencryptionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_forwardedvalues</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_forwardedvalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_lambdafunctionassociations</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_lambdafunctionassociations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_maxttl</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_maxttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_minttl</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_minttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_smoothstreaming</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_smoothstreaming</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_targetoriginid</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_targetoriginid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_trustedsigners</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_trustedsigners</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_viewerprotocolpolicy</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_viewerprotocolpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distribution</IRI>
+        <Literal>cloudfrontdistribution:distribution</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distribution_distributionconfig</IRI>
+        <Literal>cloudfrontdistribution:distribution_distributionconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distribution_tags</IRI>
+        <Literal>cloudfrontdistribution:distribution_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_aliases</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_aliases</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_cachebehaviors</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_cachebehaviors</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_comment</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_customerrorresponses</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_customerrorresponses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_defaultcachebehavior</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_defaultcachebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_defaultrootobject</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_defaultrootobject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_enabled</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_httpversion</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_httpversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_ipv6enabled</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_ipv6enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_logging</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_logging</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_origingroups</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_origingroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_origins</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_origins</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_priceclass</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_priceclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_restrictions</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_restrictions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_viewercertificate</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_viewercertificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distributionconfig_webaclid</IRI>
+        <Literal>cloudfrontdistribution:distributionconfig_webaclid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedvalues</IRI>
+        <Literal>cloudfrontdistribution:forwardedvalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedvalues_cookies</IRI>
+        <Literal>cloudfrontdistribution:forwardedvalues_cookies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedvalues_headers</IRI>
+        <Literal>cloudfrontdistribution:forwardedvalues_headers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedvalues_querystring</IRI>
+        <Literal>cloudfrontdistribution:forwardedvalues_querystring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedvalues_querystringcachekeys</IRI>
+        <Literal>cloudfrontdistribution:forwardedvalues_querystringcachekeys</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>georestriction</IRI>
+        <Literal>cloudfrontdistribution:georestriction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>georestriction_locations</IRI>
+        <Literal>cloudfrontdistribution:georestriction_locations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>georestriction_restrictiontype</IRI>
+        <Literal>cloudfrontdistribution:georestriction_restrictiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionassociation</IRI>
+        <Literal>cloudfrontdistribution:lambdafunctionassociation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionassociation_eventtype</IRI>
+        <Literal>cloudfrontdistribution:lambdafunctionassociation_eventtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionassociation_includebody</IRI>
+        <Literal>cloudfrontdistribution:lambdafunctionassociation_includebody</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionassociation_lambdafunctionarn</IRI>
+        <Literal>cloudfrontdistribution:lambdafunctionassociation_lambdafunctionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logging</IRI>
+        <Literal>cloudfrontdistribution:logging</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logging_bucket</IRI>
+        <Literal>cloudfrontdistribution:logging_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logging_includecookies</IRI>
+        <Literal>cloudfrontdistribution:logging_includecookies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logging_prefix</IRI>
+        <Literal>cloudfrontdistribution:logging_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin</IRI>
+        <Literal>cloudfrontdistribution:origin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_connectionattempts</IRI>
+        <Literal>cloudfrontdistribution:origin_connectionattempts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_connectiontimeout</IRI>
+        <Literal>cloudfrontdistribution:origin_connectiontimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_customoriginconfig</IRI>
+        <Literal>cloudfrontdistribution:origin_customoriginconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_domainname</IRI>
+        <Literal>cloudfrontdistribution:origin_domainname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_id</IRI>
+        <Literal>cloudfrontdistribution:origin_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_origincustomheaders</IRI>
+        <Literal>cloudfrontdistribution:origin_origincustomheaders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_originpath</IRI>
+        <Literal>cloudfrontdistribution:origin_originpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_s3originconfig</IRI>
+        <Literal>cloudfrontdistribution:origin_s3originconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origincustomheader</IRI>
+        <Literal>cloudfrontdistribution:origincustomheader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origincustomheader_headername</IRI>
+        <Literal>cloudfrontdistribution:origincustomheader_headername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origincustomheader_headervalue</IRI>
+        <Literal>cloudfrontdistribution:origincustomheader_headervalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroup</IRI>
+        <Literal>cloudfrontdistribution:origingroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroup_failovercriteria</IRI>
+        <Literal>cloudfrontdistribution:origingroup_failovercriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroup_id</IRI>
+        <Literal>cloudfrontdistribution:origingroup_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroup_members</IRI>
+        <Literal>cloudfrontdistribution:origingroup_members</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupfailovercriteria</IRI>
+        <Literal>cloudfrontdistribution:origingroupfailovercriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupfailovercriteria_statuscodes</IRI>
+        <Literal>cloudfrontdistribution:origingroupfailovercriteria_statuscodes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupmember</IRI>
+        <Literal>cloudfrontdistribution:origingroupmember</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupmember_originid</IRI>
+        <Literal>cloudfrontdistribution:origingroupmember_originid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupmembers</IRI>
+        <Literal>cloudfrontdistribution:origingroupmembers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupmembers_items</IRI>
+        <Literal>cloudfrontdistribution:origingroupmembers_items</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroupmembers_quantity</IRI>
+        <Literal>cloudfrontdistribution:origingroupmembers_quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroups</IRI>
+        <Literal>cloudfrontdistribution:origingroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroups_items</IRI>
+        <Literal>cloudfrontdistribution:origingroups_items</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origingroups_quantity</IRI>
+        <Literal>cloudfrontdistribution:origingroups_quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>restrictions</IRI>
+        <Literal>cloudfrontdistribution:restrictions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>restrictions_georestriction</IRI>
+        <Literal>cloudfrontdistribution:restrictions_georestriction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3originconfig</IRI>
+        <Literal>cloudfrontdistribution:s3originconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3originconfig_originaccessidentity</IRI>
+        <Literal>cloudfrontdistribution:s3originconfig_originaccessidentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statuscodes</IRI>
+        <Literal>cloudfrontdistribution:statuscodes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statuscodes_items</IRI>
+        <Literal>cloudfrontdistribution:statuscodes_items</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statuscodes_quantity</IRI>
+        <Literal>cloudfrontdistribution:statuscodes_quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>cloudfrontdistribution:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>cloudfrontdistribution:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>cloudfrontdistribution:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate_acmcertificatearn</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate_acmcertificatearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate_cloudfrontdefaultcertificate</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate_cloudfrontdefaultcertificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate_iamcertificateid</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate_iamcertificateid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate_minimumprotocolversion</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate_minimumprotocolversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>viewercertificate_sslsupportmethod</IRI>
+        <Literal>cloudfrontdistribution:viewercertificate_sslsupportmethod</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 

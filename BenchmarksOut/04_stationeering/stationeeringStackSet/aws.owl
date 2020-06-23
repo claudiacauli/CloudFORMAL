@@ -30,6 +30,12 @@
         <Class IRI="awsresource"/>
     </Declaration>
     <Declaration>
+        <Class IRI="domain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="emailaddress"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="externalresource"/>
     </Declaration>
     <Declaration>
@@ -37,6 +43,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="federation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="phonenumber"/>
     </Declaration>
     <Declaration>
         <Class IRI="public"/>
@@ -61,6 +73,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="user"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasaccessto"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="hasaccesstoaccount"/>
@@ -183,6 +198,10 @@
         </ObjectIntersectionOf>
     </EquivalentClasses>
     <EquivalentClasses>
+        <Class IRI="person"/>
+        <Class IRI="unauthenticateduser"/>
+    </EquivalentClasses>
+    <EquivalentClasses>
         <Class IRI="stackresource"/>
         <Class IRI="stacksetresource"/>
     </EquivalentClasses>
@@ -199,12 +218,39 @@
         <Class IRI="public"/>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="domain"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="hasaccessto"/>
+            </ObjectInverseOf>
+            <Class IRI="person"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="emailaddress"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="hasaccessto"/>
+            </ObjectInverseOf>
+            <Class IRI="person"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="externalresource"/>
         <Class IRI="awsresource"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="federatedaccount"/>
         <Class IRI="public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="phonenumber"/>
+        <ObjectSomeValuesFrom>
+            <ObjectInverseOf>
+                <ObjectProperty IRI="hasaccessto"/>
+            </ObjectInverseOf>
+            <Class IRI="person"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="serviceprincipal"/>

@@ -1,0 +1,293 @@
+
+Infrastructure: 15_retailmenot, includes StackSets: 
+ - retailmenotStackSet 
+
+	StackSet: retailmenotStackSet, includes Templates: 
+		Template: logs
+		 Parameters: 
+			(aws::stackname -> logs)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			Logs::LogGroup(dartsyslog)
+			Logs::LogGroup(dartmisc)
+			Logs::MetricFilter(tracebackmetricfilter)
+			CloudWatch::Alarm(tracebackindartlogalarm)
+		 Outputs By ID: 
+			(dartsyslog -> Logs::LogGroup(dartsyslog))
+			(dartmisc -> Logs::LogGroup(dartmisc))
+
+		Template: events
+		 Parameters: 
+			(aws::stackname -> events)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(triggerqueueurl -> triggerQueue)
+			(aws::region -> us-west-1)
+			(triggerqueuearn -> triggerQueue)
+			(dartenvironment -> prod)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			SNS::Topic(cloudwatchscheduledeventssnstopic)
+			SNS::TopicPolicy(cloudwatchscheduledeventssnstopicpolicy)
+			SQS::QueuePolicy(triggerqueuepolicy)
+		 Outputs By ID: 
+			(cloudwatchscheduledeventssnstopic -> SNS::Topic(cloudwatchscheduledeventssnstopic))
+
+		Template: elb
+		 Parameters: 
+			(aws::stackname -> elb)
+			(recordsetname -> mail.example.com.)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+			(hostedzonename -> hsname)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			ElasticLoadBalancing::LoadBalancer(elasticloadbalancer)
+			EC2::SecurityGroup(elbsecuritygroup)
+			Route53::RecordSetGroup(elbrecordsetgroup)
+		 Outputs By ID: 
+			(elbresourcename -> ElasticLoadBalancing::LoadBalancer(elasticloadbalancer))
+
+		Template: subscriptionworker
+		 Parameters: 
+			(keyname -> ASGKey34737)
+			(awsdefaultregion -> us-west-1)
+			(dartconfig -> tre)
+			(aws::partition -> aws)
+			(vpcid -> vpcid-83923)
+			(sqsqueuename -> subworQueue)
+			(aws::region -> us-west-1)
+			(ecsamiid -> ami-23923)
+			(subscriptionworkerdockerimage -> di-72643724)
+			(cloudwatchlogsdockerimage -> di-347673)
+			(aws::urlsuffix -> amazonaws.com)
+			(aws::stackname -> subscriptionworker)
+			(iaminstanceprofile -> iamInstanceProfile9823)
+			(instancetype -> it-38474)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			CloudWatch::Alarm(subscriptionqueuedepthhigh)
+			ECS::TaskDefinition(subscriptionworkertaskdefinition)
+			EC2::SecurityGroup(securitygroup)
+			ECS::Service(cloudwatchlogsecsservice)
+			AutoScaling::ScalingPolicy(scaleuppolicy)
+			ECS::TaskDefinition(cloudwatchlogstaskdefinition)
+			CloudWatch::Alarm(subscriptionqueuedepthlow)
+			AutoScaling::LaunchConfiguration(launchconfiguration)
+			AutoScaling::ScalingPolicy(scaledownpolicy)
+			AutoScaling::AutoScalingGroup(autoscalinggroup)
+			ECS::Service(subscriptionworkerecsservice)
+			ECS::Cluster(ecscluster)
+
+		Template: triggerworker
+		 Parameters: 
+			(awsdefaultregion -> us-west-1)
+			(dartconfig -> tre)
+			(aws::partition -> aws)
+			(vpcid -> vpcid-83923)
+			(aws::region -> us-west-1)
+			(ecsamiid -> ami-23923)
+			(cloudwatchlogsdockerimage -> di-347673)
+			(aws::urlsuffix -> amazonaws.com)
+			(keyname -> ASGKey34737)
+			(triggerworkerdockerimage -> di-123as1)
+			(aws::stackname -> triggerworker)
+			(iaminstanceprofile -> iamInstanceProfile9823)
+			(instancetype -> it-38474)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			ECS::TaskDefinition(triggerworkertaskdefinition)
+			AutoScaling::AutoScalingGroup(autoscalinggroup)
+			EC2::SecurityGroup(securitygroup)
+			ECS::Service(cloudwatchlogsecsservice)
+			ECS::TaskDefinition(cloudwatchlogstaskdefinition)
+			ECS::Service(triggerworkerecsservice)
+			ECS::Cluster(ecscluster)
+			AutoScaling::LaunchConfiguration(launchconfiguration)
+
+		Template: enginetaskrunner
+		 Parameters: 
+			(keyname -> ASGKey34737)
+			(aws::partition -> aws)
+			(vpcid -> vpcid-83923)
+			(aws::region -> us-west-1)
+			(ecsamiid -> ami-23923)
+			(cloudwatchlogsdockerimage -> di-347673)
+			(aws::urlsuffix -> amazonaws.com)
+			(aws::stackname -> enginetaskrunner)
+			(iaminstanceprofile -> iamInstanceProfile9823)
+			(instancetype -> it-38474)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			EC2::SecurityGroup(securitygroup)
+			ECS::Service(cloudwatchlogsecsservice)
+			AutoScaling::ScalingPolicy(scaleuppolicy)
+			ECS::TaskDefinition(cloudwatchlogstaskdefinition)
+			AutoScaling::LaunchConfiguration(launchconfiguration)
+			CloudWatch::Alarm(cpureservationtoohighalarm)
+			AutoScaling::AutoScalingGroup(autoscalinggroup)
+			ECS::Cluster(ecscluster)
+			CloudWatch::Alarm(memoryreservationtoohighalarm)
+		 Outputs By ID: 
+			(ecsclusterresourcename -> ECS::Cluster(ecscluster))
+
+		Template: web
+		 Parameters: 
+			(keyname -> ASGKey34737)
+			(webecsserviceloadbalancername -> ecsServLoadBalancer)
+			(awsdefaultregion -> us-west-1)
+			(nginxworkerdockerimage -> di-3673)
+			(dartconfig -> tre)
+			(aws::partition -> aws)
+			(flaskworkerdockerimage -> di-3476s3)
+			(vpcid -> iamInstanceProfile9823)
+			(aws::region -> us-west-1)
+			(ecsamiid -> iamInstanceProfile9823)
+			(cloudwatchlogsdockerimage -> di-347673)
+			(aws::urlsuffix -> amazonaws.com)
+			(dartwebversion -> dwssdad)
+			(webecsservicerolename -> ecsServRole)
+			(aws::stackname -> web)
+			(iaminstanceprofile -> iamInstanceProfile9823)
+			(instancetype -> iamInstanceProfile9823)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			CloudWatch::Alarm(cpualarmlow)
+			ECS::TaskDefinition(webtaskdefinition)
+			EC2::SecurityGroup(securitygroup)
+			ECS::Service(cloudwatchlogsecsservice)
+			AutoScaling::ScalingPolicy(scaleuppolicy)
+			ECS::TaskDefinition(cloudwatchlogstaskdefinition)
+			ECS::Cluster(ecscluster)
+			ECS::Service(webecsservice)
+			CloudWatch::Alarm(cpualarmhigh)
+			AutoScaling::LaunchConfiguration(launchconfiguration)
+			AutoScaling::ScalingPolicy(scaledownpolicy)
+			AutoScaling::AutoScalingGroup(autoscalinggroup)
+		 Outputs By ID: 
+			(ecsclusterresourcename -> ECS::Cluster(ecscluster))
+			(webecsserviceresourcename -> ECS::Service(webecsservice))
+
+		Template: s3
+		 Parameters: 
+			(dartconfigbucket -> DartConfigS3Bucket)
+			(aws::accountid -> 112233445566)
+			(subscriptionqueuearn -> subworQueue)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(subscriptionqueueurl -> subworQueue)
+			(dartdatabucket -> DartDataS3Bucket)
+			(aws::stackname -> s3)
+			(dartenvironment -> prod)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			S3::BucketPolicy(configs3bucketpolicy)
+			SNS::Topic(objectcreationeventssnstopic)
+			S3::Bucket(datas3bucket)
+			SQS::QueuePolicy(subscriptionqueuepolicy)
+			S3::Bucket(configs3bucket)
+			SNS::TopicPolicy(objectcreationeventssnstopicpolicy)
+
+		Template: iamtemplate
+		 Parameters: 
+			(aws::stackname -> iamtemplate)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			IAM::Role(ecscontainerinstanceprofilerole)
+			IAM::InstanceProfile(ecscontainerinstanceprofile)
+			IAM::Role(ecsservicerole)
+			IAM::Role(udsec2instanceprofilerole)
+			IAM::Role(udsinstanceprofilerole)
+			IAM::InstanceProfile(udsec2instanceprofile)
+			IAM::InstanceProfile(udsinstanceprofile)
+		 Outputs By ID: 
+			(ecscontainerinstanceprofilerole -> IAM::Role(ecscontainerinstanceprofilerole))
+			(ecscontainerinstanceprofile -> IAM::InstanceProfile(ecscontainerinstanceprofile))
+			(ecsservicerole -> IAM::Role(ecsservicerole))
+			(udsec2instanceprofilerole -> IAM::Role(udsec2instanceprofilerole))
+			(udsinstanceprofilerole -> IAM::Role(udsinstanceprofilerole))
+			(udsec2instanceprofile -> IAM::InstanceProfile(udsec2instanceprofile))
+			(udsinstanceprofile -> IAM::InstanceProfile(udsinstanceprofile))
+
+		Template: engineworker
+		 Parameters: 
+			(keyname -> ASGKey34737)
+			(awsdefaultregion -> us-west-1)
+			(dartconfig -> tre)
+			(aws::partition -> aws)
+			(vpcid -> iamInstanceProfile9823)
+			(aws::region -> us-west-1)
+			(ecsamiid -> iamInstanceProfile9823)
+			(cloudwatchlogsdockerimage -> di-347673)
+			(aws::urlsuffix -> amazonaws.com)
+			(aws::stackname -> engineworker)
+			(iaminstanceprofile -> iamInstanceProfile9823)
+			(instancetype -> iamInstanceProfile9823)
+			(aws::accountid -> 112233445566)
+			(engineworkerdockerimage -> di-123891)
+		 Resources: 
+			AutoScaling::AutoScalingGroup(autoscalinggroup)
+			EC2::SecurityGroup(securitygroup)
+			ECS::Service(cloudwatchlogsecsservice)
+			ECS::Cluster(ecscluster)
+			AutoScaling::LaunchConfiguration(launchconfiguration)
+			ECS::TaskDefinition(cloudwatchlogstaskdefinition)
+			ECS::TaskDefinition(engineworkertaskdefinition)
+			ECS::Service(engineworkerecsservice)
+
+		Template: rds
+		 Parameters: 
+			(allocatedstorage -> 100)
+			(aws::stackname -> rds)
+			(aws::accountid -> 112233445566)
+			(availabilityzone -> us-west-1a)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+			(dbinstanceclass -> db.m4.large)
+			(vpcid -> vpcid-83923)
+		 Resources: 
+			RDS::DBInstance(dbinstance)
+			RDS::DBSubnetGroup(dbsubnetgroup)
+			EC2::SecurityGroup(securitygroup)
+		 Outputs By ID: 
+			(dbhost -> dbinstance_attribute_endpoint.address)
+
+		Template: elbinternal
+		 Parameters: 
+			(aws::stackname -> elbinternal)
+			(recordsetname -> mail.example.com.)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(aws::urlsuffix -> amazonaws.com)
+			(hostedzonename -> hsname)
+			(aws::accountid -> 112233445566)
+		 Resources: 
+			ElasticLoadBalancing::LoadBalancer(elasticloadbalancer)
+			EC2::SecurityGroup(elbsecuritygroup)
+			Route53::RecordSetGroup(elbrecordsetgroup)
+		 Outputs By ID: 
+			(elbresourcename -> ElasticLoadBalancing::LoadBalancer(elasticloadbalancer))
+
+		Template: sns
+		 Parameters: 
+			(aws::stackname -> sns)
+			(aws::accountid -> 112233445566)
+			(aws::partition -> aws)
+			(aws::region -> us-west-1)
+			(dartalertsemailaddress -> dart@dart.com)
+			(dartenvironment -> prod)
+			(aws::urlsuffix -> amazonaws.com)
+		 Resources: 
+			SNS::Topic(alertssnstopic)
+		 Outputs By ID: 
+			(alertssnstopic -> SNS::Topic(alertssnstopic))
+
+

@@ -36,9 +36,6 @@
         <ObjectProperty IRI="topic_tags"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_topic_topicname"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="subscription_protocol"/>
     </Declaration>
     <Declaration>
@@ -48,7 +45,13 @@
         <DataProperty IRI="tag_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="topic_contentbaseddeduplication"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="topic_displayname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="topic_fifotopic"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="topic_topicname"/>
@@ -109,9 +112,6 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_topic_topicname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="subscription_protocol"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -121,15 +121,17 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="topic_contentbaseddeduplication"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="topic_displayname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="topic_fifotopic"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="topic_topicname"/>
     </FunctionalDataProperty>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_topic_topicname"/>
-        <Class IRI="topic"/>
-    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="subscription_protocol"/>
         <Class IRI="subscription"/>
@@ -143,17 +145,21 @@
         <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="topic_contentbaseddeduplication"/>
+        <Class IRI="topic"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="topic_displayname"/>
+        <Class IRI="topic"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="topic_fifotopic"/>
         <Class IRI="topic"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="topic_topicname"/>
         <Class IRI="topic"/>
     </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_topic_topicname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="subscription_protocol"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -167,13 +173,91 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="topic_contentbaseddeduplication"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="topic_displayname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="topic_fifotopic"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="topic_topicname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscription</IRI>
+        <Literal>snstopic:subscription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscription_endpoint</IRI>
+        <Literal>snstopic:subscription_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscription_protocol</IRI>
+        <Literal>snstopic:subscription_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>snstopic:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>snstopic:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>snstopic:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic</IRI>
+        <Literal>snstopic:topic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_contentbaseddeduplication</IRI>
+        <Literal>snstopic:topic_contentbaseddeduplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_displayname</IRI>
+        <Literal>snstopic:topic_displayname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_fifotopic</IRI>
+        <Literal>snstopic:topic_fifotopic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_kmsmasterkeyid</IRI>
+        <Literal>snstopic:topic_kmsmasterkeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_subscription</IRI>
+        <Literal>snstopic:topic_subscription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_tags</IRI>
+        <Literal>snstopic:topic_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topic_topicname</IRI>
+        <Literal>snstopic:topic_topicname</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 

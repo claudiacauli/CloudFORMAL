@@ -51,6 +51,9 @@
         <Class IRI="defaultretention"/>
     </Declaration>
     <Declaration>
+        <Class IRI="deletemarkerreplication"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="destination"/>
     </Declaration>
     <Declaration>
@@ -70,6 +73,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metrics"/>
     </Declaration>
     <Declaration>
         <Class IRI="metricsconfiguration"/>
@@ -109,6 +115,18 @@
     </Declaration>
     <Declaration>
         <Class IRI="replicationrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationruleandoperator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationrulefilter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationtime"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationtimevalue"/>
     </Declaration>
     <Declaration>
         <Class IRI="routingrule"/>
@@ -219,6 +237,9 @@
         <ObjectProperty IRI="corsconfiguration_corsrules"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="corsrule_allowedorigins"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="dataexport_destination"/>
     </Declaration>
     <Declaration>
@@ -241,6 +262,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="loggingconfiguration_destinationbucketname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
@@ -270,6 +294,12 @@
         <ObjectProperty IRI="queueconfiguration_queue"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="redirectallrequeststo_hostname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="redirectrule_hostname"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="replicationconfiguration_role"/>
     </Declaration>
     <Declaration>
@@ -285,10 +315,34 @@
         <ObjectProperty IRI="replicationdestination_encryptionconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="replicationrule_destination"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="replicationrule_filter"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationtime_time"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -357,21 +411,6 @@
         <DataProperty IRI="analyticsconfiguration_prefix"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_bucket_arn"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="bucket_accesscontrol"/>
     </Declaration>
     <Declaration>
@@ -385,9 +424,6 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="corsrule_allowedmethods"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="corsrule_allowedorigins"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="corsrule_exposedheaders"/>
@@ -409,6 +445,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="defaultretention_years"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deletemarkerreplication_status"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -450,6 +489,9 @@
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="metrics_status"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="metricsconfiguration_id"/>
     </Declaration>
     <Declaration>
@@ -480,13 +522,7 @@
         <DataProperty IRI="queueconfiguration_event"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="redirectallrequeststo_hostname"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="redirectallrequeststo_protocol"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="redirectrule_hostname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="redirectrule_httpredirectcode"/>
@@ -513,7 +549,22 @@
         <DataProperty IRI="replicationrule_prefix"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="replicationrule_priority"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="replicationrule_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationtime_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -629,15 +680,15 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="corsrule"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="corsrule_allowedmethods"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="corsrule_allowedorigins"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="corsrule"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="corsrule_allowedorigins"/>
+            <DataProperty IRI="corsrule_allowedmethods"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -747,6 +798,20 @@
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="metrics"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="metrics_eventthreshold"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metrics"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metrics_status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="metricsconfiguration"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="metricsconfiguration_id"/>
@@ -789,13 +854,6 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="redirectallrequeststo"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="redirectallrequeststo_hostname"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="replicationconfiguration"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="replicationconfiguration_role"/>
@@ -826,15 +884,29 @@
     <SubClassOf>
         <Class IRI="replicationrule"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="replicationrule_prefix"/>
+            <DataProperty IRI="replicationrule_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="replicationrule"/>
+        <Class IRI="replicationtime"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="replicationtime_time"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationtime"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="replicationrule_status"/>
+            <DataProperty IRI="replicationtime_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationtimevalue"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="replicationtimevalue_minutes"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -993,6 +1065,9 @@
         <ObjectProperty IRI="loggingconfiguration_destinationbucketname"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="notificationfilter_s3key"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -1008,6 +1083,12 @@
         <ObjectProperty IRI="queueconfiguration_queue"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="redirectallrequeststo_hostname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="redirectrule_hostname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="replicationconfiguration_role"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -1020,10 +1101,31 @@
         <ObjectProperty IRI="replicationdestination_encryptionconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="replicationrule_destination"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrule_filter"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationtime_time"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1138,6 +1240,10 @@
         <Class IRI="corsconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="corsrule_allowedorigins"/>
+        <Class IRI="corsrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="dataexport_destination"/>
         <Class IRI="dataexport"/>
     </ObjectPropertyDomain>
@@ -1168,6 +1274,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="loggingconfiguration_destinationbucketname"/>
         <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+        <Class IRI="metrics"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
@@ -1206,6 +1316,14 @@
         <Class IRI="queueconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="redirectallrequeststo_hostname"/>
+        <Class IRI="redirectallrequeststo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="redirectrule_hostname"/>
+        <Class IRI="redirectrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="replicationconfiguration_role"/>
         <Class IRI="replicationconfiguration"/>
     </ObjectPropertyDomain>
@@ -1226,12 +1344,44 @@
         <Class IRI="replicationdestination"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+        <Class IRI="replicationdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+        <Class IRI="replicationdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="replicationrule_destination"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrule_filter"/>
         <Class IRI="replicationrule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
         <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+        <Class IRI="replicationruleandoperator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationtime_time"/>
+        <Class IRI="replicationtime"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1410,6 +1560,10 @@
         <Class IRI="bucket"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="metrics_eventthreshold"/>
+        <Class IRI="replicationtimevalue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="metricsconfiguration_tagfilters"/>
         <Class IRI="tagfilter"/>
     </ObjectPropertyRange>
@@ -1466,12 +1620,44 @@
         <Class IRI="encryptionconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationdestination_metrics"/>
+        <Class IRI="metrics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationdestination_replicationtime"/>
+        <Class IRI="replicationtime"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrule_deletemarkerreplication"/>
+        <Class IRI="deletemarkerreplication"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="replicationrule_destination"/>
         <Class IRI="replicationdestination"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrule_filter"/>
+        <Class IRI="replicationrulefilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="replicationrule_sourceselectioncriteria"/>
         <Class IRI="sourceselectioncriteria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationruleandoperator_tagfilters"/>
+        <Class IRI="tagfilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrulefilter_and"/>
+        <Class IRI="replicationruleandoperator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrulefilter_tagfilter"/>
+        <Class IRI="tagfilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationtime_time"/>
+        <Class IRI="replicationtimevalue"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="routingrule_redirectrule"/>
@@ -1557,21 +1743,6 @@
         <DataProperty IRI="analyticsconfiguration_prefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="bucket_accesscontrol"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1597,6 +1768,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="defaultretention_years"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deletemarkerreplication_status"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -1635,6 +1809,9 @@
         <DataProperty IRI="loggingconfiguration_logfileprefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="metrics_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="metricsconfiguration_id"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1665,13 +1842,7 @@
         <DataProperty IRI="queueconfiguration_event"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="redirectallrequeststo_hostname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="redirectallrequeststo_protocol"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="redirectrule_hostname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="redirectrule_httpredirectcode"/>
@@ -1698,7 +1869,22 @@
         <DataProperty IRI="replicationrule_prefix"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="replicationrule_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="replicationrule_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationtime_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -1784,26 +1970,6 @@
         <Class IRI="analyticsconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_arn"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-        <Class IRI="bucket"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="bucket_accesscontrol"/>
         <Class IRI="bucket"/>
     </DataPropertyDomain>
@@ -1821,10 +1987,6 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="corsrule_allowedmethods"/>
-        <Class IRI="corsrule"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="corsrule_allowedorigins"/>
         <Class IRI="corsrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1854,6 +2016,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="defaultretention_years"/>
         <Class IRI="defaultretention"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deletemarkerreplication_status"/>
+        <Class IRI="deletemarkerreplication"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -1908,6 +2074,10 @@
         <Class IRI="loggingconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="metrics_status"/>
+        <Class IRI="metrics"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="metricsconfiguration_id"/>
         <Class IRI="metricsconfiguration"/>
     </DataPropertyDomain>
@@ -1948,16 +2118,8 @@
         <Class IRI="queueconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
-        <DataProperty IRI="redirectallrequeststo_hostname"/>
-        <Class IRI="redirectallrequeststo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
         <DataProperty IRI="redirectallrequeststo_protocol"/>
         <Class IRI="redirectallrequeststo"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="redirectrule_hostname"/>
-        <Class IRI="redirectrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="redirectrule_httpredirectcode"/>
@@ -1992,8 +2154,28 @@
         <Class IRI="replicationrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="replicationrule_priority"/>
+        <Class IRI="replicationrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="replicationrule_status"/>
         <Class IRI="replicationrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+        <Class IRI="replicationruleandoperator"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+        <Class IRI="replicationrulefilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationtime_status"/>
+        <Class IRI="replicationtime"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
+        <Class IRI="replicationtimevalue"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -2100,26 +2282,6 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_domainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_dualstackdomainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_regionaldomainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="attribute_bucket_websiteurl"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="bucket_accesscontrol"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -2137,10 +2299,6 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="corsrule_allowedmethods"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="corsrule_allowedorigins"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -2170,6 +2328,10 @@
     <DataPropertyRange>
         <DataProperty IRI="defaultretention_years"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deletemarkerreplication_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="destination_bucketaccountid"/>
@@ -2224,6 +2386,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="metrics_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="metricsconfiguration_id"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -2264,15 +2430,7 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="redirectallrequeststo_hostname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="redirectallrequeststo_protocol"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="redirectrule_hostname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -2308,8 +2466,28 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="replicationrule_priority"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="replicationrule_status"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationruleandoperator_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationrulefilter_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationtime_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationtimevalue_minutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="routingrulecondition_httperrorcodereturnedequals"/>
@@ -2395,6 +2573,1011 @@
         <DataProperty IRI="websiteconfiguration_indexdocument"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>abortincompletemultipartupload</IRI>
+        <Literal>s3bucket:abortincompletemultipartupload</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>abortincompletemultipartupload_daysafterinitiation</IRI>
+        <Literal>s3bucket:abortincompletemultipartupload_daysafterinitiation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accelerateconfiguration</IRI>
+        <Literal>s3bucket:accelerateconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accelerateconfiguration_accelerationstatus</IRI>
+        <Literal>s3bucket:accelerateconfiguration_accelerationstatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontroltranslation</IRI>
+        <Literal>s3bucket:accesscontroltranslation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontroltranslation_owner</IRI>
+        <Literal>s3bucket:accesscontroltranslation_owner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration</IRI>
+        <Literal>s3bucket:analyticsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration_id</IRI>
+        <Literal>s3bucket:analyticsconfiguration_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration_prefix</IRI>
+        <Literal>s3bucket:analyticsconfiguration_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration_storageclassanalysis</IRI>
+        <Literal>s3bucket:analyticsconfiguration_storageclassanalysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration_tagfilters</IRI>
+        <Literal>s3bucket:analyticsconfiguration_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket</IRI>
+        <Literal>s3bucket:bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_accelerateconfiguration</IRI>
+        <Literal>s3bucket:bucket_accelerateconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_accesscontrol</IRI>
+        <Literal>s3bucket:bucket_accesscontrol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_analyticsconfigurations</IRI>
+        <Literal>s3bucket:bucket_analyticsconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_bucketencryption</IRI>
+        <Literal>s3bucket:bucket_bucketencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_bucketname</IRI>
+        <Literal>s3bucket:bucket_bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_corsconfiguration</IRI>
+        <Literal>s3bucket:bucket_corsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_inventoryconfigurations</IRI>
+        <Literal>s3bucket:bucket_inventoryconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_lifecycleconfiguration</IRI>
+        <Literal>s3bucket:bucket_lifecycleconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_loggingconfiguration</IRI>
+        <Literal>s3bucket:bucket_loggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_metricsconfigurations</IRI>
+        <Literal>s3bucket:bucket_metricsconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_notificationconfiguration</IRI>
+        <Literal>s3bucket:bucket_notificationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_objectlockconfiguration</IRI>
+        <Literal>s3bucket:bucket_objectlockconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_objectlockenabled</IRI>
+        <Literal>s3bucket:bucket_objectlockenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_publicaccessblockconfiguration</IRI>
+        <Literal>s3bucket:bucket_publicaccessblockconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_replicationconfiguration</IRI>
+        <Literal>s3bucket:bucket_replicationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_tags</IRI>
+        <Literal>s3bucket:bucket_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_versioningconfiguration</IRI>
+        <Literal>s3bucket:bucket_versioningconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_websiteconfiguration</IRI>
+        <Literal>s3bucket:bucket_websiteconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketencryption</IRI>
+        <Literal>s3bucket:bucketencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketencryption_serversideencryptionconfiguration</IRI>
+        <Literal>s3bucket:bucketencryption_serversideencryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsconfiguration</IRI>
+        <Literal>s3bucket:corsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsconfiguration_corsrules</IRI>
+        <Literal>s3bucket:corsconfiguration_corsrules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule</IRI>
+        <Literal>s3bucket:corsrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_allowedheaders</IRI>
+        <Literal>s3bucket:corsrule_allowedheaders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_allowedmethods</IRI>
+        <Literal>s3bucket:corsrule_allowedmethods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_allowedorigins</IRI>
+        <Literal>s3bucket:corsrule_allowedorigins</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_exposedheaders</IRI>
+        <Literal>s3bucket:corsrule_exposedheaders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_id</IRI>
+        <Literal>s3bucket:corsrule_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>corsrule_maxage</IRI>
+        <Literal>s3bucket:corsrule_maxage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataexport</IRI>
+        <Literal>s3bucket:dataexport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataexport_destination</IRI>
+        <Literal>s3bucket:dataexport_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataexport_outputschemaversion</IRI>
+        <Literal>s3bucket:dataexport_outputschemaversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultretention</IRI>
+        <Literal>s3bucket:defaultretention</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultretention_days</IRI>
+        <Literal>s3bucket:defaultretention_days</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultretention_mode</IRI>
+        <Literal>s3bucket:defaultretention_mode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultretention_years</IRI>
+        <Literal>s3bucket:defaultretention_years</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deletemarkerreplication</IRI>
+        <Literal>s3bucket:deletemarkerreplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deletemarkerreplication_status</IRI>
+        <Literal>s3bucket:deletemarkerreplication_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destination</IRI>
+        <Literal>s3bucket:destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destination_bucketaccountid</IRI>
+        <Literal>s3bucket:destination_bucketaccountid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destination_bucketarn</IRI>
+        <Literal>s3bucket:destination_bucketarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destination_format</IRI>
+        <Literal>s3bucket:destination_format</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destination_prefix</IRI>
+        <Literal>s3bucket:destination_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration</IRI>
+        <Literal>s3bucket:encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_replicakmskeyid</IRI>
+        <Literal>s3bucket:encryptionconfiguration_replicakmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule</IRI>
+        <Literal>s3bucket:filterrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule_name</IRI>
+        <Literal>s3bucket:filterrule_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule_value</IRI>
+        <Literal>s3bucket:filterrule_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration</IRI>
+        <Literal>s3bucket:inventoryconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_destination</IRI>
+        <Literal>s3bucket:inventoryconfiguration_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_enabled</IRI>
+        <Literal>s3bucket:inventoryconfiguration_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_id</IRI>
+        <Literal>s3bucket:inventoryconfiguration_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_includedobjectversions</IRI>
+        <Literal>s3bucket:inventoryconfiguration_includedobjectversions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_optionalfields</IRI>
+        <Literal>s3bucket:inventoryconfiguration_optionalfields</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_prefix</IRI>
+        <Literal>s3bucket:inventoryconfiguration_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inventoryconfiguration_schedulefrequency</IRI>
+        <Literal>s3bucket:inventoryconfiguration_schedulefrequency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfiguration</IRI>
+        <Literal>s3bucket:lambdaconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfiguration_event</IRI>
+        <Literal>s3bucket:lambdaconfiguration_event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfiguration_filter</IRI>
+        <Literal>s3bucket:lambdaconfiguration_filter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfiguration_function</IRI>
+        <Literal>s3bucket:lambdaconfiguration_function</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleconfiguration</IRI>
+        <Literal>s3bucket:lifecycleconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleconfiguration_rules</IRI>
+        <Literal>s3bucket:lifecycleconfiguration_rules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration</IRI>
+        <Literal>s3bucket:loggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_destinationbucketname</IRI>
+        <Literal>s3bucket:loggingconfiguration_destinationbucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_logfileprefix</IRI>
+        <Literal>s3bucket:loggingconfiguration_logfileprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics</IRI>
+        <Literal>s3bucket:metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics_eventthreshold</IRI>
+        <Literal>s3bucket:metrics_eventthreshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metrics_status</IRI>
+        <Literal>s3bucket:metrics_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricsconfiguration</IRI>
+        <Literal>s3bucket:metricsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricsconfiguration_id</IRI>
+        <Literal>s3bucket:metricsconfiguration_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricsconfiguration_prefix</IRI>
+        <Literal>s3bucket:metricsconfiguration_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricsconfiguration_tagfilters</IRI>
+        <Literal>s3bucket:metricsconfiguration_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>noncurrentversiontransition</IRI>
+        <Literal>s3bucket:noncurrentversiontransition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>noncurrentversiontransition_storageclass</IRI>
+        <Literal>s3bucket:noncurrentversiontransition_storageclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>noncurrentversiontransition_transitionindays</IRI>
+        <Literal>s3bucket:noncurrentversiontransition_transitionindays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationconfiguration</IRI>
+        <Literal>s3bucket:notificationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationconfiguration_lambdaconfigurations</IRI>
+        <Literal>s3bucket:notificationconfiguration_lambdaconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationconfiguration_queueconfigurations</IRI>
+        <Literal>s3bucket:notificationconfiguration_queueconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationconfiguration_topicconfigurations</IRI>
+        <Literal>s3bucket:notificationconfiguration_topicconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationfilter</IRI>
+        <Literal>s3bucket:notificationfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationfilter_s3key</IRI>
+        <Literal>s3bucket:notificationfilter_s3key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>objectlockconfiguration</IRI>
+        <Literal>s3bucket:objectlockconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>objectlockconfiguration_objectlockenabled</IRI>
+        <Literal>s3bucket:objectlockconfiguration_objectlockenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>objectlockconfiguration_rule</IRI>
+        <Literal>s3bucket:objectlockconfiguration_rule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>objectlockrule</IRI>
+        <Literal>s3bucket:objectlockrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>objectlockrule_defaultretention</IRI>
+        <Literal>s3bucket:objectlockrule_defaultretention</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publicaccessblockconfiguration</IRI>
+        <Literal>s3bucket:publicaccessblockconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publicaccessblockconfiguration_blockpublicacls</IRI>
+        <Literal>s3bucket:publicaccessblockconfiguration_blockpublicacls</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publicaccessblockconfiguration_blockpublicpolicy</IRI>
+        <Literal>s3bucket:publicaccessblockconfiguration_blockpublicpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publicaccessblockconfiguration_ignorepublicacls</IRI>
+        <Literal>s3bucket:publicaccessblockconfiguration_ignorepublicacls</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publicaccessblockconfiguration_restrictpublicbuckets</IRI>
+        <Literal>s3bucket:publicaccessblockconfiguration_restrictpublicbuckets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queueconfiguration</IRI>
+        <Literal>s3bucket:queueconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queueconfiguration_event</IRI>
+        <Literal>s3bucket:queueconfiguration_event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queueconfiguration_filter</IRI>
+        <Literal>s3bucket:queueconfiguration_filter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queueconfiguration_queue</IRI>
+        <Literal>s3bucket:queueconfiguration_queue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectallrequeststo</IRI>
+        <Literal>s3bucket:redirectallrequeststo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectallrequeststo_hostname</IRI>
+        <Literal>s3bucket:redirectallrequeststo_hostname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectallrequeststo_protocol</IRI>
+        <Literal>s3bucket:redirectallrequeststo_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule</IRI>
+        <Literal>s3bucket:redirectrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule_hostname</IRI>
+        <Literal>s3bucket:redirectrule_hostname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule_httpredirectcode</IRI>
+        <Literal>s3bucket:redirectrule_httpredirectcode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule_protocol</IRI>
+        <Literal>s3bucket:redirectrule_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule_replacekeyprefixwith</IRI>
+        <Literal>s3bucket:redirectrule_replacekeyprefixwith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redirectrule_replacekeywith</IRI>
+        <Literal>s3bucket:redirectrule_replacekeywith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration</IRI>
+        <Literal>s3bucket:replicationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration_role</IRI>
+        <Literal>s3bucket:replicationconfiguration_role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration_rules</IRI>
+        <Literal>s3bucket:replicationconfiguration_rules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination</IRI>
+        <Literal>s3bucket:replicationdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_accesscontroltranslation</IRI>
+        <Literal>s3bucket:replicationdestination_accesscontroltranslation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_account</IRI>
+        <Literal>s3bucket:replicationdestination_account</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_bucket</IRI>
+        <Literal>s3bucket:replicationdestination_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_encryptionconfiguration</IRI>
+        <Literal>s3bucket:replicationdestination_encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_metrics</IRI>
+        <Literal>s3bucket:replicationdestination_metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_replicationtime</IRI>
+        <Literal>s3bucket:replicationdestination_replicationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_storageclass</IRI>
+        <Literal>s3bucket:replicationdestination_storageclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule</IRI>
+        <Literal>s3bucket:replicationrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_deletemarkerreplication</IRI>
+        <Literal>s3bucket:replicationrule_deletemarkerreplication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_destination</IRI>
+        <Literal>s3bucket:replicationrule_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_filter</IRI>
+        <Literal>s3bucket:replicationrule_filter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_id</IRI>
+        <Literal>s3bucket:replicationrule_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_prefix</IRI>
+        <Literal>s3bucket:replicationrule_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_priority</IRI>
+        <Literal>s3bucket:replicationrule_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_sourceselectioncriteria</IRI>
+        <Literal>s3bucket:replicationrule_sourceselectioncriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_status</IRI>
+        <Literal>s3bucket:replicationrule_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator</IRI>
+        <Literal>s3bucket:replicationruleandoperator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator_prefix</IRI>
+        <Literal>s3bucket:replicationruleandoperator_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationruleandoperator_tagfilters</IRI>
+        <Literal>s3bucket:replicationruleandoperator_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter</IRI>
+        <Literal>s3bucket:replicationrulefilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_and</IRI>
+        <Literal>s3bucket:replicationrulefilter_and</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_prefix</IRI>
+        <Literal>s3bucket:replicationrulefilter_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrulefilter_tagfilter</IRI>
+        <Literal>s3bucket:replicationrulefilter_tagfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime</IRI>
+        <Literal>s3bucket:replicationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime_status</IRI>
+        <Literal>s3bucket:replicationtime_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtime_time</IRI>
+        <Literal>s3bucket:replicationtime_time</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtimevalue</IRI>
+        <Literal>s3bucket:replicationtimevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationtimevalue_minutes</IRI>
+        <Literal>s3bucket:replicationtimevalue_minutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrule</IRI>
+        <Literal>s3bucket:routingrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrule_redirectrule</IRI>
+        <Literal>s3bucket:routingrule_redirectrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrule_routingrulecondition</IRI>
+        <Literal>s3bucket:routingrule_routingrulecondition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrulecondition</IRI>
+        <Literal>s3bucket:routingrulecondition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrulecondition_httperrorcodereturnedequals</IRI>
+        <Literal>s3bucket:routingrulecondition_httperrorcodereturnedequals</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routingrulecondition_keyprefixequals</IRI>
+        <Literal>s3bucket:routingrulecondition_keyprefixequals</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule</IRI>
+        <Literal>s3bucket:rule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_abortincompletemultipartupload</IRI>
+        <Literal>s3bucket:rule_abortincompletemultipartupload</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_expirationdate</IRI>
+        <Literal>s3bucket:rule_expirationdate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_expirationindays</IRI>
+        <Literal>s3bucket:rule_expirationindays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_id</IRI>
+        <Literal>s3bucket:rule_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_noncurrentversionexpirationindays</IRI>
+        <Literal>s3bucket:rule_noncurrentversionexpirationindays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_noncurrentversiontransition</IRI>
+        <Literal>s3bucket:rule_noncurrentversiontransition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_noncurrentversiontransitions</IRI>
+        <Literal>s3bucket:rule_noncurrentversiontransitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_prefix</IRI>
+        <Literal>s3bucket:rule_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_status</IRI>
+        <Literal>s3bucket:rule_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_tagfilters</IRI>
+        <Literal>s3bucket:rule_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_transition</IRI>
+        <Literal>s3bucket:rule_transition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_transitions</IRI>
+        <Literal>s3bucket:rule_transitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3keyfilter</IRI>
+        <Literal>s3bucket:s3keyfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3keyfilter_rules</IRI>
+        <Literal>s3bucket:s3keyfilter_rules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionbydefault</IRI>
+        <Literal>s3bucket:serversideencryptionbydefault</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionbydefault_kmsmasterkeyid</IRI>
+        <Literal>s3bucket:serversideencryptionbydefault_kmsmasterkeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionbydefault_ssealgorithm</IRI>
+        <Literal>s3bucket:serversideencryptionbydefault_ssealgorithm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionrule</IRI>
+        <Literal>s3bucket:serversideencryptionrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionrule_serversideencryptionbydefault</IRI>
+        <Literal>s3bucket:serversideencryptionrule_serversideencryptionbydefault</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceselectioncriteria</IRI>
+        <Literal>s3bucket:sourceselectioncriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceselectioncriteria_ssekmsencryptedobjects</IRI>
+        <Literal>s3bucket:sourceselectioncriteria_ssekmsencryptedobjects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssekmsencryptedobjects</IRI>
+        <Literal>s3bucket:ssekmsencryptedobjects</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssekmsencryptedobjects_status</IRI>
+        <Literal>s3bucket:ssekmsencryptedobjects_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storageclassanalysis</IRI>
+        <Literal>s3bucket:storageclassanalysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storageclassanalysis_dataexport</IRI>
+        <Literal>s3bucket:storageclassanalysis_dataexport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>s3bucket:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>s3bucket:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>s3bucket:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagfilter</IRI>
+        <Literal>s3bucket:tagfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagfilter_key</IRI>
+        <Literal>s3bucket:tagfilter_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagfilter_value</IRI>
+        <Literal>s3bucket:tagfilter_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicconfiguration</IRI>
+        <Literal>s3bucket:topicconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicconfiguration_event</IRI>
+        <Literal>s3bucket:topicconfiguration_event</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicconfiguration_filter</IRI>
+        <Literal>s3bucket:topicconfiguration_filter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicconfiguration_topic</IRI>
+        <Literal>s3bucket:topicconfiguration_topic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transition</IRI>
+        <Literal>s3bucket:transition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transition_storageclass</IRI>
+        <Literal>s3bucket:transition_storageclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transition_transitiondate</IRI>
+        <Literal>s3bucket:transition_transitiondate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transition_transitionindays</IRI>
+        <Literal>s3bucket:transition_transitionindays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>versioningconfiguration</IRI>
+        <Literal>s3bucket:versioningconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>versioningconfiguration_status</IRI>
+        <Literal>s3bucket:versioningconfiguration_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>websiteconfiguration</IRI>
+        <Literal>s3bucket:websiteconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>websiteconfiguration_errordocument</IRI>
+        <Literal>s3bucket:websiteconfiguration_errordocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>websiteconfiguration_indexdocument</IRI>
+        <Literal>s3bucket:websiteconfiguration_indexdocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>websiteconfiguration_redirectallrequeststo</IRI>
+        <Literal>s3bucket:websiteconfiguration_redirectallrequeststo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>websiteconfiguration_routingrules</IRI>
+        <Literal>s3bucket:websiteconfiguration_routingrules</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 

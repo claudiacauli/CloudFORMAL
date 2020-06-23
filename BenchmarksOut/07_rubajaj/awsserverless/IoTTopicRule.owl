@@ -201,9 +201,6 @@
         <DataProperty IRI="assetpropertyvariant_stringvalue"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="attribute_topicrule_arn"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="cloudwatchalarmaction_alarmname"/>
     </Declaration>
     <Declaration>
@@ -1109,9 +1106,6 @@
         <DataProperty IRI="assetpropertyvariant_stringvalue"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
-        <DataProperty IRI="attribute_topicrule_arn"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
         <DataProperty IRI="cloudwatchalarmaction_alarmname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1348,10 +1342,6 @@
     <DataPropertyDomain>
         <DataProperty IRI="assetpropertyvariant_stringvalue"/>
         <Class IRI="assetpropertyvariant"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="attribute_topicrule_arn"/>
-        <Class IRI="topicrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cloudwatchalarmaction_alarmname"/>
@@ -1662,10 +1652,6 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
-        <DataProperty IRI="attribute_topicrule_arn"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
         <DataProperty IRI="cloudwatchalarmaction_alarmname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1945,6 +1931,671 @@
         <DataProperty IRI="topicrulepayload_sql"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action</IRI>
+        <Literal>iottopicrule:action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_cloudwatchalarm</IRI>
+        <Literal>iottopicrule:action_cloudwatchalarm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_cloudwatchmetric</IRI>
+        <Literal>iottopicrule:action_cloudwatchmetric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_dynamodb</IRI>
+        <Literal>iottopicrule:action_dynamodb</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_dynamodbv2</IRI>
+        <Literal>iottopicrule:action_dynamodbv2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_elasticsearch</IRI>
+        <Literal>iottopicrule:action_elasticsearch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_firehose</IRI>
+        <Literal>iottopicrule:action_firehose</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_http</IRI>
+        <Literal>iottopicrule:action_http</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_iotanalytics</IRI>
+        <Literal>iottopicrule:action_iotanalytics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_iotevents</IRI>
+        <Literal>iottopicrule:action_iotevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_iotsitewise</IRI>
+        <Literal>iottopicrule:action_iotsitewise</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_kinesis</IRI>
+        <Literal>iottopicrule:action_kinesis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_lambda</IRI>
+        <Literal>iottopicrule:action_lambda</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_republish</IRI>
+        <Literal>iottopicrule:action_republish</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_s3</IRI>
+        <Literal>iottopicrule:action_s3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_sns</IRI>
+        <Literal>iottopicrule:action_sns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_sqs</IRI>
+        <Literal>iottopicrule:action_sqs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_stepfunctions</IRI>
+        <Literal>iottopicrule:action_stepfunctions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertytimestamp</IRI>
+        <Literal>iottopicrule:assetpropertytimestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertytimestamp_offsetinnanos</IRI>
+        <Literal>iottopicrule:assetpropertytimestamp_offsetinnanos</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertytimestamp_timeinseconds</IRI>
+        <Literal>iottopicrule:assetpropertytimestamp_timeinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvalue</IRI>
+        <Literal>iottopicrule:assetpropertyvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvalue_quality</IRI>
+        <Literal>iottopicrule:assetpropertyvalue_quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvalue_timestamp</IRI>
+        <Literal>iottopicrule:assetpropertyvalue_timestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvalue_value</IRI>
+        <Literal>iottopicrule:assetpropertyvalue_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvariant</IRI>
+        <Literal>iottopicrule:assetpropertyvariant</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvariant_booleanvalue</IRI>
+        <Literal>iottopicrule:assetpropertyvariant_booleanvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvariant_doublevalue</IRI>
+        <Literal>iottopicrule:assetpropertyvariant_doublevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvariant_integervalue</IRI>
+        <Literal>iottopicrule:assetpropertyvariant_integervalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetpropertyvariant_stringvalue</IRI>
+        <Literal>iottopicrule:assetpropertyvariant_stringvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchalarmaction</IRI>
+        <Literal>iottopicrule:cloudwatchalarmaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchalarmaction_alarmname</IRI>
+        <Literal>iottopicrule:cloudwatchalarmaction_alarmname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchalarmaction_rolearn</IRI>
+        <Literal>iottopicrule:cloudwatchalarmaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchalarmaction_statereason</IRI>
+        <Literal>iottopicrule:cloudwatchalarmaction_statereason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchalarmaction_statevalue</IRI>
+        <Literal>iottopicrule:cloudwatchalarmaction_statevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_metricname</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_metricname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_metricnamespace</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_metricnamespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_metrictimestamp</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_metrictimestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_metricunit</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_metricunit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_metricvalue</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_metricvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchmetricaction_rolearn</IRI>
+        <Literal>iottopicrule:cloudwatchmetricaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction</IRI>
+        <Literal>iottopicrule:dynamodbaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_hashkeyfield</IRI>
+        <Literal>iottopicrule:dynamodbaction_hashkeyfield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_hashkeytype</IRI>
+        <Literal>iottopicrule:dynamodbaction_hashkeytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_hashkeyvalue</IRI>
+        <Literal>iottopicrule:dynamodbaction_hashkeyvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_payloadfield</IRI>
+        <Literal>iottopicrule:dynamodbaction_payloadfield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_rangekeyfield</IRI>
+        <Literal>iottopicrule:dynamodbaction_rangekeyfield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_rangekeytype</IRI>
+        <Literal>iottopicrule:dynamodbaction_rangekeytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_rangekeyvalue</IRI>
+        <Literal>iottopicrule:dynamodbaction_rangekeyvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_rolearn</IRI>
+        <Literal>iottopicrule:dynamodbaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbaction_tablename</IRI>
+        <Literal>iottopicrule:dynamodbaction_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbv2action</IRI>
+        <Literal>iottopicrule:dynamodbv2action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbv2action_putitem</IRI>
+        <Literal>iottopicrule:dynamodbv2action_putitem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbv2action_rolearn</IRI>
+        <Literal>iottopicrule:dynamodbv2action_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction</IRI>
+        <Literal>iottopicrule:elasticsearchaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction_endpoint</IRI>
+        <Literal>iottopicrule:elasticsearchaction_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction_id</IRI>
+        <Literal>iottopicrule:elasticsearchaction_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction_index</IRI>
+        <Literal>iottopicrule:elasticsearchaction_index</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction_rolearn</IRI>
+        <Literal>iottopicrule:elasticsearchaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchaction_type</IRI>
+        <Literal>iottopicrule:elasticsearchaction_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firehoseaction</IRI>
+        <Literal>iottopicrule:firehoseaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firehoseaction_deliverystreamname</IRI>
+        <Literal>iottopicrule:firehoseaction_deliverystreamname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firehoseaction_rolearn</IRI>
+        <Literal>iottopicrule:firehoseaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firehoseaction_separator</IRI>
+        <Literal>iottopicrule:firehoseaction_separator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpaction</IRI>
+        <Literal>iottopicrule:httpaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpaction_auth</IRI>
+        <Literal>iottopicrule:httpaction_auth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpaction_confirmationurl</IRI>
+        <Literal>iottopicrule:httpaction_confirmationurl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpaction_headers</IRI>
+        <Literal>iottopicrule:httpaction_headers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpaction_url</IRI>
+        <Literal>iottopicrule:httpaction_url</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpactionheader</IRI>
+        <Literal>iottopicrule:httpactionheader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpactionheader_key</IRI>
+        <Literal>iottopicrule:httpactionheader_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpactionheader_value</IRI>
+        <Literal>iottopicrule:httpactionheader_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpauthorization</IRI>
+        <Literal>iottopicrule:httpauthorization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpauthorization_sigv4</IRI>
+        <Literal>iottopicrule:httpauthorization_sigv4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotanalyticsaction</IRI>
+        <Literal>iottopicrule:iotanalyticsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotanalyticsaction_channelname</IRI>
+        <Literal>iottopicrule:iotanalyticsaction_channelname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotanalyticsaction_rolearn</IRI>
+        <Literal>iottopicrule:iotanalyticsaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ioteventsaction</IRI>
+        <Literal>iottopicrule:ioteventsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ioteventsaction_inputname</IRI>
+        <Literal>iottopicrule:ioteventsaction_inputname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ioteventsaction_messageid</IRI>
+        <Literal>iottopicrule:ioteventsaction_messageid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ioteventsaction_rolearn</IRI>
+        <Literal>iottopicrule:ioteventsaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotsitewiseaction</IRI>
+        <Literal>iottopicrule:iotsitewiseaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotsitewiseaction_putassetpropertyvalueentries</IRI>
+        <Literal>iottopicrule:iotsitewiseaction_putassetpropertyvalueentries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>iotsitewiseaction_rolearn</IRI>
+        <Literal>iottopicrule:iotsitewiseaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisaction</IRI>
+        <Literal>iottopicrule:kinesisaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisaction_partitionkey</IRI>
+        <Literal>iottopicrule:kinesisaction_partitionkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisaction_rolearn</IRI>
+        <Literal>iottopicrule:kinesisaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisaction_streamname</IRI>
+        <Literal>iottopicrule:kinesisaction_streamname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction</IRI>
+        <Literal>iottopicrule:lambdaaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction_functionarn</IRI>
+        <Literal>iottopicrule:lambdaaction_functionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry_assetid</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry_assetid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry_entryid</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry_entryid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry_propertyalias</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry_propertyalias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry_propertyid</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry_propertyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putassetpropertyvalueentry_propertyvalues</IRI>
+        <Literal>iottopicrule:putassetpropertyvalueentry_propertyvalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putiteminput</IRI>
+        <Literal>iottopicrule:putiteminput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>putiteminput_tablename</IRI>
+        <Literal>iottopicrule:putiteminput_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>republishaction</IRI>
+        <Literal>iottopicrule:republishaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>republishaction_qos</IRI>
+        <Literal>iottopicrule:republishaction_qos</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>republishaction_rolearn</IRI>
+        <Literal>iottopicrule:republishaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>republishaction_topic</IRI>
+        <Literal>iottopicrule:republishaction_topic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action</IRI>
+        <Literal>iottopicrule:s3action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_bucketname</IRI>
+        <Literal>iottopicrule:s3action_bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_key</IRI>
+        <Literal>iottopicrule:s3action_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_rolearn</IRI>
+        <Literal>iottopicrule:s3action_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sigv4authorization</IRI>
+        <Literal>iottopicrule:sigv4authorization</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sigv4authorization_rolearn</IRI>
+        <Literal>iottopicrule:sigv4authorization_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sigv4authorization_servicename</IRI>
+        <Literal>iottopicrule:sigv4authorization_servicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sigv4authorization_signingregion</IRI>
+        <Literal>iottopicrule:sigv4authorization_signingregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction</IRI>
+        <Literal>iottopicrule:snsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction_messageformat</IRI>
+        <Literal>iottopicrule:snsaction_messageformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction_rolearn</IRI>
+        <Literal>iottopicrule:snsaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction_targetarn</IRI>
+        <Literal>iottopicrule:snsaction_targetarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sqsaction</IRI>
+        <Literal>iottopicrule:sqsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sqsaction_queueurl</IRI>
+        <Literal>iottopicrule:sqsaction_queueurl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sqsaction_rolearn</IRI>
+        <Literal>iottopicrule:sqsaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sqsaction_usebase64</IRI>
+        <Literal>iottopicrule:sqsaction_usebase64</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepfunctionsaction</IRI>
+        <Literal>iottopicrule:stepfunctionsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepfunctionsaction_executionnameprefix</IRI>
+        <Literal>iottopicrule:stepfunctionsaction_executionnameprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepfunctionsaction_rolearn</IRI>
+        <Literal>iottopicrule:stepfunctionsaction_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepfunctionsaction_statemachinename</IRI>
+        <Literal>iottopicrule:stepfunctionsaction_statemachinename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrule</IRI>
+        <Literal>iottopicrule:topicrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrule_rulename</IRI>
+        <Literal>iottopicrule:topicrule_rulename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrule_topicrulepayload</IRI>
+        <Literal>iottopicrule:topicrule_topicrulepayload</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload</IRI>
+        <Literal>iottopicrule:topicrulepayload</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_actions</IRI>
+        <Literal>iottopicrule:topicrulepayload_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_awsiotsqlversion</IRI>
+        <Literal>iottopicrule:topicrulepayload_awsiotsqlversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_description</IRI>
+        <Literal>iottopicrule:topicrulepayload_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_erroraction</IRI>
+        <Literal>iottopicrule:topicrulepayload_erroraction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_ruledisabled</IRI>
+        <Literal>iottopicrule:topicrulepayload_ruledisabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>topicrulepayload_sql</IRI>
+        <Literal>iottopicrule:topicrulepayload_sql</Literal>
+    </AnnotationAssertion>
 </Ontology>
 
 

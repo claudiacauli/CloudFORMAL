@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iammanagedpolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iammanagedpolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamgroup#group"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="managedpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managedpolicy_groups"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managedpolicy_roles"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managedpolicy_users"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedpolicy_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedpolicy_managedpolicyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedpolicy_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="managedpolicy_policydocument"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="managedpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="managedpolicy_policydocument"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="managedpolicy_groups"/>
+        <Class IRI="managedpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="managedpolicy_roles"/>
+        <Class IRI="managedpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="managedpolicy_users"/>
+        <Class IRI="managedpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="managedpolicy_groups"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamgroup#group"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="managedpolicy_roles"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="managedpolicy_users"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamuser#user"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedpolicy_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedpolicy_managedpolicyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedpolicy_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="managedpolicy_policydocument"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedpolicy_description"/>
+        <Class IRI="managedpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedpolicy_managedpolicyname"/>
+        <Class IRI="managedpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedpolicy_path"/>
+        <Class IRI="managedpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="managedpolicy_policydocument"/>
+        <Class IRI="managedpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="managedpolicy_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedpolicy_managedpolicyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedpolicy_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="managedpolicy_policydocument"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy</IRI>
+        <Literal>iammanagedpolicy:managedpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_description</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_groups</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_groups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_managedpolicyname</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_managedpolicyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_path</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_policydocument</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_policydocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_roles</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_roles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedpolicy_users</IRI>
+        <Literal>iammanagedpolicy:managedpolicy_users</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+
