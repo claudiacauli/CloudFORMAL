@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"
-     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws"
+     xml:aws="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -18,6 +18,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto"/>
     
 
 
@@ -165,6 +171,40 @@
     
 
 
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#externalresource -->
 
     <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#externalresource">
@@ -195,6 +235,31 @@
     <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#federation -->
 
     <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#federation"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#person -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#person">
+        <owl:equivalentClass rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#unauthenticateduser"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
