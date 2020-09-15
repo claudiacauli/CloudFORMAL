@@ -32,67 +32,83 @@ import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet, 
 object BenchmarkRunner extends App
 {
 
-
-
   private var BenchmarkResults: Vector[ModelData] = Vector()
-
-
-
-  // TODO Uncomment to benchmark Resource Specifications Encoding to OWL
   val t = System.nanoTime()
+
+
+
+
+  // TODO Uncomment to benchmark *ALL* Resource Specifications Encoding to OWL
   BenchmarkSpecifications()
-  println(" Benchmark spec took " + (System.nanoTime()-t) + " ns.")
-
-  // TODO Uncomment to benchmark Templates Encoding to OWL
-  //  BenchmarkSingleEncoding("Benchmarks/16_retailmenot/")
-  // BenchmarkEncoding()
-
-
-  // TODO Uncomment to benchmark Templates OWL Classification
-  // NB: Models MUST be already encoded in folder BenchmarksOut/ !!!
-//  BenchmarkSingleClassification("BenchmarksOut/07_rubajaj/")
-//  BenchmarkSingleClassification("BenchmarksOut/04_stationeering/")
-//  BenchmarkSingleClassification("BenchmarksOut/16_retailmenot/")
-//  BenchmarkSingleClassification("BenchmarksOut/15_joshbalfour/")
-//  BenchmarkSingleClassification("BenchmarksOut/14_apiconcord/")
-//  BenchmarkSingleClassification("BenchmarksOut/13_happypeter/")
-//  BenchmarkSingleClassification("BenchmarksOut/06_velaskec/")
-//  BenchmarkSingleClassification("BenchmarksOut/10_samuelweckstrom/")
-//  BenchmarkSingleClassification("BenchmarksOut/08_sqilupinc/")
-//  BenchmarkSingleClassification("BenchmarksOut/01_sqilup/")
-//  BenchmarkSingleClassification("BenchmarksOut/02_johnBh/")
-//  BenchmarkSingleClassification("BenchmarksOut/09_tatums/")
-//  BenchmarkSingleClassification("BenchmarksOut/03_kalyanmca13/")
-//  BenchmarkSingleClassification("BenchmarksOut/12_widdix/")
-//  BenchmarkSingleClassification("BenchmarksOut/11_naveenkumarhm/")
-//  BenchmarkSingleClassification("BenchmarksOut/05_monishakrish25992/")
 
 
 
-  //  BenchmarkClassification()
 
-  // TODO Uncomment to benchmark Templates OWL Query Answering
+  // TODO Uncomment to benchmark *ALL* Templates Encoding to OWL
+  BenchmarkEncoding(FilePath.BenchmarksIn)
+
+
+
+
+  // TODO Uncomment to benchmark *ALL* Templates OWL Classification
+  // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
+  BenchmarkClassification()
+
+  // TODO Uncomment to benchmark *SINGLE* Templates OWL Classification
+  // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
+  //  BenchmarkSingleClassification("BenchmarksOut/07_rubajaj/")
+  //  BenchmarkSingleClassification("BenchmarksOut/04_stationeering/")
+  //  BenchmarkSingleClassification("BenchmarksOut/15_retailmenot/")
+  //  BenchmarkSingleClassification("BenchmarksOut/14_joshbalfour/")
+  //  BenchmarkSingleClassification("BenchmarksOut/13_apiconcord/")
+  //  BenchmarkSingleClassification("BenchmarksOut/12_happypeter/")
+  //  BenchmarkSingleClassification("BenchmarksOut/06_velaskec/")
+  //  BenchmarkSingleClassification("BenchmarksOut/10_samuelweckstrom/")
+  //  BenchmarkSingleClassification("BenchmarksOut/08_sqilupinc/")
+  //  BenchmarkSingleClassification("BenchmarksOut/01_sqilup/")
+  //  BenchmarkSingleClassification("BenchmarksOut/02_johnBh/")
+  //  BenchmarkSingleClassification("BenchmarksOut/09_tatums/")
+  //  BenchmarkSingleClassification("BenchmarksOut/03_kalyanmca13/")
+  //  BenchmarkSingleClassification("BenchmarksOut/11_widdix/")
+  //  BenchmarkSingleClassification("BenchmarksOut/05_monishakrish25992/")
+
+
+
+
+  // TODO Uncomment to benchmark *ALL* Templates OWL Query Answering
   // NB: Models MUST be already encoded in folder BenchmarksOut/
+  BenchmarkQueryAnswering()
 
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/05_monishakrish25992/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/11_naveenkumarhm/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/12_widdix/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/03_kalyanmca13/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/09_tatums/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/02_johnBh/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/01_sqilup/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/08_sqilupinc/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/10_samuelweckstrom/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/06_velaskec/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/13_happypeter/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/14_apiconcord/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/15_joshbalfour/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/16_retailmenot/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/04_stationeering/")
-//    BenchmarkSingleQueryAnswering("BenchmarksOut/07_rubajaj/")
+  // TODO Uncomment to benchmark *SINGLE* Templates OWL Query Answering
+  // NB: Models MUST be already encoded in folder BenchmarksOut/
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/07_rubajaj/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/04_stationeering/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/15_retailmenot/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/05_monishakrish25992/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/11_widdix/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/03_kalyanmca13/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/09_tatums/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/02_johnBh/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/01_sqilup/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/08_sqilupinc/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/10_samuelweckstrom/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/06_velaskec/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/12_happypeter/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/13_apiconcord/")
+  //  BenchmarkSingleQueryAnswering("BenchmarksOut/14_joshbalfour/")
 
 
-  // BenchmarkQueryAnswering()
+
+  //println(" Benchmark took " + (System.nanoTime()-t)/Math.pow(10,6) + " ms.")
+
+
+
+  // Prints Latex Table's Rows from the .csv file to the console
+  LatexTablePrinter.print()
+
+
+
+
 
 
 
@@ -168,10 +184,9 @@ object BenchmarkRunner extends App
       BenchmarkUtils.warmUp(Interface.compileAndSaveSpecification(FilePath.ResourceSpecs, printEnabled = false)))
 
 
-
-  private def BenchmarkEncoding()
+  private def BenchmarkEncoding(filePath: String)
   : Vector[(String, OWLOntology, OWLDataFactory, OWLOntologyManager)] =
-    Interface.modelAndSaveAllTemplates(FilePath.BenchmarksIn, FilePath.BenchmarksOut, createAndBenchmarkInfrastructure)
+    Interface.modelAndSaveAllTemplates(filePath, FilePath.BenchmarksOut, createAndBenchmarkInfrastructure)
 
 
   private def BenchmarkSingleClassification(inPath: String): Unit =
@@ -238,12 +253,12 @@ object BenchmarkRunner extends App
                 if (pc.pE.hasRequiredResourceTypes(pc.pE.o, pr._2))
                 {
                   pc.runEach(pr._2, printEnabled = false)(runAndBenchmarkQuery(qd, pc.r))(pc.r.isSat)
-                  println(f"\t${pr._2.id}\t\t\t\t\t${qd.compoundQueryTime/Math.pow(10, 6)}%.2f ms \t  ${pc.pE.makeQuery(pr._2)}")
+                  //println(f"\t${pr._2.id}\t\t\t\t\t${qd.compoundQueryTime/Math.pow(10, 6)}%.2f ms \t  ${pc.pE.makeQuery(pr._2)}")
                   Vector(qd)
                 }
                 else
                 {
-                  println("\t" + pr._2.id + "\t\t" + " N/A")
+                  //println("\t" + pr._2.id + "\t\t" + " N/A")
                   Vector()
                 }
               })
@@ -335,6 +350,8 @@ object BenchmarkRunner extends App
       new ModelData(infrastrName,i.getResourcesCount,i.getResourceTypesCount,
         im.ontology.getLogicalAxiomCount(Imports.INCLUDED),p._1))
 
+    //println("The Infrastructure is : " + infrastrName )
+
     updateCSVwInfrastructureData(infrastrName.split("_").head,i,p._1,im)
 
     (im.name, im.ontology, im.df, im.manager)
@@ -364,7 +381,8 @@ object BenchmarkRunner extends App
 
 
   private def updateCSVLineWithFunction(id: String, fun: Array[String] => Unit) : Unit = {
-    val bs = io.Source.fromFile(new File(CSV.FilePath))
+    val csvFile = getCsvFile()
+    val bs = io.Source.fromFile(csvFile)
     var newStr = ""
     for (line <- bs.getLines()){
       if (line.nonEmpty){
@@ -407,10 +425,25 @@ object BenchmarkRunner extends App
 
   private def overwriteCsvWithString(s: String): Unit =
   {
-    val pw = new PrintWriter(new File(CSV.FilePath))
+    val csvFile = getCsvFile()
+    val pw = new PrintWriter(csvFile)
     pw.write(s)
     pw.close()
   }
+
+
+  private def getCsvFile(): File =
+    if (!new File(CSV.FilePath).exists())
+    {
+      val f = new File(CSV.FilePath)
+      val pw = new PrintWriter(f)
+      pw.write(BenchmarkResults.foldLeft("")( (a,md) =>
+        a + "\n" + md.infrastrName.split("_")(0)) + ",-,-,-,-,-,-,-,-")
+      pw.close()
+      f
+    }
+    else
+      new File(CSV.FilePath)
 
 
 }

@@ -16,14 +16,15 @@
 
 package com.cloud.formal
 
+
 package object benchmarking
 {
 
   private[benchmarking]
   object Runs
   {
-    val WN = 10
-    val N  = 1
+    val WN = 100
+    val N  = 50
   }
 
   private[benchmarking]

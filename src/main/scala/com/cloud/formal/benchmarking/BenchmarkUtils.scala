@@ -32,12 +32,12 @@ private object BenchmarkUtils
       if (i!=Runs.N && i%50==0){
         System.gc()
         System.runFinalization()
-        //if (i%50==0) println("\tMeasured Iteration n " + i)
+        if (i%50==0) println("\tMeasured Iteration n " + i)
       }
       timeFun
     })
     val meanTime = res.foldLeft(0L)((a,e) => a + e._1)/res.size
-    //println(s"\tMean Time: $meanTime")
+    println(s"\tMean Time: $meanTime")
     (meanTime,res.last._2)
   }
 
@@ -86,7 +86,9 @@ private object BenchmarkUtils
   {
     val t0 = System.nanoTime()
     val res = fun
-    (System.nanoTime-t0,res)
+    val t = System.nanoTime-t0
+    println(t)
+    (t,res)
   }
 
 
@@ -96,7 +98,7 @@ private object BenchmarkUtils
       if (i != Runs.N && i%50==0){
         System.gc()
         System.runFinalization()
-        //println("\tWarmup Iteration n " + i)
+        println("\tWarmup Iteration n " + i)
       }
       time(fun)
     })
