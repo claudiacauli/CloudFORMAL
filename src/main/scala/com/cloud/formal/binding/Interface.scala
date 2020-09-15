@@ -244,7 +244,13 @@ object Interface extends LazyLogging{
     parentDir.listFiles().filter(_.isDirectory)
       .foreach(_.listFiles()
         .filter(f => f.getName.endsWith(Extension.Owl) && !f.getName.endsWith(ModelFileSuffix.StackSet))
-        .foreach( f => m.loadOntologyFromOntologyDocument(f)))
+        .foreach(f => {
+          try {
+            m.loadOntologyFromOntologyDocument(f)
+          } catch {
+            case _: OWLOntologyAlreadyExistsException =>
+          }
+        }))
   }
 
 
