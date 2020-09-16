@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ekscluster#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ekscluster#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cluster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryptionconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcesvpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_certificateauthoritydata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_endpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionconfig_resources"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provider_keyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcesvpcconfig_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcesvpcconfig_subnetids"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcesvpcconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcesvpcconfig_subnetids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+        <Class IRI="encryptionconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_encryptionconfig"/>
+        <Class IRI="encryptionconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
+        <Class IRI="resourcesvpcconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="encryptionconfig_provider"/>
+        <Class IRI="provider"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_certificateauthoritydata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_endpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provider_keyarn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_arn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_certificateauthoritydata"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_endpoint"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_name"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_rolearn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_version"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionconfig_resources"/>
+        <Class IRI="encryptionconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provider_keyarn"/>
+        <Class IRI="provider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcesvpcconfig_securitygroupids"/>
+        <Class IRI="resourcesvpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcesvpcconfig_subnetids"/>
+        <Class IRI="resourcesvpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_certificateauthoritydata"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_clustersecuritygroupid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_encryptionconfigkeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_endpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionconfig_resources"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provider_keyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcesvpcconfig_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcesvpcconfig_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_arn</IRI>
+        <Literal>ekscluster:attribute_cluster_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_certificateauthoritydata</IRI>
+        <Literal>ekscluster:attribute_cluster_certificateauthoritydata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_clustersecuritygroupid</IRI>
+        <Literal>ekscluster:attribute_cluster_clustersecuritygroupid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_encryptionconfigkeyarn</IRI>
+        <Literal>ekscluster:attribute_cluster_encryptionconfigkeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_endpoint</IRI>
+        <Literal>ekscluster:attribute_cluster_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster</IRI>
+        <Literal>ekscluster:cluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_encryptionconfig</IRI>
+        <Literal>ekscluster:cluster_encryptionconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_name</IRI>
+        <Literal>ekscluster:cluster_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_resourcesvpcconfig</IRI>
+        <Literal>ekscluster:cluster_resourcesvpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_rolearn</IRI>
+        <Literal>ekscluster:cluster_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_version</IRI>
+        <Literal>ekscluster:cluster_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfig</IRI>
+        <Literal>ekscluster:encryptionconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfig_provider</IRI>
+        <Literal>ekscluster:encryptionconfig_provider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfig_resources</IRI>
+        <Literal>ekscluster:encryptionconfig_resources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provider</IRI>
+        <Literal>ekscluster:provider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provider_keyarn</IRI>
+        <Literal>ekscluster:provider_keyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcesvpcconfig</IRI>
+        <Literal>ekscluster:resourcesvpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcesvpcconfig_securitygroupids</IRI>
+        <Literal>ekscluster:resourcesvpcconfig_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcesvpcconfig_subnetids</IRI>
+        <Literal>ekscluster:resourcesvpcconfig_subnetids</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

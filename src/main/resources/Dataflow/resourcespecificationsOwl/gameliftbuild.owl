@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftbuild#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftbuild#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="build"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="build_storagelocation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="build_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="build_operatingsystem"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="build_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_objectversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_rolearn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_bucket"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="build_storagelocation"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="build_storagelocation"/>
+        <Class IRI="build"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="build_storagelocation"/>
+        <Class IRI="s3location"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="build_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="build_operatingsystem"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="build_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_objectversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_rolearn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="build_name"/>
+        <Class IRI="build"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="build_operatingsystem"/>
+        <Class IRI="build"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="build_version"/>
+        <Class IRI="build"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_bucket"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_key"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_objectversion"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_rolearn"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="build_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="build_operatingsystem"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="build_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_objectversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>build</IRI>
+        <Literal>gameliftbuild:build</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>build_name</IRI>
+        <Literal>gameliftbuild:build_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>build_operatingsystem</IRI>
+        <Literal>gameliftbuild:build_operatingsystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>build_storagelocation</IRI>
+        <Literal>gameliftbuild:build_storagelocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>build_version</IRI>
+        <Literal>gameliftbuild:build_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location</IRI>
+        <Literal>gameliftbuild:s3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_bucket</IRI>
+        <Literal>gameliftbuild:s3location_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_key</IRI>
+        <Literal>gameliftbuild:s3location_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_objectversion</IRI>
+        <Literal>gameliftbuild:s3location_objectversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_rolearn</IRI>
+        <Literal>gameliftbuild:s3location_rolearn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,929 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/amazonmqbroker#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/amazonmqbroker#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="broker"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="configurationid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryptionoptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loglist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="maintenancewindow"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tagsentry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="user"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_configuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_encryptionoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_logs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_maintenancewindowstarttime"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="broker_users"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_amqpendpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_configurationid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_configurationrevision"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_ipaddresses"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_mqttendpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_openwireendpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_stompendpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_broker_wssendpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_autominorversionupgrade"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_brokername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_deploymentmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_enginetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_engineversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_hostinstancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_publiclyaccessible"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_securitygroups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_storagetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_subnetids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationid_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationid_revision"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionoptions_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loglist_audit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loglist_general"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="maintenancewindow_dayofweek"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="maintenancewindow_timeofday"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="maintenancewindow_timezone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagsentry_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagsentry_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="user_consoleaccess"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="user_groups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="user_password"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="user_username"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="broker_users"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_autominorversionupgrade"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_brokername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_deploymentmode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_enginetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_engineversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_hostinstancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="broker"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="broker_publiclyaccessible"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="configurationid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationid_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="configurationid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationid_revision"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryptionoptions"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maintenancewindow"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="maintenancewindow_dayofweek"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maintenancewindow"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="maintenancewindow_timeofday"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="maintenancewindow"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="maintenancewindow_timezone"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tagsentry"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tagsentry_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tagsentry"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tagsentry_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="user"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="user_password"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="user"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="user_username"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="broker_configuration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="broker_encryptionoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="broker_logs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="broker_maintenancewindowstarttime"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_configuration"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_encryptionoptions"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_logs"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_maintenancewindowstarttime"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_tags"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_users"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_configuration"/>
+        <Class IRI="configurationid"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_encryptionoptions"/>
+        <Class IRI="encryptionoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_logs"/>
+        <Class IRI="loglist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_maintenancewindowstarttime"/>
+        <Class IRI="maintenancewindow"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_tags"/>
+        <Class IRI="tagsentry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_users"/>
+        <Class IRI="user"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_broker_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_broker_configurationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_broker_configurationrevision"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_autominorversionupgrade"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_brokername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_deploymentmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_enginetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_engineversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_hostinstancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_publiclyaccessible"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_storagetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationid_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationid_revision"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionoptions_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loglist_audit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loglist_general"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="maintenancewindow_dayofweek"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="maintenancewindow_timeofday"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="maintenancewindow_timezone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagsentry_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagsentry_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="user_consoleaccess"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="user_password"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="user_username"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_amqpendpoints"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_arn"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_configurationid"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_configurationrevision"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_ipaddresses"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_mqttendpoints"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_openwireendpoints"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_stompendpoints"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_broker_wssendpoints"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_autominorversionupgrade"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_brokername"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_deploymentmode"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_enginetype"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_engineversion"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_hostinstancetype"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_publiclyaccessible"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_securitygroups"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_storagetype"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_subnetids"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationid_id"/>
+        <Class IRI="configurationid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationid_revision"/>
+        <Class IRI="configurationid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionoptions_kmskeyid"/>
+        <Class IRI="encryptionoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+        <Class IRI="encryptionoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loglist_audit"/>
+        <Class IRI="loglist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loglist_general"/>
+        <Class IRI="loglist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="maintenancewindow_dayofweek"/>
+        <Class IRI="maintenancewindow"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="maintenancewindow_timeofday"/>
+        <Class IRI="maintenancewindow"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="maintenancewindow_timezone"/>
+        <Class IRI="maintenancewindow"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagsentry_key"/>
+        <Class IRI="tagsentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagsentry_value"/>
+        <Class IRI="tagsentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="user_consoleaccess"/>
+        <Class IRI="user"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="user_groups"/>
+        <Class IRI="user"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="user_password"/>
+        <Class IRI="user"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="user_username"/>
+        <Class IRI="user"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_amqpendpoints"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_configurationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_configurationrevision"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_ipaddresses"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_mqttendpoints"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_openwireendpoints"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_stompendpoints"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_broker_wssendpoints"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_autominorversionupgrade"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_brokername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_deploymentmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_enginetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_engineversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_hostinstancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_publiclyaccessible"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_securitygroups"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_storagetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationid_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationid_revision"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionoptions_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loglist_audit"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loglist_general"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="maintenancewindow_dayofweek"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="maintenancewindow_timeofday"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="maintenancewindow_timezone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagsentry_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagsentry_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="user_consoleaccess"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="user_groups"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="user_password"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="user_username"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_amqpendpoints</IRI>
+        <Literal>amazonmqbroker:attribute_broker_amqpendpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_arn</IRI>
+        <Literal>amazonmqbroker:attribute_broker_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_configurationid</IRI>
+        <Literal>amazonmqbroker:attribute_broker_configurationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_configurationrevision</IRI>
+        <Literal>amazonmqbroker:attribute_broker_configurationrevision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_ipaddresses</IRI>
+        <Literal>amazonmqbroker:attribute_broker_ipaddresses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_mqttendpoints</IRI>
+        <Literal>amazonmqbroker:attribute_broker_mqttendpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_openwireendpoints</IRI>
+        <Literal>amazonmqbroker:attribute_broker_openwireendpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_stompendpoints</IRI>
+        <Literal>amazonmqbroker:attribute_broker_stompendpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_broker_wssendpoints</IRI>
+        <Literal>amazonmqbroker:attribute_broker_wssendpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker</IRI>
+        <Literal>amazonmqbroker:broker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_autominorversionupgrade</IRI>
+        <Literal>amazonmqbroker:broker_autominorversionupgrade</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_brokername</IRI>
+        <Literal>amazonmqbroker:broker_brokername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_configuration</IRI>
+        <Literal>amazonmqbroker:broker_configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_deploymentmode</IRI>
+        <Literal>amazonmqbroker:broker_deploymentmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_encryptionoptions</IRI>
+        <Literal>amazonmqbroker:broker_encryptionoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_enginetype</IRI>
+        <Literal>amazonmqbroker:broker_enginetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_engineversion</IRI>
+        <Literal>amazonmqbroker:broker_engineversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_hostinstancetype</IRI>
+        <Literal>amazonmqbroker:broker_hostinstancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_logs</IRI>
+        <Literal>amazonmqbroker:broker_logs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_maintenancewindowstarttime</IRI>
+        <Literal>amazonmqbroker:broker_maintenancewindowstarttime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_publiclyaccessible</IRI>
+        <Literal>amazonmqbroker:broker_publiclyaccessible</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_securitygroups</IRI>
+        <Literal>amazonmqbroker:broker_securitygroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_storagetype</IRI>
+        <Literal>amazonmqbroker:broker_storagetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_subnetids</IRI>
+        <Literal>amazonmqbroker:broker_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_tags</IRI>
+        <Literal>amazonmqbroker:broker_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_users</IRI>
+        <Literal>amazonmqbroker:broker_users</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationid</IRI>
+        <Literal>amazonmqbroker:configurationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationid_id</IRI>
+        <Literal>amazonmqbroker:configurationid_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationid_revision</IRI>
+        <Literal>amazonmqbroker:configurationid_revision</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionoptions</IRI>
+        <Literal>amazonmqbroker:encryptionoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionoptions_kmskeyid</IRI>
+        <Literal>amazonmqbroker:encryptionoptions_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionoptions_useawsownedkey</IRI>
+        <Literal>amazonmqbroker:encryptionoptions_useawsownedkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loglist</IRI>
+        <Literal>amazonmqbroker:loglist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loglist_audit</IRI>
+        <Literal>amazonmqbroker:loglist_audit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loglist_general</IRI>
+        <Literal>amazonmqbroker:loglist_general</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>maintenancewindow</IRI>
+        <Literal>amazonmqbroker:maintenancewindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>maintenancewindow_dayofweek</IRI>
+        <Literal>amazonmqbroker:maintenancewindow_dayofweek</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>maintenancewindow_timeofday</IRI>
+        <Literal>amazonmqbroker:maintenancewindow_timeofday</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>maintenancewindow_timezone</IRI>
+        <Literal>amazonmqbroker:maintenancewindow_timezone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry</IRI>
+        <Literal>amazonmqbroker:tagsentry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry_key</IRI>
+        <Literal>amazonmqbroker:tagsentry_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry_value</IRI>
+        <Literal>amazonmqbroker:tagsentry_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user</IRI>
+        <Literal>amazonmqbroker:user</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_consoleaccess</IRI>
+        <Literal>amazonmqbroker:user_consoleaccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_groups</IRI>
+        <Literal>amazonmqbroker:user_groups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_password</IRI>
+        <Literal>amazonmqbroker:user_password</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_username</IRI>
+        <Literal>amazonmqbroker:user_username</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

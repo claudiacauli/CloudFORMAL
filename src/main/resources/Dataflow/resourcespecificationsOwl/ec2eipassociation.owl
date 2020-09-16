@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2eipassociation#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2eipassociation#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="eipassociation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eipassociation_eip"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eipassociation_instanceid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eipassociation_networkinterfaceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eipassociation_allocationid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eipassociation_privateipaddress"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2networkinterface#networkinterface"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2instance#instance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2eip#eip"/>
+    </Declaration>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eipassociation_eip"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eipassociation_instanceid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eipassociation_networkinterfaceid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eipassociation_eip"/>
+        <Class IRI="eipassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eipassociation_instanceid"/>
+        <Class IRI="eipassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eipassociation_networkinterfaceid"/>
+        <Class IRI="eipassociation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eipassociation_eip"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2eip#eip"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eipassociation_instanceid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2instance#instance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eipassociation_networkinterfaceid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2networkinterface#networkinterface"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eipassociation_allocationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eipassociation_privateipaddress"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="eipassociation_allocationid"/>
+        <Class IRI="eipassociation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eipassociation_privateipaddress"/>
+        <Class IRI="eipassociation"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="eipassociation_allocationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eipassociation_privateipaddress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation</IRI>
+        <Literal>ec2eipassociation:eipassociation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation_allocationid</IRI>
+        <Literal>ec2eipassociation:eipassociation_allocationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation_eip</IRI>
+        <Literal>ec2eipassociation:eipassociation_eip</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation_instanceid</IRI>
+        <Literal>ec2eipassociation:eipassociation_instanceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation_networkinterfaceid</IRI>
+        <Literal>ec2eipassociation:eipassociation_networkinterfaceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eipassociation_privateipaddress</IRI>
+        <Literal>ec2eipassociation:eipassociation_privateipaddress</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

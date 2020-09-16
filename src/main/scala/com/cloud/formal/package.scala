@@ -63,6 +63,7 @@ package object formal
   private[formal]
   object FilePath
   {
+    val ProjectResources = "src/main/resources/"
     val ResourceSpecs = "src/main/resources/CloudFormationResourceSpecification/"
     val ResourceTerms = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology   = "src/main/resources/terminology/aws.owl"
@@ -72,6 +73,12 @@ package object formal
     val ResourceTerminology: (String,String) => String
     = (service,resource) =>
       ResourceTerms + service + resource + Extension.Owl
+  }
+
+  private[formal]
+  object Renaming
+  {
+    val Delimiter = "_"
   }
 
 

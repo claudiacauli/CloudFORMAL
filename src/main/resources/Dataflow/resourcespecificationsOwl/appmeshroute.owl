@@ -1,0 +1,1628 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshroute#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshroute#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="duration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcretrypolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcroute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcrouteaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcroutematch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcroutemetadata"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="headermatchmethod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpretrypolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httproute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httprouteaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httprouteheader"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httproutematch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="matchrange"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="route"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="routespec"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tcproute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tcprouteaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="weightedtarget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroute_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroute_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroute_retrypolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroutematch_metadata"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroutemetadata_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="headermatchmethod_range"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpretrypolicy_perretrytimeout"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httproute_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httproute_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httproute_retrypolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httprouteaction_weightedtargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httprouteheader_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httproutematch_headers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="route_spec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="route_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="routespec_grpcroute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="routespec_http2route"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="routespec_httproute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="routespec_tcproute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tcproute_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_resourceowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_routename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_uid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_route_virtualroutername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="duration_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="duration_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcretrypolicy_grpcretryevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcretrypolicy_httpretryevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcretrypolicy_maxretries"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcretrypolicy_tcpretryevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutematch_methodname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutematch_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadata_invert"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadata_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_exact"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_regex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_suffix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headermatchmethod_exact"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headermatchmethod_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headermatchmethod_regex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headermatchmethod_suffix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpretrypolicy_httpretryevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpretrypolicy_maxretries"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpretrypolicy_tcpretryevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httprouteheader_invert"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httprouteheader_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httproutematch_method"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httproutematch_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httproutematch_scheme"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="matchrange_end"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="matchrange_start"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="route_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="route_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="route_routename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="route_virtualroutername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routespec_priority"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="weightedtarget_virtualnode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="weightedtarget_weight"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="duration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="duration_unit"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="duration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="duration_value"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcretrypolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcretrypolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="grpcretrypolicy_maxretries"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcroute_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcroute_match"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcrouteaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcroutemetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="grpcroutemetadata_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpretrypolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpretrypolicy_perretrytimeout"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpretrypolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpretrypolicy_maxretries"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httproute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httproute_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httproute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httproute_match"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httprouteaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httprouteaction_weightedtargets"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httprouteheader"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httprouteheader_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httproutematch"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httproutematch_prefix"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="matchrange"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="matchrange_end"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="matchrange"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="matchrange_start"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="route"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="route_spec"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="route"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="route_meshname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="route"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="route_routename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="route"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="route_virtualroutername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tcproute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="tcproute_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tcprouteaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="weightedtarget"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="weightedtarget_virtualnode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="weightedtarget"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="weightedtarget_weight"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroute_action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroute_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroute_retrypolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroutemetadata_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="headermatchmethod_range"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpretrypolicy_perretrytimeout"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httproute_action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httproute_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httproute_retrypolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httprouteheader_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="route_spec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="routespec_grpcroute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="routespec_http2route"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="routespec_httproute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="routespec_tcproute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tcproute_action"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
+        <Class IRI="grpcretrypolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroute_action"/>
+        <Class IRI="grpcroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroute_match"/>
+        <Class IRI="grpcroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroute_retrypolicy"/>
+        <Class IRI="grpcroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
+        <Class IRI="grpcrouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroutematch_metadata"/>
+        <Class IRI="grpcroutematch"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroutemetadata_match"/>
+        <Class IRI="grpcroutemetadata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="headermatchmethod_range"/>
+        <Class IRI="headermatchmethod"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpretrypolicy_perretrytimeout"/>
+        <Class IRI="httpretrypolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httproute_action"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httproute_match"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httproute_retrypolicy"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httprouteaction_weightedtargets"/>
+        <Class IRI="httprouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httprouteheader_match"/>
+        <Class IRI="httprouteheader"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httproutematch_headers"/>
+        <Class IRI="httproutematch"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="route_spec"/>
+        <Class IRI="route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="route_tags"/>
+        <Class IRI="route"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="routespec_grpcroute"/>
+        <Class IRI="routespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="routespec_http2route"/>
+        <Class IRI="routespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="routespec_httproute"/>
+        <Class IRI="routespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="routespec_tcproute"/>
+        <Class IRI="routespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tcproute_action"/>
+        <Class IRI="tcproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
+        <Class IRI="tcprouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
+        <Class IRI="duration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroute_action"/>
+        <Class IRI="grpcrouteaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroute_match"/>
+        <Class IRI="grpcroutematch"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroute_retrypolicy"/>
+        <Class IRI="grpcretrypolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
+        <Class IRI="weightedtarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroutematch_metadata"/>
+        <Class IRI="grpcroutemetadata"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroutemetadata_match"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+        <Class IRI="matchrange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="headermatchmethod_range"/>
+        <Class IRI="matchrange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpretrypolicy_perretrytimeout"/>
+        <Class IRI="duration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httproute_action"/>
+        <Class IRI="httprouteaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httproute_match"/>
+        <Class IRI="httproutematch"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httproute_retrypolicy"/>
+        <Class IRI="httpretrypolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httprouteaction_weightedtargets"/>
+        <Class IRI="weightedtarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httprouteheader_match"/>
+        <Class IRI="headermatchmethod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httproutematch_headers"/>
+        <Class IRI="httprouteheader"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="route_spec"/>
+        <Class IRI="routespec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="route_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="routespec_grpcroute"/>
+        <Class IRI="grpcroute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="routespec_http2route"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="routespec_httproute"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="routespec_tcproute"/>
+        <Class IRI="tcproute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tcproute_action"/>
+        <Class IRI="tcprouteaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
+        <Class IRI="weightedtarget"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_resourceowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_routename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_uid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_route_virtualroutername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="duration_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="duration_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcretrypolicy_maxretries"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutematch_methodname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutematch_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadata_invert"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadata_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_exact"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_regex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_suffix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headermatchmethod_exact"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headermatchmethod_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headermatchmethod_regex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headermatchmethod_suffix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpretrypolicy_maxretries"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httprouteheader_invert"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httprouteheader_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httproutematch_method"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httproutematch_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httproutematch_scheme"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="matchrange_end"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="matchrange_start"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="route_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="route_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="route_routename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="route_virtualroutername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routespec_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="weightedtarget_virtualnode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="weightedtarget_weight"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_arn"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_meshname"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_meshowner"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_resourceowner"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_routename"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_uid"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_route_virtualroutername"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="duration_unit"/>
+        <Class IRI="duration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="duration_value"/>
+        <Class IRI="duration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcretrypolicy_grpcretryevents"/>
+        <Class IRI="grpcretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcretrypolicy_httpretryevents"/>
+        <Class IRI="grpcretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcretrypolicy_maxretries"/>
+        <Class IRI="grpcretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcretrypolicy_tcpretryevents"/>
+        <Class IRI="grpcretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutematch_methodname"/>
+        <Class IRI="grpcroutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutematch_servicename"/>
+        <Class IRI="grpcroutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadata_invert"/>
+        <Class IRI="grpcroutemetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadata_name"/>
+        <Class IRI="grpcroutemetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_exact"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_prefix"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_regex"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_suffix"/>
+        <Class IRI="grpcroutemetadatamatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headermatchmethod_exact"/>
+        <Class IRI="headermatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headermatchmethod_prefix"/>
+        <Class IRI="headermatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headermatchmethod_regex"/>
+        <Class IRI="headermatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headermatchmethod_suffix"/>
+        <Class IRI="headermatchmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpretrypolicy_httpretryevents"/>
+        <Class IRI="httpretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpretrypolicy_maxretries"/>
+        <Class IRI="httpretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpretrypolicy_tcpretryevents"/>
+        <Class IRI="httpretrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httprouteheader_invert"/>
+        <Class IRI="httprouteheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httprouteheader_name"/>
+        <Class IRI="httprouteheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httproutematch_method"/>
+        <Class IRI="httproutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httproutematch_prefix"/>
+        <Class IRI="httproutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httproutematch_scheme"/>
+        <Class IRI="httproutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="matchrange_end"/>
+        <Class IRI="matchrange"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="matchrange_start"/>
+        <Class IRI="matchrange"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_meshname"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_meshowner"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_routename"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_virtualroutername"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routespec_priority"/>
+        <Class IRI="routespec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="weightedtarget_virtualnode"/>
+        <Class IRI="weightedtarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="weightedtarget_weight"/>
+        <Class IRI="weightedtarget"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_resourceowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_routename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_uid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_route_virtualroutername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="duration_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="duration_value"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcretrypolicy_grpcretryevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcretrypolicy_httpretryevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcretrypolicy_maxretries"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcretrypolicy_tcpretryevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutematch_methodname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutematch_servicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadata_invert"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadata_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_exact"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_regex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcroutemetadatamatchmethod_suffix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headermatchmethod_exact"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headermatchmethod_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headermatchmethod_regex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headermatchmethod_suffix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpretrypolicy_httpretryevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpretrypolicy_maxretries"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpretrypolicy_tcpretryevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httprouteheader_invert"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httprouteheader_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httproutematch_method"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httproutematch_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httproutematch_scheme"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="matchrange_end"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="matchrange_start"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="route_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="route_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="route_routename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="route_virtualroutername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routespec_priority"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="weightedtarget_virtualnode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="weightedtarget_weight"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_arn</IRI>
+        <Literal>appmeshroute:attribute_route_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_meshname</IRI>
+        <Literal>appmeshroute:attribute_route_meshname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_meshowner</IRI>
+        <Literal>appmeshroute:attribute_route_meshowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_resourceowner</IRI>
+        <Literal>appmeshroute:attribute_route_resourceowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_routename</IRI>
+        <Literal>appmeshroute:attribute_route_routename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_uid</IRI>
+        <Literal>appmeshroute:attribute_route_uid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_route_virtualroutername</IRI>
+        <Literal>appmeshroute:attribute_route_virtualroutername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>duration</IRI>
+        <Literal>appmeshroute:duration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>duration_unit</IRI>
+        <Literal>appmeshroute:duration_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>duration_value</IRI>
+        <Literal>appmeshroute:duration_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy</IRI>
+        <Literal>appmeshroute:grpcretrypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy_grpcretryevents</IRI>
+        <Literal>appmeshroute:grpcretrypolicy_grpcretryevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy_httpretryevents</IRI>
+        <Literal>appmeshroute:grpcretrypolicy_httpretryevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy_maxretries</IRI>
+        <Literal>appmeshroute:grpcretrypolicy_maxretries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy_perretrytimeout</IRI>
+        <Literal>appmeshroute:grpcretrypolicy_perretrytimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcretrypolicy_tcpretryevents</IRI>
+        <Literal>appmeshroute:grpcretrypolicy_tcpretryevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroute</IRI>
+        <Literal>appmeshroute:grpcroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroute_action</IRI>
+        <Literal>appmeshroute:grpcroute_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroute_match</IRI>
+        <Literal>appmeshroute:grpcroute_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroute_retrypolicy</IRI>
+        <Literal>appmeshroute:grpcroute_retrypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcrouteaction</IRI>
+        <Literal>appmeshroute:grpcrouteaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcrouteaction_weightedtargets</IRI>
+        <Literal>appmeshroute:grpcrouteaction_weightedtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutematch</IRI>
+        <Literal>appmeshroute:grpcroutematch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutematch_metadata</IRI>
+        <Literal>appmeshroute:grpcroutematch_metadata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutematch_methodname</IRI>
+        <Literal>appmeshroute:grpcroutematch_methodname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutematch_servicename</IRI>
+        <Literal>appmeshroute:grpcroutematch_servicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadata</IRI>
+        <Literal>appmeshroute:grpcroutemetadata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadata_invert</IRI>
+        <Literal>appmeshroute:grpcroutemetadata_invert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadata_match</IRI>
+        <Literal>appmeshroute:grpcroutemetadata_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadata_name</IRI>
+        <Literal>appmeshroute:grpcroutemetadata_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod_exact</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod_exact</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod_prefix</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod_range</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod_range</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod_regex</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod_regex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroutemetadatamatchmethod_suffix</IRI>
+        <Literal>appmeshroute:grpcroutemetadatamatchmethod_suffix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod</IRI>
+        <Literal>appmeshroute:headermatchmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod_exact</IRI>
+        <Literal>appmeshroute:headermatchmethod_exact</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod_prefix</IRI>
+        <Literal>appmeshroute:headermatchmethod_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod_range</IRI>
+        <Literal>appmeshroute:headermatchmethod_range</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod_regex</IRI>
+        <Literal>appmeshroute:headermatchmethod_regex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headermatchmethod_suffix</IRI>
+        <Literal>appmeshroute:headermatchmethod_suffix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpretrypolicy</IRI>
+        <Literal>appmeshroute:httpretrypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpretrypolicy_httpretryevents</IRI>
+        <Literal>appmeshroute:httpretrypolicy_httpretryevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpretrypolicy_maxretries</IRI>
+        <Literal>appmeshroute:httpretrypolicy_maxretries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpretrypolicy_perretrytimeout</IRI>
+        <Literal>appmeshroute:httpretrypolicy_perretrytimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpretrypolicy_tcpretryevents</IRI>
+        <Literal>appmeshroute:httpretrypolicy_tcpretryevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproute</IRI>
+        <Literal>appmeshroute:httproute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproute_action</IRI>
+        <Literal>appmeshroute:httproute_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproute_match</IRI>
+        <Literal>appmeshroute:httproute_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproute_retrypolicy</IRI>
+        <Literal>appmeshroute:httproute_retrypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteaction</IRI>
+        <Literal>appmeshroute:httprouteaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteaction_weightedtargets</IRI>
+        <Literal>appmeshroute:httprouteaction_weightedtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteheader</IRI>
+        <Literal>appmeshroute:httprouteheader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteheader_invert</IRI>
+        <Literal>appmeshroute:httprouteheader_invert</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteheader_match</IRI>
+        <Literal>appmeshroute:httprouteheader_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httprouteheader_name</IRI>
+        <Literal>appmeshroute:httprouteheader_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproutematch</IRI>
+        <Literal>appmeshroute:httproutematch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproutematch_headers</IRI>
+        <Literal>appmeshroute:httproutematch_headers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproutematch_method</IRI>
+        <Literal>appmeshroute:httproutematch_method</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproutematch_prefix</IRI>
+        <Literal>appmeshroute:httproutematch_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproutematch_scheme</IRI>
+        <Literal>appmeshroute:httproutematch_scheme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchrange</IRI>
+        <Literal>appmeshroute:matchrange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchrange_end</IRI>
+        <Literal>appmeshroute:matchrange_end</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchrange_start</IRI>
+        <Literal>appmeshroute:matchrange_start</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route</IRI>
+        <Literal>appmeshroute:route</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_meshname</IRI>
+        <Literal>appmeshroute:route_meshname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_meshowner</IRI>
+        <Literal>appmeshroute:route_meshowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_routename</IRI>
+        <Literal>appmeshroute:route_routename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_spec</IRI>
+        <Literal>appmeshroute:route_spec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_tags</IRI>
+        <Literal>appmeshroute:route_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_virtualroutername</IRI>
+        <Literal>appmeshroute:route_virtualroutername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec</IRI>
+        <Literal>appmeshroute:routespec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec_grpcroute</IRI>
+        <Literal>appmeshroute:routespec_grpcroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec_http2route</IRI>
+        <Literal>appmeshroute:routespec_http2route</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec_httproute</IRI>
+        <Literal>appmeshroute:routespec_httproute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec_priority</IRI>
+        <Literal>appmeshroute:routespec_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routespec_tcproute</IRI>
+        <Literal>appmeshroute:routespec_tcproute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>appmeshroute:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>appmeshroute:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>appmeshroute:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcproute</IRI>
+        <Literal>appmeshroute:tcproute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcproute_action</IRI>
+        <Literal>appmeshroute:tcproute_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcprouteaction</IRI>
+        <Literal>appmeshroute:tcprouteaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcprouteaction_weightedtargets</IRI>
+        <Literal>appmeshroute:tcprouteaction_weightedtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>weightedtarget</IRI>
+        <Literal>appmeshroute:weightedtarget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>weightedtarget_virtualnode</IRI>
+        <Literal>appmeshroute:weightedtarget_virtualnode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>weightedtarget_weight</IRI>
+        <Literal>appmeshroute:weightedtarget_weight</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

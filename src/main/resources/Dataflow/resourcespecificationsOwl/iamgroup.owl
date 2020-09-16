@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamgroup#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamgroup#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="group"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="policy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="group_managedpolicyarns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="group_policies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_group_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="group_groupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="group_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_policydocument"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policy_policyname"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iammanagedpolicy#managedpolicy"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_policydocument"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="policy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="policy_policyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="group_managedpolicyarns"/>
+        <Class IRI="group"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="group_policies"/>
+        <Class IRI="group"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="group_managedpolicyarns"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iammanagedpolicy#managedpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="group_policies"/>
+        <Class IRI="policy"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_group_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="group_groupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="group_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_policydocument"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="policy_policyname"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_group_arn"/>
+        <Class IRI="group"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="group_groupname"/>
+        <Class IRI="group"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="group_path"/>
+        <Class IRI="group"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_policydocument"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policy_policyname"/>
+        <Class IRI="policy"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_group_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="group_groupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="group_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_policydocument"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policy_policyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_group_arn</IRI>
+        <Literal>iamgroup:attribute_group_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>group</IRI>
+        <Literal>iamgroup:group</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>group_groupname</IRI>
+        <Literal>iamgroup:group_groupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>group_managedpolicyarns</IRI>
+        <Literal>iamgroup:group_managedpolicyarns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>group_path</IRI>
+        <Literal>iamgroup:group_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>group_policies</IRI>
+        <Literal>iamgroup:group_policies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policy</IRI>
+        <Literal>iamgroup:policy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policy_policydocument</IRI>
+        <Literal>iamgroup:policy_policydocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policy_policyname</IRI>
+        <Literal>iamgroup:policy_policyname</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

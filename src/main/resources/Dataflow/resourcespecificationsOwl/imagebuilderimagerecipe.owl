@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuilderimagerecipe#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuilderimagerecipe#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="componentconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="imagerecipe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instanceblockdevicemapping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="imagerecipe_blockdevicemappings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="imagerecipe_components"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="imagerecipe_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instanceblockdevicemapping_ebs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_imagerecipe_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_deleteontermination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_encrypted"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_iops"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_snapshotid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumesize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imagerecipe_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imagerecipe_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imagerecipe_parentimage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imagerecipe_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instanceblockdevicemapping_devicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instanceblockdevicemapping_nodevice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instanceblockdevicemapping_virtualname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="imagerecipe"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="imagerecipe_components"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="imagerecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="imagerecipe_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="imagerecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="imagerecipe_parentimage"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="imagerecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="imagerecipe_version"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="instanceblockdevicemapping_ebs"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="imagerecipe_blockdevicemappings"/>
+        <Class IRI="imagerecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="imagerecipe_components"/>
+        <Class IRI="imagerecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="imagerecipe_tags"/>
+        <Class IRI="imagerecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instanceblockdevicemapping_ebs"/>
+        <Class IRI="instanceblockdevicemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="imagerecipe_blockdevicemappings"/>
+        <Class IRI="instanceblockdevicemapping"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="imagerecipe_components"/>
+        <Class IRI="componentconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="imagerecipe_tags"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instanceblockdevicemapping_ebs"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_imagerecipe_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_deleteontermination"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_encrypted"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_iops"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_snapshotid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumesize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imagerecipe_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imagerecipe_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imagerecipe_parentimage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imagerecipe_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instanceblockdevicemapping_devicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instanceblockdevicemapping_nodevice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instanceblockdevicemapping_virtualname"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_imagerecipe_arn"/>
+        <Class IRI="imagerecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+        <Class IRI="componentconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_deleteontermination"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_encrypted"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_iops"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_kmskeyid"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_snapshotid"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumesize"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumetype"/>
+        <Class IRI="ebsinstanceblockdevicespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imagerecipe_description"/>
+        <Class IRI="imagerecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imagerecipe_name"/>
+        <Class IRI="imagerecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imagerecipe_parentimage"/>
+        <Class IRI="imagerecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imagerecipe_version"/>
+        <Class IRI="imagerecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instanceblockdevicemapping_devicename"/>
+        <Class IRI="instanceblockdevicemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instanceblockdevicemapping_nodevice"/>
+        <Class IRI="instanceblockdevicemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instanceblockdevicemapping_virtualname"/>
+        <Class IRI="instanceblockdevicemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_imagerecipe_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_deleteontermination"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_encrypted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_iops"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_snapshotid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumesize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsinstanceblockdevicespecification_volumetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imagerecipe_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imagerecipe_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imagerecipe_parentimage"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imagerecipe_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instanceblockdevicemapping_devicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instanceblockdevicemapping_nodevice"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instanceblockdevicemapping_virtualname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_imagerecipe_arn</IRI>
+        <Literal>imagebuilderimagerecipe:attribute_imagerecipe_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentconfiguration</IRI>
+        <Literal>imagebuilderimagerecipe:componentconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentconfiguration_componentarn</IRI>
+        <Literal>imagebuilderimagerecipe:componentconfiguration_componentarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_deleteontermination</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_deleteontermination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_encrypted</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_encrypted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_iops</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_iops</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_kmskeyid</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_snapshotid</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_snapshotid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_volumesize</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_volumesize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsinstanceblockdevicespecification_volumetype</IRI>
+        <Literal>imagebuilderimagerecipe:ebsinstanceblockdevicespecification_volumetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_blockdevicemappings</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_blockdevicemappings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_components</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_components</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_description</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_name</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_parentimage</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_parentimage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_tags</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imagerecipe_version</IRI>
+        <Literal>imagebuilderimagerecipe:imagerecipe_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceblockdevicemapping</IRI>
+        <Literal>imagebuilderimagerecipe:instanceblockdevicemapping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceblockdevicemapping_devicename</IRI>
+        <Literal>imagebuilderimagerecipe:instanceblockdevicemapping_devicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceblockdevicemapping_ebs</IRI>
+        <Literal>imagebuilderimagerecipe:instanceblockdevicemapping_ebs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceblockdevicemapping_nodevice</IRI>
+        <Literal>imagebuilderimagerecipe:instanceblockdevicemapping_nodevice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceblockdevicemapping_virtualname</IRI>
+        <Literal>imagebuilderimagerecipe:instanceblockdevicemapping_virtualname</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

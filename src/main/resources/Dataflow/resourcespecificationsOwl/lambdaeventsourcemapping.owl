@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="destinationconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventsourcemapping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="onfailure"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventsourcemapping_destinationconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventsourcemapping_eventsourcearn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventsourcemapping_functionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_batchsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_bisectbatchonfunctionerror"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_maximumrecordageinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_maximumretryattempts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_startingposition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="onfailure_destination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="destinationconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="destinationconfig_onfailure"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventsourcemapping"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="eventsourcemapping_eventsourcearn"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventsourcemapping"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="eventsourcemapping_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="onfailure"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="onfailure_destination"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventsourcemapping_destinationconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventsourcemapping_eventsourcearn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventsourcemapping_functionname"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+        <Class IRI="destinationconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsourcemapping_destinationconfig"/>
+        <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsourcemapping_eventsourcearn"/>
+        <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsourcemapping_functionname"/>
+        <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+        <Class IRI="onfailure"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventsourcemapping_destinationconfig"/>
+        <Class IRI="destinationconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventsourcemapping_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_batchsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_bisectbatchonfunctionerror"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_maximumrecordageinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_maximumretryattempts"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_startingposition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="onfailure_destination"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_batchsize"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_bisectbatchonfunctionerror"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_enabled"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_maximumrecordageinseconds"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_maximumretryattempts"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_startingposition"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="onfailure_destination"/>
+        <Class IRI="onfailure"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_batchsize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_bisectbatchonfunctionerror"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_maximumrecordageinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_maximumretryattempts"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_startingposition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="onfailure_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destinationconfig</IRI>
+        <Literal>lambdaeventsourcemapping:destinationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destinationconfig_onfailure</IRI>
+        <Literal>lambdaeventsourcemapping:destinationconfig_onfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_batchsize</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_batchsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_bisectbatchonfunctionerror</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_bisectbatchonfunctionerror</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_destinationconfig</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_destinationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_enabled</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_eventsourcearn</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_eventsourcearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_functionname</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_functionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_maximumbatchingwindowinseconds</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_maximumbatchingwindowinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_maximumrecordageinseconds</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_maximumrecordageinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_maximumretryattempts</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_maximumretryattempts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_parallelizationfactor</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_parallelizationfactor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_startingposition</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_startingposition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onfailure</IRI>
+        <Literal>lambdaeventsourcemapping:onfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onfailure_destination</IRI>
+        <Literal>lambdaeventsourcemapping:onfailure_destination</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

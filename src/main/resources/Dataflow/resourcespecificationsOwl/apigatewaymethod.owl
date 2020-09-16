@@ -1,0 +1,762 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewaymethod#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewaymethod#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="integration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="integrationresponse"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_boolean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="method"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="methodresponse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integration_integrationresponses"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integration_requestparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integration_requesttemplates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integration_uri"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integrationresponse_responseparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="integrationresponse_responsetemplates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="method_integration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="method_methodresponses"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="method_requestmodels"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="method_requestparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="methodresponse_responsemodels"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="methodresponse_responseparameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_cachekeyparameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_cachenamespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_connectionid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_connectiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_contenthandling"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_credentials"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_integrationhttpmethod"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_passthroughbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_timeoutinmillis"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integration_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationresponse_contenthandling"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationresponse_selectionpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationresponse_statuscode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_boolean_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_boolean_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_apikeyrequired"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_authorizationscopes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_authorizationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_authorizerid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_httpmethod"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_operationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_requestvalidatorid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_resourceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="method_restapiid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="methodresponse_statuscode"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="integrationresponse"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="integrationresponse_statuscode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="method"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="method_httpmethod"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="method"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="method_resourceid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="method"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="method_restapiid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="methodresponse"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="methodresponse_statuscode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="integration_uri"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="method_integration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integration_integrationresponses"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integration_requestparameters"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integration_requesttemplates"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integration_uri"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integrationresponse_responseparameters"/>
+        <Class IRI="integrationresponse"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="integrationresponse_responsetemplates"/>
+        <Class IRI="integrationresponse"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="method_integration"/>
+        <Class IRI="method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="method_methodresponses"/>
+        <Class IRI="method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="method_requestmodels"/>
+        <Class IRI="method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="method_requestparameters"/>
+        <Class IRI="method"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="methodresponse_responsemodels"/>
+        <Class IRI="methodresponse"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="methodresponse_responseparameters"/>
+        <Class IRI="methodresponse"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integration_integrationresponses"/>
+        <Class IRI="integrationresponse"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integration_requestparameters"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integration_requesttemplates"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integrationresponse_responseparameters"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="integrationresponse_responsetemplates"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="method_integration"/>
+        <Class IRI="integration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="method_methodresponses"/>
+        <Class IRI="methodresponse"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="method_requestmodels"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="method_requestparameters"/>
+        <Class IRI="mapentry_boolean"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="methodresponse_responsemodels"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="methodresponse_responseparameters"/>
+        <Class IRI="mapentry_boolean"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_cachenamespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_connectionid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_connectiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_contenthandling"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_credentials"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_integrationhttpmethod"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_passthroughbehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_timeoutinmillis"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integration_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationresponse_contenthandling"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationresponse_selectionpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationresponse_statuscode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_apikeyrequired"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_authorizationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_authorizerid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_httpmethod"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_operationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_requestvalidatorid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_resourceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="method_restapiid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="methodresponse_statuscode"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_cachekeyparameters"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_cachenamespace"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_connectionid"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_connectiontype"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_contenthandling"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_credentials"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_integrationhttpmethod"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_passthroughbehavior"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_timeoutinmillis"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integration_type"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationresponse_contenthandling"/>
+        <Class IRI="integrationresponse"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationresponse_selectionpattern"/>
+        <Class IRI="integrationresponse"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationresponse_statuscode"/>
+        <Class IRI="integrationresponse"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_boolean_key"/>
+        <Class IRI="mapentry_boolean"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_boolean_value"/>
+        <Class IRI="mapentry_boolean"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_apikeyrequired"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_authorizationscopes"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_authorizationtype"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_authorizerid"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_httpmethod"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_operationname"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_requestvalidatorid"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_resourceid"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="method_restapiid"/>
+        <Class IRI="method"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="methodresponse_statuscode"/>
+        <Class IRI="methodresponse"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_cachekeyparameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_cachenamespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_connectionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_connectiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_contenthandling"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_credentials"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_integrationhttpmethod"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_passthroughbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_timeoutinmillis"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integration_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationresponse_contenthandling"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationresponse_selectionpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationresponse_statuscode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_boolean_key"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_boolean_value"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_apikeyrequired"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_authorizationscopes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_authorizationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_authorizerid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_httpmethod"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_operationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_requestvalidatorid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_resourceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="method_restapiid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="methodresponse_statuscode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration</IRI>
+        <Literal>apigatewaymethod:integration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_cachekeyparameters</IRI>
+        <Literal>apigatewaymethod:integration_cachekeyparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_cachenamespace</IRI>
+        <Literal>apigatewaymethod:integration_cachenamespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_connectionid</IRI>
+        <Literal>apigatewaymethod:integration_connectionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_connectiontype</IRI>
+        <Literal>apigatewaymethod:integration_connectiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_contenthandling</IRI>
+        <Literal>apigatewaymethod:integration_contenthandling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_credentials</IRI>
+        <Literal>apigatewaymethod:integration_credentials</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_integrationhttpmethod</IRI>
+        <Literal>apigatewaymethod:integration_integrationhttpmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_integrationresponses</IRI>
+        <Literal>apigatewaymethod:integration_integrationresponses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_passthroughbehavior</IRI>
+        <Literal>apigatewaymethod:integration_passthroughbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_requestparameters</IRI>
+        <Literal>apigatewaymethod:integration_requestparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_requesttemplates</IRI>
+        <Literal>apigatewaymethod:integration_requesttemplates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_timeoutinmillis</IRI>
+        <Literal>apigatewaymethod:integration_timeoutinmillis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_type</IRI>
+        <Literal>apigatewaymethod:integration_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_uri</IRI>
+        <Literal>apigatewaymethod:integration_uri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse</IRI>
+        <Literal>apigatewaymethod:integrationresponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse_contenthandling</IRI>
+        <Literal>apigatewaymethod:integrationresponse_contenthandling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse_responseparameters</IRI>
+        <Literal>apigatewaymethod:integrationresponse_responseparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse_responsetemplates</IRI>
+        <Literal>apigatewaymethod:integrationresponse_responsetemplates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse_selectionpattern</IRI>
+        <Literal>apigatewaymethod:integrationresponse_selectionpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationresponse_statuscode</IRI>
+        <Literal>apigatewaymethod:integrationresponse_statuscode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method</IRI>
+        <Literal>apigatewaymethod:method</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_apikeyrequired</IRI>
+        <Literal>apigatewaymethod:method_apikeyrequired</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_authorizationscopes</IRI>
+        <Literal>apigatewaymethod:method_authorizationscopes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_authorizationtype</IRI>
+        <Literal>apigatewaymethod:method_authorizationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_authorizerid</IRI>
+        <Literal>apigatewaymethod:method_authorizerid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_httpmethod</IRI>
+        <Literal>apigatewaymethod:method_httpmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_integration</IRI>
+        <Literal>apigatewaymethod:method_integration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_methodresponses</IRI>
+        <Literal>apigatewaymethod:method_methodresponses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_operationname</IRI>
+        <Literal>apigatewaymethod:method_operationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_requestmodels</IRI>
+        <Literal>apigatewaymethod:method_requestmodels</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_requestparameters</IRI>
+        <Literal>apigatewaymethod:method_requestparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_requestvalidatorid</IRI>
+        <Literal>apigatewaymethod:method_requestvalidatorid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_resourceid</IRI>
+        <Literal>apigatewaymethod:method_resourceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>method_restapiid</IRI>
+        <Literal>apigatewaymethod:method_restapiid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>methodresponse</IRI>
+        <Literal>apigatewaymethod:methodresponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>methodresponse_responsemodels</IRI>
+        <Literal>apigatewaymethod:methodresponse_responsemodels</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>methodresponse_responseparameters</IRI>
+        <Literal>apigatewaymethod:methodresponse_responseparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>methodresponse_statuscode</IRI>
+        <Literal>apigatewaymethod:methodresponse_statuscode</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

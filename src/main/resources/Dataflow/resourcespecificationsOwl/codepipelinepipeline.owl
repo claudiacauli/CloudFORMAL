@@ -1,0 +1,1020 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/codepipelinepipeline#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/codepipelinepipeline#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="actiondeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="actiontypeid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="artifactstore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="artifactstoremap"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="blockerdeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryptionkey"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="inputartifact"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="outputartifact"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="pipeline"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stagedeclaration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stagetransition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="actiondeclaration_actiontypeid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="actiondeclaration_inputartifacts"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="actiondeclaration_outputartifacts"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="artifactstore_encryptionkey"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="artifactstoremap_artifactstore"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="pipeline_artifactstore"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="pipeline_artifactstores"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="pipeline_disableinboundstagetransitions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="pipeline_stages"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="pipeline_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stagedeclaration_actions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stagedeclaration_blockers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_configuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_region"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiondeclaration_runorder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiontypeid_category"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiontypeid_owner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiontypeid_provider"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="actiontypeid_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="artifactstore_location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="artifactstore_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="artifactstoremap_region"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_pipeline_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="blockerdeclaration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="blockerdeclaration_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionkey_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionkey_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="inputartifact_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="outputartifact_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pipeline_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pipeline_restartexecutiononupdate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pipeline_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stagedeclaration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stagetransition_reason"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stagetransition_stagename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="actiondeclaration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="actiondeclaration_actiontypeid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="actiondeclaration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="actiondeclaration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="actiontypeid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="actiontypeid_category"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="actiontypeid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="actiontypeid_owner"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="actiontypeid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="actiontypeid_provider"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="actiontypeid"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="actiontypeid_version"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="artifactstore"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="artifactstore_location"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="artifactstore"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="artifactstore_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="artifactstoremap"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="artifactstoremap_artifactstore"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="artifactstoremap"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="artifactstoremap_region"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="blockerdeclaration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="blockerdeclaration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="blockerdeclaration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="blockerdeclaration_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryptionkey"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryptionkey_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryptionkey"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryptionkey_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="inputartifact"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="inputartifact_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="outputartifact"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="outputartifact_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="pipeline"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="pipeline_stages"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="pipeline"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="pipeline_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stagedeclaration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="stagedeclaration_actions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stagedeclaration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stagedeclaration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stagetransition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stagetransition_reason"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stagetransition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stagetransition_stagename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="actiondeclaration_actiontypeid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="artifactstore_encryptionkey"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="artifactstoremap_artifactstore"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="pipeline_artifactstore"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="actiondeclaration_actiontypeid"/>
+        <Class IRI="actiondeclaration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="actiondeclaration_inputartifacts"/>
+        <Class IRI="actiondeclaration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="actiondeclaration_outputartifacts"/>
+        <Class IRI="actiondeclaration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="artifactstore_encryptionkey"/>
+        <Class IRI="artifactstore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="artifactstoremap_artifactstore"/>
+        <Class IRI="artifactstoremap"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="pipeline_artifactstore"/>
+        <Class IRI="pipeline"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="pipeline_artifactstores"/>
+        <Class IRI="pipeline"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="pipeline_disableinboundstagetransitions"/>
+        <Class IRI="pipeline"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="pipeline_stages"/>
+        <Class IRI="pipeline"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="pipeline_tags"/>
+        <Class IRI="pipeline"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stagedeclaration_actions"/>
+        <Class IRI="stagedeclaration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stagedeclaration_blockers"/>
+        <Class IRI="stagedeclaration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="actiondeclaration_actiontypeid"/>
+        <Class IRI="actiontypeid"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="actiondeclaration_inputartifacts"/>
+        <Class IRI="inputartifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="actiondeclaration_outputartifacts"/>
+        <Class IRI="outputartifact"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="artifactstore_encryptionkey"/>
+        <Class IRI="encryptionkey"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="artifactstoremap_artifactstore"/>
+        <Class IRI="artifactstore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="pipeline_artifactstore"/>
+        <Class IRI="artifactstore"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="pipeline_artifactstores"/>
+        <Class IRI="artifactstoremap"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="pipeline_disableinboundstagetransitions"/>
+        <Class IRI="stagetransition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="pipeline_stages"/>
+        <Class IRI="stagedeclaration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="pipeline_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stagedeclaration_actions"/>
+        <Class IRI="actiondeclaration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stagedeclaration_blockers"/>
+        <Class IRI="blockerdeclaration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_configuration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_region"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiondeclaration_runorder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiontypeid_category"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiontypeid_owner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiontypeid_provider"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="actiontypeid_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="artifactstore_location"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="artifactstore_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="artifactstoremap_region"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_pipeline_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="blockerdeclaration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="blockerdeclaration_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionkey_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionkey_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="inputartifact_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="outputartifact_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="pipeline_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="pipeline_restartexecutiononupdate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="pipeline_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stagedeclaration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stagetransition_reason"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stagetransition_stagename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_configuration"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_name"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_namespace"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_region"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_rolearn"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiondeclaration_runorder"/>
+        <Class IRI="actiondeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiontypeid_category"/>
+        <Class IRI="actiontypeid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiontypeid_owner"/>
+        <Class IRI="actiontypeid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiontypeid_provider"/>
+        <Class IRI="actiontypeid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="actiontypeid_version"/>
+        <Class IRI="actiontypeid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="artifactstore_location"/>
+        <Class IRI="artifactstore"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="artifactstore_type"/>
+        <Class IRI="artifactstore"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="artifactstoremap_region"/>
+        <Class IRI="artifactstoremap"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_pipeline_version"/>
+        <Class IRI="pipeline"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="blockerdeclaration_name"/>
+        <Class IRI="blockerdeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="blockerdeclaration_type"/>
+        <Class IRI="blockerdeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionkey_id"/>
+        <Class IRI="encryptionkey"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionkey_type"/>
+        <Class IRI="encryptionkey"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="inputartifact_name"/>
+        <Class IRI="inputartifact"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="outputartifact_name"/>
+        <Class IRI="outputartifact"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pipeline_name"/>
+        <Class IRI="pipeline"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pipeline_restartexecutiononupdate"/>
+        <Class IRI="pipeline"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pipeline_rolearn"/>
+        <Class IRI="pipeline"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stagedeclaration_name"/>
+        <Class IRI="stagedeclaration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stagetransition_reason"/>
+        <Class IRI="stagetransition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stagetransition_stagename"/>
+        <Class IRI="stagetransition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_configuration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_region"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiondeclaration_runorder"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiontypeid_category"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiontypeid_owner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiontypeid_provider"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="actiontypeid_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="artifactstore_location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="artifactstore_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="artifactstoremap_region"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_pipeline_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="blockerdeclaration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="blockerdeclaration_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionkey_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionkey_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="inputartifact_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="outputartifact_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pipeline_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pipeline_restartexecutiononupdate"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pipeline_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stagedeclaration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stagetransition_reason"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stagetransition_stagename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_actiontypeid</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_actiontypeid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_configuration</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_inputartifacts</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_inputartifacts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_name</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_namespace</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_outputartifacts</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_outputartifacts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_region</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_rolearn</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondeclaration_runorder</IRI>
+        <Literal>codepipelinepipeline:actiondeclaration_runorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiontypeid</IRI>
+        <Literal>codepipelinepipeline:actiontypeid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiontypeid_category</IRI>
+        <Literal>codepipelinepipeline:actiontypeid_category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiontypeid_owner</IRI>
+        <Literal>codepipelinepipeline:actiontypeid_owner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiontypeid_provider</IRI>
+        <Literal>codepipelinepipeline:actiontypeid_provider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiontypeid_version</IRI>
+        <Literal>codepipelinepipeline:actiontypeid_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstore</IRI>
+        <Literal>codepipelinepipeline:artifactstore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstore_encryptionkey</IRI>
+        <Literal>codepipelinepipeline:artifactstore_encryptionkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstore_location</IRI>
+        <Literal>codepipelinepipeline:artifactstore_location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstore_type</IRI>
+        <Literal>codepipelinepipeline:artifactstore_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstoremap</IRI>
+        <Literal>codepipelinepipeline:artifactstoremap</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstoremap_artifactstore</IRI>
+        <Literal>codepipelinepipeline:artifactstoremap_artifactstore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>artifactstoremap_region</IRI>
+        <Literal>codepipelinepipeline:artifactstoremap_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_pipeline_version</IRI>
+        <Literal>codepipelinepipeline:attribute_pipeline_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>blockerdeclaration</IRI>
+        <Literal>codepipelinepipeline:blockerdeclaration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>blockerdeclaration_name</IRI>
+        <Literal>codepipelinepipeline:blockerdeclaration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>blockerdeclaration_type</IRI>
+        <Literal>codepipelinepipeline:blockerdeclaration_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionkey</IRI>
+        <Literal>codepipelinepipeline:encryptionkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionkey_id</IRI>
+        <Literal>codepipelinepipeline:encryptionkey_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionkey_type</IRI>
+        <Literal>codepipelinepipeline:encryptionkey_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputartifact</IRI>
+        <Literal>codepipelinepipeline:inputartifact</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputartifact_name</IRI>
+        <Literal>codepipelinepipeline:inputartifact_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>outputartifact</IRI>
+        <Literal>codepipelinepipeline:outputartifact</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>outputartifact_name</IRI>
+        <Literal>codepipelinepipeline:outputartifact_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline</IRI>
+        <Literal>codepipelinepipeline:pipeline</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_artifactstore</IRI>
+        <Literal>codepipelinepipeline:pipeline_artifactstore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_artifactstores</IRI>
+        <Literal>codepipelinepipeline:pipeline_artifactstores</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_disableinboundstagetransitions</IRI>
+        <Literal>codepipelinepipeline:pipeline_disableinboundstagetransitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_name</IRI>
+        <Literal>codepipelinepipeline:pipeline_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_restartexecutiononupdate</IRI>
+        <Literal>codepipelinepipeline:pipeline_restartexecutiononupdate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_rolearn</IRI>
+        <Literal>codepipelinepipeline:pipeline_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_stages</IRI>
+        <Literal>codepipelinepipeline:pipeline_stages</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pipeline_tags</IRI>
+        <Literal>codepipelinepipeline:pipeline_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagedeclaration</IRI>
+        <Literal>codepipelinepipeline:stagedeclaration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagedeclaration_actions</IRI>
+        <Literal>codepipelinepipeline:stagedeclaration_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagedeclaration_blockers</IRI>
+        <Literal>codepipelinepipeline:stagedeclaration_blockers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagedeclaration_name</IRI>
+        <Literal>codepipelinepipeline:stagedeclaration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagetransition</IRI>
+        <Literal>codepipelinepipeline:stagetransition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagetransition_reason</IRI>
+        <Literal>codepipelinepipeline:stagetransition_reason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stagetransition_stagename</IRI>
+        <Literal>codepipelinepipeline:stagetransition_stagename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>codepipelinepipeline:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>codepipelinepipeline:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>codepipelinepipeline:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

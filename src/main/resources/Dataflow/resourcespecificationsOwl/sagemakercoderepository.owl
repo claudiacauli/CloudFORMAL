@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakercoderepository#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakercoderepository#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="coderepository"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gitconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="coderepository_gitconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_coderepository_coderepositoryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="coderepository_coderepositoryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gitconfig_branch"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gitconfig_repositoryurl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gitconfig_secretarn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="coderepository"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="coderepository_gitconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gitconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gitconfig_repositoryurl"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="coderepository_gitconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="coderepository_gitconfig"/>
+        <Class IRI="coderepository"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="coderepository_gitconfig"/>
+        <Class IRI="gitconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_coderepository_coderepositoryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="coderepository_coderepositoryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gitconfig_branch"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gitconfig_repositoryurl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gitconfig_secretarn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_coderepository_coderepositoryname"/>
+        <Class IRI="coderepository"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="coderepository_coderepositoryname"/>
+        <Class IRI="coderepository"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gitconfig_branch"/>
+        <Class IRI="gitconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gitconfig_repositoryurl"/>
+        <Class IRI="gitconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gitconfig_secretarn"/>
+        <Class IRI="gitconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_coderepository_coderepositoryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="coderepository_coderepositoryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gitconfig_branch"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gitconfig_repositoryurl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gitconfig_secretarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_coderepository_coderepositoryname</IRI>
+        <Literal>sagemakercoderepository:attribute_coderepository_coderepositoryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coderepository</IRI>
+        <Literal>sagemakercoderepository:coderepository</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coderepository_coderepositoryname</IRI>
+        <Literal>sagemakercoderepository:coderepository_coderepositoryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coderepository_gitconfig</IRI>
+        <Literal>sagemakercoderepository:coderepository_gitconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gitconfig</IRI>
+        <Literal>sagemakercoderepository:gitconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gitconfig_branch</IRI>
+        <Literal>sagemakercoderepository:gitconfig_branch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gitconfig_repositoryurl</IRI>
+        <Literal>sagemakercoderepository:gitconfig_repositoryurl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gitconfig_secretarn</IRI>
+        <Literal>sagemakercoderepository:gitconfig_secretarn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

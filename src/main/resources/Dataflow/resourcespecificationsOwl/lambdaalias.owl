@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaalias#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaalias#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="alias"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="aliasroutingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="versionweight"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alias_functionname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alias_provisionedconcurrencyconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alias_routingconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="aliasroutingconfiguration_additionalversionweights"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alias_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alias_functionversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alias_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="versionweight_functionversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="versionweight_functionweight"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="alias"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="alias_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="alias"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="alias_functionversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="alias"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="alias_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="aliasroutingconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="aliasroutingconfiguration_additionalversionweights"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="versionweight"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="versionweight_functionversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="versionweight"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="versionweight_functionweight"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="alias_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="alias_provisionedconcurrencyconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="alias_routingconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alias_functionname"/>
+        <Class IRI="alias"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alias_provisionedconcurrencyconfig"/>
+        <Class IRI="alias"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alias_routingconfig"/>
+        <Class IRI="alias"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="aliasroutingconfiguration_additionalversionweights"/>
+        <Class IRI="aliasroutingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="alias_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="alias_provisionedconcurrencyconfig"/>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="alias_routingconfig"/>
+        <Class IRI="aliasroutingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="aliasroutingconfiguration_additionalversionweights"/>
+        <Class IRI="versionweight"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alias_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alias_functionversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alias_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="versionweight_functionversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="versionweight_functionweight"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="alias_description"/>
+        <Class IRI="alias"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alias_functionversion"/>
+        <Class IRI="alias"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alias_name"/>
+        <Class IRI="alias"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="versionweight_functionversion"/>
+        <Class IRI="versionweight"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="versionweight_functionweight"/>
+        <Class IRI="versionweight"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="alias_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alias_functionversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alias_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="versionweight_functionversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="versionweight_functionweight"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias</IRI>
+        <Literal>lambdaalias:alias</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_description</IRI>
+        <Literal>lambdaalias:alias_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_functionname</IRI>
+        <Literal>lambdaalias:alias_functionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_functionversion</IRI>
+        <Literal>lambdaalias:alias_functionversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_name</IRI>
+        <Literal>lambdaalias:alias_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_provisionedconcurrencyconfig</IRI>
+        <Literal>lambdaalias:alias_provisionedconcurrencyconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alias_routingconfig</IRI>
+        <Literal>lambdaalias:alias_routingconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>aliasroutingconfiguration</IRI>
+        <Literal>lambdaalias:aliasroutingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>aliasroutingconfiguration_additionalversionweights</IRI>
+        <Literal>lambdaalias:aliasroutingconfiguration_additionalversionweights</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedconcurrencyconfiguration</IRI>
+        <Literal>lambdaalias:provisionedconcurrencyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedconcurrencyconfiguration_provisionedconcurrentexecutions</IRI>
+        <Literal>lambdaalias:provisionedconcurrencyconfiguration_provisionedconcurrentexecutions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>versionweight</IRI>
+        <Literal>lambdaalias:versionweight</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>versionweight_functionversion</IRI>
+        <Literal>lambdaalias:versionweight_functionversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>versionweight_functionweight</IRI>
+        <Literal>lambdaalias:versionweight_functionweight</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

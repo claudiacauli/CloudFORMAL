@@ -1,0 +1,950 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dynamodbtable#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dynamodbtable#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="attributedefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="globalsecondaryindex"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="keyschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="localsecondaryindex"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="pointintimerecoveryspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="projection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provisionedthroughput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ssespecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="streamspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="table"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="timetolivespecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="globalsecondaryindex_keyschema"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="globalsecondaryindex_projection"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="globalsecondaryindex_provisionedthroughput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="localsecondaryindex_keyschema"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="localsecondaryindex_projection"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ssespecification_kmsmasterkeyid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_attributedefinitions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_globalsecondaryindexes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_keyschema"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_localsecondaryindexes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_pointintimerecoveryspecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_provisionedthroughput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_ssespecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_streamspecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_timetolivespecification"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_table_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_table_streamarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attributedefinition_attributename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attributedefinition_attributetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalsecondaryindex_indexname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyschema_attributename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyschema_keytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="localsecondaryindex_indexname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pointintimerecoveryspecification_pointintimerecoveryenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projection_nonkeyattributes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projection_projectiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ssespecification_ssetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="streamspecification_streamviewtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="table_billingmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="table_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="timetolivespecification_attributename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="timetolivespecification_enabled"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="attributedefinition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="attributedefinition_attributename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="attributedefinition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="attributedefinition_attributetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="globalsecondaryindex"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="globalsecondaryindex_keyschema"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="globalsecondaryindex"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="globalsecondaryindex_projection"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="globalsecondaryindex"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="globalsecondaryindex_indexname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="keyschema"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="keyschema_attributename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="keyschema"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="keyschema_keytype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="localsecondaryindex"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="localsecondaryindex_keyschema"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="localsecondaryindex"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="localsecondaryindex_projection"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="localsecondaryindex"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="localsecondaryindex_indexname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionedthroughput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:long"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionedthroughput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:long"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ssespecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ssespecification_sseenabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="streamspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="streamspecification_streamviewtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="table"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="table_keyschema"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="timetolivespecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="timetolivespecification_attributename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="timetolivespecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="timetolivespecification_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="globalsecondaryindex_projection"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="globalsecondaryindex_provisionedthroughput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="localsecondaryindex_projection"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ssespecification_kmsmasterkeyid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_pointintimerecoveryspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_provisionedthroughput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_ssespecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_streamspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="table_timetolivespecification"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="globalsecondaryindex_keyschema"/>
+        <Class IRI="globalsecondaryindex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="globalsecondaryindex_projection"/>
+        <Class IRI="globalsecondaryindex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="globalsecondaryindex_provisionedthroughput"/>
+        <Class IRI="globalsecondaryindex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="localsecondaryindex_keyschema"/>
+        <Class IRI="localsecondaryindex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="localsecondaryindex_projection"/>
+        <Class IRI="localsecondaryindex"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ssespecification_kmsmasterkeyid"/>
+        <Class IRI="ssespecification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_attributedefinitions"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_globalsecondaryindexes"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_keyschema"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_localsecondaryindexes"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_pointintimerecoveryspecification"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_provisionedthroughput"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_ssespecification"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_streamspecification"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_tags"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_timetolivespecification"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="globalsecondaryindex_keyschema"/>
+        <Class IRI="keyschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="globalsecondaryindex_projection"/>
+        <Class IRI="projection"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="globalsecondaryindex_provisionedthroughput"/>
+        <Class IRI="provisionedthroughput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="localsecondaryindex_keyschema"/>
+        <Class IRI="keyschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="localsecondaryindex_projection"/>
+        <Class IRI="projection"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ssespecification_kmsmasterkeyid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_attributedefinitions"/>
+        <Class IRI="attributedefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_globalsecondaryindexes"/>
+        <Class IRI="globalsecondaryindex"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_keyschema"/>
+        <Class IRI="keyschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_localsecondaryindexes"/>
+        <Class IRI="localsecondaryindex"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_pointintimerecoveryspecification"/>
+        <Class IRI="pointintimerecoveryspecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_provisionedthroughput"/>
+        <Class IRI="provisionedthroughput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_ssespecification"/>
+        <Class IRI="ssespecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_streamspecification"/>
+        <Class IRI="streamspecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_timetolivespecification"/>
+        <Class IRI="timetolivespecification"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_table_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_table_streamarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attributedefinition_attributename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attributedefinition_attributetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalsecondaryindex_indexname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyschema_attributename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyschema_keytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="localsecondaryindex_indexname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="pointintimerecoveryspecification_pointintimerecoveryenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projection_projectiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ssespecification_ssetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="streamspecification_streamviewtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="table_billingmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="table_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="timetolivespecification_attributename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="timetolivespecification_enabled"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_table_arn"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_table_streamarn"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attributedefinition_attributename"/>
+        <Class IRI="attributedefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attributedefinition_attributetype"/>
+        <Class IRI="attributedefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalsecondaryindex_indexname"/>
+        <Class IRI="globalsecondaryindex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyschema_attributename"/>
+        <Class IRI="keyschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyschema_keytype"/>
+        <Class IRI="keyschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="localsecondaryindex_indexname"/>
+        <Class IRI="localsecondaryindex"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pointintimerecoveryspecification_pointintimerecoveryenabled"/>
+        <Class IRI="pointintimerecoveryspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projection_nonkeyattributes"/>
+        <Class IRI="projection"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projection_projectiontype"/>
+        <Class IRI="projection"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+        <Class IRI="provisionedthroughput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+        <Class IRI="provisionedthroughput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+        <Class IRI="ssespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ssespecification_ssetype"/>
+        <Class IRI="ssespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="streamspecification_streamviewtype"/>
+        <Class IRI="streamspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="table_billingmode"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="table_tablename"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="timetolivespecification_attributename"/>
+        <Class IRI="timetolivespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="timetolivespecification_enabled"/>
+        <Class IRI="timetolivespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_table_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_table_streamarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attributedefinition_attributename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attributedefinition_attributetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalsecondaryindex_indexname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyschema_attributename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyschema_keytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="localsecondaryindex_indexname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pointintimerecoveryspecification_pointintimerecoveryenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projection_nonkeyattributes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projection_projectiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedthroughput_readcapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:long"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedthroughput_writecapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:long"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ssespecification_ssetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="streamspecification_streamviewtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="table_billingmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="table_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="timetolivespecification_attributename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="timetolivespecification_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_table_arn</IRI>
+        <Literal>dynamodbtable:attribute_table_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_table_streamarn</IRI>
+        <Literal>dynamodbtable:attribute_table_streamarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedefinition</IRI>
+        <Literal>dynamodbtable:attributedefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedefinition_attributename</IRI>
+        <Literal>dynamodbtable:attributedefinition_attributename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedefinition_attributetype</IRI>
+        <Literal>dynamodbtable:attributedefinition_attributetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalsecondaryindex</IRI>
+        <Literal>dynamodbtable:globalsecondaryindex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalsecondaryindex_indexname</IRI>
+        <Literal>dynamodbtable:globalsecondaryindex_indexname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalsecondaryindex_keyschema</IRI>
+        <Literal>dynamodbtable:globalsecondaryindex_keyschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalsecondaryindex_projection</IRI>
+        <Literal>dynamodbtable:globalsecondaryindex_projection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalsecondaryindex_provisionedthroughput</IRI>
+        <Literal>dynamodbtable:globalsecondaryindex_provisionedthroughput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyschema</IRI>
+        <Literal>dynamodbtable:keyschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyschema_attributename</IRI>
+        <Literal>dynamodbtable:keyschema_attributename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyschema_keytype</IRI>
+        <Literal>dynamodbtable:keyschema_keytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>localsecondaryindex</IRI>
+        <Literal>dynamodbtable:localsecondaryindex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>localsecondaryindex_indexname</IRI>
+        <Literal>dynamodbtable:localsecondaryindex_indexname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>localsecondaryindex_keyschema</IRI>
+        <Literal>dynamodbtable:localsecondaryindex_keyschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>localsecondaryindex_projection</IRI>
+        <Literal>dynamodbtable:localsecondaryindex_projection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pointintimerecoveryspecification</IRI>
+        <Literal>dynamodbtable:pointintimerecoveryspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pointintimerecoveryspecification_pointintimerecoveryenabled</IRI>
+        <Literal>dynamodbtable:pointintimerecoveryspecification_pointintimerecoveryenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projection</IRI>
+        <Literal>dynamodbtable:projection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projection_nonkeyattributes</IRI>
+        <Literal>dynamodbtable:projection_nonkeyattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projection_projectiontype</IRI>
+        <Literal>dynamodbtable:projection_projectiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedthroughput</IRI>
+        <Literal>dynamodbtable:provisionedthroughput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedthroughput_readcapacityunits</IRI>
+        <Literal>dynamodbtable:provisionedthroughput_readcapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedthroughput_writecapacityunits</IRI>
+        <Literal>dynamodbtable:provisionedthroughput_writecapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification</IRI>
+        <Literal>dynamodbtable:ssespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification_kmsmasterkeyid</IRI>
+        <Literal>dynamodbtable:ssespecification_kmsmasterkeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification_sseenabled</IRI>
+        <Literal>dynamodbtable:ssespecification_sseenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification_ssetype</IRI>
+        <Literal>dynamodbtable:ssespecification_ssetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>streamspecification</IRI>
+        <Literal>dynamodbtable:streamspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>streamspecification_streamviewtype</IRI>
+        <Literal>dynamodbtable:streamspecification_streamviewtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table</IRI>
+        <Literal>dynamodbtable:table</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_attributedefinitions</IRI>
+        <Literal>dynamodbtable:table_attributedefinitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_billingmode</IRI>
+        <Literal>dynamodbtable:table_billingmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_globalsecondaryindexes</IRI>
+        <Literal>dynamodbtable:table_globalsecondaryindexes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_keyschema</IRI>
+        <Literal>dynamodbtable:table_keyschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_localsecondaryindexes</IRI>
+        <Literal>dynamodbtable:table_localsecondaryindexes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_pointintimerecoveryspecification</IRI>
+        <Literal>dynamodbtable:table_pointintimerecoveryspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_provisionedthroughput</IRI>
+        <Literal>dynamodbtable:table_provisionedthroughput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_ssespecification</IRI>
+        <Literal>dynamodbtable:table_ssespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_streamspecification</IRI>
+        <Literal>dynamodbtable:table_streamspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_tablename</IRI>
+        <Literal>dynamodbtable:table_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_tags</IRI>
+        <Literal>dynamodbtable:table_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_timetolivespecification</IRI>
+        <Literal>dynamodbtable:table_timetolivespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>dynamodbtable:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>dynamodbtable:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>dynamodbtable:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timetolivespecification</IRI>
+        <Literal>dynamodbtable:timetolivespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timetolivespecification_attributename</IRI>
+        <Literal>dynamodbtable:timetolivespecification_attributename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timetolivespecification_enabled</IRI>
+        <Literal>dynamodbtable:timetolivespecification_enabled</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

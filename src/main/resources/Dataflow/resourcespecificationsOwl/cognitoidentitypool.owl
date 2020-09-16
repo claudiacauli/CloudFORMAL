@@ -1,0 +1,427 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cognitoidentitypool#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cognitoidentitypool#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cognitoidentityprovider"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="cognitostreams"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="identitypool"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="pushsync"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="identitypool_cognitoidentityproviders"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="identitypool_cognitostreams"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="identitypool_pushsync"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_identitypool_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitoidentityprovider_clientid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitoidentityprovider_providername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitoidentityprovider_serversidetokencheck"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitostreams_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitostreams_streamingstatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cognitostreams_streamname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_allowclassicflow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_allowunauthenticatedidentities"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_cognitoevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_developerprovidername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_identitypoolname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_openidconnectproviderarns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_samlproviderarns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identitypool_supportedloginproviders"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pushsync_applicationarns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pushsync_rolearn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="identitypool"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="identitypool_allowunauthenticatedidentities"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="identitypool_cognitostreams"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="identitypool_pushsync"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="identitypool_cognitoidentityproviders"/>
+        <Class IRI="identitypool"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="identitypool_cognitostreams"/>
+        <Class IRI="identitypool"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="identitypool_pushsync"/>
+        <Class IRI="identitypool"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="identitypool_cognitoidentityproviders"/>
+        <Class IRI="cognitoidentityprovider"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="identitypool_cognitostreams"/>
+        <Class IRI="cognitostreams"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="identitypool_pushsync"/>
+        <Class IRI="pushsync"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_identitypool_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitoidentityprovider_clientid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitoidentityprovider_providername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitoidentityprovider_serversidetokencheck"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitostreams_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitostreams_streamingstatus"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cognitostreams_streamname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_allowclassicflow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_allowunauthenticatedidentities"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_cognitoevents"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_developerprovidername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_identitypoolname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identitypool_supportedloginproviders"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="pushsync_rolearn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_identitypool_name"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitoidentityprovider_clientid"/>
+        <Class IRI="cognitoidentityprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitoidentityprovider_providername"/>
+        <Class IRI="cognitoidentityprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitoidentityprovider_serversidetokencheck"/>
+        <Class IRI="cognitoidentityprovider"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitostreams_rolearn"/>
+        <Class IRI="cognitostreams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitostreams_streamingstatus"/>
+        <Class IRI="cognitostreams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cognitostreams_streamname"/>
+        <Class IRI="cognitostreams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_allowclassicflow"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_allowunauthenticatedidentities"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_cognitoevents"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_developerprovidername"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_identitypoolname"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_openidconnectproviderarns"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_samlproviderarns"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identitypool_supportedloginproviders"/>
+        <Class IRI="identitypool"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pushsync_applicationarns"/>
+        <Class IRI="pushsync"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pushsync_rolearn"/>
+        <Class IRI="pushsync"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_identitypool_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitoidentityprovider_clientid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitoidentityprovider_providername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitoidentityprovider_serversidetokencheck"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitostreams_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitostreams_streamingstatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cognitostreams_streamname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_allowclassicflow"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_allowunauthenticatedidentities"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_cognitoevents"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_developerprovidername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_identitypoolname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_openidconnectproviderarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_samlproviderarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identitypool_supportedloginproviders"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pushsync_applicationarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="pushsync_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_identitypool_name</IRI>
+        <Literal>cognitoidentitypool:attribute_identitypool_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitoidentityprovider</IRI>
+        <Literal>cognitoidentitypool:cognitoidentityprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitoidentityprovider_clientid</IRI>
+        <Literal>cognitoidentitypool:cognitoidentityprovider_clientid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitoidentityprovider_providername</IRI>
+        <Literal>cognitoidentitypool:cognitoidentityprovider_providername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitoidentityprovider_serversidetokencheck</IRI>
+        <Literal>cognitoidentitypool:cognitoidentityprovider_serversidetokencheck</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitostreams</IRI>
+        <Literal>cognitoidentitypool:cognitostreams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitostreams_rolearn</IRI>
+        <Literal>cognitoidentitypool:cognitostreams_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitostreams_streamingstatus</IRI>
+        <Literal>cognitoidentitypool:cognitostreams_streamingstatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cognitostreams_streamname</IRI>
+        <Literal>cognitoidentitypool:cognitostreams_streamname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool</IRI>
+        <Literal>cognitoidentitypool:identitypool</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_allowclassicflow</IRI>
+        <Literal>cognitoidentitypool:identitypool_allowclassicflow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_allowunauthenticatedidentities</IRI>
+        <Literal>cognitoidentitypool:identitypool_allowunauthenticatedidentities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_cognitoevents</IRI>
+        <Literal>cognitoidentitypool:identitypool_cognitoevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_cognitoidentityproviders</IRI>
+        <Literal>cognitoidentitypool:identitypool_cognitoidentityproviders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_cognitostreams</IRI>
+        <Literal>cognitoidentitypool:identitypool_cognitostreams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_developerprovidername</IRI>
+        <Literal>cognitoidentitypool:identitypool_developerprovidername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_identitypoolname</IRI>
+        <Literal>cognitoidentitypool:identitypool_identitypoolname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_openidconnectproviderarns</IRI>
+        <Literal>cognitoidentitypool:identitypool_openidconnectproviderarns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_pushsync</IRI>
+        <Literal>cognitoidentitypool:identitypool_pushsync</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_samlproviderarns</IRI>
+        <Literal>cognitoidentitypool:identitypool_samlproviderarns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identitypool_supportedloginproviders</IRI>
+        <Literal>cognitoidentitypool:identitypool_supportedloginproviders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pushsync</IRI>
+        <Literal>cognitoidentitypool:pushsync</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pushsync_applicationarns</IRI>
+        <Literal>cognitoidentitypool:pushsync_applicationarns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>pushsync_rolearn</IRI>
+        <Literal>cognitoidentitypool:pushsync_rolearn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

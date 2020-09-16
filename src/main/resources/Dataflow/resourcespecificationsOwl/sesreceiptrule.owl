@@ -1,0 +1,855 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sesreceiptrule#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sesreceiptrule#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="addheaderaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="bounceaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdaaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="receiptrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="snsaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stopaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="workmailaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_addheaderaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_bounceaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_lambdaaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_s3action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_snsaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_stopaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_workmailaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="receiptrule_rule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rule_actions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="addheaderaction_headername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="addheaderaction_headervalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bounceaction_message"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bounceaction_sender"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bounceaction_smtpreplycode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bounceaction_statuscode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bounceaction_topicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaaction_functionarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaaction_invocationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaaction_topicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="receiptrule_after"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="receiptrule_rulesetname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rule_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rule_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rule_recipients"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rule_scanenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rule_tlspolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3action_bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3action_kmskeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3action_objectkeyprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3action_topicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="snsaction_encoding"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="snsaction_topicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stopaction_scope"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stopaction_topicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="workmailaction_organizationarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="workmailaction_topicarn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="addheaderaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="addheaderaction_headername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="addheaderaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="addheaderaction_headervalue"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bounceaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bounceaction_message"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bounceaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bounceaction_sender"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bounceaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bounceaction_smtpreplycode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="lambdaaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="lambdaaction_functionarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="receiptrule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="receiptrule_rule"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="receiptrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="receiptrule_rulesetname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3action"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3action_bucketname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stopaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stopaction_scope"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="workmailaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="workmailaction_organizationarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_addheaderaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_bounceaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_lambdaaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_s3action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_snsaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_stopaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="action_workmailaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="receiptrule_rule"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_addheaderaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_bounceaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_lambdaaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_s3action"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_snsaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_stopaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_workmailaction"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="receiptrule_rule"/>
+        <Class IRI="receiptrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rule_actions"/>
+        <Class IRI="rule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_addheaderaction"/>
+        <Class IRI="addheaderaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_bounceaction"/>
+        <Class IRI="bounceaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_lambdaaction"/>
+        <Class IRI="lambdaaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_s3action"/>
+        <Class IRI="s3action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_snsaction"/>
+        <Class IRI="snsaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_stopaction"/>
+        <Class IRI="stopaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="action_workmailaction"/>
+        <Class IRI="workmailaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="receiptrule_rule"/>
+        <Class IRI="rule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rule_actions"/>
+        <Class IRI="action"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="addheaderaction_headername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="addheaderaction_headervalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bounceaction_message"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bounceaction_sender"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bounceaction_smtpreplycode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bounceaction_statuscode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bounceaction_topicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaaction_functionarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaaction_invocationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaaction_topicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="receiptrule_after"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="receiptrule_rulesetname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rule_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rule_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rule_scanenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rule_tlspolicy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3action_bucketname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3action_kmskeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3action_objectkeyprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3action_topicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="snsaction_encoding"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="snsaction_topicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stopaction_scope"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stopaction_topicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="workmailaction_organizationarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="workmailaction_topicarn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="addheaderaction_headername"/>
+        <Class IRI="addheaderaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="addheaderaction_headervalue"/>
+        <Class IRI="addheaderaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bounceaction_message"/>
+        <Class IRI="bounceaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bounceaction_sender"/>
+        <Class IRI="bounceaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bounceaction_smtpreplycode"/>
+        <Class IRI="bounceaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bounceaction_statuscode"/>
+        <Class IRI="bounceaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bounceaction_topicarn"/>
+        <Class IRI="bounceaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaaction_functionarn"/>
+        <Class IRI="lambdaaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaaction_invocationtype"/>
+        <Class IRI="lambdaaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaaction_topicarn"/>
+        <Class IRI="lambdaaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="receiptrule_after"/>
+        <Class IRI="receiptrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="receiptrule_rulesetname"/>
+        <Class IRI="receiptrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rule_enabled"/>
+        <Class IRI="rule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rule_name"/>
+        <Class IRI="rule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rule_recipients"/>
+        <Class IRI="rule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rule_scanenabled"/>
+        <Class IRI="rule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rule_tlspolicy"/>
+        <Class IRI="rule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3action_bucketname"/>
+        <Class IRI="s3action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3action_kmskeyarn"/>
+        <Class IRI="s3action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3action_objectkeyprefix"/>
+        <Class IRI="s3action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3action_topicarn"/>
+        <Class IRI="s3action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="snsaction_encoding"/>
+        <Class IRI="snsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="snsaction_topicarn"/>
+        <Class IRI="snsaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stopaction_scope"/>
+        <Class IRI="stopaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stopaction_topicarn"/>
+        <Class IRI="stopaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="workmailaction_organizationarn"/>
+        <Class IRI="workmailaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="workmailaction_topicarn"/>
+        <Class IRI="workmailaction"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="addheaderaction_headername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="addheaderaction_headervalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bounceaction_message"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bounceaction_sender"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bounceaction_smtpreplycode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bounceaction_statuscode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bounceaction_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaaction_functionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaaction_invocationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaaction_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="receiptrule_after"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="receiptrule_rulesetname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rule_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rule_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rule_recipients"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rule_scanenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rule_tlspolicy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3action_bucketname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3action_kmskeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3action_objectkeyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3action_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="snsaction_encoding"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="snsaction_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stopaction_scope"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stopaction_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="workmailaction_organizationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="workmailaction_topicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action</IRI>
+        <Literal>sesreceiptrule:action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_addheaderaction</IRI>
+        <Literal>sesreceiptrule:action_addheaderaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_bounceaction</IRI>
+        <Literal>sesreceiptrule:action_bounceaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_lambdaaction</IRI>
+        <Literal>sesreceiptrule:action_lambdaaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_s3action</IRI>
+        <Literal>sesreceiptrule:action_s3action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_snsaction</IRI>
+        <Literal>sesreceiptrule:action_snsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_stopaction</IRI>
+        <Literal>sesreceiptrule:action_stopaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_workmailaction</IRI>
+        <Literal>sesreceiptrule:action_workmailaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>addheaderaction</IRI>
+        <Literal>sesreceiptrule:addheaderaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>addheaderaction_headername</IRI>
+        <Literal>sesreceiptrule:addheaderaction_headername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>addheaderaction_headervalue</IRI>
+        <Literal>sesreceiptrule:addheaderaction_headervalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction</IRI>
+        <Literal>sesreceiptrule:bounceaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction_message</IRI>
+        <Literal>sesreceiptrule:bounceaction_message</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction_sender</IRI>
+        <Literal>sesreceiptrule:bounceaction_sender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction_smtpreplycode</IRI>
+        <Literal>sesreceiptrule:bounceaction_smtpreplycode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction_statuscode</IRI>
+        <Literal>sesreceiptrule:bounceaction_statuscode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bounceaction_topicarn</IRI>
+        <Literal>sesreceiptrule:bounceaction_topicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction</IRI>
+        <Literal>sesreceiptrule:lambdaaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction_functionarn</IRI>
+        <Literal>sesreceiptrule:lambdaaction_functionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction_invocationtype</IRI>
+        <Literal>sesreceiptrule:lambdaaction_invocationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaaction_topicarn</IRI>
+        <Literal>sesreceiptrule:lambdaaction_topicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>receiptrule</IRI>
+        <Literal>sesreceiptrule:receiptrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>receiptrule_after</IRI>
+        <Literal>sesreceiptrule:receiptrule_after</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>receiptrule_rule</IRI>
+        <Literal>sesreceiptrule:receiptrule_rule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>receiptrule_rulesetname</IRI>
+        <Literal>sesreceiptrule:receiptrule_rulesetname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule</IRI>
+        <Literal>sesreceiptrule:rule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_actions</IRI>
+        <Literal>sesreceiptrule:rule_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_enabled</IRI>
+        <Literal>sesreceiptrule:rule_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_name</IRI>
+        <Literal>sesreceiptrule:rule_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_recipients</IRI>
+        <Literal>sesreceiptrule:rule_recipients</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_scanenabled</IRI>
+        <Literal>sesreceiptrule:rule_scanenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rule_tlspolicy</IRI>
+        <Literal>sesreceiptrule:rule_tlspolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action</IRI>
+        <Literal>sesreceiptrule:s3action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_bucketname</IRI>
+        <Literal>sesreceiptrule:s3action_bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_kmskeyarn</IRI>
+        <Literal>sesreceiptrule:s3action_kmskeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_objectkeyprefix</IRI>
+        <Literal>sesreceiptrule:s3action_objectkeyprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3action_topicarn</IRI>
+        <Literal>sesreceiptrule:s3action_topicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction</IRI>
+        <Literal>sesreceiptrule:snsaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction_encoding</IRI>
+        <Literal>sesreceiptrule:snsaction_encoding</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>snsaction_topicarn</IRI>
+        <Literal>sesreceiptrule:snsaction_topicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stopaction</IRI>
+        <Literal>sesreceiptrule:stopaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stopaction_scope</IRI>
+        <Literal>sesreceiptrule:stopaction_scope</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stopaction_topicarn</IRI>
+        <Literal>sesreceiptrule:stopaction_topicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>workmailaction</IRI>
+        <Literal>sesreceiptrule:workmailaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>workmailaction_organizationarn</IRI>
+        <Literal>sesreceiptrule:workmailaction_organizationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>workmailaction_topicarn</IRI>
+        <Literal>sesreceiptrule:workmailaction_topicarn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/rdsoptiongroup#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/rdsoptiongroup#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="optionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="optiongroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="optionsetting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="optionconfiguration_optionsettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="optiongroup_optionconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="optiongroup_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionconfiguration_dbsecuritygroupmemberships"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionconfiguration_optionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionconfiguration_optionversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionconfiguration_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionconfiguration_vpcsecuritygroupmemberships"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optiongroup_enginename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optiongroup_majorengineversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optiongroup_optiongroupdescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionsetting_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="optionsetting_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="optionconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="optionconfiguration_optionname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="optiongroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="optiongroup_optionconfigurations"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="optiongroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="optiongroup_enginename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="optiongroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="optiongroup_majorengineversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="optiongroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="optiongroup_optiongroupdescription"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="optionconfiguration_optionsettings"/>
+        <Class IRI="optionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="optiongroup_optionconfigurations"/>
+        <Class IRI="optiongroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="optiongroup_tags"/>
+        <Class IRI="optiongroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="optionconfiguration_optionsettings"/>
+        <Class IRI="optionsetting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="optiongroup_optionconfigurations"/>
+        <Class IRI="optionconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="optiongroup_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optionconfiguration_optionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optionconfiguration_optionversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optionconfiguration_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optiongroup_enginename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optiongroup_majorengineversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optiongroup_optiongroupdescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optionsetting_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="optionsetting_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionconfiguration_dbsecuritygroupmemberships"/>
+        <Class IRI="optionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionconfiguration_optionname"/>
+        <Class IRI="optionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionconfiguration_optionversion"/>
+        <Class IRI="optionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionconfiguration_port"/>
+        <Class IRI="optionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionconfiguration_vpcsecuritygroupmemberships"/>
+        <Class IRI="optionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optiongroup_enginename"/>
+        <Class IRI="optiongroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optiongroup_majorengineversion"/>
+        <Class IRI="optiongroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optiongroup_optiongroupdescription"/>
+        <Class IRI="optiongroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionsetting_name"/>
+        <Class IRI="optionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="optionsetting_value"/>
+        <Class IRI="optionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="optionconfiguration_dbsecuritygroupmemberships"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionconfiguration_optionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionconfiguration_optionversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionconfiguration_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionconfiguration_vpcsecuritygroupmemberships"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optiongroup_enginename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optiongroup_majorengineversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optiongroup_optiongroupdescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionsetting_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="optionsetting_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_dbsecuritygroupmemberships</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_dbsecuritygroupmemberships</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_optionname</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_optionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_optionsettings</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_optionsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_optionversion</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_optionversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_port</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionconfiguration_vpcsecuritygroupmemberships</IRI>
+        <Literal>rdsoptiongroup:optionconfiguration_vpcsecuritygroupmemberships</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup</IRI>
+        <Literal>rdsoptiongroup:optiongroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup_enginename</IRI>
+        <Literal>rdsoptiongroup:optiongroup_enginename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup_majorengineversion</IRI>
+        <Literal>rdsoptiongroup:optiongroup_majorengineversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup_optionconfigurations</IRI>
+        <Literal>rdsoptiongroup:optiongroup_optionconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup_optiongroupdescription</IRI>
+        <Literal>rdsoptiongroup:optiongroup_optiongroupdescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optiongroup_tags</IRI>
+        <Literal>rdsoptiongroup:optiongroup_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionsetting</IRI>
+        <Literal>rdsoptiongroup:optionsetting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionsetting_name</IRI>
+        <Literal>rdsoptiongroup:optionsetting_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>optionsetting_value</IRI>
+        <Literal>rdsoptiongroup:optionsetting_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>rdsoptiongroup:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>rdsoptiongroup:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>rdsoptiongroup:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

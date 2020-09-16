@@ -1,0 +1,340 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotanalyticsdatastore#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotanalyticsdatastore#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="customermanageds3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datastore"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datastorestorage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="retentionperiod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="servicemanageds3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastore_datastorestorage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastore_retentionperiod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastore_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastorestorage_customermanageds3"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customermanageds3_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customermanageds3_keyprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customermanageds3_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datastore_datastorename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="retentionperiod_numberofdays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="retentionperiod_unlimited"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="customermanageds3"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customermanageds3_bucket"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customermanageds3"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customermanageds3_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datastore_datastorestorage"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datastore_retentionperiod"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datastorestorage_customermanageds3"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastore_datastorestorage"/>
+        <Class IRI="datastore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastore_retentionperiod"/>
+        <Class IRI="datastore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastore_tags"/>
+        <Class IRI="datastore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastorestorage_customermanageds3"/>
+        <Class IRI="datastorestorage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
+        <Class IRI="datastorestorage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastore_datastorestorage"/>
+        <Class IRI="datastorestorage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastore_retentionperiod"/>
+        <Class IRI="retentionperiod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastore_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastorestorage_customermanageds3"/>
+        <Class IRI="customermanageds3"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
+        <Class IRI="servicemanageds3"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customermanageds3_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customermanageds3_keyprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customermanageds3_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datastore_datastorename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="retentionperiod_numberofdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="retentionperiod_unlimited"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="customermanageds3_bucket"/>
+        <Class IRI="customermanageds3"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customermanageds3_keyprefix"/>
+        <Class IRI="customermanageds3"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customermanageds3_rolearn"/>
+        <Class IRI="customermanageds3"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datastore_datastorename"/>
+        <Class IRI="datastore"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="retentionperiod_numberofdays"/>
+        <Class IRI="retentionperiod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="retentionperiod_unlimited"/>
+        <Class IRI="retentionperiod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="customermanageds3_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customermanageds3_keyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customermanageds3_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datastore_datastorename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="retentionperiod_numberofdays"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="retentionperiod_unlimited"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customermanageds3</IRI>
+        <Literal>iotanalyticsdatastore:customermanageds3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customermanageds3_bucket</IRI>
+        <Literal>iotanalyticsdatastore:customermanageds3_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customermanageds3_keyprefix</IRI>
+        <Literal>iotanalyticsdatastore:customermanageds3_keyprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customermanageds3_rolearn</IRI>
+        <Literal>iotanalyticsdatastore:customermanageds3_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore</IRI>
+        <Literal>iotanalyticsdatastore:datastore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore_datastorename</IRI>
+        <Literal>iotanalyticsdatastore:datastore_datastorename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore_datastorestorage</IRI>
+        <Literal>iotanalyticsdatastore:datastore_datastorestorage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore_retentionperiod</IRI>
+        <Literal>iotanalyticsdatastore:datastore_retentionperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore_tags</IRI>
+        <Literal>iotanalyticsdatastore:datastore_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastorestorage</IRI>
+        <Literal>iotanalyticsdatastore:datastorestorage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastorestorage_customermanageds3</IRI>
+        <Literal>iotanalyticsdatastore:datastorestorage_customermanageds3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastorestorage_servicemanageds3</IRI>
+        <Literal>iotanalyticsdatastore:datastorestorage_servicemanageds3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retentionperiod</IRI>
+        <Literal>iotanalyticsdatastore:retentionperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retentionperiod_numberofdays</IRI>
+        <Literal>iotanalyticsdatastore:retentionperiod_numberofdays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retentionperiod_unlimited</IRI>
+        <Literal>iotanalyticsdatastore:retentionperiod_unlimited</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>servicemanageds3</IRI>
+        <Literal>iotanalyticsdatastore:servicemanageds3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>iotanalyticsdatastore:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>iotanalyticsdatastore:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>iotanalyticsdatastore:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

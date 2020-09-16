@@ -1,0 +1,670 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/emrinstancefleetconfig#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/emrinstancefleetconfig#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="configuration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ebsblockdeviceconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ebsconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instancefleetconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instancefleetprovisioningspecifications"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instancetypeconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="spotprovisioningspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="volumespecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configuration_configurationproperties"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configuration_configurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ebsconfiguration_ebsblockdeviceconfigs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancefleetconfig_instancetypeconfigs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancetypeconfig_configurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancetypeconfig_ebsconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configuration_classification"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsblockdeviceconfig_volumesperinstance"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ebsconfiguration_ebsoptimized"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancefleetconfig_clusterid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancefleetconfig_instancefleettype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancefleetconfig_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancefleetconfig_targetondemandcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancefleetconfig_targetspotcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancetypeconfig_bidprice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancetypeconfig_bidpriceaspercentageofondemandprice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancetypeconfig_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancetypeconfig_weightedcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotprovisioningspecification_timeoutaction"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotprovisioningspecification_timeoutdurationminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumespecification_iops"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumespecification_sizeingb"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumespecification_volumetype"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="ebsblockdeviceconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instancefleetconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="instancefleetconfig_clusterid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instancefleetconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="instancefleetconfig_instancefleettype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instancefleetprovisioningspecifications"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instancetypeconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="instancetypeconfig_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="spotprovisioningspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="spotprovisioningspecification_timeoutaction"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="spotprovisioningspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="spotprovisioningspecification_timeoutdurationminutes"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="volumespecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="volumespecification_sizeingb"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="volumespecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="volumespecification_volumetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="instancetypeconfig_ebsconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configuration_configurationproperties"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configuration_configurations"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
+        <Class IRI="ebsblockdeviceconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ebsconfiguration_ebsblockdeviceconfigs"/>
+        <Class IRI="ebsconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancefleetconfig_instancetypeconfigs"/>
+        <Class IRI="instancefleetconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+        <Class IRI="instancefleetconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
+        <Class IRI="instancefleetprovisioningspecifications"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancetypeconfig_configurations"/>
+        <Class IRI="instancetypeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancetypeconfig_ebsconfiguration"/>
+        <Class IRI="instancetypeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configuration_configurationproperties"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configuration_configurations"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
+        <Class IRI="volumespecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ebsconfiguration_ebsblockdeviceconfigs"/>
+        <Class IRI="ebsblockdeviceconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancefleetconfig_instancetypeconfigs"/>
+        <Class IRI="instancetypeconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+        <Class IRI="instancefleetprovisioningspecifications"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
+        <Class IRI="spotprovisioningspecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancetypeconfig_configurations"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancetypeconfig_ebsconfiguration"/>
+        <Class IRI="ebsconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configuration_classification"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsblockdeviceconfig_volumesperinstance"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ebsconfiguration_ebsoptimized"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancefleetconfig_clusterid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancefleetconfig_instancefleettype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancefleetconfig_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancefleetconfig_targetondemandcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancefleetconfig_targetspotcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancetypeconfig_bidprice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancetypeconfig_bidpriceaspercentageofondemandprice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancetypeconfig_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancetypeconfig_weightedcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotprovisioningspecification_timeoutaction"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotprovisioningspecification_timeoutdurationminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumespecification_iops"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumespecification_sizeingb"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumespecification_volumetype"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="configuration_classification"/>
+        <Class IRI="configuration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsblockdeviceconfig_volumesperinstance"/>
+        <Class IRI="ebsblockdeviceconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ebsconfiguration_ebsoptimized"/>
+        <Class IRI="ebsconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancefleetconfig_clusterid"/>
+        <Class IRI="instancefleetconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancefleetconfig_instancefleettype"/>
+        <Class IRI="instancefleetconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancefleetconfig_name"/>
+        <Class IRI="instancefleetconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancefleetconfig_targetondemandcapacity"/>
+        <Class IRI="instancefleetconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancefleetconfig_targetspotcapacity"/>
+        <Class IRI="instancefleetconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancetypeconfig_bidprice"/>
+        <Class IRI="instancetypeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancetypeconfig_bidpriceaspercentageofondemandprice"/>
+        <Class IRI="instancetypeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancetypeconfig_instancetype"/>
+        <Class IRI="instancetypeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancetypeconfig_weightedcapacity"/>
+        <Class IRI="instancetypeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
+        <Class IRI="spotprovisioningspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotprovisioningspecification_timeoutaction"/>
+        <Class IRI="spotprovisioningspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotprovisioningspecification_timeoutdurationminutes"/>
+        <Class IRI="spotprovisioningspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumespecification_iops"/>
+        <Class IRI="volumespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumespecification_sizeingb"/>
+        <Class IRI="volumespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumespecification_volumetype"/>
+        <Class IRI="volumespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="configuration_classification"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsblockdeviceconfig_volumesperinstance"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ebsconfiguration_ebsoptimized"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancefleetconfig_clusterid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancefleetconfig_instancefleettype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancefleetconfig_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancefleetconfig_targetondemandcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancefleetconfig_targetspotcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancetypeconfig_bidprice"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancetypeconfig_bidpriceaspercentageofondemandprice"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancetypeconfig_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancetypeconfig_weightedcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotprovisioningspecification_timeoutaction"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotprovisioningspecification_timeoutdurationminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumespecification_iops"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumespecification_sizeingb"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumespecification_volumetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration</IRI>
+        <Literal>emrinstancefleetconfig:configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration_classification</IRI>
+        <Literal>emrinstancefleetconfig:configuration_classification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration_configurationproperties</IRI>
+        <Literal>emrinstancefleetconfig:configuration_configurationproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration_configurations</IRI>
+        <Literal>emrinstancefleetconfig:configuration_configurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsblockdeviceconfig</IRI>
+        <Literal>emrinstancefleetconfig:ebsblockdeviceconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsblockdeviceconfig_volumespecification</IRI>
+        <Literal>emrinstancefleetconfig:ebsblockdeviceconfig_volumespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsblockdeviceconfig_volumesperinstance</IRI>
+        <Literal>emrinstancefleetconfig:ebsblockdeviceconfig_volumesperinstance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsconfiguration</IRI>
+        <Literal>emrinstancefleetconfig:ebsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsconfiguration_ebsblockdeviceconfigs</IRI>
+        <Literal>emrinstancefleetconfig:ebsconfiguration_ebsblockdeviceconfigs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ebsconfiguration_ebsoptimized</IRI>
+        <Literal>emrinstancefleetconfig:ebsconfiguration_ebsoptimized</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_clusterid</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_clusterid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_instancefleettype</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_instancefleettype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_instancetypeconfigs</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_instancetypeconfigs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_launchspecifications</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_launchspecifications</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_name</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_targetondemandcapacity</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_targetondemandcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetconfig_targetspotcapacity</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetconfig_targetspotcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetprovisioningspecifications</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetprovisioningspecifications</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetprovisioningspecifications_spotspecification</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetprovisioningspecifications_spotspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_bidprice</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_bidprice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_bidpriceaspercentageofondemandprice</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_bidpriceaspercentageofondemandprice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_configurations</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_configurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_ebsconfiguration</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_ebsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_instancetype</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancetypeconfig_weightedcapacity</IRI>
+        <Literal>emrinstancefleetconfig:instancetypeconfig_weightedcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification</IRI>
+        <Literal>emrinstancefleetconfig:spotprovisioningspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification_blockdurationminutes</IRI>
+        <Literal>emrinstancefleetconfig:spotprovisioningspecification_blockdurationminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification_timeoutaction</IRI>
+        <Literal>emrinstancefleetconfig:spotprovisioningspecification_timeoutaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification_timeoutdurationminutes</IRI>
+        <Literal>emrinstancefleetconfig:spotprovisioningspecification_timeoutdurationminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumespecification</IRI>
+        <Literal>emrinstancefleetconfig:volumespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumespecification_iops</IRI>
+        <Literal>emrinstancefleetconfig:volumespecification_iops</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumespecification_sizeingb</IRI>
+        <Literal>emrinstancefleetconfig:volumespecification_sizeingb</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumespecification_volumetype</IRI>
+        <Literal>emrinstancefleetconfig:volumespecification_volumetype</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

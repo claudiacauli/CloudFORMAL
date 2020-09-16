@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkscmserver#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkscmserver#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="engineattribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="server"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_engineattributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_server_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_server_endpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="engineattribute_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="engineattribute_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_associatepublicipaddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_backupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_backupretentioncount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_customcertificate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_customdomain"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_customprivatekey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_disableautomatedbackup"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_engine"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_enginemodel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_engineversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_instanceprofilearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_keypair"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_preferredbackupwindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_preferredmaintenancewindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_servername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_servicerolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_subnetids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="server"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="server_instanceprofilearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="server"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="server_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="server"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="server_servicerolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_engineattributes"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_tags"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_engineattributes"/>
+        <Class IRI="engineattribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_server_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_server_endpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="engineattribute_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="engineattribute_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_associatepublicipaddress"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_backupid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_backupretentioncount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_customcertificate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_customdomain"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_customprivatekey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_disableautomatedbackup"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_engine"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_enginemodel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_engineversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_instanceprofilearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_keypair"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_preferredbackupwindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_preferredmaintenancewindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_servername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_servicerolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_server_arn"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_server_endpoint"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="engineattribute_name"/>
+        <Class IRI="engineattribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="engineattribute_value"/>
+        <Class IRI="engineattribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_associatepublicipaddress"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_backupid"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_backupretentioncount"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_customcertificate"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_customdomain"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_customprivatekey"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_disableautomatedbackup"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_engine"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_enginemodel"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_engineversion"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_instanceprofilearn"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_instancetype"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_keypair"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_preferredbackupwindow"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_preferredmaintenancewindow"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_securitygroupids"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_servername"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_servicerolearn"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_subnetids"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_server_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_server_endpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="engineattribute_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="engineattribute_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_associatepublicipaddress"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_backupid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_backupretentioncount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_customcertificate"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_customdomain"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_customprivatekey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_disableautomatedbackup"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_engine"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_enginemodel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_engineversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_instanceprofilearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_keypair"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_preferredbackupwindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_preferredmaintenancewindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_servername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_servicerolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_server_arn</IRI>
+        <Literal>opsworkscmserver:attribute_server_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_server_endpoint</IRI>
+        <Literal>opsworkscmserver:attribute_server_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>engineattribute</IRI>
+        <Literal>opsworkscmserver:engineattribute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>engineattribute_name</IRI>
+        <Literal>opsworkscmserver:engineattribute_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>engineattribute_value</IRI>
+        <Literal>opsworkscmserver:engineattribute_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server</IRI>
+        <Literal>opsworkscmserver:server</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_associatepublicipaddress</IRI>
+        <Literal>opsworkscmserver:server_associatepublicipaddress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_backupid</IRI>
+        <Literal>opsworkscmserver:server_backupid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_backupretentioncount</IRI>
+        <Literal>opsworkscmserver:server_backupretentioncount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_customcertificate</IRI>
+        <Literal>opsworkscmserver:server_customcertificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_customdomain</IRI>
+        <Literal>opsworkscmserver:server_customdomain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_customprivatekey</IRI>
+        <Literal>opsworkscmserver:server_customprivatekey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_disableautomatedbackup</IRI>
+        <Literal>opsworkscmserver:server_disableautomatedbackup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_engine</IRI>
+        <Literal>opsworkscmserver:server_engine</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_engineattributes</IRI>
+        <Literal>opsworkscmserver:server_engineattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_enginemodel</IRI>
+        <Literal>opsworkscmserver:server_enginemodel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_engineversion</IRI>
+        <Literal>opsworkscmserver:server_engineversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_instanceprofilearn</IRI>
+        <Literal>opsworkscmserver:server_instanceprofilearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_instancetype</IRI>
+        <Literal>opsworkscmserver:server_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_keypair</IRI>
+        <Literal>opsworkscmserver:server_keypair</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_preferredbackupwindow</IRI>
+        <Literal>opsworkscmserver:server_preferredbackupwindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_preferredmaintenancewindow</IRI>
+        <Literal>opsworkscmserver:server_preferredmaintenancewindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_securitygroupids</IRI>
+        <Literal>opsworkscmserver:server_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_servername</IRI>
+        <Literal>opsworkscmserver:server_servername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_servicerolearn</IRI>
+        <Literal>opsworkscmserver:server_servicerolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_subnetids</IRI>
+        <Literal>opsworkscmserver:server_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_tags</IRI>
+        <Literal>opsworkscmserver:server_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>opsworkscmserver:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>opsworkscmserver:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>opsworkscmserver:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/emrstep#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/emrstep#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="hadoopjarstepconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="keyvalue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="step"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hadoopjarstepconfig_stepproperties"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="step_hadoopjarstep"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hadoopjarstepconfig_args"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hadoopjarstepconfig_jar"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hadoopjarstepconfig_mainclass"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyvalue_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyvalue_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="step_actiononfailure"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="step_jobflowid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="step_name"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="hadoopjarstepconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="hadoopjarstepconfig_jar"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="step"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="step_hadoopjarstep"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="step"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="step_actiononfailure"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="step"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="step_jobflowid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="step"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="step_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="step_hadoopjarstep"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hadoopjarstepconfig_stepproperties"/>
+        <Class IRI="hadoopjarstepconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="step_hadoopjarstep"/>
+        <Class IRI="step"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hadoopjarstepconfig_stepproperties"/>
+        <Class IRI="keyvalue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="step_hadoopjarstep"/>
+        <Class IRI="hadoopjarstepconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hadoopjarstepconfig_jar"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hadoopjarstepconfig_mainclass"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyvalue_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyvalue_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="step_actiononfailure"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="step_jobflowid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="step_name"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="hadoopjarstepconfig_args"/>
+        <Class IRI="hadoopjarstepconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hadoopjarstepconfig_jar"/>
+        <Class IRI="hadoopjarstepconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hadoopjarstepconfig_mainclass"/>
+        <Class IRI="hadoopjarstepconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyvalue_key"/>
+        <Class IRI="keyvalue"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyvalue_value"/>
+        <Class IRI="keyvalue"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="step_actiononfailure"/>
+        <Class IRI="step"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="step_jobflowid"/>
+        <Class IRI="step"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="step_name"/>
+        <Class IRI="step"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="hadoopjarstepconfig_args"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hadoopjarstepconfig_jar"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hadoopjarstepconfig_mainclass"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyvalue_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyvalue_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="step_actiononfailure"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="step_jobflowid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="step_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hadoopjarstepconfig</IRI>
+        <Literal>emrstep:hadoopjarstepconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hadoopjarstepconfig_args</IRI>
+        <Literal>emrstep:hadoopjarstepconfig_args</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hadoopjarstepconfig_jar</IRI>
+        <Literal>emrstep:hadoopjarstepconfig_jar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hadoopjarstepconfig_mainclass</IRI>
+        <Literal>emrstep:hadoopjarstepconfig_mainclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hadoopjarstepconfig_stepproperties</IRI>
+        <Literal>emrstep:hadoopjarstepconfig_stepproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyvalue</IRI>
+        <Literal>emrstep:keyvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyvalue_key</IRI>
+        <Literal>emrstep:keyvalue_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyvalue_value</IRI>
+        <Literal>emrstep:keyvalue_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>step</IRI>
+        <Literal>emrstep:step</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>step_actiononfailure</IRI>
+        <Literal>emrstep:step_actiononfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>step_hadoopjarstep</IRI>
+        <Literal>emrstep:step_hadoopjarstep</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>step_jobflowid</IRI>
+        <Literal>emrstep:step_jobflowid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>step_name</IRI>
+        <Literal>emrstep:step_name</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/elasticbeanstalkconfigurationtemplate#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/elasticbeanstalkconfigurationtemplate#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="configurationoptionsetting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="configurationtemplate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sourceconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configurationtemplate_optionsettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configurationtemplate_sourceconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationoptionsetting_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationoptionsetting_optionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationoptionsetting_resourcename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationoptionsetting_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationtemplate_applicationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationtemplate_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationtemplate_environmentid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationtemplate_platformarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationtemplate_solutionstackname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sourceconfiguration_applicationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sourceconfiguration_templatename"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="configurationoptionsetting"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationoptionsetting_namespace"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="configurationoptionsetting"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationoptionsetting_optionname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="configurationtemplate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationtemplate_applicationname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sourceconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sourceconfiguration_applicationname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sourceconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sourceconfiguration_templatename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="configurationtemplate_sourceconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configurationtemplate_optionsettings"/>
+        <Class IRI="configurationtemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configurationtemplate_sourceconfiguration"/>
+        <Class IRI="configurationtemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configurationtemplate_optionsettings"/>
+        <Class IRI="configurationoptionsetting"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configurationtemplate_sourceconfiguration"/>
+        <Class IRI="sourceconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationoptionsetting_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationoptionsetting_optionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationoptionsetting_resourcename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationoptionsetting_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationtemplate_applicationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationtemplate_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationtemplate_environmentid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationtemplate_platformarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationtemplate_solutionstackname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourceconfiguration_applicationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourceconfiguration_templatename"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationoptionsetting_namespace"/>
+        <Class IRI="configurationoptionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationoptionsetting_optionname"/>
+        <Class IRI="configurationoptionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationoptionsetting_resourcename"/>
+        <Class IRI="configurationoptionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationoptionsetting_value"/>
+        <Class IRI="configurationoptionsetting"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationtemplate_applicationname"/>
+        <Class IRI="configurationtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationtemplate_description"/>
+        <Class IRI="configurationtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationtemplate_environmentid"/>
+        <Class IRI="configurationtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationtemplate_platformarn"/>
+        <Class IRI="configurationtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationtemplate_solutionstackname"/>
+        <Class IRI="configurationtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourceconfiguration_applicationname"/>
+        <Class IRI="sourceconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourceconfiguration_templatename"/>
+        <Class IRI="sourceconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationoptionsetting_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationoptionsetting_optionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationoptionsetting_resourcename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationoptionsetting_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationtemplate_applicationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationtemplate_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationtemplate_environmentid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationtemplate_platformarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationtemplate_solutionstackname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourceconfiguration_applicationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourceconfiguration_templatename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationoptionsetting</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationoptionsetting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationoptionsetting_namespace</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationoptionsetting_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationoptionsetting_optionname</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationoptionsetting_optionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationoptionsetting_resourcename</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationoptionsetting_resourcename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationoptionsetting_value</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationoptionsetting_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_applicationname</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_applicationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_description</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_environmentid</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_environmentid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_optionsettings</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_optionsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_platformarn</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_platformarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_solutionstackname</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_solutionstackname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationtemplate_sourceconfiguration</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:configurationtemplate_sourceconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceconfiguration</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:sourceconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceconfiguration_applicationname</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:sourceconfiguration_applicationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceconfiguration_templatename</IRI>
+        <Literal>elasticbeanstalkconfigurationtemplate:sourceconfiguration_templatename</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

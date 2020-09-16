@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/backupbackupplan#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/backupbackupplan#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="backupplan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="backupplanresourcetype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="backupruleresourcetype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="copyactionresourcetype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lifecycleresourcetype"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="backupplan_backupplan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_backupplan_backupplanarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_backupplan_backupplanid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_backupplan_versionid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupplan_backupplantags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupplanresourcetype_backupplanname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_completionwindowminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_recoverypointtags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_rulename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_scheduleexpression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_startwindowminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="backupplan"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="backupplan_backupplan"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="backupplanresourcetype"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="backupplanresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="backupplanresourcetype_backupplanname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="backupruleresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="backupruleresourcetype_rulename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="backupruleresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="copyactionresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="backupplan_backupplan"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupplan_backupplan"/>
+        <Class IRI="backupplan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
+        <Class IRI="backupplanresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+        <Class IRI="backupruleresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+        <Class IRI="backupruleresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+        <Class IRI="copyactionresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="backupplan_backupplan"/>
+        <Class IRI="backupplanresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
+        <Class IRI="backupruleresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="backupruleresourcetype_copyactions"/>
+        <Class IRI="copyactionresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="backupruleresourcetype_lifecycle"/>
+        <Class IRI="lifecycleresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+        <Class IRI="lifecycleresourcetype"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_backupplan_backupplanarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_backupplan_backupplanid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_backupplan_versionid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupplan_backupplantags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupplanresourcetype_backupplanname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_completionwindowminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_recoverypointtags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_rulename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_scheduleexpression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_startwindowminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_backupplan_backupplanarn"/>
+        <Class IRI="backupplan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_backupplan_backupplanid"/>
+        <Class IRI="backupplan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_backupplan_versionid"/>
+        <Class IRI="backupplan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupplan_backupplantags"/>
+        <Class IRI="backupplan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupplanresourcetype_backupplanname"/>
+        <Class IRI="backupplanresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_completionwindowminutes"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_recoverypointtags"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_rulename"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_scheduleexpression"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_startwindowminutes"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+        <Class IRI="backupruleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+        <Class IRI="copyactionresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
+        <Class IRI="lifecycleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
+        <Class IRI="lifecycleresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_backupplan_backupplanarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_backupplan_backupplanid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_backupplan_versionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupplan_backupplantags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupplanresourcetype_backupplanname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_completionwindowminutes"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_recoverypointtags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_rulename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_scheduleexpression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_startwindowminutes"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="backupruleresourcetype_targetbackupvault"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="copyactionresourcetype_destinationbackupvaultarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lifecycleresourcetype_deleteafterdays"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_backupplan_backupplanarn</IRI>
+        <Literal>backupbackupplan:attribute_backupplan_backupplanarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_backupplan_backupplanid</IRI>
+        <Literal>backupbackupplan:attribute_backupplan_backupplanid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_backupplan_versionid</IRI>
+        <Literal>backupbackupplan:attribute_backupplan_versionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplan</IRI>
+        <Literal>backupbackupplan:backupplan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplan_backupplan</IRI>
+        <Literal>backupbackupplan:backupplan_backupplan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplan_backupplantags</IRI>
+        <Literal>backupbackupplan:backupplan_backupplantags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplanresourcetype</IRI>
+        <Literal>backupbackupplan:backupplanresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplanresourcetype_backupplanname</IRI>
+        <Literal>backupbackupplan:backupplanresourcetype_backupplanname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplanresourcetype_backupplanrule</IRI>
+        <Literal>backupbackupplan:backupplanresourcetype_backupplanrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_completionwindowminutes</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_completionwindowminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_copyactions</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_copyactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_lifecycle</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_lifecycle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_recoverypointtags</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_recoverypointtags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_rulename</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_rulename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_scheduleexpression</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_scheduleexpression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_startwindowminutes</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_startwindowminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupruleresourcetype_targetbackupvault</IRI>
+        <Literal>backupbackupplan:backupruleresourcetype_targetbackupvault</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>copyactionresourcetype</IRI>
+        <Literal>backupbackupplan:copyactionresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>copyactionresourcetype_destinationbackupvaultarn</IRI>
+        <Literal>backupbackupplan:copyactionresourcetype_destinationbackupvaultarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>copyactionresourcetype_lifecycle</IRI>
+        <Literal>backupbackupplan:copyactionresourcetype_lifecycle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleresourcetype</IRI>
+        <Literal>backupbackupplan:lifecycleresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleresourcetype_deleteafterdays</IRI>
+        <Literal>backupbackupplan:lifecycleresourcetype_deleteafterdays</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleresourcetype_movetocoldstorageafterdays</IRI>
+        <Literal>backupbackupplan:lifecycleresourcetype_movetocoldstorageafterdays</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

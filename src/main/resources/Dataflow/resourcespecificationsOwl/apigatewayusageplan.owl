@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplan#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayusageplan#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="apistage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_throttlesettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="quotasettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="throttlesettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="usageplan"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="apistage_apiid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="apistage_throttle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usageplan_apistages"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usageplan_quota"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usageplan_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usageplan_throttle"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="apistage_stage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_throttlesettings_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_throttlesettings_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="quotasettings_limit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="quotasettings_offset"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="quotasettings_period"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="throttlesettings_burstlimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="throttlesettings_ratelimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usageplan_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usageplan_usageplanname"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="apistage_apiid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usageplan_quota"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usageplan_throttle"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="apistage_apiid"/>
+        <Class IRI="apistage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="apistage_throttle"/>
+        <Class IRI="apistage"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usageplan_apistages"/>
+        <Class IRI="usageplan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usageplan_quota"/>
+        <Class IRI="usageplan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usageplan_tags"/>
+        <Class IRI="usageplan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usageplan_throttle"/>
+        <Class IRI="usageplan"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="apistage_apiid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayrestapi#restapi"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="apistage_throttle"/>
+        <Class IRI="mapentry_throttlesettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usageplan_apistages"/>
+        <Class IRI="apistage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usageplan_quota"/>
+        <Class IRI="quotasettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usageplan_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usageplan_throttle"/>
+        <Class IRI="throttlesettings"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="apistage_stage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="quotasettings_limit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="quotasettings_offset"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="quotasettings_period"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="throttlesettings_burstlimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="throttlesettings_ratelimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usageplan_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usageplan_usageplanname"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="apistage_stage"/>
+        <Class IRI="apistage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_throttlesettings_key"/>
+        <Class IRI="mapentry_throttlesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_throttlesettings_value"/>
+        <Class IRI="mapentry_throttlesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="quotasettings_limit"/>
+        <Class IRI="quotasettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="quotasettings_offset"/>
+        <Class IRI="quotasettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="quotasettings_period"/>
+        <Class IRI="quotasettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="throttlesettings_burstlimit"/>
+        <Class IRI="throttlesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="throttlesettings_ratelimit"/>
+        <Class IRI="throttlesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usageplan_description"/>
+        <Class IRI="usageplan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usageplan_usageplanname"/>
+        <Class IRI="usageplan"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="apistage_stage"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_throttlesettings_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_throttlesettings_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="quotasettings_limit"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="quotasettings_offset"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="quotasettings_period"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="throttlesettings_burstlimit"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="throttlesettings_ratelimit"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usageplan_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usageplan_usageplanname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apistage</IRI>
+        <Literal>apigatewayusageplan:apistage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apistage_apiid</IRI>
+        <Literal>apigatewayusageplan:apistage_apiid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apistage_stage</IRI>
+        <Literal>apigatewayusageplan:apistage_stage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apistage_throttle</IRI>
+        <Literal>apigatewayusageplan:apistage_throttle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quotasettings</IRI>
+        <Literal>apigatewayusageplan:quotasettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quotasettings_limit</IRI>
+        <Literal>apigatewayusageplan:quotasettings_limit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quotasettings_offset</IRI>
+        <Literal>apigatewayusageplan:quotasettings_offset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quotasettings_period</IRI>
+        <Literal>apigatewayusageplan:quotasettings_period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>apigatewayusageplan:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>apigatewayusageplan:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>apigatewayusageplan:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>throttlesettings</IRI>
+        <Literal>apigatewayusageplan:throttlesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>throttlesettings_burstlimit</IRI>
+        <Literal>apigatewayusageplan:throttlesettings_burstlimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>throttlesettings_ratelimit</IRI>
+        <Literal>apigatewayusageplan:throttlesettings_ratelimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan</IRI>
+        <Literal>apigatewayusageplan:usageplan</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_apistages</IRI>
+        <Literal>apigatewayusageplan:usageplan_apistages</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_description</IRI>
+        <Literal>apigatewayusageplan:usageplan_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_quota</IRI>
+        <Literal>apigatewayusageplan:usageplan_quota</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_tags</IRI>
+        <Literal>apigatewayusageplan:usageplan_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_throttle</IRI>
+        <Literal>apigatewayusageplan:usageplan_throttle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usageplan_usageplanname</IRI>
+        <Literal>apigatewayusageplan:usageplan_usageplanname</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

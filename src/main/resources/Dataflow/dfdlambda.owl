@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda">
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaalias#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdalayerversion#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdalayerversionpermission#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaversion#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#accessesThroughVpc -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#accessesThroughVpc">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#vpcconfig_securitygroupids"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_vpcconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#vpcconfig_subnetids"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:accessesThroughVpc</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#bucketStoresCodeFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#bucketStoresCodeFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#storesObjectsFor"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#code_s3bucket"/>
+            </rdf:Description>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_code"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:bucketStoresCodeFor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#hasPermissionToInvoke -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#hasPermissionToInvoke">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourceaccount"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_sourcearn"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdapermission#permission_functionname"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:hasPermissionToInvoke</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#invokesFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#invokesFunction">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaalias#alias_functionname"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:invokesFunction</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsDiscardedRecordsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsDiscardedRecordsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#eventsourcemapping_functionname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#eventsourcemapping_destinationconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#destinationconfig_onfailure"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:sendsDiscardedRecordsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsEventsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsEventsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#eventinvokeconfig_destinationconfig"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:sendsEventsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsFailedEventsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsFailedEventsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function_deadletterconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#deadletterconfig_targetarn"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#eventinvokeconfig_functionname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#eventinvokeconfig_destinationconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#destinationconfig_onfailure"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#onfailure_destination"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:sendsFailedEventsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsSuccessedEventsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#sendsSuccessedEventsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#eventinvokeconfig_functionname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#eventinvokeconfig_destinationconfig"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#destinationconfig_onsuccess"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#onsuccess_destination"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:sendsSuccessfulEventsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#triggersFunExecution -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdlambda#triggersFunExecution">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#triggersFunction"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#eventsourcemapping_eventsourcearn"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventsourcemapping#eventsourcemapping_functionname"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdlambda:triggersFunExecution</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Process"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

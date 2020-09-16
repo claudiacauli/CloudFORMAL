@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sesconfigurationseteventdestination#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sesconfigurationseteventdestination#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cloudwatchdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="configurationseteventdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dimensionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="kinesisfirehosedestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cloudwatchdestination_dimensionconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configurationseteventdestination_eventdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventdestination_cloudwatchdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventdestination_kinesisfirehosedestination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configurationseteventdestination_configurationsetname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimensionconfiguration_defaultdimensionvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimensionconfiguration_dimensionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimensionconfiguration_dimensionvaluesource"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventdestination_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventdestination_matchingeventtypes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventdestination_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kinesisfirehosedestination_deliverystreamarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kinesisfirehosedestination_iamrolearn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="configurationseteventdestination"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="configurationseteventdestination_eventdestination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="configurationseteventdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="configurationseteventdestination_configurationsetname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimensionconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimensionconfiguration_defaultdimensionvalue"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimensionconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimensionconfiguration_dimensionname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimensionconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimensionconfiguration_dimensionvaluesource"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="eventdestination_matchingeventtypes"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kinesisfirehosedestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="kinesisfirehosedestination_deliverystreamarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kinesisfirehosedestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="kinesisfirehosedestination_iamrolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="configurationseteventdestination_eventdestination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventdestination_cloudwatchdestination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventdestination_kinesisfirehosedestination"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cloudwatchdestination_dimensionconfigurations"/>
+        <Class IRI="cloudwatchdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configurationseteventdestination_eventdestination"/>
+        <Class IRI="configurationseteventdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventdestination_cloudwatchdestination"/>
+        <Class IRI="eventdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventdestination_kinesisfirehosedestination"/>
+        <Class IRI="eventdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cloudwatchdestination_dimensionconfigurations"/>
+        <Class IRI="dimensionconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configurationseteventdestination_eventdestination"/>
+        <Class IRI="eventdestination"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventdestination_cloudwatchdestination"/>
+        <Class IRI="cloudwatchdestination"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventdestination_kinesisfirehosedestination"/>
+        <Class IRI="kinesisfirehosedestination"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configurationseteventdestination_configurationsetname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimensionconfiguration_defaultdimensionvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimensionconfiguration_dimensionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimensionconfiguration_dimensionvaluesource"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventdestination_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventdestination_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kinesisfirehosedestination_deliverystreamarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kinesisfirehosedestination_iamrolearn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="configurationseteventdestination_configurationsetname"/>
+        <Class IRI="configurationseteventdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimensionconfiguration_defaultdimensionvalue"/>
+        <Class IRI="dimensionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimensionconfiguration_dimensionname"/>
+        <Class IRI="dimensionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimensionconfiguration_dimensionvaluesource"/>
+        <Class IRI="dimensionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventdestination_enabled"/>
+        <Class IRI="eventdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventdestination_matchingeventtypes"/>
+        <Class IRI="eventdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventdestination_name"/>
+        <Class IRI="eventdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kinesisfirehosedestination_deliverystreamarn"/>
+        <Class IRI="kinesisfirehosedestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kinesisfirehosedestination_iamrolearn"/>
+        <Class IRI="kinesisfirehosedestination"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="configurationseteventdestination_configurationsetname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimensionconfiguration_defaultdimensionvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimensionconfiguration_dimensionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimensionconfiguration_dimensionvaluesource"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventdestination_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventdestination_matchingeventtypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventdestination_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kinesisfirehosedestination_deliverystreamarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kinesisfirehosedestination_iamrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchdestination</IRI>
+        <Literal>sesconfigurationseteventdestination:cloudwatchdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchdestination_dimensionconfigurations</IRI>
+        <Literal>sesconfigurationseteventdestination:cloudwatchdestination_dimensionconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationseteventdestination</IRI>
+        <Literal>sesconfigurationseteventdestination:configurationseteventdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationseteventdestination_configurationsetname</IRI>
+        <Literal>sesconfigurationseteventdestination:configurationseteventdestination_configurationsetname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configurationseteventdestination_eventdestination</IRI>
+        <Literal>sesconfigurationseteventdestination:configurationseteventdestination_eventdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimensionconfiguration</IRI>
+        <Literal>sesconfigurationseteventdestination:dimensionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimensionconfiguration_defaultdimensionvalue</IRI>
+        <Literal>sesconfigurationseteventdestination:dimensionconfiguration_defaultdimensionvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimensionconfiguration_dimensionname</IRI>
+        <Literal>sesconfigurationseteventdestination:dimensionconfiguration_dimensionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimensionconfiguration_dimensionvaluesource</IRI>
+        <Literal>sesconfigurationseteventdestination:dimensionconfiguration_dimensionvaluesource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination_cloudwatchdestination</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination_cloudwatchdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination_enabled</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination_kinesisfirehosedestination</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination_kinesisfirehosedestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination_matchingeventtypes</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination_matchingeventtypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventdestination_name</IRI>
+        <Literal>sesconfigurationseteventdestination:eventdestination_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisfirehosedestination</IRI>
+        <Literal>sesconfigurationseteventdestination:kinesisfirehosedestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisfirehosedestination_deliverystreamarn</IRI>
+        <Literal>sesconfigurationseteventdestination:kinesisfirehosedestination_deliverystreamarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisfirehosedestination_iamrolearn</IRI>
+        <Literal>sesconfigurationseteventdestination:kinesisfirehosedestination_iamrolearn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

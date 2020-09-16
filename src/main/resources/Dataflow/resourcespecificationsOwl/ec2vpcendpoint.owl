@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcendpoint#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcendpoint#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="vpcendpoint"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcendpoint_routetableids"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcendpoint_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcendpoint_subnetids"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="vpcendpoint_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_vpcendpoint_creationtimestamp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_vpcendpoint_dnsentries"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_vpcendpoint_networkinterfaceids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcendpoint_policydocument"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcendpoint_privatednsenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcendpoint_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcendpoint_vpcendpointtype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2securitygroup#securitygroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="vpcendpoint"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="vpcendpoint_vpcid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcendpoint"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpcendpoint_servicename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="vpcendpoint_vpcid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcendpoint_routetableids"/>
+        <Class IRI="vpcendpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcendpoint_securitygroupids"/>
+        <Class IRI="vpcendpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcendpoint_subnetids"/>
+        <Class IRI="vpcendpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="vpcendpoint_vpcid"/>
+        <Class IRI="vpcendpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcendpoint_routetableids"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2routetable#routetable"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcendpoint_securitygroupids"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2securitygroup#securitygroup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcendpoint_subnetids"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="vpcendpoint_vpcid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpc#vpc"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_vpcendpoint_creationtimestamp"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcendpoint_policydocument"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcendpoint_privatednsenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcendpoint_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcendpoint_vpcendpointtype"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_vpcendpoint_creationtimestamp"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_vpcendpoint_dnsentries"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_vpcendpoint_networkinterfaceids"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcendpoint_policydocument"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcendpoint_privatednsenabled"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcendpoint_servicename"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcendpoint_vpcendpointtype"/>
+        <Class IRI="vpcendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_vpcendpoint_creationtimestamp"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_vpcendpoint_dnsentries"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_vpcendpoint_networkinterfaceids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcendpoint_policydocument"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcendpoint_privatednsenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcendpoint_servicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcendpoint_vpcendpointtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_vpcendpoint_creationtimestamp</IRI>
+        <Literal>ec2vpcendpoint:attribute_vpcendpoint_creationtimestamp</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_vpcendpoint_dnsentries</IRI>
+        <Literal>ec2vpcendpoint:attribute_vpcendpoint_dnsentries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_vpcendpoint_networkinterfaceids</IRI>
+        <Literal>ec2vpcendpoint:attribute_vpcendpoint_networkinterfaceids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_policydocument</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_policydocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_privatednsenabled</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_privatednsenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_routetableids</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_routetableids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_securitygroupids</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_servicename</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_servicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_subnetids</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_vpcendpointtype</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_vpcendpointtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpoint_vpcid</IRI>
+        <Literal>ec2vpcendpoint:vpcendpoint_vpcid</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/route53hostedzone#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/route53hostedzone#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="hostedzone"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="hostedzoneconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="hostedzonetag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="queryloggingconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vpc"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hostedzone_hostedzoneconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hostedzone_hostedzonetags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hostedzone_queryloggingconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hostedzone_vpcs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="queryloggingconfig_cloudwatchlogsloggrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_hostedzone_nameservers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hostedzone_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hostedzoneconfig_comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hostedzonetag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hostedzonetag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpc_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpc_vpcregion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="hostedzone"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="hostedzone_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="hostedzonetag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="hostedzonetag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="hostedzonetag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="hostedzonetag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="queryloggingconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="queryloggingconfig_cloudwatchlogsloggrouparn"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpc"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpc_vpcid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpc"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpc_vpcregion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hostedzone_hostedzoneconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="hostedzone_queryloggingconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hostedzone_hostedzoneconfig"/>
+        <Class IRI="hostedzone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hostedzone_hostedzonetags"/>
+        <Class IRI="hostedzone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hostedzone_queryloggingconfig"/>
+        <Class IRI="hostedzone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hostedzone_vpcs"/>
+        <Class IRI="hostedzone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="queryloggingconfig_cloudwatchlogsloggrouparn"/>
+        <Class IRI="queryloggingconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hostedzone_hostedzoneconfig"/>
+        <Class IRI="hostedzoneconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hostedzone_hostedzonetags"/>
+        <Class IRI="hostedzonetag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hostedzone_queryloggingconfig"/>
+        <Class IRI="queryloggingconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hostedzone_vpcs"/>
+        <Class IRI="vpc"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="queryloggingconfig_cloudwatchlogsloggrouparn"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hostedzone_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hostedzoneconfig_comment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hostedzonetag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="hostedzonetag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpc_vpcid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpc_vpcregion"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_hostedzone_nameservers"/>
+        <Class IRI="hostedzone"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hostedzone_name"/>
+        <Class IRI="hostedzone"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hostedzoneconfig_comment"/>
+        <Class IRI="hostedzoneconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hostedzonetag_key"/>
+        <Class IRI="hostedzonetag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hostedzonetag_value"/>
+        <Class IRI="hostedzonetag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpc_vpcid"/>
+        <Class IRI="vpc"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpc_vpcregion"/>
+        <Class IRI="vpc"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_hostedzone_nameservers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hostedzone_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hostedzoneconfig_comment"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hostedzonetag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hostedzonetag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpc_vpcid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpc_vpcregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_hostedzone_nameservers</IRI>
+        <Literal>route53hostedzone:attribute_hostedzone_nameservers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone</IRI>
+        <Literal>route53hostedzone:hostedzone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone_hostedzoneconfig</IRI>
+        <Literal>route53hostedzone:hostedzone_hostedzoneconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone_hostedzonetags</IRI>
+        <Literal>route53hostedzone:hostedzone_hostedzonetags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone_name</IRI>
+        <Literal>route53hostedzone:hostedzone_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone_queryloggingconfig</IRI>
+        <Literal>route53hostedzone:hostedzone_queryloggingconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzone_vpcs</IRI>
+        <Literal>route53hostedzone:hostedzone_vpcs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzoneconfig</IRI>
+        <Literal>route53hostedzone:hostedzoneconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzoneconfig_comment</IRI>
+        <Literal>route53hostedzone:hostedzoneconfig_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzonetag</IRI>
+        <Literal>route53hostedzone:hostedzonetag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzonetag_key</IRI>
+        <Literal>route53hostedzone:hostedzonetag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>hostedzonetag_value</IRI>
+        <Literal>route53hostedzone:hostedzonetag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queryloggingconfig</IRI>
+        <Literal>route53hostedzone:queryloggingconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>queryloggingconfig_cloudwatchlogsloggrouparn</IRI>
+        <Literal>route53hostedzone:queryloggingconfig_cloudwatchlogsloggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpc</IRI>
+        <Literal>route53hostedzone:vpc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpc_vpcid</IRI>
+        <Literal>route53hostedzone:vpc_vpcid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpc_vpcregion</IRI>
+        <Literal>route53hostedzone:vpc_vpcregion</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

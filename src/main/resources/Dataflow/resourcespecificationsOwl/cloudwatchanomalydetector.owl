@@ -1,0 +1,304 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchanomalydetector#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchanomalydetector#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="anomalydetector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="configuration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="range"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="anomalydetector_configuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="anomalydetector_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="configuration_excludedtimeranges"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="anomalydetector_metricname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="anomalydetector_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="anomalydetector_stat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="configuration_metrictimezone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimension_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimension_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="range_endtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="range_starttime"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="anomalydetector"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="anomalydetector_metricname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="anomalydetector"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="anomalydetector_namespace"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="anomalydetector"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="anomalydetector_stat"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimension_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimension_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="range"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="range_endtime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="range"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="range_starttime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="anomalydetector_configuration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="anomalydetector_configuration"/>
+        <Class IRI="anomalydetector"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="anomalydetector_dimensions"/>
+        <Class IRI="anomalydetector"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="configuration_excludedtimeranges"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="anomalydetector_configuration"/>
+        <Class IRI="configuration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="anomalydetector_dimensions"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="configuration_excludedtimeranges"/>
+        <Class IRI="range"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="anomalydetector_metricname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="anomalydetector_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="anomalydetector_stat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="configuration_metrictimezone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimension_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimension_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="range_endtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="range_starttime"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="anomalydetector_metricname"/>
+        <Class IRI="anomalydetector"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="anomalydetector_namespace"/>
+        <Class IRI="anomalydetector"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="anomalydetector_stat"/>
+        <Class IRI="anomalydetector"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="configuration_metrictimezone"/>
+        <Class IRI="configuration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimension_name"/>
+        <Class IRI="dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimension_value"/>
+        <Class IRI="dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="range_endtime"/>
+        <Class IRI="range"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="range_starttime"/>
+        <Class IRI="range"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="anomalydetector_metricname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="anomalydetector_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="anomalydetector_stat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="configuration_metrictimezone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimension_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimension_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="range_endtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="range_starttime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector_configuration</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector_configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector_dimensions</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector_metricname</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector_metricname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector_namespace</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>anomalydetector_stat</IRI>
+        <Literal>cloudwatchanomalydetector:anomalydetector_stat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration</IRI>
+        <Literal>cloudwatchanomalydetector:configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration_excludedtimeranges</IRI>
+        <Literal>cloudwatchanomalydetector:configuration_excludedtimeranges</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>configuration_metrictimezone</IRI>
+        <Literal>cloudwatchanomalydetector:configuration_metrictimezone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension</IRI>
+        <Literal>cloudwatchanomalydetector:dimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_name</IRI>
+        <Literal>cloudwatchanomalydetector:dimension_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_value</IRI>
+        <Literal>cloudwatchanomalydetector:dimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>range</IRI>
+        <Literal>cloudwatchanomalydetector:range</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>range_endtime</IRI>
+        <Literal>cloudwatchanomalydetector:range_endtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>range_starttime</IRI>
+        <Literal>cloudwatchanomalydetector:range_starttime</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

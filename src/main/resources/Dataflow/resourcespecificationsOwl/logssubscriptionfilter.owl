@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="subscriptionfilter"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subscriptionfilter_destinationarn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subscriptionfilter_loggroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subscriptionfilter_filterpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subscriptionfilter_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="subscriptionfilter"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="subscriptionfilter_destinationarn"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="subscriptionfilter"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="subscriptionfilter_loggroupname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="subscriptionfilter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="subscriptionfilter_filterpattern"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="subscriptionfilter_destinationarn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="subscriptionfilter_loggroupname"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subscriptionfilter_destinationarn"/>
+        <Class IRI="subscriptionfilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subscriptionfilter_loggroupname"/>
+        <Class IRI="subscriptionfilter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="subscriptionfilter_loggroupname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subscriptionfilter_filterpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subscriptionfilter_rolearn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="subscriptionfilter_filterpattern"/>
+        <Class IRI="subscriptionfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subscriptionfilter_rolearn"/>
+        <Class IRI="subscriptionfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="subscriptionfilter_filterpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subscriptionfilter_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriptionfilter</IRI>
+        <Literal>logssubscriptionfilter:subscriptionfilter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriptionfilter_destinationarn</IRI>
+        <Literal>logssubscriptionfilter:subscriptionfilter_destinationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriptionfilter_filterpattern</IRI>
+        <Literal>logssubscriptionfilter:subscriptionfilter_filterpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriptionfilter_loggroupname</IRI>
+        <Literal>logssubscriptionfilter:subscriptionfilter_loggroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriptionfilter_rolearn</IRI>
+        <Literal>logssubscriptionfilter:subscriptionfilter_rolearn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

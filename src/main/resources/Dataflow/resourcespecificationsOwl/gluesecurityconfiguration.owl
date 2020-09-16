@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluesecurityconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluesecurityconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cloudwatchencryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jobbookmarksencryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3encryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3encryptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="securityconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="encryptionconfiguration_cloudwatchencryption"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="encryptionconfiguration_jobbookmarksencryption"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="encryptionconfiguration_s3encryptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="securityconfiguration_encryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cloudwatchencryption_cloudwatchencryptionmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cloudwatchencryption_kmskeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jobbookmarksencryption_jobbookmarksencryptionmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jobbookmarksencryption_kmskeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3encryption_kmskeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3encryption_s3encryptionmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="securityconfiguration_name"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="securityconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="securityconfiguration_encryptionconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="securityconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="securityconfiguration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="encryptionconfiguration_cloudwatchencryption"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="encryptionconfiguration_jobbookmarksencryption"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="encryptionconfiguration_s3encryptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="securityconfiguration_encryptionconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="encryptionconfiguration_cloudwatchencryption"/>
+        <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="encryptionconfiguration_jobbookmarksencryption"/>
+        <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="encryptionconfiguration_s3encryptions"/>
+        <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="securityconfiguration_encryptionconfiguration"/>
+        <Class IRI="securityconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="encryptionconfiguration_cloudwatchencryption"/>
+        <Class IRI="cloudwatchencryption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="encryptionconfiguration_jobbookmarksencryption"/>
+        <Class IRI="jobbookmarksencryption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="encryptionconfiguration_s3encryptions"/>
+        <Class IRI="s3encryptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="securityconfiguration_encryptionconfiguration"/>
+        <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cloudwatchencryption_cloudwatchencryptionmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cloudwatchencryption_kmskeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jobbookmarksencryption_jobbookmarksencryptionmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jobbookmarksencryption_kmskeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3encryption_kmskeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3encryption_s3encryptionmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="securityconfiguration_name"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="cloudwatchencryption_cloudwatchencryptionmode"/>
+        <Class IRI="cloudwatchencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cloudwatchencryption_kmskeyarn"/>
+        <Class IRI="cloudwatchencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jobbookmarksencryption_jobbookmarksencryptionmode"/>
+        <Class IRI="jobbookmarksencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jobbookmarksencryption_kmskeyarn"/>
+        <Class IRI="jobbookmarksencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3encryption_kmskeyarn"/>
+        <Class IRI="s3encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3encryption_s3encryptionmode"/>
+        <Class IRI="s3encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="securityconfiguration_name"/>
+        <Class IRI="securityconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="cloudwatchencryption_cloudwatchencryptionmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cloudwatchencryption_kmskeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jobbookmarksencryption_jobbookmarksencryptionmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jobbookmarksencryption_kmskeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3encryption_kmskeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3encryption_s3encryptionmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="securityconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchencryption</IRI>
+        <Literal>gluesecurityconfiguration:cloudwatchencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchencryption_cloudwatchencryptionmode</IRI>
+        <Literal>gluesecurityconfiguration:cloudwatchencryption_cloudwatchencryptionmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cloudwatchencryption_kmskeyarn</IRI>
+        <Literal>gluesecurityconfiguration:cloudwatchencryption_kmskeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration</IRI>
+        <Literal>gluesecurityconfiguration:encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_cloudwatchencryption</IRI>
+        <Literal>gluesecurityconfiguration:encryptionconfiguration_cloudwatchencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_jobbookmarksencryption</IRI>
+        <Literal>gluesecurityconfiguration:encryptionconfiguration_jobbookmarksencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_s3encryptions</IRI>
+        <Literal>gluesecurityconfiguration:encryptionconfiguration_s3encryptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobbookmarksencryption</IRI>
+        <Literal>gluesecurityconfiguration:jobbookmarksencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobbookmarksencryption_jobbookmarksencryptionmode</IRI>
+        <Literal>gluesecurityconfiguration:jobbookmarksencryption_jobbookmarksencryptionmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobbookmarksencryption_kmskeyarn</IRI>
+        <Literal>gluesecurityconfiguration:jobbookmarksencryption_kmskeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3encryption</IRI>
+        <Literal>gluesecurityconfiguration:s3encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3encryption_kmskeyarn</IRI>
+        <Literal>gluesecurityconfiguration:s3encryption_kmskeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3encryption_s3encryptionmode</IRI>
+        <Literal>gluesecurityconfiguration:s3encryption_s3encryptionmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3encryptions</IRI>
+        <Literal>gluesecurityconfiguration:s3encryptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>securityconfiguration</IRI>
+        <Literal>gluesecurityconfiguration:securityconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>securityconfiguration_encryptionconfiguration</IRI>
+        <Literal>gluesecurityconfiguration:securityconfiguration_encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>securityconfiguration_name</IRI>
+        <Literal>gluesecurityconfiguration:securityconfiguration_name</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

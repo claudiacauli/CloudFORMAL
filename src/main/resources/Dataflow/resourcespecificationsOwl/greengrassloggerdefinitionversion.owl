@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/greengrassloggerdefinitionversion#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/greengrassloggerdefinitionversion#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="logger"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loggerdefinitionversion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggerdefinitionversion_loggers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logger_component"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logger_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logger_level"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logger_space"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logger_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loggerdefinitionversion_loggerdefinitionid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="logger"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logger_component"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logger"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logger_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logger"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logger_level"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logger"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logger_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggerdefinitionversion"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="loggerdefinitionversion_loggers"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggerdefinitionversion"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="loggerdefinitionversion_loggerdefinitionid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggerdefinitionversion_loggers"/>
+        <Class IRI="loggerdefinitionversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggerdefinitionversion_loggers"/>
+        <Class IRI="logger"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logger_component"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logger_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logger_level"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logger_space"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logger_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loggerdefinitionversion_loggerdefinitionid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="logger_component"/>
+        <Class IRI="logger"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logger_id"/>
+        <Class IRI="logger"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logger_level"/>
+        <Class IRI="logger"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logger_space"/>
+        <Class IRI="logger"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logger_type"/>
+        <Class IRI="logger"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loggerdefinitionversion_loggerdefinitionid"/>
+        <Class IRI="loggerdefinitionversion"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="logger_component"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logger_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logger_level"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logger_space"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logger_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loggerdefinitionversion_loggerdefinitionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger_component</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger_component</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger_id</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger_level</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger_level</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger_space</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger_space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logger_type</IRI>
+        <Literal>greengrassloggerdefinitionversion:logger_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggerdefinitionversion</IRI>
+        <Literal>greengrassloggerdefinitionversion:loggerdefinitionversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggerdefinitionversion_loggerdefinitionid</IRI>
+        <Literal>greengrassloggerdefinitionversion:loggerdefinitionversion_loggerdefinitionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggerdefinitionversion_loggers</IRI>
+        <Literal>greengrassloggerdefinitionversion:loggerdefinitionversion_loggers</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

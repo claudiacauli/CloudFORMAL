@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/pinpointapplicationsettings#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/pinpointapplicationsettings#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="applicationsettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="campaignhook"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="limits"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="quiettime"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="applicationsettings_campaignhook"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="applicationsettings_limits"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="applicationsettings_quiettime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="applicationsettings_applicationid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="applicationsettings_cloudwatchmetricsenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="campaignhook_lambdafunctionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="campaignhook_mode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="campaignhook_weburl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="limits_daily"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="limits_maximumduration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="limits_messagespersecond"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="limits_total"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="quiettime_end"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="quiettime_start"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="applicationsettings"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="applicationsettings_applicationid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="quiettime"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="quiettime_end"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="quiettime"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="quiettime_start"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="applicationsettings_campaignhook"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="applicationsettings_limits"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="applicationsettings_quiettime"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="applicationsettings_campaignhook"/>
+        <Class IRI="applicationsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="applicationsettings_limits"/>
+        <Class IRI="applicationsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="applicationsettings_quiettime"/>
+        <Class IRI="applicationsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="applicationsettings_campaignhook"/>
+        <Class IRI="campaignhook"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="applicationsettings_limits"/>
+        <Class IRI="limits"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="applicationsettings_quiettime"/>
+        <Class IRI="quiettime"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="applicationsettings_applicationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="applicationsettings_cloudwatchmetricsenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="campaignhook_lambdafunctionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="campaignhook_mode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="campaignhook_weburl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="limits_daily"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="limits_maximumduration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="limits_messagespersecond"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="limits_total"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="quiettime_end"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="quiettime_start"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="applicationsettings_applicationid"/>
+        <Class IRI="applicationsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="applicationsettings_cloudwatchmetricsenabled"/>
+        <Class IRI="applicationsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="campaignhook_lambdafunctionname"/>
+        <Class IRI="campaignhook"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="campaignhook_mode"/>
+        <Class IRI="campaignhook"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="campaignhook_weburl"/>
+        <Class IRI="campaignhook"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="limits_daily"/>
+        <Class IRI="limits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="limits_maximumduration"/>
+        <Class IRI="limits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="limits_messagespersecond"/>
+        <Class IRI="limits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="limits_total"/>
+        <Class IRI="limits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="quiettime_end"/>
+        <Class IRI="quiettime"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="quiettime_start"/>
+        <Class IRI="quiettime"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="applicationsettings_applicationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="applicationsettings_cloudwatchmetricsenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="campaignhook_lambdafunctionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="campaignhook_mode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="campaignhook_weburl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="limits_daily"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="limits_maximumduration"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="limits_messagespersecond"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="limits_total"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="quiettime_end"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="quiettime_start"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings_applicationid</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings_applicationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings_campaignhook</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings_campaignhook</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings_cloudwatchmetricsenabled</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings_cloudwatchmetricsenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings_limits</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings_limits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationsettings_quiettime</IRI>
+        <Literal>pinpointapplicationsettings:applicationsettings_quiettime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>campaignhook</IRI>
+        <Literal>pinpointapplicationsettings:campaignhook</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>campaignhook_lambdafunctionname</IRI>
+        <Literal>pinpointapplicationsettings:campaignhook_lambdafunctionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>campaignhook_mode</IRI>
+        <Literal>pinpointapplicationsettings:campaignhook_mode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>campaignhook_weburl</IRI>
+        <Literal>pinpointapplicationsettings:campaignhook_weburl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>limits</IRI>
+        <Literal>pinpointapplicationsettings:limits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>limits_daily</IRI>
+        <Literal>pinpointapplicationsettings:limits_daily</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>limits_maximumduration</IRI>
+        <Literal>pinpointapplicationsettings:limits_maximumduration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>limits_messagespersecond</IRI>
+        <Literal>pinpointapplicationsettings:limits_messagespersecond</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>limits_total</IRI>
+        <Literal>pinpointapplicationsettings:limits_total</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quiettime</IRI>
+        <Literal>pinpointapplicationsettings:quiettime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quiettime_end</IRI>
+        <Literal>pinpointapplicationsettings:quiettime_end</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>quiettime_start</IRI>
+        <Literal>pinpointapplicationsettings:quiettime_start</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

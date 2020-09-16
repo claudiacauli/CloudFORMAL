@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd"
+     xmlns:aws="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"
+     xmlns:dfd="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd">
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DELETE -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DELETE">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow"/>
+        <rdfs:label>dfd:DELETE</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#hasaccessto"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#GET"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#HEAD"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfd:DataFlow</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#GET -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#GET">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:label>dfd:GET</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#HEAD -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#HEAD">
+        <rdfs:label>dfd:HEAD</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:InFlow</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#OutFlow -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#OutFlow">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#GET"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#HEAD"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfd:OutFlow</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#POST -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#POST">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow"/>
+        <rdfs:label>dfd:POST</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#PUT -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#PUT">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow"/>
+        <rdfs:label>dfd:PUT</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#deliversLogsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#deliversLogsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:deliversLogsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#hasPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#hasPolicy">
+        <rdfs:label>dfd:hasPolicy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:invokesFunction</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#redirectsRequestsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#redirectsRequestsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:redirectsRequestsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#replicatesOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#replicatesOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:replicatesOn</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsAlarmsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsAlarmsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:sendsAlarmsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:sendsEventsMsgsNotificationsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#storesObjectsFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#storesObjectsFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:storesObjectsFor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#triggersFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#triggersFunction">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdfs:label>dfd:triggersFunction</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#withinFlow -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#withinFlow">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:label>dfd:WithinFlow</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stacksetresource -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#stacksetresource">
+        <owl:equivalentClass rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InternalNode"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataStore -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataStore">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node"/>
+        <rdfs:label>dfd:DataStore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node"/>
+        <rdfs:label>dfd:ExternalNode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InterfaceNode -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InterfaceNode">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InternalNode"/>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#OutFlow"/>
+                                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty>
+                                    <rdf:Description>
+                                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InFlow"/>
+                                    </rdf:Description>
+                                </owl:onProperty>
+                                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InternalNode"/>
+        <rdfs:label>dfd:InterfaceNode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InternalNode -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#InternalNode">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node"/>
+        <rdfs:label>dfd:InternalNode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node">
+        <rdfs:label>dfd:Node</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Process -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Process">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Node"/>
+        <rdfs:label>dfd:Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#ExternalNode"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#federation">
+        <rdfs:label>aws:federation</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#partition">
+        <rdfs:label>aws:partition</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#public">
+        <rdfs:label>aws:public</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#region">
+        <rdfs:label>aws:region</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity">
+        <rdfs:label>dfd:ExternalEntity</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#OutFlow"/>
+                <owl:hasValue rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Restriction>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

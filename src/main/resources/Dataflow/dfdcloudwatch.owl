@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch">
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchanomalydetector#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchcompositealarm#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchdashboard#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchinsightrule#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsdestination#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logslogstream#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsmetricfilter#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch#deliversLogsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch#deliversLogsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#deliversLogsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsdestination#destination_targetarn"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#subscriptionfilter_loggroupname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#subscriptionfilter_destinationarn"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#subscriptionfilter_loggroupname"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logssubscriptionfilter#subscriptionfilter_destinationarn"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsdestination#destination_targetarn"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdcloudwatch:deliversLogsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch#sendsAlarmsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdcloudwatch#sendsAlarmsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsAlarmsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#alarm_alarmactions"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchcompositealarm#compositealarm_alarmactions"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdcloudwatch:sendsAlarmsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#alarm -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#alarm">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#Process"/>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

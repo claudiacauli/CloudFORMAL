@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/guarddutyfilter#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/guarddutyfilter#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="condition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="filter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="findingcriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="filter_findingcriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="findingcriteria_itemtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="condition_eq"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="condition_gte"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="condition_lt"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="condition_lte"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="condition_neq"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filter_action"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filter_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filter_detectorid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filter_rank"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="findingcriteria_criterion"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="filter_findingcriteria"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filter_action"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filter_description"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filter_detectorid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filter_rank"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="filter_findingcriteria"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="findingcriteria_itemtype"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="filter_findingcriteria"/>
+        <Class IRI="filter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="findingcriteria_itemtype"/>
+        <Class IRI="findingcriteria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="filter_findingcriteria"/>
+        <Class IRI="findingcriteria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="findingcriteria_itemtype"/>
+        <Class IRI="condition"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="condition_gte"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="condition_lt"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="condition_lte"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filter_action"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filter_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filter_detectorid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filter_rank"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="findingcriteria_criterion"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="condition_eq"/>
+        <Class IRI="condition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="condition_gte"/>
+        <Class IRI="condition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="condition_lt"/>
+        <Class IRI="condition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="condition_lte"/>
+        <Class IRI="condition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="condition_neq"/>
+        <Class IRI="condition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filter_action"/>
+        <Class IRI="filter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filter_description"/>
+        <Class IRI="filter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filter_detectorid"/>
+        <Class IRI="filter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filter_name"/>
+        <Class IRI="filter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filter_rank"/>
+        <Class IRI="filter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="findingcriteria_criterion"/>
+        <Class IRI="findingcriteria"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="condition_eq"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="condition_gte"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="condition_lt"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="condition_lte"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="condition_neq"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filter_action"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filter_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filter_detectorid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filter_rank"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="findingcriteria_criterion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition</IRI>
+        <Literal>guarddutyfilter:condition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition_eq</IRI>
+        <Literal>guarddutyfilter:condition_eq</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition_gte</IRI>
+        <Literal>guarddutyfilter:condition_gte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition_lt</IRI>
+        <Literal>guarddutyfilter:condition_lt</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition_lte</IRI>
+        <Literal>guarddutyfilter:condition_lte</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>condition_neq</IRI>
+        <Literal>guarddutyfilter:condition_neq</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter</IRI>
+        <Literal>guarddutyfilter:filter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_action</IRI>
+        <Literal>guarddutyfilter:filter_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_description</IRI>
+        <Literal>guarddutyfilter:filter_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_detectorid</IRI>
+        <Literal>guarddutyfilter:filter_detectorid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_findingcriteria</IRI>
+        <Literal>guarddutyfilter:filter_findingcriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_name</IRI>
+        <Literal>guarddutyfilter:filter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filter_rank</IRI>
+        <Literal>guarddutyfilter:filter_rank</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingcriteria</IRI>
+        <Literal>guarddutyfilter:findingcriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingcriteria_criterion</IRI>
+        <Literal>guarddutyfilter:findingcriteria_criterion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>findingcriteria_itemtype</IRI>
+        <Literal>guarddutyfilter:findingcriteria_itemtype</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,997 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkslayer#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/opsworkslayer#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="autoscalingthresholds"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="layer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lifecycleeventconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loadbasedautoscaling"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recipes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="shutdowneventconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="volumeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_attributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_customrecipes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_lifecycleeventconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_loadbasedautoscaling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="layer_volumeconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lifecycleeventconfiguration_shutdowneventconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loadbasedautoscaling_downscaling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loadbasedautoscaling_upscaling"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_cputhreshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_ignoremetricstime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_instancecount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_loadthreshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_memorythreshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingthresholds_thresholdswaittime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_autoassignelasticips"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_autoassignpublicips"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_custominstanceprofilearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_customjson"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_customsecuritygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_enableautohealing"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_installupdatesonboot"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_packages"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_shortname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_stackid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="layer_useebsoptimizedinstances"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loadbasedautoscaling_enable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipes_configure"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipes_deploy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipes_setup"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipes_shutdown"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipes_undeploy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="shutdowneventconfiguration_delayuntilelbconnectionsdrained"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="shutdowneventconfiguration_executiontimeout"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_encrypted"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_iops"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_mountpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_numberofdisks"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_raidlevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_size"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="volumeconfiguration_volumetype"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_autoassignelasticips"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_autoassignpublicips"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_enableautohealing"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_shortname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_stackid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="layer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="layer_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="layer_customrecipes"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="layer_lifecycleeventconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="layer_loadbasedautoscaling"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="lifecycleeventconfiguration_shutdowneventconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loadbasedautoscaling_downscaling"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loadbasedautoscaling_upscaling"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_attributes"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_customrecipes"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_lifecycleeventconfiguration"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_loadbasedautoscaling"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_tags"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="layer_volumeconfigurations"/>
+        <Class IRI="layer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lifecycleeventconfiguration_shutdowneventconfiguration"/>
+        <Class IRI="lifecycleeventconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loadbasedautoscaling_downscaling"/>
+        <Class IRI="loadbasedautoscaling"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loadbasedautoscaling_upscaling"/>
+        <Class IRI="loadbasedautoscaling"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_attributes"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_customrecipes"/>
+        <Class IRI="recipes"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_lifecycleeventconfiguration"/>
+        <Class IRI="lifecycleeventconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_loadbasedautoscaling"/>
+        <Class IRI="loadbasedautoscaling"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="layer_volumeconfigurations"/>
+        <Class IRI="volumeconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lifecycleeventconfiguration_shutdowneventconfiguration"/>
+        <Class IRI="shutdowneventconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loadbasedautoscaling_downscaling"/>
+        <Class IRI="autoscalingthresholds"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loadbasedautoscaling_upscaling"/>
+        <Class IRI="autoscalingthresholds"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_cputhreshold"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_ignoremetricstime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_instancecount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_loadthreshold"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_memorythreshold"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingthresholds_thresholdswaittime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_autoassignelasticips"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_autoassignpublicips"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_custominstanceprofilearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_customjson"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_enableautohealing"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_installupdatesonboot"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_shortname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_stackid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="layer_useebsoptimizedinstances"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loadbasedautoscaling_enable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="shutdowneventconfiguration_delayuntilelbconnectionsdrained"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="shutdowneventconfiguration_executiontimeout"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_encrypted"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_iops"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_mountpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_numberofdisks"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_raidlevel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_size"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="volumeconfiguration_volumetype"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_cputhreshold"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_ignoremetricstime"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_instancecount"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_loadthreshold"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_memorythreshold"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingthresholds_thresholdswaittime"/>
+        <Class IRI="autoscalingthresholds"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_autoassignelasticips"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_autoassignpublicips"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_custominstanceprofilearn"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_customjson"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_customsecuritygroupids"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_enableautohealing"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_installupdatesonboot"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_name"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_packages"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_shortname"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_stackid"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_type"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="layer_useebsoptimizedinstances"/>
+        <Class IRI="layer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loadbasedautoscaling_enable"/>
+        <Class IRI="loadbasedautoscaling"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipes_configure"/>
+        <Class IRI="recipes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipes_deploy"/>
+        <Class IRI="recipes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipes_setup"/>
+        <Class IRI="recipes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipes_shutdown"/>
+        <Class IRI="recipes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipes_undeploy"/>
+        <Class IRI="recipes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="shutdowneventconfiguration_delayuntilelbconnectionsdrained"/>
+        <Class IRI="shutdowneventconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="shutdowneventconfiguration_executiontimeout"/>
+        <Class IRI="shutdowneventconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_encrypted"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_iops"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_mountpoint"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_numberofdisks"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_raidlevel"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_size"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="volumeconfiguration_volumetype"/>
+        <Class IRI="volumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_cputhreshold"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_ignoremetricstime"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_instancecount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_loadthreshold"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_memorythreshold"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingthresholds_thresholdswaittime"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_autoassignelasticips"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_autoassignpublicips"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_custominstanceprofilearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_customjson"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_customsecuritygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_enableautohealing"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_installupdatesonboot"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_packages"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_shortname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_stackid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="layer_useebsoptimizedinstances"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loadbasedautoscaling_enable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipes_configure"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipes_deploy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipes_setup"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipes_shutdown"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipes_undeploy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="shutdowneventconfiguration_delayuntilelbconnectionsdrained"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="shutdowneventconfiguration_executiontimeout"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_encrypted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_iops"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_mountpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_numberofdisks"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_raidlevel"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_size"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="volumeconfiguration_volumetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_cputhreshold</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_cputhreshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_ignoremetricstime</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_ignoremetricstime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_instancecount</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_instancecount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_loadthreshold</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_loadthreshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_memorythreshold</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_memorythreshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingthresholds_thresholdswaittime</IRI>
+        <Literal>opsworkslayer:autoscalingthresholds_thresholdswaittime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer</IRI>
+        <Literal>opsworkslayer:layer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_attributes</IRI>
+        <Literal>opsworkslayer:layer_attributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_autoassignelasticips</IRI>
+        <Literal>opsworkslayer:layer_autoassignelasticips</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_autoassignpublicips</IRI>
+        <Literal>opsworkslayer:layer_autoassignpublicips</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_custominstanceprofilearn</IRI>
+        <Literal>opsworkslayer:layer_custominstanceprofilearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_customjson</IRI>
+        <Literal>opsworkslayer:layer_customjson</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_customrecipes</IRI>
+        <Literal>opsworkslayer:layer_customrecipes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_customsecuritygroupids</IRI>
+        <Literal>opsworkslayer:layer_customsecuritygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_enableautohealing</IRI>
+        <Literal>opsworkslayer:layer_enableautohealing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_installupdatesonboot</IRI>
+        <Literal>opsworkslayer:layer_installupdatesonboot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_lifecycleeventconfiguration</IRI>
+        <Literal>opsworkslayer:layer_lifecycleeventconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_loadbasedautoscaling</IRI>
+        <Literal>opsworkslayer:layer_loadbasedautoscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_name</IRI>
+        <Literal>opsworkslayer:layer_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_packages</IRI>
+        <Literal>opsworkslayer:layer_packages</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_shortname</IRI>
+        <Literal>opsworkslayer:layer_shortname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_stackid</IRI>
+        <Literal>opsworkslayer:layer_stackid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_tags</IRI>
+        <Literal>opsworkslayer:layer_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_type</IRI>
+        <Literal>opsworkslayer:layer_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_useebsoptimizedinstances</IRI>
+        <Literal>opsworkslayer:layer_useebsoptimizedinstances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>layer_volumeconfigurations</IRI>
+        <Literal>opsworkslayer:layer_volumeconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleeventconfiguration</IRI>
+        <Literal>opsworkslayer:lifecycleeventconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecycleeventconfiguration_shutdowneventconfiguration</IRI>
+        <Literal>opsworkslayer:lifecycleeventconfiguration_shutdowneventconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbasedautoscaling</IRI>
+        <Literal>opsworkslayer:loadbasedautoscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbasedautoscaling_downscaling</IRI>
+        <Literal>opsworkslayer:loadbasedautoscaling_downscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbasedautoscaling_enable</IRI>
+        <Literal>opsworkslayer:loadbasedautoscaling_enable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbasedautoscaling_upscaling</IRI>
+        <Literal>opsworkslayer:loadbasedautoscaling_upscaling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes</IRI>
+        <Literal>opsworkslayer:recipes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes_configure</IRI>
+        <Literal>opsworkslayer:recipes_configure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes_deploy</IRI>
+        <Literal>opsworkslayer:recipes_deploy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes_setup</IRI>
+        <Literal>opsworkslayer:recipes_setup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes_shutdown</IRI>
+        <Literal>opsworkslayer:recipes_shutdown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipes_undeploy</IRI>
+        <Literal>opsworkslayer:recipes_undeploy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>shutdowneventconfiguration</IRI>
+        <Literal>opsworkslayer:shutdowneventconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>shutdowneventconfiguration_delayuntilelbconnectionsdrained</IRI>
+        <Literal>opsworkslayer:shutdowneventconfiguration_delayuntilelbconnectionsdrained</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>shutdowneventconfiguration_executiontimeout</IRI>
+        <Literal>opsworkslayer:shutdowneventconfiguration_executiontimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>opsworkslayer:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>opsworkslayer:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>opsworkslayer:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration</IRI>
+        <Literal>opsworkslayer:volumeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_encrypted</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_encrypted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_iops</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_iops</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_mountpoint</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_mountpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_numberofdisks</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_numberofdisks</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_raidlevel</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_raidlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_size</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_size</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volumeconfiguration_volumetype</IRI>
+        <Literal>opsworkslayer:volumeconfiguration_volumetype</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

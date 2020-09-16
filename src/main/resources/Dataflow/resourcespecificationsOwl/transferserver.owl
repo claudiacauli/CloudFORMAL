@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/transferserver#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/transferserver#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="endpointdetails"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="identityproviderdetails"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="protocol"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="server"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_endpointdetails"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_identityproviderdetails"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_protocols"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="server_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_server_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_server_serverid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointdetails_addressallocationids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointdetails_subnetids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointdetails_vpcendpointid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointdetails_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identityproviderdetails_invocationrole"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identityproviderdetails_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_certificate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_endpointtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_identityprovidertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="server_loggingrole"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="identityproviderdetails"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="identityproviderdetails_invocationrole"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="identityproviderdetails"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="identityproviderdetails_url"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="server_endpointdetails"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="server_identityproviderdetails"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_endpointdetails"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_identityproviderdetails"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_protocols"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="server_tags"/>
+        <Class IRI="server"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_endpointdetails"/>
+        <Class IRI="endpointdetails"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_identityproviderdetails"/>
+        <Class IRI="identityproviderdetails"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_protocols"/>
+        <Class IRI="protocol"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="server_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_server_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_server_serverid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointdetails_vpcendpointid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointdetails_vpcid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identityproviderdetails_invocationrole"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="identityproviderdetails_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_certificate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_endpointtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_identityprovidertype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="server_loggingrole"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_server_arn"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_server_serverid"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointdetails_addressallocationids"/>
+        <Class IRI="endpointdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointdetails_subnetids"/>
+        <Class IRI="endpointdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointdetails_vpcendpointid"/>
+        <Class IRI="endpointdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointdetails_vpcid"/>
+        <Class IRI="endpointdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identityproviderdetails_invocationrole"/>
+        <Class IRI="identityproviderdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identityproviderdetails_url"/>
+        <Class IRI="identityproviderdetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_certificate"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_endpointtype"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_identityprovidertype"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="server_loggingrole"/>
+        <Class IRI="server"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_server_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_server_serverid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointdetails_addressallocationids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointdetails_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointdetails_vpcendpointid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointdetails_vpcid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identityproviderdetails_invocationrole"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identityproviderdetails_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_certificate"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_endpointtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_identityprovidertype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="server_loggingrole"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_server_arn</IRI>
+        <Literal>transferserver:attribute_server_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_server_serverid</IRI>
+        <Literal>transferserver:attribute_server_serverid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointdetails</IRI>
+        <Literal>transferserver:endpointdetails</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointdetails_addressallocationids</IRI>
+        <Literal>transferserver:endpointdetails_addressallocationids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointdetails_subnetids</IRI>
+        <Literal>transferserver:endpointdetails_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointdetails_vpcendpointid</IRI>
+        <Literal>transferserver:endpointdetails_vpcendpointid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointdetails_vpcid</IRI>
+        <Literal>transferserver:endpointdetails_vpcid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identityproviderdetails</IRI>
+        <Literal>transferserver:identityproviderdetails</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identityproviderdetails_invocationrole</IRI>
+        <Literal>transferserver:identityproviderdetails_invocationrole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>identityproviderdetails_url</IRI>
+        <Literal>transferserver:identityproviderdetails_url</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>protocol</IRI>
+        <Literal>transferserver:protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server</IRI>
+        <Literal>transferserver:server</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_certificate</IRI>
+        <Literal>transferserver:server_certificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_endpointdetails</IRI>
+        <Literal>transferserver:server_endpointdetails</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_endpointtype</IRI>
+        <Literal>transferserver:server_endpointtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_identityproviderdetails</IRI>
+        <Literal>transferserver:server_identityproviderdetails</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_identityprovidertype</IRI>
+        <Literal>transferserver:server_identityprovidertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_loggingrole</IRI>
+        <Literal>transferserver:server_loggingrole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_protocols</IRI>
+        <Literal>transferserver:server_protocols</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>server_tags</IRI>
+        <Literal>transferserver:server_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>transferserver:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>transferserver:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>transferserver:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

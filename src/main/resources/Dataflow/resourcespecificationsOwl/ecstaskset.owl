@@ -1,0 +1,559 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecstaskset#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecstaskset#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="awsvpcconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loadbalancer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="scale"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="serviceregistry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="taskset"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="taskset_loadbalancers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="taskset_networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="taskset_scale"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="taskset_serviceregistries"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_taskset_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsvpcconfiguration_securitygroups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsvpcconfiguration_subnets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loadbalancer_containername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loadbalancer_containerport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loadbalancer_loadbalancername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loadbalancer_targetgrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scale_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scale_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serviceregistry_containername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serviceregistry_containerport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serviceregistry_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serviceregistry_registryarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_cluster"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_externalid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_launchtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_platformversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_service"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskset_taskdefinition"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="awsvpcconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="awsvpcconfiguration_subnets"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="taskset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="taskset_cluster"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="taskset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="taskset_service"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="taskset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="taskset_taskdefinition"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="taskset_networkconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="taskset_scale"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="taskset_loadbalancers"/>
+        <Class IRI="taskset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="taskset_networkconfiguration"/>
+        <Class IRI="taskset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="taskset_scale"/>
+        <Class IRI="taskset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="taskset_serviceregistries"/>
+        <Class IRI="taskset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
+        <Class IRI="awsvpcconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="taskset_loadbalancers"/>
+        <Class IRI="loadbalancer"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="taskset_networkconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="taskset_scale"/>
+        <Class IRI="scale"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="taskset_serviceregistries"/>
+        <Class IRI="serviceregistry"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_taskset_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loadbalancer_containername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loadbalancer_containerport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loadbalancer_loadbalancername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loadbalancer_targetgrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scale_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scale_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serviceregistry_containername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serviceregistry_containerport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serviceregistry_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serviceregistry_registryarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_cluster"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_externalid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_launchtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_platformversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_service"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskset_taskdefinition"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_taskset_id"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
+        <Class IRI="awsvpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsvpcconfiguration_securitygroups"/>
+        <Class IRI="awsvpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsvpcconfiguration_subnets"/>
+        <Class IRI="awsvpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loadbalancer_containername"/>
+        <Class IRI="loadbalancer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loadbalancer_containerport"/>
+        <Class IRI="loadbalancer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loadbalancer_loadbalancername"/>
+        <Class IRI="loadbalancer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loadbalancer_targetgrouparn"/>
+        <Class IRI="loadbalancer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scale_unit"/>
+        <Class IRI="scale"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scale_value"/>
+        <Class IRI="scale"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serviceregistry_containername"/>
+        <Class IRI="serviceregistry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serviceregistry_containerport"/>
+        <Class IRI="serviceregistry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serviceregistry_port"/>
+        <Class IRI="serviceregistry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serviceregistry_registryarn"/>
+        <Class IRI="serviceregistry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_cluster"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_externalid"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_launchtype"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_platformversion"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_service"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskset_taskdefinition"/>
+        <Class IRI="taskset"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_taskset_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsvpcconfiguration_securitygroups"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsvpcconfiguration_subnets"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loadbalancer_containername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loadbalancer_containerport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loadbalancer_loadbalancername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loadbalancer_targetgrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scale_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scale_value"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serviceregistry_containername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serviceregistry_containerport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serviceregistry_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serviceregistry_registryarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_cluster"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_externalid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_launchtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_platformversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_service"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskset_taskdefinition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_taskset_id</IRI>
+        <Literal>ecstaskset:attribute_taskset_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsvpcconfiguration</IRI>
+        <Literal>ecstaskset:awsvpcconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsvpcconfiguration_assignpublicip</IRI>
+        <Literal>ecstaskset:awsvpcconfiguration_assignpublicip</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsvpcconfiguration_securitygroups</IRI>
+        <Literal>ecstaskset:awsvpcconfiguration_securitygroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsvpcconfiguration_subnets</IRI>
+        <Literal>ecstaskset:awsvpcconfiguration_subnets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbalancer</IRI>
+        <Literal>ecstaskset:loadbalancer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbalancer_containername</IRI>
+        <Literal>ecstaskset:loadbalancer_containername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbalancer_containerport</IRI>
+        <Literal>ecstaskset:loadbalancer_containerport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbalancer_loadbalancername</IRI>
+        <Literal>ecstaskset:loadbalancer_loadbalancername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loadbalancer_targetgrouparn</IRI>
+        <Literal>ecstaskset:loadbalancer_targetgrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration</IRI>
+        <Literal>ecstaskset:networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_awsvpcconfiguration</IRI>
+        <Literal>ecstaskset:networkconfiguration_awsvpcconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scale</IRI>
+        <Literal>ecstaskset:scale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scale_unit</IRI>
+        <Literal>ecstaskset:scale_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scale_value</IRI>
+        <Literal>ecstaskset:scale_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serviceregistry</IRI>
+        <Literal>ecstaskset:serviceregistry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serviceregistry_containername</IRI>
+        <Literal>ecstaskset:serviceregistry_containername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serviceregistry_containerport</IRI>
+        <Literal>ecstaskset:serviceregistry_containerport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serviceregistry_port</IRI>
+        <Literal>ecstaskset:serviceregistry_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serviceregistry_registryarn</IRI>
+        <Literal>ecstaskset:serviceregistry_registryarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset</IRI>
+        <Literal>ecstaskset:taskset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_cluster</IRI>
+        <Literal>ecstaskset:taskset_cluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_externalid</IRI>
+        <Literal>ecstaskset:taskset_externalid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_launchtype</IRI>
+        <Literal>ecstaskset:taskset_launchtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_loadbalancers</IRI>
+        <Literal>ecstaskset:taskset_loadbalancers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_networkconfiguration</IRI>
+        <Literal>ecstaskset:taskset_networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_platformversion</IRI>
+        <Literal>ecstaskset:taskset_platformversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_scale</IRI>
+        <Literal>ecstaskset:taskset_scale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_service</IRI>
+        <Literal>ecstaskset:taskset_service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_serviceregistries</IRI>
+        <Literal>ecstaskset:taskset_serviceregistries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskset_taskdefinition</IRI>
+        <Literal>ecstaskset:taskset_taskdefinition</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

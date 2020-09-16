@@ -1,0 +1,475 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/neptunedbcluster#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/neptunedbcluster#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="dbcluster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dbcluster_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_dbcluster_clusterresourceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_dbcluster_endpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_dbcluster_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_dbcluster_readendpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_availabilityzones"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_backupretentionperiod"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_dbclusteridentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_dbclusterparametergroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_dbsubnetgroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_deletionprotection"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_enablecloudwatchlogsexports"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_engineversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_iamauthenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_preferredbackupwindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_preferredmaintenancewindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_snapshotidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_storageencrypted"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbcluster_vpcsecuritygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dbcluster_tags"/>
+        <Class IRI="dbcluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dbcluster_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_dbcluster_clusterresourceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_dbcluster_endpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_dbcluster_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_dbcluster_readendpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_backupretentionperiod"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_dbclusteridentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_dbclusterparametergroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_dbsubnetgroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_deletionprotection"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_engineversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_iamauthenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_preferredbackupwindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_preferredmaintenancewindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_snapshotidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbcluster_storageencrypted"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_dbcluster_clusterresourceid"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_dbcluster_endpoint"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_dbcluster_port"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_dbcluster_readendpoint"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_availabilityzones"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_backupretentionperiod"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_dbclusteridentifier"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_dbclusterparametergroupname"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_dbsubnetgroupname"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_deletionprotection"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_enablecloudwatchlogsexports"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_engineversion"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_iamauthenabled"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_kmskeyid"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_port"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_preferredbackupwindow"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_preferredmaintenancewindow"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_snapshotidentifier"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_storageencrypted"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbcluster_vpcsecuritygroupids"/>
+        <Class IRI="dbcluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_dbcluster_clusterresourceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_dbcluster_endpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_dbcluster_port"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_dbcluster_readendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_availabilityzones"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_backupretentionperiod"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_dbclusteridentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_dbclusterparametergroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_dbsubnetgroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_deletionprotection"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_enablecloudwatchlogsexports"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_engineversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_iamauthenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_preferredbackupwindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_preferredmaintenancewindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_snapshotidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_storageencrypted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbcluster_vpcsecuritygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_dbcluster_clusterresourceid</IRI>
+        <Literal>neptunedbcluster:attribute_dbcluster_clusterresourceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_dbcluster_endpoint</IRI>
+        <Literal>neptunedbcluster:attribute_dbcluster_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_dbcluster_port</IRI>
+        <Literal>neptunedbcluster:attribute_dbcluster_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_dbcluster_readendpoint</IRI>
+        <Literal>neptunedbcluster:attribute_dbcluster_readendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster</IRI>
+        <Literal>neptunedbcluster:dbcluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_availabilityzones</IRI>
+        <Literal>neptunedbcluster:dbcluster_availabilityzones</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_backupretentionperiod</IRI>
+        <Literal>neptunedbcluster:dbcluster_backupretentionperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_dbclusteridentifier</IRI>
+        <Literal>neptunedbcluster:dbcluster_dbclusteridentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_dbclusterparametergroupname</IRI>
+        <Literal>neptunedbcluster:dbcluster_dbclusterparametergroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_dbsubnetgroupname</IRI>
+        <Literal>neptunedbcluster:dbcluster_dbsubnetgroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_deletionprotection</IRI>
+        <Literal>neptunedbcluster:dbcluster_deletionprotection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_enablecloudwatchlogsexports</IRI>
+        <Literal>neptunedbcluster:dbcluster_enablecloudwatchlogsexports</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_engineversion</IRI>
+        <Literal>neptunedbcluster:dbcluster_engineversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_iamauthenabled</IRI>
+        <Literal>neptunedbcluster:dbcluster_iamauthenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_kmskeyid</IRI>
+        <Literal>neptunedbcluster:dbcluster_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_port</IRI>
+        <Literal>neptunedbcluster:dbcluster_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_preferredbackupwindow</IRI>
+        <Literal>neptunedbcluster:dbcluster_preferredbackupwindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_preferredmaintenancewindow</IRI>
+        <Literal>neptunedbcluster:dbcluster_preferredmaintenancewindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_snapshotidentifier</IRI>
+        <Literal>neptunedbcluster:dbcluster_snapshotidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_storageencrypted</IRI>
+        <Literal>neptunedbcluster:dbcluster_storageencrypted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_tags</IRI>
+        <Literal>neptunedbcluster:dbcluster_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_vpcsecuritygroupids</IRI>
+        <Literal>neptunedbcluster:dbcluster_vpcsecuritygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>neptunedbcluster:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>neptunedbcluster:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>neptunedbcluster:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/glueconnection#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/glueconnection#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="connection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="connectioninput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="physicalconnectionrequirements"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="connection_connectioninput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="connectioninput_physicalconnectionrequirements"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connection_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connectioninput_connectionproperties"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connectioninput_connectiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connectioninput_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connectioninput_matchcriteria"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="connectioninput_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="physicalconnectionrequirements_availabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="physicalconnectionrequirements_securitygroupidlist"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="physicalconnectionrequirements_subnetid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="connection"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="connection_connectioninput"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="connection"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="connection_catalogid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="connectioninput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="connectioninput_connectionproperties"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="connectioninput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="connectioninput_connectiontype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="connection_connectioninput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="connectioninput_physicalconnectionrequirements"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="connection_connectioninput"/>
+        <Class IRI="connection"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="connectioninput_physicalconnectionrequirements"/>
+        <Class IRI="connectioninput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="connection_connectioninput"/>
+        <Class IRI="connectioninput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="connectioninput_physicalconnectionrequirements"/>
+        <Class IRI="physicalconnectionrequirements"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="connection_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="connectioninput_connectionproperties"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="connectioninput_connectiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="connectioninput_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="connectioninput_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="physicalconnectionrequirements_availabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="physicalconnectionrequirements_subnetid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="connection_catalogid"/>
+        <Class IRI="connection"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="connectioninput_connectionproperties"/>
+        <Class IRI="connectioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="connectioninput_connectiontype"/>
+        <Class IRI="connectioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="connectioninput_description"/>
+        <Class IRI="connectioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="connectioninput_matchcriteria"/>
+        <Class IRI="connectioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="connectioninput_name"/>
+        <Class IRI="connectioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="physicalconnectionrequirements_availabilityzone"/>
+        <Class IRI="physicalconnectionrequirements"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="physicalconnectionrequirements_securitygroupidlist"/>
+        <Class IRI="physicalconnectionrequirements"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="physicalconnectionrequirements_subnetid"/>
+        <Class IRI="physicalconnectionrequirements"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="connection_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="connectioninput_connectionproperties"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="connectioninput_connectiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="connectioninput_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="connectioninput_matchcriteria"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="connectioninput_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="physicalconnectionrequirements_availabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="physicalconnectionrequirements_securitygroupidlist"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="physicalconnectionrequirements_subnetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connection</IRI>
+        <Literal>glueconnection:connection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connection_catalogid</IRI>
+        <Literal>glueconnection:connection_catalogid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connection_connectioninput</IRI>
+        <Literal>glueconnection:connection_connectioninput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput</IRI>
+        <Literal>glueconnection:connectioninput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_connectionproperties</IRI>
+        <Literal>glueconnection:connectioninput_connectionproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_connectiontype</IRI>
+        <Literal>glueconnection:connectioninput_connectiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_description</IRI>
+        <Literal>glueconnection:connectioninput_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_matchcriteria</IRI>
+        <Literal>glueconnection:connectioninput_matchcriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_name</IRI>
+        <Literal>glueconnection:connectioninput_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>connectioninput_physicalconnectionrequirements</IRI>
+        <Literal>glueconnection:connectioninput_physicalconnectionrequirements</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>physicalconnectionrequirements</IRI>
+        <Literal>glueconnection:physicalconnectionrequirements</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>physicalconnectionrequirements_availabilityzone</IRI>
+        <Literal>glueconnection:physicalconnectionrequirements_availabilityzone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>physicalconnectionrequirements_securitygroupidlist</IRI>
+        <Literal>glueconnection:physicalconnectionrequirements_securitygroupidlist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>physicalconnectionrequirements_subnetid</IRI>
+        <Literal>glueconnection:physicalconnectionrequirements_subnetid</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,514 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns">
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopicpolicy#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#hasPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#hasPolicy">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#hasPolicy"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopicpolicy#topicpolicy_topics"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdsns:hasPolicy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#sendsNotificationsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#sendsNotificationsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+            </rdf:Description>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfdsns:sendsNotificationsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopicpolicy#topicpolicy_topics -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopicpolicy#topicpolicy_topics"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity"/>
+        <rdfs:label>dfdsns:ExternalEntity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataStore"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ReifiedExternalEntity -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ReifiedExternalEntity">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity"/>
+        <rdfs:label>dfdsns:ReifiedExternalEntity</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>email</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>email-json</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>http</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>https</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                <owl:hasValue>application</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                <owl:hasValue>sms</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>email</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>email-json</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>http</owl:hasValue>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>https</owl:hasValue>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                <owl:hasValue>application</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                <owl:hasValue>sms</owl:hasValue>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_endpoint"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                                <owl:hasValue>email</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                                <owl:hasValue>email-json</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                                <owl:hasValue>http</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                                <owl:hasValue>https</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>application</owl:hasValue>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic_subscription"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#subscription_protocol"/>
+                        <owl:hasValue>sms</owl:hasValue>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                                <owl:hasValue>email</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                                <owl:hasValue>email-json</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#emailaddress"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                                <owl:hasValue>http</owl:hasValue>
+                            </owl:Restriction>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                                <owl:hasValue>https</owl:hasValue>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>application</owl:hasValue>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfdsns#ExternalEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_topicarn"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snssubscription#subscription_protocol"/>
+                        <owl:hasValue>sms</owl:hasValue>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#dfd_OutFlow"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#phonenumber"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

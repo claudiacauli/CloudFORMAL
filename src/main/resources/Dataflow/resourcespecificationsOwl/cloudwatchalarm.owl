@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchalarm#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="alarm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metric"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metricdataquery"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metricstat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alarm_alarmactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alarm_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alarm_insufficientdataactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alarm_metrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="alarm_okactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dimension_value"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metric_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metricdataquery_metricstat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metricstat_metric"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_actionsenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_alarmdescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_alarmname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_comparisonoperator"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_datapointstoalarm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_evaluatelowsamplecountpercentile"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_evaluationperiods"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_extendedstatistic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_metricname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_period"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_statistic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_threshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_thresholdmetricid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_treatmissingdata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_alarm_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimension_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metric_metricname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metric_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdataquery_expression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdataquery_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdataquery_label"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdataquery_returndata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricstat_period"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricstat_stat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricstat_unit"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="alarm"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="alarm_comparisonoperator"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="alarm"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="alarm_evaluationperiods"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="dimension_value"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimension_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricdataquery"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricdataquery_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricstat"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="metricstat_metric"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricstat"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricstat_period"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricstat"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricstat_stat"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="dimension_value"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="metricdataquery_metricstat"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="metricstat_metric"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alarm_alarmactions"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alarm_dimensions"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alarm_insufficientdataactions"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alarm_metrics"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="alarm_okactions"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dimension_value"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metric_dimensions"/>
+        <Class IRI="metric"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metricdataquery_metricstat"/>
+        <Class IRI="metricdataquery"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metricstat_metric"/>
+        <Class IRI="metricstat"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="alarm_dimensions"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="alarm_metrics"/>
+        <Class IRI="metricdataquery"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metric_dimensions"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metricdataquery_metricstat"/>
+        <Class IRI="metricstat"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metricstat_metric"/>
+        <Class IRI="metric"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_actionsenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_alarmdescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_alarmname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_comparisonoperator"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_datapointstoalarm"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_evaluatelowsamplecountpercentile"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_evaluationperiods"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_extendedstatistic"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_metricname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_period"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_statistic"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_threshold"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_thresholdmetricid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_treatmissingdata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_alarm_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimension_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metric_metricname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metric_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdataquery_expression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdataquery_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdataquery_label"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdataquery_returndata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricstat_period"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricstat_stat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricstat_unit"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_actionsenabled"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_alarmdescription"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_alarmname"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_comparisonoperator"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_datapointstoalarm"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_evaluatelowsamplecountpercentile"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_evaluationperiods"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_extendedstatistic"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_metricname"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_namespace"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_period"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_statistic"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_threshold"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_thresholdmetricid"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_treatmissingdata"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_unit"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_alarm_arn"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimension_name"/>
+        <Class IRI="dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metric_metricname"/>
+        <Class IRI="metric"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metric_namespace"/>
+        <Class IRI="metric"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdataquery_expression"/>
+        <Class IRI="metricdataquery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdataquery_id"/>
+        <Class IRI="metricdataquery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdataquery_label"/>
+        <Class IRI="metricdataquery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdataquery_returndata"/>
+        <Class IRI="metricdataquery"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricstat_period"/>
+        <Class IRI="metricstat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricstat_stat"/>
+        <Class IRI="metricstat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricstat_unit"/>
+        <Class IRI="metricstat"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_actionsenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_alarmdescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_alarmname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_comparisonoperator"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_datapointstoalarm"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_evaluatelowsamplecountpercentile"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_evaluationperiods"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_extendedstatistic"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_metricname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_period"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_statistic"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_threshold"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_thresholdmetricid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_treatmissingdata"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_alarm_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimension_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metric_metricname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metric_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdataquery_expression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdataquery_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdataquery_label"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdataquery_returndata"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricstat_period"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricstat_stat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricstat_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm</IRI>
+        <Literal>cloudwatchalarm:alarm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_actionsenabled</IRI>
+        <Literal>cloudwatchalarm:alarm_actionsenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_alarmactions</IRI>
+        <Literal>cloudwatchalarm:alarm_alarmactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_alarmdescription</IRI>
+        <Literal>cloudwatchalarm:alarm_alarmdescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_alarmname</IRI>
+        <Literal>cloudwatchalarm:alarm_alarmname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_comparisonoperator</IRI>
+        <Literal>cloudwatchalarm:alarm_comparisonoperator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_datapointstoalarm</IRI>
+        <Literal>cloudwatchalarm:alarm_datapointstoalarm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_dimensions</IRI>
+        <Literal>cloudwatchalarm:alarm_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_evaluatelowsamplecountpercentile</IRI>
+        <Literal>cloudwatchalarm:alarm_evaluatelowsamplecountpercentile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_evaluationperiods</IRI>
+        <Literal>cloudwatchalarm:alarm_evaluationperiods</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_extendedstatistic</IRI>
+        <Literal>cloudwatchalarm:alarm_extendedstatistic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_insufficientdataactions</IRI>
+        <Literal>cloudwatchalarm:alarm_insufficientdataactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_metricname</IRI>
+        <Literal>cloudwatchalarm:alarm_metricname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_metrics</IRI>
+        <Literal>cloudwatchalarm:alarm_metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_namespace</IRI>
+        <Literal>cloudwatchalarm:alarm_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_okactions</IRI>
+        <Literal>cloudwatchalarm:alarm_okactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_period</IRI>
+        <Literal>cloudwatchalarm:alarm_period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_statistic</IRI>
+        <Literal>cloudwatchalarm:alarm_statistic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_threshold</IRI>
+        <Literal>cloudwatchalarm:alarm_threshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_thresholdmetricid</IRI>
+        <Literal>cloudwatchalarm:alarm_thresholdmetricid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_treatmissingdata</IRI>
+        <Literal>cloudwatchalarm:alarm_treatmissingdata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_unit</IRI>
+        <Literal>cloudwatchalarm:alarm_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_alarm_arn</IRI>
+        <Literal>cloudwatchalarm:attribute_alarm_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension</IRI>
+        <Literal>cloudwatchalarm:dimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_name</IRI>
+        <Literal>cloudwatchalarm:dimension_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_value</IRI>
+        <Literal>cloudwatchalarm:dimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric</IRI>
+        <Literal>cloudwatchalarm:metric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_dimensions</IRI>
+        <Literal>cloudwatchalarm:metric_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_metricname</IRI>
+        <Literal>cloudwatchalarm:metric_metricname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_namespace</IRI>
+        <Literal>cloudwatchalarm:metric_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery</IRI>
+        <Literal>cloudwatchalarm:metricdataquery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_expression</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_expression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_id</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_label</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_label</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_metricstat</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_metricstat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdataquery_returndata</IRI>
+        <Literal>cloudwatchalarm:metricdataquery_returndata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricstat</IRI>
+        <Literal>cloudwatchalarm:metricstat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricstat_metric</IRI>
+        <Literal>cloudwatchalarm:metricstat_metric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricstat_period</IRI>
+        <Literal>cloudwatchalarm:metricstat_period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricstat_stat</IRI>
+        <Literal>cloudwatchalarm:metricstat_stat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricstat_unit</IRI>
+        <Literal>cloudwatchalarm:metricstat_unit</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

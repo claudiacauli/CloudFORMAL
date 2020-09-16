@@ -1,0 +1,39 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+
+  "Resources":
+  {
+
+    "CustomerData":
+    {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "LoggingConfiguration" : {
+          "DestinationBucketName" :
+          {"Fn::ImportValue": "LogBucket"}
+        }
+      }
+    },
+
+    "TopicSubscription":
+    {
+      "Type": "AWS::SNS::Subscription",
+      "Properties": {
+        "Endpoint": "devs@mail",
+        "Protocol": "email",
+        "TopicArn": {"Fn::ImportValue": "MainTopic"}
+      }
+    }
+
+
+
+
+
+
+
+
+
+  }
+
+}

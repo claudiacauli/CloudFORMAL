@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lakeformationpermissions#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lakeformationpermissions#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="columnwildcard"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="databaseresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datalakeprincipal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datalocationresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="permissions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tableresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tablewithcolumnsresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="permissions_datalakeprincipal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="permissions_resource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="resource_databaseresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="resource_tableresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="databaseresource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permissions_permissions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="permissions_permissionswithgrantoption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tableresource_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tableresource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="permissions"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="permissions_datalakeprincipal"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="permissions"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="permissions_resource"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="permissions_datalakeprincipal"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="permissions_resource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_databaseresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_tableresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="permissions_datalakeprincipal"/>
+        <Class IRI="permissions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="permissions_resource"/>
+        <Class IRI="permissions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_databaseresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_tableresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="permissions_datalakeprincipal"/>
+        <Class IRI="datalakeprincipal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="permissions_resource"/>
+        <Class IRI="resource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_databaseresource"/>
+        <Class IRI="databaseresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_datalocationresource"/>
+        <Class IRI="datalocationresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_tableresource"/>
+        <Class IRI="tableresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="resource_tablewithcolumnsresource"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tablewithcolumnsresource_columnwildcard"/>
+        <Class IRI="columnwildcard"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="databaseresource_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tableresource_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tableresource_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
+        <Class IRI="columnwildcard"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="databaseresource_name"/>
+        <Class IRI="databaseresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+        <Class IRI="datalakeprincipal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+        <Class IRI="datalocationresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="permissions_permissions"/>
+        <Class IRI="permissions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="permissions_permissionswithgrantoption"/>
+        <Class IRI="permissions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tableresource_databasename"/>
+        <Class IRI="tableresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tableresource_name"/>
+        <Class IRI="tableresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+        <Class IRI="tablewithcolumnsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="columnwildcard_excludedcolumnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="databaseresource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datalocationresource_s3resource"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="permissions_permissions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="permissions_permissionswithgrantoption"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tableresource_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tableresource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_columnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tablewithcolumnsresource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnwildcard</IRI>
+        <Literal>lakeformationpermissions:columnwildcard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnwildcard_excludedcolumnnames</IRI>
+        <Literal>lakeformationpermissions:columnwildcard_excludedcolumnnames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseresource</IRI>
+        <Literal>lakeformationpermissions:databaseresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseresource_name</IRI>
+        <Literal>lakeformationpermissions:databaseresource_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datalakeprincipal</IRI>
+        <Literal>lakeformationpermissions:datalakeprincipal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datalakeprincipal_datalakeprincipalidentifier</IRI>
+        <Literal>lakeformationpermissions:datalakeprincipal_datalakeprincipalidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datalocationresource</IRI>
+        <Literal>lakeformationpermissions:datalocationresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datalocationresource_s3resource</IRI>
+        <Literal>lakeformationpermissions:datalocationresource_s3resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>permissions</IRI>
+        <Literal>lakeformationpermissions:permissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>permissions_datalakeprincipal</IRI>
+        <Literal>lakeformationpermissions:permissions_datalakeprincipal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>permissions_permissions</IRI>
+        <Literal>lakeformationpermissions:permissions_permissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>permissions_permissionswithgrantoption</IRI>
+        <Literal>lakeformationpermissions:permissions_permissionswithgrantoption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>permissions_resource</IRI>
+        <Literal>lakeformationpermissions:permissions_resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resource</IRI>
+        <Literal>lakeformationpermissions:resource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resource_databaseresource</IRI>
+        <Literal>lakeformationpermissions:resource_databaseresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resource_datalocationresource</IRI>
+        <Literal>lakeformationpermissions:resource_datalocationresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resource_tableresource</IRI>
+        <Literal>lakeformationpermissions:resource_tableresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resource_tablewithcolumnsresource</IRI>
+        <Literal>lakeformationpermissions:resource_tablewithcolumnsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableresource</IRI>
+        <Literal>lakeformationpermissions:tableresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableresource_databasename</IRI>
+        <Literal>lakeformationpermissions:tableresource_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableresource_name</IRI>
+        <Literal>lakeformationpermissions:tableresource_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tablewithcolumnsresource</IRI>
+        <Literal>lakeformationpermissions:tablewithcolumnsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tablewithcolumnsresource_columnnames</IRI>
+        <Literal>lakeformationpermissions:tablewithcolumnsresource_columnnames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tablewithcolumnsresource_columnwildcard</IRI>
+        <Literal>lakeformationpermissions:tablewithcolumnsresource_columnwildcard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tablewithcolumnsresource_databasename</IRI>
+        <Literal>lakeformationpermissions:tablewithcolumnsresource_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tablewithcolumnsresource_name</IRI>
+        <Literal>lakeformationpermissions:tablewithcolumnsresource_name</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,560 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kinesisanalyticsv2applicationreferencedatasource#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kinesisanalyticsv2applicationreferencedatasource#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="applicationreferencedatasource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="csvmappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jsonmappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recordcolumn"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recordformat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="referencedatasource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="referenceschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3referencedatasource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="applicationreferencedatasource_referencedatasource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="mappingparameters_csvmappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="mappingparameters_jsonmappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recordformat_mappingparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="referencedatasource_referenceschema"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="referencedatasource_s3referencedatasource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="referenceschema_recordcolumns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="referenceschema_recordformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="applicationreferencedatasource_applicationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="csvmappingparameters_recordcolumndelimiter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="csvmappingparameters_recordrowdelimiter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jsonmappingparameters_recordrowpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recordcolumn_mapping"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recordcolumn_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recordcolumn_sqltype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recordformat_recordformattype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="referencedatasource_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="referenceschema_recordencoding"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3referencedatasource_bucketarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3referencedatasource_filekey"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="applicationreferencedatasource"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="applicationreferencedatasource_referencedatasource"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="applicationreferencedatasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="applicationreferencedatasource_applicationname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="csvmappingparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="csvmappingparameters_recordcolumndelimiter"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="csvmappingparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="csvmappingparameters_recordrowdelimiter"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="jsonmappingparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="jsonmappingparameters_recordrowpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recordcolumn"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recordcolumn_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recordcolumn"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recordcolumn_sqltype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recordformat"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recordformat_recordformattype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="referencedatasource"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="referencedatasource_referenceschema"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="referenceschema"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="referenceschema_recordcolumns"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="referenceschema"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="referenceschema_recordformat"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3referencedatasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3referencedatasource_bucketarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3referencedatasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3referencedatasource_filekey"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="applicationreferencedatasource_referencedatasource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="mappingparameters_csvmappingparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="mappingparameters_jsonmappingparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="recordformat_mappingparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="referencedatasource_referenceschema"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="referencedatasource_s3referencedatasource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="referenceschema_recordformat"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="applicationreferencedatasource_referencedatasource"/>
+        <Class IRI="applicationreferencedatasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="mappingparameters_csvmappingparameters"/>
+        <Class IRI="mappingparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="mappingparameters_jsonmappingparameters"/>
+        <Class IRI="mappingparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recordformat_mappingparameters"/>
+        <Class IRI="recordformat"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="referencedatasource_referenceschema"/>
+        <Class IRI="referencedatasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="referencedatasource_s3referencedatasource"/>
+        <Class IRI="referencedatasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="referenceschema_recordcolumns"/>
+        <Class IRI="referenceschema"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="referenceschema_recordformat"/>
+        <Class IRI="referenceschema"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="applicationreferencedatasource_referencedatasource"/>
+        <Class IRI="referencedatasource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="mappingparameters_csvmappingparameters"/>
+        <Class IRI="csvmappingparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="mappingparameters_jsonmappingparameters"/>
+        <Class IRI="jsonmappingparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recordformat_mappingparameters"/>
+        <Class IRI="mappingparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="referencedatasource_referenceschema"/>
+        <Class IRI="referenceschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="referencedatasource_s3referencedatasource"/>
+        <Class IRI="s3referencedatasource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="referenceschema_recordcolumns"/>
+        <Class IRI="recordcolumn"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="referenceschema_recordformat"/>
+        <Class IRI="recordformat"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="applicationreferencedatasource_applicationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="csvmappingparameters_recordcolumndelimiter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="csvmappingparameters_recordrowdelimiter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jsonmappingparameters_recordrowpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recordcolumn_mapping"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recordcolumn_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recordcolumn_sqltype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recordformat_recordformattype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="referencedatasource_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="referenceschema_recordencoding"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3referencedatasource_bucketarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3referencedatasource_filekey"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="applicationreferencedatasource_applicationname"/>
+        <Class IRI="applicationreferencedatasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="csvmappingparameters_recordcolumndelimiter"/>
+        <Class IRI="csvmappingparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="csvmappingparameters_recordrowdelimiter"/>
+        <Class IRI="csvmappingparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jsonmappingparameters_recordrowpath"/>
+        <Class IRI="jsonmappingparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recordcolumn_mapping"/>
+        <Class IRI="recordcolumn"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recordcolumn_name"/>
+        <Class IRI="recordcolumn"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recordcolumn_sqltype"/>
+        <Class IRI="recordcolumn"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recordformat_recordformattype"/>
+        <Class IRI="recordformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="referencedatasource_tablename"/>
+        <Class IRI="referencedatasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="referenceschema_recordencoding"/>
+        <Class IRI="referenceschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3referencedatasource_bucketarn"/>
+        <Class IRI="s3referencedatasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3referencedatasource_filekey"/>
+        <Class IRI="s3referencedatasource"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="applicationreferencedatasource_applicationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="csvmappingparameters_recordcolumndelimiter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="csvmappingparameters_recordrowdelimiter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jsonmappingparameters_recordrowpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recordcolumn_mapping"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recordcolumn_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recordcolumn_sqltype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recordformat_recordformattype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="referencedatasource_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="referenceschema_recordencoding"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3referencedatasource_bucketarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3referencedatasource_filekey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationreferencedatasource</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:applicationreferencedatasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationreferencedatasource_applicationname</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:applicationreferencedatasource_applicationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>applicationreferencedatasource_referencedatasource</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:applicationreferencedatasource_referencedatasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csvmappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:csvmappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csvmappingparameters_recordcolumndelimiter</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:csvmappingparameters_recordcolumndelimiter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csvmappingparameters_recordrowdelimiter</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:csvmappingparameters_recordrowdelimiter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsonmappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:jsonmappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsonmappingparameters_recordrowpath</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:jsonmappingparameters_recordrowpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:mappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mappingparameters_csvmappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:mappingparameters_csvmappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mappingparameters_jsonmappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:mappingparameters_jsonmappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordcolumn</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordcolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordcolumn_mapping</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordcolumn_mapping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordcolumn_name</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordcolumn_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordcolumn_sqltype</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordcolumn_sqltype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordformat</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordformat_mappingparameters</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordformat_mappingparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recordformat_recordformattype</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:recordformat_recordformattype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referencedatasource</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referencedatasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referencedatasource_referenceschema</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referencedatasource_referenceschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referencedatasource_s3referencedatasource</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referencedatasource_s3referencedatasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referencedatasource_tablename</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referencedatasource_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referenceschema</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referenceschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referenceschema_recordcolumns</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referenceschema_recordcolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referenceschema_recordencoding</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referenceschema_recordencoding</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>referenceschema_recordformat</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:referenceschema_recordformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3referencedatasource</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:s3referencedatasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3referencedatasource_bucketarn</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:s3referencedatasource_bucketarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3referencedatasource_filekey</IRI>
+        <Literal>kinesisanalyticsv2applicationreferencedatasource:s3referencedatasource_filekey</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

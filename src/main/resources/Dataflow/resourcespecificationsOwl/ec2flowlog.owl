@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2flowlog#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2flowlog#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="flowlog"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowlog_logdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowlog_loggroupname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowlog_resourceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowlog_logdestinationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowlog_resourcetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowlog_traffictype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="flowlog"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="flowlog_resourceid"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowlog"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowlog_resourcetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowlog"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowlog_traffictype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowlog_logdestination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowlog_loggroupname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowlog_resourceid"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
+        <Class IRI="flowlog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowlog_logdestination"/>
+        <Class IRI="flowlog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowlog_loggroupname"/>
+        <Class IRI="flowlog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowlog_resourceid"/>
+        <Class IRI="flowlog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowlog_loggroupname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowlog_logdestinationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowlog_resourcetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowlog_traffictype"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowlog_logdestinationtype"/>
+        <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowlog_resourcetype"/>
+        <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowlog_traffictype"/>
+        <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="flowlog_logdestinationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowlog_resourcetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowlog_traffictype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog</IRI>
+        <Literal>ec2flowlog:flowlog</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_deliverlogspermissionarn</IRI>
+        <Literal>ec2flowlog:flowlog_deliverlogspermissionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_logdestination</IRI>
+        <Literal>ec2flowlog:flowlog_logdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_logdestinationtype</IRI>
+        <Literal>ec2flowlog:flowlog_logdestinationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_loggroupname</IRI>
+        <Literal>ec2flowlog:flowlog_loggroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_resourceid</IRI>
+        <Literal>ec2flowlog:flowlog_resourceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_resourcetype</IRI>
+        <Literal>ec2flowlog:flowlog_resourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_traffictype</IRI>
+        <Literal>ec2flowlog:flowlog_traffictype</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

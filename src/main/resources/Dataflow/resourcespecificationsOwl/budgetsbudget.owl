@@ -1,0 +1,789 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/budgetsbudget#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/budgetsbudget#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="budget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="budgetdata"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="costtypes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="notification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="notificationwithsubscribers"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="spend"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="subscriber"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="timeperiod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="budget_budget"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="budget_notificationswithsubscribers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="budgetdata_budgetlimit"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="budgetdata_costtypes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="budgetdata_timeperiod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="notificationwithsubscribers_notification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="notificationwithsubscribers_subscribers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="budgetdata_budgetname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="budgetdata_budgettype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="budgetdata_costfilters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="budgetdata_plannedbudgetlimits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="budgetdata_timeunit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includecredit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includediscount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includeothersubscription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includerecurring"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includerefund"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includesubscription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includesupport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includetax"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_includeupfront"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_useamortized"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="costtypes_useblended"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="notification_comparisonoperator"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="notification_notificationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="notification_threshold"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="notification_thresholdtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spend_amount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spend_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subscriber_address"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="subscriber_subscriptiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="timeperiod_end"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="timeperiod_start"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="budget"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="budget_budget"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="budgetdata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="budgetdata_budgettype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="budgetdata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="budgetdata_timeunit"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="notification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="notification_comparisonoperator"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="notification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="notification_notificationtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="notification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="notification_threshold"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="notificationwithsubscribers"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="notificationwithsubscribers_notification"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="notificationwithsubscribers"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="notificationwithsubscribers_subscribers"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="spend"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="spend_amount"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="spend"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="spend_unit"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="subscriber"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="subscriber_address"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="subscriber"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="subscriber_subscriptiontype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="budget_budget"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="budgetdata_budgetlimit"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="budgetdata_costtypes"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="budgetdata_timeperiod"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="notificationwithsubscribers_notification"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="budget_budget"/>
+        <Class IRI="budget"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="budget_notificationswithsubscribers"/>
+        <Class IRI="budget"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="budgetdata_budgetlimit"/>
+        <Class IRI="budgetdata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="budgetdata_costtypes"/>
+        <Class IRI="budgetdata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="budgetdata_timeperiod"/>
+        <Class IRI="budgetdata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="notificationwithsubscribers_notification"/>
+        <Class IRI="notificationwithsubscribers"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="notificationwithsubscribers_subscribers"/>
+        <Class IRI="notificationwithsubscribers"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="budget_budget"/>
+        <Class IRI="budgetdata"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="budget_notificationswithsubscribers"/>
+        <Class IRI="notificationwithsubscribers"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="budgetdata_budgetlimit"/>
+        <Class IRI="spend"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="budgetdata_costtypes"/>
+        <Class IRI="costtypes"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="budgetdata_timeperiod"/>
+        <Class IRI="timeperiod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="notificationwithsubscribers_notification"/>
+        <Class IRI="notification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="notificationwithsubscribers_subscribers"/>
+        <Class IRI="subscriber"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="budgetdata_budgetname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="budgetdata_budgettype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="budgetdata_costfilters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="budgetdata_plannedbudgetlimits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="budgetdata_timeunit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includecredit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includediscount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includeothersubscription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includerecurring"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includerefund"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includesubscription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includesupport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includetax"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_includeupfront"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_useamortized"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="costtypes_useblended"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="notification_comparisonoperator"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="notification_notificationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="notification_threshold"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="notification_thresholdtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spend_amount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spend_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subscriber_address"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="subscriber_subscriptiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="timeperiod_end"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="timeperiod_start"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="budgetdata_budgetname"/>
+        <Class IRI="budgetdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="budgetdata_budgettype"/>
+        <Class IRI="budgetdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="budgetdata_costfilters"/>
+        <Class IRI="budgetdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="budgetdata_plannedbudgetlimits"/>
+        <Class IRI="budgetdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="budgetdata_timeunit"/>
+        <Class IRI="budgetdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includecredit"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includediscount"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includeothersubscription"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includerecurring"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includerefund"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includesubscription"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includesupport"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includetax"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_includeupfront"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_useamortized"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="costtypes_useblended"/>
+        <Class IRI="costtypes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="notification_comparisonoperator"/>
+        <Class IRI="notification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="notification_notificationtype"/>
+        <Class IRI="notification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="notification_threshold"/>
+        <Class IRI="notification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="notification_thresholdtype"/>
+        <Class IRI="notification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spend_amount"/>
+        <Class IRI="spend"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spend_unit"/>
+        <Class IRI="spend"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subscriber_address"/>
+        <Class IRI="subscriber"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="subscriber_subscriptiontype"/>
+        <Class IRI="subscriber"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="timeperiod_end"/>
+        <Class IRI="timeperiod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="timeperiod_start"/>
+        <Class IRI="timeperiod"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="budgetdata_budgetname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="budgetdata_budgettype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="budgetdata_costfilters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="budgetdata_plannedbudgetlimits"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="budgetdata_timeunit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includecredit"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includediscount"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includeothersubscription"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includerecurring"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includerefund"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includesubscription"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includesupport"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includetax"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_includeupfront"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_useamortized"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="costtypes_useblended"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="notification_comparisonoperator"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="notification_notificationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="notification_threshold"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="notification_thresholdtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spend_amount"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spend_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subscriber_address"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="subscriber_subscriptiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="timeperiod_end"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="timeperiod_start"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budget</IRI>
+        <Literal>budgetsbudget:budget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budget_budget</IRI>
+        <Literal>budgetsbudget:budget_budget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budget_notificationswithsubscribers</IRI>
+        <Literal>budgetsbudget:budget_notificationswithsubscribers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata</IRI>
+        <Literal>budgetsbudget:budgetdata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_budgetlimit</IRI>
+        <Literal>budgetsbudget:budgetdata_budgetlimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_budgetname</IRI>
+        <Literal>budgetsbudget:budgetdata_budgetname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_budgettype</IRI>
+        <Literal>budgetsbudget:budgetdata_budgettype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_costfilters</IRI>
+        <Literal>budgetsbudget:budgetdata_costfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_costtypes</IRI>
+        <Literal>budgetsbudget:budgetdata_costtypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_plannedbudgetlimits</IRI>
+        <Literal>budgetsbudget:budgetdata_plannedbudgetlimits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_timeperiod</IRI>
+        <Literal>budgetsbudget:budgetdata_timeperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>budgetdata_timeunit</IRI>
+        <Literal>budgetsbudget:budgetdata_timeunit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes</IRI>
+        <Literal>budgetsbudget:costtypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includecredit</IRI>
+        <Literal>budgetsbudget:costtypes_includecredit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includediscount</IRI>
+        <Literal>budgetsbudget:costtypes_includediscount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includeothersubscription</IRI>
+        <Literal>budgetsbudget:costtypes_includeothersubscription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includerecurring</IRI>
+        <Literal>budgetsbudget:costtypes_includerecurring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includerefund</IRI>
+        <Literal>budgetsbudget:costtypes_includerefund</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includesubscription</IRI>
+        <Literal>budgetsbudget:costtypes_includesubscription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includesupport</IRI>
+        <Literal>budgetsbudget:costtypes_includesupport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includetax</IRI>
+        <Literal>budgetsbudget:costtypes_includetax</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_includeupfront</IRI>
+        <Literal>budgetsbudget:costtypes_includeupfront</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_useamortized</IRI>
+        <Literal>budgetsbudget:costtypes_useamortized</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>costtypes_useblended</IRI>
+        <Literal>budgetsbudget:costtypes_useblended</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notification</IRI>
+        <Literal>budgetsbudget:notification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notification_comparisonoperator</IRI>
+        <Literal>budgetsbudget:notification_comparisonoperator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notification_notificationtype</IRI>
+        <Literal>budgetsbudget:notification_notificationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notification_threshold</IRI>
+        <Literal>budgetsbudget:notification_threshold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notification_thresholdtype</IRI>
+        <Literal>budgetsbudget:notification_thresholdtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationwithsubscribers</IRI>
+        <Literal>budgetsbudget:notificationwithsubscribers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationwithsubscribers_notification</IRI>
+        <Literal>budgetsbudget:notificationwithsubscribers_notification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>notificationwithsubscribers_subscribers</IRI>
+        <Literal>budgetsbudget:notificationwithsubscribers_subscribers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spend</IRI>
+        <Literal>budgetsbudget:spend</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spend_amount</IRI>
+        <Literal>budgetsbudget:spend_amount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spend_unit</IRI>
+        <Literal>budgetsbudget:spend_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriber</IRI>
+        <Literal>budgetsbudget:subscriber</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriber_address</IRI>
+        <Literal>budgetsbudget:subscriber_address</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subscriber_subscriptiontype</IRI>
+        <Literal>budgetsbudget:subscriber_subscriptiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timeperiod</IRI>
+        <Literal>budgetsbudget:timeperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timeperiod_end</IRI>
+        <Literal>budgetsbudget:timeperiod_end</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>timeperiod_start</IRI>
+        <Literal>budgetsbudget:timeperiod_start</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

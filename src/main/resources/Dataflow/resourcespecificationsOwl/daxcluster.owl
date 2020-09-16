@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/daxcluster#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/daxcluster#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cluster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ssespecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_ssespecification"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_clusterdiscoveryendpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_availabilityzones"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clustername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_iamrolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_nodetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_notificationtopicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_parametergroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_replicationfactor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_subnetgroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_iamrolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_nodetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_replicationfactor"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_ssespecification"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_ssespecification"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_ssespecification"/>
+        <Class IRI="ssespecification"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_clusterdiscoveryendpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clustername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_iamrolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_nodetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_notificationtopicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_parametergroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_replicationfactor"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_subnetgroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_tags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_arn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_clusterdiscoveryendpoint"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_availabilityzones"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clustername"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_description"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_iamrolearn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_nodetype"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_notificationtopicarn"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_parametergroupname"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_replicationfactor"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_securitygroupids"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_subnetgroupname"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_tags"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+        <Class IRI="ssespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_clusterdiscoveryendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_availabilityzones"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clustername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_iamrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_nodetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_notificationtopicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_parametergroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_replicationfactor"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_subnetgroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_tags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ssespecification_sseenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_arn</IRI>
+        <Literal>daxcluster:attribute_cluster_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_clusterdiscoveryendpoint</IRI>
+        <Literal>daxcluster:attribute_cluster_clusterdiscoveryendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster</IRI>
+        <Literal>daxcluster:cluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_availabilityzones</IRI>
+        <Literal>daxcluster:cluster_availabilityzones</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clustername</IRI>
+        <Literal>daxcluster:cluster_clustername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_description</IRI>
+        <Literal>daxcluster:cluster_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_iamrolearn</IRI>
+        <Literal>daxcluster:cluster_iamrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_nodetype</IRI>
+        <Literal>daxcluster:cluster_nodetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_notificationtopicarn</IRI>
+        <Literal>daxcluster:cluster_notificationtopicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_parametergroupname</IRI>
+        <Literal>daxcluster:cluster_parametergroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_preferredmaintenancewindow</IRI>
+        <Literal>daxcluster:cluster_preferredmaintenancewindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_replicationfactor</IRI>
+        <Literal>daxcluster:cluster_replicationfactor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_securitygroupids</IRI>
+        <Literal>daxcluster:cluster_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_ssespecification</IRI>
+        <Literal>daxcluster:cluster_ssespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_subnetgroupname</IRI>
+        <Literal>daxcluster:cluster_subnetgroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_tags</IRI>
+        <Literal>daxcluster:cluster_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification</IRI>
+        <Literal>daxcluster:ssespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ssespecification_sseenabled</IRI>
+        <Literal>daxcluster:ssespecification_sseenabled</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

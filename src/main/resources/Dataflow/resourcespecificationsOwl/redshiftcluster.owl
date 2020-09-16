@@ -1,0 +1,759 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/redshiftcluster#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/redshiftcluster#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cluster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loggingproperties"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_clustersecuritygroups"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_loggingproperties"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingproperties_bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_endpoint.address"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_cluster_endpoint.port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_allowversionupgrade"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_automatedsnapshotretentionperiod"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_availabilityzone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clusteridentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clusterparametergroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clustersubnetgroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clustertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_clusterversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_dbname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_elasticip"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_encrypted"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_hsmclientcertificateidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_hsmconfigurationidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_iamroles"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_masterusername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_masteruserpassword"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_nodetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_numberofnodes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_owneraccount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_publiclyaccessible"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_snapshotclusteridentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_snapshotidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cluster_vpcsecuritygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loggingproperties_s3keyprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/redshiftclustersecuritygroup#clustersecuritygroup"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_clustertype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_dbname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_masterusername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_masteruserpassword"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cluster"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cluster_nodetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggingproperties"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="loggingproperties_bucketname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_loggingproperties"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingproperties_bucketname"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_clustersecuritygroups"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_loggingproperties"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_tags"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingproperties_bucketname"/>
+        <Class IRI="loggingproperties"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_clustersecuritygroups"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/redshiftclustersecuritygroup#clustersecuritygroup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_loggingproperties"/>
+        <Class IRI="loggingproperties"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingproperties_bucketname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_endpoint.address"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_cluster_endpoint.port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_allowversionupgrade"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_automatedsnapshotretentionperiod"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_availabilityzone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clusteridentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clusterparametergroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clustersubnetgroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clustertype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_clusterversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_dbname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_elasticip"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_encrypted"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_hsmclientcertificateidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_hsmconfigurationidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_masterusername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_masteruserpassword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_nodetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_numberofnodes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_owneraccount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_publiclyaccessible"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_snapshotclusteridentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cluster_snapshotidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loggingproperties_s3keyprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_endpoint.address"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_cluster_endpoint.port"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_allowversionupgrade"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_automatedsnapshotretentionperiod"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_availabilityzone"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clusteridentifier"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clusterparametergroupname"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clustersubnetgroupname"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clustertype"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_clusterversion"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_dbname"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_elasticip"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_encrypted"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_hsmclientcertificateidentifier"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_hsmconfigurationidentifier"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_iamroles"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_kmskeyid"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_masterusername"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_masteruserpassword"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_nodetype"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_numberofnodes"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_owneraccount"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_port"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_publiclyaccessible"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_snapshotclusteridentifier"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_snapshotidentifier"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cluster_vpcsecuritygroupids"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loggingproperties_s3keyprefix"/>
+        <Class IRI="loggingproperties"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_endpoint.address"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_cluster_endpoint.port"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_allowversionupgrade"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_automatedsnapshotretentionperiod"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_availabilityzone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clusteridentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clusterparametergroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clustersubnetgroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clustertype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_clusterversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_dbname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_elasticip"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_encrypted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_hsmclientcertificateidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_hsmconfigurationidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_iamroles"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_masterusername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_masteruserpassword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_nodetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_numberofnodes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_owneraccount"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_preferredmaintenancewindow"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_publiclyaccessible"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_snapshotclusteridentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_snapshotidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cluster_vpcsecuritygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loggingproperties_s3keyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_endpoint.address</IRI>
+        <Literal>redshiftcluster:attribute_cluster_endpoint.address</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_cluster_endpoint.port</IRI>
+        <Literal>redshiftcluster:attribute_cluster_endpoint.port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster</IRI>
+        <Literal>redshiftcluster:cluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_allowversionupgrade</IRI>
+        <Literal>redshiftcluster:cluster_allowversionupgrade</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_automatedsnapshotretentionperiod</IRI>
+        <Literal>redshiftcluster:cluster_automatedsnapshotretentionperiod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_availabilityzone</IRI>
+        <Literal>redshiftcluster:cluster_availabilityzone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clusteridentifier</IRI>
+        <Literal>redshiftcluster:cluster_clusteridentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clusterparametergroupname</IRI>
+        <Literal>redshiftcluster:cluster_clusterparametergroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clustersecuritygroups</IRI>
+        <Literal>redshiftcluster:cluster_clustersecuritygroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clustersubnetgroupname</IRI>
+        <Literal>redshiftcluster:cluster_clustersubnetgroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clustertype</IRI>
+        <Literal>redshiftcluster:cluster_clustertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_clusterversion</IRI>
+        <Literal>redshiftcluster:cluster_clusterversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_dbname</IRI>
+        <Literal>redshiftcluster:cluster_dbname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_elasticip</IRI>
+        <Literal>redshiftcluster:cluster_elasticip</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_encrypted</IRI>
+        <Literal>redshiftcluster:cluster_encrypted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_hsmclientcertificateidentifier</IRI>
+        <Literal>redshiftcluster:cluster_hsmclientcertificateidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_hsmconfigurationidentifier</IRI>
+        <Literal>redshiftcluster:cluster_hsmconfigurationidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_iamroles</IRI>
+        <Literal>redshiftcluster:cluster_iamroles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_kmskeyid</IRI>
+        <Literal>redshiftcluster:cluster_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_loggingproperties</IRI>
+        <Literal>redshiftcluster:cluster_loggingproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_masterusername</IRI>
+        <Literal>redshiftcluster:cluster_masterusername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_masteruserpassword</IRI>
+        <Literal>redshiftcluster:cluster_masteruserpassword</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_nodetype</IRI>
+        <Literal>redshiftcluster:cluster_nodetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_numberofnodes</IRI>
+        <Literal>redshiftcluster:cluster_numberofnodes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_owneraccount</IRI>
+        <Literal>redshiftcluster:cluster_owneraccount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_port</IRI>
+        <Literal>redshiftcluster:cluster_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_preferredmaintenancewindow</IRI>
+        <Literal>redshiftcluster:cluster_preferredmaintenancewindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_publiclyaccessible</IRI>
+        <Literal>redshiftcluster:cluster_publiclyaccessible</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_snapshotclusteridentifier</IRI>
+        <Literal>redshiftcluster:cluster_snapshotclusteridentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_snapshotidentifier</IRI>
+        <Literal>redshiftcluster:cluster_snapshotidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_tags</IRI>
+        <Literal>redshiftcluster:cluster_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_vpcsecuritygroupids</IRI>
+        <Literal>redshiftcluster:cluster_vpcsecuritygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingproperties</IRI>
+        <Literal>redshiftcluster:loggingproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingproperties_bucketname</IRI>
+        <Literal>redshiftcluster:loggingproperties_bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingproperties_s3keyprefix</IRI>
+        <Literal>redshiftcluster:loggingproperties_s3keyprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>redshiftcluster:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>redshiftcluster:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>redshiftcluster:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaeventinvokeconfig#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="destinationconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventinvokeconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="onfailure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="onsuccess"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="destinationconfig_onsuccess"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="onfailure_destination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="onsuccess_destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventinvokeconfig_maximumretryattempts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventinvokeconfig_qualifier"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="eventinvokeconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventinvokeconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="eventinvokeconfig_qualifier"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="onfailure"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="onfailure_destination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="onsuccess"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="onsuccess_destination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="destinationconfig_onsuccess"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="onfailure_destination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="onsuccess_destination"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+        <Class IRI="destinationconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="destinationconfig_onsuccess"/>
+        <Class IRI="destinationconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
+        <Class IRI="eventinvokeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+        <Class IRI="eventinvokeconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="onfailure_destination"/>
+        <Class IRI="onfailure"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="onsuccess_destination"/>
+        <Class IRI="onsuccess"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="destinationconfig_onfailure"/>
+        <Class IRI="onfailure"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="destinationconfig_onsuccess"/>
+        <Class IRI="onsuccess"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventinvokeconfig_destinationconfig"/>
+        <Class IRI="destinationconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventinvokeconfig_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventinvokeconfig_maximumretryattempts"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventinvokeconfig_qualifier"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
+        <Class IRI="eventinvokeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventinvokeconfig_maximumretryattempts"/>
+        <Class IRI="eventinvokeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventinvokeconfig_qualifier"/>
+        <Class IRI="eventinvokeconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="eventinvokeconfig_maximumeventageinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventinvokeconfig_maximumretryattempts"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventinvokeconfig_qualifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destinationconfig</IRI>
+        <Literal>lambdaeventinvokeconfig:destinationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destinationconfig_onfailure</IRI>
+        <Literal>lambdaeventinvokeconfig:destinationconfig_onfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>destinationconfig_onsuccess</IRI>
+        <Literal>lambdaeventinvokeconfig:destinationconfig_onsuccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig_destinationconfig</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig_destinationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig_functionname</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig_functionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig_maximumeventageinseconds</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig_maximumeventageinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig_maximumretryattempts</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig_maximumretryattempts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventinvokeconfig_qualifier</IRI>
+        <Literal>lambdaeventinvokeconfig:eventinvokeconfig_qualifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onfailure</IRI>
+        <Literal>lambdaeventinvokeconfig:onfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onfailure_destination</IRI>
+        <Literal>lambdaeventinvokeconfig:onfailure_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onsuccess</IRI>
+        <Literal>lambdaeventinvokeconfig:onsuccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>onsuccess_destination</IRI>
+        <Literal>lambdaeventinvokeconfig:onsuccess_destination</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

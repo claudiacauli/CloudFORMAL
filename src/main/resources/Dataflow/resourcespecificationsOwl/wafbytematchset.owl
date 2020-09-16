@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/wafbytematchset#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/wafbytematchset#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="bytematchset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="bytematchtuple"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="fieldtomatch"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bytematchset_bytematchtuples"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bytematchtuple_fieldtomatch"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bytematchset_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bytematchtuple_positionalconstraint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bytematchtuple_targetstring"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bytematchtuple_targetstringbase64"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bytematchtuple_texttransformation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fieldtomatch_data"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fieldtomatch_type"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="bytematchset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bytematchset_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bytematchtuple"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="bytematchtuple_fieldtomatch"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bytematchtuple"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bytematchtuple_positionalconstraint"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bytematchtuple"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="bytematchtuple_texttransformation"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fieldtomatch"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="fieldtomatch_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="bytematchtuple_fieldtomatch"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bytematchset_bytematchtuples"/>
+        <Class IRI="bytematchset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bytematchtuple_fieldtomatch"/>
+        <Class IRI="bytematchtuple"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bytematchset_bytematchtuples"/>
+        <Class IRI="bytematchtuple"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bytematchtuple_fieldtomatch"/>
+        <Class IRI="fieldtomatch"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bytematchset_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bytematchtuple_positionalconstraint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bytematchtuple_targetstring"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bytematchtuple_targetstringbase64"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bytematchtuple_texttransformation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fieldtomatch_data"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fieldtomatch_type"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="bytematchset_name"/>
+        <Class IRI="bytematchset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bytematchtuple_positionalconstraint"/>
+        <Class IRI="bytematchtuple"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bytematchtuple_targetstring"/>
+        <Class IRI="bytematchtuple"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bytematchtuple_targetstringbase64"/>
+        <Class IRI="bytematchtuple"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bytematchtuple_texttransformation"/>
+        <Class IRI="bytematchtuple"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fieldtomatch_data"/>
+        <Class IRI="fieldtomatch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fieldtomatch_type"/>
+        <Class IRI="fieldtomatch"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="bytematchset_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bytematchtuple_positionalconstraint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bytematchtuple_targetstring"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bytematchtuple_targetstringbase64"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bytematchtuple_texttransformation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fieldtomatch_data"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fieldtomatch_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchset</IRI>
+        <Literal>wafbytematchset:bytematchset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchset_bytematchtuples</IRI>
+        <Literal>wafbytematchset:bytematchset_bytematchtuples</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchset_name</IRI>
+        <Literal>wafbytematchset:bytematchset_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple</IRI>
+        <Literal>wafbytematchset:bytematchtuple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple_fieldtomatch</IRI>
+        <Literal>wafbytematchset:bytematchtuple_fieldtomatch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple_positionalconstraint</IRI>
+        <Literal>wafbytematchset:bytematchtuple_positionalconstraint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple_targetstring</IRI>
+        <Literal>wafbytematchset:bytematchtuple_targetstring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple_targetstringbase64</IRI>
+        <Literal>wafbytematchset:bytematchtuple_targetstringbase64</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bytematchtuple_texttransformation</IRI>
+        <Literal>wafbytematchset:bytematchtuple_texttransformation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fieldtomatch</IRI>
+        <Literal>wafbytematchset:fieldtomatch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fieldtomatch_data</IRI>
+        <Literal>wafbytematchset:fieldtomatch_data</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fieldtomatch_type</IRI>
+        <Literal>wafbytematchset:fieldtomatch_type</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

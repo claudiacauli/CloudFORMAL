@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3">
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#"/>
+        <owl:imports rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#DELETE -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#DELETE">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DELETE"/>
+        <rdfs:label>dfds3:DELETE</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#GET -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#GET">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#GET"/>
+        <rdfs:label>dfds3:GET</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#HEAD -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#HEAD">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#HEAD"/>
+        <rdfs:label>dfds3:HEAD</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#POST -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#POST">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#POST"/>
+        <rdfs:label>dfds3:POST</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#PUT -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#PUT">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#PUT"/>
+        <rdfs:label>dfds3:PUT</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#hasPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#hasPolicy">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#hasPolicy"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description>
+                <owl:inverseOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy_bucket"/>
+            </rdf:Description>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:hasPolicy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#invokesUponEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#invokesUponEvent">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#invokesFunction"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_function"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:invokesUponEvent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#redirectsRequestsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#redirectsRequestsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#redirectsRequestsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:redirectsRequestsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsInventoryResultsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsInventoryResultsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataFlow"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#inventoryconfiguration_destination"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#destination_bucketarn"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:sendsInventoryResultsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsLogsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsLogsTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#deliversLogsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#loggingconfiguration_destinationbucketname"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:sendsLogsTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsMessagesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsMessagesTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#sendsEventsMsgsNotificationsTo"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#queueconfiguration_queue"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_topic"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:sendsMessagesTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsReplicasTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#sendsReplicasTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#replicatesOn"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationconfiguration_rules"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationrule_destination"/>
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationdestination_bucket"/>
+        </owl:propertyChainAxiom>
+        <rdfs:label>dfds3:sendsReplicasTo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_corsconfiguration"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_inventoryconfigurations"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_loggingconfiguration"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_notificationconfiguration"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_replicationconfiguration"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration_corsrules -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsconfiguration_corsrules"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#destination_bucketarn -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#destination_bucketarn"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#inventoryconfiguration_destination -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#inventoryconfiguration_destination"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_function -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#lambdaconfiguration_function"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#loggingconfiguration_destinationbucketname -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#loggingconfiguration_destinationbucketname"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_lambdaconfigurations"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_queueconfigurations"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#notificationconfiguration_topicconfigurations"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#queueconfiguration_queue -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#queueconfiguration_queue"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo_hostname -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo_hostname">
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ExternalOrigin"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectrule_hostname -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectrule_hostname">
+        <rdfs:range rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ExternalOrigin"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationconfiguration_rules -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationconfiguration_rules"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationdestination_bucket -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationdestination_bucket"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationrule_destination -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#replicationrule_destination"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#routingrule_redirectrule -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#routingrule_redirectrule"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_topic -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#topicconfiguration_topic"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_redirectallrequeststo"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration_routingrules"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy_bucket -->
+
+    <owl:ObjectProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucketpolicy#bucketpolicy_bucket"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedmethods -->
+
+    <owl:DatatypeProperty rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedmethods"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ExternalOrigin -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ExternalOrigin">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sns-dfd#ExternalEntity"/>
+        <rdfs:label>dfds3:ExternalOrigin</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket">
+        <rdfs:subClassOf rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#DataStore"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule -->
+
+    <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#corsrule_allowedorigins"/>
+                <owl:allValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#domain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectallrequeststo"/>
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectrule -->
+
+    <owl:Class rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#redirectrule"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ReifiedExternalOrigin -->
+
+    <owl:NamedIndividual rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ReifiedExternalOrigin">
+        <rdf:type rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfds3#ExternalOrigin"/>
+        <rdfs:label>dfds3:ReifiedExternalOrigin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket_websiteconfiguration"/>
+                <owl:someValuesFrom rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#websiteconfiguration"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/dfd#OutFlow"/>
+                <owl:hasValue rdf:resource="http://www.claudiacauli.com/aws/cfn/2019/v1.0/aws#ReifiedUnauthenticatedUser"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

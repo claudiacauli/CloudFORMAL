@@ -1,0 +1,611 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/managedblockchainmember#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/managedblockchainmember#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="approvalthresholdpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="member"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="memberconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="memberfabricconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="memberframeworkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkfabricconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkframeworkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="votingpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="member_memberconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="member_networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="memberconfiguration_memberframeworkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="memberframeworkconfiguration_memberfabricconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="networkconfiguration_networkframeworkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="networkconfiguration_votingpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="networkframeworkconfiguration_networkfabricconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="votingpolicy_approvalthresholdpolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="approvalthresholdpolicy_proposaldurationinhours"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdcomparator"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdpercentage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_member_memberid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_member_networkid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="member_invitationid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="member_networkid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="memberconfiguration_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="memberconfiguration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="memberfabricconfiguration_adminpassword"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="memberfabricconfiguration_adminusername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_framework"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_frameworkversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkfabricconfiguration_edition"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="member"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="member_memberconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="memberconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="memberconfiguration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="memberfabricconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="memberfabricconfiguration_adminpassword"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="memberfabricconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="memberfabricconfiguration_adminusername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="networkconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="networkconfiguration_votingpolicy"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="networkconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="networkconfiguration_framework"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="networkconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="networkconfiguration_frameworkversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="networkconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="networkconfiguration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="networkfabricconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="networkfabricconfiguration_edition"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="member_memberconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="member_networkconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="memberconfiguration_memberframeworkconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="memberframeworkconfiguration_memberfabricconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="networkconfiguration_networkframeworkconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="networkconfiguration_votingpolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="networkframeworkconfiguration_networkfabricconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="votingpolicy_approvalthresholdpolicy"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="member_memberconfiguration"/>
+        <Class IRI="member"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="member_networkconfiguration"/>
+        <Class IRI="member"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="memberconfiguration_memberframeworkconfiguration"/>
+        <Class IRI="memberconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="memberframeworkconfiguration_memberfabricconfiguration"/>
+        <Class IRI="memberframeworkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="networkconfiguration_networkframeworkconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="networkconfiguration_votingpolicy"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="networkframeworkconfiguration_networkfabricconfiguration"/>
+        <Class IRI="networkframeworkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="votingpolicy_approvalthresholdpolicy"/>
+        <Class IRI="votingpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="member_memberconfiguration"/>
+        <Class IRI="memberconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="member_networkconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="memberconfiguration_memberframeworkconfiguration"/>
+        <Class IRI="memberframeworkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="memberframeworkconfiguration_memberfabricconfiguration"/>
+        <Class IRI="memberfabricconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="networkconfiguration_networkframeworkconfiguration"/>
+        <Class IRI="networkframeworkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="networkconfiguration_votingpolicy"/>
+        <Class IRI="votingpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="networkframeworkconfiguration_networkfabricconfiguration"/>
+        <Class IRI="networkfabricconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="votingpolicy_approvalthresholdpolicy"/>
+        <Class IRI="approvalthresholdpolicy"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="approvalthresholdpolicy_proposaldurationinhours"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdcomparator"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdpercentage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_member_memberid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_member_networkid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="member_invitationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="member_networkid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="memberconfiguration_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="memberconfiguration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="memberfabricconfiguration_adminpassword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="memberfabricconfiguration_adminusername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfiguration_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfiguration_framework"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfiguration_frameworkversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfiguration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkfabricconfiguration_edition"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="approvalthresholdpolicy_proposaldurationinhours"/>
+        <Class IRI="approvalthresholdpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdcomparator"/>
+        <Class IRI="approvalthresholdpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdpercentage"/>
+        <Class IRI="approvalthresholdpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_member_memberid"/>
+        <Class IRI="member"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_member_networkid"/>
+        <Class IRI="member"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="member_invitationid"/>
+        <Class IRI="member"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="member_networkid"/>
+        <Class IRI="member"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="memberconfiguration_description"/>
+        <Class IRI="memberconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="memberconfiguration_name"/>
+        <Class IRI="memberconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="memberfabricconfiguration_adminpassword"/>
+        <Class IRI="memberfabricconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="memberfabricconfiguration_adminusername"/>
+        <Class IRI="memberfabricconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_description"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_framework"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_frameworkversion"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_name"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkfabricconfiguration_edition"/>
+        <Class IRI="networkfabricconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="approvalthresholdpolicy_proposaldurationinhours"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdcomparator"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="approvalthresholdpolicy_thresholdpercentage"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_member_memberid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_member_networkid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="member_invitationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="member_networkid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="memberconfiguration_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="memberconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="memberfabricconfiguration_adminpassword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="memberfabricconfiguration_adminusername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_framework"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_frameworkversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkfabricconfiguration_edition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>approvalthresholdpolicy</IRI>
+        <Literal>managedblockchainmember:approvalthresholdpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>approvalthresholdpolicy_proposaldurationinhours</IRI>
+        <Literal>managedblockchainmember:approvalthresholdpolicy_proposaldurationinhours</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>approvalthresholdpolicy_thresholdcomparator</IRI>
+        <Literal>managedblockchainmember:approvalthresholdpolicy_thresholdcomparator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>approvalthresholdpolicy_thresholdpercentage</IRI>
+        <Literal>managedblockchainmember:approvalthresholdpolicy_thresholdpercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_member_memberid</IRI>
+        <Literal>managedblockchainmember:attribute_member_memberid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_member_networkid</IRI>
+        <Literal>managedblockchainmember:attribute_member_networkid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>member</IRI>
+        <Literal>managedblockchainmember:member</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>member_invitationid</IRI>
+        <Literal>managedblockchainmember:member_invitationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>member_memberconfiguration</IRI>
+        <Literal>managedblockchainmember:member_memberconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>member_networkconfiguration</IRI>
+        <Literal>managedblockchainmember:member_networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>member_networkid</IRI>
+        <Literal>managedblockchainmember:member_networkid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberconfiguration</IRI>
+        <Literal>managedblockchainmember:memberconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberconfiguration_description</IRI>
+        <Literal>managedblockchainmember:memberconfiguration_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberconfiguration_memberframeworkconfiguration</IRI>
+        <Literal>managedblockchainmember:memberconfiguration_memberframeworkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberconfiguration_name</IRI>
+        <Literal>managedblockchainmember:memberconfiguration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberfabricconfiguration</IRI>
+        <Literal>managedblockchainmember:memberfabricconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberfabricconfiguration_adminpassword</IRI>
+        <Literal>managedblockchainmember:memberfabricconfiguration_adminpassword</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberfabricconfiguration_adminusername</IRI>
+        <Literal>managedblockchainmember:memberfabricconfiguration_adminusername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberframeworkconfiguration</IRI>
+        <Literal>managedblockchainmember:memberframeworkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>memberframeworkconfiguration_memberfabricconfiguration</IRI>
+        <Literal>managedblockchainmember:memberframeworkconfiguration_memberfabricconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration</IRI>
+        <Literal>managedblockchainmember:networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_description</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_framework</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_framework</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_frameworkversion</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_frameworkversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_name</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_networkframeworkconfiguration</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_networkframeworkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_votingpolicy</IRI>
+        <Literal>managedblockchainmember:networkconfiguration_votingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkfabricconfiguration</IRI>
+        <Literal>managedblockchainmember:networkfabricconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkfabricconfiguration_edition</IRI>
+        <Literal>managedblockchainmember:networkfabricconfiguration_edition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkframeworkconfiguration</IRI>
+        <Literal>managedblockchainmember:networkframeworkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkframeworkconfiguration_networkfabricconfiguration</IRI>
+        <Literal>managedblockchainmember:networkframeworkconfiguration_networkfabricconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>votingpolicy</IRI>
+        <Literal>managedblockchainmember:votingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>votingpolicy_approvalthresholdpolicy</IRI>
+        <Literal>managedblockchainmember:votingpolicy_approvalthresholdpolicy</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

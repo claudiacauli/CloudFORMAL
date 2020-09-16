@@ -1,0 +1,587 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluecrawler#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="catalogtarget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="crawler"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dynamodbtarget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jdbctarget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3target"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="schedule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="schemachangepolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="crawler_schedule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="crawler_schemachangepolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="crawler_targets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targets_catalogtargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targets_dynamodbtargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targets_jdbctargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targets_s3targets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="catalogtarget_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="catalogtarget_tables"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_classifiers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_configuration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_crawlersecurityconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_role"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_tableprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crawler_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dynamodbtarget_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jdbctarget_connectionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jdbctarget_exclusions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jdbctarget_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3target_exclusions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3target_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schedule_scheduleexpression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemachangepolicy_deletebehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemachangepolicy_updatebehavior"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="crawler"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="crawler_targets"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="crawler"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="crawler_role"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="crawler_schedule"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="crawler_schemachangepolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="crawler_targets"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="crawler_schedule"/>
+        <Class IRI="crawler"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="crawler_schemachangepolicy"/>
+        <Class IRI="crawler"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="crawler_targets"/>
+        <Class IRI="crawler"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targets_catalogtargets"/>
+        <Class IRI="targets"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targets_dynamodbtargets"/>
+        <Class IRI="targets"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targets_jdbctargets"/>
+        <Class IRI="targets"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targets_s3targets"/>
+        <Class IRI="targets"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="crawler_schedule"/>
+        <Class IRI="schedule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="crawler_schemachangepolicy"/>
+        <Class IRI="schemachangepolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="crawler_targets"/>
+        <Class IRI="targets"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targets_catalogtargets"/>
+        <Class IRI="catalogtarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targets_dynamodbtargets"/>
+        <Class IRI="dynamodbtarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targets_jdbctargets"/>
+        <Class IRI="jdbctarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targets_s3targets"/>
+        <Class IRI="s3target"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="catalogtarget_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_configuration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_crawlersecurityconfiguration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_role"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_tableprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crawler_tags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dynamodbtarget_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jdbctarget_connectionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jdbctarget_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3target_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schedule_scheduleexpression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemachangepolicy_deletebehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemachangepolicy_updatebehavior"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="catalogtarget_databasename"/>
+        <Class IRI="catalogtarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="catalogtarget_tables"/>
+        <Class IRI="catalogtarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_classifiers"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_configuration"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_crawlersecurityconfiguration"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_databasename"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_description"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_name"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_role"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_tableprefix"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crawler_tags"/>
+        <Class IRI="crawler"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dynamodbtarget_path"/>
+        <Class IRI="dynamodbtarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jdbctarget_connectionname"/>
+        <Class IRI="jdbctarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jdbctarget_exclusions"/>
+        <Class IRI="jdbctarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jdbctarget_path"/>
+        <Class IRI="jdbctarget"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3target_exclusions"/>
+        <Class IRI="s3target"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3target_path"/>
+        <Class IRI="s3target"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schedule_scheduleexpression"/>
+        <Class IRI="schedule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemachangepolicy_deletebehavior"/>
+        <Class IRI="schemachangepolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemachangepolicy_updatebehavior"/>
+        <Class IRI="schemachangepolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="catalogtarget_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="catalogtarget_tables"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_classifiers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_configuration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_crawlersecurityconfiguration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_role"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_tableprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crawler_tags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dynamodbtarget_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jdbctarget_connectionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jdbctarget_exclusions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jdbctarget_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3target_exclusions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3target_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schedule_scheduleexpression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemachangepolicy_deletebehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemachangepolicy_updatebehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>catalogtarget</IRI>
+        <Literal>gluecrawler:catalogtarget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>catalogtarget_databasename</IRI>
+        <Literal>gluecrawler:catalogtarget_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>catalogtarget_tables</IRI>
+        <Literal>gluecrawler:catalogtarget_tables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler</IRI>
+        <Literal>gluecrawler:crawler</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_classifiers</IRI>
+        <Literal>gluecrawler:crawler_classifiers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_configuration</IRI>
+        <Literal>gluecrawler:crawler_configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_crawlersecurityconfiguration</IRI>
+        <Literal>gluecrawler:crawler_crawlersecurityconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_databasename</IRI>
+        <Literal>gluecrawler:crawler_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_description</IRI>
+        <Literal>gluecrawler:crawler_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_name</IRI>
+        <Literal>gluecrawler:crawler_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_role</IRI>
+        <Literal>gluecrawler:crawler_role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_schedule</IRI>
+        <Literal>gluecrawler:crawler_schedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_schemachangepolicy</IRI>
+        <Literal>gluecrawler:crawler_schemachangepolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_tableprefix</IRI>
+        <Literal>gluecrawler:crawler_tableprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_tags</IRI>
+        <Literal>gluecrawler:crawler_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crawler_targets</IRI>
+        <Literal>gluecrawler:crawler_targets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbtarget</IRI>
+        <Literal>gluecrawler:dynamodbtarget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbtarget_path</IRI>
+        <Literal>gluecrawler:dynamodbtarget_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jdbctarget</IRI>
+        <Literal>gluecrawler:jdbctarget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jdbctarget_connectionname</IRI>
+        <Literal>gluecrawler:jdbctarget_connectionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jdbctarget_exclusions</IRI>
+        <Literal>gluecrawler:jdbctarget_exclusions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jdbctarget_path</IRI>
+        <Literal>gluecrawler:jdbctarget_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3target</IRI>
+        <Literal>gluecrawler:s3target</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3target_exclusions</IRI>
+        <Literal>gluecrawler:s3target_exclusions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3target_path</IRI>
+        <Literal>gluecrawler:s3target_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schedule</IRI>
+        <Literal>gluecrawler:schedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schedule_scheduleexpression</IRI>
+        <Literal>gluecrawler:schedule_scheduleexpression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemachangepolicy</IRI>
+        <Literal>gluecrawler:schemachangepolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemachangepolicy_deletebehavior</IRI>
+        <Literal>gluecrawler:schemachangepolicy_deletebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemachangepolicy_updatebehavior</IRI>
+        <Literal>gluecrawler:schemachangepolicy_updatebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targets</IRI>
+        <Literal>gluecrawler:targets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targets_catalogtargets</IRI>
+        <Literal>gluecrawler:targets_catalogtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targets_dynamodbtargets</IRI>
+        <Literal>gluecrawler:targets_dynamodbtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targets_jdbctargets</IRI>
+        <Literal>gluecrawler:targets_jdbctargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targets_s3targets</IRI>
+        <Literal>gluecrawler:targets_s3targets</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

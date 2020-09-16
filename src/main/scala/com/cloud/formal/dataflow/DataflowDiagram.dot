@@ -1,0 +1,15 @@
+digraph G {
+  subgraph cluster_111111111111 {shape=box style=bold color=grey label = "Account: 111111111111" accesstopic lambdafun accesslog testdata}
+  subgraph cluster_000000000000 {shape=box style=bold color=grey label = "Account: 000000000000" customerdata}
+  lambdafun [shape=box color=white fixedsize=true width=2 height=1.5 label=<<table border="0" cellspacing="0" cellpadding="0"><tr><td border="0" fixedsize="true" width="75" height="75" ><img src="src/main/resources/aws-icons/lambdafunction.png"/></td></tr><tr><td border="0" ><b>lambdafun</b></td></tr></table>> labelloc=b  ]
+  accesslog [shape=box color=white fixedsize=true width=2 height=1.5 label=<<table border="0" cellspacing="0" cellpadding="0"><tr><td border="0" fixedsize="true" width="75" height="75" ><img src="src/main/resources/aws-icons/s3bucket.png"/></td></tr><tr><td border="0" ><b>accesslog</b></td></tr></table>> labelloc=b  ]
+  devsmail [label="devs@mail" ]
+  testdata [shape=box color=white fixedsize=true width=2 height=1.5 label=<<table border="0" cellspacing="0" cellpadding="0"><tr><td border="0" fixedsize="true" width="75" height="75" ><img src="src/main/resources/aws-icons/s3bucket.png"/></td></tr><tr><td border="0" ><b>testdata</b></td></tr></table>> labelloc=b  ]
+  customerdata [shape=box color=white fixedsize=true width=2 height=1.5 label=<<table border="0" cellspacing="0" cellpadding="0"><tr><td border="0" fixedsize="true" width="75" height="75" ><img src="src/main/resources/aws-icons/s3bucket.png"/></td></tr><tr><td border="0" ><b>customerdata</b></td></tr></table>> labelloc=b  ]
+  accesstopic [shape=box color=white fixedsize=true width=2 height=1.5 label=<<table border="0" cellspacing="0" cellpadding="0"><tr><td border="0" fixedsize="true" width="75" height="75" ><img src="src/main/resources/aws-icons/snstopic.png"/></td></tr><tr><td border="0" >accesstopic</td></tr></table>> labelloc=b  ]
+  accesstopic -> lambdafun [shape=curve label="sendsEventsMsgsNotificationsTo"]
+  testdata -> accesslog [shape=curve label="deliversLogsTo"]
+  accesslog -> accesstopic [shape=curve label="sendsEventsMsgsNotificationsTo"]
+  customerdata -> accesslog [shape=curve label="deliversLogsTo"]
+  accesstopic -> devsmail [shape=curve label="sendsEventsMsgsNotificationsTo"]
+}

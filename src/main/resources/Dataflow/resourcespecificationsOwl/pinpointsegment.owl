@@ -1,0 +1,932 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/pinpointsegment#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/pinpointsegment#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="attributedimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="behavior"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="coordinates"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="demographic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gpspoint"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="groups"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="segment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="segmentdimensions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="segmentgroups"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="setdimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sourcesegments"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="behavior_recency"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_appversion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_channel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_devicetype"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_make"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_model"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="demographic_platform"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gpspoint_coordinates"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="groups_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="groups_sourcesegments"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="location_country"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="location_gpspoint"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segment_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segment_segmentgroups"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segmentdimensions_behavior"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segmentdimensions_demographic"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segmentdimensions_location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="segmentgroups_groups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_segment_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_segment_segmentid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attributedimension_attributetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attributedimension_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="coordinates_latitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="coordinates_longitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gpspoint_rangeinkilometers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="groups_sourcetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="groups_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recency_duration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recency_recencytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segment_applicationid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segment_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segment_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segmentdimensions_attributes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segmentdimensions_metrics"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segmentdimensions_userattributes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="segmentgroups_include"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="setdimension_dimensiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="setdimension_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sourcesegments_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sourcesegments_version"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="coordinates"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="coordinates_latitude"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="coordinates"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="coordinates_longitude"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gpspoint"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gpspoint_coordinates"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gpspoint"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gpspoint_rangeinkilometers"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recency"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recency_duration"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recency"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recency_recencytype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="segment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="segment_applicationid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="segment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="segment_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="sourcesegments"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="sourcesegments_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="behavior_recency"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_appversion"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_channel"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_devicetype"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_make"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_model"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="demographic_platform"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gpspoint_coordinates"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="location_country"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="location_gpspoint"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="segment_dimensions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="segment_segmentgroups"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="segmentdimensions_behavior"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="segmentdimensions_demographic"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="segmentdimensions_location"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="behavior_recency"/>
+        <Class IRI="behavior"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_appversion"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_channel"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_devicetype"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_make"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_model"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="demographic_platform"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gpspoint_coordinates"/>
+        <Class IRI="gpspoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="groups_dimensions"/>
+        <Class IRI="groups"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="groups_sourcesegments"/>
+        <Class IRI="groups"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="location_country"/>
+        <Class IRI="location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="location_gpspoint"/>
+        <Class IRI="location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segment_dimensions"/>
+        <Class IRI="segment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segment_segmentgroups"/>
+        <Class IRI="segment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segmentdimensions_behavior"/>
+        <Class IRI="segmentdimensions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segmentdimensions_demographic"/>
+        <Class IRI="segmentdimensions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segmentdimensions_location"/>
+        <Class IRI="segmentdimensions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="segmentgroups_groups"/>
+        <Class IRI="segmentgroups"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="behavior_recency"/>
+        <Class IRI="recency"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_appversion"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_channel"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_devicetype"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_make"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_model"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="demographic_platform"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gpspoint_coordinates"/>
+        <Class IRI="coordinates"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="groups_dimensions"/>
+        <Class IRI="segmentdimensions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="groups_sourcesegments"/>
+        <Class IRI="sourcesegments"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="location_country"/>
+        <Class IRI="setdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="location_gpspoint"/>
+        <Class IRI="gpspoint"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segment_dimensions"/>
+        <Class IRI="segmentdimensions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segment_segmentgroups"/>
+        <Class IRI="segmentgroups"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segmentdimensions_behavior"/>
+        <Class IRI="behavior"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segmentdimensions_demographic"/>
+        <Class IRI="demographic"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segmentdimensions_location"/>
+        <Class IRI="location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="segmentgroups_groups"/>
+        <Class IRI="groups"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_segment_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_segment_segmentid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attributedimension_attributetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="coordinates_latitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="coordinates_longitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gpspoint_rangeinkilometers"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="groups_sourcetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="groups_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recency_duration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recency_recencytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segment_applicationid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segment_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segment_tags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segmentdimensions_attributes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segmentdimensions_metrics"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segmentdimensions_userattributes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="segmentgroups_include"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="setdimension_dimensiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourcesegments_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourcesegments_version"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_segment_arn"/>
+        <Class IRI="segment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_segment_segmentid"/>
+        <Class IRI="segment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attributedimension_attributetype"/>
+        <Class IRI="attributedimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attributedimension_values"/>
+        <Class IRI="attributedimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="coordinates_latitude"/>
+        <Class IRI="coordinates"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="coordinates_longitude"/>
+        <Class IRI="coordinates"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gpspoint_rangeinkilometers"/>
+        <Class IRI="gpspoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="groups_sourcetype"/>
+        <Class IRI="groups"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="groups_type"/>
+        <Class IRI="groups"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recency_duration"/>
+        <Class IRI="recency"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recency_recencytype"/>
+        <Class IRI="recency"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segment_applicationid"/>
+        <Class IRI="segment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segment_name"/>
+        <Class IRI="segment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segment_tags"/>
+        <Class IRI="segment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segmentdimensions_attributes"/>
+        <Class IRI="segmentdimensions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segmentdimensions_metrics"/>
+        <Class IRI="segmentdimensions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segmentdimensions_userattributes"/>
+        <Class IRI="segmentdimensions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="segmentgroups_include"/>
+        <Class IRI="segmentgroups"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="setdimension_dimensiontype"/>
+        <Class IRI="setdimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="setdimension_values"/>
+        <Class IRI="setdimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourcesegments_id"/>
+        <Class IRI="sourcesegments"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourcesegments_version"/>
+        <Class IRI="sourcesegments"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_segment_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_segment_segmentid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attributedimension_attributetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attributedimension_values"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="coordinates_latitude"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="coordinates_longitude"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gpspoint_rangeinkilometers"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="groups_sourcetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="groups_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recency_duration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recency_recencytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segment_applicationid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segment_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segment_tags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segmentdimensions_attributes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segmentdimensions_metrics"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segmentdimensions_userattributes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="segmentgroups_include"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="setdimension_dimensiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="setdimension_values"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourcesegments_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourcesegments_version"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_segment_arn</IRI>
+        <Literal>pinpointsegment:attribute_segment_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_segment_segmentid</IRI>
+        <Literal>pinpointsegment:attribute_segment_segmentid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedimension</IRI>
+        <Literal>pinpointsegment:attributedimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedimension_attributetype</IRI>
+        <Literal>pinpointsegment:attributedimension_attributetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attributedimension_values</IRI>
+        <Literal>pinpointsegment:attributedimension_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>behavior</IRI>
+        <Literal>pinpointsegment:behavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>behavior_recency</IRI>
+        <Literal>pinpointsegment:behavior_recency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coordinates</IRI>
+        <Literal>pinpointsegment:coordinates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coordinates_latitude</IRI>
+        <Literal>pinpointsegment:coordinates_latitude</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>coordinates_longitude</IRI>
+        <Literal>pinpointsegment:coordinates_longitude</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic</IRI>
+        <Literal>pinpointsegment:demographic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_appversion</IRI>
+        <Literal>pinpointsegment:demographic_appversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_channel</IRI>
+        <Literal>pinpointsegment:demographic_channel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_devicetype</IRI>
+        <Literal>pinpointsegment:demographic_devicetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_make</IRI>
+        <Literal>pinpointsegment:demographic_make</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_model</IRI>
+        <Literal>pinpointsegment:demographic_model</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>demographic_platform</IRI>
+        <Literal>pinpointsegment:demographic_platform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gpspoint</IRI>
+        <Literal>pinpointsegment:gpspoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gpspoint_coordinates</IRI>
+        <Literal>pinpointsegment:gpspoint_coordinates</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gpspoint_rangeinkilometers</IRI>
+        <Literal>pinpointsegment:gpspoint_rangeinkilometers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>groups</IRI>
+        <Literal>pinpointsegment:groups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>groups_dimensions</IRI>
+        <Literal>pinpointsegment:groups_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>groups_sourcesegments</IRI>
+        <Literal>pinpointsegment:groups_sourcesegments</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>groups_sourcetype</IRI>
+        <Literal>pinpointsegment:groups_sourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>groups_type</IRI>
+        <Literal>pinpointsegment:groups_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>location</IRI>
+        <Literal>pinpointsegment:location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>location_country</IRI>
+        <Literal>pinpointsegment:location_country</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>location_gpspoint</IRI>
+        <Literal>pinpointsegment:location_gpspoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recency</IRI>
+        <Literal>pinpointsegment:recency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recency_duration</IRI>
+        <Literal>pinpointsegment:recency_duration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recency_recencytype</IRI>
+        <Literal>pinpointsegment:recency_recencytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment</IRI>
+        <Literal>pinpointsegment:segment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment_applicationid</IRI>
+        <Literal>pinpointsegment:segment_applicationid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment_dimensions</IRI>
+        <Literal>pinpointsegment:segment_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment_name</IRI>
+        <Literal>pinpointsegment:segment_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment_segmentgroups</IRI>
+        <Literal>pinpointsegment:segment_segmentgroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segment_tags</IRI>
+        <Literal>pinpointsegment:segment_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions</IRI>
+        <Literal>pinpointsegment:segmentdimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_attributes</IRI>
+        <Literal>pinpointsegment:segmentdimensions_attributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_behavior</IRI>
+        <Literal>pinpointsegment:segmentdimensions_behavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_demographic</IRI>
+        <Literal>pinpointsegment:segmentdimensions_demographic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_location</IRI>
+        <Literal>pinpointsegment:segmentdimensions_location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_metrics</IRI>
+        <Literal>pinpointsegment:segmentdimensions_metrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentdimensions_userattributes</IRI>
+        <Literal>pinpointsegment:segmentdimensions_userattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentgroups</IRI>
+        <Literal>pinpointsegment:segmentgroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentgroups_groups</IRI>
+        <Literal>pinpointsegment:segmentgroups_groups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>segmentgroups_include</IRI>
+        <Literal>pinpointsegment:segmentgroups_include</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>setdimension</IRI>
+        <Literal>pinpointsegment:setdimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>setdimension_dimensiontype</IRI>
+        <Literal>pinpointsegment:setdimension_dimensiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>setdimension_values</IRI>
+        <Literal>pinpointsegment:setdimension_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourcesegments</IRI>
+        <Literal>pinpointsegment:sourcesegments</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourcesegments_id</IRI>
+        <Literal>pinpointsegment:sourcesegments_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourcesegments_version</IRI>
+        <Literal>pinpointsegment:sourcesegments_version</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

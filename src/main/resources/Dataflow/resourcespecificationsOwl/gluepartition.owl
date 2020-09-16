@@ -1,0 +1,677 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluepartition#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gluepartition#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="column"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="order"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="partition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="partitioninput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="serdeinfo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="skewedinfo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="storagedescriptor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="partition_partitioninput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="partitioninput_storagedescriptor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_columns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_skewedinfo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_sortcolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="order_column"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="order_sortorder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="partition_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="partition_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="partition_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="partitioninput_parameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="partitioninput_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serdeinfo_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serdeinfo_parameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serdeinfo_serializationlibrary"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="skewedinfo_skewedcolumnnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="skewedinfo_skewedcolumnvaluelocationmaps"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="skewedinfo_skewedcolumnvalues"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_bucketcolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_compressed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_inputformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_numberofbuckets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_outputformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_parameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagedescriptor_storedassubdirectories"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="column"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="column_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="order"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="order_column"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="partition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="partition_partitioninput"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="partition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="partition_catalogid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="partition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="partition_databasename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="partition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="partition_tablename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="partitioninput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="partitioninput_values"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="partition_partitioninput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="partitioninput_storagedescriptor"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagedescriptor_skewedinfo"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="partition_partitioninput"/>
+        <Class IRI="partition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="partitioninput_storagedescriptor"/>
+        <Class IRI="partitioninput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_columns"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_skewedinfo"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_sortcolumns"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="partition_partitioninput"/>
+        <Class IRI="partitioninput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="partitioninput_storagedescriptor"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_columns"/>
+        <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
+        <Class IRI="serdeinfo"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_skewedinfo"/>
+        <Class IRI="skewedinfo"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_sortcolumns"/>
+        <Class IRI="order"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_comment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="order_column"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="order_sortorder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="partition_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="partition_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="partition_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="partitioninput_parameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serdeinfo_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serdeinfo_parameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serdeinfo_serializationlibrary"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="skewedinfo_skewedcolumnvaluelocationmaps"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_compressed"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_inputformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_location"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_numberofbuckets"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_outputformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_parameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagedescriptor_storedassubdirectories"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_comment"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_name"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_type"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="order_column"/>
+        <Class IRI="order"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="order_sortorder"/>
+        <Class IRI="order"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="partition_catalogid"/>
+        <Class IRI="partition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="partition_databasename"/>
+        <Class IRI="partition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="partition_tablename"/>
+        <Class IRI="partition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="partitioninput_parameters"/>
+        <Class IRI="partitioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="partitioninput_values"/>
+        <Class IRI="partitioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serdeinfo_name"/>
+        <Class IRI="serdeinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serdeinfo_parameters"/>
+        <Class IRI="serdeinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serdeinfo_serializationlibrary"/>
+        <Class IRI="serdeinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="skewedinfo_skewedcolumnnames"/>
+        <Class IRI="skewedinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="skewedinfo_skewedcolumnvaluelocationmaps"/>
+        <Class IRI="skewedinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="skewedinfo_skewedcolumnvalues"/>
+        <Class IRI="skewedinfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_bucketcolumns"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_compressed"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_inputformat"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_location"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_numberofbuckets"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_outputformat"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_parameters"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagedescriptor_storedassubdirectories"/>
+        <Class IRI="storagedescriptor"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="column_comment"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="column_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="column_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="order_column"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="order_sortorder"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="partition_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="partition_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="partition_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="partitioninput_parameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="partitioninput_values"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serdeinfo_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serdeinfo_parameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serdeinfo_serializationlibrary"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="skewedinfo_skewedcolumnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="skewedinfo_skewedcolumnvaluelocationmaps"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="skewedinfo_skewedcolumnvalues"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_bucketcolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_compressed"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_inputformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_numberofbuckets"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_outputformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_parameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagedescriptor_storedassubdirectories"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column</IRI>
+        <Literal>gluepartition:column</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column_comment</IRI>
+        <Literal>gluepartition:column_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column_name</IRI>
+        <Literal>gluepartition:column_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column_type</IRI>
+        <Literal>gluepartition:column_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>order</IRI>
+        <Literal>gluepartition:order</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>order_column</IRI>
+        <Literal>gluepartition:order_column</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>order_sortorder</IRI>
+        <Literal>gluepartition:order_sortorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partition</IRI>
+        <Literal>gluepartition:partition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partition_catalogid</IRI>
+        <Literal>gluepartition:partition_catalogid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partition_databasename</IRI>
+        <Literal>gluepartition:partition_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partition_partitioninput</IRI>
+        <Literal>gluepartition:partition_partitioninput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partition_tablename</IRI>
+        <Literal>gluepartition:partition_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partitioninput</IRI>
+        <Literal>gluepartition:partitioninput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partitioninput_parameters</IRI>
+        <Literal>gluepartition:partitioninput_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partitioninput_storagedescriptor</IRI>
+        <Literal>gluepartition:partitioninput_storagedescriptor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>partitioninput_values</IRI>
+        <Literal>gluepartition:partitioninput_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serdeinfo</IRI>
+        <Literal>gluepartition:serdeinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serdeinfo_name</IRI>
+        <Literal>gluepartition:serdeinfo_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serdeinfo_parameters</IRI>
+        <Literal>gluepartition:serdeinfo_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serdeinfo_serializationlibrary</IRI>
+        <Literal>gluepartition:serdeinfo_serializationlibrary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>skewedinfo</IRI>
+        <Literal>gluepartition:skewedinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>skewedinfo_skewedcolumnnames</IRI>
+        <Literal>gluepartition:skewedinfo_skewedcolumnnames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>skewedinfo_skewedcolumnvaluelocationmaps</IRI>
+        <Literal>gluepartition:skewedinfo_skewedcolumnvaluelocationmaps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>skewedinfo_skewedcolumnvalues</IRI>
+        <Literal>gluepartition:skewedinfo_skewedcolumnvalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor</IRI>
+        <Literal>gluepartition:storagedescriptor</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_bucketcolumns</IRI>
+        <Literal>gluepartition:storagedescriptor_bucketcolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_columns</IRI>
+        <Literal>gluepartition:storagedescriptor_columns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_compressed</IRI>
+        <Literal>gluepartition:storagedescriptor_compressed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_inputformat</IRI>
+        <Literal>gluepartition:storagedescriptor_inputformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_location</IRI>
+        <Literal>gluepartition:storagedescriptor_location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_numberofbuckets</IRI>
+        <Literal>gluepartition:storagedescriptor_numberofbuckets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_outputformat</IRI>
+        <Literal>gluepartition:storagedescriptor_outputformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_parameters</IRI>
+        <Literal>gluepartition:storagedescriptor_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_serdeinfo</IRI>
+        <Literal>gluepartition:storagedescriptor_serdeinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_skewedinfo</IRI>
+        <Literal>gluepartition:storagedescriptor_skewedinfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_sortcolumns</IRI>
+        <Literal>gluepartition:storagedescriptor_sortcolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_storedassubdirectories</IRI>
+        <Literal>gluepartition:storagedescriptor_storedassubdirectories</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

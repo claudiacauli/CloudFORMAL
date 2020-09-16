@@ -1,0 +1,903 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appsyncdatasource#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="authorizationconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="awsiamconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datasource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="deltasyncconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dynamodbconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="elasticsearchconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdaconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rdshttpendpointconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="relationaldatabaseconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="authorizationconfig_awsiamconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasource_dynamodbconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasource_elasticsearchconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasource_httpconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasource_lambdaconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasource_relationaldatabaseconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dynamodbconfig_deltasyncconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpconfig_authorizationconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="relationaldatabaseconfig_rdshttpendpointconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_datasource_datasourcearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_datasource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authorizationconfig_authorizationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsiamconfig_signingregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsiamconfig_signingservicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasource_apiid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasource_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasource_servicerolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasource_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deltasyncconfig_basetablettl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deltasyncconfig_deltasynctablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deltasyncconfig_deltasynctablettl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dynamodbconfig_awsregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dynamodbconfig_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dynamodbconfig_usecallercredentials"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dynamodbconfig_versioned"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticsearchconfig_awsregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticsearchconfig_endpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpconfig_endpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaconfig_lambdafunctionarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdshttpendpointconfig_awsregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdshttpendpointconfig_awssecretstorearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdshttpendpointconfig_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdshttpendpointconfig_dbclusteridentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rdshttpendpointconfig_schema"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="relationaldatabaseconfig_relationaldatabasesourcetype"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="authorizationconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="authorizationconfig_authorizationtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasource_apiid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasource_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasource_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="deltasyncconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="deltasyncconfig_basetablettl"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="deltasyncconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="deltasyncconfig_deltasynctablename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="deltasyncconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="deltasyncconfig_deltasynctablettl"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dynamodbconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dynamodbconfig_awsregion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dynamodbconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dynamodbconfig_tablename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="elasticsearchconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="elasticsearchconfig_awsregion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="elasticsearchconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="elasticsearchconfig_endpoint"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpconfig_endpoint"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="lambdaconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="lambdaconfig_lambdafunctionarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdshttpendpointconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdshttpendpointconfig_awsregion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdshttpendpointconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdshttpendpointconfig_awssecretstorearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rdshttpendpointconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rdshttpendpointconfig_dbclusteridentifier"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="relationaldatabaseconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="relationaldatabaseconfig_relationaldatabasesourcetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="authorizationconfig_awsiamconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasource_dynamodbconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasource_elasticsearchconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasource_httpconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasource_lambdaconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasource_relationaldatabaseconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="dynamodbconfig_deltasyncconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpconfig_authorizationconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="relationaldatabaseconfig_rdshttpendpointconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="authorizationconfig_awsiamconfig"/>
+        <Class IRI="authorizationconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasource_dynamodbconfig"/>
+        <Class IRI="datasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasource_elasticsearchconfig"/>
+        <Class IRI="datasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasource_httpconfig"/>
+        <Class IRI="datasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasource_lambdaconfig"/>
+        <Class IRI="datasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasource_relationaldatabaseconfig"/>
+        <Class IRI="datasource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dynamodbconfig_deltasyncconfig"/>
+        <Class IRI="dynamodbconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpconfig_authorizationconfig"/>
+        <Class IRI="httpconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="relationaldatabaseconfig_rdshttpendpointconfig"/>
+        <Class IRI="relationaldatabaseconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="authorizationconfig_awsiamconfig"/>
+        <Class IRI="awsiamconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasource_dynamodbconfig"/>
+        <Class IRI="dynamodbconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasource_elasticsearchconfig"/>
+        <Class IRI="elasticsearchconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasource_httpconfig"/>
+        <Class IRI="httpconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasource_lambdaconfig"/>
+        <Class IRI="lambdaconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasource_relationaldatabaseconfig"/>
+        <Class IRI="relationaldatabaseconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dynamodbconfig_deltasyncconfig"/>
+        <Class IRI="deltasyncconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpconfig_authorizationconfig"/>
+        <Class IRI="authorizationconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="relationaldatabaseconfig_rdshttpendpointconfig"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_datasource_datasourcearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_datasource_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authorizationconfig_authorizationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsiamconfig_signingregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsiamconfig_signingservicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasource_apiid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasource_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasource_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasource_servicerolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasource_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deltasyncconfig_basetablettl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deltasyncconfig_deltasynctablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deltasyncconfig_deltasynctablettl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dynamodbconfig_awsregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dynamodbconfig_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dynamodbconfig_usecallercredentials"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dynamodbconfig_versioned"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchconfig_awsregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchconfig_endpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpconfig_endpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaconfig_lambdafunctionarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdshttpendpointconfig_awsregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdshttpendpointconfig_awssecretstorearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdshttpendpointconfig_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdshttpendpointconfig_dbclusteridentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rdshttpendpointconfig_schema"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="relationaldatabaseconfig_relationaldatabasesourcetype"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_datasource_datasourcearn"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_datasource_name"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authorizationconfig_authorizationtype"/>
+        <Class IRI="authorizationconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsiamconfig_signingregion"/>
+        <Class IRI="awsiamconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsiamconfig_signingservicename"/>
+        <Class IRI="awsiamconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasource_apiid"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasource_description"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasource_name"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasource_servicerolearn"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasource_type"/>
+        <Class IRI="datasource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deltasyncconfig_basetablettl"/>
+        <Class IRI="deltasyncconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deltasyncconfig_deltasynctablename"/>
+        <Class IRI="deltasyncconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deltasyncconfig_deltasynctablettl"/>
+        <Class IRI="deltasyncconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dynamodbconfig_awsregion"/>
+        <Class IRI="dynamodbconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dynamodbconfig_tablename"/>
+        <Class IRI="dynamodbconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dynamodbconfig_usecallercredentials"/>
+        <Class IRI="dynamodbconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dynamodbconfig_versioned"/>
+        <Class IRI="dynamodbconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchconfig_awsregion"/>
+        <Class IRI="elasticsearchconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchconfig_endpoint"/>
+        <Class IRI="elasticsearchconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpconfig_endpoint"/>
+        <Class IRI="httpconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaconfig_lambdafunctionarn"/>
+        <Class IRI="lambdaconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdshttpendpointconfig_awsregion"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdshttpendpointconfig_awssecretstorearn"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdshttpendpointconfig_databasename"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdshttpendpointconfig_dbclusteridentifier"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rdshttpendpointconfig_schema"/>
+        <Class IRI="rdshttpendpointconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="relationaldatabaseconfig_relationaldatabasesourcetype"/>
+        <Class IRI="relationaldatabaseconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_datasource_datasourcearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_datasource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authorizationconfig_authorizationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsiamconfig_signingregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsiamconfig_signingservicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasource_apiid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasource_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasource_servicerolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasource_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deltasyncconfig_basetablettl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deltasyncconfig_deltasynctablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deltasyncconfig_deltasynctablettl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dynamodbconfig_awsregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dynamodbconfig_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dynamodbconfig_usecallercredentials"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dynamodbconfig_versioned"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticsearchconfig_awsregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticsearchconfig_endpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpconfig_endpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaconfig_lambdafunctionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdshttpendpointconfig_awsregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdshttpendpointconfig_awssecretstorearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdshttpendpointconfig_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdshttpendpointconfig_dbclusteridentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rdshttpendpointconfig_schema"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="relationaldatabaseconfig_relationaldatabasesourcetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_datasource_datasourcearn</IRI>
+        <Literal>appsyncdatasource:attribute_datasource_datasourcearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_datasource_name</IRI>
+        <Literal>appsyncdatasource:attribute_datasource_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig</IRI>
+        <Literal>appsyncdatasource:authorizationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig_authorizationtype</IRI>
+        <Literal>appsyncdatasource:authorizationconfig_authorizationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig_awsiamconfig</IRI>
+        <Literal>appsyncdatasource:authorizationconfig_awsiamconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsiamconfig</IRI>
+        <Literal>appsyncdatasource:awsiamconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsiamconfig_signingregion</IRI>
+        <Literal>appsyncdatasource:awsiamconfig_signingregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsiamconfig_signingservicename</IRI>
+        <Literal>appsyncdatasource:awsiamconfig_signingservicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource</IRI>
+        <Literal>appsyncdatasource:datasource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_apiid</IRI>
+        <Literal>appsyncdatasource:datasource_apiid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_description</IRI>
+        <Literal>appsyncdatasource:datasource_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_dynamodbconfig</IRI>
+        <Literal>appsyncdatasource:datasource_dynamodbconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_elasticsearchconfig</IRI>
+        <Literal>appsyncdatasource:datasource_elasticsearchconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_httpconfig</IRI>
+        <Literal>appsyncdatasource:datasource_httpconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_lambdaconfig</IRI>
+        <Literal>appsyncdatasource:datasource_lambdaconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_name</IRI>
+        <Literal>appsyncdatasource:datasource_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_relationaldatabaseconfig</IRI>
+        <Literal>appsyncdatasource:datasource_relationaldatabaseconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_servicerolearn</IRI>
+        <Literal>appsyncdatasource:datasource_servicerolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasource_type</IRI>
+        <Literal>appsyncdatasource:datasource_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deltasyncconfig</IRI>
+        <Literal>appsyncdatasource:deltasyncconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deltasyncconfig_basetablettl</IRI>
+        <Literal>appsyncdatasource:deltasyncconfig_basetablettl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deltasyncconfig_deltasynctablename</IRI>
+        <Literal>appsyncdatasource:deltasyncconfig_deltasynctablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deltasyncconfig_deltasynctablettl</IRI>
+        <Literal>appsyncdatasource:deltasyncconfig_deltasynctablettl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig_awsregion</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig_awsregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig_deltasyncconfig</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig_deltasyncconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig_tablename</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig_usecallercredentials</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig_usecallercredentials</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dynamodbconfig_versioned</IRI>
+        <Literal>appsyncdatasource:dynamodbconfig_versioned</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchconfig</IRI>
+        <Literal>appsyncdatasource:elasticsearchconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchconfig_awsregion</IRI>
+        <Literal>appsyncdatasource:elasticsearchconfig_awsregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchconfig_endpoint</IRI>
+        <Literal>appsyncdatasource:elasticsearchconfig_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpconfig</IRI>
+        <Literal>appsyncdatasource:httpconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpconfig_authorizationconfig</IRI>
+        <Literal>appsyncdatasource:httpconfig_authorizationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpconfig_endpoint</IRI>
+        <Literal>appsyncdatasource:httpconfig_endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfig</IRI>
+        <Literal>appsyncdatasource:lambdaconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfig_lambdafunctionarn</IRI>
+        <Literal>appsyncdatasource:lambdaconfig_lambdafunctionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig_awsregion</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig_awsregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig_awssecretstorearn</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig_awssecretstorearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig_databasename</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig_dbclusteridentifier</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig_dbclusteridentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rdshttpendpointconfig_schema</IRI>
+        <Literal>appsyncdatasource:rdshttpendpointconfig_schema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relationaldatabaseconfig</IRI>
+        <Literal>appsyncdatasource:relationaldatabaseconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relationaldatabaseconfig_rdshttpendpointconfig</IRI>
+        <Literal>appsyncdatasource:relationaldatabaseconfig_rdshttpendpointconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relationaldatabaseconfig_relationaldatabasesourcetype</IRI>
+        <Literal>appsyncdatasource:relationaldatabaseconfig_relationaldatabasesourcetype</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

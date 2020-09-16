@@ -1,0 +1,729 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/applicationautoscalingscalingpolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/applicationautoscalingscalingpolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="customizedmetricspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metricdimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="predefinedmetricspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="scalingpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stepadjustment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="customizedmetricspecification_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="scalingpolicy_stepscalingpolicyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="scalingpolicy_targettrackingscalingpolicyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stepscalingpolicyconfiguration_stepadjustments"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_customizedmetricspecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_predefinedmetricspecification"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customizedmetricspecification_metricname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customizedmetricspecification_namespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customizedmetricspecification_statistic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customizedmetricspecification_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdimension_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metricdimension_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="predefinedmetricspecification_predefinedmetrictype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="predefinedmetricspecification_resourcelabel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_policyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_policytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_resourceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_scalabledimension"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_scalingtargetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scalingpolicy_servicenamespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepadjustment_metricintervallowerbound"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepadjustment_metricintervalupperbound"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepadjustment_scalingadjustment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepscalingpolicyconfiguration_adjustmenttype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepscalingpolicyconfiguration_cooldown"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepscalingpolicyconfiguration_metricaggregationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stepscalingpolicyconfiguration_minadjustmentmagnitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_disablescalein"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleincooldown"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleoutcooldown"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_targetvalue"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="customizedmetricspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customizedmetricspecification_metricname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customizedmetricspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customizedmetricspecification_namespace"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customizedmetricspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customizedmetricspecification_statistic"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricdimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricdimension_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metricdimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metricdimension_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="predefinedmetricspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="predefinedmetricspecification_predefinedmetrictype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="scalingpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="scalingpolicy_policyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="scalingpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="scalingpolicy_policytype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stepadjustment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stepadjustment_scalingadjustment"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="targettrackingscalingpolicyconfiguration_targetvalue"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="scalingpolicy_stepscalingpolicyconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="scalingpolicy_targettrackingscalingpolicyconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_customizedmetricspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_predefinedmetricspecification"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="customizedmetricspecification_dimensions"/>
+        <Class IRI="customizedmetricspecification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="scalingpolicy_stepscalingpolicyconfiguration"/>
+        <Class IRI="scalingpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="scalingpolicy_targettrackingscalingpolicyconfiguration"/>
+        <Class IRI="scalingpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stepscalingpolicyconfiguration_stepadjustments"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_customizedmetricspecification"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_predefinedmetricspecification"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="customizedmetricspecification_dimensions"/>
+        <Class IRI="metricdimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="scalingpolicy_stepscalingpolicyconfiguration"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="scalingpolicy_targettrackingscalingpolicyconfiguration"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stepscalingpolicyconfiguration_stepadjustments"/>
+        <Class IRI="stepadjustment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_customizedmetricspecification"/>
+        <Class IRI="customizedmetricspecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="targettrackingscalingpolicyconfiguration_predefinedmetricspecification"/>
+        <Class IRI="predefinedmetricspecification"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customizedmetricspecification_metricname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customizedmetricspecification_namespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customizedmetricspecification_statistic"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customizedmetricspecification_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdimension_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metricdimension_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="predefinedmetricspecification_predefinedmetrictype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="predefinedmetricspecification_resourcelabel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_policyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_policytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_resourceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_scalabledimension"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_scalingtargetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scalingpolicy_servicenamespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepadjustment_metricintervallowerbound"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepadjustment_metricintervalupperbound"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepadjustment_scalingadjustment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepscalingpolicyconfiguration_adjustmenttype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepscalingpolicyconfiguration_cooldown"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepscalingpolicyconfiguration_metricaggregationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stepscalingpolicyconfiguration_minadjustmentmagnitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_disablescalein"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleincooldown"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleoutcooldown"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_targetvalue"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="customizedmetricspecification_metricname"/>
+        <Class IRI="customizedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customizedmetricspecification_namespace"/>
+        <Class IRI="customizedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customizedmetricspecification_statistic"/>
+        <Class IRI="customizedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customizedmetricspecification_unit"/>
+        <Class IRI="customizedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdimension_name"/>
+        <Class IRI="metricdimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metricdimension_value"/>
+        <Class IRI="metricdimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="predefinedmetricspecification_predefinedmetrictype"/>
+        <Class IRI="predefinedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="predefinedmetricspecification_resourcelabel"/>
+        <Class IRI="predefinedmetricspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_policyname"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_policytype"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_resourceid"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_scalabledimension"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_scalingtargetid"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scalingpolicy_servicenamespace"/>
+        <Class IRI="scalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepadjustment_metricintervallowerbound"/>
+        <Class IRI="stepadjustment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepadjustment_metricintervalupperbound"/>
+        <Class IRI="stepadjustment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepadjustment_scalingadjustment"/>
+        <Class IRI="stepadjustment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepscalingpolicyconfiguration_adjustmenttype"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepscalingpolicyconfiguration_cooldown"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepscalingpolicyconfiguration_metricaggregationtype"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stepscalingpolicyconfiguration_minadjustmentmagnitude"/>
+        <Class IRI="stepscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_disablescalein"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleincooldown"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleoutcooldown"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_targetvalue"/>
+        <Class IRI="targettrackingscalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="customizedmetricspecification_metricname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customizedmetricspecification_namespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customizedmetricspecification_statistic"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customizedmetricspecification_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdimension_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metricdimension_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="predefinedmetricspecification_predefinedmetrictype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="predefinedmetricspecification_resourcelabel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_policyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_policytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_resourceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_scalabledimension"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_scalingtargetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scalingpolicy_servicenamespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepadjustment_metricintervallowerbound"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepadjustment_metricintervalupperbound"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepadjustment_scalingadjustment"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepscalingpolicyconfiguration_adjustmenttype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepscalingpolicyconfiguration_cooldown"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepscalingpolicyconfiguration_metricaggregationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stepscalingpolicyconfiguration_minadjustmentmagnitude"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_disablescalein"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleincooldown"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_scaleoutcooldown"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targettrackingscalingpolicyconfiguration_targetvalue"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification_dimensions</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification_metricname</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification_metricname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification_namespace</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification_namespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification_statistic</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification_statistic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customizedmetricspecification_unit</IRI>
+        <Literal>applicationautoscalingscalingpolicy:customizedmetricspecification_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdimension</IRI>
+        <Literal>applicationautoscalingscalingpolicy:metricdimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdimension_name</IRI>
+        <Literal>applicationautoscalingscalingpolicy:metricdimension_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricdimension_value</IRI>
+        <Literal>applicationautoscalingscalingpolicy:metricdimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>predefinedmetricspecification</IRI>
+        <Literal>applicationautoscalingscalingpolicy:predefinedmetricspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>predefinedmetricspecification_predefinedmetrictype</IRI>
+        <Literal>applicationautoscalingscalingpolicy:predefinedmetricspecification_predefinedmetrictype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>predefinedmetricspecification_resourcelabel</IRI>
+        <Literal>applicationautoscalingscalingpolicy:predefinedmetricspecification_resourcelabel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_policyname</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_policyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_policytype</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_policytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_resourceid</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_resourceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_scalabledimension</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_scalabledimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_scalingtargetid</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_scalingtargetid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_servicenamespace</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_servicenamespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_stepscalingpolicyconfiguration</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_stepscalingpolicyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scalingpolicy_targettrackingscalingpolicyconfiguration</IRI>
+        <Literal>applicationautoscalingscalingpolicy:scalingpolicy_targettrackingscalingpolicyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepadjustment</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepadjustment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepadjustment_metricintervallowerbound</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepadjustment_metricintervallowerbound</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepadjustment_metricintervalupperbound</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepadjustment_metricintervalupperbound</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepadjustment_scalingadjustment</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepadjustment_scalingadjustment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration_adjustmenttype</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration_adjustmenttype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration_cooldown</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration_cooldown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration_metricaggregationtype</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration_metricaggregationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration_minadjustmentmagnitude</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration_minadjustmentmagnitude</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stepscalingpolicyconfiguration_stepadjustments</IRI>
+        <Literal>applicationautoscalingscalingpolicy:stepscalingpolicyconfiguration_stepadjustments</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_customizedmetricspecification</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_customizedmetricspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_disablescalein</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_disablescalein</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_predefinedmetricspecification</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_predefinedmetricspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_scaleincooldown</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_scaleincooldown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_scaleoutcooldown</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_scaleoutcooldown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingscalingpolicyconfiguration_targetvalue</IRI>
+        <Literal>applicationautoscalingscalingpolicy:targettrackingscalingpolicyconfiguration_targetvalue</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

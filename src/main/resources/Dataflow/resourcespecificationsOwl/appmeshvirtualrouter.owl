@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshvirtualrouter#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshvirtualrouter#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="portmapping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="virtualrouter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="virtualrouterlistener"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="virtualrouterspec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="virtualrouter_spec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="virtualrouter_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="virtualrouterlistener_portmapping"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="virtualrouterspec_listeners"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_resourceowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_uid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_virtualrouter_virtualroutername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portmapping_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portmapping_protocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="virtualrouter_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="virtualrouter_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="virtualrouter_virtualroutername"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="portmapping"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portmapping_port"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="portmapping"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portmapping_protocol"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="virtualrouter"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="virtualrouter_spec"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="virtualrouter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="virtualrouter_meshname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="virtualrouter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="virtualrouter_virtualroutername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="virtualrouterlistener"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="virtualrouterlistener_portmapping"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="virtualrouterspec"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="virtualrouterspec_listeners"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="virtualrouter_spec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="virtualrouterlistener_portmapping"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualrouter_spec"/>
+        <Class IRI="virtualrouter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualrouter_tags"/>
+        <Class IRI="virtualrouter"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualrouterlistener_portmapping"/>
+        <Class IRI="virtualrouterlistener"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="virtualrouterspec_listeners"/>
+        <Class IRI="virtualrouterspec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualrouter_spec"/>
+        <Class IRI="virtualrouterspec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualrouter_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualrouterlistener_portmapping"/>
+        <Class IRI="portmapping"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="virtualrouterspec_listeners"/>
+        <Class IRI="virtualrouterlistener"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_resourceowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_uid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_virtualrouter_virtualroutername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portmapping_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portmapping_protocol"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="virtualrouter_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="virtualrouter_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="virtualrouter_virtualroutername"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_arn"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_meshname"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_meshowner"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_resourceowner"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_uid"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_virtualrouter_virtualroutername"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portmapping_port"/>
+        <Class IRI="portmapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portmapping_protocol"/>
+        <Class IRI="portmapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="virtualrouter_meshname"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="virtualrouter_meshowner"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="virtualrouter_virtualroutername"/>
+        <Class IRI="virtualrouter"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_resourceowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_uid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_virtualrouter_virtualroutername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portmapping_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portmapping_protocol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="virtualrouter_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="virtualrouter_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="virtualrouter_virtualroutername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_arn</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_meshname</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_meshname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_meshowner</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_meshowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_resourceowner</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_resourceowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_uid</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_uid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_virtualrouter_virtualroutername</IRI>
+        <Literal>appmeshvirtualrouter:attribute_virtualrouter_virtualroutername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portmapping</IRI>
+        <Literal>appmeshvirtualrouter:portmapping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portmapping_port</IRI>
+        <Literal>appmeshvirtualrouter:portmapping_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portmapping_protocol</IRI>
+        <Literal>appmeshvirtualrouter:portmapping_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>appmeshvirtualrouter:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>appmeshvirtualrouter:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>appmeshvirtualrouter:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter_meshname</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter_meshname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter_meshowner</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter_meshowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter_spec</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter_spec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter_tags</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouter_virtualroutername</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouter_virtualroutername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouterlistener</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouterlistener</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouterlistener_portmapping</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouterlistener_portmapping</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouterspec</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouterspec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>virtualrouterspec_listeners</IRI>
+        <Literal>appmeshvirtualrouter:virtualrouterspec_listeners</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

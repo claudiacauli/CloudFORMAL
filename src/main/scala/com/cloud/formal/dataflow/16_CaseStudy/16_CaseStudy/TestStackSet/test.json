@@ -1,0 +1,87 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+
+  "Resources":
+  {
+
+
+    "AccessTopic":
+    {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "Subscription": [{
+          "Endpoint": {"Ref": "LambdaFun"},
+          "Protocol": "lambda"
+          }]
+      }
+    },
+
+
+
+
+    "AccessLog":
+    {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "NotificationConfiguration" : {
+          "TopicConfigurations" : [{
+            "Event": "",
+            "Topic": {"Ref": "AccessTopic"}
+          }]
+        }
+      }
+    },
+
+
+    "TestData":
+    {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "LoggingConfiguration" : {
+          "DestinationBucketName" : {"Ref": "AccessLog"}
+        }
+      }
+    },
+
+    "LambdaFun":
+    {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Description" : "Lambda running the lab's Java code.",
+        "FunctionName": "ExLambda",
+        "Runtime": "java8",
+        "Handler": "main.java",
+        "Role": {"Ref": "arn:aws:iam::222222222222:role/lambdarole"},
+        "Code": {"ZipFile": "filePath"}
+      }
+    }
+
+
+
+  },
+
+
+
+  "Outputs":
+  {
+
+    "MainTopic":
+    {
+      "Value": {"Ref": "AccessTopic"},
+      "Export" : {
+        "Name": "MainTopic"
+      }
+    },
+
+    "LogBucket" :
+    {
+      "Value": {"Ref": "AccessLog"},
+      "Export": {
+        "Name": "LogBucket"
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudtrailtrail#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudtrailtrail#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="dataresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventselector"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="trail"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dataresource_values"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventselector_dataresources"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_cloudwatchlogsloggrouparn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_cloudwatchlogsrolearn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_eventselectors"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_s3bucketname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_snstopicname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trail_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_trail_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_trail_snstopicarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dataresource_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventselector_includemanagementevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventselector_readwritetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_enablelogfilevalidation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_includeglobalserviceevents"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_islogging"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_ismultiregiontrail"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_s3keyprefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trail_trailname"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchloggroup#loggroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="dataresource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dataresource_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="trail"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="trail_s3bucketname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="trail"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="trail_islogging"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trail_cloudwatchlogsloggrouparn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trail_cloudwatchlogsrolearn"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trail_kmskeyid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trail_s3bucketname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trail_snstopicname"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dataresource_values"/>
+        <Class IRI="dataresource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventselector_dataresources"/>
+        <Class IRI="eventselector"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_cloudwatchlogsloggrouparn"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_cloudwatchlogsrolearn"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_eventselectors"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_kmskeyid"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_s3bucketname"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_snstopicname"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trail_tags"/>
+        <Class IRI="trail"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventselector_dataresources"/>
+        <Class IRI="dataresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_cloudwatchlogsloggrouparn"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudwatchloggroup#loggroup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_cloudwatchlogsrolearn"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_eventselectors"/>
+        <Class IRI="eventselector"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_kmskeyid"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_s3bucketname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3bucket#bucket"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_snstopicname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/snstopic#topic"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trail_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_trail_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_trail_snstopicarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dataresource_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventselector_includemanagementevents"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventselector_readwritetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_enablelogfilevalidation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_includeglobalserviceevents"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_islogging"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_ismultiregiontrail"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_s3keyprefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trail_trailname"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_trail_arn"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_trail_snstopicarn"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dataresource_type"/>
+        <Class IRI="dataresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventselector_includemanagementevents"/>
+        <Class IRI="eventselector"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventselector_readwritetype"/>
+        <Class IRI="eventselector"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_enablelogfilevalidation"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_includeglobalserviceevents"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_islogging"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_ismultiregiontrail"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_s3keyprefix"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trail_trailname"/>
+        <Class IRI="trail"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_trail_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_trail_snstopicarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dataresource_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventselector_includemanagementevents"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventselector_readwritetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_enablelogfilevalidation"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_includeglobalserviceevents"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_islogging"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_ismultiregiontrail"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_s3keyprefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trail_trailname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_trail_arn</IRI>
+        <Literal>cloudtrailtrail:attribute_trail_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_trail_snstopicarn</IRI>
+        <Literal>cloudtrailtrail:attribute_trail_snstopicarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataresource</IRI>
+        <Literal>cloudtrailtrail:dataresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataresource_type</IRI>
+        <Literal>cloudtrailtrail:dataresource_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataresource_values</IRI>
+        <Literal>cloudtrailtrail:dataresource_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventselector</IRI>
+        <Literal>cloudtrailtrail:eventselector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventselector_dataresources</IRI>
+        <Literal>cloudtrailtrail:eventselector_dataresources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventselector_includemanagementevents</IRI>
+        <Literal>cloudtrailtrail:eventselector_includemanagementevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventselector_readwritetype</IRI>
+        <Literal>cloudtrailtrail:eventselector_readwritetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>cloudtrailtrail:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>cloudtrailtrail:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>cloudtrailtrail:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail</IRI>
+        <Literal>cloudtrailtrail:trail</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_cloudwatchlogsloggrouparn</IRI>
+        <Literal>cloudtrailtrail:trail_cloudwatchlogsloggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_cloudwatchlogsrolearn</IRI>
+        <Literal>cloudtrailtrail:trail_cloudwatchlogsrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_enablelogfilevalidation</IRI>
+        <Literal>cloudtrailtrail:trail_enablelogfilevalidation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_eventselectors</IRI>
+        <Literal>cloudtrailtrail:trail_eventselectors</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_includeglobalserviceevents</IRI>
+        <Literal>cloudtrailtrail:trail_includeglobalserviceevents</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_islogging</IRI>
+        <Literal>cloudtrailtrail:trail_islogging</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_ismultiregiontrail</IRI>
+        <Literal>cloudtrailtrail:trail_ismultiregiontrail</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_kmskeyid</IRI>
+        <Literal>cloudtrailtrail:trail_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_s3bucketname</IRI>
+        <Literal>cloudtrailtrail:trail_s3bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_s3keyprefix</IRI>
+        <Literal>cloudtrailtrail:trail_s3keyprefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_snstopicname</IRI>
+        <Literal>cloudtrailtrail:trail_snstopicname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_tags</IRI>
+        <Literal>cloudtrailtrail:trail_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trail_trailname</IRI>
+        <Literal>cloudtrailtrail:trail_trailname</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

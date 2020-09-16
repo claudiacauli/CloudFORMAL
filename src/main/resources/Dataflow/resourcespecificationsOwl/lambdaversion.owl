@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaversion#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdaversion#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="version"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="version_functionname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="version_provisionedconcurrencyconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_version_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="version_codesha256"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="version_description"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="version"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="version_functionname"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="version_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="version_provisionedconcurrencyconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="version_functionname"/>
+        <Class IRI="version"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="version_provisionedconcurrencyconfig"/>
+        <Class IRI="version"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="version_functionname"/>
+        <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="version_provisionedconcurrencyconfig"/>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_version_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="version_codesha256"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="version_description"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_version_version"/>
+        <Class IRI="version"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+        <Class IRI="provisionedconcurrencyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="version_codesha256"/>
+        <Class IRI="version"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="version_description"/>
+        <Class IRI="version"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_version_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionedconcurrencyconfiguration_provisionedconcurrentexecutions"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="version_codesha256"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="version_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_version_version</IRI>
+        <Literal>lambdaversion:attribute_version_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedconcurrencyconfiguration</IRI>
+        <Literal>lambdaversion:provisionedconcurrencyconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionedconcurrencyconfiguration_provisionedconcurrentexecutions</IRI>
+        <Literal>lambdaversion:provisionedconcurrencyconfiguration_provisionedconcurrentexecutions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>version</IRI>
+        <Literal>lambdaversion:version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>version_codesha256</IRI>
+        <Literal>lambdaversion:version_codesha256</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>version_description</IRI>
+        <Literal>lambdaversion:version_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>version_functionname</IRI>
+        <Literal>lambdaversion:version_functionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>version_provisionedconcurrencyconfig</IRI>
+        <Literal>lambdaversion:version_provisionedconcurrencyconfig</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

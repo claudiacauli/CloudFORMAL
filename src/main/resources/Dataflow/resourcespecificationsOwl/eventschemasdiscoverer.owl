@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/eventschemasdiscoverer#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/eventschemasdiscoverer#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="discoverer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tagsentry"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="discoverer_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_discoverer_discovererarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_discoverer_discovererid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="discoverer_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="discoverer_sourcearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagsentry_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tagsentry_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="discoverer"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="discoverer_sourcearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tagsentry"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tagsentry_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tagsentry"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tagsentry_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="discoverer_tags"/>
+        <Class IRI="discoverer"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="discoverer_tags"/>
+        <Class IRI="tagsentry"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_discoverer_discovererarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_discoverer_discovererid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="discoverer_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="discoverer_sourcearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagsentry_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tagsentry_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_discoverer_discovererarn"/>
+        <Class IRI="discoverer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_discoverer_discovererid"/>
+        <Class IRI="discoverer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="discoverer_description"/>
+        <Class IRI="discoverer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="discoverer_sourcearn"/>
+        <Class IRI="discoverer"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagsentry_key"/>
+        <Class IRI="tagsentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tagsentry_value"/>
+        <Class IRI="tagsentry"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_discoverer_discovererarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_discoverer_discovererid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="discoverer_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="discoverer_sourcearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagsentry_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tagsentry_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_discoverer_discovererarn</IRI>
+        <Literal>eventschemasdiscoverer:attribute_discoverer_discovererarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_discoverer_discovererid</IRI>
+        <Literal>eventschemasdiscoverer:attribute_discoverer_discovererid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>discoverer</IRI>
+        <Literal>eventschemasdiscoverer:discoverer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>discoverer_description</IRI>
+        <Literal>eventschemasdiscoverer:discoverer_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>discoverer_sourcearn</IRI>
+        <Literal>eventschemasdiscoverer:discoverer_sourcearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>discoverer_tags</IRI>
+        <Literal>eventschemasdiscoverer:discoverer_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry</IRI>
+        <Literal>eventschemasdiscoverer:tagsentry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry_key</IRI>
+        <Literal>eventschemasdiscoverer:tagsentry_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagsentry_value</IRI>
+        <Literal>eventschemasdiscoverer:tagsentry_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

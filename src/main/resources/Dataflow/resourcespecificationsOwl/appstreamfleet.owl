@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appstreamfleet#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appstreamfleet#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="computecapacity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="domainjoininfo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="fleet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_computecapacity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_domainjoininfo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computecapacity_desiredinstances"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainjoininfo_directoryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainjoininfo_organizationalunitdistinguishedname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_disconnecttimeoutinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_displayname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_enabledefaultinternetaccess"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_fleettype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_idledisconnecttimeoutinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_imagearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_imagename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_maxuserdurationinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfig_subnetids"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="computecapacity"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="computecapacity_desiredinstances"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fleet"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="fleet_computecapacity"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fleet"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="fleet_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fleet"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="fleet_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_computecapacity"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_domainjoininfo"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_vpcconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_computecapacity"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_domainjoininfo"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_tags"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_vpcconfig"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_computecapacity"/>
+        <Class IRI="computecapacity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_domainjoininfo"/>
+        <Class IRI="domainjoininfo"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_vpcconfig"/>
+        <Class IRI="vpcconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computecapacity_desiredinstances"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainjoininfo_directoryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainjoininfo_organizationalunitdistinguishedname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_disconnecttimeoutinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_displayname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_enabledefaultinternetaccess"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_fleettype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_idledisconnecttimeoutinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_imagearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_imagename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_maxuserdurationinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="computecapacity_desiredinstances"/>
+        <Class IRI="computecapacity"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainjoininfo_directoryname"/>
+        <Class IRI="domainjoininfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainjoininfo_organizationalunitdistinguishedname"/>
+        <Class IRI="domainjoininfo"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_description"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_disconnecttimeoutinseconds"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_displayname"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_enabledefaultinternetaccess"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_fleettype"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_idledisconnecttimeoutinseconds"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_imagearn"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_imagename"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_instancetype"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_maxuserdurationinseconds"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_name"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+        <Class IRI="vpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfig_subnetids"/>
+        <Class IRI="vpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="computecapacity_desiredinstances"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainjoininfo_directoryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainjoininfo_organizationalunitdistinguishedname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_disconnecttimeoutinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_displayname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_enabledefaultinternetaccess"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_fleettype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_idledisconnecttimeoutinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_imagearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_imagename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_maxuserdurationinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfig_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computecapacity</IRI>
+        <Literal>appstreamfleet:computecapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computecapacity_desiredinstances</IRI>
+        <Literal>appstreamfleet:computecapacity_desiredinstances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainjoininfo</IRI>
+        <Literal>appstreamfleet:domainjoininfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainjoininfo_directoryname</IRI>
+        <Literal>appstreamfleet:domainjoininfo_directoryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainjoininfo_organizationalunitdistinguishedname</IRI>
+        <Literal>appstreamfleet:domainjoininfo_organizationalunitdistinguishedname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet</IRI>
+        <Literal>appstreamfleet:fleet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_computecapacity</IRI>
+        <Literal>appstreamfleet:fleet_computecapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_description</IRI>
+        <Literal>appstreamfleet:fleet_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_disconnecttimeoutinseconds</IRI>
+        <Literal>appstreamfleet:fleet_disconnecttimeoutinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_displayname</IRI>
+        <Literal>appstreamfleet:fleet_displayname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_domainjoininfo</IRI>
+        <Literal>appstreamfleet:fleet_domainjoininfo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_enabledefaultinternetaccess</IRI>
+        <Literal>appstreamfleet:fleet_enabledefaultinternetaccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_fleettype</IRI>
+        <Literal>appstreamfleet:fleet_fleettype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_idledisconnecttimeoutinseconds</IRI>
+        <Literal>appstreamfleet:fleet_idledisconnecttimeoutinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_imagearn</IRI>
+        <Literal>appstreamfleet:fleet_imagearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_imagename</IRI>
+        <Literal>appstreamfleet:fleet_imagename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_instancetype</IRI>
+        <Literal>appstreamfleet:fleet_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_maxuserdurationinseconds</IRI>
+        <Literal>appstreamfleet:fleet_maxuserdurationinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_name</IRI>
+        <Literal>appstreamfleet:fleet_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_tags</IRI>
+        <Literal>appstreamfleet:fleet_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_vpcconfig</IRI>
+        <Literal>appstreamfleet:fleet_vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>appstreamfleet:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>appstreamfleet:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>appstreamfleet:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig</IRI>
+        <Literal>appstreamfleet:vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig_securitygroupids</IRI>
+        <Literal>appstreamfleet:vpcconfig_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig_subnetids</IRI>
+        <Literal>appstreamfleet:vpcconfig_subnetids</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

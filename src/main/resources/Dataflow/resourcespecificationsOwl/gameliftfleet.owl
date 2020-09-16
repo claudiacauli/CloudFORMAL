@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftfleet#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftfleet#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="certificateconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="fleet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ippermission"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcecreationlimitpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="runtimeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="serverprocess"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_certificateconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_ec2inboundpermissions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_resourcecreationlimitpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fleet_runtimeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="runtimeconfiguration_serverprocesses"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="certificateconfiguration_certificatetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_buildid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_desiredec2instances"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_ec2instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_fleettype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_instancerolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_logpaths"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_maxsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_metricgroups"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_minsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_newgamesessionprotectionpolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_peervpcawsaccountid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_peervpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_scriptid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_serverlaunchparameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fleet_serverlaunchpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ippermission_fromport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ippermission_iprange"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ippermission_protocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ippermission_toport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcecreationlimitpolicy_newgamesessionspercreator"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcecreationlimitpolicy_policyperiodinminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="runtimeconfiguration_gamesessionactivationtimeoutseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="runtimeconfiguration_maxconcurrentgamesessionactivations"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serverprocess_concurrentexecutions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serverprocess_launchpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serverprocess_parameters"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="certificateconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="certificateconfiguration_certificatetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fleet"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="fleet_ec2instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="fleet"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="fleet_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ippermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ippermission_fromport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ippermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ippermission_iprange"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ippermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ippermission_protocol"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ippermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ippermission_toport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="serverprocess"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="serverprocess_concurrentexecutions"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="serverprocess"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="serverprocess_launchpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_certificateconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_resourcecreationlimitpolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fleet_runtimeconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_certificateconfiguration"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_ec2inboundpermissions"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_resourcecreationlimitpolicy"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fleet_runtimeconfiguration"/>
+        <Class IRI="fleet"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="runtimeconfiguration_serverprocesses"/>
+        <Class IRI="runtimeconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_certificateconfiguration"/>
+        <Class IRI="certificateconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_ec2inboundpermissions"/>
+        <Class IRI="ippermission"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_resourcecreationlimitpolicy"/>
+        <Class IRI="resourcecreationlimitpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fleet_runtimeconfiguration"/>
+        <Class IRI="runtimeconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="runtimeconfiguration_serverprocesses"/>
+        <Class IRI="serverprocess"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="certificateconfiguration_certificatetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_buildid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_desiredec2instances"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_ec2instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_fleettype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_instancerolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_maxsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_minsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_newgamesessionprotectionpolicy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_peervpcawsaccountid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_peervpcid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_scriptid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_serverlaunchparameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fleet_serverlaunchpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ippermission_fromport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ippermission_iprange"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ippermission_protocol"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ippermission_toport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcecreationlimitpolicy_newgamesessionspercreator"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcecreationlimitpolicy_policyperiodinminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="runtimeconfiguration_gamesessionactivationtimeoutseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="runtimeconfiguration_maxconcurrentgamesessionactivations"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serverprocess_concurrentexecutions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serverprocess_launchpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serverprocess_parameters"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="certificateconfiguration_certificatetype"/>
+        <Class IRI="certificateconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_buildid"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_description"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_desiredec2instances"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_ec2instancetype"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_fleettype"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_instancerolearn"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_logpaths"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_maxsize"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_metricgroups"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_minsize"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_name"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_newgamesessionprotectionpolicy"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_peervpcawsaccountid"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_peervpcid"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_scriptid"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_serverlaunchparameters"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fleet_serverlaunchpath"/>
+        <Class IRI="fleet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ippermission_fromport"/>
+        <Class IRI="ippermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ippermission_iprange"/>
+        <Class IRI="ippermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ippermission_protocol"/>
+        <Class IRI="ippermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ippermission_toport"/>
+        <Class IRI="ippermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcecreationlimitpolicy_newgamesessionspercreator"/>
+        <Class IRI="resourcecreationlimitpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcecreationlimitpolicy_policyperiodinminutes"/>
+        <Class IRI="resourcecreationlimitpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="runtimeconfiguration_gamesessionactivationtimeoutseconds"/>
+        <Class IRI="runtimeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="runtimeconfiguration_maxconcurrentgamesessionactivations"/>
+        <Class IRI="runtimeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serverprocess_concurrentexecutions"/>
+        <Class IRI="serverprocess"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serverprocess_launchpath"/>
+        <Class IRI="serverprocess"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serverprocess_parameters"/>
+        <Class IRI="serverprocess"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="certificateconfiguration_certificatetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_buildid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_desiredec2instances"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_ec2instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_fleettype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_instancerolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_logpaths"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_maxsize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_metricgroups"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_minsize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_newgamesessionprotectionpolicy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_peervpcawsaccountid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_peervpcid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_scriptid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_serverlaunchparameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fleet_serverlaunchpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ippermission_fromport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ippermission_iprange"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ippermission_protocol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ippermission_toport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcecreationlimitpolicy_newgamesessionspercreator"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcecreationlimitpolicy_policyperiodinminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="runtimeconfiguration_gamesessionactivationtimeoutseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="runtimeconfiguration_maxconcurrentgamesessionactivations"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serverprocess_concurrentexecutions"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serverprocess_launchpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serverprocess_parameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificateconfiguration</IRI>
+        <Literal>gameliftfleet:certificateconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificateconfiguration_certificatetype</IRI>
+        <Literal>gameliftfleet:certificateconfiguration_certificatetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet</IRI>
+        <Literal>gameliftfleet:fleet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_buildid</IRI>
+        <Literal>gameliftfleet:fleet_buildid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_certificateconfiguration</IRI>
+        <Literal>gameliftfleet:fleet_certificateconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_description</IRI>
+        <Literal>gameliftfleet:fleet_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_desiredec2instances</IRI>
+        <Literal>gameliftfleet:fleet_desiredec2instances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_ec2inboundpermissions</IRI>
+        <Literal>gameliftfleet:fleet_ec2inboundpermissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_ec2instancetype</IRI>
+        <Literal>gameliftfleet:fleet_ec2instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_fleettype</IRI>
+        <Literal>gameliftfleet:fleet_fleettype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_instancerolearn</IRI>
+        <Literal>gameliftfleet:fleet_instancerolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_logpaths</IRI>
+        <Literal>gameliftfleet:fleet_logpaths</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_maxsize</IRI>
+        <Literal>gameliftfleet:fleet_maxsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_metricgroups</IRI>
+        <Literal>gameliftfleet:fleet_metricgroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_minsize</IRI>
+        <Literal>gameliftfleet:fleet_minsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_name</IRI>
+        <Literal>gameliftfleet:fleet_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_newgamesessionprotectionpolicy</IRI>
+        <Literal>gameliftfleet:fleet_newgamesessionprotectionpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_peervpcawsaccountid</IRI>
+        <Literal>gameliftfleet:fleet_peervpcawsaccountid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_peervpcid</IRI>
+        <Literal>gameliftfleet:fleet_peervpcid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_resourcecreationlimitpolicy</IRI>
+        <Literal>gameliftfleet:fleet_resourcecreationlimitpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_runtimeconfiguration</IRI>
+        <Literal>gameliftfleet:fleet_runtimeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_scriptid</IRI>
+        <Literal>gameliftfleet:fleet_scriptid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_serverlaunchparameters</IRI>
+        <Literal>gameliftfleet:fleet_serverlaunchparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fleet_serverlaunchpath</IRI>
+        <Literal>gameliftfleet:fleet_serverlaunchpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ippermission</IRI>
+        <Literal>gameliftfleet:ippermission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ippermission_fromport</IRI>
+        <Literal>gameliftfleet:ippermission_fromport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ippermission_iprange</IRI>
+        <Literal>gameliftfleet:ippermission_iprange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ippermission_protocol</IRI>
+        <Literal>gameliftfleet:ippermission_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ippermission_toport</IRI>
+        <Literal>gameliftfleet:ippermission_toport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcecreationlimitpolicy</IRI>
+        <Literal>gameliftfleet:resourcecreationlimitpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcecreationlimitpolicy_newgamesessionspercreator</IRI>
+        <Literal>gameliftfleet:resourcecreationlimitpolicy_newgamesessionspercreator</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcecreationlimitpolicy_policyperiodinminutes</IRI>
+        <Literal>gameliftfleet:resourcecreationlimitpolicy_policyperiodinminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runtimeconfiguration</IRI>
+        <Literal>gameliftfleet:runtimeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runtimeconfiguration_gamesessionactivationtimeoutseconds</IRI>
+        <Literal>gameliftfleet:runtimeconfiguration_gamesessionactivationtimeoutseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runtimeconfiguration_maxconcurrentgamesessionactivations</IRI>
+        <Literal>gameliftfleet:runtimeconfiguration_maxconcurrentgamesessionactivations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runtimeconfiguration_serverprocesses</IRI>
+        <Literal>gameliftfleet:runtimeconfiguration_serverprocesses</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serverprocess</IRI>
+        <Literal>gameliftfleet:serverprocess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serverprocess_concurrentexecutions</IRI>
+        <Literal>gameliftfleet:serverprocess_concurrentexecutions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serverprocess_launchpath</IRI>
+        <Literal>gameliftfleet:serverprocess_launchpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serverprocess_parameters</IRI>
+        <Literal>gameliftfleet:serverprocess_parameters</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+
