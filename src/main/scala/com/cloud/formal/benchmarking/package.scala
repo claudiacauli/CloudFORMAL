@@ -23,8 +23,8 @@ package object benchmarking
   private[benchmarking]
   object Runs
   {
-    val WN = 100
-    val N  = 50
+    val WN = 1
+    val N  = 1
   }
 
   private[benchmarking]

@@ -28,7 +28,7 @@ import org.semanticweb.owlapi.model.{AddImport, OWLClassAssertionAxiom, OWLDataF
 import scala.jdk.StreamConverters._
 
 
-object DataflowGraph extends App with Graph {
+object DataflowGraph extends Graph {
 
   val CURRENTDIR = "src/main/scala/com/cloud/formal/dataflow/"
   val dotFileName = CURRENTDIR + "DataflowDiagram.dot"
@@ -37,20 +37,29 @@ object DataflowGraph extends App with Graph {
   var df: OWLDataFactory = _
   var m: OWLOntologyManager = _
 
-  initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
 
-  println("Initialized Graph Generator")
+  def run(): Unit =
+  {
+    initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
 
-  loadAllOntologiesNeededForDFD()
-  println("Loaded all needed ontologies")
-  val reasEngine = OU.startReasoner(o,df,m)
-  println("Started reasoner")
-  val t = System.currentTimeMillis()
-  OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
-  println("Merged axioms (took " + (System.currentTimeMillis()-t) + " ms).\n\n")
-  printGraphToDotFile(dotFileName,buildGraphDotSpecification)
+    println("Initialized Graph Generator")
 
-  runGraphvizDotToImage(dotFileName,graphFileName)
+    loadAllOntologiesNeededForDFD()
+    println("Loaded all needed ontologies")
+    val reasEngine = OU.startReasoner(o,df,m)
+    println("Started reasoner")
+    val t = System.currentTimeMillis()
+    OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
+    println("Merged axioms (took " + (System.currentTimeMillis()-t) + " ms).\n\n")
+    printGraphToDotFile(dotFileName,buildGraphDotSpecification)
+
+    runGraphvizDotToImage(dotFileName,graphFileName)
+  }
+
+
+
+
+
 
 
 

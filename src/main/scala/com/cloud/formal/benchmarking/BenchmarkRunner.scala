@@ -29,82 +29,90 @@ import org.semanticweb.owlapi.model.parameters.Imports
 import org.semanticweb.owlapi.model._
 import org.semanticweb.owlapi.reasoner.{InconsistentOntologyException, NodeSet, OWLReasoner}
 
-object BenchmarkRunner extends App
+object BenchmarkRunner
 {
 
   private var BenchmarkResults: Vector[ModelData] = Vector()
-  val t = System.nanoTime()
+
+
+  def run(): Unit =
+  {
+    val t = System.nanoTime()
 
 
 
 
-  // TODO Uncomment to benchmark *ALL* Resource Specifications Encoding to OWL
-  BenchmarkSpecifications()
+    // TODO Uncomment to benchmark *ALL* Resource Specifications Encoding to OWL
+    BenchmarkSpecifications()
 
 
 
 
-  // TODO Uncomment to benchmark *ALL* Templates Encoding to OWL
-  BenchmarkEncoding(FilePath.BenchmarksIn)
+    // TODO Uncomment to benchmark *ALL* Templates Encoding to OWL
+    BenchmarkEncoding(FilePath.BenchmarksIn)
 
 
 
 
-  // TODO Uncomment to benchmark *ALL* Templates OWL Classification
-  // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
-  BenchmarkClassification()
+    // TODO Uncomment to benchmark *ALL* Templates OWL Classification
+    // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
+    BenchmarkClassification()
 
-  // TODO Uncomment to benchmark *SINGLE* Templates OWL Classification
-  // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
-  //  BenchmarkSingleClassification("BenchmarksOut/07_rubajaj/")
-  //  BenchmarkSingleClassification("BenchmarksOut/04_stationeering/")
-  //  BenchmarkSingleClassification("BenchmarksOut/15_retailmenot/")
-  //  BenchmarkSingleClassification("BenchmarksOut/14_joshbalfour/")
-  //  BenchmarkSingleClassification("BenchmarksOut/13_apiconcord/")
-  //  BenchmarkSingleClassification("BenchmarksOut/12_happypeter/")
-  //  BenchmarkSingleClassification("BenchmarksOut/06_velaskec/")
-  //  BenchmarkSingleClassification("BenchmarksOut/10_samuelweckstrom/")
-  //  BenchmarkSingleClassification("BenchmarksOut/08_sqilupinc/")
-  //  BenchmarkSingleClassification("BenchmarksOut/01_sqilup/")
-  //  BenchmarkSingleClassification("BenchmarksOut/02_johnBh/")
-  //  BenchmarkSingleClassification("BenchmarksOut/09_tatums/")
-  //  BenchmarkSingleClassification("BenchmarksOut/03_kalyanmca13/")
-  //  BenchmarkSingleClassification("BenchmarksOut/11_widdix/")
-  //  BenchmarkSingleClassification("BenchmarksOut/05_monishakrish25992/")
-
-
-
-
-  // TODO Uncomment to benchmark *ALL* Templates OWL Query Answering
-  // NB: Models MUST be already encoded in folder BenchmarksOut/
-  BenchmarkQueryAnswering()
-
-  // TODO Uncomment to benchmark *SINGLE* Templates OWL Query Answering
-  // NB: Models MUST be already encoded in folder BenchmarksOut/
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/07_rubajaj/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/04_stationeering/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/15_retailmenot/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/05_monishakrish25992/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/11_widdix/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/03_kalyanmca13/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/09_tatums/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/02_johnBh/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/01_sqilup/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/08_sqilupinc/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/10_samuelweckstrom/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/06_velaskec/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/12_happypeter/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/13_apiconcord/")
-  //  BenchmarkSingleQueryAnswering("BenchmarksOut/14_joshbalfour/")
+    // TODO Uncomment to benchmark *SINGLE* Templates OWL Classification
+    // NB: Models MUST be already encoded in "BenchmarksOut/" folder.
+    //  BenchmarkSingleClassification("BenchmarksOut/07_rubajaj/")
+    //  BenchmarkSingleClassification("BenchmarksOut/04_stationeering/")
+    //  BenchmarkSingleClassification("BenchmarksOut/15_retailmenot/")
+    //  BenchmarkSingleClassification("BenchmarksOut/14_joshbalfour/")
+    //  BenchmarkSingleClassification("BenchmarksOut/13_apiconcord/")
+    //  BenchmarkSingleClassification("BenchmarksOut/12_happypeter/")
+    //  BenchmarkSingleClassification("BenchmarksOut/06_velaskec/")
+    //  BenchmarkSingleClassification("BenchmarksOut/10_samuelweckstrom/")
+    //  BenchmarkSingleClassification("BenchmarksOut/08_sqilupinc/")
+    //  BenchmarkSingleClassification("BenchmarksOut/01_sqilup/")
+    //  BenchmarkSingleClassification("BenchmarksOut/02_johnBh/")
+    //  BenchmarkSingleClassification("BenchmarksOut/09_tatums/")
+    //  BenchmarkSingleClassification("BenchmarksOut/03_kalyanmca13/")
+    //  BenchmarkSingleClassification("BenchmarksOut/11_widdix/")
+    //  BenchmarkSingleClassification("BenchmarksOut/05_monishakrish25992/")
 
 
 
-  //println(" Benchmark took " + (System.nanoTime()-t)/Math.pow(10,6) + " ms.")
+
+    // TODO Uncomment to benchmark *ALL* Templates OWL Query Answering
+    // NB: Models MUST be already encoded in folder BenchmarksOut/
+    BenchmarkQueryAnswering()
+
+    // TODO Uncomment to benchmark *SINGLE* Templates OWL Query Answering
+    // NB: Models MUST be already encoded in folder BenchmarksOut/
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/07_rubajaj/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/04_stationeering/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/15_retailmenot/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/05_monishakrish25992/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/11_widdix/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/03_kalyanmca13/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/09_tatums/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/02_johnBh/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/01_sqilup/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/08_sqilupinc/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/10_samuelweckstrom/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/06_velaskec/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/12_happypeter/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/13_apiconcord/")
+    //  BenchmarkSingleQueryAnswering("BenchmarksOut/14_joshbalfour/")
 
 
 
-  // Prints Latex Table's Rows from the .csv file to the console
-  LatexTablePrinter.print()
+    //println(" Benchmark took " + (System.nanoTime()-t)/Math.pow(10,6) + " ms.")
+
+
+
+    // Prints Latex Table's Rows from the .csv file to the console
+    LatexTablePrinter.print()
+  }
+
+
+
 
 
 

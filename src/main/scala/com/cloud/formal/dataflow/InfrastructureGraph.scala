@@ -27,7 +27,7 @@ import scala.jdk.StreamConverters._
 
 
 
-object InfrastructureGraph extends App with Graph {
+object InfrastructureGraph extends Graph {
 
   val CURRENTDIR = "src/main/scala/com/cloud/formal/dataflow/"
   val dotFileName = CURRENTDIR + "infrastructureGraph.dot"
@@ -36,11 +36,16 @@ object InfrastructureGraph extends App with Graph {
   var df: OWLDataFactory = _
   var m: OWLOntologyManager = _
 
-  initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
-  val reasEngine = OU.startReasoner(o,df,m)
-  OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
-  printGraphToDotFile(dotFileName,buildGraphDotSpecification)
-  runGraphvizDotToImage(dotFileName,graphFileName)
+  def run(): Unit =
+  {
+    initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
+    val reasEngine = OU.startReasoner(o,df,m)
+    OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
+    printGraphToDotFile(dotFileName,buildGraphDotSpecification)
+    runGraphvizDotToImage(dotFileName,graphFileName)
+  }
+
+
 
 
 

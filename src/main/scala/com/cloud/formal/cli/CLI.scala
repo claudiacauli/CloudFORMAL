@@ -18,8 +18,10 @@ package com.cloud.formal.cli
 
 import java.io.File
 
+import com.cloud.formal.benchmarking.BenchmarkRunner
 import com.cloud.formal.{Extension, FilePath, SysUtil}
 import com.cloud.formal.binding.Interface
+import com.cloud.formal.dataflow.{DataflowGraph, InfrastructureGraph}
 import com.cloud.formal.reasoning.PropertiesChecker
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.commons.cli.{DefaultParser, HelpFormatter, Option, Options, ParseException}
@@ -51,6 +53,9 @@ object CLI  extends LazyLogging
             case "r"  => reason(o)
             case "mr" => modelAndReason(o)
             case "ra" => reasonAll(o)
+            case "b"  => benchmark()
+            case "ig" => infrastructureGraph()
+            case "d"  => dataflowGraph()
             case "h"  => help()
             case  _   => println("Unknown Option Selected")
           }
@@ -112,6 +117,17 @@ object CLI  extends LazyLogging
         "(passed as 1st arg). Writes *Report.csv in the same folder.")
     reasoning.setArgName("PATH")
 
+    val benchmark = new Option("b", "bench", false,
+    "Runs benchmarks to generate Sec. 6's table.")
+
+    val infrGraph = new Option("ig", "infrG", false,
+    "Generates a graph representation of the sample " +
+      "infrastructure from Sec. 7.")
+
+    val dfdGraph = new Option("d","dfd", false,
+    "Extends the sample infrastructure of Sec. 7 with dataflow" +
+    " knowledge and generates a graph of the resulting, inferred, dataflow diagram.")
+
     val help = new Option("h","help",false, "")
 
     new Options()
@@ -121,6 +137,9 @@ object CLI  extends LazyLogging
       .addOption(modelAndReason)
       .addOption(reasoning)
       .addOption(reasoningAll)
+      .addOption(benchmark)
+      .addOption(infrGraph)
+      .addOption(dfdGraph)
       .addOption(help)
 
   }
@@ -219,6 +238,21 @@ object CLI  extends LazyLogging
     new File(o.getValue.replace("~",System.getProperty(SysUtil.UserHome)))
       .listFiles().filter(_.isDirectory).sortBy(_.getName)
       .foreach( dir => queryModel(dir) )
+  }
+
+  private def benchmark(): Unit =
+  {
+    BenchmarkRunner.run()
+  }
+
+  private def infrastructureGraph(): Unit =
+  {
+    InfrastructureGraph.run()
+  }
+
+  private def dataflowGraph(): Unit =
+  {
+    DataflowGraph.run()
   }
 
 
