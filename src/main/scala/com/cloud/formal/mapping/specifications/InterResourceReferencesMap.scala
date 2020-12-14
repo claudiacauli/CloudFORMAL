@@ -377,7 +377,7 @@ private object InterResourceReferencesMap{
     "s3bucket_replicationdestination_bucket"
       -> ("s3bucket", "bucket", true, true ),
     "s3bucket_redirectallrequeststo_hostname"
-      -> (null.asInstanceOf[String], null.asInstanceOf[String], false, true),
+      -> (null.asInstanceOf[String], null.asInstanceOf[String], true, true),
     "s3bucket_redirectrule_hostname"
       -> (null.asInstanceOf[String], null.asInstanceOf[String], false, true),
     "s3bucket_lambdaconfiguration_function"
