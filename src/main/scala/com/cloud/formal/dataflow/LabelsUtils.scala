@@ -45,10 +45,12 @@ object LabelsUtils {
 
 
   private[dataflow]
-  def makeName(i: OWLNamedIndividual, m: OWLOntologyManager) =
+  def makeName(i: OWLNamedIndividual, m: OWLOntologyManager) = {
     if (OU.getAllResourceNodes(m) contains i)
       makeNameResourceNode(i)
     else makeNameSubProperty(i)
+  }
+
 
 
 

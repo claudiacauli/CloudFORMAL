@@ -137,9 +137,9 @@ object Interface extends LazyLogging{
       println(s" - StackSet $BOLD$stackSetName$RESET" )
 
     (file.listFiles().toVector
-      .filter(_.getAbsolutePath.endsWith(Extension.Json))
+      .filter(_.getAbsolutePath.endsWith(Extension.JSON))
       flatMap (f => {
-      val templateName = f.getName.split(Extension.Json).head
+      val templateName = f.getName.split(Extension.JSON).head
       if (!templateName
         .endsWith(FileSuffix.Descriptor) && !templateName.endsWith(SysUtil.DSStore))
       {
@@ -241,9 +241,9 @@ object Interface extends LazyLogging{
 
   private def loadImportedOwlTerminologies(parentDir: File, m: OWLOntologyManager): Unit =
   {
-    parentDir.listFiles().filter(_.isDirectory)
+    parentDir.listFiles().filter(f => f.isDirectory && !f.getName.contains("DFD"))
       .foreach(_.listFiles()
-        .filter(f => f.getName.endsWith(Extension.Owl) && !f.getName.endsWith(ModelFileSuffix.StackSet))
+        .filter(f => f.getName.endsWith(Extension.OWL) && !f.getName.endsWith(ModelFileSuffix.StackSet))
         .foreach(f => {
           try {
             m.loadOntologyFromOntologyDocument(f)
@@ -311,7 +311,7 @@ object Interface extends LazyLogging{
   {
 
     val templateName  =
-      templateFile.getName.split(Extension.Json).head
+      templateFile.getName.split(Extension.JSON).head
     val descrFileName =
       s"$inputPath$stacksetName/$templateName${FileSuffix.DescriptorJson}"
     var descrFile: Option[File] = None

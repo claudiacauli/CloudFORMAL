@@ -16,49 +16,121 @@
 
 package com.cloud.formal.dataflow
 
-import java.io.File
+import java.io.{File, FileOutputStream}
 
 import com.cloud.formal.{FilePath, Ontology, Extension => Ex}
-
 import com.cloud.formal.dataflow.{LabelsUtils => LU}
 import com.cloud.formal.dataflow.{OntologyUtils => OU}
 import com.cloud.formal.dataflow.{IRIUtils => IU}
-import org.semanticweb.owlapi.model.{AddImport, OWLClassAssertionAxiom, OWLDataFactory, OWLDataPropertyAssertionAxiom, OWLNamedIndividual, OWLObjectPropertyAssertionAxiom, OWLOntology, OWLOntologyAlreadyExistsException, OWLOntologyManager}
+import com.cloud.formal.model.ModelFileSuffix
+import org.semanticweb.owlapi.apibinding.OWLManager
+import org.semanticweb.owlapi.model.{AddImport, OWLDataFactory, OWLNamedIndividual, OWLObjectPropertyAssertionAxiom, OWLOntology, OWLOntologyAlreadyExistsException, OWLOntologyManager}
 
 import scala.jdk.StreamConverters._
+import Console.{BOLD, RESET}
 
 
 object DataflowGraph extends Graph {
 
-  val CURRENTDIR = "src/main/scala/com/cloud/formal/dataflow/"
-  val dotFileName = CURRENTDIR + "DataflowDiagram.dot"
-  val graphFileName = CURRENTDIR + "DataflowDiagram.png"
+  val dotFileName: String = DFDNaming.DFDTAG + Ex.DOT
+  val graphFileName: String = DFDNaming.DFDTAG + Ex.PNG
   var o: OWLOntology = _
   var df: OWLDataFactory = _
   var m: OWLOntologyManager = _
 
 
-  def run(): Unit =
+  def run(path: String): Unit =
   {
-    initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
 
-    println("Initialized Graph Generator")
+    val pathFile = new File (path)
+    if (pathFile.isDirectory && pathFile.getName.contains(DFDNaming.DFDTAG)){
+      val file = pathFile.listFiles().find(_.getName.endsWith(Ex.OWL)).get
+      runFromDFDModel(file)
+    } else if (pathFile.isDirectory){
+      val file = pathFile.listFiles().find(_.getName.endsWith(ModelFileSuffix.Infrastructure)).get
+      runFromInfrastructureModel(file)
+    } else if (pathFile.getName.endsWith(ModelFileSuffix.Dataflow))
+      runFromDFDModel(pathFile)
+    else if (pathFile.getName.endsWith(ModelFileSuffix.Infrastructure))
+      runFromInfrastructureModel(pathFile)
+    else println("No Model file found (neither Infrastructure nor DFD Model.")
+
+  }
+
+
+  private
+  def runFromInfrastructureModel(infrastructureModelFile: File) =
+  {
+    var outPath = infrastructureModelFile.getAbsolutePath.split("/").dropRight(1).mkString("/")
+    var inPath = infrastructureModelFile.getAbsolutePath
+
+    if (!outPath.endsWith("/"))
+      outPath = outPath + "/"
+
+    println(s"\n$BOLD Building DFD of " + inPath.split("/").last + s"$RESET")
+
+    initializeGraphGenerator(inPath)
+
+    println("  Initializing Graph Generator")
 
     loadAllOntologiesNeededForDFD()
-    println("Loaded all needed ontologies")
+    println("  Loading DFD Ontologies")
     val reasEngine = OU.startReasoner(o,df,m)
-    println("Started reasoner")
+
+    println("  Starting Reasoner Engine")
     val t = System.currentTimeMillis()
     OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
-    println("Merged axioms (took " + (System.currentTimeMillis()-t) + " ms).\n\n")
-    printGraphToDotFile(dotFileName,buildGraphDotSpecification)
 
-    runGraphvizDotToImage(dotFileName,graphFileName)
+    //    println("The main ontology now imports: ")
+    //    o.imports().forEach(println)
+
+    saveReasonedDFDOntology(inPath, outPath)
+
+    println("  Merged Inferred Axioms into Infrastructure Model \t[" + (System.currentTimeMillis()-t) + " ms].")
+    printGraphToDotFile(dotFileName,buildGraphDotSpecification,outPath)
+    runGraphvizDotToImage(dotFileName,graphFileName, outPath)
+    println(s"$BOLD DFD.png written to path: " + new File(outPath).getAbsolutePath + s"$RESET\n")
   }
 
 
 
+  /*
+  This functionality DOES NOT really work right now :(
+   */
+  private
+  def runFromDFDModel(dfdModelFile: File) =
+  {
+    var outPath = dfdModelFile.getAbsolutePath.split(ModelFileSuffix.Dataflow).head
+    var inPath = dfdModelFile.getAbsolutePath
 
+    if (!outPath.endsWith("/"))
+      outPath = outPath + "/"
+
+    m   = OWLManager.createOWLOntologyManager()
+    df  = m.getOWLDataFactory
+    o = m.loadOntologyFromOntologyDocument(dfdModelFile)
+
+    //println("Imported ontologies are: ")
+    o.imports().forEach(println)
+
+    printGraphToDotFile(dotFileName,buildGraphDotSpecification,outPath)
+    runGraphvizDotToImage(dotFileName,graphFileName, outPath)
+  }
+
+
+  private
+  def saveReasonedDFDOntology(inPath: String, outPath: String): Unit =
+  {
+    val name = inPath.split("/").last
+      .split(ModelFileSuffix.Infrastructure)(0)
+
+    val dir = new File(outPath + DFDNaming.DFDTAG + "/")
+    if (!dir.exists())  dir.mkdir()
+    val file = new File(outPath + DFDNaming.DFDTAG +"/" + name + ModelFileSuffix.Dataflow)
+    val fos = new FileOutputStream( file )
+    m.saveOntology(o, fos)
+    fos.close()
+  }
 
 
 
@@ -67,8 +139,15 @@ object DataflowGraph extends Graph {
   def loadAllOntologiesNeededForDFD(): Unit =
   {
 
-    new File(FilePath.ResourceTerms)
-    .listFiles().filter(_.getName.endsWith(Ex.Owl))
+    val resTypes = findAllResourceTypes()
+
+    val usedServicesWithDFDavailable =
+      Ontologies.serviceTypeToDFD.keys.filter(k =>
+      resTypes.exists(_.startsWith(k)))
+
+    new File(FilePath.DataflowResSpecs)
+    .listFiles().filter(_.getName.endsWith(Ex.OWL))
+      .filter( f => usedServicesWithDFDavailable.exists(s => f.getName.startsWith(s)))
       .foreach(f => {
         try {
           m.applyChange(
@@ -81,11 +160,10 @@ object DataflowGraph extends Graph {
         }
       })
 
-    val dfdPath = FilePath.ProjectResources + "Dataflow/"
-    Set("dfd.owl","dfdapigateway.owl","dfdcloudwatch.owl",
-      "dfdcloudtrail.owl","dfddynamodb.owl","dfdlambda.owl",
-      "dfds3.owl","dfdsns.owl","dfdsqs.owl").foreach( s => {
-      val imported = m.loadOntologyFromOntologyDocument(new File(dfdPath + s))
+    (List("dfd.owl") ++ usedServicesWithDFDavailable
+      .map(k => Ontologies.serviceTypeToDFD(k)))
+      .foreach( s => {
+      val imported = m.loadOntologyFromOntologyDocument(new File(FilePath.DataflowSpecs + s))
       m.applyChange(new AddImport(o, df.getOWLImportsDeclaration( m.getOntologyDocumentIRI(imported) )))
     })
 
@@ -93,6 +171,19 @@ object DataflowGraph extends Graph {
   }
 
 
+
+  private
+  def findAllResourceTypes() : Vector[String] = {
+
+    var resTypes: Vector[String] = Vector()
+
+    o.imports().filter(o => {
+      !o.getOntologyID.getOntologyIRI.get().getIRIString.endsWith("aws#") &&
+      !o.getOntologyID.getOntologyIRI.get().getIRIString.endsWith("stackset#")
+    }).forEach( o => resTypes = resTypes ++ List(o.getOntologyID.getOntologyIRI.get().toString.split("/").last.replace("#","")))
+
+      resTypes
+  }
 
 
 
@@ -114,9 +205,15 @@ object DataflowGraph extends Graph {
   }
 
 
+
+
+
   private
   def getSubgraphsDefinitions =
     OU.getAllAccounts(m,df) map getSubgraphDefinitionFromAccount
+
+
+
 
 
   private
@@ -169,6 +266,10 @@ object DataflowGraph extends Graph {
   }
 
 
+
+
+
+
   private
   def getEdgesDefinitionForDFDProperties =
     OU.getAllObjectPropertyAssertions(m)
@@ -202,6 +303,10 @@ object DataflowGraph extends Graph {
         "lambdafunction#function","iamrole#role") contains resType )
   }
 
+
+
+
+
   private
   def getLabelDependingOnRecordType(n :OWLNamedIndividual) =
   {
@@ -214,31 +319,19 @@ object DataflowGraph extends Graph {
   }
 
 
-  private
-  def classAssertionInvolvesDFDobjs(ax: OWLClassAssertionAxiom) =
-    (ax.getClassExpression.classesInSignature().toScala(List) find (c => IU.isDFDIRI(c.getIRI)) match {
-      case None => IU.isDFDIRI(ax.getIndividual.asOWLNamedIndividual().getIRI)
-      case _ => true
-    } ) && !ax.getClassExpression.isOWLThing
+
+
 
 //  private
-//  def classAssertionInvolvesServiceDFDobjs(ax: OWLClassAssertionAxiom) =
-//    (ax.getClassExpression.classesInSignature().toScala(List) find (c => IU.isServiceDFDIRI(c.getIRI)) match {
-//      case None => IU.isServiceDFDIRI(ax.getIndividual.asOWLNamedIndividual().getIRI)
+//  def classAssertionInvolvesDFDobjs(ax: OWLClassAssertionAxiom) =
+//    (ax.getClassExpression.classesInSignature().toScala(List) find (c => IU.isDFDIRI(c.getIRI)) match {
+//      case None => IU.isDFDIRI(ax.getIndividual.asOWLNamedIndividual().getIRI)
 //      case _ => true
 //    } ) && !ax.getClassExpression.isOWLThing
-//
-//  private
-//  def dataPropAssertionInvolvesDFDobjs(ax: OWLDataPropertyAssertionAxiom) =
-//    (IU.isDFDIRI(ax.getProperty.asOWLDataProperty().getIRI) ||
-//      IU.isDFDIRI(ax.getSubject.asOWLNamedIndividual().getIRI)) &&
-//    !ax.getProperty.isOWLTopDataProperty
-//
-//  private
-//  def dataPropAssertionInvolvesServiceDFDobjs(ax: OWLDataPropertyAssertionAxiom) =
-//    (IU.isServiceDFDIRI(ax.getProperty.asOWLDataProperty().getIRI) ||
-//      IU.isServiceDFDIRI(ax.getSubject.asOWLNamedIndividual().getIRI)) &&
-//      !ax.getProperty.isOWLTopDataProperty
+
+
+
+
 
   private
   def objPropAssertionInvolvesDFDObjs(ax: OWLObjectPropertyAssertionAxiom) =
@@ -246,23 +339,6 @@ object DataflowGraph extends Graph {
       IU.isDFDIRI(ax.getProperty.asOWLObjectProperty().getIRI) ||
       IU.isDFDIRI(ax.getSubject.asOWLNamedIndividual().getIRI)) &&
       !ax.getProperty.isOWLTopObjectProperty
-
-//  private
-//  def objPropAssertionInvolvesServiceDFDObjs(ax: OWLObjectPropertyAssertionAxiom) =
-//    (IU.isServiceDFDIRI(ax.getObject.asOWLNamedIndividual().getIRI) ||
-//      IU.isServiceDFDIRI(ax.getProperty.asOWLObjectProperty().getIRI) ||
-//      IU.isServiceDFDIRI(ax.getSubject.asOWLNamedIndividual().getIRI)) &&
-//      !ax.getProperty.isOWLTopObjectProperty
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -276,27 +352,18 @@ object DataflowGraph extends Graph {
         .flatMap(opax => List(opax.getObject.asOWLNamedIndividual()))
     })
 
+
+
+
+
   private
   def nodesInvolvedInDFDPropAssertions: Set[OWLNamedIndividual] =
     OU.getAllObjectPropertyAssertions(m)
       .filter( x => objPropAssertionInvolvesDFDObjs(x))
       .flatMap( x => Set(x.getObject.asOWLNamedIndividual(), x.getSubject.asOWLNamedIndividual()))
 
-//  private
-//  def isDFDcomponent (n : OWLNamedIndividual) = {
-//    val iris = m.ontologies().toScala(List).flatMap( o =>
-//      OU.getAllClassAssertionsIndividual(o,n)
-//        .filter(classAssertionInvolvesDFDobjs)
-//        .map(ca=> ca.getClassExpression.asOWLClass().getIRI)).toString
-//
-//    if (iris contains Ontology.VersionStringIRI+"dfd#DataStore")
-//      "Storage"
-//    else if (iris contains Ontology.VersionStringIRI+"dfd#Process")
-//      "Process"
-//    else "None"
-//  }
+
 
 
 
 }
-

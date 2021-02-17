@@ -34,7 +34,7 @@ object ModelIRI {
 
   
   def filename (serviceName: String, resourceName: String) : String =
-    serviceName.toLowerCase + resourceName.toLowerCase + Extension.Owl
+    serviceName.toLowerCase + resourceName.toLowerCase + Extension.OWL
 
 
   def resourceTypeIRI(resSpecName: String, resID: String): IRI =

@@ -285,7 +285,7 @@ object BenchmarkRunner
   private def loadSingleModelAndCreateModelData(inPath: String)
   : Vector[(String,OWLOntology,OWLDataFactory,OWLOntologyManager)] = {
     val dir = new File(inPath)
-        val f = dir.listFiles().filter(_.getName.endsWith(Extension.Owl)).head
+        val f = dir.listFiles().filter(_.getName.endsWith(Extension.OWL)).head
         val im = Interface.loadModel(f.getAbsolutePath, printEnabled = false)
         BenchmarkResults ++= Vector(
           new ModelData(im._4,resN = 0, resTypeN = 0,
@@ -300,7 +300,7 @@ object BenchmarkRunner
     new File(FilePath.BenchmarksOut)
       .listFiles().filter(_.isDirectory).sortBy(_.getName)
       .map( dir => {
-        val f = dir.listFiles().filter(_.getName.endsWith(Extension.Owl)).head
+        val f = dir.listFiles().filter(_.getName.endsWith(Extension.OWL)).head
         val im = Interface.loadModel(f.getAbsolutePath, printEnabled = false)
         BenchmarkResults ++= Vector(
           new ModelData(im._4,resN = 0, resTypeN = 0,

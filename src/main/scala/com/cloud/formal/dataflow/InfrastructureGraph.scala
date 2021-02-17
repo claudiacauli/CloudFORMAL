@@ -16,33 +16,57 @@
 
 package com.cloud.formal.dataflow
 
+import java.io.File
+
 import com.cloud.formal.dataflow.{LabelsUtils => LU}
 import com.cloud.formal.dataflow.{OntologyUtils => OU}
 import com.cloud.formal.dataflow.{IRIUtils => IU}
 import com.cloud.formal.dataflow.LabelsUtils.{makeLabelRecords, makeNameTerminal}
+import com.cloud.formal.model.ModelFileSuffix
 import org.semanticweb.owlapi.model.{OWLDataFactory, OWLNamedIndividual, OWLOntology, OWLOntologyManager}
-import com.cloud.formal.{Ontology, Renaming}
+import com.cloud.formal.{Extension, Ontology, Renaming}
 
 import scala.jdk.StreamConverters._
+import Console.{BOLD, RESET}
 
 
 
 object InfrastructureGraph extends Graph {
 
-  val CURRENTDIR = "src/main/scala/com/cloud/formal/dataflow/"
-  val dotFileName = CURRENTDIR + "infrastructureGraph.dot"
-  val graphFileName = CURRENTDIR + "infrastructureGraph.png"
+  //val CURRENTDIR = "src/main/scala/com/cloud/formal/dataflow/"
+  //val infrModelPath = "src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl"
+
+  val GRAPHTAG = "graph"
+
+  val dotFileName: String = GRAPHTAG + Extension.DOT
+  val graphFileName: String = GRAPHTAG + Extension.PNG
   var o: OWLOntology = _
   var df: OWLDataFactory = _
   var m: OWLOntologyManager = _
 
-  def run(): Unit =
+  def run(path: String): Unit =
   {
-    initializeGraphGenerator("src/main/scala/com/cloud/formal/dataflow/out/16_CaseStudy/16_CaseStudy/16_CaseStudy_InfrastructureModel.owl")
+    var outPath = path
+    var inPath = path
+
+    if (path.endsWith(ModelFileSuffix.Infrastructure))
+      outPath = path.split(ModelFileSuffix.Infrastructure)(0)
+    else
+      inPath = new File(path).listFiles().find(_.getName.endsWith(ModelFileSuffix.Infrastructure)).get.getAbsolutePath
+
+    if (!outPath.endsWith("/"))
+      outPath = outPath + "/"
+
+    println(s"\n$BOLD Building Graph of " + inPath.split("/").last + s"$RESET")
+
+
+    initializeGraphGenerator(inPath)
     val reasEngine = OU.startReasoner(o,df,m)
     OU.addInferredAxiomsToMainOntologyManager(o,m,reasEngine)
-    printGraphToDotFile(dotFileName,buildGraphDotSpecification)
-    runGraphvizDotToImage(dotFileName,graphFileName)
+    printGraphToDotFile(dotFileName,buildGraphDotSpecification, outPath)
+    runGraphvizDotToImage(dotFileName,graphFileName, outPath)
+    println(s"$BOLD graph.png written to path: " + new File(outPath).getAbsolutePath + s"$RESET\n")
+
   }
 
 
@@ -67,7 +91,7 @@ object InfrastructureGraph extends Graph {
   private
   def buildGraphDotSpecification: String =
   {
-    (getSubgraphsDefinitions ++
+      (getSubgraphsDefinitions ++
       getNodeDefinitionFromSubProperty ++
       getNodeDefinitionFromResource ++
       getEdgesDefinitionForObjectProperties)
@@ -143,8 +167,9 @@ object InfrastructureGraph extends Graph {
       "}"
 
   private
-  def getSubgraphsDefinitions : List[String]=
+  def getSubgraphsDefinitions : List[String]= {
     OU.getAllAccounts(m,df) map getSubgraphDefinitionFromAccount
+  }
 
   // SubpropertyNodes
 
@@ -158,7 +183,7 @@ object InfrastructureGraph extends Graph {
 
 
   private
-  def getNodeDefinitionFromSubProperty: List[String] =
+  def getNodeDefinitionFromSubProperty: List[String] = {
     OU.getAllSubPropertyNodes(m) map (n =>{
       if (OU.getAllDataRecordOnlyNodes(m) contains n)
         "\n  " + LU.makeNameSubProperty(n) +
@@ -169,6 +194,8 @@ object InfrastructureGraph extends Graph {
       else "\n  " + LU.makeNameSubProperty(n) +
         " [shape=circle fixedsize=true width=0.3 height=0.3 style=filled color=lightgray fillcolor=lightgray label=\"\"]"
     })
+  }
+
 
 
   private

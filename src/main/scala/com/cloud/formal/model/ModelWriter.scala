@@ -34,7 +34,7 @@ object ModelWriter extends StrictLogging{
 
     def writeSpecificationToFolder
     (model:Model, outputDir: String, format: String = Format.DefaultFormat ): Unit = {
-        val fos = new FileOutputStream(outputDir+"/"+model.name + Extension.Owl)
+        val fos = new FileOutputStream(outputDir+"/"+model.name + Extension.OWL)
         model.manager
           .saveOntology(
               model.ontology,
@@ -94,6 +94,35 @@ object ModelWriter extends StrictLogging{
 
 
 
+    def writeDataflowToOutputFolder
+    (model: Model, outputDir: String, format: String = Format.DefaultFormat): Unit = {
+      val folderName = outputDir + model.name + "/DFD"
+      val fileName = folderName + "/" + model.name + ModelFileSuffix.Dataflow
+
+      makeDirIfNoDirExists(folderName)
+
+      onlyImportedOntologies(model)
+        .foreach (o => {
+          saveToOutputFolder(o,model,folderName,format)
+          updateImportPointer(o,model,folderName)
+        })
+
+      val fos = new FileOutputStream(fileName)
+      model.manager
+        .saveOntology(
+          model.ontology,
+          documentFormat(format), fos)
+      fos.close()
+
+      addProtegeCatalogue(
+        onlyImportedOntologies(model),
+        model.name,
+        folderName)
+
+    }
+
+
+
 
 
     private def importedStackSets(model:Model) =
@@ -136,7 +165,7 @@ object ModelWriter extends StrictLogging{
                     if(oName.contains(OntologySuffix.StackSet))
                         oName.split("_").head + "/" +
                           oName.split("_").head + ModelFileSuffix.StackSet
-                    else oName + Extension.Owl
+                    else oName + Extension.OWL
 
                 "\n    <uri id=\""+ randomUUID +"\" name=\"" +
                   oIRI + "\" uri=\"" + oPath +"\"/>" +
@@ -177,7 +206,7 @@ object ModelWriter extends StrictLogging{
         val oldDocIRI = m.manager.getOntologyDocumentIRI(ontology)
         val fileName = ontology.getOntologyID.
           getOntologyIRI.toString.
-          split("/").last.dropRight(2) + Extension.Owl
+          split("/").last.dropRight(2) + Extension.OWL
         val newDocIRI = IRI.create(
             "file:" + folder + "/" + fileName)
         val oIRI  = ontology.getOntologyID.getOntologyIRI.get()

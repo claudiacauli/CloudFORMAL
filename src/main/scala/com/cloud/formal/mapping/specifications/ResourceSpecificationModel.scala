@@ -38,7 +38,7 @@ object ResourceSpecificationModel
   def fromResourceSpecificationFile(f: File): Model = {
 
     val fileName = f.getName
-        .split(Specification.SpecificationTrailer+Extension.Json)
+        .split(Specification.SpecificationTrailer+Extension.JSON)
         .head
 
       Parse.parseOption(Source.fromFile(f).mkString) match {

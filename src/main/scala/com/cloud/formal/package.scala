@@ -27,9 +27,11 @@ package object formal
   private[formal]
   object Extension extends Enumeration
   {
-    val Json  = ".json"
-    val Owl   = ".owl"
-    val Csv   = ".csv"
+    val JSON  = ".json"
+    val OWL   = ".owl"
+    val CSV   = ".csv"
+    val DOT   = ".dot"
+    val PNG   = ".png"
   }
 
 
@@ -38,6 +40,7 @@ package object formal
   {
     val StackSet        = "_stackset"
     val Infrastructure  = "_infrastructure"
+    val Aws             = "_aws"
   }
 
   private[formal]
@@ -54,9 +57,9 @@ package object formal
   {
     val Descriptor                = "Descriptor"
     val Report                    = "Report"
-    val DescriptorJson: String    = Descriptor + Extension.Json
-    val ReportCsv: String         = Report + Extension.Csv
-    val SpecificationJson: String = "Specification" + Extension.Json
+    val DescriptorJson: String    = Descriptor + Extension.JSON
+    val ReportCsv: String         = Report + Extension.CSV
+    val SpecificationJson: String = "Specification" + Extension.JSON
   }
 
 
@@ -67,12 +70,16 @@ package object formal
     val ResourceSpecs = "src/main/resources/CloudFormationResourceSpecification/"
     val ResourceTerms = "src/main/resources/terminology/resourcespecificationsOwl/"
     val AwsOntology   = "src/main/resources/terminology/aws.owl"
+    val DataflowSpecs = "src/main/resources/Dataflow/"
+    val DataflowResSpecs = "src/main/resources/Dataflow/resourcespecificationsOwl/"
     val BenchmarksOut = "BenchmarksOut/"
     val BenchmarksIn  = "Benchmarks/"
+    val DataflowOut = "DataflowOut/"
+    val DataflowIn  = "DataflowIn/"
 
     val ResourceTerminology: (String,String) => String
     = (service,resource) =>
-      ResourceTerms + service + resource + Extension.Owl
+      ResourceTerms + service + resource + Extension.OWL
   }
 
   private[formal]

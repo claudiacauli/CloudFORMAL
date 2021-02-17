@@ -41,16 +41,16 @@ trait Graph {
 
 
   protected
-  def printGraphToDotFile(graphFileName: String, graphString: String): PrintWriter =
+  def printGraphToDotFile(graphFileName: String, graphString: String, outPath: String): PrintWriter =
   {
-    print(graphString)
-    new PrintWriter(graphFileName){write(graphString); close()}
+    //print(graphString)
+    new PrintWriter(outPath + graphFileName){write(graphString); close()}
   }
 
 
   protected
-  def runGraphvizDotToImage(dotFileName: String, graphFileName: String): Int =
-    ("dot -Tpng " + dotFileName + " -o " + graphFileName).!
+  def runGraphvizDotToImage(dotFileName: String, graphFileName: String, outPath: String): Int =
+    ("dot -Tpng " + outPath + dotFileName + " -o " + outPath + graphFileName).!
 
 
 }

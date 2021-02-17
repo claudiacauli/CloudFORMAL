@@ -54,8 +54,8 @@ object CLI  extends LazyLogging
             case "mr" => modelAndReason(o)
             case "ra" => reasonAll(o)
             case "b"  => benchmark()
-            case "ig" => infrastructureGraph()
-            case "d"  => dataflowGraph()
+            case "ig" => infrastructureGraph(o)
+            case "d"  => dataflowGraph(o)
             case "h"  => help()
             case  _   => println("Unknown Option Selected")
           }
@@ -120,13 +120,19 @@ object CLI  extends LazyLogging
     val benchmark = new Option("b", "bench", false,
     "Runs benchmarks to generate Sec. 6's table.")
 
-    val infrGraph = new Option("ig", "infrG", false,
-    "Generates a graph representation of the sample " +
-      "infrastructure from Sec. 7.")
+    val infrGraph = new Option("ig", "infrG", true,
+    "Generates a graph representation of the infrastructure received in " +
+      "input.")
+    infrGraph.setArgs(1)
+    infrGraph.setOptionalArg(false)
+    infrGraph.setArgName("PATH")
 
-    val dfdGraph = new Option("d","dfd", false,
-    "Extends the sample infrastructure of Sec. 7 with dataflow" +
-    " knowledge and generates a graph of the resulting, inferred, dataflow diagram.")
+    val dfdGraph = new Option("d","dfd", true,
+    "Extends the infrastructure model received in input with " +
+      "dataflow knowledge and outputs a graph of the resulting - inferred dataflow diagram.")
+    dfdGraph.setArgs(1)
+    dfdGraph.setOptionalArg(false)
+    dfdGraph.setArgName("PATH")
 
     val help = new Option("h","help",false, "")
 
@@ -159,10 +165,10 @@ object CLI  extends LazyLogging
   private def help(): Unit = {
     val header = "\nArguments:"
     val footer = "\nExamples: \n -s  src/main/resources/CloudFormationResourceSpecification" +
-      "\n -m  Benchmarks/16_retailmenot/ ~/Outputs/" +
-      "\n -r  ~/Outputs/16_retailmenot/16_retailmenot_InfrastructureModel.owl" +
+      "\n -m  Benchmarks/15_retailmenot/ ~/Outputs/" +
+      "\n -r  ~/Outputs/15_retailmenot/15_retailmenot_InfrastructureModel.owl" +
       "\n -ma Benchmarks/ ~/Outputs/" +
-      "\n -mr Benchmarks/16_retailmenot/" +
+      "\n -mr Benchmarks/15_retailmenot/" +
       "\n -ra BenchmarksOut/" +
       "\n "
     val formatter = new HelpFormatter
@@ -181,7 +187,7 @@ object CLI  extends LazyLogging
   {
     val t =
       Interface.loadModel(
-        dir.listFiles().filter(_.getName.endsWith(Extension.Owl))
+        dir.listFiles().filter(_.getName.endsWith(Extension.OWL))
           .head.getAbsolutePath)
     val pc = new PropertiesChecker(t._4,t._1,t._2,t._3,dir.getAbsolutePath)
     pc.run(isPrintEnabled)(pc.r.runQuery)(pc.r.isSat)
@@ -245,14 +251,16 @@ object CLI  extends LazyLogging
     BenchmarkRunner.run()
   }
 
-  private def infrastructureGraph(): Unit =
+  private def infrastructureGraph(o: Option): Unit =
   {
-    InfrastructureGraph.run()
+    val inPath = o.getValue(0).replace("~",System.getProperty(SysUtil.UserHome))
+    InfrastructureGraph.run(inPath)
   }
 
-  private def dataflowGraph(): Unit =
+  private def dataflowGraph(o: Option): Unit =
   {
-    DataflowGraph.run()
+    val inPath = o.getValue(0).replace("~",System.getProperty(SysUtil.UserHome))
+    DataflowGraph.run(inPath)
   }
 
 

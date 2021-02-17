@@ -38,7 +38,7 @@ object OntologyUtils {
 
   def loadInfrastructureModel(inPath: String)
   : (OWLOntology, OWLDataFactory, OWLOntologyManager, String) =
-    Interface.loadModel(inPath)
+    Interface.loadModel(inPath,false)
 
   def startReasoner(o: OWLOntology, df: OWLDataFactory, m: OWLOntologyManager)
   : OWLReasoner =
@@ -88,7 +88,7 @@ object OntologyUtils {
   {
     m.ontologies().toScala(Set)
       .flatMap(_.individualsInSignature().toScala(Set)
-        .filter (IRIUtils.isStackSetOrInfrastructureObject)
+        //.filter (IRIUtils.isStackSetOrInfrastructureObject)
         .filter (i =>
           !IRIUtils.getSimpleName(i).startsWith(LU.SubpropertyString)
             && !IRIUtils.objIriEndsWith(i,IRIUtils.AWS)))
@@ -148,10 +148,10 @@ object OntologyUtils {
 
     val inferManager = OWLManager.createOWLOntologyManager()
     val inferOntology = inferManager.createOntology()
-    println("About to fill the ontology")
+    //println("About to fill the ontology")
     new InferredOntologyGenerator(reasEngine,gens)
       .fillOntology(inferManager.getOWLDataFactory,inferOntology)
-    println("Ontology filled")
+    //println("Ontology filled")
     inferOntology
 
   }

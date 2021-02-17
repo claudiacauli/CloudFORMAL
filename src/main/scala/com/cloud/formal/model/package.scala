@@ -35,14 +35,16 @@ package object model{
   {
     val StackSet        = "_StackSetModel"
     val Infrastructure  = "_InfrastructureModel"
+    val Dataflow        = "_DataFlowModel"
   }
 
 
   private[formal]
   object ModelFileSuffix extends Enumeration
   {
-    val StackSet: String        = ModelSuffix.StackSet + Extension.Owl
-    val Infrastructure: String  = ModelSuffix.Infrastructure + Extension.Owl
+    val StackSet: String        = ModelSuffix.StackSet + Extension.OWL
+    val Infrastructure: String  = ModelSuffix.Infrastructure + Extension.OWL
+    val Dataflow: String        = ModelSuffix.Dataflow + Extension.OWL
   }
 
 
