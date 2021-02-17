@@ -150,6 +150,9 @@
         <DataProperty IRI="fixedresponseconfig_statuscode"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="listener_alpnpolicy"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="listener_loadbalancerarn"/>
     </Declaration>
     <Declaration>
@@ -285,20 +288,6 @@
         <Class IRI="listener"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="listener_loadbalancerarn"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="listener"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="listener_port"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="listener"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="listener_protocol"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -626,6 +615,10 @@
         <Class IRI="fixedresponseconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="listener_alpnpolicy"/>
+        <Class IRI="listener"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="listener_loadbalancerarn"/>
         <Class IRI="listener"/>
     </DataPropertyDomain>
@@ -715,7 +708,7 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="authenticatecognitoconfig_sessiontimeout"/>
-        <Datatype abbreviatedIRI="xsd:long"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="authenticatecognitoconfig_userpoolarn"/>
@@ -759,7 +752,7 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="authenticateoidcconfig_sessiontimeout"/>
-        <Datatype abbreviatedIRI="xsd:long"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="authenticateoidcconfig_tokenendpoint"/>
@@ -783,6 +776,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="fixedresponseconfig_statuscode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="listener_alpnpolicy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1048,6 +1045,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>listener</IRI>
         <Literal>elasticloadbalancingv2listener:listener</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>listener_alpnpolicy</IRI>
+        <Literal>elasticloadbalancingv2listener:listener_alpnpolicy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

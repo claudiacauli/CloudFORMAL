@@ -15,10 +15,19 @@
         <Class IRI="destinationconfig"/>
     </Declaration>
     <Declaration>
+        <Class IRI="endpoints"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="eventsourcemapping"/>
     </Declaration>
     <Declaration>
         <Class IRI="onfailure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="selfmanagedeventsource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sourceaccessconfiguration"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
@@ -36,6 +45,18 @@
         <ObjectProperty IRI="eventsourcemapping_functionname"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="eventsourcemapping_selfmanagedeventsource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="eventsourcemapping_sourceaccessconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="selfmanagedeventsource_endpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpoints_kafkabootstrapservers"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="eventsourcemapping_batchsize"/>
     </Declaration>
     <Declaration>
@@ -43,6 +64,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="eventsourcemapping_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_functionresponsetypes"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
@@ -57,18 +81,29 @@
         <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="eventsourcemapping_partialbatchresponse"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_queues"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="eventsourcemapping_startingposition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_topics"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsourcemapping_tumblingwindowinseconds"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="onfailure_destination"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="destinationconfig"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="destinationconfig_onfailure"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
+    <Declaration>
+        <DataProperty IRI="sourceaccessconfiguration_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sourceaccessconfiguration_uri"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="eventsourcemapping"/>
         <ObjectSomeValuesFrom>
@@ -83,13 +118,6 @@
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
-    <SubClassOf>
-        <Class IRI="onfailure"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="onfailure_destination"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
     </FunctionalObjectProperty>
@@ -101,6 +129,12 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="eventsourcemapping_functionname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventsourcemapping_selfmanagedeventsource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="selfmanagedeventsource_endpoints"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
@@ -117,6 +151,18 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="eventsourcemapping_functionname"/>
         <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsourcemapping_selfmanagedeventsource"/>
+        <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsourcemapping_sourceaccessconfigurations"/>
+        <Class IRI="eventsourcemapping"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="selfmanagedeventsource_endpoints"/>
+        <Class IRI="selfmanagedeventsource"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="destinationconfig_onfailure"/>
@@ -130,6 +176,18 @@
         <ObjectProperty IRI="eventsourcemapping_functionname"/>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/lambdafunction#function"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventsourcemapping_selfmanagedeventsource"/>
+        <Class IRI="selfmanagedeventsource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="eventsourcemapping_sourceaccessconfigurations"/>
+        <Class IRI="sourceaccessconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="selfmanagedeventsource_endpoints"/>
+        <Class IRI="endpoints"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="eventsourcemapping_batchsize"/>
     </FunctionalDataProperty>
@@ -152,11 +210,27 @@
         <DataProperty IRI="eventsourcemapping_parallelizationfactor"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_partialbatchresponse"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="eventsourcemapping_startingposition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsourcemapping_tumblingwindowinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="onfailure_destination"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourceaccessconfiguration_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sourceaccessconfiguration_uri"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpoints_kafkabootstrapservers"/>
+        <Class IRI="endpoints"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="eventsourcemapping_batchsize"/>
         <Class IRI="eventsourcemapping"/>
@@ -167,6 +241,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="eventsourcemapping_enabled"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_functionresponsetypes"/>
         <Class IRI="eventsourcemapping"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -186,13 +264,41 @@
         <Class IRI="eventsourcemapping"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_partialbatchresponse"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_queues"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="eventsourcemapping_startingposition"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_topics"/>
+        <Class IRI="eventsourcemapping"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsourcemapping_tumblingwindowinseconds"/>
         <Class IRI="eventsourcemapping"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="onfailure_destination"/>
         <Class IRI="onfailure"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourceaccessconfiguration_type"/>
+        <Class IRI="sourceaccessconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sourceaccessconfiguration_uri"/>
+        <Class IRI="sourceaccessconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="endpoints_kafkabootstrapservers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="eventsourcemapping_batchsize"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -204,6 +310,10 @@
     <DataPropertyRange>
         <DataProperty IRI="eventsourcemapping_enabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_functionresponsetypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="eventsourcemapping_maximumbatchingwindowinseconds"/>
@@ -222,11 +332,35 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_partialbatchresponse"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_queues"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="eventsourcemapping_startingposition"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_topics"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsourcemapping_tumblingwindowinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="onfailure_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourceaccessconfiguration_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sourceaccessconfiguration_uri"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -238,6 +372,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>destinationconfig_onfailure</IRI>
         <Literal>lambdaeventsourcemapping:destinationconfig_onfailure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoints</IRI>
+        <Literal>lambdaeventsourcemapping:endpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoints_kafkabootstrapservers</IRI>
+        <Literal>lambdaeventsourcemapping:endpoints_kafkabootstrapservers</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -276,6 +420,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_functionresponsetypes</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_functionresponsetypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>eventsourcemapping_maximumbatchingwindowinseconds</IRI>
         <Literal>lambdaeventsourcemapping:eventsourcemapping_maximumbatchingwindowinseconds</Literal>
     </AnnotationAssertion>
@@ -296,8 +445,38 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_partialbatchresponse</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_partialbatchresponse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_queues</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_queues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_selfmanagedeventsource</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_selfmanagedeventsource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_sourceaccessconfigurations</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_sourceaccessconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>eventsourcemapping_startingposition</IRI>
         <Literal>lambdaeventsourcemapping:eventsourcemapping_startingposition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_topics</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_topics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsourcemapping_tumblingwindowinseconds</IRI>
+        <Literal>lambdaeventsourcemapping:eventsourcemapping_tumblingwindowinseconds</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -308,6 +487,31 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>onfailure_destination</IRI>
         <Literal>lambdaeventsourcemapping:onfailure_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selfmanagedeventsource</IRI>
+        <Literal>lambdaeventsourcemapping:selfmanagedeventsource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selfmanagedeventsource_endpoints</IRI>
+        <Literal>lambdaeventsourcemapping:selfmanagedeventsource_endpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceaccessconfiguration</IRI>
+        <Literal>lambdaeventsourcemapping:sourceaccessconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceaccessconfiguration_type</IRI>
+        <Literal>lambdaeventsourcemapping:sourceaccessconfiguration_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceaccessconfiguration_uri</IRI>
+        <Literal>lambdaeventsourcemapping:sourceaccessconfiguration_uri</Literal>
     </AnnotationAssertion>
 </Ontology>
 

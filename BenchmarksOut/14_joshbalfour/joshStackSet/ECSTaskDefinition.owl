@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="authorizationconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="containerdefinition"/>
     </Declaration>
     <Declaration>
@@ -22,6 +25,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="dockervolumeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="efsvolumeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="environmentfile"/>
     </Declaration>
     <Declaration>
         <Class IRI="firelensconfiguration"/>
@@ -105,6 +114,9 @@
         <ObjectProperty IRI="containerdefinition_environment"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="containerdefinition_environmentfiles"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="containerdefinition_extrahosts"/>
     </Declaration>
     <Declaration>
@@ -150,6 +162,9 @@
         <ObjectProperty IRI="dockervolumeconfiguration_labels"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="efsvolumeconfiguration_authorizationconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="firelensconfiguration_options"/>
     </Declaration>
     <Declaration>
@@ -192,7 +207,16 @@
         <ObjectProperty IRI="volume_dockervolumeconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="volume_efsvolumeconfiguration"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="volume_host"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authorizationconfig_accesspointid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authorizationconfig_iam"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="containerdefinition_command"/>
@@ -283,6 +307,24 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="dockervolumeconfiguration_scope"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="efsvolumeconfiguration_filesystemid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="efsvolumeconfiguration_rootdirectory"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryptionport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environmentfile_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environmentfile_value"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="firelensconfiguration_type"/>
@@ -462,51 +504,9 @@
         <DataProperty IRI="volumefrom_sourcecontainer"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="containerdependency"/>
+        <Class IRI="efsvolumeconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="containerdependency_condition"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="containerdependency"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="containerdependency_containername"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="device"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="device_hostpath"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="firelensconfiguration"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="firelensconfiguration_type"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="healthcheck"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="healthcheck_command"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="hostentry"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="hostentry_hostname"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="hostentry"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="hostentry_ipaddress"/>
+            <DataProperty IRI="efsvolumeconfiguration_filesystemid"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -549,20 +549,6 @@
         <Class IRI="secret"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="secret_valuefrom"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="systemcontrol"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="systemcontrol_namespace"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="systemcontrol"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="systemcontrol_value"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -631,6 +617,9 @@
         <ObjectProperty IRI="containerdefinition_repositorycredentials"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="efsvolumeconfiguration_authorizationconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="linuxparameters_capabilities"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -638,6 +627,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="volume_dockervolumeconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="volume_efsvolumeconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="volume_host"/>
@@ -652,6 +644,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="containerdefinition_environment"/>
+        <Class IRI="containerdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerdefinition_environmentfiles"/>
         <Class IRI="containerdefinition"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -715,6 +711,10 @@
         <Class IRI="dockervolumeconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="efsvolumeconfiguration_authorizationconfig"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="firelensconfiguration_options"/>
         <Class IRI="firelensconfiguration"/>
     </ObjectPropertyDomain>
@@ -771,6 +771,10 @@
         <Class IRI="volume"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="volume_efsvolumeconfiguration"/>
+        <Class IRI="volume"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="volume_host"/>
         <Class IRI="volume"/>
     </ObjectPropertyDomain>
@@ -785,6 +789,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="containerdefinition_environment"/>
         <Class IRI="keyvaluepair"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerdefinition_environmentfiles"/>
+        <Class IRI="environmentfile"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="containerdefinition_extrahosts"/>
@@ -847,6 +855,10 @@
         <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="efsvolumeconfiguration_authorizationconfig"/>
+        <Class IRI="authorizationconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="firelensconfiguration_options"/>
         <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
@@ -903,9 +915,19 @@
         <Class IRI="dockervolumeconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="volume_efsvolumeconfiguration"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="volume_host"/>
         <Class IRI="hostvolumeproperties"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authorizationconfig_accesspointid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authorizationconfig_iam"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="containerdefinition_cpu"/>
     </FunctionalDataProperty>
@@ -974,6 +996,24 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="dockervolumeconfiguration_scope"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="efsvolumeconfiguration_filesystemid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="efsvolumeconfiguration_rootdirectory"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryption"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryptionport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environmentfile_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environmentfile_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="firelensconfiguration_type"/>
@@ -1132,6 +1172,14 @@
         <DataProperty IRI="volumefrom_sourcecontainer"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="authorizationconfig_accesspointid"/>
+        <Class IRI="authorizationconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authorizationconfig_iam"/>
+        <Class IRI="authorizationconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="containerdefinition_command"/>
         <Class IRI="containerdefinition"/>
     </DataPropertyDomain>
@@ -1250,6 +1298,30 @@
     <DataPropertyDomain>
         <DataProperty IRI="dockervolumeconfiguration_scope"/>
         <Class IRI="dockervolumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="efsvolumeconfiguration_filesystemid"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="efsvolumeconfiguration_rootdirectory"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryption"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryptionport"/>
+        <Class IRI="efsvolumeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environmentfile_type"/>
+        <Class IRI="environmentfile"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environmentfile_value"/>
+        <Class IRI="environmentfile"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="firelensconfiguration_type"/>
@@ -1488,6 +1560,14 @@
         <Class IRI="volumefrom"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="authorizationconfig_accesspointid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authorizationconfig_iam"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="containerdefinition_command"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1605,6 +1685,30 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="dockervolumeconfiguration_scope"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="efsvolumeconfiguration_filesystemid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="efsvolumeconfiguration_rootdirectory"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryption"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="efsvolumeconfiguration_transitencryptionport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environmentfile_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environmentfile_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1843,6 +1947,21 @@
         <DataProperty IRI="volumefrom_sourcecontainer"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig</IRI>
+        <Literal>ecstaskdefinition:authorizationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig_accesspointid</IRI>
+        <Literal>ecstaskdefinition:authorizationconfig_accesspointid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizationconfig_iam</IRI>
+        <Literal>ecstaskdefinition:authorizationconfig_iam</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerdefinition</IRI>
@@ -1897,6 +2016,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerdefinition_environment</IRI>
         <Literal>ecstaskdefinition:containerdefinition_environment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerdefinition_environmentfiles</IRI>
+        <Literal>ecstaskdefinition:containerdefinition_environmentfiles</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2102,6 +2226,51 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dockervolumeconfiguration_scope</IRI>
         <Literal>ecstaskdefinition:dockervolumeconfiguration_scope</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration_authorizationconfig</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration_authorizationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration_filesystemid</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration_filesystemid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration_rootdirectory</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration_rootdirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration_transitencryption</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration_transitencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>efsvolumeconfiguration_transitencryptionport</IRI>
+        <Literal>ecstaskdefinition:efsvolumeconfiguration_transitencryptionport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environmentfile</IRI>
+        <Literal>ecstaskdefinition:environmentfile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environmentfile_type</IRI>
+        <Literal>ecstaskdefinition:environmentfile_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environmentfile_value</IRI>
+        <Literal>ecstaskdefinition:environmentfile_value</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2552,6 +2721,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>volume_dockervolumeconfiguration</IRI>
         <Literal>ecstaskdefinition:volume_dockervolumeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>volume_efsvolumeconfiguration</IRI>
+        <Literal>ecstaskdefinition:volume_efsvolumeconfiguration</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

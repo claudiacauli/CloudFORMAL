@@ -24,6 +24,9 @@
         <Class IRI="batchretrystrategy"/>
     </Declaration>
     <Declaration>
+        <Class IRI="deadletterconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="ecsparameters"/>
     </Declaration>
     <Declaration>
@@ -40,6 +43,12 @@
     </Declaration>
     <Declaration>
         <Class IRI="networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="redshiftdataparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="retrypolicy"/>
     </Declaration>
     <Declaration>
         <Class IRI="rule"/>
@@ -90,6 +99,9 @@
         <ObjectProperty IRI="target_batchparameters"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="target_deadletterconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="target_ecsparameters"/>
     </Declaration>
     <Declaration>
@@ -100,6 +112,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="target_kinesisparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="target_redshiftdataparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="target_retrypolicy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="target_runcommandparameters"/>
@@ -127,6 +145,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="batchretrystrategy_attempts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deadletterconfig_arn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ecsparameters_group"/>
@@ -157,6 +178,30 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_database"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_dbuser"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_secretmanagerarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_sql"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_statementname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="redshiftdataparameters_withevent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="retrypolicy_maximumeventageinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="retrypolicy_maximumretryattempts"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="rule_description"/>
@@ -243,6 +288,20 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="redshiftdataparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="redshiftdataparameters_database"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="redshiftdataparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="redshiftdataparameters_sql"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="runcommandparameters"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="runcommandparameters_runcommandtargets"/>
@@ -300,6 +359,9 @@
         <ObjectProperty IRI="target_batchparameters"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="target_deadletterconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="target_ecsparameters"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -310,6 +372,12 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="target_kinesisparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="target_redshiftdataparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="target_retrypolicy"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="target_runcommandparameters"/>
@@ -362,6 +430,10 @@
         <Class IRI="target"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="target_deadletterconfig"/>
+        <Class IRI="target"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="target_ecsparameters"/>
         <Class IRI="target"/>
     </ObjectPropertyDomain>
@@ -375,6 +447,14 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="target_kinesisparameters"/>
+        <Class IRI="target"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="target_redshiftdataparameters"/>
+        <Class IRI="target"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="target_retrypolicy"/>
         <Class IRI="target"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -426,6 +506,10 @@
         <Class IRI="batchparameters"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="target_deadletterconfig"/>
+        <Class IRI="deadletterconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="target_ecsparameters"/>
         <Class IRI="ecsparameters"/>
     </ObjectPropertyRange>
@@ -440,6 +524,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="target_kinesisparameters"/>
         <Class IRI="kinesisparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="target_redshiftdataparameters"/>
+        <Class IRI="redshiftdataparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="target_retrypolicy"/>
+        <Class IRI="retrypolicy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="target_runcommandparameters"/>
@@ -465,6 +557,9 @@
         <DataProperty IRI="batchretrystrategy_attempts"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="deadletterconfig_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="ecsparameters_group"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -484,6 +579,30 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="kinesisparameters_partitionkeypath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_database"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_dbuser"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_secretmanagerarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_sql"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_statementname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="redshiftdataparameters_withevent"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="retrypolicy_maximumeventageinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="retrypolicy_maximumretryattempts"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="rule_description"/>
@@ -553,6 +672,10 @@
         <Class IRI="batchretrystrategy"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="deadletterconfig_arn"/>
+        <Class IRI="deadletterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="ecsparameters_group"/>
         <Class IRI="ecsparameters"/>
     </DataPropertyDomain>
@@ -591,6 +714,38 @@
     <DataPropertyDomain>
         <DataProperty IRI="mapentry_string_value"/>
         <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_database"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_dbuser"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_secretmanagerarn"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_sql"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_statementname"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="redshiftdataparameters_withevent"/>
+        <Class IRI="redshiftdataparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="retrypolicy_maximumeventageinseconds"/>
+        <Class IRI="retrypolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="retrypolicy_maximumretryattempts"/>
+        <Class IRI="retrypolicy"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="rule_description"/>
@@ -677,6 +832,10 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="deadletterconfig_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="ecsparameters_group"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -715,6 +874,38 @@
     <DataPropertyRange>
         <DataProperty IRI="mapentry_string_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_database"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_dbuser"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_secretmanagerarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_sql"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_statementname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="redshiftdataparameters_withevent"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="retrypolicy_maximumeventageinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="retrypolicy_maximumretryattempts"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="rule_description"/>
@@ -839,6 +1030,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deadletterconfig</IRI>
+        <Literal>eventsrule:deadletterconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deadletterconfig_arn</IRI>
+        <Literal>eventsrule:deadletterconfig_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ecsparameters</IRI>
         <Literal>eventsrule:ecsparameters</Literal>
     </AnnotationAssertion>
@@ -926,6 +1127,56 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>networkconfiguration_awsvpcconfiguration</IRI>
         <Literal>eventsrule:networkconfiguration_awsvpcconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters</IRI>
+        <Literal>eventsrule:redshiftdataparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_database</IRI>
+        <Literal>eventsrule:redshiftdataparameters_database</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_dbuser</IRI>
+        <Literal>eventsrule:redshiftdataparameters_dbuser</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_secretmanagerarn</IRI>
+        <Literal>eventsrule:redshiftdataparameters_secretmanagerarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_sql</IRI>
+        <Literal>eventsrule:redshiftdataparameters_sql</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_statementname</IRI>
+        <Literal>eventsrule:redshiftdataparameters_statementname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>redshiftdataparameters_withevent</IRI>
+        <Literal>eventsrule:redshiftdataparameters_withevent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retrypolicy</IRI>
+        <Literal>eventsrule:retrypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retrypolicy_maximumeventageinseconds</IRI>
+        <Literal>eventsrule:retrypolicy_maximumeventageinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retrypolicy_maximumretryattempts</IRI>
+        <Literal>eventsrule:retrypolicy_maximumretryattempts</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1024,6 +1275,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>target_deadletterconfig</IRI>
+        <Literal>eventsrule:target_deadletterconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>target_ecsparameters</IRI>
         <Literal>eventsrule:target_ecsparameters</Literal>
     </AnnotationAssertion>
@@ -1056,6 +1312,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>target_kinesisparameters</IRI>
         <Literal>eventsrule:target_kinesisparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>target_redshiftdataparameters</IRI>
+        <Literal>eventsrule:target_redshiftdataparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>target_retrypolicy</IRI>
+        <Literal>eventsrule:target_retrypolicy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -21,6 +21,9 @@
         <Class IRI="launchconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="metadataoptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iaminstanceprofile#instanceprofile"/>
     </Declaration>
     <Declaration>
@@ -31,6 +34,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="launchconfiguration_iaminstanceprofile"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="launchconfiguration_metadataoptions"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="blockdevice_deleteontermination"/>
@@ -106,6 +112,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="launchconfiguration_userdata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadataoptions_httptokens"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="blockdevicemapping"/>
@@ -134,6 +149,9 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="launchconfiguration_iaminstanceprofile"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="launchconfiguration_metadataoptions"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="blockdevicemapping_ebs"/>
         <Class IRI="blockdevicemapping"/>
@@ -144,6 +162,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="launchconfiguration_iaminstanceprofile"/>
+        <Class IRI="launchconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="launchconfiguration_metadataoptions"/>
         <Class IRI="launchconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -158,6 +180,10 @@
         <ObjectProperty IRI="launchconfiguration_iaminstanceprofile"/>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iaminstanceprofile#instanceprofile"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="launchconfiguration_metadataoptions"/>
+        <Class IRI="metadataoptions"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="blockdevice_deleteontermination"/>
     </FunctionalDataProperty>
@@ -226,6 +252,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="launchconfiguration_userdata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadataoptions_httptokens"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="blockdevice_deleteontermination"/>
@@ -327,6 +362,18 @@
         <DataProperty IRI="launchconfiguration_userdata"/>
         <Class IRI="launchconfiguration"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+        <Class IRI="metadataoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+        <Class IRI="metadataoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadataoptions_httptokens"/>
+        <Class IRI="metadataoptions"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="blockdevice_deleteontermination"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -425,6 +472,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="launchconfiguration_userdata"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httpendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httpputresponsehoplimit"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadataoptions_httptokens"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -559,6 +618,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchconfiguration_metadataoptions</IRI>
+        <Literal>autoscalinglaunchconfiguration:launchconfiguration_metadataoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>launchconfiguration_placementtenancy</IRI>
         <Literal>autoscalinglaunchconfiguration:launchconfiguration_placementtenancy</Literal>
     </AnnotationAssertion>
@@ -581,6 +645,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>launchconfiguration_userdata</IRI>
         <Literal>autoscalinglaunchconfiguration:launchconfiguration_userdata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadataoptions</IRI>
+        <Literal>autoscalinglaunchconfiguration:metadataoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadataoptions_httpendpoint</IRI>
+        <Literal>autoscalinglaunchconfiguration:metadataoptions_httpendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadataoptions_httpputresponsehoplimit</IRI>
+        <Literal>autoscalinglaunchconfiguration:metadataoptions_httpputresponsehoplimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadataoptions_httptokens</IRI>
+        <Literal>autoscalinglaunchconfiguration:metadataoptions_httptokens</Literal>
     </AnnotationAssertion>
 </Ontology>
 

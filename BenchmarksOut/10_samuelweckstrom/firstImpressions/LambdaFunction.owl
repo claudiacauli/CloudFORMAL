@@ -33,7 +33,13 @@
         <Class IRI="environment"/>
     </Declaration>
     <Declaration>
+        <Class IRI="filesystemconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="function"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="imageconfig"/>
     </Declaration>
     <Declaration>
         <Class IRI="mapentry_string"/>
@@ -69,6 +75,12 @@
         <ObjectProperty IRI="function_environment"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="function_filesystemconfigs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="function_imageconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="function_kmskeyarn"/>
     </Declaration>
     <Declaration>
@@ -90,6 +102,9 @@
         <ObjectProperty IRI="vpcconfig_subnetids"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="code_imageuri"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="code_s3key"/>
     </Declaration>
     <Declaration>
@@ -97,6 +112,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="code_zipfile"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filesystemconfig_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filesystemconfig_localmountpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="function_codesigningconfigarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="function_description"/>
@@ -114,6 +138,9 @@
         <DataProperty IRI="function_memorysize"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="function_packagetype"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="function_reservedconcurrentexecutions"/>
     </Declaration>
     <Declaration>
@@ -121,6 +148,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="function_timeout"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imageconfig_command"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imageconfig_entrypoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imageconfig_workingdirectory"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_string_key"/>
@@ -138,6 +174,20 @@
         <DataProperty IRI="tracingconfig_mode"/>
     </Declaration>
     <SubClassOf>
+        <Class IRI="filesystemconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filesystemconfig_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="filesystemconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="filesystemconfig_localmountpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="function"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="function_code"/>
@@ -150,20 +200,6 @@
             <ObjectProperty IRI="function_role"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="function"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="function_handler"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="function"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="function_runtime"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="tag"/>
@@ -209,6 +245,9 @@
         <ObjectProperty IRI="function_environment"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="function_imageconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="function_kmskeyarn"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -239,6 +278,14 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="function_environment"/>
+        <Class IRI="function"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="function_filesystemconfigs"/>
+        <Class IRI="function"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="function_imageconfig"/>
         <Class IRI="function"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -290,6 +337,14 @@
         <Class IRI="environment"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="function_filesystemconfigs"/>
+        <Class IRI="filesystemconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="function_imageconfig"/>
+        <Class IRI="imageconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="function_kmskeyarn"/>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
     </ObjectPropertyRange>
@@ -318,6 +373,9 @@
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2subnet#subnet"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="code_imageuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="code_s3key"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -325,6 +383,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="code_zipfile"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filesystemconfig_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filesystemconfig_localmountpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="function_codesigningconfigarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="function_description"/>
@@ -339,6 +406,9 @@
         <DataProperty IRI="function_memorysize"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="function_packagetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="function_reservedconcurrentexecutions"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -346,6 +416,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="function_timeout"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imageconfig_workingdirectory"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -357,6 +430,10 @@
         <DataProperty IRI="tracingconfig_mode"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="code_imageuri"/>
+        <Class IRI="code"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="code_s3key"/>
         <Class IRI="code"/>
     </DataPropertyDomain>
@@ -367,6 +444,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="code_zipfile"/>
         <Class IRI="code"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filesystemconfig_arn"/>
+        <Class IRI="filesystemconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filesystemconfig_localmountpath"/>
+        <Class IRI="filesystemconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="function_codesigningconfigarn"/>
+        <Class IRI="function"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="function_description"/>
@@ -389,6 +478,10 @@
         <Class IRI="function"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="function_packagetype"/>
+        <Class IRI="function"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="function_reservedconcurrentexecutions"/>
         <Class IRI="function"/>
     </DataPropertyDomain>
@@ -399,6 +492,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="function_timeout"/>
         <Class IRI="function"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imageconfig_command"/>
+        <Class IRI="imageconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imageconfig_entrypoint"/>
+        <Class IRI="imageconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imageconfig_workingdirectory"/>
+        <Class IRI="imageconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="mapentry_string_key"/>
@@ -421,6 +526,10 @@
         <Class IRI="tracingconfig"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="code_imageuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="code_s3key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -430,6 +539,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="code_zipfile"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filesystemconfig_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filesystemconfig_localmountpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="function_codesigningconfigarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -453,6 +574,10 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="function_packagetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="function_reservedconcurrentexecutions"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
@@ -463,6 +588,18 @@
     <DataPropertyRange>
         <DataProperty IRI="function_timeout"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imageconfig_command"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imageconfig_entrypoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imageconfig_workingdirectory"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="mapentry_string_key"/>
@@ -488,6 +625,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>code</IRI>
         <Literal>lambdafunction:code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>code_imageuri</IRI>
+        <Literal>lambdafunction:code_imageuri</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -531,6 +673,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig</IRI>
+        <Literal>lambdafunction:filesystemconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig_arn</IRI>
+        <Literal>lambdafunction:filesystemconfig_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig_localmountpath</IRI>
+        <Literal>lambdafunction:filesystemconfig_localmountpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function</IRI>
         <Literal>lambdafunction:function</Literal>
     </AnnotationAssertion>
@@ -538,6 +695,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function_code</IRI>
         <Literal>lambdafunction:function_code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>function_codesigningconfigarn</IRI>
+        <Literal>lambdafunction:function_codesigningconfigarn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -556,6 +718,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>function_filesystemconfigs</IRI>
+        <Literal>lambdafunction:function_filesystemconfigs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function_functionname</IRI>
         <Literal>lambdafunction:function_functionname</Literal>
     </AnnotationAssertion>
@@ -563,6 +730,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function_handler</IRI>
         <Literal>lambdafunction:function_handler</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>function_imageconfig</IRI>
+        <Literal>lambdafunction:function_imageconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -578,6 +750,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function_memorysize</IRI>
         <Literal>lambdafunction:function_memorysize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>function_packagetype</IRI>
+        <Literal>lambdafunction:function_packagetype</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -613,6 +790,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>function_vpcconfig</IRI>
         <Literal>lambdafunction:function_vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig</IRI>
+        <Literal>lambdafunction:imageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig_command</IRI>
+        <Literal>lambdafunction:imageconfig_command</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig_entrypoint</IRI>
+        <Literal>lambdafunction:imageconfig_entrypoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig_workingdirectory</IRI>
+        <Literal>lambdafunction:imageconfig_workingdirectory</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

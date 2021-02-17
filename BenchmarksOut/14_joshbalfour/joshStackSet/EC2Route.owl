@@ -48,13 +48,22 @@
         <ObjectProperty IRI="route_vpcpeeringconnectionid"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="route_carriergatewayid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="route_destinationcidrblock"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="route_destinationipv6cidrblock"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="route_localgatewayid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="route_transitgatewayid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="route_vpcendpointid"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="route"/>
@@ -129,14 +138,27 @@
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ec2vpcpeeringconnection#vpcpeeringconnection"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="route_carriergatewayid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="route_destinationcidrblock"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="route_destinationipv6cidrblock"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="route_localgatewayid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="route_transitgatewayid"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="route_vpcendpointid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_carriergatewayid"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="route_destinationcidrblock"/>
         <Class IRI="route"/>
@@ -146,9 +168,21 @@
         <Class IRI="route"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="route_localgatewayid"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="route_transitgatewayid"/>
         <Class IRI="route"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="route_vpcendpointid"/>
+        <Class IRI="route"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="route_carriergatewayid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="route_destinationcidrblock"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -158,13 +192,26 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="route_localgatewayid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="route_transitgatewayid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="route_vpcendpointid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>route</IRI>
         <Literal>ec2route:route</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_carriergatewayid</IRI>
+        <Literal>ec2route:route_carriergatewayid</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -193,6 +240,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_localgatewayid</IRI>
+        <Literal>ec2route:route_localgatewayid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>route_natgatewayid</IRI>
         <Literal>ec2route:route_natgatewayid</Literal>
     </AnnotationAssertion>
@@ -210,6 +262,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>route_transitgatewayid</IRI>
         <Literal>ec2route:route_transitgatewayid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>route_vpcendpointid</IRI>
+        <Literal>ec2route:route_vpcendpointid</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -15,6 +15,12 @@
         <Class IRI="awsvpcconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="deploymentcircuitbreaker"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="deploymentconfiguration"/>
     </Declaration>
     <Declaration>
@@ -42,7 +48,13 @@
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="deploymentconfiguration_deploymentcircuitbreaker"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="service_capacityproviderstrategy"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="service_deploymentconfiguration"/>
@@ -76,6 +88,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="awsvpcconfiguration_subnets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deploymentcircuitbreaker_enable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deploymentcircuitbreaker_rollback"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="deploymentconfiguration_maximumpercent"/>
@@ -138,6 +165,9 @@
         <DataProperty IRI="service_schedulingstrategy"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="service_servicearn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="service_servicename"/>
     </Declaration>
     <Declaration>
@@ -162,17 +192,17 @@
         <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="awsvpcconfiguration"/>
+        <Class IRI="deploymentcircuitbreaker"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="awsvpcconfiguration_subnets"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
+            <DataProperty IRI="deploymentcircuitbreaker_enable"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="loadbalancer"/>
+        <Class IRI="deploymentcircuitbreaker"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="loadbalancer_containerport"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
+            <DataProperty IRI="deploymentcircuitbreaker_rollback"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -204,6 +234,9 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="deploymentconfiguration_deploymentcircuitbreaker"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -216,8 +249,16 @@
         <ObjectProperty IRI="service_networkconfiguration"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="deploymentconfiguration_deploymentcircuitbreaker"/>
+        <Class IRI="deploymentconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
         <Class IRI="networkconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="service_capacityproviderstrategy"/>
+        <Class IRI="service"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="service_deploymentconfiguration"/>
@@ -252,8 +293,16 @@
         <Class IRI="service"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="deploymentconfiguration_deploymentcircuitbreaker"/>
+        <Class IRI="deploymentcircuitbreaker"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="networkconfiguration_awsvpcconfiguration"/>
         <Class IRI="awsvpcconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="service_capacityproviderstrategy"/>
+        <Class IRI="capacityproviderstrategyitem"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="service_deploymentconfiguration"/>
@@ -289,6 +338,21 @@
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="awsvpcconfiguration_assignpublicip"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deploymentcircuitbreaker_enable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deploymentcircuitbreaker_rollback"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="deploymentconfiguration_maximumpercent"/>
@@ -351,6 +415,9 @@
         <DataProperty IRI="service_schedulingstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="service_servicearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="service_servicename"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -385,6 +452,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="awsvpcconfiguration_subnets"/>
         <Class IRI="awsvpcconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+        <Class IRI="capacityproviderstrategyitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deploymentcircuitbreaker_enable"/>
+        <Class IRI="deploymentcircuitbreaker"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deploymentcircuitbreaker_rollback"/>
+        <Class IRI="deploymentcircuitbreaker"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="deploymentconfiguration_maximumpercent"/>
@@ -467,6 +554,10 @@
         <Class IRI="service"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="service_servicearn"/>
+        <Class IRI="service"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="service_servicename"/>
         <Class IRI="service"/>
     </DataPropertyDomain>
@@ -509,6 +600,26 @@
     <DataPropertyRange>
         <DataProperty IRI="awsvpcconfiguration_subnets"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityproviderstrategyitem_base"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityproviderstrategyitem_capacityprovider"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityproviderstrategyitem_weight"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deploymentcircuitbreaker_enable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deploymentcircuitbreaker_rollback"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="deploymentconfiguration_maximumpercent"/>
@@ -591,6 +702,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="service_servicearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="service_servicename"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -644,8 +759,48 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem</IRI>
+        <Literal>ecsservice:capacityproviderstrategyitem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_base</IRI>
+        <Literal>ecsservice:capacityproviderstrategyitem_base</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_capacityprovider</IRI>
+        <Literal>ecsservice:capacityproviderstrategyitem_capacityprovider</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityproviderstrategyitem_weight</IRI>
+        <Literal>ecsservice:capacityproviderstrategyitem_weight</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentcircuitbreaker</IRI>
+        <Literal>ecsservice:deploymentcircuitbreaker</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentcircuitbreaker_enable</IRI>
+        <Literal>ecsservice:deploymentcircuitbreaker_enable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentcircuitbreaker_rollback</IRI>
+        <Literal>ecsservice:deploymentcircuitbreaker_rollback</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>deploymentconfiguration</IRI>
         <Literal>ecsservice:deploymentconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentconfiguration_deploymentcircuitbreaker</IRI>
+        <Literal>ecsservice:deploymentconfiguration_deploymentcircuitbreaker</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -739,6 +894,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>service_capacityproviderstrategy</IRI>
+        <Literal>ecsservice:service_capacityproviderstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>service_cluster</IRI>
         <Literal>ecsservice:service_cluster</Literal>
     </AnnotationAssertion>
@@ -811,6 +971,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>service_schedulingstrategy</IRI>
         <Literal>ecsservice:service_schedulingstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>service_servicearn</IRI>
+        <Literal>ecsservice:service_servicearn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

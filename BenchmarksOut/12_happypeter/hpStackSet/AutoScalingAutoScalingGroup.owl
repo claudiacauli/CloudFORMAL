@@ -66,6 +66,9 @@
         <ObjectProperty IRI="launchtemplate_overrides"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="launchtemplateoverrides_launchtemplatespecification"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="mixedinstancespolicy_instancesdistribution"/>
     </Declaration>
     <Declaration>
@@ -76,6 +79,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="autoscalinggroup_availabilityzones"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalinggroup_capacityrebalance"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="autoscalinggroup_cooldown"/>
@@ -106,6 +112,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="autoscalinggroup_minsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalinggroup_newinstancesprotectedfromscalein"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="autoscalinggroup_placementgroup"/>
@@ -291,6 +300,9 @@
         <ObjectProperty IRI="launchtemplate_launchtemplatespecification"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="launchtemplateoverrides_launchtemplatespecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="mixedinstancespolicy_instancesdistribution"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -327,6 +339,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="launchtemplate_overrides"/>
         <Class IRI="launchtemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="launchtemplateoverrides_launchtemplatespecification"/>
+        <Class IRI="launchtemplateoverrides"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="mixedinstancespolicy_instancesdistribution"/>
@@ -369,6 +385,10 @@
         <Class IRI="launchtemplateoverrides"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="launchtemplateoverrides_launchtemplatespecification"/>
+        <Class IRI="launchtemplatespecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="mixedinstancespolicy_instancesdistribution"/>
         <Class IRI="instancesdistribution"/>
     </ObjectPropertyRange>
@@ -378,6 +398,9 @@
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="autoscalinggroup_autoscalinggroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalinggroup_capacityrebalance"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="autoscalinggroup_cooldown"/>
@@ -405,6 +428,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="autoscalinggroup_minsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalinggroup_newinstancesprotectedfromscalein"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="autoscalinggroup_placementgroup"/>
@@ -490,6 +516,10 @@
         <Class IRI="autoscalinggroup"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="autoscalinggroup_capacityrebalance"/>
+        <Class IRI="autoscalinggroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="autoscalinggroup_cooldown"/>
         <Class IRI="autoscalinggroup"/>
     </DataPropertyDomain>
@@ -527,6 +557,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="autoscalinggroup_minsize"/>
+        <Class IRI="autoscalinggroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalinggroup_newinstancesprotectedfromscalein"/>
         <Class IRI="autoscalinggroup"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -658,6 +692,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="autoscalinggroup_capacityrebalance"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="autoscalinggroup_cooldown"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -696,6 +734,10 @@
     <DataPropertyRange>
         <DataProperty IRI="autoscalinggroup_minsize"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalinggroup_newinstancesprotectedfromscalein"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="autoscalinggroup_placementgroup"/>
@@ -834,6 +876,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroup_capacityrebalance</IRI>
+        <Literal>autoscalingautoscalinggroup:autoscalinggroup_capacityrebalance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>autoscalinggroup_cooldown</IRI>
         <Literal>autoscalingautoscalinggroup:autoscalinggroup_cooldown</Literal>
     </AnnotationAssertion>
@@ -901,6 +948,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>autoscalinggroup_mixedinstancespolicy</IRI>
         <Literal>autoscalingautoscalinggroup:autoscalinggroup_mixedinstancespolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalinggroup_newinstancesprotectedfromscalein</IRI>
+        <Literal>autoscalingautoscalinggroup:autoscalinggroup_newinstancesprotectedfromscalein</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -996,6 +1048,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>launchtemplateoverrides_instancetype</IRI>
         <Literal>autoscalingautoscalinggroup:launchtemplateoverrides_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplateoverrides_launchtemplatespecification</IRI>
+        <Literal>autoscalingautoscalinggroup:launchtemplateoverrides_launchtemplatespecification</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
