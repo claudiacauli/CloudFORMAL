@@ -1,0 +1,857 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/quicksightanalysis#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/quicksightanalysis#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="analysis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="analysiserror"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="analysissourceentity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="analysissourcetemplate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datasetreference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datetimeparameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="decimalparameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="integerparameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="parameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcepermission"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sheet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stringparameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysis_errors"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysis_parameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysis_permissions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysis_sourceentity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysis_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysissourceentity_sourcetemplate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="analysissourcetemplate_datasetreferences"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parameters_datetimeparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parameters_decimalparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parameters_integerparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parameters_stringparameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysis_analysisid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysis_awsaccountid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysis_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysis_themearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysiserror_message"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysiserror_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analysissourcetemplate_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datetimeparameter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datetimeparameter_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="decimalparameter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="decimalparameter_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integerparameter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integerparameter_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcepermission_actions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcepermission_principal"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sheet_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sheet_sheetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stringparameter_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stringparameter_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="analysis"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="analysis_analysisid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="analysis"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="analysis_awsaccountid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="analysissourcetemplate"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="analysissourcetemplate_datasetreferences"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="analysissourcetemplate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="analysissourcetemplate_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasetreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasetreference_datasetarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasetreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasetreference_datasetplaceholder"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datetimeparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datetimeparameter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datetimeparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datetimeparameter_values"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="decimalparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="decimalparameter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="decimalparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="decimalparameter_values"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="integerparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="integerparameter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="integerparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="integerparameter_values"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcepermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcepermission_actions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcepermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcepermission_principal"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stringparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stringparameter_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stringparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stringparameter_values"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="analysis_parameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="analysis_sourceentity"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="analysissourceentity_sourcetemplate"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysis_errors"/>
+        <Class IRI="analysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysis_parameters"/>
+        <Class IRI="analysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysis_permissions"/>
+        <Class IRI="analysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysis_sourceentity"/>
+        <Class IRI="analysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysis_tags"/>
+        <Class IRI="analysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysissourceentity_sourcetemplate"/>
+        <Class IRI="analysissourceentity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="analysissourcetemplate_datasetreferences"/>
+        <Class IRI="analysissourcetemplate"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parameters_datetimeparameters"/>
+        <Class IRI="parameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parameters_decimalparameters"/>
+        <Class IRI="parameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parameters_integerparameters"/>
+        <Class IRI="parameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parameters_stringparameters"/>
+        <Class IRI="parameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysis_errors"/>
+        <Class IRI="analysiserror"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysis_parameters"/>
+        <Class IRI="parameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysis_permissions"/>
+        <Class IRI="resourcepermission"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysis_sourceentity"/>
+        <Class IRI="analysissourceentity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysis_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysissourceentity_sourcetemplate"/>
+        <Class IRI="analysissourcetemplate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="analysissourcetemplate_datasetreferences"/>
+        <Class IRI="datasetreference"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parameters_datetimeparameters"/>
+        <Class IRI="datetimeparameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parameters_decimalparameters"/>
+        <Class IRI="decimalparameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parameters_integerparameters"/>
+        <Class IRI="integerparameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parameters_stringparameters"/>
+        <Class IRI="stringparameter"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysis_analysisid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysis_awsaccountid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysis_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysis_themearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysiserror_message"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysiserror_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analysissourcetemplate_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datetimeparameter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="decimalparameter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integerparameter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcepermission_principal"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sheet_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sheet_sheetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stringparameter_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysis_analysisid"/>
+        <Class IRI="analysis"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysis_awsaccountid"/>
+        <Class IRI="analysis"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysis_name"/>
+        <Class IRI="analysis"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysis_themearn"/>
+        <Class IRI="analysis"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysiserror_message"/>
+        <Class IRI="analysiserror"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysiserror_type"/>
+        <Class IRI="analysiserror"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="analysissourcetemplate_arn"/>
+        <Class IRI="analysissourcetemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+        <Class IRI="datasetreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+        <Class IRI="datasetreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datetimeparameter_name"/>
+        <Class IRI="datetimeparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datetimeparameter_values"/>
+        <Class IRI="datetimeparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="decimalparameter_name"/>
+        <Class IRI="decimalparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="decimalparameter_values"/>
+        <Class IRI="decimalparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integerparameter_name"/>
+        <Class IRI="integerparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integerparameter_values"/>
+        <Class IRI="integerparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcepermission_actions"/>
+        <Class IRI="resourcepermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcepermission_principal"/>
+        <Class IRI="resourcepermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sheet_name"/>
+        <Class IRI="sheet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sheet_sheetid"/>
+        <Class IRI="sheet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stringparameter_name"/>
+        <Class IRI="stringparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stringparameter_values"/>
+        <Class IRI="stringparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="analysis_analysisid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysis_awsaccountid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysis_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysis_themearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysiserror_message"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysiserror_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="analysissourcetemplate_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datetimeparameter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datetimeparameter_values"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="decimalparameter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="decimalparameter_values"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integerparameter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integerparameter_values"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcepermission_actions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcepermission_principal"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sheet_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sheet_sheetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stringparameter_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stringparameter_values"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis</IRI>
+        <Literal>quicksightanalysis:analysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_analysisid</IRI>
+        <Literal>quicksightanalysis:analysis_analysisid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_awsaccountid</IRI>
+        <Literal>quicksightanalysis:analysis_awsaccountid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_errors</IRI>
+        <Literal>quicksightanalysis:analysis_errors</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_name</IRI>
+        <Literal>quicksightanalysis:analysis_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_parameters</IRI>
+        <Literal>quicksightanalysis:analysis_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_permissions</IRI>
+        <Literal>quicksightanalysis:analysis_permissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_sourceentity</IRI>
+        <Literal>quicksightanalysis:analysis_sourceentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_tags</IRI>
+        <Literal>quicksightanalysis:analysis_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysis_themearn</IRI>
+        <Literal>quicksightanalysis:analysis_themearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysiserror</IRI>
+        <Literal>quicksightanalysis:analysiserror</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysiserror_message</IRI>
+        <Literal>quicksightanalysis:analysiserror_message</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysiserror_type</IRI>
+        <Literal>quicksightanalysis:analysiserror_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysissourceentity</IRI>
+        <Literal>quicksightanalysis:analysissourceentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysissourceentity_sourcetemplate</IRI>
+        <Literal>quicksightanalysis:analysissourceentity_sourcetemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysissourcetemplate</IRI>
+        <Literal>quicksightanalysis:analysissourcetemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysissourcetemplate_arn</IRI>
+        <Literal>quicksightanalysis:analysissourcetemplate_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analysissourcetemplate_datasetreferences</IRI>
+        <Literal>quicksightanalysis:analysissourcetemplate_datasetreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference</IRI>
+        <Literal>quicksightanalysis:datasetreference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference_datasetarn</IRI>
+        <Literal>quicksightanalysis:datasetreference_datasetarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference_datasetplaceholder</IRI>
+        <Literal>quicksightanalysis:datasetreference_datasetplaceholder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datetimeparameter</IRI>
+        <Literal>quicksightanalysis:datetimeparameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datetimeparameter_name</IRI>
+        <Literal>quicksightanalysis:datetimeparameter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datetimeparameter_values</IRI>
+        <Literal>quicksightanalysis:datetimeparameter_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>decimalparameter</IRI>
+        <Literal>quicksightanalysis:decimalparameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>decimalparameter_name</IRI>
+        <Literal>quicksightanalysis:decimalparameter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>decimalparameter_values</IRI>
+        <Literal>quicksightanalysis:decimalparameter_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integerparameter</IRI>
+        <Literal>quicksightanalysis:integerparameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integerparameter_name</IRI>
+        <Literal>quicksightanalysis:integerparameter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integerparameter_values</IRI>
+        <Literal>quicksightanalysis:integerparameter_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters</IRI>
+        <Literal>quicksightanalysis:parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters_datetimeparameters</IRI>
+        <Literal>quicksightanalysis:parameters_datetimeparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters_decimalparameters</IRI>
+        <Literal>quicksightanalysis:parameters_decimalparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters_integerparameters</IRI>
+        <Literal>quicksightanalysis:parameters_integerparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters_stringparameters</IRI>
+        <Literal>quicksightanalysis:parameters_stringparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission</IRI>
+        <Literal>quicksightanalysis:resourcepermission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission_actions</IRI>
+        <Literal>quicksightanalysis:resourcepermission_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission_principal</IRI>
+        <Literal>quicksightanalysis:resourcepermission_principal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet</IRI>
+        <Literal>quicksightanalysis:sheet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet_name</IRI>
+        <Literal>quicksightanalysis:sheet_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet_sheetid</IRI>
+        <Literal>quicksightanalysis:sheet_sheetid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stringparameter</IRI>
+        <Literal>quicksightanalysis:stringparameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stringparameter_name</IRI>
+        <Literal>quicksightanalysis:stringparameter_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stringparameter_values</IRI>
+        <Literal>quicksightanalysis:stringparameter_values</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>quicksightanalysis:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>quicksightanalysis:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>quicksightanalysis:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

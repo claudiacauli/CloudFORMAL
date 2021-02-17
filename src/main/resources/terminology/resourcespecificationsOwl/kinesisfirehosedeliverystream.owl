@@ -27,6 +27,9 @@
         <Class IRI="deliverystream"/>
     </Declaration>
     <Declaration>
+        <Class IRI="deliverystreamencryptionconfigurationinput"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="deserializer"/>
     </Declaration>
     <Declaration>
@@ -46,6 +49,18 @@
     </Declaration>
     <Declaration>
         <Class IRI="hivejsonserde"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpendpointcommonattribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpendpointconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpendpointrequestconfiguration"/>
     </Declaration>
     <Declaration>
         <Class IRI="inputformatconfiguration"/>
@@ -87,6 +102,9 @@
         <Class IRI="redshiftretryoptions"/>
     </Declaration>
     <Declaration>
+        <Class IRI="retryoptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="s3destinationconfiguration"/>
     </Declaration>
     <Declaration>
@@ -102,6 +120,9 @@
         <Class IRI="splunkretryoptions"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="vpcconfiguration"/>
     </Declaration>
     <Declaration>
@@ -114,10 +135,16 @@
         <ObjectProperty IRI="dataformatconversionconfiguration_schemaconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="deliverystream_deliverystreamencryptionconfigurationinput"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="deliverystream_elasticsearchdestinationconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="deliverystream_extendeds3destinationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="deliverystream_httpendpointdestinationconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="deliverystream_kinesisstreamsourceconfiguration"/>
@@ -130,6 +157,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="deliverystream_splunkdestinationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="deliverystream_tags"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="deserializer_hivejsonserde"/>
@@ -175,6 +205,30 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="extendeds3destinationconfiguration_s3backupconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_bufferinghints"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_cloudwatchloggingoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_endpointconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_processingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_requestconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_retryoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_s3configuration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpendpointrequestconfiguration_commonattributes"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="inputformatconfiguration_deserializer"/>
@@ -270,6 +324,12 @@
         <DataProperty IRI="deliverystream_deliverystreamtype"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keytype"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="elasticsearchbufferinghints_intervalinseconds"/>
     </Declaration>
     <Declaration>
@@ -322,6 +382,30 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="hivejsonserde_timestampformats"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointcommonattribute_attributename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointcommonattribute_attributevalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointconfiguration_accesskey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointconfiguration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointconfiguration_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointdestinationconfiguration_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointdestinationconfiguration_s3backupmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpendpointrequestconfiguration_contentencoding"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="kinesisstreamsourceconfiguration_kinesisstreamarn"/>
@@ -423,6 +507,9 @@
         <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="retryoptions_durationinseconds"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
     </Declaration>
     <Declaration>
@@ -474,6 +561,12 @@
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="vpcconfiguration_rolearn"/>
     </Declaration>
     <Declaration>
@@ -486,6 +579,13 @@
         <Class IRI="copycommand"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="copycommand_datatablename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="deliverystreamencryptionconfigurationinput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="deliverystreamencryptionconfigurationinput_keytype"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -523,6 +623,41 @@
             <DataProperty IRI="extendeds3destinationconfiguration_rolearn"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpendpointcommonattribute"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpendpointcommonattribute_attributename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpendpointcommonattribute"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpendpointcommonattribute_attributevalue"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpendpointconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpendpointconfiguration_url"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpendpointdestinationconfiguration_endpointconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpendpointdestinationconfiguration_s3configuration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="kinesisstreamsourceconfiguration"/>
@@ -651,6 +786,20 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="vpcconfiguration"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="vpcconfiguration_rolearn"/>
@@ -681,10 +830,16 @@
         <ObjectProperty IRI="dataformatconversionconfiguration_schemaconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="deliverystream_deliverystreamencryptionconfigurationinput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="deliverystream_elasticsearchdestinationconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="deliverystream_extendeds3destinationconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="deliverystream_httpendpointdestinationconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="deliverystream_kinesisstreamsourceconfiguration"/>
@@ -742,6 +897,27 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="extendeds3destinationconfiguration_s3backupconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_bufferinghints"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_cloudwatchloggingoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_endpointconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_processingconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_requestconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_retryoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_s3configuration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="inputformatconfiguration_deserializer"/>
@@ -807,11 +983,19 @@
         <Class IRI="dataformatconversionconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="deliverystream_deliverystreamencryptionconfigurationinput"/>
+        <Class IRI="deliverystream"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="deliverystream_elasticsearchdestinationconfiguration"/>
         <Class IRI="deliverystream"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="deliverystream_extendeds3destinationconfiguration"/>
+        <Class IRI="deliverystream"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="deliverystream_httpendpointdestinationconfiguration"/>
         <Class IRI="deliverystream"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -828,6 +1012,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="deliverystream_splunkdestinationconfiguration"/>
+        <Class IRI="deliverystream"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="deliverystream_tags"/>
         <Class IRI="deliverystream"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -889,6 +1077,38 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="extendeds3destinationconfiguration_s3backupconfiguration"/>
         <Class IRI="extendeds3destinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_bufferinghints"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_cloudwatchloggingoptions"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_endpointconfiguration"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_processingconfiguration"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_requestconfiguration"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_retryoptions"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_s3configuration"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpendpointrequestconfiguration_commonattributes"/>
+        <Class IRI="httpendpointrequestconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="inputformatconfiguration_deserializer"/>
@@ -983,12 +1203,20 @@
         <Class IRI="schemaconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="deliverystream_deliverystreamencryptionconfigurationinput"/>
+        <Class IRI="deliverystreamencryptionconfigurationinput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="deliverystream_elasticsearchdestinationconfiguration"/>
         <Class IRI="elasticsearchdestinationconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="deliverystream_extendeds3destinationconfiguration"/>
         <Class IRI="extendeds3destinationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="deliverystream_httpendpointdestinationconfiguration"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="deliverystream_kinesisstreamsourceconfiguration"/>
@@ -1005,6 +1233,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="deliverystream_splunkdestinationconfiguration"/>
         <Class IRI="splunkdestinationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="deliverystream_tags"/>
+        <Class IRI="tag"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="deserializer_hivejsonserde"/>
@@ -1065,6 +1297,38 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="extendeds3destinationconfiguration_s3backupconfiguration"/>
         <Class IRI="s3destinationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_bufferinghints"/>
+        <Class IRI="bufferinghints"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_cloudwatchloggingoptions"/>
+        <Class IRI="cloudwatchloggingoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_endpointconfiguration"/>
+        <Class IRI="httpendpointconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_processingconfiguration"/>
+        <Class IRI="processingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_requestconfiguration"/>
+        <Class IRI="httpendpointrequestconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_retryoptions"/>
+        <Class IRI="retryoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointdestinationconfiguration_s3configuration"/>
+        <Class IRI="s3destinationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpendpointrequestconfiguration_commonattributes"/>
+        <Class IRI="httpendpointcommonattribute"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="inputformatconfiguration_deserializer"/>
@@ -1180,6 +1444,12 @@
         <DataProperty IRI="deliverystream_deliverystreamtype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="elasticsearchbufferinghints_intervalinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1229,6 +1499,30 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="extendeds3destinationconfiguration_s3backupmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointcommonattribute_attributename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointcommonattribute_attributevalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointconfiguration_accesskey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointconfiguration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointconfiguration_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointdestinationconfiguration_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointdestinationconfiguration_s3backupmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpendpointrequestconfiguration_contentencoding"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="kinesisstreamsourceconfiguration_kinesisstreamarn"/>
@@ -1321,6 +1615,9 @@
         <DataProperty IRI="redshiftretryoptions_durationinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="retryoptions_durationinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1372,6 +1669,12 @@
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="vpcconfiguration_rolearn"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
@@ -1417,6 +1720,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="deliverystream_deliverystreamtype"/>
         <Class IRI="deliverystream"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keyarn"/>
+        <Class IRI="deliverystreamencryptionconfigurationinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keytype"/>
+        <Class IRI="deliverystreamencryptionconfigurationinput"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="elasticsearchbufferinghints_intervalinseconds"/>
@@ -1489,6 +1800,38 @@
     <DataPropertyDomain>
         <DataProperty IRI="hivejsonserde_timestampformats"/>
         <Class IRI="hivejsonserde"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointcommonattribute_attributename"/>
+        <Class IRI="httpendpointcommonattribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointcommonattribute_attributevalue"/>
+        <Class IRI="httpendpointcommonattribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointconfiguration_accesskey"/>
+        <Class IRI="httpendpointconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointconfiguration_name"/>
+        <Class IRI="httpendpointconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointconfiguration_url"/>
+        <Class IRI="httpendpointconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointdestinationconfiguration_rolearn"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointdestinationconfiguration_s3backupmode"/>
+        <Class IRI="httpendpointdestinationconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpendpointrequestconfiguration_contentencoding"/>
+        <Class IRI="httpendpointrequestconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="kinesisstreamsourceconfiguration_kinesisstreamarn"/>
@@ -1623,6 +1966,10 @@
         <Class IRI="redshiftretryoptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="retryoptions_durationinseconds"/>
+        <Class IRI="retryoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
         <Class IRI="s3destinationconfiguration"/>
     </DataPropertyDomain>
@@ -1689,6 +2036,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
         <Class IRI="splunkretryoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="vpcconfiguration_rolearn"/>
@@ -1747,6 +2102,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deliverystreamencryptionconfigurationinput_keytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="elasticsearchbufferinghints_intervalinseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
@@ -1816,6 +2179,38 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="hivejsonserde_timestampformats"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointcommonattribute_attributename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointcommonattribute_attributevalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointconfiguration_accesskey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointconfiguration_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointdestinationconfiguration_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointdestinationconfiguration_s3backupmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpendpointrequestconfiguration_contentencoding"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1951,6 +2346,10 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="retryoptions_durationinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="s3destinationconfiguration_bucketarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -2017,6 +2416,14 @@
     <DataPropertyRange>
         <DataProperty IRI="splunkretryoptions_durationinseconds"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="vpcconfiguration_rolearn"/>
@@ -2117,6 +2524,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystream_deliverystreamencryptionconfigurationinput</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystream_deliverystreamencryptionconfigurationinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>deliverystream_deliverystreamname</IRI>
         <Literal>kinesisfirehosedeliverystream:deliverystream_deliverystreamname</Literal>
     </AnnotationAssertion>
@@ -2137,6 +2549,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystream_httpendpointdestinationconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystream_httpendpointdestinationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>deliverystream_kinesisstreamsourceconfiguration</IRI>
         <Literal>kinesisfirehosedeliverystream:deliverystream_kinesisstreamsourceconfiguration</Literal>
     </AnnotationAssertion>
@@ -2154,6 +2571,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>deliverystream_splunkdestinationconfiguration</IRI>
         <Literal>kinesisfirehosedeliverystream:deliverystream_splunkdestinationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystream_tags</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystream_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystreamencryptionconfigurationinput</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystreamencryptionconfigurationinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystreamencryptionconfigurationinput_keyarn</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystreamencryptionconfigurationinput_keyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deliverystreamencryptionconfigurationinput_keytype</IRI>
+        <Literal>kinesisfirehosedeliverystream:deliverystreamencryptionconfigurationinput_keytype</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2354,6 +2791,106 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>hivejsonserde_timestampformats</IRI>
         <Literal>kinesisfirehosedeliverystream:hivejsonserde_timestampformats</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointcommonattribute</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointcommonattribute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointcommonattribute_attributename</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointcommonattribute_attributename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointcommonattribute_attributevalue</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointcommonattribute_attributevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointconfiguration_accesskey</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointconfiguration_accesskey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointconfiguration_name</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointconfiguration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointconfiguration_url</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointconfiguration_url</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_bufferinghints</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_bufferinghints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_cloudwatchloggingoptions</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_cloudwatchloggingoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_endpointconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_endpointconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_processingconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_processingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_requestconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_requestconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_retryoptions</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_retryoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_rolearn</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_s3backupmode</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_s3backupmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointdestinationconfiguration_s3configuration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointdestinationconfiguration_s3configuration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointrequestconfiguration</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointrequestconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointrequestconfiguration_commonattributes</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointrequestconfiguration_commonattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpendpointrequestconfiguration_contentencoding</IRI>
+        <Literal>kinesisfirehosedeliverystream:httpendpointrequestconfiguration_contentencoding</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2627,6 +3164,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retryoptions</IRI>
+        <Literal>kinesisfirehosedeliverystream:retryoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retryoptions_durationinseconds</IRI>
+        <Literal>kinesisfirehosedeliverystream:retryoptions_durationinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>s3destinationconfiguration</IRI>
         <Literal>kinesisfirehosedeliverystream:s3destinationconfiguration</Literal>
     </AnnotationAssertion>
@@ -2779,6 +3326,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>splunkretryoptions_durationinseconds</IRI>
         <Literal>kinesisfirehosedeliverystream:splunkretryoptions_durationinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>kinesisfirehosedeliverystream:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>kinesisfirehosedeliverystream:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>kinesisfirehosedeliverystream:tag_value</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

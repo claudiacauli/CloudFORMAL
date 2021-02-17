@@ -30,6 +30,9 @@
         <DataProperty IRI="distribution_amidistributionconfiguration"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="distribution_containerdistributionconfiguration"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="distribution_licenseconfigurationarns"/>
     </Declaration>
     <Declaration>
@@ -47,6 +50,13 @@
     <Declaration>
         <DataProperty IRI="mapentry_string_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="distribution"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="distribution_region"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="distributionconfiguration"/>
         <ObjectSomeValuesFrom>
@@ -81,6 +91,9 @@
         <DataProperty IRI="distribution_amidistributionconfiguration"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="distribution_containerdistributionconfiguration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="distribution_region"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -91,6 +104,10 @@
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="distribution_amidistributionconfiguration"/>
+        <Class IRI="distribution"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="distribution_containerdistributionconfiguration"/>
         <Class IRI="distribution"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -119,6 +136,10 @@
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="distribution_amidistributionconfiguration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="distribution_containerdistributionconfiguration"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -154,6 +175,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>distribution_amidistributionconfiguration</IRI>
         <Literal>imagebuilderdistributionconfiguration:distribution_amidistributionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>distribution_containerdistributionconfiguration</IRI>
+        <Literal>imagebuilderdistributionconfiguration:distribution_containerdistributionconfiguration</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -1,0 +1,830 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewiseassetmodel#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewiseassetmodel#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="assetmodel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="assetmodelhierarchy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="assetmodelproperty"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="attribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="expressionvariable"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metric"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metricwindow"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="propertytype"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="transform"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tumblingwindow"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="variablevalue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assetmodel_assetmodelhierarchies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assetmodel_assetmodelproperties"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assetmodel_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assetmodelproperty_type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="expressionvariable_value"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metric_variables"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metric_window"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="metricwindow_tumbling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="propertytype_attribute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="propertytype_metric"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="propertytype_transform"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="transform_variables"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodel_assetmodeldescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodel_assetmodelname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelhierarchy_childassetmodelid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelhierarchy_logicalid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelhierarchy_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelproperty_datatype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelproperty_logicalid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelproperty_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assetmodelproperty_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="attribute_defaultvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="expressionvariable_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metric_expression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="propertytype_typename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="transform_expression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tumblingwindow_interval"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="variablevalue_hierarchylogicalid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="variablevalue_propertylogicalid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="assetmodel"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodel_assetmodelname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelhierarchy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelhierarchy_childassetmodelid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelhierarchy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelhierarchy_logicalid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelhierarchy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelhierarchy_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelproperty"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="assetmodelproperty_type"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelproperty"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelproperty_datatype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelproperty"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelproperty_logicalid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="assetmodelproperty"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="assetmodelproperty_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="expressionvariable"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="expressionvariable_value"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="expressionvariable"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="expressionvariable_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metric"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="metric_variables"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metric"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="metric_window"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metric"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metric_expression"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="propertytype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="propertytype_typename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="transform"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="transform_variables"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="transform"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="transform_expression"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tumblingwindow"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tumblingwindow_interval"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="variablevalue"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="variablevalue_propertylogicalid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="assetmodelproperty_type"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="expressionvariable_value"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="metric_window"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="metricwindow_tumbling"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="propertytype_attribute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="propertytype_metric"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="propertytype_transform"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetmodel_assetmodelhierarchies"/>
+        <Class IRI="assetmodel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetmodel_assetmodelproperties"/>
+        <Class IRI="assetmodel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetmodel_tags"/>
+        <Class IRI="assetmodel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assetmodelproperty_type"/>
+        <Class IRI="assetmodelproperty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="expressionvariable_value"/>
+        <Class IRI="expressionvariable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metric_variables"/>
+        <Class IRI="metric"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metric_window"/>
+        <Class IRI="metric"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="metricwindow_tumbling"/>
+        <Class IRI="metricwindow"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="propertytype_attribute"/>
+        <Class IRI="propertytype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="propertytype_metric"/>
+        <Class IRI="propertytype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="propertytype_transform"/>
+        <Class IRI="propertytype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="transform_variables"/>
+        <Class IRI="transform"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assetmodel_assetmodelhierarchies"/>
+        <Class IRI="assetmodelhierarchy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assetmodel_assetmodelproperties"/>
+        <Class IRI="assetmodelproperty"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assetmodel_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assetmodelproperty_type"/>
+        <Class IRI="propertytype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="expressionvariable_value"/>
+        <Class IRI="variablevalue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metric_variables"/>
+        <Class IRI="expressionvariable"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metric_window"/>
+        <Class IRI="metricwindow"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="metricwindow_tumbling"/>
+        <Class IRI="tumblingwindow"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="propertytype_attribute"/>
+        <Class IRI="attribute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="propertytype_metric"/>
+        <Class IRI="metric"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="propertytype_transform"/>
+        <Class IRI="transform"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="transform_variables"/>
+        <Class IRI="expressionvariable"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodel_assetmodeldescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodel_assetmodelname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelhierarchy_childassetmodelid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelhierarchy_logicalid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelhierarchy_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelproperty_datatype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelproperty_logicalid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelproperty_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assetmodelproperty_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="attribute_defaultvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="expressionvariable_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metric_expression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="propertytype_typename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="transform_expression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tumblingwindow_interval"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="variablevalue_hierarchylogicalid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="variablevalue_propertylogicalid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodel_assetmodeldescription"/>
+        <Class IRI="assetmodel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodel_assetmodelname"/>
+        <Class IRI="assetmodel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelhierarchy_childassetmodelid"/>
+        <Class IRI="assetmodelhierarchy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelhierarchy_logicalid"/>
+        <Class IRI="assetmodelhierarchy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelhierarchy_name"/>
+        <Class IRI="assetmodelhierarchy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelproperty_datatype"/>
+        <Class IRI="assetmodelproperty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelproperty_logicalid"/>
+        <Class IRI="assetmodelproperty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelproperty_name"/>
+        <Class IRI="assetmodelproperty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assetmodelproperty_unit"/>
+        <Class IRI="assetmodelproperty"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="attribute_defaultvalue"/>
+        <Class IRI="attribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="expressionvariable_name"/>
+        <Class IRI="expressionvariable"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metric_expression"/>
+        <Class IRI="metric"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="propertytype_typename"/>
+        <Class IRI="propertytype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="transform_expression"/>
+        <Class IRI="transform"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tumblingwindow_interval"/>
+        <Class IRI="tumblingwindow"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="variablevalue_hierarchylogicalid"/>
+        <Class IRI="variablevalue"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="variablevalue_propertylogicalid"/>
+        <Class IRI="variablevalue"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodel_assetmodeldescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodel_assetmodelname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelhierarchy_childassetmodelid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelhierarchy_logicalid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelhierarchy_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelproperty_datatype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelproperty_logicalid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelproperty_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assetmodelproperty_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="attribute_defaultvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="expressionvariable_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metric_expression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="propertytype_typename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="transform_expression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tumblingwindow_interval"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="variablevalue_hierarchylogicalid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="variablevalue_propertylogicalid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel_assetmodeldescription</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel_assetmodeldescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel_assetmodelhierarchies</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel_assetmodelhierarchies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel_assetmodelname</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel_assetmodelname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel_assetmodelproperties</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel_assetmodelproperties</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodel_tags</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodel_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelhierarchy</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelhierarchy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelhierarchy_childassetmodelid</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelhierarchy_childassetmodelid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelhierarchy_logicalid</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelhierarchy_logicalid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelhierarchy_name</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelhierarchy_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty_datatype</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty_datatype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty_logicalid</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty_logicalid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty_name</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty_type</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assetmodelproperty_unit</IRI>
+        <Literal>iotsitewiseassetmodel:assetmodelproperty_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute</IRI>
+        <Literal>iotsitewiseassetmodel:attribute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>attribute_defaultvalue</IRI>
+        <Literal>iotsitewiseassetmodel:attribute_defaultvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>expressionvariable</IRI>
+        <Literal>iotsitewiseassetmodel:expressionvariable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>expressionvariable_name</IRI>
+        <Literal>iotsitewiseassetmodel:expressionvariable_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>expressionvariable_value</IRI>
+        <Literal>iotsitewiseassetmodel:expressionvariable_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric</IRI>
+        <Literal>iotsitewiseassetmodel:metric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_expression</IRI>
+        <Literal>iotsitewiseassetmodel:metric_expression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_variables</IRI>
+        <Literal>iotsitewiseassetmodel:metric_variables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metric_window</IRI>
+        <Literal>iotsitewiseassetmodel:metric_window</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricwindow</IRI>
+        <Literal>iotsitewiseassetmodel:metricwindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metricwindow_tumbling</IRI>
+        <Literal>iotsitewiseassetmodel:metricwindow_tumbling</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>propertytype</IRI>
+        <Literal>iotsitewiseassetmodel:propertytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>propertytype_attribute</IRI>
+        <Literal>iotsitewiseassetmodel:propertytype_attribute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>propertytype_metric</IRI>
+        <Literal>iotsitewiseassetmodel:propertytype_metric</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>propertytype_transform</IRI>
+        <Literal>iotsitewiseassetmodel:propertytype_transform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>propertytype_typename</IRI>
+        <Literal>iotsitewiseassetmodel:propertytype_typename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>iotsitewiseassetmodel:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>iotsitewiseassetmodel:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>iotsitewiseassetmodel:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transform</IRI>
+        <Literal>iotsitewiseassetmodel:transform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transform_expression</IRI>
+        <Literal>iotsitewiseassetmodel:transform_expression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transform_variables</IRI>
+        <Literal>iotsitewiseassetmodel:transform_variables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tumblingwindow</IRI>
+        <Literal>iotsitewiseassetmodel:tumblingwindow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tumblingwindow_interval</IRI>
+        <Literal>iotsitewiseassetmodel:tumblingwindow_interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>variablevalue</IRI>
+        <Literal>iotsitewiseassetmodel:variablevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>variablevalue_hierarchylogicalid</IRI>
+        <Literal>iotsitewiseassetmodel:variablevalue_hierarchylogicalid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>variablevalue_propertylogicalid</IRI>
+        <Literal>iotsitewiseassetmodel:variablevalue_propertylogicalid</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -18,6 +18,9 @@
         <Class IRI="encryptionconfig"/>
     </Declaration>
     <Declaration>
+        <Class IRI="kubernetesnetworkconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="provider"/>
     </Declaration>
     <Declaration>
@@ -25,6 +28,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="cluster_encryptionconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cluster_kubernetesnetworkconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
@@ -43,6 +49,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="encryptionconfig_resources"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kubernetesnetworkconfig_serviceipv4cidr"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="provider_keyarn"/>
@@ -75,6 +84,9 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_kubernetesnetworkconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -82,6 +94,10 @@
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="cluster_encryptionconfig"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_kubernetesnetworkconfig"/>
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -95,6 +111,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_encryptionconfig"/>
         <Class IRI="encryptionconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_kubernetesnetworkconfig"/>
+        <Class IRI="kubernetesnetworkconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_resourcesvpcconfig"/>
@@ -114,6 +134,9 @@
         <DataProperty IRI="cluster_version"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="kubernetesnetworkconfig_serviceipv4cidr"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="provider_keyarn"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
@@ -131,6 +154,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="encryptionconfig_resources"/>
         <Class IRI="encryptionconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kubernetesnetworkconfig_serviceipv4cidr"/>
+        <Class IRI="kubernetesnetworkconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="provider_keyarn"/>
@@ -158,6 +185,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="encryptionconfig_resources"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kubernetesnetworkconfig_serviceipv4cidr"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -181,6 +212,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster_encryptionconfig</IRI>
         <Literal>ekscluster:cluster_encryptionconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_kubernetesnetworkconfig</IRI>
+        <Literal>ekscluster:cluster_kubernetesnetworkconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -216,6 +252,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>encryptionconfig_resources</IRI>
         <Literal>ekscluster:encryptionconfig_resources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kubernetesnetworkconfig</IRI>
+        <Literal>ekscluster:kubernetesnetworkconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kubernetesnetworkconfig_serviceipv4cidr</IRI>
+        <Literal>ekscluster:kubernetesnetworkconfig_serviceipv4cidr</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

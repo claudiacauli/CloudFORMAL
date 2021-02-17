@@ -1,0 +1,694 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/auditmanagerassessment#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/auditmanagerassessment#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="assessment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="assessmentreportsdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="awsaccount"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="awsservice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="delegation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="role"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="scope"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assessment_assessmentreportsdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assessment_awsaccount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assessment_roles"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assessment_scope"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="assessment_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="scope_awsaccounts"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="scope_awsservices"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessment_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessment_frameworkid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessment_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessment_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessmentreportsdestination_destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="assessmentreportsdestination_destinationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsaccount_emailaddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsaccount_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsaccount_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsservice_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_assessmentid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_assessmentname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_controlsetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_createdby"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_creationtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_lastupdated"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_roletype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="delegation_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="role_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="role_roletype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="assessment_assessmentreportsdestination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="assessment_awsaccount"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="assessment_scope"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assessment_assessmentreportsdestination"/>
+        <Class IRI="assessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assessment_awsaccount"/>
+        <Class IRI="assessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assessment_roles"/>
+        <Class IRI="assessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assessment_scope"/>
+        <Class IRI="assessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="assessment_tags"/>
+        <Class IRI="assessment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="scope_awsaccounts"/>
+        <Class IRI="scope"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="scope_awsservices"/>
+        <Class IRI="scope"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assessment_assessmentreportsdestination"/>
+        <Class IRI="assessmentreportsdestination"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assessment_awsaccount"/>
+        <Class IRI="awsaccount"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assessment_roles"/>
+        <Class IRI="role"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assessment_scope"/>
+        <Class IRI="scope"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="assessment_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="scope_awsaccounts"/>
+        <Class IRI="awsaccount"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="scope_awsservices"/>
+        <Class IRI="awsservice"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessment_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessment_frameworkid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessment_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessment_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessmentreportsdestination_destination"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="assessmentreportsdestination_destinationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsaccount_emailaddress"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsaccount_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsaccount_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsservice_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_assessmentid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_assessmentname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_comment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_controlsetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_createdby"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_creationtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_lastupdated"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_roletype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="delegation_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="role_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="role_roletype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessment_description"/>
+        <Class IRI="assessment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessment_frameworkid"/>
+        <Class IRI="assessment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessment_name"/>
+        <Class IRI="assessment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessment_status"/>
+        <Class IRI="assessment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessmentreportsdestination_destination"/>
+        <Class IRI="assessmentreportsdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="assessmentreportsdestination_destinationtype"/>
+        <Class IRI="assessmentreportsdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsaccount_emailaddress"/>
+        <Class IRI="awsaccount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsaccount_id"/>
+        <Class IRI="awsaccount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsaccount_name"/>
+        <Class IRI="awsaccount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsservice_servicename"/>
+        <Class IRI="awsservice"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_assessmentid"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_assessmentname"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_comment"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_controlsetid"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_createdby"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_creationtime"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_id"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_lastupdated"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_rolearn"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_roletype"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="delegation_status"/>
+        <Class IRI="delegation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="role_rolearn"/>
+        <Class IRI="role"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="role_roletype"/>
+        <Class IRI="role"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="assessment_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assessment_frameworkid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assessment_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assessment_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assessmentreportsdestination_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="assessmentreportsdestination_destinationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsaccount_emailaddress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsaccount_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsaccount_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsservice_servicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_assessmentid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_assessmentname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_comment"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_controlsetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_createdby"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_creationtime"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_lastupdated"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_roletype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="delegation_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="role_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="role_roletype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment</IRI>
+        <Literal>auditmanagerassessment:assessment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_assessmentreportsdestination</IRI>
+        <Literal>auditmanagerassessment:assessment_assessmentreportsdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_awsaccount</IRI>
+        <Literal>auditmanagerassessment:assessment_awsaccount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_description</IRI>
+        <Literal>auditmanagerassessment:assessment_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_frameworkid</IRI>
+        <Literal>auditmanagerassessment:assessment_frameworkid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_name</IRI>
+        <Literal>auditmanagerassessment:assessment_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_roles</IRI>
+        <Literal>auditmanagerassessment:assessment_roles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_scope</IRI>
+        <Literal>auditmanagerassessment:assessment_scope</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_status</IRI>
+        <Literal>auditmanagerassessment:assessment_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessment_tags</IRI>
+        <Literal>auditmanagerassessment:assessment_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessmentreportsdestination</IRI>
+        <Literal>auditmanagerassessment:assessmentreportsdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessmentreportsdestination_destination</IRI>
+        <Literal>auditmanagerassessment:assessmentreportsdestination_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>assessmentreportsdestination_destinationtype</IRI>
+        <Literal>auditmanagerassessment:assessmentreportsdestination_destinationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsaccount</IRI>
+        <Literal>auditmanagerassessment:awsaccount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsaccount_emailaddress</IRI>
+        <Literal>auditmanagerassessment:awsaccount_emailaddress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsaccount_id</IRI>
+        <Literal>auditmanagerassessment:awsaccount_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsaccount_name</IRI>
+        <Literal>auditmanagerassessment:awsaccount_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsservice</IRI>
+        <Literal>auditmanagerassessment:awsservice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsservice_servicename</IRI>
+        <Literal>auditmanagerassessment:awsservice_servicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation</IRI>
+        <Literal>auditmanagerassessment:delegation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_assessmentid</IRI>
+        <Literal>auditmanagerassessment:delegation_assessmentid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_assessmentname</IRI>
+        <Literal>auditmanagerassessment:delegation_assessmentname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_comment</IRI>
+        <Literal>auditmanagerassessment:delegation_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_controlsetid</IRI>
+        <Literal>auditmanagerassessment:delegation_controlsetid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_createdby</IRI>
+        <Literal>auditmanagerassessment:delegation_createdby</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_creationtime</IRI>
+        <Literal>auditmanagerassessment:delegation_creationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_id</IRI>
+        <Literal>auditmanagerassessment:delegation_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_lastupdated</IRI>
+        <Literal>auditmanagerassessment:delegation_lastupdated</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_rolearn</IRI>
+        <Literal>auditmanagerassessment:delegation_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_roletype</IRI>
+        <Literal>auditmanagerassessment:delegation_roletype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>delegation_status</IRI>
+        <Literal>auditmanagerassessment:delegation_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>role</IRI>
+        <Literal>auditmanagerassessment:role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>role_rolearn</IRI>
+        <Literal>auditmanagerassessment:role_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>role_roletype</IRI>
+        <Literal>auditmanagerassessment:role_roletype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scope</IRI>
+        <Literal>auditmanagerassessment:scope</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scope_awsaccounts</IRI>
+        <Literal>auditmanagerassessment:scope_awsaccounts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scope_awsservices</IRI>
+        <Literal>auditmanagerassessment:scope_awsservices</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>auditmanagerassessment:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>auditmanagerassessment:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>auditmanagerassessment:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

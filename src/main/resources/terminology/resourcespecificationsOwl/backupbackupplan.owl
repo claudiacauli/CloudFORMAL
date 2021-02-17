@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="backupplan"/>
     </Declaration>
     <Declaration>
@@ -30,6 +33,9 @@
         <ObjectProperty IRI="backupplan_backupplan"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="backupplanresourcetype_advancedbackupsettings"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
     </Declaration>
     <Declaration>
@@ -40,6 +46,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="advancedbackupsettingresourcetype_backupoptions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="advancedbackupsettingresourcetype_resourcetype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="backupplan_backupplantags"/>
@@ -74,6 +86,20 @@
     <Declaration>
         <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="advancedbackupsettingresourcetype_backupoptions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="advancedbackupsettingresourcetype_resourcetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="backupplan"/>
         <ObjectSomeValuesFrom>
@@ -130,6 +156,10 @@
         <Class IRI="backupplan"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="backupplanresourcetype_advancedbackupsettings"/>
+        <Class IRI="backupplanresourcetype"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
         <Class IRI="backupplanresourcetype"/>
     </ObjectPropertyDomain>
@@ -150,6 +180,10 @@
         <Class IRI="backupplanresourcetype"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="backupplanresourcetype_advancedbackupsettings"/>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="backupplanresourcetype_backupplanrule"/>
         <Class IRI="backupruleresourcetype"/>
     </ObjectPropertyRange>
@@ -165,6 +199,12 @@
         <ObjectProperty IRI="copyactionresourcetype_lifecycle"/>
         <Class IRI="lifecycleresourcetype"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="advancedbackupsettingresourcetype_backupoptions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="advancedbackupsettingresourcetype_resourcetype"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="backupplan_backupplantags"/>
     </FunctionalDataProperty>
@@ -198,6 +238,14 @@
     <FunctionalDataProperty>
         <DataProperty IRI="lifecycleresourcetype_movetocoldstorageafterdays"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="advancedbackupsettingresourcetype_backupoptions"/>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="advancedbackupsettingresourcetype_resourcetype"/>
+        <Class IRI="advancedbackupsettingresourcetype"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="backupplan_backupplantags"/>
         <Class IRI="backupplan"/>
@@ -243,6 +291,14 @@
         <Class IRI="lifecycleresourcetype"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="advancedbackupsettingresourcetype_backupoptions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="advancedbackupsettingresourcetype_resourcetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="backupplan_backupplantags"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -288,6 +344,21 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedbackupsettingresourcetype</IRI>
+        <Literal>backupbackupplan:advancedbackupsettingresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedbackupsettingresourcetype_backupoptions</IRI>
+        <Literal>backupbackupplan:advancedbackupsettingresourcetype_backupoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedbackupsettingresourcetype_resourcetype</IRI>
+        <Literal>backupbackupplan:advancedbackupsettingresourcetype_resourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>backupplan</IRI>
         <Literal>backupbackupplan:backupplan</Literal>
     </AnnotationAssertion>
@@ -305,6 +376,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>backupplanresourcetype</IRI>
         <Literal>backupbackupplan:backupplanresourcetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backupplanresourcetype_advancedbackupsettings</IRI>
+        <Literal>backupbackupplan:backupplanresourcetype_advancedbackupsettings</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

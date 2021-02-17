@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerappimageconfig#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerappimageconfig#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="appimageconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="filesystemconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="kernelgatewayimageconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="kernelspec"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="appimageconfig_kernelgatewayimageconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="appimageconfig_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="kernelgatewayimageconfig_filesystemconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="kernelgatewayimageconfig_kernelspecs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="appimageconfig_appimageconfigname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filesystemconfig_defaultgid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filesystemconfig_defaultuid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filesystemconfig_mountpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kernelspec_displayname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kernelspec_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="appimageconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="appimageconfig_appimageconfigname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kernelgatewayimageconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="kernelgatewayimageconfig_kernelspecs"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kernelspec"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="kernelspec_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="appimageconfig_kernelgatewayimageconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="kernelgatewayimageconfig_filesystemconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="appimageconfig_kernelgatewayimageconfig"/>
+        <Class IRI="appimageconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="appimageconfig_tags"/>
+        <Class IRI="appimageconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="kernelgatewayimageconfig_filesystemconfig"/>
+        <Class IRI="kernelgatewayimageconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="kernelgatewayimageconfig_kernelspecs"/>
+        <Class IRI="kernelgatewayimageconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="appimageconfig_kernelgatewayimageconfig"/>
+        <Class IRI="kernelgatewayimageconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="appimageconfig_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="kernelgatewayimageconfig_filesystemconfig"/>
+        <Class IRI="filesystemconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="kernelgatewayimageconfig_kernelspecs"/>
+        <Class IRI="kernelspec"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="appimageconfig_appimageconfigname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filesystemconfig_defaultgid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filesystemconfig_defaultuid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filesystemconfig_mountpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kernelspec_displayname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kernelspec_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="appimageconfig_appimageconfigname"/>
+        <Class IRI="appimageconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filesystemconfig_defaultgid"/>
+        <Class IRI="filesystemconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filesystemconfig_defaultuid"/>
+        <Class IRI="filesystemconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filesystemconfig_mountpath"/>
+        <Class IRI="filesystemconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kernelspec_displayname"/>
+        <Class IRI="kernelspec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kernelspec_name"/>
+        <Class IRI="kernelspec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="appimageconfig_appimageconfigname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filesystemconfig_defaultgid"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filesystemconfig_defaultuid"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filesystemconfig_mountpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kernelspec_displayname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kernelspec_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>appimageconfig</IRI>
+        <Literal>sagemakerappimageconfig:appimageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>appimageconfig_appimageconfigname</IRI>
+        <Literal>sagemakerappimageconfig:appimageconfig_appimageconfigname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>appimageconfig_kernelgatewayimageconfig</IRI>
+        <Literal>sagemakerappimageconfig:appimageconfig_kernelgatewayimageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>appimageconfig_tags</IRI>
+        <Literal>sagemakerappimageconfig:appimageconfig_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig</IRI>
+        <Literal>sagemakerappimageconfig:filesystemconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig_defaultgid</IRI>
+        <Literal>sagemakerappimageconfig:filesystemconfig_defaultgid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig_defaultuid</IRI>
+        <Literal>sagemakerappimageconfig:filesystemconfig_defaultuid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystemconfig_mountpath</IRI>
+        <Literal>sagemakerappimageconfig:filesystemconfig_mountpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayimageconfig</IRI>
+        <Literal>sagemakerappimageconfig:kernelgatewayimageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayimageconfig_filesystemconfig</IRI>
+        <Literal>sagemakerappimageconfig:kernelgatewayimageconfig_filesystemconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayimageconfig_kernelspecs</IRI>
+        <Literal>sagemakerappimageconfig:kernelgatewayimageconfig_kernelspecs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelspec</IRI>
+        <Literal>sagemakerappimageconfig:kernelspec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelspec_displayname</IRI>
+        <Literal>sagemakerappimageconfig:kernelspec_displayname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelspec_name</IRI>
+        <Literal>sagemakerappimageconfig:kernelspec_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>sagemakerappimageconfig:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>sagemakerappimageconfig:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>sagemakerappimageconfig:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

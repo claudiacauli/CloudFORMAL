@@ -24,6 +24,12 @@
         <Class IRI="mltransform"/>
     </Declaration>
     <Declaration>
+        <Class IRI="mluserdataencryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="transformencryption"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="transformparameters"/>
     </Declaration>
     <Declaration>
@@ -33,7 +39,13 @@
         <ObjectProperty IRI="mltransform_inputrecordtables"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="mltransform_transformencryption"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="mltransform_transformparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="transformencryption_mluserdataencryption"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="transformparameters_findmatchesparameters"/>
@@ -91,6 +103,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mltransform_workertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mluserdataencryption_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mluserdataencryption_mluserdataencryptionmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="transformencryption_taskrunsecurityconfigurationname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="transformparameters_transformtype"/>
@@ -138,6 +159,13 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="mluserdataencryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="mluserdataencryption_mluserdataencryptionmode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="transformparameters"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="transformparameters_transformtype"/>
@@ -148,7 +176,13 @@
         <ObjectProperty IRI="mltransform_inputrecordtables"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="mltransform_transformencryption"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="mltransform_transformparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="transformencryption_mluserdataencryption"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="transformparameters_findmatchesparameters"/>
@@ -162,8 +196,16 @@
         <Class IRI="mltransform"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="mltransform_transformencryption"/>
+        <Class IRI="mltransform"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="mltransform_transformparameters"/>
         <Class IRI="mltransform"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="transformencryption_mluserdataencryption"/>
+        <Class IRI="transformencryption"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="transformparameters_findmatchesparameters"/>
@@ -178,8 +220,16 @@
         <Class IRI="inputrecordtables"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="mltransform_transformencryption"/>
+        <Class IRI="transformencryption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="mltransform_transformparameters"/>
         <Class IRI="transformparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="transformencryption_mluserdataencryption"/>
+        <Class IRI="mluserdataencryption"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="transformparameters_findmatchesparameters"/>
@@ -238,6 +288,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="mltransform_workertype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="mluserdataencryption_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="mluserdataencryption_mluserdataencryptionmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="transformencryption_taskrunsecurityconfigurationname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="transformparameters_transformtype"/>
@@ -313,6 +372,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="mltransform_workertype"/>
         <Class IRI="mltransform"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mluserdataencryption_kmskeyid"/>
+        <Class IRI="mluserdataencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mluserdataencryption_mluserdataencryptionmode"/>
+        <Class IRI="mluserdataencryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="transformencryption_taskrunsecurityconfigurationname"/>
+        <Class IRI="transformencryption"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="transformparameters_transformtype"/>
@@ -388,6 +459,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="mltransform_workertype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mluserdataencryption_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mluserdataencryption_mluserdataencryptionmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="transformencryption_taskrunsecurityconfigurationname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -511,6 +594,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mltransform_transformencryption</IRI>
+        <Literal>gluemltransform:mltransform_transformencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>mltransform_transformparameters</IRI>
         <Literal>gluemltransform:mltransform_transformparameters</Literal>
     </AnnotationAssertion>
@@ -518,6 +606,36 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>mltransform_workertype</IRI>
         <Literal>gluemltransform:mltransform_workertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mluserdataencryption</IRI>
+        <Literal>gluemltransform:mluserdataencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mluserdataencryption_kmskeyid</IRI>
+        <Literal>gluemltransform:mluserdataencryption_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mluserdataencryption_mluserdataencryptionmode</IRI>
+        <Literal>gluemltransform:mluserdataencryption_mluserdataencryptionmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transformencryption</IRI>
+        <Literal>gluemltransform:transformencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transformencryption_mluserdataencryption</IRI>
+        <Literal>gluemltransform:transformencryption_mluserdataencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>transformencryption_taskrunsecurityconfigurationname</IRI>
+        <Literal>gluemltransform:transformencryption_taskrunsecurityconfigurationname</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

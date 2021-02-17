@@ -1,0 +1,1422 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallrulegroup#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallrulegroup#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="actiondefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="address"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="customaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="header"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ipset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_ipset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_portset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="matchattributes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="portrange"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="portset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="publishmetricaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ruledefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rulegroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ruleoption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rulessource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rulessourcelist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="rulevariables"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statefulrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statelessrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statelessrulesandcustomactions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tcpflagfield"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="matchattributes_destinationports"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="matchattributes_destinations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="matchattributes_sourceports"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="matchattributes_sources"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="matchattributes_tcpflags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ruledefinition_matchattributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulegroup_rulegroup"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulegroup_rulessource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulegroup_rulevariables"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulegroup_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulessource_rulessourcelist"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulessource_statefulrules"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulessource_statelessrulesandcustomactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulevariables_ipsets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="rulevariables_portsets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statefulrule_header"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statefulrule_ruleoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statelessrule_ruledefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statelessrulesandcustomactions_customactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="statelessrulesandcustomactions_statelessrules"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="address_addressdefinition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customaction_actionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimension_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_destinationport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_direction"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_protocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_source"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="header_sourceport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ipset_definition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_ipset_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_ipset_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_portset_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_portset_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="matchattributes_protocols"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portrange_fromport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portrange_toport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portset_definition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ruledefinition_actions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulegroup_capacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulegroup_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulegroup_rulegroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulegroup_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ruleoption_keyword"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ruleoption_settings"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulessource_rulesstring"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulessourcelist_generatedrulestype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulessourcelist_targets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="rulessourcelist_targettypes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statefulrule_action"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statelessrule_priority"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tcpflagfield_flags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tcpflagfield_masks"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="address"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="address_addressdefinition"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="customaction_actiondefinition"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customaction_actionname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimension_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_destination"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_destinationport"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_direction"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_protocol"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_source"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="header"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="header_sourceport"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="portrange"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portrange_fromport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="portrange"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portrange_toport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="publishmetricaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="publishmetricaction_dimensions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ruledefinition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="ruledefinition_matchattributes"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ruledefinition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ruledefinition_actions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulegroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="rulegroup_rulessource"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulegroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulegroup_capacity"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulegroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulegroup_rulegroupname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulegroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulegroup_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ruleoption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ruleoption_keyword"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulessourcelist"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulessourcelist_generatedrulestype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulessourcelist"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulessourcelist_targets"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="rulessourcelist"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="rulessourcelist_targettypes"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statefulrule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="statefulrule_header"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statefulrule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="statefulrule_ruleoptions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statefulrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statefulrule_action"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statelessrule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="statelessrule_ruledefinition"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statelessrule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statelessrule_priority"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statelessrulesandcustomactions"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="statelessrulesandcustomactions_statelessrules"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tcpflagfield"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tcpflagfield_flags"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ruledefinition_matchattributes"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rulegroup_rulegroup"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rulegroup_rulessource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rulegroup_rulevariables"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rulessource_rulessourcelist"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="rulessource_statelessrulesandcustomactions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="statefulrule_header"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="statelessrule_ruledefinition"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+        <Class IRI="actiondefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+        <Class IRI="customaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="matchattributes_destinationports"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="matchattributes_destinations"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="matchattributes_sourceports"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="matchattributes_sources"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="matchattributes_tcpflags"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+        <Class IRI="publishmetricaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ruledefinition_matchattributes"/>
+        <Class IRI="ruledefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulegroup_rulegroup"/>
+        <Class IRI="rulegroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulegroup_rulessource"/>
+        <Class IRI="rulegroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulegroup_rulevariables"/>
+        <Class IRI="rulegroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulegroup_tags"/>
+        <Class IRI="rulegroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulessource_rulessourcelist"/>
+        <Class IRI="rulessource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulessource_statefulrules"/>
+        <Class IRI="rulessource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulessource_statelessrulesandcustomactions"/>
+        <Class IRI="rulessource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulevariables_ipsets"/>
+        <Class IRI="rulevariables"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="rulevariables_portsets"/>
+        <Class IRI="rulevariables"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statefulrule_header"/>
+        <Class IRI="statefulrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statefulrule_ruleoptions"/>
+        <Class IRI="statefulrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statelessrule_ruledefinition"/>
+        <Class IRI="statelessrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statelessrulesandcustomactions_customactions"/>
+        <Class IRI="statelessrulesandcustomactions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statelessrulesandcustomactions_statelessrules"/>
+        <Class IRI="statelessrulesandcustomactions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+        <Class IRI="publishmetricaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+        <Class IRI="actiondefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="matchattributes_destinationports"/>
+        <Class IRI="portrange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="matchattributes_destinations"/>
+        <Class IRI="address"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="matchattributes_sourceports"/>
+        <Class IRI="portrange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="matchattributes_sources"/>
+        <Class IRI="address"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="matchattributes_tcpflags"/>
+        <Class IRI="tcpflagfield"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ruledefinition_matchattributes"/>
+        <Class IRI="matchattributes"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulegroup_rulegroup"/>
+        <Class IRI="rulegroup"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulegroup_rulessource"/>
+        <Class IRI="rulessource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulegroup_rulevariables"/>
+        <Class IRI="rulevariables"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulegroup_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulessource_rulessourcelist"/>
+        <Class IRI="rulessourcelist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulessource_statefulrules"/>
+        <Class IRI="statefulrule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulessource_statelessrulesandcustomactions"/>
+        <Class IRI="statelessrulesandcustomactions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulevariables_ipsets"/>
+        <Class IRI="mapentry_ipset"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="rulevariables_portsets"/>
+        <Class IRI="mapentry_portset"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statefulrule_header"/>
+        <Class IRI="header"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statefulrule_ruleoptions"/>
+        <Class IRI="ruleoption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statelessrule_ruledefinition"/>
+        <Class IRI="ruledefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statelessrulesandcustomactions_customactions"/>
+        <Class IRI="customaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statelessrulesandcustomactions_statelessrules"/>
+        <Class IRI="statelessrule"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="address_addressdefinition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customaction_actionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimension_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_destination"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_destinationport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_direction"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_protocol"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_source"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="header_sourceport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portrange_fromport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portrange_toport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulegroup_capacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulegroup_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulegroup_rulegroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulegroup_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ruleoption_keyword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulessource_rulesstring"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="rulessourcelist_generatedrulestype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statefulrule_action"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statelessrule_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="address_addressdefinition"/>
+        <Class IRI="address"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customaction_actionname"/>
+        <Class IRI="customaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimension_value"/>
+        <Class IRI="dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_destination"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_destinationport"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_direction"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_protocol"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_source"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="header_sourceport"/>
+        <Class IRI="header"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ipset_definition"/>
+        <Class IRI="ipset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_ipset_key"/>
+        <Class IRI="mapentry_ipset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_ipset_value"/>
+        <Class IRI="mapentry_ipset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_portset_key"/>
+        <Class IRI="mapentry_portset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_portset_value"/>
+        <Class IRI="mapentry_portset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="matchattributes_protocols"/>
+        <Class IRI="matchattributes"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portrange_fromport"/>
+        <Class IRI="portrange"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portrange_toport"/>
+        <Class IRI="portrange"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portset_definition"/>
+        <Class IRI="portset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ruledefinition_actions"/>
+        <Class IRI="ruledefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulegroup_capacity"/>
+        <Class IRI="rulegroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulegroup_description"/>
+        <Class IRI="rulegroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulegroup_rulegroupname"/>
+        <Class IRI="rulegroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulegroup_type"/>
+        <Class IRI="rulegroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ruleoption_keyword"/>
+        <Class IRI="ruleoption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ruleoption_settings"/>
+        <Class IRI="ruleoption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulessource_rulesstring"/>
+        <Class IRI="rulessource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulessourcelist_generatedrulestype"/>
+        <Class IRI="rulessourcelist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulessourcelist_targets"/>
+        <Class IRI="rulessourcelist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="rulessourcelist_targettypes"/>
+        <Class IRI="rulessourcelist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statefulrule_action"/>
+        <Class IRI="statefulrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statelessrule_priority"/>
+        <Class IRI="statelessrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tcpflagfield_flags"/>
+        <Class IRI="tcpflagfield"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tcpflagfield_masks"/>
+        <Class IRI="tcpflagfield"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="address_addressdefinition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customaction_actionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimension_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_destinationport"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_direction"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_protocol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_source"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="header_sourceport"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ipset_definition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_ipset_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_ipset_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_portset_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_portset_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="matchattributes_protocols"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portrange_fromport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portrange_toport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portset_definition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ruledefinition_actions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulegroup_capacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulegroup_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulegroup_rulegroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulegroup_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ruleoption_keyword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ruleoption_settings"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulessource_rulesstring"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulessourcelist_generatedrulestype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulessourcelist_targets"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="rulessourcelist_targettypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statefulrule_action"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statelessrule_priority"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tcpflagfield_flags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tcpflagfield_masks"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondefinition</IRI>
+        <Literal>networkfirewallrulegroup:actiondefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondefinition_publishmetricaction</IRI>
+        <Literal>networkfirewallrulegroup:actiondefinition_publishmetricaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>address</IRI>
+        <Literal>networkfirewallrulegroup:address</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>address_addressdefinition</IRI>
+        <Literal>networkfirewallrulegroup:address_addressdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction</IRI>
+        <Literal>networkfirewallrulegroup:customaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction_actiondefinition</IRI>
+        <Literal>networkfirewallrulegroup:customaction_actiondefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction_actionname</IRI>
+        <Literal>networkfirewallrulegroup:customaction_actionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension</IRI>
+        <Literal>networkfirewallrulegroup:dimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_value</IRI>
+        <Literal>networkfirewallrulegroup:dimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header</IRI>
+        <Literal>networkfirewallrulegroup:header</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_destination</IRI>
+        <Literal>networkfirewallrulegroup:header_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_destinationport</IRI>
+        <Literal>networkfirewallrulegroup:header_destinationport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_direction</IRI>
+        <Literal>networkfirewallrulegroup:header_direction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_protocol</IRI>
+        <Literal>networkfirewallrulegroup:header_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_source</IRI>
+        <Literal>networkfirewallrulegroup:header_source</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>header_sourceport</IRI>
+        <Literal>networkfirewallrulegroup:header_sourceport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipset</IRI>
+        <Literal>networkfirewallrulegroup:ipset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipset_definition</IRI>
+        <Literal>networkfirewallrulegroup:ipset_definition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_destinationports</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_destinationports</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_destinations</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_destinations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_protocols</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_protocols</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_sourceports</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_sourceports</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_sources</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_sources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>matchattributes_tcpflags</IRI>
+        <Literal>networkfirewallrulegroup:matchattributes_tcpflags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portrange</IRI>
+        <Literal>networkfirewallrulegroup:portrange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portrange_fromport</IRI>
+        <Literal>networkfirewallrulegroup:portrange_fromport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portrange_toport</IRI>
+        <Literal>networkfirewallrulegroup:portrange_toport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portset</IRI>
+        <Literal>networkfirewallrulegroup:portset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portset_definition</IRI>
+        <Literal>networkfirewallrulegroup:portset_definition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publishmetricaction</IRI>
+        <Literal>networkfirewallrulegroup:publishmetricaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publishmetricaction_dimensions</IRI>
+        <Literal>networkfirewallrulegroup:publishmetricaction_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruledefinition</IRI>
+        <Literal>networkfirewallrulegroup:ruledefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruledefinition_actions</IRI>
+        <Literal>networkfirewallrulegroup:ruledefinition_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruledefinition_matchattributes</IRI>
+        <Literal>networkfirewallrulegroup:ruledefinition_matchattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_capacity</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_capacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_description</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_rulegroup</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_rulegroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_rulegroupname</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_rulegroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_rulessource</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_rulessource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_rulevariables</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_rulevariables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_tags</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulegroup_type</IRI>
+        <Literal>networkfirewallrulegroup:rulegroup_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruleoption</IRI>
+        <Literal>networkfirewallrulegroup:ruleoption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruleoption_keyword</IRI>
+        <Literal>networkfirewallrulegroup:ruleoption_keyword</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ruleoption_settings</IRI>
+        <Literal>networkfirewallrulegroup:ruleoption_settings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessource</IRI>
+        <Literal>networkfirewallrulegroup:rulessource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessource_rulessourcelist</IRI>
+        <Literal>networkfirewallrulegroup:rulessource_rulessourcelist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessource_rulesstring</IRI>
+        <Literal>networkfirewallrulegroup:rulessource_rulesstring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessource_statefulrules</IRI>
+        <Literal>networkfirewallrulegroup:rulessource_statefulrules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessource_statelessrulesandcustomactions</IRI>
+        <Literal>networkfirewallrulegroup:rulessource_statelessrulesandcustomactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessourcelist</IRI>
+        <Literal>networkfirewallrulegroup:rulessourcelist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessourcelist_generatedrulestype</IRI>
+        <Literal>networkfirewallrulegroup:rulessourcelist_generatedrulestype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessourcelist_targets</IRI>
+        <Literal>networkfirewallrulegroup:rulessourcelist_targets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulessourcelist_targettypes</IRI>
+        <Literal>networkfirewallrulegroup:rulessourcelist_targettypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulevariables</IRI>
+        <Literal>networkfirewallrulegroup:rulevariables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulevariables_ipsets</IRI>
+        <Literal>networkfirewallrulegroup:rulevariables_ipsets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>rulevariables_portsets</IRI>
+        <Literal>networkfirewallrulegroup:rulevariables_portsets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrule</IRI>
+        <Literal>networkfirewallrulegroup:statefulrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrule_action</IRI>
+        <Literal>networkfirewallrulegroup:statefulrule_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrule_header</IRI>
+        <Literal>networkfirewallrulegroup:statefulrule_header</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrule_ruleoptions</IRI>
+        <Literal>networkfirewallrulegroup:statefulrule_ruleoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrule</IRI>
+        <Literal>networkfirewallrulegroup:statelessrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrule_priority</IRI>
+        <Literal>networkfirewallrulegroup:statelessrule_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrule_ruledefinition</IRI>
+        <Literal>networkfirewallrulegroup:statelessrule_ruledefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulesandcustomactions</IRI>
+        <Literal>networkfirewallrulegroup:statelessrulesandcustomactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulesandcustomactions_customactions</IRI>
+        <Literal>networkfirewallrulegroup:statelessrulesandcustomactions_customactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulesandcustomactions_statelessrules</IRI>
+        <Literal>networkfirewallrulegroup:statelessrulesandcustomactions_statelessrules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>networkfirewallrulegroup:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>networkfirewallrulegroup:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>networkfirewallrulegroup:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcpflagfield</IRI>
+        <Literal>networkfirewallrulegroup:tcpflagfield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcpflagfield_flags</IRI>
+        <Literal>networkfirewallrulegroup:tcpflagfield_flags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcpflagfield_masks</IRI>
+        <Literal>networkfirewallrulegroup:tcpflagfield_masks</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

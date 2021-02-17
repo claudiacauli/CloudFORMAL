@@ -1,0 +1,656 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudformationstackset#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudformationstackset#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="autodeployment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="deploymenttargets"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="operationpreferences"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stackinstances"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stackset"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackinstances_deploymenttargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackinstances_parameteroverrides"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackset_autodeployment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackset_operationpreferences"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackset_parameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackset_stackinstancesgroup"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stackset_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autodeployment_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autodeployment_retainstacksonaccountremoval"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deploymenttargets_accounts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="deploymenttargets_organizationalunitids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="operationpreferences_failuretolerancecount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="operationpreferences_failuretolerancepercentage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="operationpreferences_maxconcurrentcount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="operationpreferences_maxconcurrentpercentage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="operationpreferences_regionorder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="parameter_parameterkey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="parameter_parametervalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackinstances_regions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_administrationrolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_capabilities"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_executionrolename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_permissionmodel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_stacksetname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_templatebody"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stackset_templateurl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="parameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="parameter_parameterkey"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="parameter_parametervalue"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stackinstances"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="stackinstances_deploymenttargets"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stackinstances"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stackinstances_regions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stackset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stackset_permissionmodel"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stackset"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stackset_stacksetname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stackinstances_deploymenttargets"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stackset_autodeployment"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stackset_operationpreferences"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackinstances_deploymenttargets"/>
+        <Class IRI="stackinstances"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackinstances_parameteroverrides"/>
+        <Class IRI="stackinstances"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackset_autodeployment"/>
+        <Class IRI="stackset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackset_operationpreferences"/>
+        <Class IRI="stackset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackset_parameters"/>
+        <Class IRI="stackset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackset_stackinstancesgroup"/>
+        <Class IRI="stackset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stackset_tags"/>
+        <Class IRI="stackset"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackinstances_deploymenttargets"/>
+        <Class IRI="deploymenttargets"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackinstances_parameteroverrides"/>
+        <Class IRI="parameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackset_autodeployment"/>
+        <Class IRI="autodeployment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackset_operationpreferences"/>
+        <Class IRI="operationpreferences"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackset_parameters"/>
+        <Class IRI="parameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackset_stackinstancesgroup"/>
+        <Class IRI="stackinstances"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stackset_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autodeployment_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autodeployment_retainstacksonaccountremoval"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="operationpreferences_failuretolerancecount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="operationpreferences_failuretolerancepercentage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="operationpreferences_maxconcurrentcount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="operationpreferences_maxconcurrentpercentage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="parameter_parameterkey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="parameter_parametervalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_administrationrolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_executionrolename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_permissionmodel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_stacksetname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_templatebody"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stackset_templateurl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="autodeployment_enabled"/>
+        <Class IRI="autodeployment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="autodeployment_retainstacksonaccountremoval"/>
+        <Class IRI="autodeployment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deploymenttargets_accounts"/>
+        <Class IRI="deploymenttargets"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="deploymenttargets_organizationalunitids"/>
+        <Class IRI="deploymenttargets"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="operationpreferences_failuretolerancecount"/>
+        <Class IRI="operationpreferences"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="operationpreferences_failuretolerancepercentage"/>
+        <Class IRI="operationpreferences"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="operationpreferences_maxconcurrentcount"/>
+        <Class IRI="operationpreferences"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="operationpreferences_maxconcurrentpercentage"/>
+        <Class IRI="operationpreferences"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="operationpreferences_regionorder"/>
+        <Class IRI="operationpreferences"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="parameter_parameterkey"/>
+        <Class IRI="parameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="parameter_parametervalue"/>
+        <Class IRI="parameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackinstances_regions"/>
+        <Class IRI="stackinstances"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_administrationrolearn"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_capabilities"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_description"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_executionrolename"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_permissionmodel"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_stacksetname"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_templatebody"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stackset_templateurl"/>
+        <Class IRI="stackset"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="autodeployment_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="autodeployment_retainstacksonaccountremoval"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deploymenttargets_accounts"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="deploymenttargets_organizationalunitids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="operationpreferences_failuretolerancecount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="operationpreferences_failuretolerancepercentage"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="operationpreferences_maxconcurrentcount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="operationpreferences_maxconcurrentpercentage"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="operationpreferences_regionorder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="parameter_parameterkey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="parameter_parametervalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackinstances_regions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_administrationrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_capabilities"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_executionrolename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_permissionmodel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_stacksetname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_templatebody"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stackset_templateurl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autodeployment</IRI>
+        <Literal>cloudformationstackset:autodeployment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autodeployment_enabled</IRI>
+        <Literal>cloudformationstackset:autodeployment_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autodeployment_retainstacksonaccountremoval</IRI>
+        <Literal>cloudformationstackset:autodeployment_retainstacksonaccountremoval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymenttargets</IRI>
+        <Literal>cloudformationstackset:deploymenttargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymenttargets_accounts</IRI>
+        <Literal>cloudformationstackset:deploymenttargets_accounts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymenttargets_organizationalunitids</IRI>
+        <Literal>cloudformationstackset:deploymenttargets_organizationalunitids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences</IRI>
+        <Literal>cloudformationstackset:operationpreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences_failuretolerancecount</IRI>
+        <Literal>cloudformationstackset:operationpreferences_failuretolerancecount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences_failuretolerancepercentage</IRI>
+        <Literal>cloudformationstackset:operationpreferences_failuretolerancepercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences_maxconcurrentcount</IRI>
+        <Literal>cloudformationstackset:operationpreferences_maxconcurrentcount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences_maxconcurrentpercentage</IRI>
+        <Literal>cloudformationstackset:operationpreferences_maxconcurrentpercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>operationpreferences_regionorder</IRI>
+        <Literal>cloudformationstackset:operationpreferences_regionorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameter</IRI>
+        <Literal>cloudformationstackset:parameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameter_parameterkey</IRI>
+        <Literal>cloudformationstackset:parameter_parameterkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameter_parametervalue</IRI>
+        <Literal>cloudformationstackset:parameter_parametervalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackinstances</IRI>
+        <Literal>cloudformationstackset:stackinstances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackinstances_deploymenttargets</IRI>
+        <Literal>cloudformationstackset:stackinstances_deploymenttargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackinstances_parameteroverrides</IRI>
+        <Literal>cloudformationstackset:stackinstances_parameteroverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackinstances_regions</IRI>
+        <Literal>cloudformationstackset:stackinstances_regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset</IRI>
+        <Literal>cloudformationstackset:stackset</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_administrationrolearn</IRI>
+        <Literal>cloudformationstackset:stackset_administrationrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_autodeployment</IRI>
+        <Literal>cloudformationstackset:stackset_autodeployment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_capabilities</IRI>
+        <Literal>cloudformationstackset:stackset_capabilities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_description</IRI>
+        <Literal>cloudformationstackset:stackset_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_executionrolename</IRI>
+        <Literal>cloudformationstackset:stackset_executionrolename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_operationpreferences</IRI>
+        <Literal>cloudformationstackset:stackset_operationpreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_parameters</IRI>
+        <Literal>cloudformationstackset:stackset_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_permissionmodel</IRI>
+        <Literal>cloudformationstackset:stackset_permissionmodel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_stackinstancesgroup</IRI>
+        <Literal>cloudformationstackset:stackset_stackinstancesgroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_stacksetname</IRI>
+        <Literal>cloudformationstackset:stackset_stacksetname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_tags</IRI>
+        <Literal>cloudformationstackset:stackset_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_templatebody</IRI>
+        <Literal>cloudformationstackset:stackset_templatebody</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stackset_templateurl</IRI>
+        <Literal>cloudformationstackset:stackset_templateurl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>cloudformationstackset:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>cloudformationstackset:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>cloudformationstackset:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

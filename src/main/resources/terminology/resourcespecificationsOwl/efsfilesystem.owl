@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="backuppolicy"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="elasticfilesystemtag"/>
     </Declaration>
     <Declaration>
@@ -21,10 +24,16 @@
         <Class IRI="lifecyclepolicy"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="filesystem_backuppolicy"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="filesystem_filesystemtags"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="filesystem_lifecyclepolicies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="backuppolicy_status"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="elasticfilesystemtag_key"/>
@@ -53,6 +62,13 @@
     <Declaration>
         <DataProperty IRI="lifecyclepolicy_transitiontoia"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="backuppolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="backuppolicy_status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="elasticfilesystemtag"/>
         <DataSomeValuesFrom>
@@ -74,6 +90,13 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="filesystem_backuppolicy"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="filesystem_backuppolicy"/>
+        <Class IRI="filesystem"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="filesystem_filesystemtags"/>
         <Class IRI="filesystem"/>
@@ -82,6 +105,10 @@
         <ObjectProperty IRI="filesystem_lifecyclepolicies"/>
         <Class IRI="filesystem"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="filesystem_backuppolicy"/>
+        <Class IRI="backuppolicy"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="filesystem_filesystemtags"/>
         <Class IRI="elasticfilesystemtag"/>
@@ -90,6 +117,9 @@
         <ObjectProperty IRI="filesystem_lifecyclepolicies"/>
         <Class IRI="lifecyclepolicy"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="backuppolicy_status"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="elasticfilesystemtag_key"/>
     </FunctionalDataProperty>
@@ -118,6 +148,10 @@
         <DataProperty IRI="lifecyclepolicy_transitiontoia"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="backuppolicy_status"/>
+        <Class IRI="backuppolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="elasticfilesystemtag_key"/>
         <Class IRI="elasticfilesystemtag"/>
     </DataPropertyDomain>
@@ -153,6 +187,10 @@
         <DataProperty IRI="lifecyclepolicy_transitiontoia"/>
         <Class IRI="lifecyclepolicy"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="backuppolicy_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="elasticfilesystemtag_key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -191,6 +229,16 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backuppolicy</IRI>
+        <Literal>efsfilesystem:backuppolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>backuppolicy_status</IRI>
+        <Literal>efsfilesystem:backuppolicy_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>elasticfilesystemtag</IRI>
         <Literal>efsfilesystem:elasticfilesystemtag</Literal>
     </AnnotationAssertion>
@@ -208,6 +256,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>filesystem</IRI>
         <Literal>efsfilesystem:filesystem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filesystem_backuppolicy</IRI>
+        <Literal>efsfilesystem:filesystem_backuppolicy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

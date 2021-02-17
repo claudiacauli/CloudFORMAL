@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshgatewayroute#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/appmeshgatewayroute#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="gatewayroute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gatewayroutespec"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gatewayroutetarget"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gatewayroutevirtualservice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcgatewayroute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcgatewayrouteaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="grpcgatewayroutematch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpgatewayroute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpgatewayrouteaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httpgatewayroutematch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroute_spec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroute_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroutespec_grpcroute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroutespec_http2route"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroutespec_httproute"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayroutetarget_virtualservice"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcgatewayroute_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcgatewayroute_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpcgatewayrouteaction_target"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpgatewayroute_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpgatewayroute_match"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httpgatewayrouteaction_target"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewayroute_gatewayroutename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewayroute_meshname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewayroute_meshowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewayroute_virtualgatewayname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewayroutevirtualservice_virtualservicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grpcgatewayroutematch_servicename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="httpgatewayroutematch_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="gatewayroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gatewayroute_spec"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewayroute"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gatewayroute_meshname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewayroute"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gatewayroute_virtualgatewayname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewayroutetarget"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gatewayroutetarget_virtualservice"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewayroutevirtualservice"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gatewayroutevirtualservice_virtualservicename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcgatewayroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcgatewayroute_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcgatewayroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcgatewayroute_match"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="grpcgatewayrouteaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="grpcgatewayrouteaction_target"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpgatewayroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpgatewayroute_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpgatewayroute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpgatewayroute_match"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpgatewayrouteaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="httpgatewayrouteaction_target"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="httpgatewayroutematch"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="httpgatewayroutematch_prefix"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayroute_spec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayroutespec_grpcroute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayroutespec_http2route"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayroutespec_httproute"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayroutetarget_virtualservice"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcgatewayroute_action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcgatewayroute_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcgatewayrouteaction_target"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpgatewayroute_action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpgatewayroute_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httpgatewayrouteaction_target"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroute_spec"/>
+        <Class IRI="gatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroute_tags"/>
+        <Class IRI="gatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroutespec_grpcroute"/>
+        <Class IRI="gatewayroutespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroutespec_http2route"/>
+        <Class IRI="gatewayroutespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroutespec_httproute"/>
+        <Class IRI="gatewayroutespec"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayroutetarget_virtualservice"/>
+        <Class IRI="gatewayroutetarget"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcgatewayroute_action"/>
+        <Class IRI="grpcgatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcgatewayroute_match"/>
+        <Class IRI="grpcgatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcgatewayrouteaction_target"/>
+        <Class IRI="grpcgatewayrouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpgatewayroute_action"/>
+        <Class IRI="httpgatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpgatewayroute_match"/>
+        <Class IRI="httpgatewayroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httpgatewayrouteaction_target"/>
+        <Class IRI="httpgatewayrouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroute_spec"/>
+        <Class IRI="gatewayroutespec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroute_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroutespec_grpcroute"/>
+        <Class IRI="grpcgatewayroute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroutespec_http2route"/>
+        <Class IRI="httpgatewayroute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroutespec_httproute"/>
+        <Class IRI="httpgatewayroute"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayroutetarget_virtualservice"/>
+        <Class IRI="gatewayroutevirtualservice"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcgatewayroute_action"/>
+        <Class IRI="grpcgatewayrouteaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcgatewayroute_match"/>
+        <Class IRI="grpcgatewayroutematch"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcgatewayrouteaction_target"/>
+        <Class IRI="gatewayroutetarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpgatewayroute_action"/>
+        <Class IRI="httpgatewayrouteaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpgatewayroute_match"/>
+        <Class IRI="httpgatewayroutematch"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httpgatewayrouteaction_target"/>
+        <Class IRI="gatewayroutetarget"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewayroute_gatewayroutename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewayroute_meshname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewayroute_meshowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewayroute_virtualgatewayname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewayroutevirtualservice_virtualservicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="grpcgatewayroutematch_servicename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="httpgatewayroutematch_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewayroute_gatewayroutename"/>
+        <Class IRI="gatewayroute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewayroute_meshname"/>
+        <Class IRI="gatewayroute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewayroute_meshowner"/>
+        <Class IRI="gatewayroute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewayroute_virtualgatewayname"/>
+        <Class IRI="gatewayroute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewayroutevirtualservice_virtualservicename"/>
+        <Class IRI="gatewayroutevirtualservice"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grpcgatewayroutematch_servicename"/>
+        <Class IRI="grpcgatewayroutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="httpgatewayroutematch_prefix"/>
+        <Class IRI="httpgatewayroutematch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewayroute_gatewayroutename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewayroute_meshname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewayroute_meshowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewayroute_virtualgatewayname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewayroutevirtualservice_virtualservicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grpcgatewayroutematch_servicename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="httpgatewayroutematch_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_gatewayroutename</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_gatewayroutename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_meshname</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_meshname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_meshowner</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_meshowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_spec</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_spec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_tags</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroute_virtualgatewayname</IRI>
+        <Literal>appmeshgatewayroute:gatewayroute_virtualgatewayname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutespec</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutespec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutespec_grpcroute</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutespec_grpcroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutespec_http2route</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutespec_http2route</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutespec_httproute</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutespec_httproute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutetarget</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutetarget</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutetarget_virtualservice</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutetarget_virtualservice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutevirtualservice</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutevirtualservice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayroutevirtualservice_virtualservicename</IRI>
+        <Literal>appmeshgatewayroute:gatewayroutevirtualservice_virtualservicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayroute</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayroute_action</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayroute_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayroute_match</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayroute_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayrouteaction</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayrouteaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayrouteaction_target</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayrouteaction_target</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayroutematch</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayroutematch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcgatewayroutematch_servicename</IRI>
+        <Literal>appmeshgatewayroute:grpcgatewayroutematch_servicename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayroute</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayroute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayroute_action</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayroute_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayroute_match</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayroute_match</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayrouteaction</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayrouteaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayrouteaction_target</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayrouteaction_target</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayroutematch</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayroutematch</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httpgatewayroutematch_prefix</IRI>
+        <Literal>appmeshgatewayroute:httpgatewayroutematch_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>appmeshgatewayroute:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>appmeshgatewayroute:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>appmeshgatewayroute:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

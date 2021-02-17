@@ -1,0 +1,748 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/licensemanagerlicense#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/licensemanagerlicense#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="borrowconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="consumptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="entitlement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="issuerdata"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="license"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="metadata"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="provisionalconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="validitydateformat"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="consumptionconfiguration_borrowconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="consumptionconfiguration_provisionalconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="license_consumptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="license_entitlements"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="license_issuer"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="license_licensemetadata"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="license_validity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="borrowconfiguration_allowearlycheckin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="borrowconfiguration_maxtimetoliveinminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="consumptionconfiguration_renewtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_allowcheckin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_maxcount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_overage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_unit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="entitlement_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="issuerdata_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="issuerdata_signkey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_beneficiary"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_homeregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_licensename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_productname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_productsku"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="license_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadata_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="metadata_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="provisionalconfiguration_maxtimetoliveinminutes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="validitydateformat_begin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="validitydateformat_end"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="borrowconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="borrowconfiguration_allowearlycheckin"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="borrowconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="borrowconfiguration_maxtimetoliveinminutes"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="entitlement"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="entitlement_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="entitlement"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="entitlement_unit"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="issuerdata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="issuerdata_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="license_consumptionconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="license_entitlements"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="license_issuer"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="license_validity"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="license_homeregion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="license_licensename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="license"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="license_productname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metadata_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="metadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="metadata_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="provisionalconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="provisionalconfiguration_maxtimetoliveinminutes"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="validitydateformat"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="validitydateformat_begin"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="validitydateformat"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="validitydateformat_end"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="consumptionconfiguration_borrowconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="consumptionconfiguration_provisionalconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="license_consumptionconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="license_issuer"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="license_validity"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="consumptionconfiguration_borrowconfiguration"/>
+        <Class IRI="consumptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="consumptionconfiguration_provisionalconfiguration"/>
+        <Class IRI="consumptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="license_consumptionconfiguration"/>
+        <Class IRI="license"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="license_entitlements"/>
+        <Class IRI="license"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="license_issuer"/>
+        <Class IRI="license"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="license_licensemetadata"/>
+        <Class IRI="license"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="license_validity"/>
+        <Class IRI="license"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="consumptionconfiguration_borrowconfiguration"/>
+        <Class IRI="borrowconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="consumptionconfiguration_provisionalconfiguration"/>
+        <Class IRI="provisionalconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="license_consumptionconfiguration"/>
+        <Class IRI="consumptionconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="license_entitlements"/>
+        <Class IRI="entitlement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="license_issuer"/>
+        <Class IRI="issuerdata"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="license_licensemetadata"/>
+        <Class IRI="metadata"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="license_validity"/>
+        <Class IRI="validitydateformat"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="borrowconfiguration_allowearlycheckin"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="borrowconfiguration_maxtimetoliveinminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="consumptionconfiguration_renewtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_allowcheckin"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_maxcount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_overage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_unit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="entitlement_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="issuerdata_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="issuerdata_signkey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_beneficiary"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_homeregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_licensename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_productname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_productsku"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="license_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadata_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="metadata_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="provisionalconfiguration_maxtimetoliveinminutes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="validitydateformat_begin"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="validitydateformat_end"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="borrowconfiguration_allowearlycheckin"/>
+        <Class IRI="borrowconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="borrowconfiguration_maxtimetoliveinminutes"/>
+        <Class IRI="borrowconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="consumptionconfiguration_renewtype"/>
+        <Class IRI="consumptionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_allowcheckin"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_maxcount"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_name"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_overage"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_unit"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="entitlement_value"/>
+        <Class IRI="entitlement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="issuerdata_name"/>
+        <Class IRI="issuerdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="issuerdata_signkey"/>
+        <Class IRI="issuerdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_beneficiary"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_homeregion"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_licensename"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_productname"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_productsku"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="license_status"/>
+        <Class IRI="license"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadata_name"/>
+        <Class IRI="metadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="metadata_value"/>
+        <Class IRI="metadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="provisionalconfiguration_maxtimetoliveinminutes"/>
+        <Class IRI="provisionalconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="validitydateformat_begin"/>
+        <Class IRI="validitydateformat"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="validitydateformat_end"/>
+        <Class IRI="validitydateformat"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="borrowconfiguration_allowearlycheckin"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="borrowconfiguration_maxtimetoliveinminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="consumptionconfiguration_renewtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_allowcheckin"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_maxcount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_overage"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_unit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="entitlement_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="issuerdata_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="issuerdata_signkey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_beneficiary"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_homeregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_licensename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_productname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_productsku"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="license_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadata_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="metadata_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="provisionalconfiguration_maxtimetoliveinminutes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="validitydateformat_begin"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="validitydateformat_end"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>borrowconfiguration</IRI>
+        <Literal>licensemanagerlicense:borrowconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>borrowconfiguration_allowearlycheckin</IRI>
+        <Literal>licensemanagerlicense:borrowconfiguration_allowearlycheckin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>borrowconfiguration_maxtimetoliveinminutes</IRI>
+        <Literal>licensemanagerlicense:borrowconfiguration_maxtimetoliveinminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>consumptionconfiguration</IRI>
+        <Literal>licensemanagerlicense:consumptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>consumptionconfiguration_borrowconfiguration</IRI>
+        <Literal>licensemanagerlicense:consumptionconfiguration_borrowconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>consumptionconfiguration_provisionalconfiguration</IRI>
+        <Literal>licensemanagerlicense:consumptionconfiguration_provisionalconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>consumptionconfiguration_renewtype</IRI>
+        <Literal>licensemanagerlicense:consumptionconfiguration_renewtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement</IRI>
+        <Literal>licensemanagerlicense:entitlement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_allowcheckin</IRI>
+        <Literal>licensemanagerlicense:entitlement_allowcheckin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_maxcount</IRI>
+        <Literal>licensemanagerlicense:entitlement_maxcount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_name</IRI>
+        <Literal>licensemanagerlicense:entitlement_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_overage</IRI>
+        <Literal>licensemanagerlicense:entitlement_overage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_unit</IRI>
+        <Literal>licensemanagerlicense:entitlement_unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>entitlement_value</IRI>
+        <Literal>licensemanagerlicense:entitlement_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>issuerdata</IRI>
+        <Literal>licensemanagerlicense:issuerdata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>issuerdata_name</IRI>
+        <Literal>licensemanagerlicense:issuerdata_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>issuerdata_signkey</IRI>
+        <Literal>licensemanagerlicense:issuerdata_signkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license</IRI>
+        <Literal>licensemanagerlicense:license</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_beneficiary</IRI>
+        <Literal>licensemanagerlicense:license_beneficiary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_consumptionconfiguration</IRI>
+        <Literal>licensemanagerlicense:license_consumptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_entitlements</IRI>
+        <Literal>licensemanagerlicense:license_entitlements</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_homeregion</IRI>
+        <Literal>licensemanagerlicense:license_homeregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_issuer</IRI>
+        <Literal>licensemanagerlicense:license_issuer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_licensemetadata</IRI>
+        <Literal>licensemanagerlicense:license_licensemetadata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_licensename</IRI>
+        <Literal>licensemanagerlicense:license_licensename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_productname</IRI>
+        <Literal>licensemanagerlicense:license_productname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_productsku</IRI>
+        <Literal>licensemanagerlicense:license_productsku</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_status</IRI>
+        <Literal>licensemanagerlicense:license_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>license_validity</IRI>
+        <Literal>licensemanagerlicense:license_validity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadata</IRI>
+        <Literal>licensemanagerlicense:metadata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadata_name</IRI>
+        <Literal>licensemanagerlicense:metadata_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>metadata_value</IRI>
+        <Literal>licensemanagerlicense:metadata_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionalconfiguration</IRI>
+        <Literal>licensemanagerlicense:provisionalconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>provisionalconfiguration_maxtimetoliveinminutes</IRI>
+        <Literal>licensemanagerlicense:provisionalconfiguration_maxtimetoliveinminutes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>validitydateformat</IRI>
+        <Literal>licensemanagerlicense:validitydateformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>validitydateformat_begin</IRI>
+        <Literal>licensemanagerlicense:validitydateformat_begin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>validitydateformat_end</IRI>
+        <Literal>licensemanagerlicense:validitydateformat_end</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

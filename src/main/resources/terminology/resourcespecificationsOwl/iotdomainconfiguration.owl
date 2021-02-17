@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotdomainconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotdomainconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="authorizerconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="domainconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="servercertificatesummary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domainconfiguration_authorizerconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domainconfiguration_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authorizerconfig_allowauthorizeroverride"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="authorizerconfig_defaultauthorizername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_domainconfigurationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_domainconfigurationstatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_domainname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_servercertificatearns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_servicetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainconfiguration_validationcertificatearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="servercertificatesummary_servercertificatearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatusdetail"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="domainconfiguration_authorizerconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domainconfiguration_authorizerconfig"/>
+        <Class IRI="domainconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domainconfiguration_tags"/>
+        <Class IRI="domainconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domainconfiguration_authorizerconfig"/>
+        <Class IRI="authorizerconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domainconfiguration_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authorizerconfig_allowauthorizeroverride"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="authorizerconfig_defaultauthorizername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainconfiguration_domainconfigurationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainconfiguration_domainconfigurationstatus"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainconfiguration_domainname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainconfiguration_servicetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainconfiguration_validationcertificatearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="servercertificatesummary_servercertificatearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatus"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatusdetail"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="authorizerconfig_allowauthorizeroverride"/>
+        <Class IRI="authorizerconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="authorizerconfig_defaultauthorizername"/>
+        <Class IRI="authorizerconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_domainconfigurationname"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_domainconfigurationstatus"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_domainname"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_servercertificatearns"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_servicetype"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainconfiguration_validationcertificatearn"/>
+        <Class IRI="domainconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="servercertificatesummary_servercertificatearn"/>
+        <Class IRI="servercertificatesummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatus"/>
+        <Class IRI="servercertificatesummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatusdetail"/>
+        <Class IRI="servercertificatesummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="authorizerconfig_allowauthorizeroverride"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="authorizerconfig_defaultauthorizername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_domainconfigurationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_domainconfigurationstatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_domainname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_servercertificatearns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_servicetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainconfiguration_validationcertificatearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="servercertificatesummary_servercertificatearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="servercertificatesummary_servercertificatestatusdetail"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizerconfig</IRI>
+        <Literal>iotdomainconfiguration:authorizerconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizerconfig_allowauthorizeroverride</IRI>
+        <Literal>iotdomainconfiguration:authorizerconfig_allowauthorizeroverride</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>authorizerconfig_defaultauthorizername</IRI>
+        <Literal>iotdomainconfiguration:authorizerconfig_defaultauthorizername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_authorizerconfig</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_authorizerconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_domainconfigurationname</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_domainconfigurationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_domainconfigurationstatus</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_domainconfigurationstatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_domainname</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_domainname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_servercertificatearns</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_servercertificatearns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_servicetype</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_servicetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_tags</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainconfiguration_validationcertificatearn</IRI>
+        <Literal>iotdomainconfiguration:domainconfiguration_validationcertificatearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>servercertificatesummary</IRI>
+        <Literal>iotdomainconfiguration:servercertificatesummary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>servercertificatesummary_servercertificatearn</IRI>
+        <Literal>iotdomainconfiguration:servercertificatesummary_servercertificatearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>servercertificatesummary_servercertificatestatus</IRI>
+        <Literal>iotdomainconfiguration:servercertificatesummary_servercertificatestatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>servercertificatesummary_servercertificatestatusdetail</IRI>
+        <Literal>iotdomainconfiguration:servercertificatesummary_servercertificatestatusdetail</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>iotdomainconfiguration:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>iotdomainconfiguration:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>iotdomainconfiguration:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -18,6 +18,9 @@
         <Class IRI="code"/>
     </Declaration>
     <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="runconfig"/>
     </Declaration>
     <Declaration>
@@ -43,6 +46,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="canary_vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="runconfig_environmentvariables"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="canary_artifacts3location"/>
@@ -81,6 +87,18 @@
         <DataProperty IRI="code_script"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="runconfig_activetracing"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="runconfig_memoryinmb"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="runconfig_timeoutinseconds"/>
     </Declaration>
     <Declaration>
@@ -108,13 +126,6 @@
         <Class IRI="canary"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="canary_code"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="canary"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="canary_runconfig"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
     </SubClassOf>
@@ -165,13 +176,6 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="runconfig_timeoutinseconds"/>
             <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="schedule"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="schedule_durationinseconds"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -241,6 +245,10 @@
         <ObjectProperty IRI="canary_vpcconfig"/>
         <Class IRI="canary"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="runconfig_environmentvariables"/>
+        <Class IRI="runconfig"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="canary_code"/>
         <Class IRI="code"/>
@@ -260,6 +268,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="canary_vpcconfig"/>
         <Class IRI="vpcconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="runconfig_environmentvariables"/>
+        <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="canary_artifacts3location"/>
@@ -296,6 +308,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="code_script"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="runconfig_activetracing"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="runconfig_memoryinmb"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="runconfig_timeoutinseconds"/>
@@ -362,6 +380,22 @@
     <DataPropertyDomain>
         <DataProperty IRI="code_script"/>
         <Class IRI="code"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="runconfig_activetracing"/>
+        <Class IRI="runconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="runconfig_memoryinmb"/>
+        <Class IRI="runconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="runconfig_timeoutinseconds"/>
@@ -442,6 +476,22 @@
     <DataPropertyRange>
         <DataProperty IRI="code_script"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="runconfig_activetracing"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="runconfig_memoryinmb"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="runconfig_timeoutinseconds"/>
@@ -574,6 +624,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>runconfig</IRI>
         <Literal>syntheticscanary:runconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runconfig_activetracing</IRI>
+        <Literal>syntheticscanary:runconfig_activetracing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runconfig_environmentvariables</IRI>
+        <Literal>syntheticscanary:runconfig_environmentvariables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>runconfig_memoryinmb</IRI>
+        <Literal>syntheticscanary:runconfig_memoryinmb</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontoriginrequestpolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontoriginrequestpolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cookiesconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="headersconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="originrequestpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="originrequestpolicyconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="querystringsconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="originrequestpolicy_originrequestpolicyconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="originrequestpolicyconfig_cookiesconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="originrequestpolicyconfig_headersconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="originrequestpolicyconfig_querystringsconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headersconfig_headers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="originrequestpolicyconfig_comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="originrequestpolicyconfig_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="cookiesconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="headersconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="headersconfig_headerbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="originrequestpolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="originrequestpolicy_originrequestpolicyconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="originrequestpolicyconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="originrequestpolicyconfig_cookiesconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="originrequestpolicyconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="originrequestpolicyconfig_headersconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="originrequestpolicyconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="originrequestpolicyconfig_querystringsconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="originrequestpolicyconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="originrequestpolicyconfig_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="querystringsconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="originrequestpolicy_originrequestpolicyconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="originrequestpolicyconfig_cookiesconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="originrequestpolicyconfig_headersconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="originrequestpolicyconfig_querystringsconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="originrequestpolicy_originrequestpolicyconfig"/>
+        <Class IRI="originrequestpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="originrequestpolicyconfig_cookiesconfig"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="originrequestpolicyconfig_headersconfig"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="originrequestpolicyconfig_querystringsconfig"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="originrequestpolicy_originrequestpolicyconfig"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="originrequestpolicyconfig_cookiesconfig"/>
+        <Class IRI="cookiesconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="originrequestpolicyconfig_headersconfig"/>
+        <Class IRI="headersconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="originrequestpolicyconfig_querystringsconfig"/>
+        <Class IRI="querystringsconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="originrequestpolicyconfig_comment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="originrequestpolicyconfig_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+        <Class IRI="cookiesconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+        <Class IRI="cookiesconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+        <Class IRI="headersconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headersconfig_headers"/>
+        <Class IRI="headersconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="originrequestpolicyconfig_comment"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="originrequestpolicyconfig_name"/>
+        <Class IRI="originrequestpolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+        <Class IRI="querystringsconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+        <Class IRI="querystringsconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headersconfig_headers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="originrequestpolicyconfig_comment"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="originrequestpolicyconfig_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:cookiesconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig_cookiebehavior</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:cookiesconfig_cookiebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig_cookies</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:cookiesconfig_cookies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:headersconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig_headerbehavior</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:headersconfig_headerbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig_headers</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:headersconfig_headers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicy</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicy_originrequestpolicyconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicy_originrequestpolicyconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig_comment</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig_cookiesconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig_cookiesconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig_headersconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig_headersconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig_name</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originrequestpolicyconfig_querystringsconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:originrequestpolicyconfig_querystringsconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:querystringsconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig_querystringbehavior</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:querystringsconfig_querystringbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig_querystrings</IRI>
+        <Literal>cloudfrontoriginrequestpolicy:querystringsconfig_querystrings</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

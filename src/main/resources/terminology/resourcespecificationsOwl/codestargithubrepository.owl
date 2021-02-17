@@ -27,6 +27,9 @@
         <ObjectProperty IRI="githubrepository_code"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="githubrepository_connectionarn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="githubrepository_enableissues"/>
     </Declaration>
     <Declaration>
@@ -59,13 +62,6 @@
             <ObjectProperty IRI="code_s3"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="githubrepository"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="githubrepository_repositoryaccesstoken"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="githubrepository"/>
@@ -118,6 +114,9 @@
         <Class IRI="code"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="githubrepository_connectionarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="githubrepository_enableissues"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -145,6 +144,10 @@
         <DataProperty IRI="s3_objectversion"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="githubrepository_connectionarn"/>
+        <Class IRI="githubrepository"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="githubrepository_enableissues"/>
         <Class IRI="githubrepository"/>
     </DataPropertyDomain>
@@ -180,6 +183,10 @@
         <DataProperty IRI="s3_objectversion"/>
         <Class IRI="s3"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="githubrepository_connectionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="githubrepository_enableissues"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -235,6 +242,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>githubrepository_code</IRI>
         <Literal>codestargithubrepository:githubrepository_code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>githubrepository_connectionarn</IRI>
+        <Literal>codestargithubrepository:githubrepository_connectionarn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

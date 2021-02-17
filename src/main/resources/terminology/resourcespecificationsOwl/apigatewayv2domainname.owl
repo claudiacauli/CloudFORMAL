@@ -18,7 +18,13 @@
         <Class IRI="domainnameconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="mutualtlsauthentication"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="domainname_domainnameconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domainname_mutualtlsauthentication"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="domainname_domainname"/>
@@ -35,6 +41,15 @@
     <Declaration>
         <DataProperty IRI="domainnameconfiguration_endpointtype"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainnameconfiguration_securitypolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mutualtlsauthentication_truststoreuri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mutualtlsauthentication_truststoreversion"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="domainname"/>
         <DataSomeValuesFrom>
@@ -42,13 +57,24 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="domainname_mutualtlsauthentication"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="domainname_domainnameconfigurations"/>
+        <Class IRI="domainname"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domainname_mutualtlsauthentication"/>
         <Class IRI="domainname"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="domainname_domainnameconfigurations"/>
         <Class IRI="domainnameconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domainname_mutualtlsauthentication"/>
+        <Class IRI="mutualtlsauthentication"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="domainname_domainname"/>
@@ -65,6 +91,15 @@
     <FunctionalDataProperty>
         <DataProperty IRI="domainnameconfiguration_endpointtype"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainnameconfiguration_securitypolicy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="mutualtlsauthentication_truststoreuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="mutualtlsauthentication_truststoreversion"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="domainname_domainname"/>
         <Class IRI="domainname"/>
@@ -85,6 +120,18 @@
         <DataProperty IRI="domainnameconfiguration_endpointtype"/>
         <Class IRI="domainnameconfiguration"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainnameconfiguration_securitypolicy"/>
+        <Class IRI="domainnameconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mutualtlsauthentication_truststoreuri"/>
+        <Class IRI="mutualtlsauthentication"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mutualtlsauthentication_truststoreversion"/>
+        <Class IRI="mutualtlsauthentication"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="domainname_domainname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -103,6 +150,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="domainnameconfiguration_endpointtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainnameconfiguration_securitypolicy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mutualtlsauthentication_truststoreuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mutualtlsauthentication_truststoreversion"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -119,6 +178,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>domainname_domainnameconfigurations</IRI>
         <Literal>apigatewayv2domainname:domainname_domainnameconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainname_mutualtlsauthentication</IRI>
+        <Literal>apigatewayv2domainname:domainname_mutualtlsauthentication</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -144,6 +208,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>domainnameconfiguration_endpointtype</IRI>
         <Literal>apigatewayv2domainname:domainnameconfiguration_endpointtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainnameconfiguration_securitypolicy</IRI>
+        <Literal>apigatewayv2domainname:domainnameconfiguration_securitypolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mutualtlsauthentication</IRI>
+        <Literal>apigatewayv2domainname:mutualtlsauthentication</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mutualtlsauthentication_truststoreuri</IRI>
+        <Literal>apigatewayv2domainname:mutualtlsauthentication_truststoreuri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>mutualtlsauthentication_truststoreversion</IRI>
+        <Literal>apigatewayv2domainname:mutualtlsauthentication_truststoreversion</Literal>
     </AnnotationAssertion>
 </Ontology>
 

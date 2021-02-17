@@ -18,6 +18,9 @@
         <Class IRI="provisioningtemplate"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="provisioningtemplate_preprovisioninghook"/>
     </Declaration>
     <Declaration>
@@ -45,7 +48,10 @@
         <DataProperty IRI="provisioningtemplate_templatename"/>
     </Declaration>
     <Declaration>
-        <Class IRI="json"/>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="provisioningtemplate"/>
@@ -58,6 +64,20 @@
         <Class IRI="provisioningtemplate"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="provisioningtemplate_templatebody"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -78,7 +98,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="provisioningtemplate_tags"/>
-        <Class IRI="json"/>
+        <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="provisioninghook_payloadversion"/>
@@ -101,6 +121,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="provisioningtemplate_templatename"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="provisioninghook_payloadversion"/>
         <Class IRI="provisioninghook"/>
@@ -128,6 +154,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="provisioningtemplate_templatename"/>
         <Class IRI="provisioningtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="provisioninghook_payloadversion"/>
@@ -155,6 +189,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="provisioningtemplate_templatename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -211,6 +253,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>provisioningtemplate_templatename</IRI>
         <Literal>iotprovisioningtemplate:provisioningtemplate_templatename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>iotprovisioningtemplate:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>iotprovisioningtemplate:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>iotprovisioningtemplate:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

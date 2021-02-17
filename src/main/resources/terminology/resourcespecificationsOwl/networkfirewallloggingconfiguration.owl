@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallloggingconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallloggingconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="logdestinationconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="logdestinationconfig_logdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_logdestinationconfigs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logdestinationconfig_logdestinationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logdestinationconfig_logtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loggingconfiguration_firewallarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="loggingconfiguration_firewallname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="logdestinationconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logdestinationconfig_logdestinationtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logdestinationconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logdestinationconfig_logtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggingconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="loggingconfiguration_logdestinationconfigs"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggingconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="loggingconfiguration_loggingconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="loggingconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="loggingconfiguration_firewallarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_loggingconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="logdestinationconfig_logdestination"/>
+        <Class IRI="logdestinationconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_logdestinationconfigs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_loggingconfiguration"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="logdestinationconfig_logdestination"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_logdestinationconfigs"/>
+        <Class IRI="logdestinationconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_loggingconfiguration"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logdestinationconfig_logdestinationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logdestinationconfig_logtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loggingconfiguration_firewallarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="loggingconfiguration_firewallname"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="logdestinationconfig_logdestinationtype"/>
+        <Class IRI="logdestinationconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logdestinationconfig_logtype"/>
+        <Class IRI="logdestinationconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loggingconfiguration_firewallarn"/>
+        <Class IRI="loggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="loggingconfiguration_firewallname"/>
+        <Class IRI="loggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="logdestinationconfig_logdestinationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logdestinationconfig_logtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loggingconfiguration_firewallarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="loggingconfiguration_firewallname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logdestinationconfig</IRI>
+        <Literal>networkfirewallloggingconfiguration:logdestinationconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logdestinationconfig_logdestination</IRI>
+        <Literal>networkfirewallloggingconfiguration:logdestinationconfig_logdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logdestinationconfig_logdestinationtype</IRI>
+        <Literal>networkfirewallloggingconfiguration:logdestinationconfig_logdestinationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logdestinationconfig_logtype</IRI>
+        <Literal>networkfirewallloggingconfiguration:logdestinationconfig_logtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration</IRI>
+        <Literal>networkfirewallloggingconfiguration:loggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_firewallarn</IRI>
+        <Literal>networkfirewallloggingconfiguration:loggingconfiguration_firewallarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_firewallname</IRI>
+        <Literal>networkfirewallloggingconfiguration:loggingconfiguration_firewallname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_logdestinationconfigs</IRI>
+        <Literal>networkfirewallloggingconfiguration:loggingconfiguration_logdestinationconfigs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_loggingconfiguration</IRI>
+        <Literal>networkfirewallloggingconfiguration:loggingconfiguration_loggingconfiguration</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

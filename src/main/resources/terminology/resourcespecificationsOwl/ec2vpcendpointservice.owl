@@ -18,20 +18,20 @@
         <DataProperty IRI="vpcendpointservice_acceptancerequired"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="vpcendpointservice_gatewayloadbalancerarns"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="vpcendpointservice_networkloadbalancerarns"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="vpcendpointservice"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="vpcendpointservice_networkloadbalancerarns"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
     <FunctionalDataProperty>
         <DataProperty IRI="vpcendpointservice_acceptancerequired"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="vpcendpointservice_acceptancerequired"/>
+        <Class IRI="vpcendpointservice"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcendpointservice_gatewayloadbalancerarns"/>
         <Class IRI="vpcendpointservice"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -41,6 +41,10 @@
     <DataPropertyRange>
         <DataProperty IRI="vpcendpointservice_acceptancerequired"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcendpointservice_gatewayloadbalancerarns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="vpcendpointservice_networkloadbalancerarns"/>
@@ -55,6 +59,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>vpcendpointservice_acceptancerequired</IRI>
         <Literal>ec2vpcendpointservice:vpcendpointservice_acceptancerequired</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcendpointservice_gatewayloadbalancerarns</IRI>
+        <Literal>ec2vpcendpointservice:vpcendpointservice_gatewayloadbalancerarns</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

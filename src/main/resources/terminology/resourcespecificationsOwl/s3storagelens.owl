@@ -1,0 +1,848 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3storagelens#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/s3storagelens#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="accountlevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="activitymetrics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="awsorg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="bucketlevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="bucketsandregions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dataexport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="prefixlevel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="prefixlevelstoragemetrics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3bucketdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="selectioncriteria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="storagelens"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="storagelensconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accountlevel_activitymetrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accountlevel_bucketlevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bucketlevel_activitymetrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bucketlevel_prefixlevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dataexport_s3bucketdestination"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="prefixlevel_storagemetrics"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="prefixlevelstoragemetrics_selectioncriteria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="s3bucketdestination_encryption"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelens_storagelensconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelens_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelensconfiguration_accountlevel"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelensconfiguration_awsorg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelensconfiguration_dataexport"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelensconfiguration_exclude"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagelensconfiguration_include"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="activitymetrics_isenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="awsorg_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bucketsandregions_buckets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bucketsandregions_regions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="prefixlevelstoragemetrics_isenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3bucketdestination_accountid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3bucketdestination_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3bucketdestination_format"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3bucketdestination_outputschemaversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3bucketdestination_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="selectioncriteria_delimiter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="selectioncriteria_maxdepth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="selectioncriteria_minstoragebytespercentage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagelensconfiguration_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagelensconfiguration_isenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="storagelensconfiguration_storagelensarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="accountlevel"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accountlevel_bucketlevel"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="awsorg"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="awsorg_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dataexport"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="dataexport_s3bucketdestination"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="prefixlevel"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="prefixlevel_storagemetrics"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3bucketdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3bucketdestination_accountid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3bucketdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3bucketdestination_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3bucketdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3bucketdestination_format"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3bucketdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3bucketdestination_outputschemaversion"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="storagelens"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="storagelens_storagelensconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="storagelensconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="storagelensconfiguration_accountlevel"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="storagelensconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="storagelensconfiguration_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="storagelensconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="storagelensconfiguration_isenabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accountlevel_activitymetrics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accountlevel_bucketlevel"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="bucketlevel_activitymetrics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="bucketlevel_prefixlevel"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="dataexport_s3bucketdestination"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="prefixlevel_storagemetrics"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="prefixlevelstoragemetrics_selectioncriteria"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="s3bucketdestination_encryption"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelens_storagelensconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelensconfiguration_accountlevel"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelensconfiguration_awsorg"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelensconfiguration_dataexport"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelensconfiguration_exclude"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagelensconfiguration_include"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accountlevel_activitymetrics"/>
+        <Class IRI="accountlevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accountlevel_bucketlevel"/>
+        <Class IRI="accountlevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bucketlevel_activitymetrics"/>
+        <Class IRI="bucketlevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bucketlevel_prefixlevel"/>
+        <Class IRI="bucketlevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="dataexport_s3bucketdestination"/>
+        <Class IRI="dataexport"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="prefixlevel_storagemetrics"/>
+        <Class IRI="prefixlevel"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="prefixlevelstoragemetrics_selectioncriteria"/>
+        <Class IRI="prefixlevelstoragemetrics"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="s3bucketdestination_encryption"/>
+        <Class IRI="s3bucketdestination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelens_storagelensconfiguration"/>
+        <Class IRI="storagelens"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelens_tags"/>
+        <Class IRI="storagelens"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelensconfiguration_accountlevel"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelensconfiguration_awsorg"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelensconfiguration_dataexport"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelensconfiguration_exclude"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagelensconfiguration_include"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accountlevel_activitymetrics"/>
+        <Class IRI="activitymetrics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accountlevel_bucketlevel"/>
+        <Class IRI="bucketlevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bucketlevel_activitymetrics"/>
+        <Class IRI="activitymetrics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bucketlevel_prefixlevel"/>
+        <Class IRI="prefixlevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dataexport_s3bucketdestination"/>
+        <Class IRI="s3bucketdestination"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="prefixlevel_storagemetrics"/>
+        <Class IRI="prefixlevelstoragemetrics"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="prefixlevelstoragemetrics_selectioncriteria"/>
+        <Class IRI="selectioncriteria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="s3bucketdestination_encryption"/>
+        <Class IRI="encryption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelens_storagelensconfiguration"/>
+        <Class IRI="storagelensconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelens_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelensconfiguration_accountlevel"/>
+        <Class IRI="accountlevel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelensconfiguration_awsorg"/>
+        <Class IRI="awsorg"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelensconfiguration_dataexport"/>
+        <Class IRI="dataexport"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelensconfiguration_exclude"/>
+        <Class IRI="bucketsandregions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagelensconfiguration_include"/>
+        <Class IRI="bucketsandregions"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="activitymetrics_isenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="awsorg_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="prefixlevelstoragemetrics_isenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3bucketdestination_accountid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3bucketdestination_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3bucketdestination_format"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3bucketdestination_outputschemaversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3bucketdestination_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="selectioncriteria_delimiter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="selectioncriteria_maxdepth"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="selectioncriteria_minstoragebytespercentage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagelensconfiguration_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagelensconfiguration_isenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="storagelensconfiguration_storagelensarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="activitymetrics_isenabled"/>
+        <Class IRI="activitymetrics"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="awsorg_arn"/>
+        <Class IRI="awsorg"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bucketsandregions_buckets"/>
+        <Class IRI="bucketsandregions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bucketsandregions_regions"/>
+        <Class IRI="bucketsandregions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="prefixlevelstoragemetrics_isenabled"/>
+        <Class IRI="prefixlevelstoragemetrics"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3bucketdestination_accountid"/>
+        <Class IRI="s3bucketdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3bucketdestination_arn"/>
+        <Class IRI="s3bucketdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3bucketdestination_format"/>
+        <Class IRI="s3bucketdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3bucketdestination_outputschemaversion"/>
+        <Class IRI="s3bucketdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3bucketdestination_prefix"/>
+        <Class IRI="s3bucketdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="selectioncriteria_delimiter"/>
+        <Class IRI="selectioncriteria"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="selectioncriteria_maxdepth"/>
+        <Class IRI="selectioncriteria"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="selectioncriteria_minstoragebytespercentage"/>
+        <Class IRI="selectioncriteria"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagelensconfiguration_id"/>
+        <Class IRI="storagelensconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagelensconfiguration_isenabled"/>
+        <Class IRI="storagelensconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="storagelensconfiguration_storagelensarn"/>
+        <Class IRI="storagelensconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="activitymetrics_isenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="awsorg_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bucketsandregions_buckets"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bucketsandregions_regions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="prefixlevelstoragemetrics_isenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3bucketdestination_accountid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3bucketdestination_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3bucketdestination_format"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3bucketdestination_outputschemaversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3bucketdestination_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="selectioncriteria_delimiter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="selectioncriteria_maxdepth"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="selectioncriteria_minstoragebytespercentage"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagelensconfiguration_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagelensconfiguration_isenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="storagelensconfiguration_storagelensarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accountlevel</IRI>
+        <Literal>s3storagelens:accountlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accountlevel_activitymetrics</IRI>
+        <Literal>s3storagelens:accountlevel_activitymetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accountlevel_bucketlevel</IRI>
+        <Literal>s3storagelens:accountlevel_bucketlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>activitymetrics</IRI>
+        <Literal>s3storagelens:activitymetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>activitymetrics_isenabled</IRI>
+        <Literal>s3storagelens:activitymetrics_isenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsorg</IRI>
+        <Literal>s3storagelens:awsorg</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>awsorg_arn</IRI>
+        <Literal>s3storagelens:awsorg_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketlevel</IRI>
+        <Literal>s3storagelens:bucketlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketlevel_activitymetrics</IRI>
+        <Literal>s3storagelens:bucketlevel_activitymetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketlevel_prefixlevel</IRI>
+        <Literal>s3storagelens:bucketlevel_prefixlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketsandregions</IRI>
+        <Literal>s3storagelens:bucketsandregions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketsandregions_buckets</IRI>
+        <Literal>s3storagelens:bucketsandregions_buckets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucketsandregions_regions</IRI>
+        <Literal>s3storagelens:bucketsandregions_regions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataexport</IRI>
+        <Literal>s3storagelens:dataexport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dataexport_s3bucketdestination</IRI>
+        <Literal>s3storagelens:dataexport_s3bucketdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption</IRI>
+        <Literal>s3storagelens:encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>prefixlevel</IRI>
+        <Literal>s3storagelens:prefixlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>prefixlevel_storagemetrics</IRI>
+        <Literal>s3storagelens:prefixlevel_storagemetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>prefixlevelstoragemetrics</IRI>
+        <Literal>s3storagelens:prefixlevelstoragemetrics</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>prefixlevelstoragemetrics_isenabled</IRI>
+        <Literal>s3storagelens:prefixlevelstoragemetrics_isenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>prefixlevelstoragemetrics_selectioncriteria</IRI>
+        <Literal>s3storagelens:prefixlevelstoragemetrics_selectioncriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination</IRI>
+        <Literal>s3storagelens:s3bucketdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_accountid</IRI>
+        <Literal>s3storagelens:s3bucketdestination_accountid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_arn</IRI>
+        <Literal>s3storagelens:s3bucketdestination_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_encryption</IRI>
+        <Literal>s3storagelens:s3bucketdestination_encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_format</IRI>
+        <Literal>s3storagelens:s3bucketdestination_format</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_outputschemaversion</IRI>
+        <Literal>s3storagelens:s3bucketdestination_outputschemaversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3bucketdestination_prefix</IRI>
+        <Literal>s3storagelens:s3bucketdestination_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selectioncriteria</IRI>
+        <Literal>s3storagelens:selectioncriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selectioncriteria_delimiter</IRI>
+        <Literal>s3storagelens:selectioncriteria_delimiter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selectioncriteria_maxdepth</IRI>
+        <Literal>s3storagelens:selectioncriteria_maxdepth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>selectioncriteria_minstoragebytespercentage</IRI>
+        <Literal>s3storagelens:selectioncriteria_minstoragebytespercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelens</IRI>
+        <Literal>s3storagelens:storagelens</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelens_storagelensconfiguration</IRI>
+        <Literal>s3storagelens:storagelens_storagelensconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelens_tags</IRI>
+        <Literal>s3storagelens:storagelens_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration</IRI>
+        <Literal>s3storagelens:storagelensconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_accountlevel</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_accountlevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_awsorg</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_awsorg</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_dataexport</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_dataexport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_exclude</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_exclude</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_id</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_include</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_include</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_isenabled</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_isenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagelensconfiguration_storagelensarn</IRI>
+        <Literal>s3storagelens:storagelensconfiguration_storagelensarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>s3storagelens:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>s3storagelens:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>s3storagelens:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

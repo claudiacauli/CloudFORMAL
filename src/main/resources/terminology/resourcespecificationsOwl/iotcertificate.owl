@@ -15,6 +15,15 @@
         <Class IRI="certificate"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="certificate_cacertificatepem"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="certificate_certificatemode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="certificate_certificatepem"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="certificate_certificatesigningrequest"/>
     </Declaration>
     <Declaration>
@@ -23,24 +32,38 @@
     <SubClassOf>
         <Class IRI="certificate"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="certificate_certificatesigningrequest"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="certificate"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="certificate_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalDataProperty>
+        <DataProperty IRI="certificate_cacertificatepem"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="certificate_certificatemode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="certificate_certificatepem"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="certificate_certificatesigningrequest"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="certificate_status"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="certificate_cacertificatepem"/>
+        <Class IRI="certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="certificate_certificatemode"/>
+        <Class IRI="certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="certificate_certificatepem"/>
+        <Class IRI="certificate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="certificate_certificatesigningrequest"/>
         <Class IRI="certificate"/>
     </DataPropertyDomain>
@@ -48,6 +71,18 @@
         <DataProperty IRI="certificate_status"/>
         <Class IRI="certificate"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="certificate_cacertificatepem"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="certificate_certificatemode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="certificate_certificatepem"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="certificate_certificatesigningrequest"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -60,6 +95,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>certificate</IRI>
         <Literal>iotcertificate:certificate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificate_cacertificatepem</IRI>
+        <Literal>iotcertificate:certificate_cacertificatepem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificate_certificatemode</IRI>
+        <Literal>iotcertificate:certificate_certificatemode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificate_certificatepem</IRI>
+        <Literal>iotcertificate:certificate_certificatepem</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

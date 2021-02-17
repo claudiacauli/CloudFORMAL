@@ -15,6 +15,9 @@
         <Class IRI="flowlog"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
     </Declaration>
     <Declaration>
@@ -27,13 +30,28 @@
         <ObjectProperty IRI="flowlog_resourceid"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="flowlog_tags"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="flowlog_logdestinationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowlog_logformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowlog_maxaggregationinterval"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="flowlog_resourcetype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="flowlog_traffictype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <Declaration>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iamrole#role"/>
@@ -62,6 +80,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="flowlog_deliverlogspermissionarn"/>
     </FunctionalObjectProperty>
@@ -88,6 +120,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="flowlog_resourceid"/>
+        <Class IRI="flowlog"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowlog_tags"/>
         <Class IRI="flowlog"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -98,8 +134,18 @@
         <ObjectProperty IRI="flowlog_loggroupname"/>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/logsloggroup#loggroup"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowlog_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="flowlog_logdestinationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowlog_logformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowlog_maxaggregationinterval"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="flowlog_resourcetype"/>
@@ -107,8 +153,22 @@
     <FunctionalDataProperty>
         <DataProperty IRI="flowlog_traffictype"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="flowlog_logdestinationtype"/>
+        <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowlog_logformat"/>
+        <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowlog_maxaggregationinterval"/>
         <Class IRI="flowlog"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -118,10 +178,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="flowlog_traffictype"/>
         <Class IRI="flowlog"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="flowlog_logdestinationtype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowlog_logformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowlog_maxaggregationinterval"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="flowlog_resourcetype"/>
@@ -129,6 +205,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="flowlog_traffictype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -153,8 +237,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_logformat</IRI>
+        <Literal>ec2flowlog:flowlog_logformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>flowlog_loggroupname</IRI>
         <Literal>ec2flowlog:flowlog_loggroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_maxaggregationinterval</IRI>
+        <Literal>ec2flowlog:flowlog_maxaggregationinterval</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -168,8 +262,28 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowlog_tags</IRI>
+        <Literal>ec2flowlog:flowlog_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>flowlog_traffictype</IRI>
         <Literal>ec2flowlog:flowlog_traffictype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>ec2flowlog:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>ec2flowlog:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>ec2flowlog:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

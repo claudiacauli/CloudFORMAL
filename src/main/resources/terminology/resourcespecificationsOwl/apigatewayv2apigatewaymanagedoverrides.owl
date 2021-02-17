@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayv2apigatewaymanagedoverrides#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/apigatewayv2apigatewaymanagedoverrides#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="accesslogsettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="apigatewaymanagedoverrides"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="integrationoverrides"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="routeoverrides"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="routesettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stageoverrides"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_integration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_route"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_stage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stageoverrides_accesslogsettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="stageoverrides_defaultroutesettings"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesslogsettings_destinationarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesslogsettings_format"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="apigatewaymanagedoverrides_apiid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationoverrides_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationoverrides_integrationmethod"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationoverrides_payloadformatversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="integrationoverrides_timeoutinmillis"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routeoverrides_authorizationscopes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routeoverrides_authorizationtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routeoverrides_authorizerid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routeoverrides_operationname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routeoverrides_target"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routesettings_datatraceenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routesettings_detailedmetricsenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routesettings_logginglevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routesettings_throttlingburstlimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="routesettings_throttlingratelimit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stageoverrides_autodeploy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stageoverrides_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stageoverrides_routesettings"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stageoverrides_stagevariables"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="apigatewaymanagedoverrides"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="apigatewaymanagedoverrides_apiid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_integration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_route"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_stage"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stageoverrides_accesslogsettings"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="stageoverrides_defaultroutesettings"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_integration"/>
+        <Class IRI="apigatewaymanagedoverrides"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_route"/>
+        <Class IRI="apigatewaymanagedoverrides"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_stage"/>
+        <Class IRI="apigatewaymanagedoverrides"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stageoverrides_accesslogsettings"/>
+        <Class IRI="stageoverrides"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="stageoverrides_defaultroutesettings"/>
+        <Class IRI="stageoverrides"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_integration"/>
+        <Class IRI="integrationoverrides"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_route"/>
+        <Class IRI="routeoverrides"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="apigatewaymanagedoverrides_stage"/>
+        <Class IRI="stageoverrides"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stageoverrides_accesslogsettings"/>
+        <Class IRI="accesslogsettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="stageoverrides_defaultroutesettings"/>
+        <Class IRI="routesettings"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesslogsettings_destinationarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesslogsettings_format"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="apigatewaymanagedoverrides_apiid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationoverrides_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationoverrides_integrationmethod"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationoverrides_payloadformatversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="integrationoverrides_timeoutinmillis"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routeoverrides_authorizationtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routeoverrides_authorizerid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routeoverrides_operationname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routeoverrides_target"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routesettings_datatraceenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routesettings_detailedmetricsenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routesettings_logginglevel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routesettings_throttlingburstlimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="routesettings_throttlingratelimit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stageoverrides_autodeploy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stageoverrides_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stageoverrides_routesettings"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stageoverrides_stagevariables"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesslogsettings_destinationarn"/>
+        <Class IRI="accesslogsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesslogsettings_format"/>
+        <Class IRI="accesslogsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="apigatewaymanagedoverrides_apiid"/>
+        <Class IRI="apigatewaymanagedoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationoverrides_description"/>
+        <Class IRI="integrationoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationoverrides_integrationmethod"/>
+        <Class IRI="integrationoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationoverrides_payloadformatversion"/>
+        <Class IRI="integrationoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="integrationoverrides_timeoutinmillis"/>
+        <Class IRI="integrationoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routeoverrides_authorizationscopes"/>
+        <Class IRI="routeoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routeoverrides_authorizationtype"/>
+        <Class IRI="routeoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routeoverrides_authorizerid"/>
+        <Class IRI="routeoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routeoverrides_operationname"/>
+        <Class IRI="routeoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routeoverrides_target"/>
+        <Class IRI="routeoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routesettings_datatraceenabled"/>
+        <Class IRI="routesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routesettings_detailedmetricsenabled"/>
+        <Class IRI="routesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routesettings_logginglevel"/>
+        <Class IRI="routesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routesettings_throttlingburstlimit"/>
+        <Class IRI="routesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="routesettings_throttlingratelimit"/>
+        <Class IRI="routesettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stageoverrides_autodeploy"/>
+        <Class IRI="stageoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stageoverrides_description"/>
+        <Class IRI="stageoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stageoverrides_routesettings"/>
+        <Class IRI="stageoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stageoverrides_stagevariables"/>
+        <Class IRI="stageoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="accesslogsettings_destinationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accesslogsettings_format"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="apigatewaymanagedoverrides_apiid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationoverrides_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationoverrides_integrationmethod"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationoverrides_payloadformatversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="integrationoverrides_timeoutinmillis"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routeoverrides_authorizationscopes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routeoverrides_authorizationtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routeoverrides_authorizerid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routeoverrides_operationname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routeoverrides_target"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routesettings_datatraceenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routesettings_detailedmetricsenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routesettings_logginglevel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routesettings_throttlingburstlimit"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="routesettings_throttlingratelimit"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stageoverrides_autodeploy"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stageoverrides_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stageoverrides_routesettings"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stageoverrides_stagevariables"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesslogsettings</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:accesslogsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesslogsettings_destinationarn</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:accesslogsettings_destinationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesslogsettings_format</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:accesslogsettings_format</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apigatewaymanagedoverrides</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:apigatewaymanagedoverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apigatewaymanagedoverrides_apiid</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:apigatewaymanagedoverrides_apiid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apigatewaymanagedoverrides_integration</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:apigatewaymanagedoverrides_integration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apigatewaymanagedoverrides_route</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:apigatewaymanagedoverrides_route</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>apigatewaymanagedoverrides_stage</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:apigatewaymanagedoverrides_stage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationoverrides</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:integrationoverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationoverrides_description</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:integrationoverrides_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationoverrides_integrationmethod</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:integrationoverrides_integrationmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationoverrides_payloadformatversion</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:integrationoverrides_payloadformatversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integrationoverrides_timeoutinmillis</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:integrationoverrides_timeoutinmillis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides_authorizationscopes</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides_authorizationscopes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides_authorizationtype</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides_authorizationtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides_authorizerid</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides_authorizerid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides_operationname</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides_operationname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routeoverrides_target</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routeoverrides_target</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings_datatraceenabled</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings_datatraceenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings_detailedmetricsenabled</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings_detailedmetricsenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings_logginglevel</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings_logginglevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings_throttlingburstlimit</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings_throttlingburstlimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>routesettings_throttlingratelimit</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:routesettings_throttlingratelimit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_accesslogsettings</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_accesslogsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_autodeploy</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_autodeploy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_defaultroutesettings</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_defaultroutesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_description</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_routesettings</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_routesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stageoverrides_stagevariables</IRI>
+        <Literal>apigatewayv2apigatewaymanagedoverrides:stageoverrides_stagevariables</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

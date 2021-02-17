@@ -12,6 +12,15 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="capturecontenttypeheader"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="captureoption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datacaptureconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="endpointconfig"/>
     </Declaration>
     <Declaration>
@@ -21,10 +30,40 @@
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="datacaptureconfig_capturecontenttypeheader"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datacaptureconfig_captureoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="endpointconfig_datacaptureconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="endpointconfig_productionvariants"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="endpointconfig_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capturecontenttypeheader_csvcontenttypes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capturecontenttypeheader_jsoncontenttypes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="captureoption_capturemode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacaptureconfig_destinations3uri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacaptureconfig_enablecapture"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacaptureconfig_initialsamplingpercentage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacaptureconfig_kmskeyid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="endpointconfig_endpointconfigname"/>
@@ -56,6 +95,34 @@
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="captureoption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="captureoption_capturemode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datacaptureconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="datacaptureconfig_captureoptions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datacaptureconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datacaptureconfig_destinations3uri"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datacaptureconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datacaptureconfig_initialsamplingpercentage"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="endpointconfig"/>
         <ObjectSomeValuesFrom>
@@ -112,6 +179,24 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datacaptureconfig_capturecontenttypeheader"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="endpointconfig_datacaptureconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datacaptureconfig_capturecontenttypeheader"/>
+        <Class IRI="datacaptureconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datacaptureconfig_captureoptions"/>
+        <Class IRI="datacaptureconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="endpointconfig_datacaptureconfig"/>
+        <Class IRI="endpointconfig"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="endpointconfig_productionvariants"/>
         <Class IRI="endpointconfig"/>
@@ -120,6 +205,18 @@
         <ObjectProperty IRI="endpointconfig_tags"/>
         <Class IRI="endpointconfig"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datacaptureconfig_capturecontenttypeheader"/>
+        <Class IRI="capturecontenttypeheader"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datacaptureconfig_captureoptions"/>
+        <Class IRI="captureoption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="endpointconfig_datacaptureconfig"/>
+        <Class IRI="datacaptureconfig"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="endpointconfig_productionvariants"/>
         <Class IRI="productionvariant"/>
@@ -128,6 +225,21 @@
         <ObjectProperty IRI="endpointconfig_tags"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="captureoption_capturemode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacaptureconfig_destinations3uri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacaptureconfig_enablecapture"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacaptureconfig_initialsamplingpercentage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacaptureconfig_kmskeyid"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="endpointconfig_endpointconfigname"/>
     </FunctionalDataProperty>
@@ -159,6 +271,34 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="capturecontenttypeheader_csvcontenttypes"/>
+        <Class IRI="capturecontenttypeheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capturecontenttypeheader_jsoncontenttypes"/>
+        <Class IRI="capturecontenttypeheader"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="captureoption_capturemode"/>
+        <Class IRI="captureoption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacaptureconfig_destinations3uri"/>
+        <Class IRI="datacaptureconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacaptureconfig_enablecapture"/>
+        <Class IRI="datacaptureconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacaptureconfig_initialsamplingpercentage"/>
+        <Class IRI="datacaptureconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacaptureconfig_kmskeyid"/>
+        <Class IRI="datacaptureconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="endpointconfig_endpointconfigname"/>
         <Class IRI="endpointconfig"/>
     </DataPropertyDomain>
@@ -198,6 +338,34 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="capturecontenttypeheader_csvcontenttypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capturecontenttypeheader_jsoncontenttypes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="captureoption_capturemode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacaptureconfig_destinations3uri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacaptureconfig_enablecapture"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacaptureconfig_initialsamplingpercentage"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacaptureconfig_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="endpointconfig_endpointconfigname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -240,8 +408,73 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capturecontenttypeheader</IRI>
+        <Literal>sagemakerendpointconfig:capturecontenttypeheader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capturecontenttypeheader_csvcontenttypes</IRI>
+        <Literal>sagemakerendpointconfig:capturecontenttypeheader_csvcontenttypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capturecontenttypeheader_jsoncontenttypes</IRI>
+        <Literal>sagemakerendpointconfig:capturecontenttypeheader_jsoncontenttypes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>captureoption</IRI>
+        <Literal>sagemakerendpointconfig:captureoption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>captureoption_capturemode</IRI>
+        <Literal>sagemakerendpointconfig:captureoption_capturemode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_capturecontenttypeheader</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_capturecontenttypeheader</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_captureoptions</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_captureoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_destinations3uri</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_destinations3uri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_enablecapture</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_enablecapture</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_initialsamplingpercentage</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_initialsamplingpercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacaptureconfig_kmskeyid</IRI>
+        <Literal>sagemakerendpointconfig:datacaptureconfig_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>endpointconfig</IRI>
         <Literal>sagemakerendpointconfig:endpointconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointconfig_datacaptureconfig</IRI>
+        <Literal>sagemakerendpointconfig:endpointconfig_datacaptureconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

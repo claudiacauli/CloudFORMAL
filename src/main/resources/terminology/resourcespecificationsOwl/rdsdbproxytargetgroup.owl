@@ -44,10 +44,20 @@
     <Declaration>
         <DataProperty IRI="dbproxytargetgroup_dbproxyname"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbproxytargetgroup_targetgroupname"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="dbproxytargetgroup"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="dbproxytargetgroup_dbproxyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dbproxytargetgroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbproxytargetgroup_targetgroupname"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -77,6 +87,9 @@
     <FunctionalDataProperty>
         <DataProperty IRI="dbproxytargetgroup_dbproxyname"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbproxytargetgroup_targetgroupname"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="connectionpoolconfigurationinfoformat_connectionborrowtimeout"/>
         <Class IRI="connectionpoolconfigurationinfoformat"/>
@@ -109,6 +122,10 @@
         <DataProperty IRI="dbproxytargetgroup_dbproxyname"/>
         <Class IRI="dbproxytargetgroup"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbproxytargetgroup_targetgroupname"/>
+        <Class IRI="dbproxytargetgroup"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="connectionpoolconfigurationinfoformat_connectionborrowtimeout"/>
         <Datatype abbreviatedIRI="xsd:int"/>
@@ -139,6 +156,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="dbproxytargetgroup_dbproxyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbproxytargetgroup_targetgroupname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -195,6 +216,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dbproxytargetgroup_dbproxyname</IRI>
         <Literal>rdsdbproxytargetgroup:dbproxytargetgroup_dbproxyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbproxytargetgroup_targetgroupname</IRI>
+        <Literal>rdsdbproxytargetgroup:dbproxytargetgroup_targetgroupname</Literal>
     </AnnotationAssertion>
 </Ontology>
 

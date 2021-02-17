@@ -33,6 +33,9 @@
         <Class IRI="mapentry_string"/>
     </Declaration>
     <Declaration>
+        <Class IRI="ondemandprovisioningspecification"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="spotprovisioningspecification"/>
     </Declaration>
     <Declaration>
@@ -55,6 +58,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -106,6 +112,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -147,16 +159,16 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="instancefleetprovisioningspecifications"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="instancetypeconfig"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="instancetypeconfig_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ondemandprovisioningspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -195,6 +207,9 @@
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -223,6 +238,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
         <Class IRI="instancefleetconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
+        <Class IRI="instancefleetprovisioningspecifications"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -259,6 +278,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
         <Class IRI="instancefleetprovisioningspecifications"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
+        <Class IRI="ondemandprovisioningspecification"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -307,6 +330,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="instancetypeconfig_weightedcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -381,6 +410,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="mapentry_string_value"/>
         <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+        <Class IRI="ondemandprovisioningspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
+        <Class IRI="spotprovisioningspecification"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -460,6 +497,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -583,6 +628,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetprovisioningspecifications_ondemandspecification</IRI>
+        <Literal>emrinstancefleetconfig:instancefleetprovisioningspecifications_ondemandspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>instancefleetprovisioningspecifications_spotspecification</IRI>
         <Literal>emrinstancefleetconfig:instancefleetprovisioningspecifications_spotspecification</Literal>
     </AnnotationAssertion>
@@ -623,8 +673,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ondemandprovisioningspecification</IRI>
+        <Literal>emrinstancefleetconfig:ondemandprovisioningspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ondemandprovisioningspecification_allocationstrategy</IRI>
+        <Literal>emrinstancefleetconfig:ondemandprovisioningspecification_allocationstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>spotprovisioningspecification</IRI>
         <Literal>emrinstancefleetconfig:spotprovisioningspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification_allocationstrategy</IRI>
+        <Literal>emrinstancefleetconfig:spotprovisioningspecification_allocationstrategy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

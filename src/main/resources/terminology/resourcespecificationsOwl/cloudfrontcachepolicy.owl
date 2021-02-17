@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontcachepolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontcachepolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="cachepolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="cachepolicyconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="cookiesconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="headersconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="querystringsconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cachepolicy_cachepolicyconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cachepolicyconfig_parametersincachekeyandforwardedtoorigin"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_cookiesconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_headersconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_querystringsconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachepolicyconfig_comment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachepolicyconfig_defaultttl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachepolicyconfig_maxttl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachepolicyconfig_minttl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachepolicyconfig_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="headersconfig_headers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="cachepolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="cachepolicy_cachepolicyconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cachepolicyconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="cachepolicyconfig_parametersincachekeyandforwardedtoorigin"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cachepolicyconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cachepolicyconfig_defaultttl"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cachepolicyconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cachepolicyconfig_maxttl"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cachepolicyconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cachepolicyconfig_minttl"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cachepolicyconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cachepolicyconfig_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="cookiesconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="headersconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="headersconfig_headerbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_cookiesconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_headersconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_querystringsconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="querystringsconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cachepolicy_cachepolicyconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cachepolicyconfig_parametersincachekeyandforwardedtoorigin"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_cookiesconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_headersconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_querystringsconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cachepolicy_cachepolicyconfig"/>
+        <Class IRI="cachepolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cachepolicyconfig_parametersincachekeyandforwardedtoorigin"/>
+        <Class IRI="cachepolicyconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_cookiesconfig"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_headersconfig"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_querystringsconfig"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cachepolicy_cachepolicyconfig"/>
+        <Class IRI="cachepolicyconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cachepolicyconfig_parametersincachekeyandforwardedtoorigin"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_cookiesconfig"/>
+        <Class IRI="cookiesconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_headersconfig"/>
+        <Class IRI="headersconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parametersincachekeyandforwardedtoorigin_querystringsconfig"/>
+        <Class IRI="querystringsconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachepolicyconfig_comment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachepolicyconfig_defaultttl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachepolicyconfig_maxttl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachepolicyconfig_minttl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachepolicyconfig_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachepolicyconfig_comment"/>
+        <Class IRI="cachepolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachepolicyconfig_defaultttl"/>
+        <Class IRI="cachepolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachepolicyconfig_maxttl"/>
+        <Class IRI="cachepolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachepolicyconfig_minttl"/>
+        <Class IRI="cachepolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachepolicyconfig_name"/>
+        <Class IRI="cachepolicyconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+        <Class IRI="cookiesconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+        <Class IRI="cookiesconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+        <Class IRI="headersconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="headersconfig_headers"/>
+        <Class IRI="headersconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip"/>
+        <Class IRI="parametersincachekeyandforwardedtoorigin"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+        <Class IRI="querystringsconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+        <Class IRI="querystringsconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="cachepolicyconfig_comment"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachepolicyconfig_defaultttl"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachepolicyconfig_maxttl"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachepolicyconfig_minttl"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachepolicyconfig_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cookiesconfig_cookiebehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cookiesconfig_cookies"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headersconfig_headerbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="headersconfig_headers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="querystringsconfig_querystringbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="querystringsconfig_querystrings"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicy</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicy_cachepolicyconfig</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicy_cachepolicyconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_comment</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_comment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_defaultttl</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_defaultttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_maxttl</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_maxttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_minttl</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_minttl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_name</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachepolicyconfig_parametersincachekeyandforwardedtoorigin</IRI>
+        <Literal>cloudfrontcachepolicy:cachepolicyconfig_parametersincachekeyandforwardedtoorigin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig</IRI>
+        <Literal>cloudfrontcachepolicy:cookiesconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig_cookiebehavior</IRI>
+        <Literal>cloudfrontcachepolicy:cookiesconfig_cookiebehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cookiesconfig_cookies</IRI>
+        <Literal>cloudfrontcachepolicy:cookiesconfig_cookies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig</IRI>
+        <Literal>cloudfrontcachepolicy:headersconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig_headerbehavior</IRI>
+        <Literal>cloudfrontcachepolicy:headersconfig_headerbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>headersconfig_headers</IRI>
+        <Literal>cloudfrontcachepolicy:headersconfig_headers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin_cookiesconfig</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin_cookiesconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin_enableacceptencodingbrotli</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin_enableacceptencodinggzip</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin_headersconfig</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin_headersconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametersincachekeyandforwardedtoorigin_querystringsconfig</IRI>
+        <Literal>cloudfrontcachepolicy:parametersincachekeyandforwardedtoorigin_querystringsconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig</IRI>
+        <Literal>cloudfrontcachepolicy:querystringsconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig_querystringbehavior</IRI>
+        <Literal>cloudfrontcachepolicy:querystringsconfig_querystringbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>querystringsconfig_querystrings</IRI>
+        <Literal>cloudfrontcachepolicy:querystringsconfig_querystrings</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

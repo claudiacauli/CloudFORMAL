@@ -18,6 +18,12 @@
         <Class IRI="admincreateuserconfig"/>
     </Declaration>
     <Declaration>
+        <Class IRI="customemailsender"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="customsmssender"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="deviceconfiguration"/>
     </Declaration>
     <Declaration>
@@ -69,6 +75,12 @@
         <ObjectProperty IRI="admincreateuserconfig_invitemessagetemplate"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="lambdaconfig_customemailsender"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdaconfig_customsmssender"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="policies_passwordpolicy"/>
     </Declaration>
     <Declaration>
@@ -117,6 +129,18 @@
         <DataProperty IRI="admincreateuserconfig_unusedaccountvaliditydays"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="customemailsender_lambdaarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customemailsender_lambdaversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customsmssender_lambdaarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customsmssender_lambdaversion"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="deviceconfiguration_challengerequiredonnewdevice"/>
     </Declaration>
     <Declaration>
@@ -154,6 +178,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="lambdaconfig_defineauthchallenge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaconfig_kmskeyid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="lambdaconfig_postauthentication"/>
@@ -294,6 +321,12 @@
         <ObjectProperty IRI="admincreateuserconfig_invitemessagetemplate"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="lambdaconfig_customemailsender"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="lambdaconfig_customsmssender"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="policies_passwordpolicy"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -339,6 +372,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="admincreateuserconfig_invitemessagetemplate"/>
         <Class IRI="admincreateuserconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdaconfig_customemailsender"/>
+        <Class IRI="lambdaconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdaconfig_customsmssender"/>
+        <Class IRI="lambdaconfig"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="policies_passwordpolicy"/>
@@ -405,6 +446,14 @@
         <Class IRI="invitemessagetemplate"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdaconfig_customemailsender"/>
+        <Class IRI="customemailsender"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdaconfig_customsmssender"/>
+        <Class IRI="customsmssender"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="policies_passwordpolicy"/>
         <Class IRI="passwordpolicy"/>
     </ObjectPropertyRange>
@@ -467,6 +516,18 @@
         <DataProperty IRI="admincreateuserconfig_unusedaccountvaliditydays"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="customemailsender_lambdaarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customemailsender_lambdaversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customsmssender_lambdaarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customsmssender_lambdaversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="deviceconfiguration_challengerequiredonnewdevice"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -504,6 +565,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="lambdaconfig_defineauthchallenge"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaconfig_kmskeyid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="lambdaconfig_postauthentication"/>
@@ -637,6 +701,22 @@
         <Class IRI="admincreateuserconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="customemailsender_lambdaarn"/>
+        <Class IRI="customemailsender"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customemailsender_lambdaversion"/>
+        <Class IRI="customemailsender"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customsmssender_lambdaarn"/>
+        <Class IRI="customsmssender"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customsmssender_lambdaversion"/>
+        <Class IRI="customsmssender"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="deviceconfiguration_challengerequiredonnewdevice"/>
         <Class IRI="deviceconfiguration"/>
     </DataPropertyDomain>
@@ -686,6 +766,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="lambdaconfig_defineauthchallenge"/>
+        <Class IRI="lambdaconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaconfig_kmskeyid"/>
         <Class IRI="lambdaconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -877,6 +961,22 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="customemailsender_lambdaarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customemailsender_lambdaversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customsmssender_lambdaarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customsmssender_lambdaversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="deviceconfiguration_challengerequiredonnewdevice"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -926,6 +1026,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="lambdaconfig_defineauthchallenge"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaconfig_kmskeyid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1140,6 +1244,36 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customemailsender</IRI>
+        <Literal>cognitouserpool:customemailsender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customemailsender_lambdaarn</IRI>
+        <Literal>cognitouserpool:customemailsender_lambdaarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customemailsender_lambdaversion</IRI>
+        <Literal>cognitouserpool:customemailsender_lambdaversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customsmssender</IRI>
+        <Literal>cognitouserpool:customsmssender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customsmssender_lambdaarn</IRI>
+        <Literal>cognitouserpool:customsmssender_lambdaarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customsmssender_lambdaversion</IRI>
+        <Literal>cognitouserpool:customsmssender_lambdaversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>deviceconfiguration</IRI>
         <Literal>cognitouserpool:deviceconfiguration</Literal>
     </AnnotationAssertion>
@@ -1215,13 +1349,28 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfig_customemailsender</IRI>
+        <Literal>cognitouserpool:lambdaconfig_customemailsender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>lambdaconfig_custommessage</IRI>
         <Literal>cognitouserpool:lambdaconfig_custommessage</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfig_customsmssender</IRI>
+        <Literal>cognitouserpool:lambdaconfig_customsmssender</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>lambdaconfig_defineauthchallenge</IRI>
         <Literal>cognitouserpool:lambdaconfig_defineauthchallenge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconfig_kmskeyid</IRI>
+        <Literal>cognitouserpool:lambdaconfig_kmskeyid</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

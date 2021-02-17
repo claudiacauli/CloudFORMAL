@@ -15,13 +15,25 @@
         <Class IRI="database"/>
     </Declaration>
     <Declaration>
+        <Class IRI="databaseidentifier"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="databaseinput"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="database_databaseinput"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="databaseinput_targetdatabase"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="database_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="databaseidentifier_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="databaseidentifier_databasename"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="databaseinput_description"/>
@@ -52,16 +64,33 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="database_databaseinput"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="databaseinput_targetdatabase"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="database_databaseinput"/>
         <Class IRI="database"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="databaseinput_targetdatabase"/>
+        <Class IRI="databaseinput"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="database_databaseinput"/>
         <Class IRI="databaseinput"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="databaseinput_targetdatabase"/>
+        <Class IRI="databaseidentifier"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="database_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="databaseidentifier_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="databaseidentifier_databasename"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="databaseinput_description"/>
@@ -78,6 +107,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="database_catalogid"/>
         <Class IRI="database"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="databaseidentifier_catalogid"/>
+        <Class IRI="databaseidentifier"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="databaseidentifier_databasename"/>
+        <Class IRI="databaseidentifier"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="databaseinput_description"/>
@@ -97,6 +134,14 @@
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="database_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="databaseidentifier_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="databaseidentifier_databasename"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -132,6 +177,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseidentifier</IRI>
+        <Literal>gluedatabase:databaseidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseidentifier_catalogid</IRI>
+        <Literal>gluedatabase:databaseidentifier_catalogid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseidentifier_databasename</IRI>
+        <Literal>gluedatabase:databaseidentifier_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>databaseinput</IRI>
         <Literal>gluedatabase:databaseinput</Literal>
     </AnnotationAssertion>
@@ -154,6 +214,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>databaseinput_parameters</IRI>
         <Literal>gluedatabase:databaseinput_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>databaseinput_targetdatabase</IRI>
+        <Literal>gluedatabase:databaseinput_targetdatabase</Literal>
     </AnnotationAssertion>
 </Ontology>
 

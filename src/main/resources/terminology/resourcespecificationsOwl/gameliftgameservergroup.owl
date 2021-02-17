@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftgameservergroup#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/gameliftgameservergroup#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="autoscalingpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gameservergroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instancedefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="launchtemplate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targettrackingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="autoscalingpolicy_targettrackingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gameservergroup_autoscalingpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gameservergroup_instancedefinitions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gameservergroup_launchtemplate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gameservergroup_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="autoscalingpolicy_estimatedinstancewarmup"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_balancingstrategy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_deleteoption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_gameservergroupname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_gameserverprotectionpolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_maxsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_minsize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gameservergroup_vpcsubnets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancedefinition_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instancedefinition_weightedcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="launchtemplate_launchtemplateid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="launchtemplate_launchtemplatename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="launchtemplate_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targettrackingconfiguration_targetvalue"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="autoscalingpolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="autoscalingpolicy_targettrackingconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gameservergroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gameservergroup_instancedefinitions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gameservergroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gameservergroup_launchtemplate"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gameservergroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gameservergroup_gameservergroupname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gameservergroup"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gameservergroup_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instancedefinition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="instancedefinition_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="targettrackingconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="targettrackingconfiguration_targetvalue"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="autoscalingpolicy_targettrackingconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gameservergroup_autoscalingpolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gameservergroup_launchtemplate"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="autoscalingpolicy_targettrackingconfiguration"/>
+        <Class IRI="autoscalingpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gameservergroup_autoscalingpolicy"/>
+        <Class IRI="gameservergroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gameservergroup_instancedefinitions"/>
+        <Class IRI="gameservergroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gameservergroup_launchtemplate"/>
+        <Class IRI="gameservergroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gameservergroup_tags"/>
+        <Class IRI="gameservergroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="autoscalingpolicy_targettrackingconfiguration"/>
+        <Class IRI="targettrackingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gameservergroup_autoscalingpolicy"/>
+        <Class IRI="autoscalingpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gameservergroup_instancedefinitions"/>
+        <Class IRI="instancedefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gameservergroup_launchtemplate"/>
+        <Class IRI="launchtemplate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gameservergroup_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="autoscalingpolicy_estimatedinstancewarmup"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_balancingstrategy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_deleteoption"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_gameservergroupname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_gameserverprotectionpolicy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_maxsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_minsize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gameservergroup_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancedefinition_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instancedefinition_weightedcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplate_launchtemplateid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplate_launchtemplatename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplate_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targettrackingconfiguration_targetvalue"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="autoscalingpolicy_estimatedinstancewarmup"/>
+        <Class IRI="autoscalingpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_balancingstrategy"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_deleteoption"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_gameservergroupname"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_gameserverprotectionpolicy"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_maxsize"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_minsize"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_rolearn"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gameservergroup_vpcsubnets"/>
+        <Class IRI="gameservergroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancedefinition_instancetype"/>
+        <Class IRI="instancedefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instancedefinition_weightedcapacity"/>
+        <Class IRI="instancedefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="launchtemplate_launchtemplateid"/>
+        <Class IRI="launchtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="launchtemplate_launchtemplatename"/>
+        <Class IRI="launchtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="launchtemplate_version"/>
+        <Class IRI="launchtemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targettrackingconfiguration_targetvalue"/>
+        <Class IRI="targettrackingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="autoscalingpolicy_estimatedinstancewarmup"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_balancingstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_deleteoption"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_gameservergroupname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_gameserverprotectionpolicy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_maxsize"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_minsize"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gameservergroup_vpcsubnets"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancedefinition_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instancedefinition_weightedcapacity"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="launchtemplate_launchtemplateid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="launchtemplate_launchtemplatename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="launchtemplate_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targettrackingconfiguration_targetvalue"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingpolicy</IRI>
+        <Literal>gameliftgameservergroup:autoscalingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingpolicy_estimatedinstancewarmup</IRI>
+        <Literal>gameliftgameservergroup:autoscalingpolicy_estimatedinstancewarmup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autoscalingpolicy_targettrackingconfiguration</IRI>
+        <Literal>gameliftgameservergroup:autoscalingpolicy_targettrackingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_autoscalingpolicy</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_autoscalingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_balancingstrategy</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_balancingstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_deleteoption</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_deleteoption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_gameservergroupname</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_gameservergroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_gameserverprotectionpolicy</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_gameserverprotectionpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_instancedefinitions</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_instancedefinitions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_launchtemplate</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_launchtemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_maxsize</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_maxsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_minsize</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_minsize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_rolearn</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_tags</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gameservergroup_vpcsubnets</IRI>
+        <Literal>gameliftgameservergroup:gameservergroup_vpcsubnets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancedefinition</IRI>
+        <Literal>gameliftgameservergroup:instancedefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancedefinition_instancetype</IRI>
+        <Literal>gameliftgameservergroup:instancedefinition_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancedefinition_weightedcapacity</IRI>
+        <Literal>gameliftgameservergroup:instancedefinition_weightedcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplate</IRI>
+        <Literal>gameliftgameservergroup:launchtemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplate_launchtemplateid</IRI>
+        <Literal>gameliftgameservergroup:launchtemplate_launchtemplateid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplate_launchtemplatename</IRI>
+        <Literal>gameliftgameservergroup:launchtemplate_launchtemplatename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplate_version</IRI>
+        <Literal>gameliftgameservergroup:launchtemplate_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>gameliftgameservergroup:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>gameliftgameservergroup:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>gameliftgameservergroup:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingconfiguration</IRI>
+        <Literal>gameliftgameservergroup:targettrackingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targettrackingconfiguration_targetvalue</IRI>
+        <Literal>gameliftgameservergroup:targettrackingconfiguration_targetvalue</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

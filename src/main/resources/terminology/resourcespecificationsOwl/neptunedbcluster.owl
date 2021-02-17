@@ -15,7 +15,13 @@
         <Class IRI="dbcluster"/>
     </Declaration>
     <Declaration>
+        <Class IRI="dbclusterrole"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="dbcluster_associatedroles"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="dbcluster_tags"/>
@@ -81,11 +87,24 @@
         <DataProperty IRI="dbcluster_vpcsecuritygroupids"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="dbclusterrole_featurename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dbclusterrole_rolearn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="tag_key"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="dbclusterrole"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dbclusterrole_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="tag"/>
         <DataSomeValuesFrom>
@@ -101,9 +120,17 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="dbcluster_associatedroles"/>
+        <Class IRI="dbcluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="dbcluster_tags"/>
         <Class IRI="dbcluster"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="dbcluster_associatedroles"/>
+        <Class IRI="dbclusterrole"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="dbcluster_tags"/>
         <Class IRI="tag"/>
@@ -160,6 +187,12 @@
         <DataProperty IRI="dbcluster_uselatestrestorabletime"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="dbclusterrole_featurename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dbclusterrole_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -246,6 +279,14 @@
         <Class IRI="dbcluster"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="dbclusterrole_featurename"/>
+        <Class IRI="dbclusterrole"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dbclusterrole_rolearn"/>
+        <Class IRI="dbclusterrole"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
@@ -334,6 +375,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="dbclusterrole_featurename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dbclusterrole_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="tag_key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -345,6 +394,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dbcluster</IRI>
         <Literal>neptunedbcluster:dbcluster</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbcluster_associatedroles</IRI>
+        <Literal>neptunedbcluster:dbcluster_associatedroles</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -450,6 +504,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>dbcluster_vpcsecuritygroupids</IRI>
         <Literal>neptunedbcluster:dbcluster_vpcsecuritygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbclusterrole</IRI>
+        <Literal>neptunedbcluster:dbclusterrole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbclusterrole_featurename</IRI>
+        <Literal>neptunedbcluster:dbclusterrole_featurename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dbclusterrole_rolearn</IRI>
+        <Literal>neptunedbcluster:dbclusterrole_rolearn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

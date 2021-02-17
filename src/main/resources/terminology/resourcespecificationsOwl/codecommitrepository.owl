@@ -39,6 +39,9 @@
         <ObjectProperty IRI="repository_triggers"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="code_branchname"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="repository_repositorydescription"/>
     </Declaration>
     <Declaration>
@@ -176,6 +179,9 @@
         <Class IRI="repositorytrigger"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="code_branchname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="repository_repositorydescription"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -205,6 +211,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="code_branchname"/>
+        <Class IRI="code"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="repository_repositorydescription"/>
         <Class IRI="repository"/>
@@ -253,6 +263,10 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="code_branchname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="repository_repositorydescription"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -305,6 +319,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>code</IRI>
         <Literal>codecommitrepository:code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>code_branchname</IRI>
+        <Literal>codecommitrepository:code_branchname</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

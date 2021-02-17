@@ -12,10 +12,16 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="advancedsecurityoptionsinput"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="cognitooptions"/>
     </Declaration>
     <Declaration>
         <Class IRI="domain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="domainendpointoptions"/>
     </Declaration>
     <Declaration>
         <Class IRI="ebsoptions"/>
@@ -36,6 +42,9 @@
         <Class IRI="mapentry_string"/>
     </Declaration>
     <Declaration>
+        <Class IRI="masteruseroptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="nodetonodeencryptionoptions"/>
     </Declaration>
     <Declaration>
@@ -51,10 +60,19 @@
         <Class IRI="zoneawarenessconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="advancedsecurityoptionsinput_masteruseroptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="domain_advancedoptions"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="domain_advancedsecurityoptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="domain_cognitooptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domain_domainendpointoptions"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="domain_ebsoptions"/>
@@ -84,6 +102,12 @@
         <ObjectProperty IRI="elasticsearchclusterconfig_zoneawarenessconfig"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="advancedsecurityoptionsinput_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="advancedsecurityoptionsinput_internaluserdatabaseenabled"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cognitooptions_enabled"/>
     </Declaration>
     <Declaration>
@@ -103,6 +127,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="domain_elasticsearchversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainendpointoptions_customendpoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainendpointoptions_customendpointcertificatearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainendpointoptions_customendpointenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainendpointoptions_enforcehttps"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domainendpointoptions_tlssecuritypolicy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ebsoptions_ebsenabled"/>
@@ -132,6 +171,15 @@
         <DataProperty IRI="elasticsearchclusterconfig_instancetype"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="elasticsearchclusterconfig_warmcount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticsearchclusterconfig_warmenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="elasticsearchclusterconfig_warmtype"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="elasticsearchclusterconfig_zoneawarenessenabled"/>
     </Declaration>
     <Declaration>
@@ -157,6 +205,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="masteruseroptions_masteruserarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="masteruseroptions_masterusername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="masteruseroptions_masteruserpassword"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="nodetonodeencryptionoptions_enabled"/>
@@ -194,7 +251,16 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="advancedsecurityoptionsinput_masteruseroptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="domain_advancedsecurityoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="domain_cognitooptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="domain_domainendpointoptions"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="domain_ebsoptions"/>
@@ -218,11 +284,23 @@
         <ObjectProperty IRI="elasticsearchclusterconfig_zoneawarenessconfig"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="advancedsecurityoptionsinput_masteruseroptions"/>
+        <Class IRI="advancedsecurityoptionsinput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="domain_advancedoptions"/>
         <Class IRI="domain"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="domain_advancedsecurityoptions"/>
+        <Class IRI="domain"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="domain_cognitooptions"/>
+        <Class IRI="domain"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domain_domainendpointoptions"/>
         <Class IRI="domain"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -262,12 +340,24 @@
         <Class IRI="elasticsearchclusterconfig"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="advancedsecurityoptionsinput_masteruseroptions"/>
+        <Class IRI="masteruseroptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="domain_advancedoptions"/>
         <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="domain_advancedsecurityoptions"/>
+        <Class IRI="advancedsecurityoptionsinput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="domain_cognitooptions"/>
         <Class IRI="cognitooptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domain_domainendpointoptions"/>
+        <Class IRI="domainendpointoptions"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="domain_ebsoptions"/>
@@ -306,6 +396,12 @@
         <Class IRI="zoneawarenessconfig"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="advancedsecurityoptionsinput_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="advancedsecurityoptionsinput_internaluserdatabaseenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cognitooptions_enabled"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -325,6 +421,21 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="domain_elasticsearchversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainendpointoptions_customendpoint"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainendpointoptions_customendpointcertificatearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainendpointoptions_customendpointenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainendpointoptions_enforcehttps"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domainendpointoptions_tlssecuritypolicy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="ebsoptions_ebsenabled"/>
@@ -352,6 +463,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="elasticsearchclusterconfig_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchclusterconfig_warmcount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchclusterconfig_warmenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="elasticsearchclusterconfig_warmtype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="elasticsearchclusterconfig_zoneawarenessenabled"/>
@@ -369,6 +489,15 @@
         <DataProperty IRI="logpublishingoption_enabled"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="masteruseroptions_masteruserarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="masteruseroptions_masterusername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="masteruseroptions_masteruserpassword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="nodetonodeencryptionoptions_enabled"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -383,6 +512,14 @@
     <FunctionalDataProperty>
         <DataProperty IRI="zoneawarenessconfig_availabilityzonecount"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="advancedsecurityoptionsinput_enabled"/>
+        <Class IRI="advancedsecurityoptionsinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="advancedsecurityoptionsinput_internaluserdatabaseenabled"/>
+        <Class IRI="advancedsecurityoptionsinput"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cognitooptions_enabled"/>
         <Class IRI="cognitooptions"/>
@@ -410,6 +547,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="domain_elasticsearchversion"/>
         <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainendpointoptions_customendpoint"/>
+        <Class IRI="domainendpointoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainendpointoptions_customendpointcertificatearn"/>
+        <Class IRI="domainendpointoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainendpointoptions_customendpointenabled"/>
+        <Class IRI="domainendpointoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainendpointoptions_enforcehttps"/>
+        <Class IRI="domainendpointoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domainendpointoptions_tlssecuritypolicy"/>
+        <Class IRI="domainendpointoptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="ebsoptions_ebsenabled"/>
@@ -445,6 +602,18 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="elasticsearchclusterconfig_instancetype"/>
+        <Class IRI="elasticsearchclusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchclusterconfig_warmcount"/>
+        <Class IRI="elasticsearchclusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchclusterconfig_warmenabled"/>
+        <Class IRI="elasticsearchclusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="elasticsearchclusterconfig_warmtype"/>
         <Class IRI="elasticsearchclusterconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -482,6 +651,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="mapentry_string_value"/>
         <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="masteruseroptions_masteruserarn"/>
+        <Class IRI="masteruseroptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="masteruseroptions_masterusername"/>
+        <Class IRI="masteruseroptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="masteruseroptions_masteruserpassword"/>
+        <Class IRI="masteruseroptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="nodetonodeencryptionoptions_enabled"/>
@@ -512,6 +693,14 @@
         <Class IRI="zoneawarenessconfig"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="advancedsecurityoptionsinput_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="advancedsecurityoptionsinput_internaluserdatabaseenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cognitooptions_enabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -537,6 +726,26 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="domain_elasticsearchversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainendpointoptions_customendpoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainendpointoptions_customendpointcertificatearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainendpointoptions_customendpointenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainendpointoptions_enforcehttps"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domainendpointoptions_tlssecuritypolicy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -576,6 +785,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="elasticsearchclusterconfig_warmcount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticsearchclusterconfig_warmenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="elasticsearchclusterconfig_warmtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="elasticsearchclusterconfig_zoneawarenessenabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -612,6 +833,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="masteruseroptions_masteruserarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="masteruseroptions_masterusername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="masteruseroptions_masteruserpassword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="nodetonodeencryptionoptions_enabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -639,6 +872,26 @@
         <DataProperty IRI="zoneawarenessconfig_availabilityzonecount"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedsecurityoptionsinput</IRI>
+        <Literal>elasticsearchdomain:advancedsecurityoptionsinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedsecurityoptionsinput_enabled</IRI>
+        <Literal>elasticsearchdomain:advancedsecurityoptionsinput_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedsecurityoptionsinput_internaluserdatabaseenabled</IRI>
+        <Literal>elasticsearchdomain:advancedsecurityoptionsinput_internaluserdatabaseenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>advancedsecurityoptionsinput_masteruseroptions</IRI>
+        <Literal>elasticsearchdomain:advancedsecurityoptionsinput_masteruseroptions</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cognitooptions</IRI>
@@ -681,8 +934,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_advancedsecurityoptions</IRI>
+        <Literal>elasticsearchdomain:domain_advancedsecurityoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>domain_cognitooptions</IRI>
         <Literal>elasticsearchdomain:domain_cognitooptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_domainendpointoptions</IRI>
+        <Literal>elasticsearchdomain:domain_domainendpointoptions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -733,6 +996,36 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>domain_vpcoptions</IRI>
         <Literal>elasticsearchdomain:domain_vpcoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions_customendpoint</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions_customendpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions_customendpointcertificatearn</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions_customendpointcertificatearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions_customendpointenabled</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions_customendpointenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions_enforcehttps</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions_enforcehttps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domainendpointoptions_tlssecuritypolicy</IRI>
+        <Literal>elasticsearchdomain:domainendpointoptions_tlssecuritypolicy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -791,6 +1084,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchclusterconfig_warmcount</IRI>
+        <Literal>elasticsearchdomain:elasticsearchclusterconfig_warmcount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchclusterconfig_warmenabled</IRI>
+        <Literal>elasticsearchdomain:elasticsearchclusterconfig_warmenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>elasticsearchclusterconfig_warmtype</IRI>
+        <Literal>elasticsearchdomain:elasticsearchclusterconfig_warmtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>elasticsearchclusterconfig_zoneawarenessconfig</IRI>
         <Literal>elasticsearchdomain:elasticsearchclusterconfig_zoneawarenessconfig</Literal>
     </AnnotationAssertion>
@@ -828,6 +1136,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>logpublishingoption_enabled</IRI>
         <Literal>elasticsearchdomain:logpublishingoption_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>masteruseroptions</IRI>
+        <Literal>elasticsearchdomain:masteruseroptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>masteruseroptions_masteruserarn</IRI>
+        <Literal>elasticsearchdomain:masteruseroptions_masteruserarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>masteruseroptions_masterusername</IRI>
+        <Literal>elasticsearchdomain:masteruseroptions_masterusername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>masteruseroptions_masteruserpassword</IRI>
+        <Literal>elasticsearchdomain:masteruseroptions_masteruserpassword</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

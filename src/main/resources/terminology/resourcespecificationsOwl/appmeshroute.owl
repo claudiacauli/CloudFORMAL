@@ -33,6 +33,9 @@
         <Class IRI="grpcroutemetadatamatchmethod"/>
     </Declaration>
     <Declaration>
+        <Class IRI="grpctimeout"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="headermatchmethod"/>
     </Declaration>
     <Declaration>
@@ -49,6 +52,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="httproutematch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="httptimeout"/>
     </Declaration>
     <Declaration>
         <Class IRI="matchrange"/>
@@ -69,6 +75,9 @@
         <Class IRI="tcprouteaction"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tcptimeout"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="weightedtarget"/>
     </Declaration>
     <Declaration>
@@ -84,6 +93,9 @@
         <ObjectProperty IRI="grpcroute_retrypolicy"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="grpcroute_timeout"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
     </Declaration>
     <Declaration>
@@ -94,6 +106,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpctimeout_idle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="grpctimeout_perrequest"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="headermatchmethod_range"/>
@@ -111,6 +129,9 @@
         <ObjectProperty IRI="httproute_retrypolicy"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="httproute_timeout"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="httprouteaction_weightedtargets"/>
     </Declaration>
     <Declaration>
@@ -118,6 +139,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="httproutematch_headers"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httptimeout_idle"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="httptimeout_perrequest"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="route_spec"/>
@@ -141,7 +168,13 @@
         <ObjectProperty IRI="tcproute_action"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="tcproute_timeout"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tcptimeout_idle"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="duration_unit"/>
@@ -390,13 +423,6 @@
     <SubClassOf>
         <Class IRI="route"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="route_routename"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="route"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="route_virtualroutername"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
@@ -456,10 +482,19 @@
         <ObjectProperty IRI="grpcroute_retrypolicy"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpcroute_timeout"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="grpcroutemetadata_match"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpctimeout_idle"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="grpctimeout_perrequest"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="headermatchmethod_range"/>
@@ -477,7 +512,16 @@
         <ObjectProperty IRI="httproute_retrypolicy"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="httproute_timeout"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="httprouteheader_match"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httptimeout_idle"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="httptimeout_perrequest"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="route_spec"/>
@@ -497,6 +541,12 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="tcproute_action"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tcproute_timeout"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tcptimeout_idle"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
         <Class IRI="grpcretrypolicy"/>
@@ -514,6 +564,10 @@
         <Class IRI="grpcroute"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpcroute_timeout"/>
+        <Class IRI="grpcroute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
         <Class IRI="grpcrouteaction"/>
     </ObjectPropertyDomain>
@@ -528,6 +582,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
         <Class IRI="grpcroutemetadatamatchmethod"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpctimeout_idle"/>
+        <Class IRI="grpctimeout"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="grpctimeout_perrequest"/>
+        <Class IRI="grpctimeout"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="headermatchmethod_range"/>
@@ -550,6 +612,10 @@
         <Class IRI="httproute"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="httproute_timeout"/>
+        <Class IRI="httproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="httprouteaction_weightedtargets"/>
         <Class IRI="httprouteaction"/>
     </ObjectPropertyDomain>
@@ -560,6 +626,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="httproutematch_headers"/>
         <Class IRI="httproutematch"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httptimeout_idle"/>
+        <Class IRI="httptimeout"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="httptimeout_perrequest"/>
+        <Class IRI="httptimeout"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="route_spec"/>
@@ -590,8 +664,16 @@
         <Class IRI="tcproute"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="tcproute_timeout"/>
+        <Class IRI="tcproute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
         <Class IRI="tcprouteaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tcptimeout_idle"/>
+        <Class IRI="tcptimeout"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="grpcretrypolicy_perretrytimeout"/>
@@ -610,6 +692,10 @@
         <Class IRI="grpcretrypolicy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="grpcroute_timeout"/>
+        <Class IRI="grpctimeout"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="grpcrouteaction_weightedtargets"/>
         <Class IRI="weightedtarget"/>
     </ObjectPropertyRange>
@@ -624,6 +710,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="grpcroutemetadatamatchmethod_range"/>
         <Class IRI="matchrange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpctimeout_idle"/>
+        <Class IRI="duration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="grpctimeout_perrequest"/>
+        <Class IRI="duration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="headermatchmethod_range"/>
@@ -646,6 +740,10 @@
         <Class IRI="httpretrypolicy"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="httproute_timeout"/>
+        <Class IRI="httptimeout"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="httprouteaction_weightedtargets"/>
         <Class IRI="weightedtarget"/>
     </ObjectPropertyRange>
@@ -656,6 +754,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="httproutematch_headers"/>
         <Class IRI="httprouteheader"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httptimeout_idle"/>
+        <Class IRI="duration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="httptimeout_perrequest"/>
+        <Class IRI="duration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="route_spec"/>
@@ -686,8 +792,16 @@
         <Class IRI="tcprouteaction"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="tcproute_timeout"/>
+        <Class IRI="tcptimeout"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="tcprouteaction_weightedtargets"/>
         <Class IRI="weightedtarget"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tcptimeout_idle"/>
+        <Class IRI="duration"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="duration_unit"/>
@@ -1148,6 +1262,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpcroute_timeout</IRI>
+        <Literal>appmeshroute:grpcroute_timeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>grpcrouteaction</IRI>
         <Literal>appmeshroute:grpcrouteaction</Literal>
     </AnnotationAssertion>
@@ -1228,6 +1347,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpctimeout</IRI>
+        <Literal>appmeshroute:grpctimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpctimeout_idle</IRI>
+        <Literal>appmeshroute:grpctimeout_idle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>grpctimeout_perrequest</IRI>
+        <Literal>appmeshroute:grpctimeout_perrequest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>headermatchmethod</IRI>
         <Literal>appmeshroute:headermatchmethod</Literal>
     </AnnotationAssertion>
@@ -1303,6 +1437,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httproute_timeout</IRI>
+        <Literal>appmeshroute:httproute_timeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>httprouteaction</IRI>
         <Literal>appmeshroute:httprouteaction</Literal>
     </AnnotationAssertion>
@@ -1355,6 +1494,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>httproutematch_scheme</IRI>
         <Literal>appmeshroute:httproutematch_scheme</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httptimeout</IRI>
+        <Literal>appmeshroute:httptimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httptimeout_idle</IRI>
+        <Literal>appmeshroute:httptimeout_idle</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>httptimeout_perrequest</IRI>
+        <Literal>appmeshroute:httptimeout_perrequest</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1463,6 +1617,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcproute_timeout</IRI>
+        <Literal>appmeshroute:tcproute_timeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tcprouteaction</IRI>
         <Literal>appmeshroute:tcprouteaction</Literal>
     </AnnotationAssertion>
@@ -1470,6 +1629,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tcprouteaction_weightedtargets</IRI>
         <Literal>appmeshroute:tcprouteaction_weightedtargets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcptimeout</IRI>
+        <Literal>appmeshroute:tcptimeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tcptimeout_idle</IRI>
+        <Literal>appmeshroute:tcptimeout_idle</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

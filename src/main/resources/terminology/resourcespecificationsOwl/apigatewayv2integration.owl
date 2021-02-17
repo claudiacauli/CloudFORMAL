@@ -15,10 +15,19 @@
         <Class IRI="integration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="responseparameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="responseparameterlist"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tlsconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="integration_tlsconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="responseparameterlist_responseparameters"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="integration_apiid"/>
@@ -42,6 +51,9 @@
         <DataProperty IRI="integration_integrationmethod"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="integration_integrationsubtype"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="integration_integrationtype"/>
     </Declaration>
     <Declaration>
@@ -60,10 +72,19 @@
         <DataProperty IRI="integration_requesttemplates"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="integration_responseparameters"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="integration_templateselectionexpression"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="integration_timeoutinmillis"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="responseparameter_destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="responseparameter_source"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tlsconfig_servernametoverify"/>
@@ -82,6 +103,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="responseparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="responseparameter_destination"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="responseparameter"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="responseparameter_source"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="integration_tlsconfig"/>
     </FunctionalObjectProperty>
@@ -89,9 +124,17 @@
         <ObjectProperty IRI="integration_tlsconfig"/>
         <Class IRI="integration"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="responseparameterlist_responseparameters"/>
+        <Class IRI="responseparameterlist"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="integration_tlsconfig"/>
         <Class IRI="tlsconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="responseparameterlist_responseparameters"/>
+        <Class IRI="responseparameter"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="integration_apiid"/>
@@ -115,6 +158,9 @@
         <DataProperty IRI="integration_integrationmethod"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="integration_integrationsubtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="integration_integrationtype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -133,10 +179,19 @@
         <DataProperty IRI="integration_requesttemplates"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="integration_responseparameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="integration_templateselectionexpression"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="integration_timeoutinmillis"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="responseparameter_destination"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="responseparameter_source"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tlsconfig_servernametoverify"/>
@@ -170,6 +225,10 @@
         <Class IRI="integration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="integration_integrationsubtype"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="integration_integrationtype"/>
         <Class IRI="integration"/>
     </DataPropertyDomain>
@@ -194,12 +253,24 @@
         <Class IRI="integration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="integration_responseparameters"/>
+        <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="integration_templateselectionexpression"/>
         <Class IRI="integration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="integration_timeoutinmillis"/>
         <Class IRI="integration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="responseparameter_destination"/>
+        <Class IRI="responseparameter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="responseparameter_source"/>
+        <Class IRI="responseparameter"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tlsconfig_servernametoverify"/>
@@ -234,6 +305,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="integration_integrationsubtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="integration_integrationtype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -258,12 +333,24 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="integration_responseparameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="integration_templateselectionexpression"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="integration_timeoutinmillis"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="responseparameter_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="responseparameter_source"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="tlsconfig_servernametoverify"/>
@@ -311,6 +398,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_integrationsubtype</IRI>
+        <Literal>apigatewayv2integration:integration_integrationsubtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>integration_integrationtype</IRI>
         <Literal>apigatewayv2integration:integration_integrationtype</Literal>
     </AnnotationAssertion>
@@ -341,6 +433,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>integration_responseparameters</IRI>
+        <Literal>apigatewayv2integration:integration_responseparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>integration_templateselectionexpression</IRI>
         <Literal>apigatewayv2integration:integration_templateselectionexpression</Literal>
     </AnnotationAssertion>
@@ -353,6 +450,31 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>integration_tlsconfig</IRI>
         <Literal>apigatewayv2integration:integration_tlsconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>responseparameter</IRI>
+        <Literal>apigatewayv2integration:responseparameter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>responseparameter_destination</IRI>
+        <Literal>apigatewayv2integration:responseparameter_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>responseparameter_source</IRI>
+        <Literal>apigatewayv2integration:responseparameter_source</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>responseparameterlist</IRI>
+        <Literal>apigatewayv2integration:responseparameterlist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>responseparameterlist_responseparameters</IRI>
+        <Literal>apigatewayv2integration:responseparameterlist_responseparameters</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

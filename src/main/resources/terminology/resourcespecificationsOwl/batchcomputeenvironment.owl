@@ -18,10 +18,16 @@
         <Class IRI="computeresources"/>
     </Declaration>
     <Declaration>
+        <Class IRI="ec2configurationobject"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="launchtemplatespecification"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="computeenvironment_computeresources"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="computeresources_ec2configuration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="computeresources_launchtemplate"/>
@@ -34,6 +40,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="computeenvironment_state"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computeenvironment_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="computeenvironment_type"/>
@@ -82,6 +91,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="computeresources_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ec2configurationobject_imageidoverride"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ec2configurationobject_imagetype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="launchtemplatespecification_launchtemplateid"/>
@@ -109,28 +124,7 @@
     <SubClassOf>
         <Class IRI="computeresources"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="computeresources_instancerole"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="computeresources"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="computeresources_instancetypes"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="computeresources"/>
-        <DataSomeValuesFrom>
             <DataProperty IRI="computeresources_maxvcpus"/>
-            <Datatype abbreviatedIRI="xsd:int"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="computeresources"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="computeresources_minvcpus"/>
             <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -148,6 +142,13 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ec2configurationobject"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ec2configurationobject_imagetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="computeenvironment_computeresources"/>
     </FunctionalObjectProperty>
@@ -159,12 +160,20 @@
         <Class IRI="computeenvironment"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="computeresources_ec2configuration"/>
+        <Class IRI="computeresources"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="computeresources_launchtemplate"/>
         <Class IRI="computeresources"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="computeenvironment_computeresources"/>
         <Class IRI="computeresources"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="computeresources_ec2configuration"/>
+        <Class IRI="ec2configurationobject"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="computeresources_launchtemplate"/>
@@ -178,6 +187,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="computeenvironment_state"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computeenvironment_tags"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="computeenvironment_type"/>
@@ -219,6 +231,12 @@
         <DataProperty IRI="computeresources_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="ec2configurationobject_imageidoverride"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ec2configurationobject_imagetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="launchtemplatespecification_launchtemplateid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -237,6 +255,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="computeenvironment_state"/>
+        <Class IRI="computeenvironment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computeenvironment_tags"/>
         <Class IRI="computeenvironment"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -304,6 +326,14 @@
         <Class IRI="computeresources"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="ec2configurationobject_imageidoverride"/>
+        <Class IRI="ec2configurationobject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ec2configurationobject_imagetype"/>
+        <Class IRI="ec2configurationobject"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="launchtemplatespecification_launchtemplateid"/>
         <Class IRI="launchtemplatespecification"/>
     </DataPropertyDomain>
@@ -325,6 +355,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="computeenvironment_state"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computeenvironment_tags"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -389,6 +423,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="computeresources_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ec2configurationobject_imageidoverride"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ec2configurationobject_imagetype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -430,6 +472,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computeenvironment_tags</IRI>
+        <Literal>batchcomputeenvironment:computeenvironment_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>computeenvironment_type</IRI>
         <Literal>batchcomputeenvironment:computeenvironment_type</Literal>
     </AnnotationAssertion>
@@ -452,6 +499,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>computeresources_desiredvcpus</IRI>
         <Literal>batchcomputeenvironment:computeresources_desiredvcpus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computeresources_ec2configuration</IRI>
+        <Literal>batchcomputeenvironment:computeresources_ec2configuration</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -517,6 +569,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>computeresources_type</IRI>
         <Literal>batchcomputeenvironment:computeresources_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ec2configurationobject</IRI>
+        <Literal>batchcomputeenvironment:ec2configurationobject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ec2configurationobject_imageidoverride</IRI>
+        <Literal>batchcomputeenvironment:ec2configurationobject_imageidoverride</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ec2configurationobject_imagetype</IRI>
+        <Literal>batchcomputeenvironment:ec2configurationobject_imagetype</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

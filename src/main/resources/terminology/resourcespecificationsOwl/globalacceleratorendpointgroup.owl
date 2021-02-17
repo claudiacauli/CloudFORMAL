@@ -18,7 +18,13 @@
         <Class IRI="endpointgroup"/>
     </Declaration>
     <Declaration>
+        <Class IRI="portoverride"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="endpointgroup_endpointconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="endpointgroup_portoverrides"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="endpointconfiguration_clientippreservationenabled"/>
@@ -53,6 +59,12 @@
     <Declaration>
         <DataProperty IRI="endpointgroup_trafficdialpercentage"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="portoverride_endpointport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portoverride_listenerport"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="endpointconfiguration"/>
         <DataSomeValuesFrom>
@@ -74,13 +86,35 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="portoverride"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portoverride_endpointport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="portoverride"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="portoverride_listenerport"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="endpointgroup_endpointconfigurations"/>
+        <Class IRI="endpointgroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="endpointgroup_portoverrides"/>
         <Class IRI="endpointgroup"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="endpointgroup_endpointconfigurations"/>
         <Class IRI="endpointconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="endpointgroup_portoverrides"/>
+        <Class IRI="portoverride"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="endpointconfiguration_clientippreservationenabled"/>
@@ -115,6 +149,12 @@
     <FunctionalDataProperty>
         <DataProperty IRI="endpointgroup_trafficdialpercentage"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portoverride_endpointport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portoverride_listenerport"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="endpointconfiguration_clientippreservationenabled"/>
         <Class IRI="endpointconfiguration"/>
@@ -158,6 +198,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="endpointgroup_trafficdialpercentage"/>
         <Class IRI="endpointgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portoverride_endpointport"/>
+        <Class IRI="portoverride"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portoverride_listenerport"/>
+        <Class IRI="portoverride"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="endpointconfiguration_clientippreservationenabled"/>
@@ -202,6 +250,14 @@
     <DataPropertyRange>
         <DataProperty IRI="endpointgroup_trafficdialpercentage"/>
         <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portoverride_endpointport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portoverride_listenerport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -265,6 +321,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointgroup_portoverrides</IRI>
+        <Literal>globalacceleratorendpointgroup:endpointgroup_portoverrides</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>endpointgroup_thresholdcount</IRI>
         <Literal>globalacceleratorendpointgroup:endpointgroup_thresholdcount</Literal>
     </AnnotationAssertion>
@@ -272,6 +333,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>endpointgroup_trafficdialpercentage</IRI>
         <Literal>globalacceleratorendpointgroup:endpointgroup_trafficdialpercentage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portoverride</IRI>
+        <Literal>globalacceleratorendpointgroup:portoverride</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portoverride_endpointport</IRI>
+        <Literal>globalacceleratorendpointgroup:portoverride_endpointport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portoverride_listenerport</IRI>
+        <Literal>globalacceleratorendpointgroup:portoverride_listenerport</Literal>
     </AnnotationAssertion>
 </Ontology>
 

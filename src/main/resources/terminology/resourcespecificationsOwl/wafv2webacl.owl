@@ -30,7 +30,13 @@
         <Class IRI="fieldtomatch"/>
     </Declaration>
     <Declaration>
+        <Class IRI="forwardedipconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="geomatchstatement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ipsetforwardedipconfiguration"/>
     </Declaration>
     <Declaration>
         <Class IRI="ipsetreferencestatement"/>
@@ -114,6 +120,12 @@
         <ObjectProperty IRI="bytematchstatement_texttransformations"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="geomatchstatement_forwardedipconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ipsetreferencestatement_ipsetforwardedipconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="managedrulegroupstatement_excludedrules"/>
     </Declaration>
     <Declaration>
@@ -129,7 +141,13 @@
         <ObjectProperty IRI="orstatementtwo_statements"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="ratebasedstatementone_forwardedipconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="ratebasedstatementone_scopedownstatement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ratebasedstatementtwo_forwardedipconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="ratebasedstatementtwo_scopedownstatement"/>
@@ -330,7 +348,22 @@
         <DataProperty IRI="fieldtomatch_uripath"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="forwardedipconfiguration_fallbackbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="forwardedipconfiguration_headername"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="geomatchstatement_countrycodes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ipsetforwardedipconfiguration_fallbackbehavior"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ipsetforwardedipconfiguration_headername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ipsetforwardedipconfiguration_position"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ipsetreferencestatement_arn"/>
@@ -455,6 +488,41 @@
         <Class IRI="excludedrule"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="excludedrule_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="forwardedipconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="forwardedipconfiguration_fallbackbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="forwardedipconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="forwardedipconfiguration_headername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ipsetforwardedipconfiguration_fallbackbehavior"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ipsetforwardedipconfiguration_headername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ipsetforwardedipconfiguration_position"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -721,13 +789,25 @@
         <ObjectProperty IRI="bytematchstatement_fieldtomatch"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="geomatchstatement_forwardedipconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ipsetreferencestatement_ipsetforwardedipconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="notstatementone_statement"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="notstatementtwo_statement"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="ratebasedstatementone_forwardedipconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="ratebasedstatementone_scopedownstatement"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="ratebasedstatementtwo_forwardedipconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="ratebasedstatementtwo_scopedownstatement"/>
@@ -884,6 +964,14 @@
         <Class IRI="bytematchstatement"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="geomatchstatement_forwardedipconfig"/>
+        <Class IRI="geomatchstatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ipsetreferencestatement_ipsetforwardedipconfig"/>
+        <Class IRI="ipsetreferencestatement"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="managedrulegroupstatement_excludedrules"/>
         <Class IRI="managedrulegroupstatement"/>
     </ObjectPropertyDomain>
@@ -904,8 +992,16 @@
         <Class IRI="orstatementtwo"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="ratebasedstatementone_forwardedipconfig"/>
+        <Class IRI="ratebasedstatementone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="ratebasedstatementone_scopedownstatement"/>
         <Class IRI="ratebasedstatementone"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ratebasedstatementtwo_forwardedipconfig"/>
+        <Class IRI="ratebasedstatementtwo"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="ratebasedstatementtwo_scopedownstatement"/>
@@ -1136,6 +1232,14 @@
         <Class IRI="texttransformation"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="geomatchstatement_forwardedipconfig"/>
+        <Class IRI="forwardedipconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ipsetreferencestatement_ipsetforwardedipconfig"/>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="managedrulegroupstatement_excludedrules"/>
         <Class IRI="excludedrule"/>
     </ObjectPropertyRange>
@@ -1156,8 +1260,16 @@
         <Class IRI="statementthree"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="ratebasedstatementone_forwardedipconfig"/>
+        <Class IRI="forwardedipconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="ratebasedstatementone_scopedownstatement"/>
         <Class IRI="statementtwo"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ratebasedstatementtwo_forwardedipconfig"/>
+        <Class IRI="forwardedipconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="ratebasedstatementtwo_scopedownstatement"/>
@@ -1411,6 +1523,21 @@
         <DataProperty IRI="fieldtomatch_uripath"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="forwardedipconfiguration_fallbackbehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="forwardedipconfiguration_headername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ipsetforwardedipconfiguration_fallbackbehavior"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ipsetforwardedipconfiguration_headername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ipsetforwardedipconfiguration_position"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="ipsetreferencestatement_arn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1547,8 +1674,28 @@
         <Class IRI="fieldtomatch"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="forwardedipconfiguration_fallbackbehavior"/>
+        <Class IRI="forwardedipconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="forwardedipconfiguration_headername"/>
+        <Class IRI="forwardedipconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="geomatchstatement_countrycodes"/>
         <Class IRI="geomatchstatement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ipsetforwardedipconfiguration_fallbackbehavior"/>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ipsetforwardedipconfiguration_headername"/>
+        <Class IRI="ipsetforwardedipconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ipsetforwardedipconfiguration_position"/>
+        <Class IRI="ipsetforwardedipconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="ipsetreferencestatement_arn"/>
@@ -1715,7 +1862,27 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="forwardedipconfiguration_fallbackbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="forwardedipconfiguration_headername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="geomatchstatement_countrycodes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ipsetforwardedipconfiguration_fallbackbehavior"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ipsetforwardedipconfiguration_headername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ipsetforwardedipconfiguration_position"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1947,6 +2114,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedipconfiguration</IRI>
+        <Literal>wafv2webacl:forwardedipconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedipconfiguration_fallbackbehavior</IRI>
+        <Literal>wafv2webacl:forwardedipconfiguration_fallbackbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>forwardedipconfiguration_headername</IRI>
+        <Literal>wafv2webacl:forwardedipconfiguration_headername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>geomatchstatement</IRI>
         <Literal>wafv2webacl:geomatchstatement</Literal>
     </AnnotationAssertion>
@@ -1957,6 +2139,31 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>geomatchstatement_forwardedipconfig</IRI>
+        <Literal>wafv2webacl:geomatchstatement_forwardedipconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipsetforwardedipconfiguration</IRI>
+        <Literal>wafv2webacl:ipsetforwardedipconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipsetforwardedipconfiguration_fallbackbehavior</IRI>
+        <Literal>wafv2webacl:ipsetforwardedipconfiguration_fallbackbehavior</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipsetforwardedipconfiguration_headername</IRI>
+        <Literal>wafv2webacl:ipsetforwardedipconfiguration_headername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipsetforwardedipconfiguration_position</IRI>
+        <Literal>wafv2webacl:ipsetforwardedipconfiguration_position</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ipsetreferencestatement</IRI>
         <Literal>wafv2webacl:ipsetreferencestatement</Literal>
     </AnnotationAssertion>
@@ -1964,6 +2171,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ipsetreferencestatement_arn</IRI>
         <Literal>wafv2webacl:ipsetreferencestatement_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ipsetreferencestatement_ipsetforwardedipconfig</IRI>
+        <Literal>wafv2webacl:ipsetreferencestatement_ipsetforwardedipconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2052,6 +2264,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ratebasedstatementone_forwardedipconfig</IRI>
+        <Literal>wafv2webacl:ratebasedstatementone_forwardedipconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ratebasedstatementone_limit</IRI>
         <Literal>wafv2webacl:ratebasedstatementone_limit</Literal>
     </AnnotationAssertion>
@@ -2069,6 +2286,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>ratebasedstatementtwo_aggregatekeytype</IRI>
         <Literal>wafv2webacl:ratebasedstatementtwo_aggregatekeytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ratebasedstatementtwo_forwardedipconfig</IRI>
+        <Literal>wafv2webacl:ratebasedstatementtwo_forwardedipconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ssoinstanceaccesscontrolattributeconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ssoinstanceaccesscontrolattributeconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="accesscontrolattribute"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accesscontrolattributevalue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accesscontrolattributevaluesourcelist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="instanceaccesscontrolattributeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesscontrolattribute_value"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesscontrolattributevalue_source"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instanceaccesscontrolattributeconfiguration_accesscontrolattributes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesscontrolattribute_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesscontrolattributevaluesourcelist_accesscontrolattributevaluesourcelist"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="instanceaccesscontrolattributeconfiguration_instancearn"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="accesscontrolattribute"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accesscontrolattribute_value"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="accesscontrolattribute"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="accesscontrolattribute_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="accesscontrolattributevalue"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accesscontrolattributevalue_source"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="instanceaccesscontrolattributeconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="instanceaccesscontrolattributeconfiguration_instancearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesscontrolattribute_value"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesscontrolattributevalue_source"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesscontrolattribute_value"/>
+        <Class IRI="accesscontrolattribute"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesscontrolattributevalue_source"/>
+        <Class IRI="accesscontrolattributevalue"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instanceaccesscontrolattributeconfiguration_accesscontrolattributes"/>
+        <Class IRI="instanceaccesscontrolattributeconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesscontrolattribute_value"/>
+        <Class IRI="accesscontrolattributevalue"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesscontrolattributevalue_source"/>
+        <Class IRI="accesscontrolattributevaluesourcelist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instanceaccesscontrolattributeconfiguration_accesscontrolattributes"/>
+        <Class IRI="accesscontrolattribute"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesscontrolattribute_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="instanceaccesscontrolattributeconfiguration_instancearn"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesscontrolattribute_key"/>
+        <Class IRI="accesscontrolattribute"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesscontrolattributevaluesourcelist_accesscontrolattributevaluesourcelist"/>
+        <Class IRI="accesscontrolattributevaluesourcelist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="instanceaccesscontrolattributeconfiguration_instancearn"/>
+        <Class IRI="instanceaccesscontrolattributeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="accesscontrolattribute_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accesscontrolattributevaluesourcelist_accesscontrolattributevaluesourcelist"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="instanceaccesscontrolattributeconfiguration_instancearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattribute</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattribute</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattribute_key</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattribute_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattribute_value</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattribute_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattributevalue</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattributevalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattributevalue_source</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattributevalue_source</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattributevaluesourcelist</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattributevaluesourcelist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesscontrolattributevaluesourcelist_accesscontrolattributevaluesourcelist</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:accesscontrolattributevaluesourcelist_accesscontrolattributevaluesourcelist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceaccesscontrolattributeconfiguration</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:instanceaccesscontrolattributeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceaccesscontrolattributeconfiguration_accesscontrolattributes</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:instanceaccesscontrolattributeconfiguration_accesscontrolattributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instanceaccesscontrolattributeconfiguration_instancearn</IRI>
+        <Literal>ssoinstanceaccesscontrolattributeconfiguration:instanceaccesscontrolattributeconfiguration_instancearn</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

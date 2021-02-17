@@ -27,6 +27,9 @@
         <Class IRI="cluster"/>
     </Declaration>
     <Declaration>
+        <Class IRI="computelimits"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="configuration"/>
     </Declaration>
     <Declaration>
@@ -60,10 +63,16 @@
         <Class IRI="keyvalue"/>
     </Declaration>
     <Declaration>
+        <Class IRI="managedscalingpolicy"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="mapentry_string"/>
     </Declaration>
     <Declaration>
         <Class IRI="metricdimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ondemandprovisioningspecification"/>
     </Declaration>
     <Declaration>
         <Class IRI="placementtype"/>
@@ -129,6 +138,9 @@
         <ObjectProperty IRI="cluster_kerberosattributes"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="cluster_managedscalingpolicy"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="cluster_steps"/>
     </Declaration>
     <Declaration>
@@ -154,6 +166,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -187,6 +202,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="jobflowinstancesconfig_placement"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="managedscalingpolicy_computelimits"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="scalingaction_simplescalingpolicyconfiguration"/>
@@ -255,6 +273,9 @@
         <DataProperty IRI="cluster_jobflowrole"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="cluster_logencryptionkmskeyid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cluster_loguri"/>
     </Declaration>
     <Declaration>
@@ -273,7 +294,25 @@
         <DataProperty IRI="cluster_servicerole"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="cluster_stepconcurrencylevel"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cluster_visibletoallusers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computelimits_maximumcapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computelimits_maximumcorecapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computelimits_maximumondemandcapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computelimits_minimumcapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="computelimits_unittype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="configuration_classification"/>
@@ -396,6 +435,9 @@
         <DataProperty IRI="metricdimension_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="placementtype_availabilityzone"/>
     </Declaration>
     <Declaration>
@@ -427,6 +469,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="simplescalingpolicyconfiguration_scalingadjustment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -543,6 +588,27 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="computelimits"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="computelimits_maximumcapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="computelimits"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="computelimits_minimumcapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="computelimits"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="computelimits_unittype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="ebsblockdeviceconfig"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
@@ -555,13 +621,6 @@
             <DataProperty IRI="hadoopjarstepconfig_jar"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="instancefleetprovisioningspecifications"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="instancegroupconfig"/>
@@ -609,6 +668,13 @@
         <Class IRI="metricdimension"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="metricdimension_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ondemandprovisioningspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -751,10 +817,16 @@
         <ObjectProperty IRI="cluster_kerberosattributes"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="cluster_managedscalingpolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="ebsblockdeviceconfig_volumespecification"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -782,6 +854,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="jobflowinstancesconfig_placement"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="managedscalingpolicy_computelimits"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="scalingaction_simplescalingpolicyconfiguration"/>
@@ -839,6 +914,10 @@
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="cluster_managedscalingpolicy"/>
+        <Class IRI="cluster"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="cluster_steps"/>
         <Class IRI="cluster"/>
     </ObjectPropertyDomain>
@@ -873,6 +952,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
         <Class IRI="instancefleetconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
+        <Class IRI="instancefleetprovisioningspecifications"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -917,6 +1000,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="jobflowinstancesconfig_placement"/>
         <Class IRI="jobflowinstancesconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="managedscalingpolicy_computelimits"/>
+        <Class IRI="managedscalingpolicy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="scalingaction_simplescalingpolicyconfiguration"/>
@@ -979,6 +1066,10 @@
         <Class IRI="kerberosattributes"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="cluster_managedscalingpolicy"/>
+        <Class IRI="managedscalingpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="cluster_steps"/>
         <Class IRI="stepconfig"/>
     </ObjectPropertyRange>
@@ -1013,6 +1104,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="instancefleetconfig_launchspecifications"/>
         <Class IRI="instancefleetprovisioningspecifications"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="instancefleetprovisioningspecifications_ondemandspecification"/>
+        <Class IRI="ondemandprovisioningspecification"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="instancefleetprovisioningspecifications_spotspecification"/>
@@ -1057,6 +1152,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="jobflowinstancesconfig_placement"/>
         <Class IRI="placementtype"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="managedscalingpolicy_computelimits"/>
+        <Class IRI="computelimits"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="scalingaction_simplescalingpolicyconfiguration"/>
@@ -1127,6 +1226,9 @@
         <DataProperty IRI="cluster_jobflowrole"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="cluster_logencryptionkmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cluster_loguri"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1145,7 +1247,25 @@
         <DataProperty IRI="cluster_servicerole"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="cluster_stepconcurrencylevel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cluster_visibletoallusers"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computelimits_maximumcapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computelimits_maximumcorecapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computelimits_maximumondemandcapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computelimits_minimumcapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="computelimits_unittype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="configuration_classification"/>
@@ -1250,6 +1370,9 @@
         <DataProperty IRI="metricdimension_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="placementtype_availabilityzone"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1278,6 +1401,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="simplescalingpolicyconfiguration_scalingadjustment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -1378,6 +1504,10 @@
         <Class IRI="cluster"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="cluster_logencryptionkmskeyid"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="cluster_loguri"/>
         <Class IRI="cluster"/>
     </DataPropertyDomain>
@@ -1402,8 +1532,32 @@
         <Class IRI="cluster"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="cluster_stepconcurrencylevel"/>
+        <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="cluster_visibletoallusers"/>
         <Class IRI="cluster"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computelimits_maximumcapacityunits"/>
+        <Class IRI="computelimits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computelimits_maximumcorecapacityunits"/>
+        <Class IRI="computelimits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computelimits_maximumondemandcapacityunits"/>
+        <Class IRI="computelimits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computelimits_minimumcapacityunits"/>
+        <Class IRI="computelimits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="computelimits_unittype"/>
+        <Class IRI="computelimits"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="configuration_classification"/>
@@ -1566,6 +1720,10 @@
         <Class IRI="metricdimension"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+        <Class IRI="ondemandprovisioningspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="placementtype_availabilityzone"/>
         <Class IRI="placementtype"/>
     </DataPropertyDomain>
@@ -1608,6 +1766,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="simplescalingpolicyconfiguration_scalingadjustment"/>
         <Class IRI="simplescalingpolicyconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
+        <Class IRI="spotprovisioningspecification"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -1718,6 +1880,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="cluster_logencryptionkmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cluster_loguri"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1742,8 +1908,32 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="cluster_stepconcurrencylevel"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cluster_visibletoallusers"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computelimits_maximumcapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computelimits_maximumcorecapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computelimits_maximumondemandcapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computelimits_minimumcapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="computelimits_unittype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="configuration_classification"/>
@@ -1906,6 +2096,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="ondemandprovisioningspecification_allocationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="placementtype_availabilityzone"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1948,6 +2142,10 @@
     <DataPropertyRange>
         <DataProperty IRI="simplescalingpolicyconfiguration_scalingadjustment"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotprovisioningspecification_allocationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="spotprovisioningspecification_blockdurationminutes"/>
@@ -2151,8 +2349,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_logencryptionkmskeyid</IRI>
+        <Literal>emrcluster:cluster_logencryptionkmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster_loguri</IRI>
         <Literal>emrcluster:cluster_loguri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_managedscalingpolicy</IRI>
+        <Literal>emrcluster:cluster_managedscalingpolicy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2181,6 +2389,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cluster_stepconcurrencylevel</IRI>
+        <Literal>emrcluster:cluster_stepconcurrencylevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster_steps</IRI>
         <Literal>emrcluster:cluster_steps</Literal>
     </AnnotationAssertion>
@@ -2193,6 +2406,36 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cluster_visibletoallusers</IRI>
         <Literal>emrcluster:cluster_visibletoallusers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits</IRI>
+        <Literal>emrcluster:computelimits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits_maximumcapacityunits</IRI>
+        <Literal>emrcluster:computelimits_maximumcapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits_maximumcorecapacityunits</IRI>
+        <Literal>emrcluster:computelimits_maximumcorecapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits_maximumondemandcapacityunits</IRI>
+        <Literal>emrcluster:computelimits_maximumondemandcapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits_minimumcapacityunits</IRI>
+        <Literal>emrcluster:computelimits_minimumcapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>computelimits_unittype</IRI>
+        <Literal>emrcluster:computelimits_unittype</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2303,6 +2546,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>instancefleetprovisioningspecifications</IRI>
         <Literal>emrcluster:instancefleetprovisioningspecifications</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>instancefleetprovisioningspecifications_ondemandspecification</IRI>
+        <Literal>emrcluster:instancefleetprovisioningspecifications_ondemandspecification</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2521,6 +2769,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscalingpolicy</IRI>
+        <Literal>emrcluster:managedscalingpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>managedscalingpolicy_computelimits</IRI>
+        <Literal>emrcluster:managedscalingpolicy_computelimits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>metricdimension</IRI>
         <Literal>emrcluster:metricdimension</Literal>
     </AnnotationAssertion>
@@ -2533,6 +2791,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>metricdimension_value</IRI>
         <Literal>emrcluster:metricdimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ondemandprovisioningspecification</IRI>
+        <Literal>emrcluster:ondemandprovisioningspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ondemandprovisioningspecification_allocationstrategy</IRI>
+        <Literal>emrcluster:ondemandprovisioningspecification_allocationstrategy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2648,6 +2916,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>spotprovisioningspecification</IRI>
         <Literal>emrcluster:spotprovisioningspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotprovisioningspecification_allocationstrategy</IRI>
+        <Literal>emrcluster:spotprovisioningspecification_allocationstrategy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

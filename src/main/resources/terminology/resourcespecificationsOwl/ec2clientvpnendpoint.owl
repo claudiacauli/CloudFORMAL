@@ -18,6 +18,9 @@
         <Class IRI="clientauthenticationrequest"/>
     </Declaration>
     <Declaration>
+        <Class IRI="clientconnectoptions"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="clientvpnendpoint"/>
     </Declaration>
     <Declaration>
@@ -48,6 +51,9 @@
         <ObjectProperty IRI="clientvpnendpoint_authenticationoptions"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="clientvpnendpoint_clientconnectoptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="clientvpnendpoint_connectionlogoptions"/>
     </Declaration>
     <Declaration>
@@ -63,6 +69,12 @@
         <DataProperty IRI="clientauthenticationrequest_type"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="clientconnectoptions_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clientconnectoptions_lambdafunctionarn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="clientvpnendpoint_clientcidrblock"/>
     </Declaration>
     <Declaration>
@@ -73,6 +85,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="clientvpnendpoint_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clientvpnendpoint_selfserviceportal"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="clientvpnendpoint_servercertificatearn"/>
@@ -105,6 +120,9 @@
         <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="federatedauthenticationrequest_selfservicesamlproviderarn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="tag_key"/>
     </Declaration>
     <Declaration>
@@ -125,6 +143,13 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="clientauthenticationrequest_type"/>
             <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="clientconnectoptions"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="clientconnectoptions_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -214,6 +239,9 @@
         <ObjectProperty IRI="clientauthenticationrequest_mutualauthentication"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="clientvpnendpoint_clientconnectoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="clientvpnendpoint_connectionlogoptions"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
@@ -233,6 +261,10 @@
         <Class IRI="clientvpnendpoint"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="clientvpnendpoint_clientconnectoptions"/>
+        <Class IRI="clientvpnendpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="clientvpnendpoint_connectionlogoptions"/>
         <Class IRI="clientvpnendpoint"/>
     </ObjectPropertyDomain>
@@ -261,6 +293,10 @@
         <Class IRI="clientauthenticationrequest"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="clientvpnendpoint_clientconnectoptions"/>
+        <Class IRI="clientconnectoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="clientvpnendpoint_connectionlogoptions"/>
         <Class IRI="connectionlogoptions"/>
     </ObjectPropertyRange>
@@ -279,10 +315,19 @@
         <DataProperty IRI="clientauthenticationrequest_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="clientconnectoptions_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clientconnectoptions_lambdafunctionarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="clientvpnendpoint_clientcidrblock"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="clientvpnendpoint_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clientvpnendpoint_selfserviceportal"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="clientvpnendpoint_servercertificatearn"/>
@@ -315,6 +360,9 @@
         <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="federatedauthenticationrequest_selfservicesamlproviderarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -332,6 +380,14 @@
         <Class IRI="clientauthenticationrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="clientconnectoptions_enabled"/>
+        <Class IRI="clientconnectoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clientconnectoptions_lambdafunctionarn"/>
+        <Class IRI="clientconnectoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="clientvpnendpoint_clientcidrblock"/>
         <Class IRI="clientvpnendpoint"/>
     </DataPropertyDomain>
@@ -345,6 +401,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="clientvpnendpoint_securitygroupids"/>
+        <Class IRI="clientvpnendpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clientvpnendpoint_selfserviceportal"/>
         <Class IRI="clientvpnendpoint"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -388,6 +448,10 @@
         <Class IRI="federatedauthenticationrequest"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="federatedauthenticationrequest_selfservicesamlproviderarn"/>
+        <Class IRI="federatedauthenticationrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
@@ -408,6 +472,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="clientconnectoptions_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clientconnectoptions_lambdafunctionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="clientvpnendpoint_clientcidrblock"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -421,6 +493,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="clientvpnendpoint_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clientvpnendpoint_selfserviceportal"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -461,6 +537,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="federatedauthenticationrequest_samlproviderarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="federatedauthenticationrequest_selfservicesamlproviderarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -512,6 +592,21 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientconnectoptions</IRI>
+        <Literal>ec2clientvpnendpoint:clientconnectoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientconnectoptions_enabled</IRI>
+        <Literal>ec2clientvpnendpoint:clientconnectoptions_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientconnectoptions_lambdafunctionarn</IRI>
+        <Literal>ec2clientvpnendpoint:clientconnectoptions_lambdafunctionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>clientvpnendpoint</IRI>
         <Literal>ec2clientvpnendpoint:clientvpnendpoint</Literal>
     </AnnotationAssertion>
@@ -524,6 +619,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>clientvpnendpoint_clientcidrblock</IRI>
         <Literal>ec2clientvpnendpoint:clientvpnendpoint_clientcidrblock</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientvpnendpoint_clientconnectoptions</IRI>
+        <Literal>ec2clientvpnendpoint:clientvpnendpoint_clientconnectoptions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -544,6 +644,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>clientvpnendpoint_securitygroupids</IRI>
         <Literal>ec2clientvpnendpoint:clientvpnendpoint_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clientvpnendpoint_selfserviceportal</IRI>
+        <Literal>ec2clientvpnendpoint:clientvpnendpoint_selfserviceportal</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -614,6 +719,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>federatedauthenticationrequest_samlproviderarn</IRI>
         <Literal>ec2clientvpnendpoint:federatedauthenticationrequest_samlproviderarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>federatedauthenticationrequest_selfservicesamlproviderarn</IRI>
+        <Literal>ec2clientvpnendpoint:federatedauthenticationrequest_selfservicesamlproviderarn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

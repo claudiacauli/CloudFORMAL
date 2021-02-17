@@ -12,13 +12,28 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="action"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="createrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="crossregioncopyaction"/>
     </Declaration>
     <Declaration>
         <Class IRI="crossregioncopyretainrule"/>
     </Declaration>
     <Declaration>
         <Class IRI="crossregioncopyrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="encryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="eventsource"/>
     </Declaration>
     <Declaration>
         <Class IRI="fastrestorerule"/>
@@ -39,13 +54,37 @@
         <Class IRI="schedule"/>
     </Declaration>
     <Declaration>
+        <Class IRI="sharerule"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="action_crossregioncopy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="crossregioncopyaction_encryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="crossregioncopyaction_retainrule"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="crossregioncopyrule_retainrule"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="eventsource_parameters"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="lifecyclepolicy_policydetails"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lifecyclepolicy_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policydetails_actions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="policydetails_eventsource"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="policydetails_parameters"/>
@@ -69,10 +108,16 @@
         <ObjectProperty IRI="schedule_retainrule"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="schedule_sharerules"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="schedule_tagstoadd"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="schedule_variabletags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="action_name"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="createrule_cronexpression"/>
@@ -84,7 +129,13 @@
         <DataProperty IRI="createrule_intervalunit"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="createrule_location"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="createrule_times"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="crossregioncopyaction_target"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="crossregioncopyretainrule_interval"/>
@@ -102,7 +153,28 @@
         <DataProperty IRI="crossregioncopyrule_encrypted"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="crossregioncopyrule_target"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="crossregioncopyrule_targetregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionconfiguration_cmkarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryptionconfiguration_encrypted"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventparameters_descriptionregex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventparameters_eventtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventparameters_snapshotowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="eventsource_type"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="fastrestorerule_availabilityzones"/>
@@ -129,7 +201,13 @@
         <DataProperty IRI="parameters_excludebootvolume"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="parameters_noreboot"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="policydetails_policytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="policydetails_resourcelocations"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="policydetails_resourcetypes"/>
@@ -150,11 +228,48 @@
         <DataProperty IRI="schedule_name"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="sharerule_targetaccounts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sharerule_unshareinterval"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sharerule_unshareintervalunit"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="tag_key"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="action"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="action_crossregioncopy"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="action"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="action_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="crossregioncopyaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="crossregioncopyaction_encryptionconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="crossregioncopyaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="crossregioncopyaction_target"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="crossregioncopyretainrule"/>
         <DataSomeValuesFrom>
@@ -177,30 +292,30 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="crossregioncopyrule"/>
+        <Class IRI="encryptionconfiguration"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="crossregioncopyrule_targetregion"/>
+            <DataProperty IRI="encryptionconfiguration_encrypted"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventparameters"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="eventparameters_eventtype"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="policydetails"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="policydetails_schedules"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="policydetails"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="policydetails_targettags"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="policydetails"/>
+        <Class IRI="eventparameters"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="policydetails_resourcetypes"/>
+            <DataProperty IRI="eventparameters_snapshotowner"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="eventsource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="eventsource_type"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -219,10 +334,22 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="crossregioncopyaction_encryptionconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="crossregioncopyaction_retainrule"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="crossregioncopyrule_retainrule"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="eventsource_parameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="lifecyclepolicy_policydetails"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="policydetails_eventsource"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="policydetails_parameters"/>
@@ -237,12 +364,40 @@
         <ObjectProperty IRI="schedule_retainrule"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="action_crossregioncopy"/>
+        <Class IRI="action"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="crossregioncopyaction_encryptionconfiguration"/>
+        <Class IRI="crossregioncopyaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="crossregioncopyaction_retainrule"/>
+        <Class IRI="crossregioncopyaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="crossregioncopyrule_retainrule"/>
         <Class IRI="crossregioncopyrule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="eventsource_parameters"/>
+        <Class IRI="eventsource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="lifecyclepolicy_policydetails"/>
         <Class IRI="lifecyclepolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lifecyclepolicy_tags"/>
+        <Class IRI="lifecyclepolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policydetails_actions"/>
+        <Class IRI="policydetails"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="policydetails_eventsource"/>
+        <Class IRI="policydetails"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="policydetails_parameters"/>
@@ -273,6 +428,10 @@
         <Class IRI="schedule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="schedule_sharerules"/>
+        <Class IRI="schedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="schedule_tagstoadd"/>
         <Class IRI="schedule"/>
     </ObjectPropertyDomain>
@@ -281,12 +440,40 @@
         <Class IRI="schedule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="action_crossregioncopy"/>
+        <Class IRI="crossregioncopyaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="crossregioncopyaction_encryptionconfiguration"/>
+        <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="crossregioncopyaction_retainrule"/>
+        <Class IRI="crossregioncopyretainrule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="crossregioncopyrule_retainrule"/>
         <Class IRI="crossregioncopyretainrule"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="eventsource_parameters"/>
+        <Class IRI="eventparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="lifecyclepolicy_policydetails"/>
         <Class IRI="policydetails"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lifecyclepolicy_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policydetails_actions"/>
+        <Class IRI="action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="policydetails_eventsource"/>
+        <Class IRI="eventsource"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="policydetails_parameters"/>
@@ -317,6 +504,10 @@
         <Class IRI="retainrule"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="schedule_sharerules"/>
+        <Class IRI="sharerule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="schedule_tagstoadd"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
@@ -325,6 +516,9 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="action_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="createrule_cronexpression"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -332,6 +526,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="createrule_intervalunit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="createrule_location"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="crossregioncopyaction_target"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="crossregioncopyretainrule_interval"/>
@@ -349,7 +549,25 @@
         <DataProperty IRI="crossregioncopyrule_encrypted"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="crossregioncopyrule_target"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="crossregioncopyrule_targetregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionconfiguration_cmkarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryptionconfiguration_encrypted"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventparameters_descriptionregex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventparameters_eventtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="eventsource_type"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="fastrestorerule_count"/>
@@ -373,6 +591,9 @@
         <DataProperty IRI="parameters_excludebootvolume"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="parameters_noreboot"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="policydetails_policytype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -391,11 +612,21 @@
         <DataProperty IRI="schedule_name"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="sharerule_unshareinterval"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sharerule_unshareintervalunit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="action_name"/>
+        <Class IRI="action"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="createrule_cronexpression"/>
         <Class IRI="createrule"/>
@@ -409,8 +640,16 @@
         <Class IRI="createrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="createrule_location"/>
+        <Class IRI="createrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="createrule_times"/>
         <Class IRI="createrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="crossregioncopyaction_target"/>
+        <Class IRI="crossregioncopyaction"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="crossregioncopyretainrule_interval"/>
@@ -433,8 +672,36 @@
         <Class IRI="crossregioncopyrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="crossregioncopyrule_target"/>
+        <Class IRI="crossregioncopyrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="crossregioncopyrule_targetregion"/>
         <Class IRI="crossregioncopyrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionconfiguration_cmkarn"/>
+        <Class IRI="encryptionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryptionconfiguration_encrypted"/>
+        <Class IRI="encryptionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventparameters_descriptionregex"/>
+        <Class IRI="eventparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventparameters_eventtype"/>
+        <Class IRI="eventparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventparameters_snapshotowner"/>
+        <Class IRI="eventparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="eventsource_type"/>
+        <Class IRI="eventsource"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="fastrestorerule_availabilityzones"/>
@@ -469,7 +736,15 @@
         <Class IRI="parameters"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="parameters_noreboot"/>
+        <Class IRI="parameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="policydetails_policytype"/>
+        <Class IRI="policydetails"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="policydetails_resourcelocations"/>
         <Class IRI="policydetails"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -497,6 +772,18 @@
         <Class IRI="schedule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="sharerule_targetaccounts"/>
+        <Class IRI="sharerule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sharerule_unshareinterval"/>
+        <Class IRI="sharerule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sharerule_unshareintervalunit"/>
+        <Class IRI="sharerule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
@@ -504,6 +791,10 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="action_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="createrule_cronexpression"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -517,7 +808,15 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="createrule_location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="createrule_times"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="crossregioncopyaction_target"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -541,7 +840,35 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="crossregioncopyrule_target"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="crossregioncopyrule_targetregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionconfiguration_cmkarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryptionconfiguration_encrypted"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventparameters_descriptionregex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventparameters_eventtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventparameters_snapshotowner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="eventsource_type"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -577,7 +904,15 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="parameters_noreboot"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="policydetails_policytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="policydetails_resourcelocations"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -605,6 +940,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="sharerule_targetaccounts"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sharerule_unshareinterval"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sharerule_unshareintervalunit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="tag_key"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -612,6 +959,21 @@
         <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action</IRI>
+        <Literal>dlmlifecyclepolicy:action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_crossregioncopy</IRI>
+        <Literal>dlmlifecyclepolicy:action_crossregioncopy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_name</IRI>
+        <Literal>dlmlifecyclepolicy:action_name</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>createrule</IRI>
@@ -634,8 +996,33 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>createrule_location</IRI>
+        <Literal>dlmlifecyclepolicy:createrule_location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>createrule_times</IRI>
         <Literal>dlmlifecyclepolicy:createrule_times</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crossregioncopyaction</IRI>
+        <Literal>dlmlifecyclepolicy:crossregioncopyaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crossregioncopyaction_encryptionconfiguration</IRI>
+        <Literal>dlmlifecyclepolicy:crossregioncopyaction_encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crossregioncopyaction_retainrule</IRI>
+        <Literal>dlmlifecyclepolicy:crossregioncopyaction_retainrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crossregioncopyaction_target</IRI>
+        <Literal>dlmlifecyclepolicy:crossregioncopyaction_target</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -679,8 +1066,63 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>crossregioncopyrule_target</IRI>
+        <Literal>dlmlifecyclepolicy:crossregioncopyrule_target</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>crossregioncopyrule_targetregion</IRI>
         <Literal>dlmlifecyclepolicy:crossregioncopyrule_targetregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration</IRI>
+        <Literal>dlmlifecyclepolicy:encryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_cmkarn</IRI>
+        <Literal>dlmlifecyclepolicy:encryptionconfiguration_cmkarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryptionconfiguration_encrypted</IRI>
+        <Literal>dlmlifecyclepolicy:encryptionconfiguration_encrypted</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventparameters</IRI>
+        <Literal>dlmlifecyclepolicy:eventparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventparameters_descriptionregex</IRI>
+        <Literal>dlmlifecyclepolicy:eventparameters_descriptionregex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventparameters_eventtype</IRI>
+        <Literal>dlmlifecyclepolicy:eventparameters_eventtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventparameters_snapshotowner</IRI>
+        <Literal>dlmlifecyclepolicy:eventparameters_snapshotowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsource</IRI>
+        <Literal>dlmlifecyclepolicy:eventsource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsource_parameters</IRI>
+        <Literal>dlmlifecyclepolicy:eventsource_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>eventsource_type</IRI>
+        <Literal>dlmlifecyclepolicy:eventsource_type</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -734,6 +1176,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lifecyclepolicy_tags</IRI>
+        <Literal>dlmlifecyclepolicy:lifecyclepolicy_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>parameters</IRI>
         <Literal>dlmlifecyclepolicy:parameters</Literal>
     </AnnotationAssertion>
@@ -744,8 +1191,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parameters_noreboot</IRI>
+        <Literal>dlmlifecyclepolicy:parameters_noreboot</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>policydetails</IRI>
         <Literal>dlmlifecyclepolicy:policydetails</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policydetails_actions</IRI>
+        <Literal>dlmlifecyclepolicy:policydetails_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policydetails_eventsource</IRI>
+        <Literal>dlmlifecyclepolicy:policydetails_eventsource</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -756,6 +1218,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>policydetails_policytype</IRI>
         <Literal>dlmlifecyclepolicy:policydetails_policytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>policydetails_resourcelocations</IRI>
+        <Literal>dlmlifecyclepolicy:policydetails_resourcelocations</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -829,6 +1296,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schedule_sharerules</IRI>
+        <Literal>dlmlifecyclepolicy:schedule_sharerules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>schedule_tagstoadd</IRI>
         <Literal>dlmlifecyclepolicy:schedule_tagstoadd</Literal>
     </AnnotationAssertion>
@@ -836,6 +1308,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>schedule_variabletags</IRI>
         <Literal>dlmlifecyclepolicy:schedule_variabletags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharerule</IRI>
+        <Literal>dlmlifecyclepolicy:sharerule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharerule_targetaccounts</IRI>
+        <Literal>dlmlifecyclepolicy:sharerule_targetaccounts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharerule_unshareinterval</IRI>
+        <Literal>dlmlifecyclepolicy:sharerule_unshareinterval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharerule_unshareintervalunit</IRI>
+        <Literal>dlmlifecyclepolicy:sharerule_unshareintervalunit</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

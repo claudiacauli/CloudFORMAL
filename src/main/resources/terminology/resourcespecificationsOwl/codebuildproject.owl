@@ -15,6 +15,12 @@
         <Class IRI="artifacts"/>
     </Declaration>
     <Declaration>
+        <Class IRI="batchrestrictions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="buildstatusconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="cloudwatchlogsconfig"/>
     </Declaration>
     <Declaration>
@@ -34,6 +40,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="project"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="projectbuildbatchconfig"/>
     </Declaration>
     <Declaration>
         <Class IRI="projectcache"/>
@@ -84,6 +93,9 @@
         <ObjectProperty IRI="project_artifacts"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="project_buildbatchconfig"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="project_cache"/>
     </Declaration>
     <Declaration>
@@ -117,10 +129,16 @@
         <ObjectProperty IRI="project_vpcconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="projectbuildbatchconfig_restrictions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="projecttriggers_filtergroups"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="source_auth"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="source_buildstatusconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="source_gitsubmodulesconfig"/>
@@ -151,6 +169,18 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="artifacts_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="batchrestrictions_computetypesallowed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="batchrestrictions_maximumbuildsallowed"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="buildstatusconfig_context"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="buildstatusconfig_targeturl"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cloudwatchlogsconfig_groupname"/>
@@ -216,6 +246,15 @@
         <DataProperty IRI="project_timeoutinminutes"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="projectbuildbatchconfig_combineartifacts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectbuildbatchconfig_servicerole"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projectbuildbatchconfig_timeoutinmins"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="projectcache_location"/>
     </Declaration>
     <Declaration>
@@ -244,6 +283,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="projectsourceversion_sourceversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="projecttriggers_buildtype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="projecttriggers_webhook"/>
@@ -516,6 +558,9 @@
         <ObjectProperty IRI="project_artifacts"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="project_buildbatchconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="project_cache"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -534,7 +579,13 @@
         <ObjectProperty IRI="project_vpcconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="projectbuildbatchconfig_restrictions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="source_auth"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="source_buildstatusconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="source_gitsubmodulesconfig"/>
@@ -557,6 +608,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="project_artifacts"/>
+        <Class IRI="project"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="project_buildbatchconfig"/>
         <Class IRI="project"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -604,11 +659,19 @@
         <Class IRI="project"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="projectbuildbatchconfig_restrictions"/>
+        <Class IRI="projectbuildbatchconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="projecttriggers_filtergroups"/>
         <Class IRI="projecttriggers"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="source_auth"/>
+        <Class IRI="source"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="source_buildstatusconfig"/>
         <Class IRI="source"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -634,6 +697,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="project_artifacts"/>
         <Class IRI="artifacts"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="project_buildbatchconfig"/>
+        <Class IRI="projectbuildbatchconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="project_cache"/>
@@ -680,12 +747,20 @@
         <Class IRI="vpcconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="projectbuildbatchconfig_restrictions"/>
+        <Class IRI="batchrestrictions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="projecttriggers_filtergroups"/>
         <Class IRI="filtergroup"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="source_auth"/>
         <Class IRI="sourceauth"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="source_buildstatusconfig"/>
+        <Class IRI="buildstatusconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="source_gitsubmodulesconfig"/>
@@ -717,6 +792,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="artifacts_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="batchrestrictions_maximumbuildsallowed"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="buildstatusconfig_context"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="buildstatusconfig_targeturl"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="cloudwatchlogsconfig_groupname"/>
@@ -782,6 +866,15 @@
         <DataProperty IRI="project_timeoutinminutes"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="projectbuildbatchconfig_combineartifacts"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectbuildbatchconfig_servicerole"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projectbuildbatchconfig_timeoutinmins"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="projectcache_location"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -807,6 +900,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="projectsourceversion_sourceversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="projecttriggers_buildtype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="projecttriggers_webhook"/>
@@ -908,6 +1004,22 @@
         <Class IRI="artifacts"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="batchrestrictions_computetypesallowed"/>
+        <Class IRI="batchrestrictions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="batchrestrictions_maximumbuildsallowed"/>
+        <Class IRI="batchrestrictions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="buildstatusconfig_context"/>
+        <Class IRI="buildstatusconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="buildstatusconfig_targeturl"/>
+        <Class IRI="buildstatusconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="cloudwatchlogsconfig_groupname"/>
         <Class IRI="cloudwatchlogsconfig"/>
     </DataPropertyDomain>
@@ -992,6 +1104,18 @@
         <Class IRI="project"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="projectbuildbatchconfig_combineartifacts"/>
+        <Class IRI="projectbuildbatchconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectbuildbatchconfig_servicerole"/>
+        <Class IRI="projectbuildbatchconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projectbuildbatchconfig_timeoutinmins"/>
+        <Class IRI="projectbuildbatchconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="projectcache_location"/>
         <Class IRI="projectcache"/>
     </DataPropertyDomain>
@@ -1030,6 +1154,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="projectsourceversion_sourceversion"/>
         <Class IRI="projectsourceversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="projecttriggers_buildtype"/>
+        <Class IRI="projecttriggers"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="projecttriggers_webhook"/>
@@ -1160,6 +1288,22 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="batchrestrictions_computetypesallowed"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="batchrestrictions_maximumbuildsallowed"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="buildstatusconfig_context"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="buildstatusconfig_targeturl"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cloudwatchlogsconfig_groupname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1244,6 +1388,18 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="projectbuildbatchconfig_combineartifacts"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectbuildbatchconfig_servicerole"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projectbuildbatchconfig_timeoutinmins"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="projectcache_location"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1281,6 +1437,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="projectsourceversion_sourceversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="projecttriggers_buildtype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1427,6 +1587,36 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>batchrestrictions</IRI>
+        <Literal>codebuildproject:batchrestrictions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>batchrestrictions_computetypesallowed</IRI>
+        <Literal>codebuildproject:batchrestrictions_computetypesallowed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>batchrestrictions_maximumbuildsallowed</IRI>
+        <Literal>codebuildproject:batchrestrictions_maximumbuildsallowed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>buildstatusconfig</IRI>
+        <Literal>codebuildproject:buildstatusconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>buildstatusconfig_context</IRI>
+        <Literal>codebuildproject:buildstatusconfig_context</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>buildstatusconfig_targeturl</IRI>
+        <Literal>codebuildproject:buildstatusconfig_targeturl</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cloudwatchlogsconfig</IRI>
         <Literal>codebuildproject:cloudwatchlogsconfig</Literal>
     </AnnotationAssertion>
@@ -1557,6 +1747,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>project_buildbatchconfig</IRI>
+        <Literal>codebuildproject:project_buildbatchconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>project_cache</IRI>
         <Literal>codebuildproject:project_cache</Literal>
     </AnnotationAssertion>
@@ -1647,6 +1842,31 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projectbuildbatchconfig</IRI>
+        <Literal>codebuildproject:projectbuildbatchconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projectbuildbatchconfig_combineartifacts</IRI>
+        <Literal>codebuildproject:projectbuildbatchconfig_combineartifacts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projectbuildbatchconfig_restrictions</IRI>
+        <Literal>codebuildproject:projectbuildbatchconfig_restrictions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projectbuildbatchconfig_servicerole</IRI>
+        <Literal>codebuildproject:projectbuildbatchconfig_servicerole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projectbuildbatchconfig_timeoutinmins</IRI>
+        <Literal>codebuildproject:projectbuildbatchconfig_timeoutinmins</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>projectcache</IRI>
         <Literal>codebuildproject:projectcache</Literal>
     </AnnotationAssertion>
@@ -1717,6 +1937,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>projecttriggers_buildtype</IRI>
+        <Literal>codebuildproject:projecttriggers_buildtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>projecttriggers_filtergroups</IRI>
         <Literal>codebuildproject:projecttriggers_filtergroups</Literal>
     </AnnotationAssertion>
@@ -1774,6 +1999,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>source_buildspec</IRI>
         <Literal>codebuildproject:source_buildspec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>source_buildstatusconfig</IRI>
+        <Literal>codebuildproject:source_buildstatusconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

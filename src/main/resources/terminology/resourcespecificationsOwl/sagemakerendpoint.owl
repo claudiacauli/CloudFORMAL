@@ -12,19 +12,70 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="alarm"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="autorollbackconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="bluegreenupdatepolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="capacitysize"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="deploymentconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="endpoint"/>
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
+        <Class IRI="trafficroutingconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="variantproperty"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="autorollbackconfig_alarms"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bluegreenupdatepolicy_trafficroutingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="deploymentconfig_autorollbackconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="deploymentconfig_bluegreenupdatepolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="endpoint_deploymentconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="endpoint_excluderetainedvariantproperties"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="endpoint_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="trafficroutingconfig_canarysize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="alarm_alarmname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bluegreenupdatepolicy_maximumexecutiontimeoutinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="bluegreenupdatepolicy_terminationwaitinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacitysize_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacitysize_value"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="endpoint_endpointconfigname"/>
@@ -42,8 +93,56 @@
         <DataProperty IRI="tag_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="trafficroutingconfig_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="trafficroutingconfig_waitintervalinseconds"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="variantproperty_variantpropertytype"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="alarm"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="alarm_alarmname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="autorollbackconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="autorollbackconfig_alarms"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="bluegreenupdatepolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="bluegreenupdatepolicy_trafficroutingconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="capacitysize"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="capacitysize_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="capacitysize"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="capacitysize_value"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="deploymentconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="deploymentconfig_bluegreenupdatepolicy"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="endpoint"/>
         <DataSomeValuesFrom>
@@ -65,6 +164,48 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="trafficroutingconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="trafficroutingconfig_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="bluegreenupdatepolicy_trafficroutingconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="deploymentconfig_autorollbackconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="deploymentconfig_bluegreenupdatepolicy"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="endpoint_deploymentconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="trafficroutingconfig_canarysize"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="autorollbackconfig_alarms"/>
+        <Class IRI="autorollbackconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bluegreenupdatepolicy_trafficroutingconfiguration"/>
+        <Class IRI="bluegreenupdatepolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="deploymentconfig_autorollbackconfiguration"/>
+        <Class IRI="deploymentconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="deploymentconfig_bluegreenupdatepolicy"/>
+        <Class IRI="deploymentconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="endpoint_deploymentconfig"/>
+        <Class IRI="endpoint"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="endpoint_excluderetainedvariantproperties"/>
         <Class IRI="endpoint"/>
@@ -73,6 +214,30 @@
         <ObjectProperty IRI="endpoint_tags"/>
         <Class IRI="endpoint"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="trafficroutingconfig_canarysize"/>
+        <Class IRI="trafficroutingconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="autorollbackconfig_alarms"/>
+        <Class IRI="alarm"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bluegreenupdatepolicy_trafficroutingconfiguration"/>
+        <Class IRI="trafficroutingconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="deploymentconfig_autorollbackconfiguration"/>
+        <Class IRI="autorollbackconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="deploymentconfig_bluegreenupdatepolicy"/>
+        <Class IRI="bluegreenupdatepolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="endpoint_deploymentconfig"/>
+        <Class IRI="deploymentconfig"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="endpoint_excluderetainedvariantproperties"/>
         <Class IRI="variantproperty"/>
@@ -81,6 +246,25 @@
         <ObjectProperty IRI="endpoint_tags"/>
         <Class IRI="tag"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="trafficroutingconfig_canarysize"/>
+        <Class IRI="capacitysize"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="alarm_alarmname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bluegreenupdatepolicy_maximumexecutiontimeoutinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="bluegreenupdatepolicy_terminationwaitinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacitysize_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacitysize_value"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="endpoint_endpointconfigname"/>
     </FunctionalDataProperty>
@@ -97,8 +281,34 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="trafficroutingconfig_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="trafficroutingconfig_waitintervalinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="variantproperty_variantpropertytype"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="alarm_alarmname"/>
+        <Class IRI="alarm"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bluegreenupdatepolicy_maximumexecutiontimeoutinseconds"/>
+        <Class IRI="bluegreenupdatepolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="bluegreenupdatepolicy_terminationwaitinseconds"/>
+        <Class IRI="bluegreenupdatepolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacitysize_type"/>
+        <Class IRI="capacitysize"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacitysize_value"/>
+        <Class IRI="capacitysize"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="endpoint_endpointconfigname"/>
         <Class IRI="endpoint"/>
@@ -120,9 +330,37 @@
         <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="trafficroutingconfig_type"/>
+        <Class IRI="trafficroutingconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="trafficroutingconfig_waitintervalinseconds"/>
+        <Class IRI="trafficroutingconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="variantproperty_variantpropertytype"/>
         <Class IRI="variantproperty"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="alarm_alarmname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bluegreenupdatepolicy_maximumexecutiontimeoutinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="bluegreenupdatepolicy_terminationwaitinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacitysize_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacitysize_value"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="endpoint_endpointconfigname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -144,13 +382,96 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="trafficroutingconfig_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="trafficroutingconfig_waitintervalinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="variantproperty_variantpropertytype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm</IRI>
+        <Literal>sagemakerendpoint:alarm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>alarm_alarmname</IRI>
+        <Literal>sagemakerendpoint:alarm_alarmname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autorollbackconfig</IRI>
+        <Literal>sagemakerendpoint:autorollbackconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>autorollbackconfig_alarms</IRI>
+        <Literal>sagemakerendpoint:autorollbackconfig_alarms</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bluegreenupdatepolicy</IRI>
+        <Literal>sagemakerendpoint:bluegreenupdatepolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bluegreenupdatepolicy_maximumexecutiontimeoutinseconds</IRI>
+        <Literal>sagemakerendpoint:bluegreenupdatepolicy_maximumexecutiontimeoutinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bluegreenupdatepolicy_terminationwaitinseconds</IRI>
+        <Literal>sagemakerendpoint:bluegreenupdatepolicy_terminationwaitinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bluegreenupdatepolicy_trafficroutingconfiguration</IRI>
+        <Literal>sagemakerendpoint:bluegreenupdatepolicy_trafficroutingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacitysize</IRI>
+        <Literal>sagemakerendpoint:capacitysize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacitysize_type</IRI>
+        <Literal>sagemakerendpoint:capacitysize_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacitysize_value</IRI>
+        <Literal>sagemakerendpoint:capacitysize_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentconfig</IRI>
+        <Literal>sagemakerendpoint:deploymentconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentconfig_autorollbackconfiguration</IRI>
+        <Literal>sagemakerendpoint:deploymentconfig_autorollbackconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>deploymentconfig_bluegreenupdatepolicy</IRI>
+        <Literal>sagemakerendpoint:deploymentconfig_bluegreenupdatepolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>endpoint</IRI>
         <Literal>sagemakerendpoint:endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoint_deploymentconfig</IRI>
+        <Literal>sagemakerendpoint:endpoint_deploymentconfig</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -191,6 +512,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tag_value</IRI>
         <Literal>sagemakerendpoint:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trafficroutingconfig</IRI>
+        <Literal>sagemakerendpoint:trafficroutingconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trafficroutingconfig_canarysize</IRI>
+        <Literal>sagemakerendpoint:trafficroutingconfig_canarysize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trafficroutingconfig_type</IRI>
+        <Literal>sagemakerendpoint:trafficroutingconfig_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>trafficroutingconfig_waitintervalinseconds</IRI>
+        <Literal>sagemakerendpoint:trafficroutingconfig_waitintervalinseconds</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

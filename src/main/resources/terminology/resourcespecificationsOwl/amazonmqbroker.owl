@@ -21,6 +21,9 @@
         <Class IRI="encryptionoptions"/>
     </Declaration>
     <Declaration>
+        <Class IRI="ldapservermetadata"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="loglist"/>
     </Declaration>
     <Declaration>
@@ -39,6 +42,9 @@
         <ObjectProperty IRI="broker_encryptionoptions"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="broker_ldapservermetadata"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="broker_logs"/>
     </Declaration>
     <Declaration>
@@ -49,6 +55,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="broker_users"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="broker_authenticationstrategy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="broker_autominorversionupgrade"/>
@@ -91,6 +100,39 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="encryptionoptions_useawsownedkey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_hosts"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_rolebase"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_rolename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_rolesearchmatching"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_rolesearchsubtree"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_serviceaccountpassword"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_serviceaccountusername"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_userbase"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_userrolename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_usersearchmatching"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="ldapservermetadata_usersearchsubtree"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="loglist_audit"/>
@@ -203,6 +245,55 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_hosts"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_rolebase"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_rolesearchmatching"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_serviceaccountpassword"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_serviceaccountusername"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_userbase"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="ldapservermetadata"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="ldapservermetadata_usersearchmatching"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="maintenancewindow"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="maintenancewindow_dayofweek"/>
@@ -258,6 +349,9 @@
         <ObjectProperty IRI="broker_encryptionoptions"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="broker_ldapservermetadata"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="broker_logs"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -269,6 +363,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="broker_encryptionoptions"/>
+        <Class IRI="broker"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="broker_ldapservermetadata"/>
         <Class IRI="broker"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -296,6 +394,10 @@
         <Class IRI="encryptionoptions"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="broker_ldapservermetadata"/>
+        <Class IRI="ldapservermetadata"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="broker_logs"/>
         <Class IRI="loglist"/>
     </ObjectPropertyRange>
@@ -311,6 +413,9 @@
         <ObjectProperty IRI="broker_users"/>
         <Class IRI="user"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="broker_authenticationstrategy"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="broker_autominorversionupgrade"/>
     </FunctionalDataProperty>
@@ -348,6 +453,36 @@
         <DataProperty IRI="encryptionoptions_useawsownedkey"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_rolebase"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_rolename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_rolesearchmatching"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_rolesearchsubtree"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_serviceaccountpassword"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_serviceaccountusername"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_userbase"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_userrolename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_usersearchmatching"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="ldapservermetadata_usersearchsubtree"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="loglist_audit"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -377,6 +512,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="user_username"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="broker_authenticationstrategy"/>
+        <Class IRI="broker"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="broker_autominorversionupgrade"/>
         <Class IRI="broker"/>
@@ -434,6 +573,50 @@
         <Class IRI="encryptionoptions"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_hosts"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_rolebase"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_rolename"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_rolesearchmatching"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_rolesearchsubtree"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_serviceaccountpassword"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_serviceaccountusername"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_userbase"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_userrolename"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_usersearchmatching"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="ldapservermetadata_usersearchsubtree"/>
+        <Class IRI="ldapservermetadata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="loglist_audit"/>
         <Class IRI="loglist"/>
     </DataPropertyDomain>
@@ -477,6 +660,10 @@
         <DataProperty IRI="user_username"/>
         <Class IRI="user"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="broker_authenticationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="broker_autominorversionupgrade"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -534,6 +721,50 @@
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_hosts"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_rolebase"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_rolename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_rolesearchmatching"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_rolesearchsubtree"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_serviceaccountpassword"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_serviceaccountusername"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_userbase"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_userrolename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_usersearchmatching"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="ldapservermetadata_usersearchsubtree"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="loglist_audit"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -584,6 +815,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_authenticationstrategy</IRI>
+        <Literal>amazonmqbroker:broker_authenticationstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>broker_autominorversionupgrade</IRI>
         <Literal>amazonmqbroker:broker_autominorversionupgrade</Literal>
     </AnnotationAssertion>
@@ -621,6 +857,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>broker_hostinstancetype</IRI>
         <Literal>amazonmqbroker:broker_hostinstancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>broker_ldapservermetadata</IRI>
+        <Literal>amazonmqbroker:broker_ldapservermetadata</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -691,6 +932,66 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>encryptionoptions_useawsownedkey</IRI>
         <Literal>amazonmqbroker:encryptionoptions_useawsownedkey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_hosts</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_hosts</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_rolebase</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_rolebase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_rolename</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_rolename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_rolesearchmatching</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_rolesearchmatching</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_rolesearchsubtree</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_rolesearchsubtree</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_serviceaccountpassword</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_serviceaccountpassword</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_serviceaccountusername</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_serviceaccountusername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_userbase</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_userbase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_userrolename</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_userrolename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_usersearchmatching</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_usersearchmatching</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ldapservermetadata_usersearchsubtree</IRI>
+        <Literal>amazonmqbroker:ldapservermetadata_usersearchsubtree</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

@@ -15,6 +15,18 @@
         <Class IRI="functionconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="lambdaconflicthandlerconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="syncconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="functionconfiguration_syncconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="syncconfig_lambdaconflicthandlerconfig"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="functionconfiguration_apiid"/>
     </Declaration>
     <Declaration>
@@ -40,6 +52,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="functionconfiguration_responsemappingtemplates3location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaconflicthandlerconfig_lambdaconflicthandlerarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="syncconfig_conflictdetection"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="syncconfig_conflicthandler"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="functionconfiguration"/>
@@ -69,6 +90,35 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="syncconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="syncconfig_conflictdetection"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="functionconfiguration_syncconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="syncconfig_lambdaconflicthandlerconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="functionconfiguration_syncconfig"/>
+        <Class IRI="functionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="syncconfig_lambdaconflicthandlerconfig"/>
+        <Class IRI="syncconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="functionconfiguration_syncconfig"/>
+        <Class IRI="syncconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="syncconfig_lambdaconflicthandlerconfig"/>
+        <Class IRI="lambdaconflicthandlerconfig"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="functionconfiguration_apiid"/>
     </FunctionalDataProperty>
@@ -96,6 +146,15 @@
     <FunctionalDataProperty>
         <DataProperty IRI="functionconfiguration_responsemappingtemplates3location"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaconflicthandlerconfig_lambdaconflicthandlerarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="syncconfig_conflictdetection"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="syncconfig_conflicthandler"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="functionconfiguration_apiid"/>
         <Class IRI="functionconfiguration"/>
@@ -132,6 +191,18 @@
         <DataProperty IRI="functionconfiguration_responsemappingtemplates3location"/>
         <Class IRI="functionconfiguration"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaconflicthandlerconfig_lambdaconflicthandlerarn"/>
+        <Class IRI="lambdaconflicthandlerconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="syncconfig_conflictdetection"/>
+        <Class IRI="syncconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="syncconfig_conflicthandler"/>
+        <Class IRI="syncconfig"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="functionconfiguration_apiid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -166,6 +237,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="functionconfiguration_responsemappingtemplates3location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaconflicthandlerconfig_lambdaconflicthandlerarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="syncconfig_conflictdetection"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="syncconfig_conflicthandler"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -217,6 +300,41 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>functionconfiguration_responsemappingtemplates3location</IRI>
         <Literal>appsyncfunctionconfiguration:functionconfiguration_responsemappingtemplates3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>functionconfiguration_syncconfig</IRI>
+        <Literal>appsyncfunctionconfiguration:functionconfiguration_syncconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconflicthandlerconfig</IRI>
+        <Literal>appsyncfunctionconfiguration:lambdaconflicthandlerconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaconflicthandlerconfig_lambdaconflicthandlerarn</IRI>
+        <Literal>appsyncfunctionconfiguration:lambdaconflicthandlerconfig_lambdaconflicthandlerarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>syncconfig</IRI>
+        <Literal>appsyncfunctionconfiguration:syncconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>syncconfig_conflictdetection</IRI>
+        <Literal>appsyncfunctionconfiguration:syncconfig_conflictdetection</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>syncconfig_conflicthandler</IRI>
+        <Literal>appsyncfunctionconfiguration:syncconfig_conflicthandler</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>syncconfig_lambdaconflicthandlerconfig</IRI>
+        <Literal>appsyncfunctionconfiguration:syncconfig_lambdaconflicthandlerconfig</Literal>
     </AnnotationAssertion>
 </Ontology>
 

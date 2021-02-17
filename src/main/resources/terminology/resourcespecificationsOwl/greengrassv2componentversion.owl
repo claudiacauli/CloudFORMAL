@@ -1,0 +1,864 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/greengrassv2componentversion#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/greengrassv2componentversion#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="componentdependencyrequirement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="componentplatform"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="componentversion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdacontainerparams"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdadevicemount"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdaeventsource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdaexecutionparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdalinuxprocessparams"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="lambdavolumemount"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_componentdependencyrequirement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="componentplatform_attributes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="componentversion_lambdafunction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="componentversion_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdacontainerparams_devices"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdacontainerparams_volumes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdaexecutionparameters_environmentvariables"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdaexecutionparameters_eventsources"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdaexecutionparameters_linuxprocessparams"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentdependencies"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentlambdaparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentplatforms"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="lambdalinuxprocessparams_containerparams"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentdependencyrequirement_dependencytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentdependencyrequirement_versionrequirement"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentplatform_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentversion_inlinerecipe"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdacontainerparams_memorysizeinkb"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdacontainerparams_mountrosysfs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdadevicemount_addgroupowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdadevicemount_path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdadevicemount_permission"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaeventsource_topic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaeventsource_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_execargs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_inputpayloadencodingtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_maxidletimeinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_maxinstancescount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_maxqueuesize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_pinned"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_statustimeoutinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdaexecutionparameters_timeoutinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdafunctionrecipesource_componentname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdafunctionrecipesource_componentversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdafunctionrecipesource_lambdaarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdalinuxprocessparams_isolationmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdavolumemount_addgroupowner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdavolumemount_destinationpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdavolumemount_permission"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="lambdavolumemount_sourcepath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="componentversion_lambdafunction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="lambdaexecutionparameters_linuxprocessparams"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentlambdaparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="lambdalinuxprocessparams_containerparams"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="componentplatform_attributes"/>
+        <Class IRI="componentplatform"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="componentversion_lambdafunction"/>
+        <Class IRI="componentversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="componentversion_tags"/>
+        <Class IRI="componentversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdacontainerparams_devices"/>
+        <Class IRI="lambdacontainerparams"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdacontainerparams_volumes"/>
+        <Class IRI="lambdacontainerparams"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdaexecutionparameters_environmentvariables"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdaexecutionparameters_eventsources"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdaexecutionparameters_linuxprocessparams"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentdependencies"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentlambdaparameters"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentplatforms"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="lambdalinuxprocessparams_containerparams"/>
+        <Class IRI="lambdalinuxprocessparams"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="componentplatform_attributes"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="componentversion_lambdafunction"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="componentversion_tags"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdacontainerparams_devices"/>
+        <Class IRI="lambdadevicemount"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdacontainerparams_volumes"/>
+        <Class IRI="lambdavolumemount"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdaexecutionparameters_environmentvariables"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdaexecutionparameters_eventsources"/>
+        <Class IRI="lambdaeventsource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdaexecutionparameters_linuxprocessparams"/>
+        <Class IRI="lambdalinuxprocessparams"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentdependencies"/>
+        <Class IRI="mapentry_componentdependencyrequirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentlambdaparameters"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdafunctionrecipesource_componentplatforms"/>
+        <Class IRI="componentplatform"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="lambdalinuxprocessparams_containerparams"/>
+        <Class IRI="lambdacontainerparams"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentdependencyrequirement_dependencytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentdependencyrequirement_versionrequirement"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentplatform_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentversion_inlinerecipe"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdacontainerparams_memorysizeinkb"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdacontainerparams_mountrosysfs"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdadevicemount_addgroupowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdadevicemount_path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdadevicemount_permission"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaeventsource_topic"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaeventsource_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_inputpayloadencodingtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_maxidletimeinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_maxinstancescount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_maxqueuesize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_pinned"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_statustimeoutinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdaexecutionparameters_timeoutinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdafunctionrecipesource_componentname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdafunctionrecipesource_componentversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdafunctionrecipesource_lambdaarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdalinuxprocessparams_isolationmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdavolumemount_addgroupowner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdavolumemount_destinationpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdavolumemount_permission"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="lambdavolumemount_sourcepath"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentdependencyrequirement_dependencytype"/>
+        <Class IRI="componentdependencyrequirement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentdependencyrequirement_versionrequirement"/>
+        <Class IRI="componentdependencyrequirement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentplatform_name"/>
+        <Class IRI="componentplatform"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentversion_inlinerecipe"/>
+        <Class IRI="componentversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdacontainerparams_memorysizeinkb"/>
+        <Class IRI="lambdacontainerparams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdacontainerparams_mountrosysfs"/>
+        <Class IRI="lambdacontainerparams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdadevicemount_addgroupowner"/>
+        <Class IRI="lambdadevicemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdadevicemount_path"/>
+        <Class IRI="lambdadevicemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdadevicemount_permission"/>
+        <Class IRI="lambdadevicemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaeventsource_topic"/>
+        <Class IRI="lambdaeventsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaeventsource_type"/>
+        <Class IRI="lambdaeventsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_execargs"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_inputpayloadencodingtype"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_maxidletimeinseconds"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_maxinstancescount"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_maxqueuesize"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_pinned"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_statustimeoutinseconds"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdaexecutionparameters_timeoutinseconds"/>
+        <Class IRI="lambdaexecutionparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdafunctionrecipesource_componentname"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdafunctionrecipesource_componentversion"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdafunctionrecipesource_lambdaarn"/>
+        <Class IRI="lambdafunctionrecipesource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdalinuxprocessparams_isolationmode"/>
+        <Class IRI="lambdalinuxprocessparams"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdavolumemount_addgroupowner"/>
+        <Class IRI="lambdavolumemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdavolumemount_destinationpath"/>
+        <Class IRI="lambdavolumemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdavolumemount_permission"/>
+        <Class IRI="lambdavolumemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="lambdavolumemount_sourcepath"/>
+        <Class IRI="lambdavolumemount"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_key"/>
+        <Class IRI="mapentry_componentdependencyrequirement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_value"/>
+        <Class IRI="mapentry_componentdependencyrequirement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="componentdependencyrequirement_dependencytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="componentdependencyrequirement_versionrequirement"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="componentplatform_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="componentversion_inlinerecipe"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdacontainerparams_memorysizeinkb"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdacontainerparams_mountrosysfs"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdadevicemount_addgroupowner"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdadevicemount_path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdadevicemount_permission"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaeventsource_topic"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaeventsource_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_execargs"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_inputpayloadencodingtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_maxidletimeinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_maxinstancescount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_maxqueuesize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_pinned"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_statustimeoutinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdaexecutionparameters_timeoutinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdafunctionrecipesource_componentname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdafunctionrecipesource_componentversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdafunctionrecipesource_lambdaarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdalinuxprocessparams_isolationmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdavolumemount_addgroupowner"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdavolumemount_destinationpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdavolumemount_permission"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="lambdavolumemount_sourcepath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_componentdependencyrequirement_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentdependencyrequirement</IRI>
+        <Literal>greengrassv2componentversion:componentdependencyrequirement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentdependencyrequirement_dependencytype</IRI>
+        <Literal>greengrassv2componentversion:componentdependencyrequirement_dependencytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentdependencyrequirement_versionrequirement</IRI>
+        <Literal>greengrassv2componentversion:componentdependencyrequirement_versionrequirement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentplatform</IRI>
+        <Literal>greengrassv2componentversion:componentplatform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentplatform_attributes</IRI>
+        <Literal>greengrassv2componentversion:componentplatform_attributes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentplatform_name</IRI>
+        <Literal>greengrassv2componentversion:componentplatform_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentversion</IRI>
+        <Literal>greengrassv2componentversion:componentversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentversion_inlinerecipe</IRI>
+        <Literal>greengrassv2componentversion:componentversion_inlinerecipe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentversion_lambdafunction</IRI>
+        <Literal>greengrassv2componentversion:componentversion_lambdafunction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentversion_tags</IRI>
+        <Literal>greengrassv2componentversion:componentversion_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdacontainerparams</IRI>
+        <Literal>greengrassv2componentversion:lambdacontainerparams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdacontainerparams_devices</IRI>
+        <Literal>greengrassv2componentversion:lambdacontainerparams_devices</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdacontainerparams_memorysizeinkb</IRI>
+        <Literal>greengrassv2componentversion:lambdacontainerparams_memorysizeinkb</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdacontainerparams_mountrosysfs</IRI>
+        <Literal>greengrassv2componentversion:lambdacontainerparams_mountrosysfs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdacontainerparams_volumes</IRI>
+        <Literal>greengrassv2componentversion:lambdacontainerparams_volumes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdadevicemount</IRI>
+        <Literal>greengrassv2componentversion:lambdadevicemount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdadevicemount_addgroupowner</IRI>
+        <Literal>greengrassv2componentversion:lambdadevicemount_addgroupowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdadevicemount_path</IRI>
+        <Literal>greengrassv2componentversion:lambdadevicemount_path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdadevicemount_permission</IRI>
+        <Literal>greengrassv2componentversion:lambdadevicemount_permission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaeventsource</IRI>
+        <Literal>greengrassv2componentversion:lambdaeventsource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaeventsource_topic</IRI>
+        <Literal>greengrassv2componentversion:lambdaeventsource_topic</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaeventsource_type</IRI>
+        <Literal>greengrassv2componentversion:lambdaeventsource_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_environmentvariables</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_environmentvariables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_eventsources</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_eventsources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_execargs</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_execargs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_inputpayloadencodingtype</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_inputpayloadencodingtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_linuxprocessparams</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_linuxprocessparams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_maxidletimeinseconds</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_maxidletimeinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_maxinstancescount</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_maxinstancescount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_maxqueuesize</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_maxqueuesize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_pinned</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_pinned</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_statustimeoutinseconds</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_statustimeoutinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdaexecutionparameters_timeoutinseconds</IRI>
+        <Literal>greengrassv2componentversion:lambdaexecutionparameters_timeoutinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_componentdependencies</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_componentdependencies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_componentlambdaparameters</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_componentlambdaparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_componentname</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_componentname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_componentplatforms</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_componentplatforms</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_componentversion</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_componentversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdafunctionrecipesource_lambdaarn</IRI>
+        <Literal>greengrassv2componentversion:lambdafunctionrecipesource_lambdaarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdalinuxprocessparams</IRI>
+        <Literal>greengrassv2componentversion:lambdalinuxprocessparams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdalinuxprocessparams_containerparams</IRI>
+        <Literal>greengrassv2componentversion:lambdalinuxprocessparams_containerparams</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdalinuxprocessparams_isolationmode</IRI>
+        <Literal>greengrassv2componentversion:lambdalinuxprocessparams_isolationmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdavolumemount</IRI>
+        <Literal>greengrassv2componentversion:lambdavolumemount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdavolumemount_addgroupowner</IRI>
+        <Literal>greengrassv2componentversion:lambdavolumemount_addgroupowner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdavolumemount_destinationpath</IRI>
+        <Literal>greengrassv2componentversion:lambdavolumemount_destinationpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdavolumemount_permission</IRI>
+        <Literal>greengrassv2componentversion:lambdavolumemount_permission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>lambdavolumemount_sourcepath</IRI>
+        <Literal>greengrassv2componentversion:lambdavolumemount_sourcepath</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

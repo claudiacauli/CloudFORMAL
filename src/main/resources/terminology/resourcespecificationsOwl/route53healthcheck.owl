@@ -12,76 +12,16 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
-        <Class IRI="alarmidentifier"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="healthcheck"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="healthcheckconfig"/>
     </Declaration>
     <Declaration>
         <Class IRI="healthchecktag"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="healthcheck_healthcheckconfig"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="healthcheck_healthchecktags"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="healthcheckconfig_alarmidentifier"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="alarmidentifier_name"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="alarmidentifier_region"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_childhealthchecks"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_enablesni"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_failurethreshold"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_fullyqualifieddomainname"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_healththreshold"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_insufficientdatahealthstatus"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_inverted"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_ipaddress"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_measurelatency"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_port"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_regions"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_requestinterval"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_resourcepath"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_searchstring"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="healthcheckconfig_type"/>
+        <DataProperty IRI="healthcheck_healthcheckconfig"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="healthchecktag_key"/>
@@ -90,30 +30,9 @@
         <DataProperty IRI="healthchecktag_value"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="alarmidentifier"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="alarmidentifier_name"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="alarmidentifier"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="alarmidentifier_region"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="healthcheck"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="healthcheck_healthcheckconfig"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="healthcheckconfig"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="healthcheckconfig_type"/>
+            <DataProperty IRI="healthcheck_healthcheckconfig"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -131,80 +50,16 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="healthcheck_healthcheckconfig"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="healthcheckconfig_alarmidentifier"/>
-    </FunctionalObjectProperty>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="healthcheck_healthcheckconfig"/>
-        <Class IRI="healthcheck"/>
-    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="healthcheck_healthchecktags"/>
         <Class IRI="healthcheck"/>
     </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="healthcheckconfig_alarmidentifier"/>
-        <Class IRI="healthcheckconfig"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="healthcheck_healthcheckconfig"/>
-        <Class IRI="healthcheckconfig"/>
-    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="healthcheck_healthchecktags"/>
         <Class IRI="healthchecktag"/>
     </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="healthcheckconfig_alarmidentifier"/>
-        <Class IRI="alarmidentifier"/>
-    </ObjectPropertyRange>
     <FunctionalDataProperty>
-        <DataProperty IRI="alarmidentifier_name"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="alarmidentifier_region"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_enablesni"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_failurethreshold"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_fullyqualifieddomainname"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_healththreshold"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_insufficientdatahealthstatus"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_inverted"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_ipaddress"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_measurelatency"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_port"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_requestinterval"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_resourcepath"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_searchstring"/>
-    </FunctionalDataProperty>
-    <FunctionalDataProperty>
-        <DataProperty IRI="healthcheckconfig_type"/>
+        <DataProperty IRI="healthcheck_healthcheckconfig"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="healthchecktag_key"/>
@@ -213,72 +68,8 @@
         <DataProperty IRI="healthchecktag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
-        <DataProperty IRI="alarmidentifier_name"/>
-        <Class IRI="alarmidentifier"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="alarmidentifier_region"/>
-        <Class IRI="alarmidentifier"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_childhealthchecks"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_enablesni"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_failurethreshold"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_fullyqualifieddomainname"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_healththreshold"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_insufficientdatahealthstatus"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_inverted"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_ipaddress"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_measurelatency"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_port"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_regions"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_requestinterval"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_resourcepath"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_searchstring"/>
-        <Class IRI="healthcheckconfig"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="healthcheckconfig_type"/>
-        <Class IRI="healthcheckconfig"/>
+        <DataProperty IRI="healthcheck_healthcheckconfig"/>
+        <Class IRI="healthcheck"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="healthchecktag_key"/>
@@ -289,71 +80,7 @@
         <Class IRI="healthchecktag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
-        <DataProperty IRI="alarmidentifier_name"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="alarmidentifier_region"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_childhealthchecks"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_enablesni"/>
-        <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_failurethreshold"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_fullyqualifieddomainname"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_healththreshold"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_insufficientdatahealthstatus"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_inverted"/>
-        <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_ipaddress"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_measurelatency"/>
-        <Datatype abbreviatedIRI="xsd:boolean"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_port"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_regions"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_requestinterval"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_resourcepath"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_searchstring"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="healthcheckconfig_type"/>
+        <DataProperty IRI="healthcheck_healthcheckconfig"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -364,21 +91,6 @@
         <DataProperty IRI="healthchecktag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>alarmidentifier</IRI>
-        <Literal>route53healthcheck:alarmidentifier</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>alarmidentifier_name</IRI>
-        <Literal>route53healthcheck:alarmidentifier_name</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>alarmidentifier_region</IRI>
-        <Literal>route53healthcheck:alarmidentifier_region</Literal>
-    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>healthcheck</IRI>
@@ -393,91 +105,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>healthcheck_healthchecktags</IRI>
         <Literal>route53healthcheck:healthcheck_healthchecktags</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig</IRI>
-        <Literal>route53healthcheck:healthcheckconfig</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_alarmidentifier</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_alarmidentifier</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_childhealthchecks</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_childhealthchecks</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_enablesni</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_enablesni</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_failurethreshold</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_failurethreshold</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_fullyqualifieddomainname</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_fullyqualifieddomainname</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_healththreshold</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_healththreshold</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_insufficientdatahealthstatus</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_insufficientdatahealthstatus</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_inverted</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_inverted</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_ipaddress</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_ipaddress</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_measurelatency</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_measurelatency</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_port</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_port</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_regions</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_regions</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_requestinterval</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_requestinterval</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_resourcepath</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_resourcepath</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_searchstring</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_searchstring</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>healthcheckconfig_type</IRI>
-        <Literal>route53healthcheck:healthcheckconfig_type</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

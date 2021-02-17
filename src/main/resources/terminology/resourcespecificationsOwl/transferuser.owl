@@ -15,6 +15,9 @@
         <Class IRI="homedirectorymapentry"/>
     </Declaration>
     <Declaration>
+        <Class IRI="posixprofile"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="sshpublickey"/>
     </Declaration>
     <Declaration>
@@ -27,6 +30,9 @@
         <ObjectProperty IRI="user_homedirectorymappings"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="user_posixprofile"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="user_sshpublickeys"/>
     </Declaration>
     <Declaration>
@@ -37,6 +43,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="homedirectorymapentry_target"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixprofile_gid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixprofile_secondarygids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="posixprofile_uid"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_key"/>
@@ -77,6 +92,20 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="posixprofile"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="posixprofile_gid"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="posixprofile"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="posixprofile_uid"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="tag"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="tag_key"/>
@@ -111,8 +140,15 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="user_posixprofile"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="user_homedirectorymappings"/>
+        <Class IRI="user"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="user_posixprofile"/>
         <Class IRI="user"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -128,6 +164,10 @@
         <Class IRI="homedirectorymapentry"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="user_posixprofile"/>
+        <Class IRI="posixprofile"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="user_sshpublickeys"/>
         <Class IRI="sshpublickey"/>
     </ObjectPropertyRange>
@@ -140,6 +180,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="homedirectorymapentry_target"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="posixprofile_gid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="posixprofile_uid"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -172,6 +218,18 @@
     <DataPropertyDomain>
         <DataProperty IRI="homedirectorymapentry_target"/>
         <Class IRI="homedirectorymapentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixprofile_gid"/>
+        <Class IRI="posixprofile"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixprofile_secondarygids"/>
+        <Class IRI="posixprofile"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="posixprofile_uid"/>
+        <Class IRI="posixprofile"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
@@ -212,6 +270,18 @@
     <DataPropertyRange>
         <DataProperty IRI="homedirectorymapentry_target"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixprofile_gid"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixprofile_secondarygids"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="posixprofile_uid"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="tag_key"/>
@@ -262,6 +332,26 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixprofile</IRI>
+        <Literal>transferuser:posixprofile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixprofile_gid</IRI>
+        <Literal>transferuser:posixprofile_gid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixprofile_secondarygids</IRI>
+        <Literal>transferuser:posixprofile_secondarygids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>posixprofile_uid</IRI>
+        <Literal>transferuser:posixprofile_uid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>sshpublickey</IRI>
         <Literal>transferuser:sshpublickey</Literal>
     </AnnotationAssertion>
@@ -304,6 +394,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>user_policy</IRI>
         <Literal>transferuser:user_policy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_posixprofile</IRI>
+        <Literal>transferuser:user_posixprofile</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

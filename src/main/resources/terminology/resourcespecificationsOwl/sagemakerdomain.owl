@@ -1,0 +1,648 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerdomain#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakerdomain#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="customimage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="domain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jupyterserverappsettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="kernelgatewayappsettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcespec"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sharingsettings"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="usersettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domain_defaultusersettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="domain_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="jupyterserverappsettings_defaultresourcespec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="kernelgatewayappsettings_customimages"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="kernelgatewayappsettings_defaultresourcespec"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usersettings_jupyterserverappsettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usersettings_kernelgatewayappsettings"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usersettings_sharingsettings"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customimage_appimageconfigname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customimage_imagename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customimage_imageversionnumber"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_appnetworkaccesstype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_authmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_domainname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_subnetids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="domain_vpcid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcespec_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcespec_sagemakerimagearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcespec_sagemakerimageversionarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sharingsettings_notebookoutputoption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sharingsettings_s3kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sharingsettings_s3outputpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usersettings_executionrole"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="usersettings_securitygroups"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="customimage"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customimage_appimageconfigname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customimage"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customimage_imagename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="domain"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="domain_defaultusersettings"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="domain"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="domain_authmode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="domain"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="domain_domainname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="domain"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="domain_subnetids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="domain"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="domain_vpcid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="domain_defaultusersettings"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="jupyterserverappsettings_defaultresourcespec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="kernelgatewayappsettings_defaultresourcespec"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usersettings_jupyterserverappsettings"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usersettings_kernelgatewayappsettings"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usersettings_sharingsettings"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domain_defaultusersettings"/>
+        <Class IRI="domain"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="domain_tags"/>
+        <Class IRI="domain"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="jupyterserverappsettings_defaultresourcespec"/>
+        <Class IRI="jupyterserverappsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="kernelgatewayappsettings_customimages"/>
+        <Class IRI="kernelgatewayappsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="kernelgatewayappsettings_defaultresourcespec"/>
+        <Class IRI="kernelgatewayappsettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usersettings_jupyterserverappsettings"/>
+        <Class IRI="usersettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usersettings_kernelgatewayappsettings"/>
+        <Class IRI="usersettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usersettings_sharingsettings"/>
+        <Class IRI="usersettings"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domain_defaultusersettings"/>
+        <Class IRI="usersettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="domain_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="jupyterserverappsettings_defaultresourcespec"/>
+        <Class IRI="resourcespec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="kernelgatewayappsettings_customimages"/>
+        <Class IRI="customimage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="kernelgatewayappsettings_defaultresourcespec"/>
+        <Class IRI="resourcespec"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usersettings_jupyterserverappsettings"/>
+        <Class IRI="jupyterserverappsettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usersettings_kernelgatewayappsettings"/>
+        <Class IRI="kernelgatewayappsettings"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usersettings_sharingsettings"/>
+        <Class IRI="sharingsettings"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customimage_appimageconfigname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customimage_imagename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customimage_imageversionnumber"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domain_appnetworkaccesstype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domain_authmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domain_domainname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domain_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="domain_vpcid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcespec_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcespec_sagemakerimagearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcespec_sagemakerimageversionarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sharingsettings_notebookoutputoption"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sharingsettings_s3kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sharingsettings_s3outputpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="usersettings_executionrole"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="customimage_appimageconfigname"/>
+        <Class IRI="customimage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customimage_imagename"/>
+        <Class IRI="customimage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="customimage_imageversionnumber"/>
+        <Class IRI="customimage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_appnetworkaccesstype"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_authmode"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_domainname"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_kmskeyid"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_subnetids"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="domain_vpcid"/>
+        <Class IRI="domain"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcespec_instancetype"/>
+        <Class IRI="resourcespec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcespec_sagemakerimagearn"/>
+        <Class IRI="resourcespec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcespec_sagemakerimageversionarn"/>
+        <Class IRI="resourcespec"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sharingsettings_notebookoutputoption"/>
+        <Class IRI="sharingsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sharingsettings_s3kmskeyid"/>
+        <Class IRI="sharingsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sharingsettings_s3outputpath"/>
+        <Class IRI="sharingsettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usersettings_executionrole"/>
+        <Class IRI="usersettings"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="usersettings_securitygroups"/>
+        <Class IRI="usersettings"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="customimage_appimageconfigname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customimage_imagename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="customimage_imageversionnumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_appnetworkaccesstype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_authmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_domainname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="domain_vpcid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcespec_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcespec_sagemakerimagearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcespec_sagemakerimageversionarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sharingsettings_notebookoutputoption"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sharingsettings_s3kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sharingsettings_s3outputpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usersettings_executionrole"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="usersettings_securitygroups"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customimage</IRI>
+        <Literal>sagemakerdomain:customimage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customimage_appimageconfigname</IRI>
+        <Literal>sagemakerdomain:customimage_appimageconfigname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customimage_imagename</IRI>
+        <Literal>sagemakerdomain:customimage_imagename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customimage_imageversionnumber</IRI>
+        <Literal>sagemakerdomain:customimage_imageversionnumber</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain</IRI>
+        <Literal>sagemakerdomain:domain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_appnetworkaccesstype</IRI>
+        <Literal>sagemakerdomain:domain_appnetworkaccesstype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_authmode</IRI>
+        <Literal>sagemakerdomain:domain_authmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_defaultusersettings</IRI>
+        <Literal>sagemakerdomain:domain_defaultusersettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_domainname</IRI>
+        <Literal>sagemakerdomain:domain_domainname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_kmskeyid</IRI>
+        <Literal>sagemakerdomain:domain_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_subnetids</IRI>
+        <Literal>sagemakerdomain:domain_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_tags</IRI>
+        <Literal>sagemakerdomain:domain_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>domain_vpcid</IRI>
+        <Literal>sagemakerdomain:domain_vpcid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jupyterserverappsettings</IRI>
+        <Literal>sagemakerdomain:jupyterserverappsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jupyterserverappsettings_defaultresourcespec</IRI>
+        <Literal>sagemakerdomain:jupyterserverappsettings_defaultresourcespec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayappsettings</IRI>
+        <Literal>sagemakerdomain:kernelgatewayappsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayappsettings_customimages</IRI>
+        <Literal>sagemakerdomain:kernelgatewayappsettings_customimages</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kernelgatewayappsettings_defaultresourcespec</IRI>
+        <Literal>sagemakerdomain:kernelgatewayappsettings_defaultresourcespec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcespec</IRI>
+        <Literal>sagemakerdomain:resourcespec</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcespec_instancetype</IRI>
+        <Literal>sagemakerdomain:resourcespec_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcespec_sagemakerimagearn</IRI>
+        <Literal>sagemakerdomain:resourcespec_sagemakerimagearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcespec_sagemakerimageversionarn</IRI>
+        <Literal>sagemakerdomain:resourcespec_sagemakerimageversionarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharingsettings</IRI>
+        <Literal>sagemakerdomain:sharingsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharingsettings_notebookoutputoption</IRI>
+        <Literal>sagemakerdomain:sharingsettings_notebookoutputoption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharingsettings_s3kmskeyid</IRI>
+        <Literal>sagemakerdomain:sharingsettings_s3kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sharingsettings_s3outputpath</IRI>
+        <Literal>sagemakerdomain:sharingsettings_s3outputpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>sagemakerdomain:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>sagemakerdomain:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>sagemakerdomain:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings</IRI>
+        <Literal>sagemakerdomain:usersettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings_executionrole</IRI>
+        <Literal>sagemakerdomain:usersettings_executionrole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings_jupyterserverappsettings</IRI>
+        <Literal>sagemakerdomain:usersettings_jupyterserverappsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings_kernelgatewayappsettings</IRI>
+        <Literal>sagemakerdomain:usersettings_kernelgatewayappsettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings_securitygroups</IRI>
+        <Literal>sagemakerdomain:usersettings_securitygroups</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usersettings_sharingsettings</IRI>
+        <Literal>sagemakerdomain:usersettings_sharingsettings</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

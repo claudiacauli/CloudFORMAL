@@ -18,6 +18,12 @@
         <Class IRI="inputdestinationrequest"/>
     </Declaration>
     <Declaration>
+        <Class IRI="inputdevicerequest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="inputdevicesettings"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="inputsourcerequest"/>
     </Declaration>
     <Declaration>
@@ -28,6 +34,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="input_destinations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="input_inputdevices"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="input_mediaconnectflows"/>
@@ -55,6 +64,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="inputdestinationrequest_streamname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="inputdevicerequest_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="inputdevicesettings_id"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="inputsourcerequest_passwordparam"/>
@@ -82,6 +97,10 @@
         <Class IRI="input"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="input_inputdevices"/>
+        <Class IRI="input"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="input_mediaconnectflows"/>
         <Class IRI="input"/>
     </ObjectPropertyDomain>
@@ -96,6 +115,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="input_destinations"/>
         <Class IRI="inputdestinationrequest"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="input_inputdevices"/>
+        <Class IRI="inputdevicesettings"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="input_mediaconnectflows"/>
@@ -123,6 +146,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="inputdestinationrequest_streamname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="inputdevicerequest_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="inputdevicesettings_id"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="inputsourcerequest_passwordparam"/>
@@ -159,6 +188,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="inputdestinationrequest_streamname"/>
         <Class IRI="inputdestinationrequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="inputdevicerequest_id"/>
+        <Class IRI="inputdevicerequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="inputdevicesettings_id"/>
+        <Class IRI="inputdevicesettings"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="inputsourcerequest_passwordparam"/>
@@ -206,6 +243,14 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="inputdestinationrequest_streamname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="inputdevicerequest_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="inputdevicesettings_id"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -241,6 +286,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>input_destinations</IRI>
         <Literal>medialiveinput:input_destinations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>input_inputdevices</IRI>
+        <Literal>medialiveinput:input_inputdevices</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -291,6 +341,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>inputdestinationrequest_streamname</IRI>
         <Literal>medialiveinput:inputdestinationrequest_streamname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputdevicerequest</IRI>
+        <Literal>medialiveinput:inputdevicerequest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputdevicerequest_id</IRI>
+        <Literal>medialiveinput:inputdevicerequest_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputdevicesettings</IRI>
+        <Literal>medialiveinput:inputdevicesettings</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>inputdevicesettings_id</IRI>
+        <Literal>medialiveinput:inputdevicesettings_id</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

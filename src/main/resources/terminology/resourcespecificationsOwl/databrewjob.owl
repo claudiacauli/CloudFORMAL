@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/databrewjob#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/databrewjob#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="csvoutputoptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="job"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="output"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="outputformatoptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="job_outputs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="job_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="output_formatoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="output_location"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="outputformatoptions_csv"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="csvoutputoptions_delimiter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_datasetname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_encryptionkeyarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_encryptionmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_logsubscription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_maxcapacity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_maxretries"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_outputlocation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_projectname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_recipe"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_timeout"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="job_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="output_compressionformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="output_format"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="output_overwrite"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="output_partitioncolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="job"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="job_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="job"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="job_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="job"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="job_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="output"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="output_location"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_bucket"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="output_formatoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="output_location"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="outputformatoptions_csv"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="job_outputs"/>
+        <Class IRI="job"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="job_tags"/>
+        <Class IRI="job"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="output_formatoptions"/>
+        <Class IRI="output"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="output_location"/>
+        <Class IRI="output"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="outputformatoptions_csv"/>
+        <Class IRI="outputformatoptions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="job_outputs"/>
+        <Class IRI="output"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="job_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="output_formatoptions"/>
+        <Class IRI="outputformatoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="output_location"/>
+        <Class IRI="s3location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="outputformatoptions_csv"/>
+        <Class IRI="csvoutputoptions"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="csvoutputoptions_delimiter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_datasetname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_encryptionkeyarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_encryptionmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_logsubscription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_maxcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_maxretries"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_outputlocation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_projectname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_recipe"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_timeout"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="job_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="output_compressionformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="output_format"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="output_overwrite"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="csvoutputoptions_delimiter"/>
+        <Class IRI="csvoutputoptions"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_datasetname"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_encryptionkeyarn"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_encryptionmode"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_logsubscription"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_maxcapacity"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_maxretries"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_name"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_outputlocation"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_projectname"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_recipe"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_rolearn"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_timeout"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="job_type"/>
+        <Class IRI="job"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="output_compressionformat"/>
+        <Class IRI="output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="output_format"/>
+        <Class IRI="output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="output_overwrite"/>
+        <Class IRI="output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="output_partitioncolumns"/>
+        <Class IRI="output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_bucket"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_key"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="csvoutputoptions_delimiter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_datasetname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_encryptionkeyarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_encryptionmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_logsubscription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_maxcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_maxretries"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_outputlocation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_projectname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_recipe"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_timeout"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="job_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="output_compressionformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="output_format"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="output_overwrite"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="output_partitioncolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csvoutputoptions</IRI>
+        <Literal>databrewjob:csvoutputoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csvoutputoptions_delimiter</IRI>
+        <Literal>databrewjob:csvoutputoptions_delimiter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job</IRI>
+        <Literal>databrewjob:job</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_datasetname</IRI>
+        <Literal>databrewjob:job_datasetname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_encryptionkeyarn</IRI>
+        <Literal>databrewjob:job_encryptionkeyarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_encryptionmode</IRI>
+        <Literal>databrewjob:job_encryptionmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_logsubscription</IRI>
+        <Literal>databrewjob:job_logsubscription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_maxcapacity</IRI>
+        <Literal>databrewjob:job_maxcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_maxretries</IRI>
+        <Literal>databrewjob:job_maxretries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_name</IRI>
+        <Literal>databrewjob:job_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_outputlocation</IRI>
+        <Literal>databrewjob:job_outputlocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_outputs</IRI>
+        <Literal>databrewjob:job_outputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_projectname</IRI>
+        <Literal>databrewjob:job_projectname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_recipe</IRI>
+        <Literal>databrewjob:job_recipe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_rolearn</IRI>
+        <Literal>databrewjob:job_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_tags</IRI>
+        <Literal>databrewjob:job_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_timeout</IRI>
+        <Literal>databrewjob:job_timeout</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>job_type</IRI>
+        <Literal>databrewjob:job_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output</IRI>
+        <Literal>databrewjob:output</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_compressionformat</IRI>
+        <Literal>databrewjob:output_compressionformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_format</IRI>
+        <Literal>databrewjob:output_format</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_formatoptions</IRI>
+        <Literal>databrewjob:output_formatoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_location</IRI>
+        <Literal>databrewjob:output_location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_overwrite</IRI>
+        <Literal>databrewjob:output_overwrite</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>output_partitioncolumns</IRI>
+        <Literal>databrewjob:output_partitioncolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>outputformatoptions</IRI>
+        <Literal>databrewjob:outputformatoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>outputformatoptions_csv</IRI>
+        <Literal>databrewjob:outputformatoptions_csv</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location</IRI>
+        <Literal>databrewjob:s3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_bucket</IRI>
+        <Literal>databrewjob:s3location_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_key</IRI>
+        <Literal>databrewjob:s3location_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>databrewjob:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>databrewjob:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>databrewjob:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

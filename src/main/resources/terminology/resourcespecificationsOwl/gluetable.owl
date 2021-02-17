@@ -18,6 +18,12 @@
         <Class IRI="order"/>
     </Declaration>
     <Declaration>
+        <Class IRI="schemaid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="schemareference"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="serdeinfo"/>
     </Declaration>
     <Declaration>
@@ -30,10 +36,19 @@
         <Class IRI="table"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tableidentifier"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tableinput"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="storagedescriptor_columns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
@@ -54,6 +69,9 @@
         <ObjectProperty IRI="tableinput_storagedescriptor"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="tableinput_targettable"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="column_comment"/>
     </Declaration>
     <Declaration>
@@ -67,6 +85,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="order_sortorder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_registryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_schemaarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_schemaname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemareference_schameversionid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="serdeinfo_name"/>
@@ -115,6 +148,15 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="table_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tableidentifier_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tableidentifier_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tableidentifier_name"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tableinput_description"/>
@@ -183,6 +225,12 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -194,8 +242,19 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="tableinput_storagedescriptor"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="tableinput_targettable"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+        <Class IRI="schemareference"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="storagedescriptor_columns"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
         <Class IRI="storagedescriptor"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -222,9 +281,21 @@
         <ObjectProperty IRI="tableinput_storagedescriptor"/>
         <Class IRI="tableinput"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tableinput_targettable"/>
+        <Class IRI="tableinput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+        <Class IRI="schemaid"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="storagedescriptor_columns"/>
         <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
+        <Class IRI="schemareference"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
@@ -250,6 +321,10 @@
         <ObjectProperty IRI="tableinput_storagedescriptor"/>
         <Class IRI="storagedescriptor"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tableinput_targettable"/>
+        <Class IRI="tableidentifier"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="column_comment"/>
     </FunctionalDataProperty>
@@ -264,6 +339,21 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="order_sortorder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_registryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_schemaarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_schemaname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemareference_schameversionid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="serdeinfo_name"/>
@@ -303,6 +393,15 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="table_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tableidentifier_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tableidentifier_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tableidentifier_name"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tableinput_description"/>
@@ -347,6 +446,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="order_sortorder"/>
         <Class IRI="order"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_registryname"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_schemaarn"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_schemaname"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemareference_schameversionid"/>
+        <Class IRI="schemareference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
+        <Class IRI="schemareference"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="serdeinfo_name"/>
@@ -413,6 +532,18 @@
         <Class IRI="table"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="tableidentifier_catalogid"/>
+        <Class IRI="tableidentifier"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tableidentifier_databasename"/>
+        <Class IRI="tableidentifier"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tableidentifier_name"/>
+        <Class IRI="tableidentifier"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="tableinput_description"/>
         <Class IRI="tableinput"/>
     </DataPropertyDomain>
@@ -462,6 +593,26 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="order_sortorder"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_registryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_schemaarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_schemaname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemareference_schameversionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -526,6 +677,18 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="table_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tableidentifier_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tableidentifier_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tableidentifier_name"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -594,6 +757,46 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>order_sortorder</IRI>
         <Literal>gluetable:order_sortorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid</IRI>
+        <Literal>gluetable:schemaid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_registryname</IRI>
+        <Literal>gluetable:schemaid_registryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_schemaarn</IRI>
+        <Literal>gluetable:schemaid_schemaarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_schemaname</IRI>
+        <Literal>gluetable:schemaid_schemaname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference</IRI>
+        <Literal>gluetable:schemareference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schameversionid</IRI>
+        <Literal>gluetable:schemareference_schameversionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schemaid</IRI>
+        <Literal>gluetable:schemareference_schemaid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schemaversionnumber</IRI>
+        <Literal>gluetable:schemareference_schemaversionnumber</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -682,6 +885,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_schemareference</IRI>
+        <Literal>gluetable:storagedescriptor_schemareference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>storagedescriptor_serdeinfo</IRI>
         <Literal>gluetable:storagedescriptor_serdeinfo</Literal>
     </AnnotationAssertion>
@@ -719,6 +927,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>table_tableinput</IRI>
         <Literal>gluetable:table_tableinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableidentifier</IRI>
+        <Literal>gluetable:tableidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableidentifier_catalogid</IRI>
+        <Literal>gluetable:tableidentifier_catalogid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableidentifier_databasename</IRI>
+        <Literal>gluetable:tableidentifier_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableidentifier_name</IRI>
+        <Literal>gluetable:tableidentifier_name</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -764,6 +992,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tableinput_tabletype</IRI>
         <Literal>gluetable:tableinput_tabletype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tableinput_targettable</IRI>
+        <Literal>gluetable:tableinput_targettable</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

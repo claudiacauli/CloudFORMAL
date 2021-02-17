@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/elasticacheglobalreplicationgroup#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/elasticacheglobalreplicationgroup#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="globalreplicationgroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="globalreplicationgroupmember"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="regionalconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="reshardingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="globalreplicationgroup_members"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="globalreplicationgroup_regionalconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="regionalconfiguration_reshardingconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_automaticfailoverenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_cachenodetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_engineversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_globalnodegroupcount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupdescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupidsuffix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="globalreplicationgroupmember_role"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="regionalconfiguration_replicationgroupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="regionalconfiguration_replicationgroupregion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="reshardingconfiguration_nodegroupid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="reshardingconfiguration_preferredavailabilityzones"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="globalreplicationgroup"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="globalreplicationgroup_members"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="globalreplicationgroup_members"/>
+        <Class IRI="globalreplicationgroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="globalreplicationgroup_regionalconfigurations"/>
+        <Class IRI="globalreplicationgroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="regionalconfiguration_reshardingconfigurations"/>
+        <Class IRI="regionalconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="globalreplicationgroup_members"/>
+        <Class IRI="globalreplicationgroupmember"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="globalreplicationgroup_regionalconfigurations"/>
+        <Class IRI="regionalconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="regionalconfiguration_reshardingconfigurations"/>
+        <Class IRI="reshardingconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_automaticfailoverenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_cachenodetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_engineversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_globalnodegroupcount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupdescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupidsuffix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="globalreplicationgroupmember_role"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="regionalconfiguration_replicationgroupid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="regionalconfiguration_replicationgroupregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="reshardingconfiguration_nodegroupid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_automaticfailoverenabled"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_cachenodetype"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_engineversion"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_globalnodegroupcount"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupdescription"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupidsuffix"/>
+        <Class IRI="globalreplicationgroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupid"/>
+        <Class IRI="globalreplicationgroupmember"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupregion"/>
+        <Class IRI="globalreplicationgroupmember"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="globalreplicationgroupmember_role"/>
+        <Class IRI="globalreplicationgroupmember"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="regionalconfiguration_replicationgroupid"/>
+        <Class IRI="regionalconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="regionalconfiguration_replicationgroupregion"/>
+        <Class IRI="regionalconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="reshardingconfiguration_nodegroupid"/>
+        <Class IRI="reshardingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="reshardingconfiguration_preferredavailabilityzones"/>
+        <Class IRI="reshardingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_automaticfailoverenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_cachenodetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_engineversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_globalnodegroupcount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupdescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroup_globalreplicationgroupidsuffix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroupmember_replicationgroupregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="globalreplicationgroupmember_role"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="regionalconfiguration_replicationgroupid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="regionalconfiguration_replicationgroupregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="reshardingconfiguration_nodegroupid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="reshardingconfiguration_preferredavailabilityzones"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_automaticfailoverenabled</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_automaticfailoverenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_cachenodetype</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_cachenodetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_engineversion</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_engineversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_globalnodegroupcount</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_globalnodegroupcount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_globalreplicationgroupdescription</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_globalreplicationgroupdescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_globalreplicationgroupidsuffix</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_globalreplicationgroupidsuffix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_members</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_members</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroup_regionalconfigurations</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroup_regionalconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroupmember</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroupmember</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroupmember_replicationgroupid</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroupmember_replicationgroupid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroupmember_replicationgroupregion</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroupmember_replicationgroupregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>globalreplicationgroupmember_role</IRI>
+        <Literal>elasticacheglobalreplicationgroup:globalreplicationgroupmember_role</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>regionalconfiguration</IRI>
+        <Literal>elasticacheglobalreplicationgroup:regionalconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>regionalconfiguration_replicationgroupid</IRI>
+        <Literal>elasticacheglobalreplicationgroup:regionalconfiguration_replicationgroupid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>regionalconfiguration_replicationgroupregion</IRI>
+        <Literal>elasticacheglobalreplicationgroup:regionalconfiguration_replicationgroupregion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>regionalconfiguration_reshardingconfigurations</IRI>
+        <Literal>elasticacheglobalreplicationgroup:regionalconfiguration_reshardingconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>reshardingconfiguration</IRI>
+        <Literal>elasticacheglobalreplicationgroup:reshardingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>reshardingconfiguration_nodegroupid</IRI>
+        <Literal>elasticacheglobalreplicationgroup:reshardingconfiguration_nodegroupid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>reshardingconfiguration_preferredavailabilityzones</IRI>
+        <Literal>elasticacheglobalreplicationgroup:reshardingconfiguration_preferredavailabilityzones</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

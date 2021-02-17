@@ -12,10 +12,31 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="accessdescription"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accessmethod"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="certificateauthority"/>
     </Declaration>
     <Declaration>
         <Class IRI="crlconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="csrextensions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="edipartyname"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="generalname"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="keyusage"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="othername"/>
     </Declaration>
     <Declaration>
         <Class IRI="revocationconfiguration"/>
@@ -24,7 +45,19 @@
         <Class IRI="subject"/>
     </Declaration>
     <Declaration>
+        <Class IRI="subjectinformationaccess"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accessdescription_accesslocation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accessdescription_accessmethod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="certificateauthority_csrextensions"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
@@ -36,7 +69,31 @@
         <ObjectProperty IRI="certificateauthority_tags"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="csrextensions_keyusage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="csrextensions_subjectinformationaccess"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="generalname_directoryname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="generalname_edipartyname"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="generalname_othername"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="subjectinformationaccess_subjectinformationaccess"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accessmethod_accessmethodtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accessmethod_customobjectidentifier"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
@@ -58,6 +115,60 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="crlconfiguration_s3bucketname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="edipartyname_nameassigner"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="edipartyname_partyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="generalname_dnsname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="generalname_ipaddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="generalname_registeredid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="generalname_rfc822name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="generalname_uniformresourceidentifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_crlsign"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_dataencipherment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_decipheronly"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_digitalsignature"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_encipheronly"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_keyagreement"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_keycertsign"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_keyencipherment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="keyusage_nonrepudiation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="othername_typeid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="othername_value"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="subject_commonname"/>
@@ -107,6 +218,20 @@
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="accessdescription"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accessdescription_accesslocation"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="accessdescription"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accessdescription_accessmethod"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="certificateauthority"/>
         <ObjectSomeValuesFrom>
@@ -136,6 +261,34 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="edipartyname"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="edipartyname_nameassigner"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="edipartyname"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="edipartyname_partyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="othername"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="othername_typeid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="othername"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="othername_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="tag"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="tag_key"/>
@@ -150,14 +303,50 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="accessdescription_accesslocation"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accessdescription_accessmethod"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="certificateauthority_csrextensions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="certificateauthority_subject"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="csrextensions_keyusage"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="csrextensions_subjectinformationaccess"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="generalname_directoryname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="generalname_edipartyname"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="generalname_othername"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
     </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accessdescription_accesslocation"/>
+        <Class IRI="accessdescription"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accessdescription_accessmethod"/>
+        <Class IRI="accessdescription"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="certificateauthority_csrextensions"/>
+        <Class IRI="certificateauthority"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
         <Class IRI="certificateauthority"/>
@@ -171,9 +360,45 @@
         <Class IRI="certificateauthority"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="csrextensions_keyusage"/>
+        <Class IRI="csrextensions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="csrextensions_subjectinformationaccess"/>
+        <Class IRI="csrextensions"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="generalname_directoryname"/>
+        <Class IRI="generalname"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="generalname_edipartyname"/>
+        <Class IRI="generalname"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="generalname_othername"/>
+        <Class IRI="generalname"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
         <Class IRI="revocationconfiguration"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="subjectinformationaccess_subjectinformationaccess"/>
+        <Class IRI="subjectinformationaccess"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accessdescription_accesslocation"/>
+        <Class IRI="generalname"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accessdescription_accessmethod"/>
+        <Class IRI="accessmethod"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="certificateauthority_csrextensions"/>
+        <Class IRI="csrextensions"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="certificateauthority_revocationconfiguration"/>
         <Class IRI="revocationconfiguration"/>
@@ -187,9 +412,39 @@
         <Class IRI="tag"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="csrextensions_keyusage"/>
+        <Class IRI="keyusage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="csrextensions_subjectinformationaccess"/>
+        <Class IRI="subjectinformationaccess"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="generalname_directoryname"/>
+        <Class IRI="subject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="generalname_edipartyname"/>
+        <Class IRI="edipartyname"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="generalname_othername"/>
+        <Class IRI="othername"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="revocationconfiguration_crlconfiguration"/>
         <Class IRI="crlconfiguration"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="subjectinformationaccess_subjectinformationaccess"/>
+        <Class IRI="accessdescription"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accessmethod_accessmethodtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accessmethod_customobjectidentifier"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
     </FunctionalDataProperty>
@@ -210,6 +465,60 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="crlconfiguration_s3bucketname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="edipartyname_nameassigner"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="edipartyname_partyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="generalname_dnsname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="generalname_ipaddress"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="generalname_registeredid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="generalname_rfc822name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="generalname_uniformresourceidentifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_crlsign"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_dataencipherment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_decipheronly"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_digitalsignature"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_encipheronly"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_keyagreement"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_keycertsign"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_keyencipherment"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="keyusage_nonrepudiation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="othername_typeid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="othername_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="subject_commonname"/>
@@ -260,6 +569,14 @@
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="accessmethod_accessmethodtype"/>
+        <Class IRI="accessmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="accessmethod_customobjectidentifier"/>
+        <Class IRI="accessmethod"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
         <Class IRI="certificateauthority"/>
     </DataPropertyDomain>
@@ -286,6 +603,78 @@
     <DataPropertyDomain>
         <DataProperty IRI="crlconfiguration_s3bucketname"/>
         <Class IRI="crlconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="edipartyname_nameassigner"/>
+        <Class IRI="edipartyname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="edipartyname_partyname"/>
+        <Class IRI="edipartyname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="generalname_dnsname"/>
+        <Class IRI="generalname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="generalname_ipaddress"/>
+        <Class IRI="generalname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="generalname_registeredid"/>
+        <Class IRI="generalname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="generalname_rfc822name"/>
+        <Class IRI="generalname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="generalname_uniformresourceidentifier"/>
+        <Class IRI="generalname"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_crlsign"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_dataencipherment"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_decipheronly"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_digitalsignature"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_encipheronly"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_keyagreement"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_keycertsign"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_keyencipherment"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="keyusage_nonrepudiation"/>
+        <Class IRI="keyusage"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="othername_typeid"/>
+        <Class IRI="othername"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="othername_value"/>
+        <Class IRI="othername"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="subject_commonname"/>
@@ -351,6 +740,14 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="accessmethod_accessmethodtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="accessmethod_customobjectidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="certificateauthority_keyalgorithm"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -377,6 +774,78 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="crlconfiguration_s3bucketname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="edipartyname_nameassigner"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="edipartyname_partyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="generalname_dnsname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="generalname_ipaddress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="generalname_registeredid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="generalname_rfc822name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="generalname_uniformresourceidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_crlsign"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_dataencipherment"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_decipheronly"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_digitalsignature"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_encipheronly"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_keyagreement"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_keycertsign"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_keyencipherment"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="keyusage_nonrepudiation"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="othername_typeid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="othername_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -445,8 +914,43 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessdescription</IRI>
+        <Literal>acmpcacertificateauthority:accessdescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessdescription_accesslocation</IRI>
+        <Literal>acmpcacertificateauthority:accessdescription_accesslocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessdescription_accessmethod</IRI>
+        <Literal>acmpcacertificateauthority:accessdescription_accessmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessmethod</IRI>
+        <Literal>acmpcacertificateauthority:accessmethod</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessmethod_accessmethodtype</IRI>
+        <Literal>acmpcacertificateauthority:accessmethod_accessmethodtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accessmethod_customobjectidentifier</IRI>
+        <Literal>acmpcacertificateauthority:accessmethod_customobjectidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>certificateauthority</IRI>
         <Literal>acmpcacertificateauthority:certificateauthority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>certificateauthority_csrextensions</IRI>
+        <Literal>acmpcacertificateauthority:certificateauthority_csrextensions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -502,6 +1006,146 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>crlconfiguration_s3bucketname</IRI>
         <Literal>acmpcacertificateauthority:crlconfiguration_s3bucketname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csrextensions</IRI>
+        <Literal>acmpcacertificateauthority:csrextensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csrextensions_keyusage</IRI>
+        <Literal>acmpcacertificateauthority:csrextensions_keyusage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>csrextensions_subjectinformationaccess</IRI>
+        <Literal>acmpcacertificateauthority:csrextensions_subjectinformationaccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>edipartyname</IRI>
+        <Literal>acmpcacertificateauthority:edipartyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>edipartyname_nameassigner</IRI>
+        <Literal>acmpcacertificateauthority:edipartyname_nameassigner</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>edipartyname_partyname</IRI>
+        <Literal>acmpcacertificateauthority:edipartyname_partyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname</IRI>
+        <Literal>acmpcacertificateauthority:generalname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_directoryname</IRI>
+        <Literal>acmpcacertificateauthority:generalname_directoryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_dnsname</IRI>
+        <Literal>acmpcacertificateauthority:generalname_dnsname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_edipartyname</IRI>
+        <Literal>acmpcacertificateauthority:generalname_edipartyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_ipaddress</IRI>
+        <Literal>acmpcacertificateauthority:generalname_ipaddress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_othername</IRI>
+        <Literal>acmpcacertificateauthority:generalname_othername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_registeredid</IRI>
+        <Literal>acmpcacertificateauthority:generalname_registeredid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_rfc822name</IRI>
+        <Literal>acmpcacertificateauthority:generalname_rfc822name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>generalname_uniformresourceidentifier</IRI>
+        <Literal>acmpcacertificateauthority:generalname_uniformresourceidentifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage</IRI>
+        <Literal>acmpcacertificateauthority:keyusage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_crlsign</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_crlsign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_dataencipherment</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_dataencipherment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_decipheronly</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_decipheronly</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_digitalsignature</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_digitalsignature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_encipheronly</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_encipheronly</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_keyagreement</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_keyagreement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_keycertsign</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_keycertsign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_keyencipherment</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_keyencipherment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>keyusage_nonrepudiation</IRI>
+        <Literal>acmpcacertificateauthority:keyusage_nonrepudiation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>othername</IRI>
+        <Literal>acmpcacertificateauthority:othername</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>othername_typeid</IRI>
+        <Literal>acmpcacertificateauthority:othername_typeid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>othername_value</IRI>
+        <Literal>acmpcacertificateauthority:othername_value</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -587,6 +1231,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>subject_title</IRI>
         <Literal>acmpcacertificateauthority:subject_title</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subjectinformationaccess</IRI>
+        <Literal>acmpcacertificateauthority:subjectinformationaccess</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>subjectinformationaccess_subjectinformationaccess</IRI>
+        <Literal>acmpcacertificateauthority:subjectinformationaccess_subjectinformationaccess</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

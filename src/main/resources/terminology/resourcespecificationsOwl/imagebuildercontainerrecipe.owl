@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuildercontainerrecipe#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/imagebuildercontainerrecipe#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="componentconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="containerrecipe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="targetcontainerrepository"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerrecipe_components"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerrecipe_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerrecipe_targetrepository"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_containertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_dockerfiletemplatedata"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_dockerfiletemplateuri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_imageosversionoverride"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_parentimage"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_platformoverride"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_version"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerrecipe_workingdirectory"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetcontainerrepository_repositoryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="targetcontainerrepository_service"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="containerrecipe_components"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="containerrecipe_targetrepository"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="containerrecipe_containertype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="containerrecipe_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="containerrecipe_parentimage"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="containerrecipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="containerrecipe_version"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerrecipe_targetrepository"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerrecipe_components"/>
+        <Class IRI="containerrecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerrecipe_tags"/>
+        <Class IRI="containerrecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerrecipe_targetrepository"/>
+        <Class IRI="containerrecipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerrecipe_components"/>
+        <Class IRI="componentconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerrecipe_tags"/>
+        <Class IRI="mapentry_string"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerrecipe_targetrepository"/>
+        <Class IRI="targetcontainerrepository"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_containertype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_dockerfiletemplatedata"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_dockerfiletemplateuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_imageosversionoverride"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_parentimage"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_platformoverride"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerrecipe_workingdirectory"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetcontainerrepository_repositoryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="targetcontainerrepository_service"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+        <Class IRI="componentconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_containertype"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_description"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_dockerfiletemplatedata"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_dockerfiletemplateuri"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_imageosversionoverride"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_kmskeyid"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_name"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_parentimage"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_platformoverride"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_version"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerrecipe_workingdirectory"/>
+        <Class IRI="containerrecipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetcontainerrepository_repositoryname"/>
+        <Class IRI="targetcontainerrepository"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="targetcontainerrepository_service"/>
+        <Class IRI="targetcontainerrepository"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="componentconfiguration_componentarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_containertype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_dockerfiletemplatedata"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_dockerfiletemplateuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_imageosversionoverride"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_parentimage"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_platformoverride"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerrecipe_workingdirectory"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetcontainerrepository_repositoryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="targetcontainerrepository_service"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentconfiguration</IRI>
+        <Literal>imagebuildercontainerrecipe:componentconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>componentconfiguration_componentarn</IRI>
+        <Literal>imagebuildercontainerrecipe:componentconfiguration_componentarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_components</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_components</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_containertype</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_containertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_description</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_dockerfiletemplatedata</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_dockerfiletemplatedata</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_dockerfiletemplateuri</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_dockerfiletemplateuri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_imageosversionoverride</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_imageosversionoverride</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_kmskeyid</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_name</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_parentimage</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_parentimage</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_platformoverride</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_platformoverride</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_tags</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_targetrepository</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_targetrepository</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_version</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerrecipe_workingdirectory</IRI>
+        <Literal>imagebuildercontainerrecipe:containerrecipe_workingdirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targetcontainerrepository</IRI>
+        <Literal>imagebuildercontainerrecipe:targetcontainerrepository</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targetcontainerrepository_repositoryname</IRI>
+        <Literal>imagebuildercontainerrecipe:targetcontainerrepository_repositoryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>targetcontainerrepository_service</IRI>
+        <Literal>imagebuildercontainerrecipe:targetcontainerrepository_service</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

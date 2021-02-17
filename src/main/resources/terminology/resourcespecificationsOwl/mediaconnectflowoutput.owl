@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mediaconnectflowoutput#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mediaconnectflowoutput#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="encryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="flowoutput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vpcinterfaceattachment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowoutput_encryption"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowoutput_vpcinterfaceattachment"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_algorithm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_keytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_secretarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_cidrallowlist"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_flowarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_maxlatency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_port"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_protocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_remoteid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_smoothinglatency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowoutput_streamid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcinterfaceattachment_vpcinterfacename"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="encryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryption_algorithm"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryption_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryption_secretarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowoutput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowoutput_flowarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowoutput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowoutput_protocol"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowoutput_encryption"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowoutput_vpcinterfaceattachment"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowoutput_encryption"/>
+        <Class IRI="flowoutput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowoutput_vpcinterfaceattachment"/>
+        <Class IRI="flowoutput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowoutput_encryption"/>
+        <Class IRI="encryption"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowoutput_vpcinterfaceattachment"/>
+        <Class IRI="vpcinterfaceattachment"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_algorithm"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_keytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_secretarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_destination"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_flowarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_maxlatency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_port"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_protocol"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_remoteid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_smoothinglatency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowoutput_streamid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="vpcinterfaceattachment_vpcinterfacename"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_algorithm"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_keytype"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_rolearn"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_secretarn"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_cidrallowlist"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_description"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_destination"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_flowarn"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_maxlatency"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_name"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_port"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_protocol"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_remoteid"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_smoothinglatency"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowoutput_streamid"/>
+        <Class IRI="flowoutput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcinterfaceattachment_vpcinterfacename"/>
+        <Class IRI="vpcinterfaceattachment"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_algorithm"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_keytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_secretarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_cidrallowlist"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_flowarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_maxlatency"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_port"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_protocol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_remoteid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_smoothinglatency"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowoutput_streamid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcinterfaceattachment_vpcinterfacename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption</IRI>
+        <Literal>mediaconnectflowoutput:encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_algorithm</IRI>
+        <Literal>mediaconnectflowoutput:encryption_algorithm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_keytype</IRI>
+        <Literal>mediaconnectflowoutput:encryption_keytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_rolearn</IRI>
+        <Literal>mediaconnectflowoutput:encryption_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_secretarn</IRI>
+        <Literal>mediaconnectflowoutput:encryption_secretarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_cidrallowlist</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_cidrallowlist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_description</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_destination</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_destination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_encryption</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_flowarn</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_flowarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_maxlatency</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_maxlatency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_name</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_port</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_port</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_protocol</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_remoteid</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_remoteid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_smoothinglatency</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_smoothinglatency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_streamid</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_streamid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowoutput_vpcinterfaceattachment</IRI>
+        <Literal>mediaconnectflowoutput:flowoutput_vpcinterfaceattachment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcinterfaceattachment</IRI>
+        <Literal>mediaconnectflowoutput:vpcinterfaceattachment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcinterfaceattachment_vpcinterfacename</IRI>
+        <Literal>mediaconnectflowoutput:vpcinterfaceattachment_vpcinterfacename</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

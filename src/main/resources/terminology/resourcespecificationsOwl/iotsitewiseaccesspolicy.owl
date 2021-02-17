@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewiseaccesspolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewiseaccesspolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="accesspolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accesspolicyidentity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="accesspolicyresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="portal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="project"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="user"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspolicy_accesspolicyidentity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspolicy_accesspolicyresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspolicyidentity_user"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspolicyresource_portal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="accesspolicyresource_project"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="accesspolicy_accesspolicypermission"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="portal_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="project_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="user_id"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="accesspolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accesspolicy_accesspolicyidentity"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="accesspolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="accesspolicy_accesspolicyresource"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="accesspolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="accesspolicy_accesspolicypermission"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspolicy_accesspolicyidentity"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspolicy_accesspolicyresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspolicyidentity_user"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspolicyresource_portal"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="accesspolicyresource_project"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspolicy_accesspolicyidentity"/>
+        <Class IRI="accesspolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspolicy_accesspolicyresource"/>
+        <Class IRI="accesspolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspolicyidentity_user"/>
+        <Class IRI="accesspolicyidentity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspolicyresource_portal"/>
+        <Class IRI="accesspolicyresource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="accesspolicyresource_project"/>
+        <Class IRI="accesspolicyresource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspolicy_accesspolicyidentity"/>
+        <Class IRI="accesspolicyidentity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspolicy_accesspolicyresource"/>
+        <Class IRI="accesspolicyresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspolicyidentity_user"/>
+        <Class IRI="user"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspolicyresource_portal"/>
+        <Class IRI="portal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="accesspolicyresource_project"/>
+        <Class IRI="project"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="accesspolicy_accesspolicypermission"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="portal_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="project_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="user_id"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="accesspolicy_accesspolicypermission"/>
+        <Class IRI="accesspolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="portal_id"/>
+        <Class IRI="portal"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="project_id"/>
+        <Class IRI="project"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="user_id"/>
+        <Class IRI="user"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="accesspolicy_accesspolicypermission"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="portal_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="project_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="user_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicy</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicy_accesspolicyidentity</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicy_accesspolicyidentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicy_accesspolicypermission</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicy_accesspolicypermission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicy_accesspolicyresource</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicy_accesspolicyresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicyidentity</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicyidentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicyidentity_user</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicyidentity_user</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicyresource</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicyresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicyresource_portal</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicyresource_portal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>accesspolicyresource_project</IRI>
+        <Literal>iotsitewiseaccesspolicy:accesspolicyresource_project</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portal</IRI>
+        <Literal>iotsitewiseaccesspolicy:portal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>portal_id</IRI>
+        <Literal>iotsitewiseaccesspolicy:portal_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>project</IRI>
+        <Literal>iotsitewiseaccesspolicy:project</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>project_id</IRI>
+        <Literal>iotsitewiseaccesspolicy:project_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user</IRI>
+        <Literal>iotsitewiseaccesspolicy:user</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>user_id</IRI>
+        <Literal>iotsitewiseaccesspolicy:user_id</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

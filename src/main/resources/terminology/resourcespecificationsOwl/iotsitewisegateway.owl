@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewisegateway#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/iotsitewisegateway#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="gateway"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gatewaycapabilitysummary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="gatewayplatform"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="greengrass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gateway_gatewaycapabilitysummaries"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gateway_gatewayplatform"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gateway_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="gatewayplatform_greengrass"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gateway_gatewayname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilityconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilitynamespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="greengrass_grouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="gateway"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gateway_gatewayplatform"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gateway"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gateway_gatewayname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewaycapabilitysummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="gatewaycapabilitysummary_capabilitynamespace"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="gatewayplatform"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="gatewayplatform_greengrass"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="greengrass"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="greengrass_grouparn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gateway_gatewayplatform"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gatewayplatform_greengrass"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gateway_gatewaycapabilitysummaries"/>
+        <Class IRI="gateway"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gateway_gatewayplatform"/>
+        <Class IRI="gateway"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gateway_tags"/>
+        <Class IRI="gateway"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="gatewayplatform_greengrass"/>
+        <Class IRI="gatewayplatform"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gateway_gatewaycapabilitysummaries"/>
+        <Class IRI="gatewaycapabilitysummary"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gateway_gatewayplatform"/>
+        <Class IRI="gatewayplatform"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gateway_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="gatewayplatform_greengrass"/>
+        <Class IRI="greengrass"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gateway_gatewayname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilityconfiguration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilitynamespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="greengrass_grouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="gateway_gatewayname"/>
+        <Class IRI="gateway"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilityconfiguration"/>
+        <Class IRI="gatewaycapabilitysummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilitynamespace"/>
+        <Class IRI="gatewaycapabilitysummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="greengrass_grouparn"/>
+        <Class IRI="greengrass"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="gateway_gatewayname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilityconfiguration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gatewaycapabilitysummary_capabilitynamespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="greengrass_grouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gateway</IRI>
+        <Literal>iotsitewisegateway:gateway</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gateway_gatewaycapabilitysummaries</IRI>
+        <Literal>iotsitewisegateway:gateway_gatewaycapabilitysummaries</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gateway_gatewayname</IRI>
+        <Literal>iotsitewisegateway:gateway_gatewayname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gateway_gatewayplatform</IRI>
+        <Literal>iotsitewisegateway:gateway_gatewayplatform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gateway_tags</IRI>
+        <Literal>iotsitewisegateway:gateway_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewaycapabilitysummary</IRI>
+        <Literal>iotsitewisegateway:gatewaycapabilitysummary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewaycapabilitysummary_capabilityconfiguration</IRI>
+        <Literal>iotsitewisegateway:gatewaycapabilitysummary_capabilityconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewaycapabilitysummary_capabilitynamespace</IRI>
+        <Literal>iotsitewisegateway:gatewaycapabilitysummary_capabilitynamespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayplatform</IRI>
+        <Literal>iotsitewisegateway:gatewayplatform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gatewayplatform_greengrass</IRI>
+        <Literal>iotsitewisegateway:gatewayplatform_greengrass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>greengrass</IRI>
+        <Literal>iotsitewisegateway:greengrass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>greengrass_grouparn</IRI>
+        <Literal>iotsitewisegateway:greengrass_grouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>iotsitewisegateway:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>iotsitewisegateway:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>iotsitewisegateway:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

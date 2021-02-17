@@ -26,6 +26,9 @@
     <Declaration>
         <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="datalakesettings_trustedresourceowners"/>
+    </Declaration>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="datalakesettings_admins"/>
     </FunctionalObjectProperty>
@@ -44,8 +47,16 @@
         <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
         <Class IRI="datalakeprincipal"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datalakesettings_trustedresourceowners"/>
+        <Class IRI="datalakesettings"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="datalakeprincipal_datalakeprincipalidentifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datalakesettings_trustedresourceowners"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -72,6 +83,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>datalakesettings_admins</IRI>
         <Literal>lakeformationdatalakesettings:datalakesettings_admins</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datalakesettings_trustedresourceowners</IRI>
+        <Literal>lakeformationdatalakesettings:datalakesettings_trustedresourceowners</Literal>
     </AnnotationAssertion>
 </Ontology>
 

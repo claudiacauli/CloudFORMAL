@@ -66,6 +66,9 @@
         <Class IRI="origingroups"/>
     </Declaration>
     <Declaration>
+        <Class IRI="originshield"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="restrictions"/>
     </Declaration>
     <Declaration>
@@ -132,6 +135,9 @@
         <ObjectProperty IRI="origin_origincustomheaders"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="origin_originshield"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="origin_s3originconfig"/>
     </Declaration>
     <Declaration>
@@ -159,6 +165,9 @@
         <DataProperty IRI="cachebehavior_cachedmethods"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="cachebehavior_cachepolicyid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cachebehavior_compress"/>
     </Declaration>
     <Declaration>
@@ -174,13 +183,22 @@
         <DataProperty IRI="cachebehavior_minttl"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="cachebehavior_originrequestpolicyid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cachebehavior_pathpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachebehavior_realtimelogconfigarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cachebehavior_smoothstreaming"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cachebehavior_targetoriginid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cachebehavior_trustedkeygroups"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="cachebehavior_trustedsigners"/>
@@ -231,6 +249,9 @@
         <DataProperty IRI="defaultcachebehavior_cachedmethods"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="defaultcachebehavior_cachepolicyid"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="defaultcachebehavior_compress"/>
     </Declaration>
     <Declaration>
@@ -246,10 +267,19 @@
         <DataProperty IRI="defaultcachebehavior_minttl"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="defaultcachebehavior_originrequestpolicyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="defaultcachebehavior_realtimelogconfigarn"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="defaultcachebehavior_smoothstreaming"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="defaultcachebehavior_targetoriginid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="defaultcachebehavior_trustedkeygroups"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="defaultcachebehavior_trustedsigners"/>
@@ -348,6 +378,12 @@
         <DataProperty IRI="origingroups_quantity"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="originshield_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="originshield_originshieldregion"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
     </Declaration>
     <Declaration>
@@ -377,13 +413,6 @@
     <Declaration>
         <DataProperty IRI="viewercertificate_sslsupportmethod"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="cachebehavior"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="cachebehavior_forwardedvalues"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
     <SubClassOf>
         <Class IRI="cachebehavior"/>
         <DataSomeValuesFrom>
@@ -425,13 +454,6 @@
             <DataProperty IRI="customoriginconfig_originprotocolpolicy"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="defaultcachebehavior"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="defaultcachebehavior_forwardedvalues"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="defaultcachebehavior"/>
@@ -567,6 +589,13 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="originshield"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="originshield_enabled"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="restrictions"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="restrictions_georestriction"/>
@@ -632,6 +661,9 @@
         <ObjectProperty IRI="origin_customoriginconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="origin_originshield"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="origin_s3originconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -712,6 +744,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="origin_origincustomheaders"/>
+        <Class IRI="origin"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="origin_originshield"/>
         <Class IRI="origin"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -811,6 +847,10 @@
         <Class IRI="origincustomheader"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="origin_originshield"/>
+        <Class IRI="originshield"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="origin_s3originconfig"/>
         <Class IRI="s3originconfig"/>
     </ObjectPropertyRange>
@@ -839,6 +879,9 @@
         <Class IRI="georestriction"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="cachebehavior_cachepolicyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cachebehavior_compress"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -854,7 +897,13 @@
         <DataProperty IRI="cachebehavior_minttl"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="cachebehavior_originrequestpolicyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="cachebehavior_pathpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cachebehavior_realtimelogconfigarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="cachebehavior_smoothstreaming"/>
@@ -896,6 +945,9 @@
         <DataProperty IRI="customoriginconfig_originreadtimeout"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="defaultcachebehavior_cachepolicyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="defaultcachebehavior_compress"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -909,6 +961,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="defaultcachebehavior_minttl"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="defaultcachebehavior_originrequestpolicyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="defaultcachebehavior_realtimelogconfigarn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="defaultcachebehavior_smoothstreaming"/>
@@ -998,6 +1056,12 @@
         <DataProperty IRI="origingroups_quantity"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="originshield_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="originshield_originshieldregion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1033,6 +1097,10 @@
         <Class IRI="cachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="cachebehavior_cachepolicyid"/>
+        <Class IRI="cachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="cachebehavior_compress"/>
         <Class IRI="cachebehavior"/>
     </DataPropertyDomain>
@@ -1053,7 +1121,15 @@
         <Class IRI="cachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="cachebehavior_originrequestpolicyid"/>
+        <Class IRI="cachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="cachebehavior_pathpattern"/>
+        <Class IRI="cachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachebehavior_realtimelogconfigarn"/>
         <Class IRI="cachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1062,6 +1138,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="cachebehavior_targetoriginid"/>
+        <Class IRI="cachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="cachebehavior_trustedkeygroups"/>
         <Class IRI="cachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1129,6 +1209,10 @@
         <Class IRI="defaultcachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="defaultcachebehavior_cachepolicyid"/>
+        <Class IRI="defaultcachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="defaultcachebehavior_compress"/>
         <Class IRI="defaultcachebehavior"/>
     </DataPropertyDomain>
@@ -1149,11 +1233,23 @@
         <Class IRI="defaultcachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="defaultcachebehavior_originrequestpolicyid"/>
+        <Class IRI="defaultcachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="defaultcachebehavior_realtimelogconfigarn"/>
+        <Class IRI="defaultcachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="defaultcachebehavior_smoothstreaming"/>
         <Class IRI="defaultcachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="defaultcachebehavior_targetoriginid"/>
+        <Class IRI="defaultcachebehavior"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="defaultcachebehavior_trustedkeygroups"/>
         <Class IRI="defaultcachebehavior"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1283,6 +1379,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="origingroups_quantity"/>
         <Class IRI="origingroups"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="originshield_enabled"/>
+        <Class IRI="originshield"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="originshield_originshieldregion"/>
+        <Class IRI="originshield"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
@@ -1333,6 +1437,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="cachebehavior_cachepolicyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cachebehavior_compress"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -1353,7 +1461,15 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="cachebehavior_originrequestpolicyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="cachebehavior_pathpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachebehavior_realtimelogconfigarn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1362,6 +1478,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="cachebehavior_targetoriginid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="cachebehavior_trustedkeygroups"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1429,6 +1549,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="defaultcachebehavior_cachepolicyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="defaultcachebehavior_compress"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -1449,11 +1573,23 @@
         <Datatype abbreviatedIRI="xsd:double"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="defaultcachebehavior_originrequestpolicyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="defaultcachebehavior_realtimelogconfigarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="defaultcachebehavior_smoothstreaming"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="defaultcachebehavior_targetoriginid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="defaultcachebehavior_trustedkeygroups"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1583,6 +1719,14 @@
     <DataPropertyRange>
         <DataProperty IRI="origingroups_quantity"/>
         <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="originshield_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="originshield_originshieldregion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="s3originconfig_originaccessidentity"/>
@@ -1641,6 +1785,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_cachepolicyid</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_cachepolicyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cachebehavior_compress</IRI>
         <Literal>cloudfrontdistribution:cachebehavior_compress</Literal>
     </AnnotationAssertion>
@@ -1676,8 +1825,18 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_originrequestpolicyid</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_originrequestpolicyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cachebehavior_pathpattern</IRI>
         <Literal>cloudfrontdistribution:cachebehavior_pathpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_realtimelogconfigarn</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_realtimelogconfigarn</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1688,6 +1847,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cachebehavior_targetoriginid</IRI>
         <Literal>cloudfrontdistribution:cachebehavior_targetoriginid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cachebehavior_trustedkeygroups</IRI>
+        <Literal>cloudfrontdistribution:cachebehavior_trustedkeygroups</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1791,6 +1955,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_cachepolicyid</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_cachepolicyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>defaultcachebehavior_compress</IRI>
         <Literal>cloudfrontdistribution:defaultcachebehavior_compress</Literal>
     </AnnotationAssertion>
@@ -1826,6 +1995,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_originrequestpolicyid</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_originrequestpolicyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_realtimelogconfigarn</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_realtimelogconfigarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>defaultcachebehavior_smoothstreaming</IRI>
         <Literal>cloudfrontdistribution:defaultcachebehavior_smoothstreaming</Literal>
     </AnnotationAssertion>
@@ -1833,6 +2012,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>defaultcachebehavior_targetoriginid</IRI>
         <Literal>cloudfrontdistribution:defaultcachebehavior_targetoriginid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>defaultcachebehavior_trustedkeygroups</IRI>
+        <Literal>cloudfrontdistribution:defaultcachebehavior_trustedkeygroups</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2066,6 +2250,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>origin_originshield</IRI>
+        <Literal>cloudfrontdistribution:origin_originshield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>origin_s3originconfig</IRI>
         <Literal>cloudfrontdistribution:origin_s3originconfig</Literal>
     </AnnotationAssertion>
@@ -2153,6 +2342,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>origingroups_quantity</IRI>
         <Literal>cloudfrontdistribution:origingroups_quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originshield</IRI>
+        <Literal>cloudfrontdistribution:originshield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originshield_enabled</IRI>
+        <Literal>cloudfrontdistribution:originshield_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>originshield_originshieldregion</IRI>
+        <Literal>cloudfrontdistribution:originshield_originshieldregion</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

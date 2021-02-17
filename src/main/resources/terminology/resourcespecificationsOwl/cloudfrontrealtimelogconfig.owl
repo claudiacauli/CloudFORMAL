@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontrealtimelogconfig#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/cloudfrontrealtimelogconfig#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="endpoint"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="kinesisstreamconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="realtimelogconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="endpoint_kinesisstreamconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="realtimelogconfig_endpoints"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpoint_streamtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kinesisstreamconfig_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="kinesisstreamconfig_streamarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="realtimelogconfig_fields"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="realtimelogconfig_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="realtimelogconfig_samplingrate"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="endpoint"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="endpoint_kinesisstreamconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="endpoint"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="endpoint_streamtype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kinesisstreamconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="kinesisstreamconfig_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="kinesisstreamconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="kinesisstreamconfig_streamarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="realtimelogconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="realtimelogconfig_endpoints"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="realtimelogconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="realtimelogconfig_fields"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="realtimelogconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="realtimelogconfig_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="realtimelogconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="realtimelogconfig_samplingrate"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="endpoint_kinesisstreamconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="endpoint_kinesisstreamconfig"/>
+        <Class IRI="endpoint"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="realtimelogconfig_endpoints"/>
+        <Class IRI="realtimelogconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="endpoint_kinesisstreamconfig"/>
+        <Class IRI="kinesisstreamconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="realtimelogconfig_endpoints"/>
+        <Class IRI="endpoint"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpoint_streamtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kinesisstreamconfig_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="kinesisstreamconfig_streamarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="realtimelogconfig_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="realtimelogconfig_samplingrate"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpoint_streamtype"/>
+        <Class IRI="endpoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kinesisstreamconfig_rolearn"/>
+        <Class IRI="kinesisstreamconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="kinesisstreamconfig_streamarn"/>
+        <Class IRI="kinesisstreamconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="realtimelogconfig_fields"/>
+        <Class IRI="realtimelogconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="realtimelogconfig_name"/>
+        <Class IRI="realtimelogconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="realtimelogconfig_samplingrate"/>
+        <Class IRI="realtimelogconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="endpoint_streamtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kinesisstreamconfig_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="kinesisstreamconfig_streamarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="realtimelogconfig_fields"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="realtimelogconfig_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="realtimelogconfig_samplingrate"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoint</IRI>
+        <Literal>cloudfrontrealtimelogconfig:endpoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoint_kinesisstreamconfig</IRI>
+        <Literal>cloudfrontrealtimelogconfig:endpoint_kinesisstreamconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpoint_streamtype</IRI>
+        <Literal>cloudfrontrealtimelogconfig:endpoint_streamtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisstreamconfig</IRI>
+        <Literal>cloudfrontrealtimelogconfig:kinesisstreamconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisstreamconfig_rolearn</IRI>
+        <Literal>cloudfrontrealtimelogconfig:kinesisstreamconfig_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>kinesisstreamconfig_streamarn</IRI>
+        <Literal>cloudfrontrealtimelogconfig:kinesisstreamconfig_streamarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>realtimelogconfig</IRI>
+        <Literal>cloudfrontrealtimelogconfig:realtimelogconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>realtimelogconfig_endpoints</IRI>
+        <Literal>cloudfrontrealtimelogconfig:realtimelogconfig_endpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>realtimelogconfig_fields</IRI>
+        <Literal>cloudfrontrealtimelogconfig:realtimelogconfig_fields</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>realtimelogconfig_name</IRI>
+        <Literal>cloudfrontrealtimelogconfig:realtimelogconfig_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>realtimelogconfig_samplingrate</IRI>
+        <Literal>cloudfrontrealtimelogconfig:realtimelogconfig_samplingrate</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

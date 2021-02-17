@@ -12,7 +12,22 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="cfndatasourceconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="cfns3logsconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="detector"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="cfndatasourceconfigurations_s3logs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="detector_datasources"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="cfns3logsconfiguration_enable"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="detector_enable"/>
@@ -27,12 +42,41 @@
             <Datatype abbreviatedIRI="xsd:boolean"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cfndatasourceconfigurations_s3logs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="detector_datasources"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cfndatasourceconfigurations_s3logs"/>
+        <Class IRI="cfndatasourceconfigurations"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="detector_datasources"/>
+        <Class IRI="detector"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cfndatasourceconfigurations_s3logs"/>
+        <Class IRI="cfns3logsconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="detector_datasources"/>
+        <Class IRI="cfndatasourceconfigurations"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="cfns3logsconfiguration_enable"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="detector_enable"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="detector_findingpublishingfrequency"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="cfns3logsconfiguration_enable"/>
+        <Class IRI="cfns3logsconfiguration"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="detector_enable"/>
         <Class IRI="detector"/>
@@ -41,6 +85,10 @@
         <DataProperty IRI="detector_findingpublishingfrequency"/>
         <Class IRI="detector"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="cfns3logsconfiguration_enable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="detector_enable"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
@@ -51,8 +99,33 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cfndatasourceconfigurations</IRI>
+        <Literal>guarddutydetector:cfndatasourceconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cfndatasourceconfigurations_s3logs</IRI>
+        <Literal>guarddutydetector:cfndatasourceconfigurations_s3logs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cfns3logsconfiguration</IRI>
+        <Literal>guarddutydetector:cfns3logsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>cfns3logsconfiguration_enable</IRI>
+        <Literal>guarddutydetector:cfns3logsconfiguration_enable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>detector</IRI>
         <Literal>guarddutydetector:detector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>detector_datasources</IRI>
+        <Literal>guarddutydetector:detector_datasources</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

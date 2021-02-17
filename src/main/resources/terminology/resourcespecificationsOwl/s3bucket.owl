@@ -54,6 +54,9 @@
         <Class IRI="filterrule"/>
     </Declaration>
     <Declaration>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="inventoryconfiguration"/>
     </Declaration>
     <Declaration>
@@ -87,6 +90,12 @@
         <Class IRI="objectlockrule"/>
     </Declaration>
     <Declaration>
+        <Class IRI="ownershipcontrols"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="ownershipcontrolsrule"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="publicaccessblockconfiguration"/>
     </Declaration>
     <Declaration>
@@ -97,6 +106,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="redirectrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicamodifications"/>
     </Declaration>
     <Declaration>
         <Class IRI="replicationconfiguration"/>
@@ -153,6 +165,9 @@
         <Class IRI="tagfilter"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tiering"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="topicconfiguration"/>
     </Declaration>
     <Declaration>
@@ -183,6 +198,9 @@
         <ObjectProperty IRI="bucket_corsconfiguration"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="bucket_intelligenttieringconfigurations"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="bucket_inventoryconfigurations"/>
     </Declaration>
     <Declaration>
@@ -199,6 +217,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="bucket_objectlockconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="bucket_ownershipcontrols"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="bucket_publicaccessblockconfiguration"/>
@@ -232,6 +253,12 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="encryptionconfiguration_replicakmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tagfilters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tierings"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="inventoryconfiguration_destination"/>
@@ -271,6 +298,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="objectlockrule_defaultretention"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ownershipcontrols_rules"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="queueconfiguration_filter"/>
@@ -363,6 +393,9 @@
         <ObjectProperty IRI="serversideencryptionrule_serversideencryptionbydefault"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="sourceselectioncriteria_replicamodifications"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="sourceselectioncriteria_ssekmsencryptedobjects"/>
     </Declaration>
     <Declaration>
@@ -450,6 +483,15 @@
         <DataProperty IRI="filterrule_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="intelligenttieringconfiguration_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="intelligenttieringconfiguration_prefix"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="intelligenttieringconfiguration_status"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="inventoryconfiguration_enabled"/>
     </Declaration>
     <Declaration>
@@ -492,6 +534,9 @@
         <DataProperty IRI="objectlockconfiguration_objectlockenabled"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="ownershipcontrolsrule_objectownership"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="publicaccessblockconfiguration_blockpublicacls"/>
     </Declaration>
     <Declaration>
@@ -520,6 +565,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="redirectrule_replacekeywith"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicamodifications_status"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="replicationdestination_account"/>
@@ -579,6 +627,9 @@
         <DataProperty IRI="serversideencryptionbydefault_ssealgorithm"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="serversideencryptionrule_bucketkeyenabled"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="ssekmsencryptedobjects_status"/>
     </Declaration>
     <Declaration>
@@ -592,6 +643,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="tagfilter_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tiering_accesstier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tiering_days"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="topicconfiguration_event"/>
@@ -742,6 +799,27 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="intelligenttieringconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="intelligenttieringconfiguration_tierings"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="intelligenttieringconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="intelligenttieringconfiguration_id"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="intelligenttieringconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="intelligenttieringconfiguration_status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="inventoryconfiguration"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="inventoryconfiguration_destination"/>
@@ -799,13 +877,6 @@
     </SubClassOf>
     <SubClassOf>
         <Class IRI="metrics"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="metrics_eventthreshold"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="metrics"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="metrics_status"/>
             <Datatype abbreviatedIRI="xsd:string"/>
@@ -840,6 +911,13 @@
         </ObjectSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="ownershipcontrols"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="ownershipcontrols_rules"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="queueconfiguration"/>
         <ObjectSomeValuesFrom>
             <ObjectProperty IRI="queueconfiguration_queue"/>
@@ -859,6 +937,13 @@
             <ObjectProperty IRI="redirectallrequeststo_hostname"/>
             <Class abbreviatedIRI="owl:Thing"/>
         </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicamodifications"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="replicamodifications_status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="replicationconfiguration"/>
@@ -945,13 +1030,6 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="sourceselectioncriteria"/>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="sourceselectioncriteria_ssekmsencryptedobjects"/>
-            <Class abbreviatedIRI="owl:Thing"/>
-        </ObjectSomeValuesFrom>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="ssekmsencryptedobjects"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="ssekmsencryptedobjects_status"/>
@@ -984,6 +1062,20 @@
         <DataSomeValuesFrom>
             <DataProperty IRI="tagfilter_value"/>
             <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tiering"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tiering_accesstier"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tiering"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tiering_days"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
@@ -1037,6 +1129,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="bucket_objectlockconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="bucket_ownershipcontrols"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="bucket_publicaccessblockconfiguration"/>
@@ -1156,6 +1251,9 @@
         <ObjectProperty IRI="serversideencryptionrule_serversideencryptionbydefault"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="sourceselectioncriteria_replicamodifications"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="sourceselectioncriteria_ssekmsencryptedobjects"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -1195,6 +1293,10 @@
         <Class IRI="bucket"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="bucket_intelligenttieringconfigurations"/>
+        <Class IRI="bucket"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="bucket_inventoryconfigurations"/>
         <Class IRI="bucket"/>
     </ObjectPropertyDomain>
@@ -1216,6 +1318,10 @@
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="bucket_objectlockconfiguration"/>
+        <Class IRI="bucket"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="bucket_ownershipcontrols"/>
         <Class IRI="bucket"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -1261,6 +1367,14 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="encryptionconfiguration_replicakmskeyid"/>
         <Class IRI="encryptionconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tagfilters"/>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tierings"/>
+        <Class IRI="intelligenttieringconfiguration"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="inventoryconfiguration_destination"/>
@@ -1313,6 +1427,10 @@
     <ObjectPropertyDomain>
         <ObjectProperty IRI="objectlockrule_defaultretention"/>
         <Class IRI="objectlockrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ownershipcontrols_rules"/>
+        <Class IRI="ownershipcontrols"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="queueconfiguration_filter"/>
@@ -1435,6 +1553,10 @@
         <Class IRI="serversideencryptionrule"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="sourceselectioncriteria_replicamodifications"/>
+        <Class IRI="sourceselectioncriteria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="sourceselectioncriteria_ssekmsencryptedobjects"/>
         <Class IRI="sourceselectioncriteria"/>
     </ObjectPropertyDomain>
@@ -1483,6 +1605,10 @@
         <Class IRI="corsconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="bucket_intelligenttieringconfigurations"/>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="bucket_inventoryconfigurations"/>
         <Class IRI="inventoryconfiguration"/>
     </ObjectPropertyRange>
@@ -1505,6 +1631,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="bucket_objectlockconfiguration"/>
         <Class IRI="objectlockconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="bucket_ownershipcontrols"/>
+        <Class IRI="ownershipcontrols"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="bucket_publicaccessblockconfiguration"/>
@@ -1545,6 +1675,14 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="encryptionconfiguration_replicakmskeyid"/>
         <Class IRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kmskey#key"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tagfilters"/>
+        <Class IRI="tagfilter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="intelligenttieringconfiguration_tierings"/>
+        <Class IRI="tiering"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="inventoryconfiguration_destination"/>
@@ -1597,6 +1735,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="objectlockrule_defaultretention"/>
         <Class IRI="defaultretention"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ownershipcontrols_rules"/>
+        <Class IRI="ownershipcontrolsrule"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="queueconfiguration_filter"/>
@@ -1711,6 +1853,10 @@
         <Class IRI="serversideencryptionbydefault"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="sourceselectioncriteria_replicamodifications"/>
+        <Class IRI="replicamodifications"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="sourceselectioncriteria_ssekmsencryptedobjects"/>
         <Class IRI="ssekmsencryptedobjects"/>
     </ObjectPropertyRange>
@@ -1795,6 +1941,15 @@
         <DataProperty IRI="filterrule_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="intelligenttieringconfiguration_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="intelligenttieringconfiguration_prefix"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="intelligenttieringconfiguration_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="inventoryconfiguration_enabled"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1834,6 +1989,9 @@
         <DataProperty IRI="objectlockconfiguration_objectlockenabled"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="ownershipcontrolsrule_objectownership"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="publicaccessblockconfiguration_blockpublicacls"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1862,6 +2020,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="redirectrule_replacekeywith"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicamodifications_status"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="replicationdestination_account"/>
@@ -1921,6 +2082,9 @@
         <DataProperty IRI="serversideencryptionbydefault_ssealgorithm"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="serversideencryptionrule_bucketkeyenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="ssekmsencryptedobjects_status"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -1934,6 +2098,12 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tagfilter_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tiering_accesstier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tiering_days"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="topicconfiguration_event"/>
@@ -2049,6 +2219,18 @@
         <Class IRI="filterrule"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="intelligenttieringconfiguration_id"/>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="intelligenttieringconfiguration_prefix"/>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="intelligenttieringconfiguration_status"/>
+        <Class IRI="intelligenttieringconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="inventoryconfiguration_enabled"/>
         <Class IRI="inventoryconfiguration"/>
     </DataPropertyDomain>
@@ -2105,6 +2287,10 @@
         <Class IRI="objectlockconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="ownershipcontrolsrule_objectownership"/>
+        <Class IRI="ownershipcontrolsrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="publicaccessblockconfiguration_blockpublicacls"/>
         <Class IRI="publicaccessblockconfiguration"/>
     </DataPropertyDomain>
@@ -2143,6 +2329,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="redirectrule_replacekeywith"/>
         <Class IRI="redirectrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicamodifications_status"/>
+        <Class IRI="replicamodifications"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="replicationdestination_account"/>
@@ -2221,6 +2411,10 @@
         <Class IRI="serversideencryptionbydefault"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="serversideencryptionrule_bucketkeyenabled"/>
+        <Class IRI="serversideencryptionrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="ssekmsencryptedobjects_status"/>
         <Class IRI="ssekmsencryptedobjects"/>
     </DataPropertyDomain>
@@ -2239,6 +2433,14 @@
     <DataPropertyDomain>
         <DataProperty IRI="tagfilter_value"/>
         <Class IRI="tagfilter"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tiering_accesstier"/>
+        <Class IRI="tiering"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tiering_days"/>
+        <Class IRI="tiering"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="topicconfiguration_event"/>
@@ -2361,6 +2563,18 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="intelligenttieringconfiguration_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="intelligenttieringconfiguration_prefix"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="intelligenttieringconfiguration_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="inventoryconfiguration_enabled"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -2417,6 +2631,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="ownershipcontrolsrule_objectownership"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="publicaccessblockconfiguration_blockpublicacls"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
     </DataPropertyRange>
@@ -2454,6 +2672,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="redirectrule_replacekeywith"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicamodifications_status"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -2533,6 +2755,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="serversideencryptionrule_bucketkeyenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="ssekmsencryptedobjects_status"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -2551,6 +2777,14 @@
     <DataPropertyRange>
         <DataProperty IRI="tagfilter_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tiering_accesstier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tiering_days"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="topicconfiguration_event"/>
@@ -2672,6 +2906,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_intelligenttieringconfigurations</IRI>
+        <Literal>s3bucket:bucket_intelligenttieringconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>bucket_inventoryconfigurations</IRI>
         <Literal>s3bucket:bucket_inventoryconfigurations</Literal>
     </AnnotationAssertion>
@@ -2704,6 +2943,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>bucket_objectlockenabled</IRI>
         <Literal>s3bucket:bucket_objectlockenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>bucket_ownershipcontrols</IRI>
+        <Literal>s3bucket:bucket_ownershipcontrols</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -2879,6 +3123,36 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>filterrule_value</IRI>
         <Literal>s3bucket:filterrule_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration_id</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration_prefix</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration_prefix</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration_status</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration_tagfilters</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration_tagfilters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>intelligenttieringconfiguration_tierings</IRI>
+        <Literal>s3bucket:intelligenttieringconfiguration_tierings</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3072,6 +3346,26 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ownershipcontrols</IRI>
+        <Literal>s3bucket:ownershipcontrols</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ownershipcontrols_rules</IRI>
+        <Literal>s3bucket:ownershipcontrols_rules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ownershipcontrolsrule</IRI>
+        <Literal>s3bucket:ownershipcontrolsrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>ownershipcontrolsrule_objectownership</IRI>
+        <Literal>s3bucket:ownershipcontrolsrule_objectownership</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>publicaccessblockconfiguration</IRI>
         <Literal>s3bucket:publicaccessblockconfiguration</Literal>
     </AnnotationAssertion>
@@ -3159,6 +3453,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>redirectrule_replacekeywith</IRI>
         <Literal>s3bucket:redirectrule_replacekeywith</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicamodifications</IRI>
+        <Literal>s3bucket:replicamodifications</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicamodifications_status</IRI>
+        <Literal>s3bucket:replicamodifications_status</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3447,6 +3751,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionrule_bucketkeyenabled</IRI>
+        <Literal>s3bucket:serversideencryptionrule_bucketkeyenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>serversideencryptionrule_serversideencryptionbydefault</IRI>
         <Literal>s3bucket:serversideencryptionrule_serversideencryptionbydefault</Literal>
     </AnnotationAssertion>
@@ -3454,6 +3763,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>sourceselectioncriteria</IRI>
         <Literal>s3bucket:sourceselectioncriteria</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sourceselectioncriteria_replicamodifications</IRI>
+        <Literal>s3bucket:sourceselectioncriteria_replicamodifications</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -3509,6 +3823,21 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tagfilter_value</IRI>
         <Literal>s3bucket:tagfilter_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tiering</IRI>
+        <Literal>s3bucket:tiering</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tiering_accesstier</IRI>
+        <Literal>s3bucket:tiering_accesstier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tiering_days</IRI>
+        <Literal>s3bucket:tiering_days</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

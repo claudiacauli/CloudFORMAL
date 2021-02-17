@@ -15,13 +15,13 @@
         <Class IRI="cloudwatchlogsloggroup"/>
     </Declaration>
     <Declaration>
-        <Class IRI="definitionsubstitutions"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="logdestination"/>
     </Declaration>
     <Declaration>
         <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="mapentry_string"/>
     </Declaration>
     <Declaration>
         <Class IRI="s3location"/>
@@ -31,6 +31,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="tagsentry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tracingconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="logdestination_cloudwatchlogsloggroup"/>
@@ -51,6 +54,9 @@
         <ObjectProperty IRI="statemachine_tags"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="statemachine_tracingconfiguration"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
     </Declaration>
     <Declaration>
@@ -58,6 +64,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="loggingconfiguration_level"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="mapentry_string_value"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3location_bucket"/>
@@ -86,13 +98,9 @@
     <Declaration>
         <DataProperty IRI="tagsentry_value"/>
     </Declaration>
-    <SubClassOf>
-        <Class IRI="cloudwatchlogsloggroup"/>
-        <DataSomeValuesFrom>
-            <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
-            <Datatype abbreviatedIRI="xsd:string"/>
-        </DataSomeValuesFrom>
-    </SubClassOf>
+    <Declaration>
+        <DataProperty IRI="tracingconfiguration_enabled"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="s3location"/>
         <DataSomeValuesFrom>
@@ -135,10 +143,10 @@
         <ObjectProperty IRI="statemachine_definitions3location"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
+        <ObjectProperty IRI="statemachine_loggingconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="statemachine_loggingconfiguration"/>
+        <ObjectProperty IRI="statemachine_tracingconfiguration"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="logdestination_cloudwatchlogsloggroup"/>
@@ -164,6 +172,10 @@
         <ObjectProperty IRI="statemachine_tags"/>
         <Class IRI="statemachine"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="statemachine_tracingconfiguration"/>
+        <Class IRI="statemachine"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="logdestination_cloudwatchlogsloggroup"/>
         <Class IRI="cloudwatchlogsloggroup"/>
@@ -178,7 +190,7 @@
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="statemachine_definitionsubstitutions"/>
-        <Class IRI="definitionsubstitutions"/>
+        <Class IRI="mapentry_string"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="statemachine_loggingconfiguration"/>
@@ -187,6 +199,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="statemachine_tags"/>
         <Class IRI="tagsentry"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="statemachine_tracingconfiguration"/>
+        <Class IRI="tracingconfiguration"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
@@ -223,6 +239,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tagsentry_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tracingconfiguration_enabled"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
@@ -237,6 +256,14 @@
         <Class IRI="loggingconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Class IRI="mapentry_string"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="s3location_bucket"/>
         <Class IRI="s3location"/>
     </DataPropertyDomain>
@@ -271,6 +298,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="tagsentry_value"/>
         <Class IRI="tagsentry"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tracingconfiguration_enabled"/>
+        <Class IRI="tracingconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="cloudwatchlogsloggroup_loggrouparn"/>
@@ -285,6 +316,14 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="mapentry_string_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="s3location_bucket"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -320,6 +359,10 @@
         <DataProperty IRI="tagsentry_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tracingconfiguration_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cloudwatchlogsloggroup</IRI>
@@ -329,11 +372,6 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>cloudwatchlogsloggroup_loggrouparn</IRI>
         <Literal>stepfunctionsstatemachine:cloudwatchlogsloggroup_loggrouparn</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>definitionsubstitutions</IRI>
-        <Literal>stepfunctionsstatemachine:definitionsubstitutions</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -432,6 +470,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statemachine_tracingconfiguration</IRI>
+        <Literal>stepfunctionsstatemachine:statemachine_tracingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tagsentry</IRI>
         <Literal>stepfunctionsstatemachine:tagsentry</Literal>
     </AnnotationAssertion>
@@ -444,6 +487,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>tagsentry_value</IRI>
         <Literal>stepfunctionsstatemachine:tagsentry_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tracingconfiguration</IRI>
+        <Literal>stepfunctionsstatemachine:tracingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tracingconfiguration_enabled</IRI>
+        <Literal>stepfunctionsstatemachine:tracingconfiguration_enabled</Literal>
     </AnnotationAssertion>
 </Ontology>
 

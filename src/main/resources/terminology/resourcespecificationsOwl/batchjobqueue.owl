@@ -35,6 +35,9 @@
     <Declaration>
         <DataProperty IRI="jobqueue_state"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="jobqueue_tags"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="computeenvironmentorder"/>
         <DataSomeValuesFrom>
@@ -86,6 +89,9 @@
     <FunctionalDataProperty>
         <DataProperty IRI="jobqueue_state"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jobqueue_tags"/>
+    </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="computeenvironmentorder_computeenvironment"/>
         <Class IRI="computeenvironmentorder"/>
@@ -106,6 +112,10 @@
         <DataProperty IRI="jobqueue_state"/>
         <Class IRI="jobqueue"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jobqueue_tags"/>
+        <Class IRI="jobqueue"/>
+    </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="computeenvironmentorder_computeenvironment"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -124,6 +134,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="jobqueue_state"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jobqueue_tags"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -165,6 +179,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>jobqueue_state</IRI>
         <Literal>batchjobqueue:jobqueue_state</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobqueue_tags</IRI>
+        <Literal>batchjobqueue:jobqueue_tags</Literal>
     </AnnotationAssertion>
 </Ontology>
 

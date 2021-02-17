@@ -21,6 +21,9 @@
         <Class IRI="mapentry_parametervalues"/>
     </Declaration>
     <Declaration>
+        <Class IRI="parametervalues"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="s3outputlocation"/>
     </Declaration>
     <Declaration>
@@ -37,6 +40,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="instanceassociationoutputlocation_s3location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="association_applyonlyatcroninterval"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="association_associationname"/>
@@ -76,6 +82,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mapentry_parametervalues_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="parametervalues_parametervalues"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
@@ -152,6 +161,9 @@
         <Class IRI="s3outputlocation"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="association_applyonlyatcroninterval"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="association_associationname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -196,6 +208,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="target_key"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="association_applyonlyatcroninterval"/>
+        <Class IRI="association"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="association_associationname"/>
         <Class IRI="association"/>
@@ -249,6 +265,10 @@
         <Class IRI="mapentry_parametervalues"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="parametervalues_parametervalues"/>
+        <Class IRI="parametervalues"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
         <Class IRI="s3outputlocation"/>
     </DataPropertyDomain>
@@ -268,6 +288,10 @@
         <DataProperty IRI="target_values"/>
         <Class IRI="target"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="association_applyonlyatcroninterval"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="association_associationname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -321,6 +345,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="parametervalues_parametervalues"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="s3outputlocation_outputs3bucketname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -344,6 +372,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>association</IRI>
         <Literal>ssmassociation:association</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>association_applyonlyatcroninterval</IRI>
+        <Literal>ssmassociation:association_applyonlyatcroninterval</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -424,6 +457,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>instanceassociationoutputlocation_s3location</IRI>
         <Literal>ssmassociation:instanceassociationoutputlocation_s3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametervalues</IRI>
+        <Literal>ssmassociation:parametervalues</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parametervalues_parametervalues</IRI>
+        <Literal>ssmassociation:parametervalues_parametervalues</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

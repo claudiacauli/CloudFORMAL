@@ -1,0 +1,601 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mwaaenvironment#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mwaaenvironment#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="airflowconfigurationoptions"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="environment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="moduleloggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tagmap"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="environment_airflowconfigurationoptions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="environment_loggingconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="environment_networkconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="environment_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_dagprocessinglogs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_schedulerlogs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_tasklogs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_webserverlogs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="loggingconfiguration_workerlogs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_airflowversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_dags3path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_environmentclass"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_executionrolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_kmskey"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_maxworkers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_pluginss3objectversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_pluginss3path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_requirementss3objectversion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_requirementss3path"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_sourcebucketarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_webserveraccessmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="environment_weeklymaintenancewindowstart"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="moduleloggingconfiguration_cloudwatchloggrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="moduleloggingconfiguration_enabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="moduleloggingconfiguration_loglevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_subnetids"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="environment"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="environment_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="environment_airflowconfigurationoptions"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="environment_loggingconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="environment_networkconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="environment_tags"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_dagprocessinglogs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_schedulerlogs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_tasklogs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_webserverlogs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="loggingconfiguration_workerlogs"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="environment_airflowconfigurationoptions"/>
+        <Class IRI="environment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="environment_loggingconfiguration"/>
+        <Class IRI="environment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="environment_networkconfiguration"/>
+        <Class IRI="environment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="environment_tags"/>
+        <Class IRI="environment"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_dagprocessinglogs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_schedulerlogs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_tasklogs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_webserverlogs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="loggingconfiguration_workerlogs"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="environment_airflowconfigurationoptions"/>
+        <Class IRI="airflowconfigurationoptions"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="environment_loggingconfiguration"/>
+        <Class IRI="loggingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="environment_networkconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="environment_tags"/>
+        <Class IRI="tagmap"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_dagprocessinglogs"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_schedulerlogs"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_tasklogs"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_webserverlogs"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="loggingconfiguration_workerlogs"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_airflowversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_dags3path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_environmentclass"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_executionrolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_kmskey"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_maxworkers"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_pluginss3objectversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_pluginss3path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_requirementss3objectversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_requirementss3path"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_sourcebucketarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_webserveraccessmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="environment_weeklymaintenancewindowstart"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="moduleloggingconfiguration_cloudwatchloggrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="moduleloggingconfiguration_enabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="moduleloggingconfiguration_loglevel"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_airflowversion"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_dags3path"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_environmentclass"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_executionrolearn"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_kmskey"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_maxworkers"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_name"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_pluginss3objectversion"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_pluginss3path"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_requirementss3objectversion"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_requirementss3path"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_sourcebucketarn"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_webserveraccessmode"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="environment_weeklymaintenancewindowstart"/>
+        <Class IRI="environment"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="moduleloggingconfiguration_cloudwatchloggrouparn"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="moduleloggingconfiguration_enabled"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="moduleloggingconfiguration_loglevel"/>
+        <Class IRI="moduleloggingconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_securitygroupids"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_subnetids"/>
+        <Class IRI="networkconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_airflowversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_dags3path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_environmentclass"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_executionrolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_kmskey"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_maxworkers"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_pluginss3objectversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_pluginss3path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_requirementss3objectversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_requirementss3path"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_sourcebucketarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_webserveraccessmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="environment_weeklymaintenancewindowstart"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="moduleloggingconfiguration_cloudwatchloggrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="moduleloggingconfiguration_enabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="moduleloggingconfiguration_loglevel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_subnetids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>airflowconfigurationoptions</IRI>
+        <Literal>mwaaenvironment:airflowconfigurationoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment</IRI>
+        <Literal>mwaaenvironment:environment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_airflowconfigurationoptions</IRI>
+        <Literal>mwaaenvironment:environment_airflowconfigurationoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_airflowversion</IRI>
+        <Literal>mwaaenvironment:environment_airflowversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_dags3path</IRI>
+        <Literal>mwaaenvironment:environment_dags3path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_environmentclass</IRI>
+        <Literal>mwaaenvironment:environment_environmentclass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_executionrolearn</IRI>
+        <Literal>mwaaenvironment:environment_executionrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_kmskey</IRI>
+        <Literal>mwaaenvironment:environment_kmskey</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_loggingconfiguration</IRI>
+        <Literal>mwaaenvironment:environment_loggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_maxworkers</IRI>
+        <Literal>mwaaenvironment:environment_maxworkers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_name</IRI>
+        <Literal>mwaaenvironment:environment_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_networkconfiguration</IRI>
+        <Literal>mwaaenvironment:environment_networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_pluginss3objectversion</IRI>
+        <Literal>mwaaenvironment:environment_pluginss3objectversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_pluginss3path</IRI>
+        <Literal>mwaaenvironment:environment_pluginss3path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_requirementss3objectversion</IRI>
+        <Literal>mwaaenvironment:environment_requirementss3objectversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_requirementss3path</IRI>
+        <Literal>mwaaenvironment:environment_requirementss3path</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_sourcebucketarn</IRI>
+        <Literal>mwaaenvironment:environment_sourcebucketarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_tags</IRI>
+        <Literal>mwaaenvironment:environment_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_webserveraccessmode</IRI>
+        <Literal>mwaaenvironment:environment_webserveraccessmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment_weeklymaintenancewindowstart</IRI>
+        <Literal>mwaaenvironment:environment_weeklymaintenancewindowstart</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_dagprocessinglogs</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration_dagprocessinglogs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_schedulerlogs</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration_schedulerlogs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_tasklogs</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration_tasklogs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_webserverlogs</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration_webserverlogs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>loggingconfiguration_workerlogs</IRI>
+        <Literal>mwaaenvironment:loggingconfiguration_workerlogs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>moduleloggingconfiguration</IRI>
+        <Literal>mwaaenvironment:moduleloggingconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>moduleloggingconfiguration_cloudwatchloggrouparn</IRI>
+        <Literal>mwaaenvironment:moduleloggingconfiguration_cloudwatchloggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>moduleloggingconfiguration_enabled</IRI>
+        <Literal>mwaaenvironment:moduleloggingconfiguration_enabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>moduleloggingconfiguration_loglevel</IRI>
+        <Literal>mwaaenvironment:moduleloggingconfiguration_loglevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration</IRI>
+        <Literal>mwaaenvironment:networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_securitygroupids</IRI>
+        <Literal>mwaaenvironment:networkconfiguration_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_subnetids</IRI>
+        <Literal>mwaaenvironment:networkconfiguration_subnetids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tagmap</IRI>
+        <Literal>mwaaenvironment:tagmap</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

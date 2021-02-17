@@ -15,13 +15,25 @@
         <Class IRI="containerdefinition"/>
     </Declaration>
     <Declaration>
+        <Class IRI="imageconfig"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="model"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="multimodelconfig"/>
     </Declaration>
     <Declaration>
         <Class IRI="tag"/>
     </Declaration>
     <Declaration>
         <Class IRI="vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerdefinition_imageconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerdefinition_multimodelconfig"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="model_containers"/>
@@ -51,10 +63,22 @@
         <DataProperty IRI="containerdefinition_modeldataurl"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="containerdefinition_modelpackagename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="imageconfig_repositoryaccessmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="model_enablenetworkisolation"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="model_executionrolearn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="model_modelname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="multimodelconfig_modelcachesetting"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="tag_key"/>
@@ -69,9 +93,9 @@
         <DataProperty IRI="vpcconfig_subnets"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="containerdefinition"/>
+        <Class IRI="imageconfig"/>
         <DataSomeValuesFrom>
-            <DataProperty IRI="containerdefinition_image"/>
+            <DataProperty IRI="imageconfig_repositoryaccessmode"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -111,11 +135,25 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerdefinition_imageconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerdefinition_multimodelconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="model_primarycontainer"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="model_vpcconfig"/>
     </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerdefinition_imageconfig"/>
+        <Class IRI="containerdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerdefinition_multimodelconfig"/>
+        <Class IRI="containerdefinition"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="model_containers"/>
         <Class IRI="model"/>
@@ -132,6 +170,14 @@
         <ObjectProperty IRI="model_vpcconfig"/>
         <Class IRI="model"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerdefinition_imageconfig"/>
+        <Class IRI="imageconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerdefinition_multimodelconfig"/>
+        <Class IRI="multimodelconfig"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="model_containers"/>
         <Class IRI="containerdefinition"/>
@@ -164,10 +210,22 @@
         <DataProperty IRI="containerdefinition_modeldataurl"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="containerdefinition_modelpackagename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="imageconfig_repositoryaccessmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="model_enablenetworkisolation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="model_executionrolearn"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="model_modelname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="multimodelconfig_modelcachesetting"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="tag_key"/>
@@ -196,12 +254,28 @@
         <Class IRI="containerdefinition"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="containerdefinition_modelpackagename"/>
+        <Class IRI="containerdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="imageconfig_repositoryaccessmode"/>
+        <Class IRI="imageconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="model_enablenetworkisolation"/>
+        <Class IRI="model"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="model_executionrolearn"/>
         <Class IRI="model"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="model_modelname"/>
         <Class IRI="model"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="multimodelconfig_modelcachesetting"/>
+        <Class IRI="multimodelconfig"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="tag_key"/>
@@ -240,11 +314,27 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="containerdefinition_modelpackagename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="imageconfig_repositoryaccessmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="model_enablenetworkisolation"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="model_executionrolearn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="model_modelname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="multimodelconfig_modelcachesetting"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -285,6 +375,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerdefinition_imageconfig</IRI>
+        <Literal>sagemakermodel:containerdefinition_imageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerdefinition_mode</IRI>
         <Literal>sagemakermodel:containerdefinition_mode</Literal>
     </AnnotationAssertion>
@@ -295,6 +390,26 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerdefinition_modelpackagename</IRI>
+        <Literal>sagemakermodel:containerdefinition_modelpackagename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerdefinition_multimodelconfig</IRI>
+        <Literal>sagemakermodel:containerdefinition_multimodelconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig</IRI>
+        <Literal>sagemakermodel:imageconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>imageconfig_repositoryaccessmode</IRI>
+        <Literal>sagemakermodel:imageconfig_repositoryaccessmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>model</IRI>
         <Literal>sagemakermodel:model</Literal>
     </AnnotationAssertion>
@@ -302,6 +417,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>model_containers</IRI>
         <Literal>sagemakermodel:model_containers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>model_enablenetworkisolation</IRI>
+        <Literal>sagemakermodel:model_enablenetworkisolation</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -327,6 +447,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>model_vpcconfig</IRI>
         <Literal>sagemakermodel:model_vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>multimodelconfig</IRI>
+        <Literal>sagemakermodel:multimodelconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>multimodelconfig_modelcachesetting</IRI>
+        <Literal>sagemakermodel:multimodelconfig_modelcachesetting</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

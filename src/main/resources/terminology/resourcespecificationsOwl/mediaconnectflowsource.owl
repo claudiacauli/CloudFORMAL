@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mediaconnectflowsource#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/mediaconnectflowsource#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="encryption"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="flowsource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="flowsource_decryption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_algorithm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_constantinitializationvector"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_deviceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_keytype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_region"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_resourceid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_secretarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="encryption_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_entitlementarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_flowarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_ingestport"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_maxbitrate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_maxlatency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_protocol"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_streamid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_vpcinterfacename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="flowsource_whitelistcidr"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="encryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryption_algorithm"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="encryption"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="encryption_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowsource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowsource_description"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="flowsource"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="flowsource_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="flowsource_decryption"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="flowsource_decryption"/>
+        <Class IRI="flowsource"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="flowsource_decryption"/>
+        <Class IRI="encryption"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_algorithm"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_constantinitializationvector"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_deviceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_keytype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_region"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_resourceid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_secretarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="encryption_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_entitlementarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_flowarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_ingestport"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_maxbitrate"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_maxlatency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_protocol"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_streamid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_vpcinterfacename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="flowsource_whitelistcidr"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_algorithm"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_constantinitializationvector"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_deviceid"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_keytype"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_region"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_resourceid"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_rolearn"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_secretarn"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="encryption_url"/>
+        <Class IRI="encryption"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_description"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_entitlementarn"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_flowarn"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_ingestport"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_maxbitrate"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_maxlatency"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_name"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_protocol"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_streamid"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_vpcinterfacename"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="flowsource_whitelistcidr"/>
+        <Class IRI="flowsource"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_algorithm"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_constantinitializationvector"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_deviceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_keytype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_region"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_resourceid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_secretarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="encryption_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_entitlementarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_flowarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_ingestport"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_maxbitrate"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_maxlatency"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_protocol"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_streamid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_vpcinterfacename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="flowsource_whitelistcidr"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption</IRI>
+        <Literal>mediaconnectflowsource:encryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_algorithm</IRI>
+        <Literal>mediaconnectflowsource:encryption_algorithm</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_constantinitializationvector</IRI>
+        <Literal>mediaconnectflowsource:encryption_constantinitializationvector</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_deviceid</IRI>
+        <Literal>mediaconnectflowsource:encryption_deviceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_keytype</IRI>
+        <Literal>mediaconnectflowsource:encryption_keytype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_region</IRI>
+        <Literal>mediaconnectflowsource:encryption_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_resourceid</IRI>
+        <Literal>mediaconnectflowsource:encryption_resourceid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_rolearn</IRI>
+        <Literal>mediaconnectflowsource:encryption_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_secretarn</IRI>
+        <Literal>mediaconnectflowsource:encryption_secretarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>encryption_url</IRI>
+        <Literal>mediaconnectflowsource:encryption_url</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource</IRI>
+        <Literal>mediaconnectflowsource:flowsource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_decryption</IRI>
+        <Literal>mediaconnectflowsource:flowsource_decryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_description</IRI>
+        <Literal>mediaconnectflowsource:flowsource_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_entitlementarn</IRI>
+        <Literal>mediaconnectflowsource:flowsource_entitlementarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_flowarn</IRI>
+        <Literal>mediaconnectflowsource:flowsource_flowarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_ingestport</IRI>
+        <Literal>mediaconnectflowsource:flowsource_ingestport</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_maxbitrate</IRI>
+        <Literal>mediaconnectflowsource:flowsource_maxbitrate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_maxlatency</IRI>
+        <Literal>mediaconnectflowsource:flowsource_maxlatency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_name</IRI>
+        <Literal>mediaconnectflowsource:flowsource_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_protocol</IRI>
+        <Literal>mediaconnectflowsource:flowsource_protocol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_streamid</IRI>
+        <Literal>mediaconnectflowsource:flowsource_streamid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_vpcinterfacename</IRI>
+        <Literal>mediaconnectflowsource:flowsource_vpcinterfacename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>flowsource_whitelistcidr</IRI>
+        <Literal>mediaconnectflowsource:flowsource_whitelistcidr</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

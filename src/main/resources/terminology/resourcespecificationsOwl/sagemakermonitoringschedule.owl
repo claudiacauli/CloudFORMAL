@@ -1,0 +1,1582 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakermonitoringschedule#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/sagemakermonitoringschedule#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="baselineconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="clusterconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="constraintsresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="endpointinput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="environment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringappspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringexecutionsummary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringinput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringinputs"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringjobdefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringoutput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringoutputconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringresources"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringschedule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="monitoringscheduleconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3output"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="scheduleconfig"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statisticsresource"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="stoppingcondition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="baselineconfig_constraintsresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="baselineconfig_statisticsresource"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringinput_endpointinput"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringinputs_monitoringinputs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_baselineconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_environment"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringappspecification"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringinputs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringoutputconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringresources"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_networkconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringjobdefinition_stoppingcondition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringoutput_s3output"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringoutputconfig_monitoringoutputs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringresources_clusterconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringschedule_lastmonitoringexecutionsummary"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringschedule_monitoringscheduleconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringschedule_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringscheduleconfig_monitoringjobdefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="monitoringscheduleconfig_scheduleconfig"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="networkconfig_vpcconfig"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clusterconfig_instancecount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clusterconfig_instancetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clusterconfig_volumekmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clusterconfig_volumesizeingb"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="constraintsresource_s3uri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointinput_endpointname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointinput_localpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointinput_s3datadistributiontype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="endpointinput_s3inputmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringappspecification_containerarguments"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringappspecification_containerentrypoint"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringappspecification_imageuri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringappspecification_postanalyticsprocessorsourceuri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringappspecification_recordpreprocessorsourceuri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_creationtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_endpointname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_failurereason"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_lastmodifiedtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringexecutionstatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringschedulename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_processingjobarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringexecutionsummary_scheduledtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringjobdefinition_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringoutputconfig_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringschedule_endpointname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringschedule_failurereason"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringschedule_monitoringschedulename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringschedule_monitoringschedulestatus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringjobdefinitionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringtype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfig_enableintercontainertrafficencryption"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfig_enablenetworkisolation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3output_localpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3output_s3uploadmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3output_s3uri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="scheduleconfig_scheduleexpression"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statisticsresource_s3uri"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="stoppingcondition_maxruntimeinseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="vpcconfig_subnets"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="clusterconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="clusterconfig_instancecount"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="clusterconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="clusterconfig_instancetype"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="clusterconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="clusterconfig_volumesizeingb"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="endpointinput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="endpointinput_endpointname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="endpointinput"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="endpointinput_localpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringappspecification"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringappspecification_imageuri"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringexecutionsummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringexecutionsummary_creationtime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringexecutionsummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringexecutionsummary_lastmodifiedtime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringexecutionsummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringexecutionsummary_monitoringexecutionstatus"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringexecutionsummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringexecutionsummary_monitoringschedulename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringexecutionsummary"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringexecutionsummary_scheduledtime"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringinput"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringinput_endpointinput"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringjobdefinition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringjobdefinition_monitoringappspecification"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringjobdefinition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringjobdefinition_monitoringinputs"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringjobdefinition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringjobdefinition_monitoringoutputconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringjobdefinition"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringjobdefinition_monitoringresources"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringjobdefinition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringjobdefinition_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringoutput"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringoutput_s3output"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringoutputconfig"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringoutputconfig_monitoringoutputs"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringresources"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringresources_clusterconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringschedule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="monitoringschedule_monitoringscheduleconfig"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="monitoringschedule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="monitoringschedule_monitoringschedulename"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3output"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3output_localpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3output"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3output_s3uri"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="scheduleconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="scheduleconfig_scheduleexpression"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="stoppingcondition"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="stoppingcondition_maxruntimeinseconds"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpcconfig_securitygroupids"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="vpcconfig"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="vpcconfig_subnets"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="baselineconfig_constraintsresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="baselineconfig_statisticsresource"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringinput_endpointinput"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_baselineconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_environment"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringappspecification"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringinputs"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringoutputconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringresources"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_networkconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringjobdefinition_stoppingcondition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringoutput_s3output"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringresources_clusterconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringschedule_lastmonitoringexecutionsummary"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringschedule_monitoringscheduleconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringscheduleconfig_monitoringjobdefinition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="monitoringscheduleconfig_scheduleconfig"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="networkconfig_vpcconfig"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="baselineconfig_constraintsresource"/>
+        <Class IRI="baselineconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="baselineconfig_statisticsresource"/>
+        <Class IRI="baselineconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringinput_endpointinput"/>
+        <Class IRI="monitoringinput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringinputs_monitoringinputs"/>
+        <Class IRI="monitoringinputs"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_baselineconfig"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_environment"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringappspecification"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringinputs"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringoutputconfig"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringresources"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_networkconfig"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringjobdefinition_stoppingcondition"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringoutput_s3output"/>
+        <Class IRI="monitoringoutput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringoutputconfig_monitoringoutputs"/>
+        <Class IRI="monitoringoutputconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringresources_clusterconfig"/>
+        <Class IRI="monitoringresources"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringschedule_lastmonitoringexecutionsummary"/>
+        <Class IRI="monitoringschedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringschedule_monitoringscheduleconfig"/>
+        <Class IRI="monitoringschedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringschedule_tags"/>
+        <Class IRI="monitoringschedule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringscheduleconfig_monitoringjobdefinition"/>
+        <Class IRI="monitoringscheduleconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="monitoringscheduleconfig_scheduleconfig"/>
+        <Class IRI="monitoringscheduleconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="networkconfig_vpcconfig"/>
+        <Class IRI="networkconfig"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="baselineconfig_constraintsresource"/>
+        <Class IRI="constraintsresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="baselineconfig_statisticsresource"/>
+        <Class IRI="statisticsresource"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringinput_endpointinput"/>
+        <Class IRI="endpointinput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringinputs_monitoringinputs"/>
+        <Class IRI="monitoringinput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_baselineconfig"/>
+        <Class IRI="baselineconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_environment"/>
+        <Class IRI="environment"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringappspecification"/>
+        <Class IRI="monitoringappspecification"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringinputs"/>
+        <Class IRI="monitoringinputs"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringoutputconfig"/>
+        <Class IRI="monitoringoutputconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_monitoringresources"/>
+        <Class IRI="monitoringresources"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_networkconfig"/>
+        <Class IRI="networkconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringjobdefinition_stoppingcondition"/>
+        <Class IRI="stoppingcondition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringoutput_s3output"/>
+        <Class IRI="s3output"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringoutputconfig_monitoringoutputs"/>
+        <Class IRI="monitoringoutput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringresources_clusterconfig"/>
+        <Class IRI="clusterconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringschedule_lastmonitoringexecutionsummary"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringschedule_monitoringscheduleconfig"/>
+        <Class IRI="monitoringscheduleconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringschedule_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringscheduleconfig_monitoringjobdefinition"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="monitoringscheduleconfig_scheduleconfig"/>
+        <Class IRI="scheduleconfig"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="networkconfig_vpcconfig"/>
+        <Class IRI="vpcconfig"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clusterconfig_instancecount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clusterconfig_instancetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clusterconfig_volumekmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="clusterconfig_volumesizeingb"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="constraintsresource_s3uri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointinput_endpointname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointinput_localpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointinput_s3datadistributiontype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="endpointinput_s3inputmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringappspecification_imageuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringappspecification_postanalyticsprocessorsourceuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringappspecification_recordpreprocessorsourceuri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_creationtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_endpointname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_failurereason"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_lastmodifiedtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringexecutionstatus"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringschedulename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_processingjobarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringexecutionsummary_scheduledtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringjobdefinition_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringoutputconfig_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringschedule_endpointname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringschedule_failurereason"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringschedule_monitoringschedulename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringschedule_monitoringschedulestatus"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringjobdefinitionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringtype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfig_enableintercontainertrafficencryption"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfig_enablenetworkisolation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3output_localpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3output_s3uploadmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3output_s3uri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="scheduleconfig_scheduleexpression"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statisticsresource_s3uri"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="stoppingcondition_maxruntimeinseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="clusterconfig_instancecount"/>
+        <Class IRI="clusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clusterconfig_instancetype"/>
+        <Class IRI="clusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clusterconfig_volumekmskeyid"/>
+        <Class IRI="clusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clusterconfig_volumesizeingb"/>
+        <Class IRI="clusterconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="constraintsresource_s3uri"/>
+        <Class IRI="constraintsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointinput_endpointname"/>
+        <Class IRI="endpointinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointinput_localpath"/>
+        <Class IRI="endpointinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointinput_s3datadistributiontype"/>
+        <Class IRI="endpointinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="endpointinput_s3inputmode"/>
+        <Class IRI="endpointinput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringappspecification_containerarguments"/>
+        <Class IRI="monitoringappspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringappspecification_containerentrypoint"/>
+        <Class IRI="monitoringappspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringappspecification_imageuri"/>
+        <Class IRI="monitoringappspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringappspecification_postanalyticsprocessorsourceuri"/>
+        <Class IRI="monitoringappspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringappspecification_recordpreprocessorsourceuri"/>
+        <Class IRI="monitoringappspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_creationtime"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_endpointname"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_failurereason"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_lastmodifiedtime"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringexecutionstatus"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringschedulename"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_processingjobarn"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringexecutionsummary_scheduledtime"/>
+        <Class IRI="monitoringexecutionsummary"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringjobdefinition_rolearn"/>
+        <Class IRI="monitoringjobdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringoutputconfig_kmskeyid"/>
+        <Class IRI="monitoringoutputconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringschedule_endpointname"/>
+        <Class IRI="monitoringschedule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringschedule_failurereason"/>
+        <Class IRI="monitoringschedule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringschedule_monitoringschedulename"/>
+        <Class IRI="monitoringschedule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringschedule_monitoringschedulestatus"/>
+        <Class IRI="monitoringschedule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringjobdefinitionname"/>
+        <Class IRI="monitoringscheduleconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringtype"/>
+        <Class IRI="monitoringscheduleconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfig_enableintercontainertrafficencryption"/>
+        <Class IRI="networkconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfig_enablenetworkisolation"/>
+        <Class IRI="networkconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3output_localpath"/>
+        <Class IRI="s3output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3output_s3uploadmode"/>
+        <Class IRI="s3output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3output_s3uri"/>
+        <Class IRI="s3output"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="scheduleconfig_scheduleexpression"/>
+        <Class IRI="scheduleconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statisticsresource_s3uri"/>
+        <Class IRI="statisticsresource"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="stoppingcondition_maxruntimeinseconds"/>
+        <Class IRI="stoppingcondition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+        <Class IRI="vpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="vpcconfig_subnets"/>
+        <Class IRI="vpcconfig"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="clusterconfig_instancecount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clusterconfig_instancetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clusterconfig_volumekmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clusterconfig_volumesizeingb"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="constraintsresource_s3uri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointinput_endpointname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointinput_localpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointinput_s3datadistributiontype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="endpointinput_s3inputmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringappspecification_containerarguments"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringappspecification_containerentrypoint"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringappspecification_imageuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringappspecification_postanalyticsprocessorsourceuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringappspecification_recordpreprocessorsourceuri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_creationtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_endpointname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_failurereason"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_lastmodifiedtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringexecutionstatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_monitoringschedulename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_processingjobarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringexecutionsummary_scheduledtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringjobdefinition_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringoutputconfig_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringschedule_endpointname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringschedule_failurereason"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringschedule_monitoringschedulename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringschedule_monitoringschedulestatus"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringjobdefinitionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="monitoringscheduleconfig_monitoringtype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfig_enableintercontainertrafficencryption"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfig_enablenetworkisolation"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3output_localpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3output_s3uploadmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3output_s3uri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="scheduleconfig_scheduleexpression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statisticsresource_s3uri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="stoppingcondition_maxruntimeinseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfig_securitygroupids"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="vpcconfig_subnets"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>baselineconfig</IRI>
+        <Literal>sagemakermonitoringschedule:baselineconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>baselineconfig_constraintsresource</IRI>
+        <Literal>sagemakermonitoringschedule:baselineconfig_constraintsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>baselineconfig_statisticsresource</IRI>
+        <Literal>sagemakermonitoringschedule:baselineconfig_statisticsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clusterconfig</IRI>
+        <Literal>sagemakermonitoringschedule:clusterconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clusterconfig_instancecount</IRI>
+        <Literal>sagemakermonitoringschedule:clusterconfig_instancecount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clusterconfig_instancetype</IRI>
+        <Literal>sagemakermonitoringschedule:clusterconfig_instancetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clusterconfig_volumekmskeyid</IRI>
+        <Literal>sagemakermonitoringschedule:clusterconfig_volumekmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>clusterconfig_volumesizeingb</IRI>
+        <Literal>sagemakermonitoringschedule:clusterconfig_volumesizeingb</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>constraintsresource</IRI>
+        <Literal>sagemakermonitoringschedule:constraintsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>constraintsresource_s3uri</IRI>
+        <Literal>sagemakermonitoringschedule:constraintsresource_s3uri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointinput</IRI>
+        <Literal>sagemakermonitoringschedule:endpointinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointinput_endpointname</IRI>
+        <Literal>sagemakermonitoringschedule:endpointinput_endpointname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointinput_localpath</IRI>
+        <Literal>sagemakermonitoringschedule:endpointinput_localpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointinput_s3datadistributiontype</IRI>
+        <Literal>sagemakermonitoringschedule:endpointinput_s3datadistributiontype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>endpointinput_s3inputmode</IRI>
+        <Literal>sagemakermonitoringschedule:endpointinput_s3inputmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>environment</IRI>
+        <Literal>sagemakermonitoringschedule:environment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification_containerarguments</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification_containerarguments</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification_containerentrypoint</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification_containerentrypoint</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification_imageuri</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification_imageuri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification_postanalyticsprocessorsourceuri</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification_postanalyticsprocessorsourceuri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringappspecification_recordpreprocessorsourceuri</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringappspecification_recordpreprocessorsourceuri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_creationtime</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_creationtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_endpointname</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_endpointname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_failurereason</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_failurereason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_lastmodifiedtime</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_lastmodifiedtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_monitoringexecutionstatus</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_monitoringexecutionstatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_monitoringschedulename</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_monitoringschedulename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_processingjobarn</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_processingjobarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringexecutionsummary_scheduledtime</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringexecutionsummary_scheduledtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringinput</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringinput_endpointinput</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringinput_endpointinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringinputs</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringinputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringinputs_monitoringinputs</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringinputs_monitoringinputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_baselineconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_baselineconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_environment</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_environment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_monitoringappspecification</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_monitoringappspecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_monitoringinputs</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_monitoringinputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_monitoringoutputconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_monitoringoutputconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_monitoringresources</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_monitoringresources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_networkconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_networkconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_rolearn</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringjobdefinition_stoppingcondition</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringjobdefinition_stoppingcondition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringoutput</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringoutput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringoutput_s3output</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringoutput_s3output</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringoutputconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringoutputconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringoutputconfig_kmskeyid</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringoutputconfig_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringoutputconfig_monitoringoutputs</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringoutputconfig_monitoringoutputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringresources</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringresources</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringresources_clusterconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringresources_clusterconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_endpointname</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_endpointname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_failurereason</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_failurereason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_lastmonitoringexecutionsummary</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_lastmonitoringexecutionsummary</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_monitoringscheduleconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_monitoringscheduleconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_monitoringschedulename</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_monitoringschedulename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_monitoringschedulestatus</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_monitoringschedulestatus</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringschedule_tags</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringschedule_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringscheduleconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringscheduleconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringscheduleconfig_monitoringjobdefinition</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringscheduleconfig_monitoringjobdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringscheduleconfig_monitoringjobdefinitionname</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringscheduleconfig_monitoringjobdefinitionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringscheduleconfig_monitoringtype</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringscheduleconfig_monitoringtype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>monitoringscheduleconfig_scheduleconfig</IRI>
+        <Literal>sagemakermonitoringschedule:monitoringscheduleconfig_scheduleconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfig</IRI>
+        <Literal>sagemakermonitoringschedule:networkconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfig_enableintercontainertrafficencryption</IRI>
+        <Literal>sagemakermonitoringschedule:networkconfig_enableintercontainertrafficencryption</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfig_enablenetworkisolation</IRI>
+        <Literal>sagemakermonitoringschedule:networkconfig_enablenetworkisolation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfig_vpcconfig</IRI>
+        <Literal>sagemakermonitoringschedule:networkconfig_vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3output</IRI>
+        <Literal>sagemakermonitoringschedule:s3output</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3output_localpath</IRI>
+        <Literal>sagemakermonitoringschedule:s3output_localpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3output_s3uploadmode</IRI>
+        <Literal>sagemakermonitoringschedule:s3output_s3uploadmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3output_s3uri</IRI>
+        <Literal>sagemakermonitoringschedule:s3output_s3uri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scheduleconfig</IRI>
+        <Literal>sagemakermonitoringschedule:scheduleconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>scheduleconfig_scheduleexpression</IRI>
+        <Literal>sagemakermonitoringschedule:scheduleconfig_scheduleexpression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statisticsresource</IRI>
+        <Literal>sagemakermonitoringschedule:statisticsresource</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statisticsresource_s3uri</IRI>
+        <Literal>sagemakermonitoringschedule:statisticsresource_s3uri</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stoppingcondition</IRI>
+        <Literal>sagemakermonitoringschedule:stoppingcondition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>stoppingcondition_maxruntimeinseconds</IRI>
+        <Literal>sagemakermonitoringschedule:stoppingcondition_maxruntimeinseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>sagemakermonitoringschedule:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>sagemakermonitoringschedule:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>sagemakermonitoringschedule:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig</IRI>
+        <Literal>sagemakermonitoringschedule:vpcconfig</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig_securitygroupids</IRI>
+        <Literal>sagemakermonitoringschedule:vpcconfig_securitygroupids</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>vpcconfig_subnets</IRI>
+        <Literal>sagemakermonitoringschedule:vpcconfig_subnets</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

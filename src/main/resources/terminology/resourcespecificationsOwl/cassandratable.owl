@@ -27,6 +27,9 @@
         <Class IRI="table"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="billingmode_provisionedthroughput"/>
     </Declaration>
     <Declaration>
@@ -43,6 +46,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="table_regularcolumns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="table_tags"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="billingmode_mode"/>
@@ -66,7 +72,16 @@
         <DataProperty IRI="table_keyspacename"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="table_pointintimerecoveryenabled"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="table_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
     </Declaration>
     <SubClassOf>
         <Class IRI="billingmode"/>
@@ -124,6 +139,20 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="billingmode_provisionedthroughput"/>
     </FunctionalObjectProperty>
@@ -157,6 +186,10 @@
         <ObjectProperty IRI="table_regularcolumns"/>
         <Class IRI="table"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="table_tags"/>
+        <Class IRI="table"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="billingmode_provisionedthroughput"/>
         <Class IRI="provisionedthroughput"/>
@@ -181,6 +214,10 @@
         <ObjectProperty IRI="table_regularcolumns"/>
         <Class IRI="column"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="table_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
     <FunctionalDataProperty>
         <DataProperty IRI="billingmode_mode"/>
     </FunctionalDataProperty>
@@ -203,7 +240,16 @@
         <DataProperty IRI="table_keyspacename"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="table_pointintimerecoveryenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="table_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="billingmode_mode"/>
@@ -234,8 +280,20 @@
         <Class IRI="table"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="table_pointintimerecoveryenabled"/>
+        <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="table_tablename"/>
         <Class IRI="table"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="billingmode_mode"/>
@@ -266,7 +324,19 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="table_pointintimerecoveryenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="table_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <AnnotationAssertion>
@@ -356,6 +426,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_pointintimerecoveryenabled</IRI>
+        <Literal>cassandratable:table_pointintimerecoveryenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>table_regularcolumns</IRI>
         <Literal>cassandratable:table_regularcolumns</Literal>
     </AnnotationAssertion>
@@ -363,6 +438,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>table_tablename</IRI>
         <Literal>cassandratable:table_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>table_tags</IRI>
+        <Literal>cassandratable:table_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>cassandratable:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>cassandratable:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>cassandratable:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

@@ -24,6 +24,12 @@
         <Class IRI="partitioninput"/>
     </Declaration>
     <Declaration>
+        <Class IRI="schemaid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="schemareference"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="serdeinfo"/>
     </Declaration>
     <Declaration>
@@ -39,7 +45,13 @@
         <ObjectProperty IRI="partitioninput_storagedescriptor"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="storagedescriptor_columns"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
@@ -79,6 +91,21 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="partitioninput_values"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_registryname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_schemaarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemaid_schemaname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemareference_schameversionid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="serdeinfo_name"/>
@@ -178,6 +205,12 @@
         <ObjectProperty IRI="partitioninput_storagedescriptor"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -192,7 +225,15 @@
         <Class IRI="partitioninput"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+        <Class IRI="schemareference"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="storagedescriptor_columns"/>
+        <Class IRI="storagedescriptor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
         <Class IRI="storagedescriptor"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -216,8 +257,16 @@
         <Class IRI="storagedescriptor"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="schemareference_schemaid"/>
+        <Class IRI="schemaid"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="storagedescriptor_columns"/>
         <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="storagedescriptor_schemareference"/>
+        <Class IRI="schemareference"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="storagedescriptor_serdeinfo"/>
@@ -257,6 +306,21 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="partitioninput_parameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_registryname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_schemaarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemaid_schemaname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemareference_schameversionid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="serdeinfo_name"/>
@@ -330,6 +394,26 @@
     <DataPropertyDomain>
         <DataProperty IRI="partitioninput_values"/>
         <Class IRI="partitioninput"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_registryname"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_schemaarn"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemaid_schemaname"/>
+        <Class IRI="schemaid"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemareference_schameversionid"/>
+        <Class IRI="schemareference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
+        <Class IRI="schemareference"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="serdeinfo_name"/>
@@ -426,6 +510,26 @@
     <DataPropertyRange>
         <DataProperty IRI="partitioninput_values"/>
         <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_registryname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_schemaarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemaid_schemaname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemareference_schameversionid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="schemareference_schemaversionnumber"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="serdeinfo_name"/>
@@ -565,6 +669,46 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid</IRI>
+        <Literal>gluepartition:schemaid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_registryname</IRI>
+        <Literal>gluepartition:schemaid_registryname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_schemaarn</IRI>
+        <Literal>gluepartition:schemaid_schemaarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemaid_schemaname</IRI>
+        <Literal>gluepartition:schemaid_schemaname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference</IRI>
+        <Literal>gluepartition:schemareference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schameversionid</IRI>
+        <Literal>gluepartition:schemareference_schameversionid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schemaid</IRI>
+        <Literal>gluepartition:schemareference_schemaid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemareference_schemaversionnumber</IRI>
+        <Literal>gluepartition:schemareference_schemaversionnumber</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>serdeinfo</IRI>
         <Literal>gluepartition:serdeinfo</Literal>
     </AnnotationAssertion>
@@ -647,6 +791,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>storagedescriptor_parameters</IRI>
         <Literal>gluepartition:storagedescriptor_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>storagedescriptor_schemareference</IRI>
+        <Literal>gluepartition:storagedescriptor_schemareference</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

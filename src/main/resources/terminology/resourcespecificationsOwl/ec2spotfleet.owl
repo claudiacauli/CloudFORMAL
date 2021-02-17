@@ -51,6 +51,9 @@
         <Class IRI="privateipaddressspecification"/>
     </Declaration>
     <Declaration>
+        <Class IRI="spotcapacityrebalance"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="spotfleet"/>
     </Declaration>
     <Declaration>
@@ -64,6 +67,9 @@
     </Declaration>
     <Declaration>
         <Class IRI="spotfleettagspecification"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="spotmaintenancestrategies"/>
     </Declaration>
     <Declaration>
         <Class IRI="spotplacement"/>
@@ -159,7 +165,13 @@
         <ObjectProperty IRI="spotfleetrequestconfigdata_loadbalancersconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="spotfleetrequestconfigdata_spotmaintenancestrategies"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="spotfleettagspecification_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="spotmaintenancestrategies_capacityrebalance"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="targetgroup_arn"/>
@@ -234,6 +246,9 @@
         <DataProperty IRI="launchtemplateoverrides_instancetype"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="launchtemplateoverrides_priority"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="launchtemplateoverrides_spotprice"/>
     </Declaration>
     <Declaration>
@@ -244,6 +259,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="privateipaddressspecification_privateipaddress"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotcapacityrebalance_replacementstrategy"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="spotfleetlaunchspecification_ebsoptimized"/>
@@ -285,7 +303,22 @@
         <DataProperty IRI="spotfleetrequestconfigdata_instanceinterruptionbehavior"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="spotfleetrequestconfigdata_instancepoolstousecount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandallocationstrategy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandmaxtotalprice"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandtargetcapacity"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="spotfleetrequestconfigdata_replaceunhealthyinstances"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="spotfleetrequestconfigdata_spotmaxtotalprice"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="spotfleetrequestconfigdata_spotprice"/>
@@ -478,6 +511,12 @@
         <ObjectProperty IRI="spotfleetrequestconfigdata_loadbalancersconfig"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="spotfleetrequestconfigdata_spotmaintenancestrategies"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="spotmaintenancestrategies_capacityrebalance"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="targetgroup_arn"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
@@ -589,8 +628,16 @@
         <Class IRI="spotfleetrequestconfigdata"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="spotfleetrequestconfigdata_spotmaintenancestrategies"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="spotfleettagspecification_tags"/>
         <Class IRI="spotfleettagspecification"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="spotmaintenancestrategies_capacityrebalance"/>
+        <Class IRI="spotmaintenancestrategies"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="targetgroup_arn"/>
@@ -709,8 +756,16 @@
         <Class IRI="loadbalancersconfig"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="spotfleetrequestconfigdata_spotmaintenancestrategies"/>
+        <Class IRI="spotmaintenancestrategies"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="spotfleettagspecification_tags"/>
         <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="spotmaintenancestrategies_capacityrebalance"/>
+        <Class IRI="spotcapacityrebalance"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="targetgroupsconfig_targetgroups"/>
@@ -783,6 +838,9 @@
         <DataProperty IRI="launchtemplateoverrides_instancetype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplateoverrides_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="launchtemplateoverrides_spotprice"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -793,6 +851,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="privateipaddressspecification_privateipaddress"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotcapacityrebalance_replacementstrategy"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="spotfleetlaunchspecification_ebsoptimized"/>
@@ -834,7 +895,22 @@
         <DataProperty IRI="spotfleetrequestconfigdata_instanceinterruptionbehavior"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="spotfleetrequestconfigdata_instancepoolstousecount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandallocationstrategy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandmaxtotalprice"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandtargetcapacity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="spotfleetrequestconfigdata_replaceunhealthyinstances"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="spotfleetrequestconfigdata_spotmaxtotalprice"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="spotfleetrequestconfigdata_spotprice"/>
@@ -961,6 +1037,10 @@
         <Class IRI="launchtemplateoverrides"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="launchtemplateoverrides_priority"/>
+        <Class IRI="launchtemplateoverrides"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="launchtemplateoverrides_spotprice"/>
         <Class IRI="launchtemplateoverrides"/>
     </DataPropertyDomain>
@@ -975,6 +1055,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="privateipaddressspecification_privateipaddress"/>
         <Class IRI="privateipaddressspecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotcapacityrebalance_replacementstrategy"/>
+        <Class IRI="spotcapacityrebalance"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="spotfleetlaunchspecification_ebsoptimized"/>
@@ -1029,7 +1113,27 @@
         <Class IRI="spotfleetrequestconfigdata"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="spotfleetrequestconfigdata_instancepoolstousecount"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandallocationstrategy"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandmaxtotalprice"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandtargetcapacity"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="spotfleetrequestconfigdata_replaceunhealthyinstances"/>
+        <Class IRI="spotfleetrequestconfigdata"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="spotfleetrequestconfigdata_spotmaxtotalprice"/>
         <Class IRI="spotfleetrequestconfigdata"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -1169,6 +1273,10 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="launchtemplateoverrides_priority"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="launchtemplateoverrides_spotprice"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -1182,6 +1290,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="privateipaddressspecification_privateipaddress"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotcapacityrebalance_replacementstrategy"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -1237,8 +1349,28 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="spotfleetrequestconfigdata_instancepoolstousecount"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandallocationstrategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandmaxtotalprice"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotfleetrequestconfigdata_ondemandtargetcapacity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="spotfleetrequestconfigdata_replaceunhealthyinstances"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="spotfleetrequestconfigdata_spotmaxtotalprice"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="spotfleetrequestconfigdata_spotprice"/>
@@ -1510,6 +1642,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplateoverrides_priority</IRI>
+        <Literal>ec2spotfleet:launchtemplateoverrides_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>launchtemplateoverrides_spotprice</IRI>
         <Literal>ec2spotfleet:launchtemplateoverrides_spotprice</Literal>
     </AnnotationAssertion>
@@ -1552,6 +1689,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>privateipaddressspecification_privateipaddress</IRI>
         <Literal>ec2spotfleet:privateipaddressspecification_privateipaddress</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotcapacityrebalance</IRI>
+        <Literal>ec2spotfleet:spotcapacityrebalance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotcapacityrebalance_replacementstrategy</IRI>
+        <Literal>ec2spotfleet:spotcapacityrebalance_replacementstrategy</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1690,6 +1837,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_instancepoolstousecount</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_instancepoolstousecount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>spotfleetrequestconfigdata_launchspecifications</IRI>
         <Literal>ec2spotfleet:spotfleetrequestconfigdata_launchspecifications</Literal>
     </AnnotationAssertion>
@@ -1705,8 +1857,33 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_ondemandallocationstrategy</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_ondemandallocationstrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_ondemandmaxtotalprice</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_ondemandmaxtotalprice</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_ondemandtargetcapacity</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_ondemandtargetcapacity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>spotfleetrequestconfigdata_replaceunhealthyinstances</IRI>
         <Literal>ec2spotfleet:spotfleetrequestconfigdata_replaceunhealthyinstances</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_spotmaintenancestrategies</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_spotmaintenancestrategies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotfleetrequestconfigdata_spotmaxtotalprice</IRI>
+        <Literal>ec2spotfleet:spotfleetrequestconfigdata_spotmaxtotalprice</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1752,6 +1929,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>spotfleettagspecification_tags</IRI>
         <Literal>ec2spotfleet:spotfleettagspecification_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotmaintenancestrategies</IRI>
+        <Literal>ec2spotfleet:spotmaintenancestrategies</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>spotmaintenancestrategies_capacityrebalance</IRI>
+        <Literal>ec2spotfleet:spotmaintenancestrategies_capacityrebalance</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

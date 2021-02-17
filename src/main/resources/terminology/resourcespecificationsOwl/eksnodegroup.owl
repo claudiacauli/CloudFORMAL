@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="launchtemplatespecification"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="nodegroup"/>
     </Declaration>
     <Declaration>
@@ -21,13 +24,28 @@
         <Class IRI="scalingconfig"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="nodegroup_launchtemplate"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="nodegroup_remoteaccess"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="nodegroup_scalingconfig"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="launchtemplatespecification_id"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="launchtemplatespecification_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="launchtemplatespecification_version"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="nodegroup_amitype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="nodegroup_capacitytype"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="nodegroup_clustername"/>
@@ -106,12 +124,19 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="nodegroup_launchtemplate"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="nodegroup_remoteaccess"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="nodegroup_scalingconfig"/>
     </FunctionalObjectProperty>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="nodegroup_launchtemplate"/>
+        <Class IRI="nodegroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="nodegroup_remoteaccess"/>
         <Class IRI="nodegroup"/>
     </ObjectPropertyDomain>
@@ -119,6 +144,10 @@
         <ObjectProperty IRI="nodegroup_scalingconfig"/>
         <Class IRI="nodegroup"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="nodegroup_launchtemplate"/>
+        <Class IRI="launchtemplatespecification"/>
+    </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="nodegroup_remoteaccess"/>
         <Class IRI="remoteaccess"/>
@@ -128,7 +157,19 @@
         <Class IRI="scalingconfig"/>
     </ObjectPropertyRange>
     <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplatespecification_id"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplatespecification_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="launchtemplatespecification_version"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="nodegroup_amitype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="nodegroup_capacitytype"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="nodegroup_clustername"/>
@@ -170,7 +211,23 @@
         <DataProperty IRI="scalingconfig_minsize"/>
     </FunctionalDataProperty>
     <DataPropertyDomain>
+        <DataProperty IRI="launchtemplatespecification_id"/>
+        <Class IRI="launchtemplatespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="launchtemplatespecification_name"/>
+        <Class IRI="launchtemplatespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="launchtemplatespecification_version"/>
+        <Class IRI="launchtemplatespecification"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="nodegroup_amitype"/>
+        <Class IRI="nodegroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="nodegroup_capacitytype"/>
         <Class IRI="nodegroup"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -238,7 +295,23 @@
         <Class IRI="scalingconfig"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="launchtemplatespecification_id"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="launchtemplatespecification_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="launchtemplatespecification_version"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="nodegroup_amitype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="nodegroup_capacitytype"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -307,6 +380,26 @@
     </DataPropertyRange>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplatespecification</IRI>
+        <Literal>eksnodegroup:launchtemplatespecification</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplatespecification_id</IRI>
+        <Literal>eksnodegroup:launchtemplatespecification_id</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplatespecification_name</IRI>
+        <Literal>eksnodegroup:launchtemplatespecification_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>launchtemplatespecification_version</IRI>
+        <Literal>eksnodegroup:launchtemplatespecification_version</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>nodegroup</IRI>
         <Literal>eksnodegroup:nodegroup</Literal>
     </AnnotationAssertion>
@@ -314,6 +407,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>nodegroup_amitype</IRI>
         <Literal>eksnodegroup:nodegroup_amitype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>nodegroup_capacitytype</IRI>
+        <Literal>eksnodegroup:nodegroup_capacitytype</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -339,6 +437,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>nodegroup_labels</IRI>
         <Literal>eksnodegroup:nodegroup_labels</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>nodegroup_launchtemplate</IRI>
+        <Literal>eksnodegroup:nodegroup_launchtemplate</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

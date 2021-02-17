@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallfirewallpolicy#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/networkfirewallfirewallpolicy#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="actiondefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="customaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="dimension"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="firewallpolicy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="publishmetricaction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statefulrulegroupreference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="statelessrulegroupreference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="firewallpolicy_firewallpolicy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="firewallpolicy_statefulrulegroupreferences"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="firewallpolicy_statelesscustomactions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="firewallpolicy_statelessrulegroupreferences"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="firewallpolicy_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="customaction_actionname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dimension_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="firewallpolicy_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="firewallpolicy_firewallpolicyname"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="firewallpolicy_statelessdefaultactions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="firewallpolicy_statelessfragmentdefaultactions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statefulrulegroupreference_resourcearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statelessrulegroupreference_priority"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="statelessrulegroupreference_resourcearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="customaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="customaction_actiondefinition"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="customaction"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="customaction_actionname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="dimension"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="dimension_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="firewallpolicy"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="firewallpolicy_firewallpolicy"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="firewallpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="firewallpolicy_firewallpolicyname"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="firewallpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="firewallpolicy_statelessdefaultactions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="firewallpolicy"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="firewallpolicy_statelessfragmentdefaultactions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="publishmetricaction"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="publishmetricaction_dimensions"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statefulrulegroupreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statefulrulegroupreference_resourcearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statelessrulegroupreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statelessrulegroupreference_priority"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="statelessrulegroupreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="statelessrulegroupreference_resourcearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="firewallpolicy_firewallpolicy"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+        <Class IRI="actiondefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+        <Class IRI="customaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="firewallpolicy_firewallpolicy"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="firewallpolicy_statefulrulegroupreferences"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="firewallpolicy_statelesscustomactions"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="firewallpolicy_statelessrulegroupreferences"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="firewallpolicy_tags"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+        <Class IRI="publishmetricaction"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="actiondefinition_publishmetricaction"/>
+        <Class IRI="publishmetricaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="customaction_actiondefinition"/>
+        <Class IRI="actiondefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="firewallpolicy_firewallpolicy"/>
+        <Class IRI="firewallpolicy"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="firewallpolicy_statefulrulegroupreferences"/>
+        <Class IRI="statefulrulegroupreference"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="firewallpolicy_statelesscustomactions"/>
+        <Class IRI="customaction"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="firewallpolicy_statelessrulegroupreferences"/>
+        <Class IRI="statelessrulegroupreference"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="firewallpolicy_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="publishmetricaction_dimensions"/>
+        <Class IRI="dimension"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="customaction_actionname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="dimension_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="firewallpolicy_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="firewallpolicy_firewallpolicyname"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statefulrulegroupreference_resourcearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statelessrulegroupreference_priority"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="statelessrulegroupreference_resourcearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="customaction_actionname"/>
+        <Class IRI="customaction"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dimension_value"/>
+        <Class IRI="dimension"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="firewallpolicy_description"/>
+        <Class IRI="firewallpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="firewallpolicy_firewallpolicyname"/>
+        <Class IRI="firewallpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="firewallpolicy_statelessdefaultactions"/>
+        <Class IRI="firewallpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="firewallpolicy_statelessfragmentdefaultactions"/>
+        <Class IRI="firewallpolicy"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statefulrulegroupreference_resourcearn"/>
+        <Class IRI="statefulrulegroupreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statelessrulegroupreference_priority"/>
+        <Class IRI="statelessrulegroupreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="statelessrulegroupreference_resourcearn"/>
+        <Class IRI="statelessrulegroupreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="customaction_actionname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dimension_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="firewallpolicy_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="firewallpolicy_firewallpolicyname"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="firewallpolicy_statelessdefaultactions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="firewallpolicy_statelessfragmentdefaultactions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statefulrulegroupreference_resourcearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statelessrulegroupreference_priority"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="statelessrulegroupreference_resourcearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondefinition</IRI>
+        <Literal>networkfirewallfirewallpolicy:actiondefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>actiondefinition_publishmetricaction</IRI>
+        <Literal>networkfirewallfirewallpolicy:actiondefinition_publishmetricaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction</IRI>
+        <Literal>networkfirewallfirewallpolicy:customaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction_actiondefinition</IRI>
+        <Literal>networkfirewallfirewallpolicy:customaction_actiondefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>customaction_actionname</IRI>
+        <Literal>networkfirewallfirewallpolicy:customaction_actionname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension</IRI>
+        <Literal>networkfirewallfirewallpolicy:dimension</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>dimension_value</IRI>
+        <Literal>networkfirewallfirewallpolicy:dimension_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_description</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_firewallpolicy</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_firewallpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_firewallpolicyname</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_firewallpolicyname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_statefulrulegroupreferences</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_statefulrulegroupreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_statelesscustomactions</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_statelesscustomactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_statelessdefaultactions</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_statelessdefaultactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_statelessfragmentdefaultactions</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_statelessfragmentdefaultactions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_statelessrulegroupreferences</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_statelessrulegroupreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>firewallpolicy_tags</IRI>
+        <Literal>networkfirewallfirewallpolicy:firewallpolicy_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publishmetricaction</IRI>
+        <Literal>networkfirewallfirewallpolicy:publishmetricaction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>publishmetricaction_dimensions</IRI>
+        <Literal>networkfirewallfirewallpolicy:publishmetricaction_dimensions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrulegroupreference</IRI>
+        <Literal>networkfirewallfirewallpolicy:statefulrulegroupreference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statefulrulegroupreference_resourcearn</IRI>
+        <Literal>networkfirewallfirewallpolicy:statefulrulegroupreference_resourcearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulegroupreference</IRI>
+        <Literal>networkfirewallfirewallpolicy:statelessrulegroupreference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulegroupreference_priority</IRI>
+        <Literal>networkfirewallfirewallpolicy:statelessrulegroupreference_priority</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>statelessrulegroupreference_resourcearn</IRI>
+        <Literal>networkfirewallfirewallpolicy:statelessrulegroupreference_resourcearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>networkfirewallfirewallpolicy:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>networkfirewallfirewallpolicy:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>networkfirewallfirewallpolicy:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

@@ -1,0 +1,2455 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/databrewrecipe#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/databrewrecipe#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="conditionexpression"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datacataloginputdefinition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recipe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recipeparameters"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="recipestep"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="s3location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="secondaryinput"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datacataloginputdefinition_tempdirectory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recipe_steps"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recipe_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recipeparameters_secondaryinputs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recipestep_action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="recipestep_conditionexpressions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="secondaryinput_datacataloginputdefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="secondaryinput_s3inputdefinition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="action_operation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="action_parameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="conditionexpression_condition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="conditionexpression_targetcolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="conditionexpression_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacataloginputdefinition_catalogid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacataloginputdefinition_databasename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datacataloginputdefinition_tablename"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipe_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipe_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_aggregatefunction"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_base"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_casestatement"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_categorymap"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_charstoremove"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_collapseconsecutivewhitespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_columndatatype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_columnrange"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_count"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_customcharacters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_customstopwords"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_customvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_datasetscolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_dateaddvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_datetimeformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_datetimeparameters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_deleteotherrows"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_delimiter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_endpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_endposition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_endvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_expandcontractions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_exponent"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_falsestring"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_groupbyaggfunctionoptions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_groupbycolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_hiddencolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_ignorecase"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_includeinsplit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_input"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_interval"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_istext"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_joinkeys"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_jointype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_leftcolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_limit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_lowerbound"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_maptype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_modetype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_multiline"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_numrows"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_numrowsafter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_numrowsbefore"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_orderbycolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_orderbycolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_other"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_pattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_patternoption1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_patternoption2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_patternoptions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_period"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_position"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeallpunctuation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeallquotes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeallwhitespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removecustomcharacters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removecustomvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingpunctuation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingquotes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingwhitespace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removeletters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removenumbers"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removesourcecolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_removespecialcharacters"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_rightcolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_samplesize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sampletype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_secondinput"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sheetindexes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sheetnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sourcecolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sourcecolumn1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sourcecolumn2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_sourcecolumns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_startcolumnindex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_startpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_startposition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_startvalue"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_stemmingmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_stepcount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_stepindex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_stopwordsmode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_strategy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_targetcolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_targetcolumnnames"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_targetdateformat"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_targetindex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_timezone"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_tokenizerpattern"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_truestring"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_udflang"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_units"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_unpivotcolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_upperbound"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_usenewdataframe"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_value1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_value2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_valuecolumn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="recipeparameters_viewframe"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_bucket"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="s3location_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="action"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="action_operation"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="conditionexpression"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="conditionexpression_condition"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="conditionexpression"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="conditionexpression_targetcolumn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recipe"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="recipe_steps"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recipe"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="recipe_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="recipestep"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="recipestep_action"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="s3location"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="s3location_bucket"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datacataloginputdefinition_tempdirectory"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="recipestep_action"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="secondaryinput_datacataloginputdefinition"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="secondaryinput_s3inputdefinition"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datacataloginputdefinition_tempdirectory"/>
+        <Class IRI="datacataloginputdefinition"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recipe_steps"/>
+        <Class IRI="recipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recipe_tags"/>
+        <Class IRI="recipe"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recipeparameters_secondaryinputs"/>
+        <Class IRI="recipeparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recipestep_action"/>
+        <Class IRI="recipestep"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recipestep_conditionexpressions"/>
+        <Class IRI="recipestep"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="secondaryinput_datacataloginputdefinition"/>
+        <Class IRI="secondaryinput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="secondaryinput_s3inputdefinition"/>
+        <Class IRI="secondaryinput"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datacataloginputdefinition_tempdirectory"/>
+        <Class IRI="s3location"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recipe_steps"/>
+        <Class IRI="recipestep"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recipe_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recipeparameters_secondaryinputs"/>
+        <Class IRI="secondaryinput"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recipestep_action"/>
+        <Class IRI="action"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="recipestep_conditionexpressions"/>
+        <Class IRI="conditionexpression"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="secondaryinput_datacataloginputdefinition"/>
+        <Class IRI="datacataloginputdefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="secondaryinput_s3inputdefinition"/>
+        <Class IRI="s3location"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="action_operation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="action_parameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="conditionexpression_condition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="conditionexpression_targetcolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="conditionexpression_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacataloginputdefinition_catalogid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacataloginputdefinition_databasename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datacataloginputdefinition_tablename"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipe_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipe_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_aggregatefunction"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_base"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_casestatement"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_categorymap"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_charstoremove"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_collapseconsecutivewhitespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_columndatatype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_columnrange"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_count"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_customcharacters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_customstopwords"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_customvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_datasetscolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_dateaddvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_datetimeformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_datetimeparameters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_deleteotherrows"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_delimiter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_endpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_endposition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_endvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_expandcontractions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_exponent"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_falsestring"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_groupbyaggfunctionoptions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_groupbycolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_hiddencolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_ignorecase"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_includeinsplit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_input"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_interval"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_istext"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_joinkeys"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_jointype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_leftcolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_limit"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_lowerbound"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_maptype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_modetype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_multiline"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_numrows"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_numrowsafter"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_numrowsbefore"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_orderbycolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_orderbycolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_other"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_pattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_patternoption1"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_patternoption2"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_patternoptions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_period"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_position"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeallpunctuation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeallquotes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeallwhitespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removecustomcharacters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removecustomvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingpunctuation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingquotes"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingwhitespace"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removeletters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removenumbers"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removesourcecolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_removespecialcharacters"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_rightcolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_samplesize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_sampletype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_secondinput"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_sourcecolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_sourcecolumn1"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_sourcecolumn2"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_sourcecolumns"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_startcolumnindex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_startpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_startposition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_startvalue"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_stemmingmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_stepcount"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_stepindex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_stopwordsmode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_strategy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_targetcolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_targetcolumnnames"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_targetdateformat"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_targetindex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_timezone"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_tokenizerpattern"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_truestring"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_udflang"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_units"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_unpivotcolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_upperbound"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_usenewdataframe"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_value1"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_value2"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_valuecolumn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="recipeparameters_viewframe"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_bucket"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="s3location_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="action_operation"/>
+        <Class IRI="action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="action_parameters"/>
+        <Class IRI="action"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="conditionexpression_condition"/>
+        <Class IRI="conditionexpression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="conditionexpression_targetcolumn"/>
+        <Class IRI="conditionexpression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="conditionexpression_value"/>
+        <Class IRI="conditionexpression"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacataloginputdefinition_catalogid"/>
+        <Class IRI="datacataloginputdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacataloginputdefinition_databasename"/>
+        <Class IRI="datacataloginputdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datacataloginputdefinition_tablename"/>
+        <Class IRI="datacataloginputdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipe_description"/>
+        <Class IRI="recipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipe_name"/>
+        <Class IRI="recipe"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_aggregatefunction"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_base"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_casestatement"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_categorymap"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_charstoremove"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_collapseconsecutivewhitespace"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_columndatatype"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_columnrange"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_count"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_customcharacters"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_customstopwords"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_customvalue"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_datasetscolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_dateaddvalue"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_datetimeformat"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_datetimeparameters"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_deleteotherrows"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_delimiter"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_endpattern"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_endposition"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_endvalue"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_expandcontractions"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_exponent"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_falsestring"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_groupbyaggfunctionoptions"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_groupbycolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_hiddencolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_ignorecase"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_includeinsplit"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_input"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_interval"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_istext"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_joinkeys"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_jointype"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_leftcolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_limit"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_lowerbound"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_maptype"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_modetype"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_multiline"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_numrows"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_numrowsafter"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_numrowsbefore"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_orderbycolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_orderbycolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_other"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_pattern"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_patternoption1"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_patternoption2"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_patternoptions"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_period"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_position"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeallpunctuation"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeallquotes"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeallwhitespace"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removecustomcharacters"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removecustomvalue"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingpunctuation"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingquotes"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingwhitespace"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removeletters"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removenumbers"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removesourcecolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_removespecialcharacters"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_rightcolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_samplesize"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sampletype"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_secondinput"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sheetindexes"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sheetnames"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sourcecolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sourcecolumn1"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sourcecolumn2"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_sourcecolumns"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_startcolumnindex"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_startpattern"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_startposition"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_startvalue"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_stemmingmode"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_stepcount"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_stepindex"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_stopwordsmode"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_strategy"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_targetcolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_targetcolumnnames"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_targetdateformat"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_targetindex"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_timezone"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_tokenizerpattern"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_truestring"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_udflang"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_units"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_unpivotcolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_upperbound"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_usenewdataframe"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_value"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_value1"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_value2"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_valuecolumn"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="recipeparameters_viewframe"/>
+        <Class IRI="recipeparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_bucket"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="s3location_key"/>
+        <Class IRI="s3location"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="action_operation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="action_parameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="conditionexpression_condition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="conditionexpression_targetcolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="conditionexpression_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacataloginputdefinition_catalogid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacataloginputdefinition_databasename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datacataloginputdefinition_tablename"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipe_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipe_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_aggregatefunction"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_base"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_casestatement"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_categorymap"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_charstoremove"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_collapseconsecutivewhitespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_columndatatype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_columnrange"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_count"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_customcharacters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_customstopwords"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_customvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_datasetscolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_dateaddvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_datetimeformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_datetimeparameters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_deleteotherrows"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_delimiter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_endpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_endposition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_endvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_expandcontractions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_exponent"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_falsestring"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_groupbyaggfunctionoptions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_groupbycolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_hiddencolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_ignorecase"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_includeinsplit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_input"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_interval"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_istext"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_joinkeys"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_jointype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_leftcolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_limit"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_lowerbound"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_maptype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_modetype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_multiline"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_numrows"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_numrowsafter"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_numrowsbefore"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_orderbycolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_orderbycolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_other"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_pattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_patternoption1"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_patternoption2"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_patternoptions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_period"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_position"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeallpunctuation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeallquotes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeallwhitespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removecustomcharacters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removecustomvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingpunctuation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingquotes"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeleadingandtrailingwhitespace"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removeletters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removenumbers"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removesourcecolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_removespecialcharacters"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_rightcolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_samplesize"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sampletype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_secondinput"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sheetindexes"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sheetnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sourcecolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sourcecolumn1"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sourcecolumn2"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_sourcecolumns"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_startcolumnindex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_startpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_startposition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_startvalue"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_stemmingmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_stepcount"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_stepindex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_stopwordsmode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_strategy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_targetcolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_targetcolumnnames"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_targetdateformat"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_targetindex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_timezone"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_tokenizerpattern"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_truestring"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_udflang"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_units"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_unpivotcolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_upperbound"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_usenewdataframe"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_value1"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_value2"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_valuecolumn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="recipeparameters_viewframe"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_bucket"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="s3location_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action</IRI>
+        <Literal>databrewrecipe:action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_operation</IRI>
+        <Literal>databrewrecipe:action_operation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>action_parameters</IRI>
+        <Literal>databrewrecipe:action_parameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>conditionexpression</IRI>
+        <Literal>databrewrecipe:conditionexpression</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>conditionexpression_condition</IRI>
+        <Literal>databrewrecipe:conditionexpression_condition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>conditionexpression_targetcolumn</IRI>
+        <Literal>databrewrecipe:conditionexpression_targetcolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>conditionexpression_value</IRI>
+        <Literal>databrewrecipe:conditionexpression_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacataloginputdefinition</IRI>
+        <Literal>databrewrecipe:datacataloginputdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacataloginputdefinition_catalogid</IRI>
+        <Literal>databrewrecipe:datacataloginputdefinition_catalogid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacataloginputdefinition_databasename</IRI>
+        <Literal>databrewrecipe:datacataloginputdefinition_databasename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacataloginputdefinition_tablename</IRI>
+        <Literal>databrewrecipe:datacataloginputdefinition_tablename</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datacataloginputdefinition_tempdirectory</IRI>
+        <Literal>databrewrecipe:datacataloginputdefinition_tempdirectory</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipe</IRI>
+        <Literal>databrewrecipe:recipe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipe_description</IRI>
+        <Literal>databrewrecipe:recipe_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipe_name</IRI>
+        <Literal>databrewrecipe:recipe_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipe_steps</IRI>
+        <Literal>databrewrecipe:recipe_steps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipe_tags</IRI>
+        <Literal>databrewrecipe:recipe_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters</IRI>
+        <Literal>databrewrecipe:recipeparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_aggregatefunction</IRI>
+        <Literal>databrewrecipe:recipeparameters_aggregatefunction</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_base</IRI>
+        <Literal>databrewrecipe:recipeparameters_base</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_casestatement</IRI>
+        <Literal>databrewrecipe:recipeparameters_casestatement</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_categorymap</IRI>
+        <Literal>databrewrecipe:recipeparameters_categorymap</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_charstoremove</IRI>
+        <Literal>databrewrecipe:recipeparameters_charstoremove</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_collapseconsecutivewhitespace</IRI>
+        <Literal>databrewrecipe:recipeparameters_collapseconsecutivewhitespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_columndatatype</IRI>
+        <Literal>databrewrecipe:recipeparameters_columndatatype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_columnrange</IRI>
+        <Literal>databrewrecipe:recipeparameters_columnrange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_count</IRI>
+        <Literal>databrewrecipe:recipeparameters_count</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_customcharacters</IRI>
+        <Literal>databrewrecipe:recipeparameters_customcharacters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_customstopwords</IRI>
+        <Literal>databrewrecipe:recipeparameters_customstopwords</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_customvalue</IRI>
+        <Literal>databrewrecipe:recipeparameters_customvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_datasetscolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_datasetscolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_dateaddvalue</IRI>
+        <Literal>databrewrecipe:recipeparameters_dateaddvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_datetimeformat</IRI>
+        <Literal>databrewrecipe:recipeparameters_datetimeformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_datetimeparameters</IRI>
+        <Literal>databrewrecipe:recipeparameters_datetimeparameters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_deleteotherrows</IRI>
+        <Literal>databrewrecipe:recipeparameters_deleteotherrows</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_delimiter</IRI>
+        <Literal>databrewrecipe:recipeparameters_delimiter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_endpattern</IRI>
+        <Literal>databrewrecipe:recipeparameters_endpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_endposition</IRI>
+        <Literal>databrewrecipe:recipeparameters_endposition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_endvalue</IRI>
+        <Literal>databrewrecipe:recipeparameters_endvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_expandcontractions</IRI>
+        <Literal>databrewrecipe:recipeparameters_expandcontractions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_exponent</IRI>
+        <Literal>databrewrecipe:recipeparameters_exponent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_falsestring</IRI>
+        <Literal>databrewrecipe:recipeparameters_falsestring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_groupbyaggfunctionoptions</IRI>
+        <Literal>databrewrecipe:recipeparameters_groupbyaggfunctionoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_groupbycolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_groupbycolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_hiddencolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_hiddencolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_ignorecase</IRI>
+        <Literal>databrewrecipe:recipeparameters_ignorecase</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_includeinsplit</IRI>
+        <Literal>databrewrecipe:recipeparameters_includeinsplit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_input</IRI>
+        <Literal>databrewrecipe:recipeparameters_input</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_interval</IRI>
+        <Literal>databrewrecipe:recipeparameters_interval</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_istext</IRI>
+        <Literal>databrewrecipe:recipeparameters_istext</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_joinkeys</IRI>
+        <Literal>databrewrecipe:recipeparameters_joinkeys</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_jointype</IRI>
+        <Literal>databrewrecipe:recipeparameters_jointype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_leftcolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_leftcolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_limit</IRI>
+        <Literal>databrewrecipe:recipeparameters_limit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_lowerbound</IRI>
+        <Literal>databrewrecipe:recipeparameters_lowerbound</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_maptype</IRI>
+        <Literal>databrewrecipe:recipeparameters_maptype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_modetype</IRI>
+        <Literal>databrewrecipe:recipeparameters_modetype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_multiline</IRI>
+        <Literal>databrewrecipe:recipeparameters_multiline</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_numrows</IRI>
+        <Literal>databrewrecipe:recipeparameters_numrows</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_numrowsafter</IRI>
+        <Literal>databrewrecipe:recipeparameters_numrowsafter</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_numrowsbefore</IRI>
+        <Literal>databrewrecipe:recipeparameters_numrowsbefore</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_orderbycolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_orderbycolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_orderbycolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_orderbycolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_other</IRI>
+        <Literal>databrewrecipe:recipeparameters_other</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_pattern</IRI>
+        <Literal>databrewrecipe:recipeparameters_pattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_patternoption1</IRI>
+        <Literal>databrewrecipe:recipeparameters_patternoption1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_patternoption2</IRI>
+        <Literal>databrewrecipe:recipeparameters_patternoption2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_patternoptions</IRI>
+        <Literal>databrewrecipe:recipeparameters_patternoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_period</IRI>
+        <Literal>databrewrecipe:recipeparameters_period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_position</IRI>
+        <Literal>databrewrecipe:recipeparameters_position</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeallpunctuation</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeallpunctuation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeallquotes</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeallquotes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeallwhitespace</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeallwhitespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removecustomcharacters</IRI>
+        <Literal>databrewrecipe:recipeparameters_removecustomcharacters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removecustomvalue</IRI>
+        <Literal>databrewrecipe:recipeparameters_removecustomvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeleadingandtrailingpunctuation</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeleadingandtrailingpunctuation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeleadingandtrailingquotes</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeleadingandtrailingquotes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeleadingandtrailingwhitespace</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeleadingandtrailingwhitespace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removeletters</IRI>
+        <Literal>databrewrecipe:recipeparameters_removeletters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removenumbers</IRI>
+        <Literal>databrewrecipe:recipeparameters_removenumbers</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removesourcecolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_removesourcecolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_removespecialcharacters</IRI>
+        <Literal>databrewrecipe:recipeparameters_removespecialcharacters</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_rightcolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_rightcolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_samplesize</IRI>
+        <Literal>databrewrecipe:recipeparameters_samplesize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sampletype</IRI>
+        <Literal>databrewrecipe:recipeparameters_sampletype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_secondaryinputs</IRI>
+        <Literal>databrewrecipe:recipeparameters_secondaryinputs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_secondinput</IRI>
+        <Literal>databrewrecipe:recipeparameters_secondinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sheetindexes</IRI>
+        <Literal>databrewrecipe:recipeparameters_sheetindexes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sheetnames</IRI>
+        <Literal>databrewrecipe:recipeparameters_sheetnames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sourcecolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_sourcecolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sourcecolumn1</IRI>
+        <Literal>databrewrecipe:recipeparameters_sourcecolumn1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sourcecolumn2</IRI>
+        <Literal>databrewrecipe:recipeparameters_sourcecolumn2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_sourcecolumns</IRI>
+        <Literal>databrewrecipe:recipeparameters_sourcecolumns</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_startcolumnindex</IRI>
+        <Literal>databrewrecipe:recipeparameters_startcolumnindex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_startpattern</IRI>
+        <Literal>databrewrecipe:recipeparameters_startpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_startposition</IRI>
+        <Literal>databrewrecipe:recipeparameters_startposition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_startvalue</IRI>
+        <Literal>databrewrecipe:recipeparameters_startvalue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_stemmingmode</IRI>
+        <Literal>databrewrecipe:recipeparameters_stemmingmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_stepcount</IRI>
+        <Literal>databrewrecipe:recipeparameters_stepcount</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_stepindex</IRI>
+        <Literal>databrewrecipe:recipeparameters_stepindex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_stopwordsmode</IRI>
+        <Literal>databrewrecipe:recipeparameters_stopwordsmode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_strategy</IRI>
+        <Literal>databrewrecipe:recipeparameters_strategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_targetcolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_targetcolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_targetcolumnnames</IRI>
+        <Literal>databrewrecipe:recipeparameters_targetcolumnnames</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_targetdateformat</IRI>
+        <Literal>databrewrecipe:recipeparameters_targetdateformat</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_targetindex</IRI>
+        <Literal>databrewrecipe:recipeparameters_targetindex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_timezone</IRI>
+        <Literal>databrewrecipe:recipeparameters_timezone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_tokenizerpattern</IRI>
+        <Literal>databrewrecipe:recipeparameters_tokenizerpattern</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_truestring</IRI>
+        <Literal>databrewrecipe:recipeparameters_truestring</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_udflang</IRI>
+        <Literal>databrewrecipe:recipeparameters_udflang</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_units</IRI>
+        <Literal>databrewrecipe:recipeparameters_units</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_unpivotcolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_unpivotcolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_upperbound</IRI>
+        <Literal>databrewrecipe:recipeparameters_upperbound</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_usenewdataframe</IRI>
+        <Literal>databrewrecipe:recipeparameters_usenewdataframe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_value</IRI>
+        <Literal>databrewrecipe:recipeparameters_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_value1</IRI>
+        <Literal>databrewrecipe:recipeparameters_value1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_value2</IRI>
+        <Literal>databrewrecipe:recipeparameters_value2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_valuecolumn</IRI>
+        <Literal>databrewrecipe:recipeparameters_valuecolumn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipeparameters_viewframe</IRI>
+        <Literal>databrewrecipe:recipeparameters_viewframe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipestep</IRI>
+        <Literal>databrewrecipe:recipestep</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipestep_action</IRI>
+        <Literal>databrewrecipe:recipestep_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>recipestep_conditionexpressions</IRI>
+        <Literal>databrewrecipe:recipestep_conditionexpressions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location</IRI>
+        <Literal>databrewrecipe:s3location</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_bucket</IRI>
+        <Literal>databrewrecipe:s3location_bucket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>s3location_key</IRI>
+        <Literal>databrewrecipe:s3location_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secondaryinput</IRI>
+        <Literal>databrewrecipe:secondaryinput</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secondaryinput_datacataloginputdefinition</IRI>
+        <Literal>databrewrecipe:secondaryinput_datacataloginputdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secondaryinput_s3inputdefinition</IRI>
+        <Literal>databrewrecipe:secondaryinput_s3inputdefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>databrewrecipe:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>databrewrecipe:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>databrewrecipe:tag_value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

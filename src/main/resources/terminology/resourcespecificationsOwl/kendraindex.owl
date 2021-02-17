@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kendraindex#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/kendraindex#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="capacityunitsconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="documentmetadataconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="index"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jsontokentypeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="relevance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="search"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="serversideencryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="usertokenconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="valueimportanceitem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="valueimportanceitems"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="documentmetadataconfiguration_relevance"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="documentmetadataconfiguration_search"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="index_capacityunits"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="index_documentmetadataconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="index_serversideencryptionconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="index_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="index_usertokenconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="relevance_valueimportanceitems"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usertokenconfiguration_jsontokentypeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usertokenconfiguration_jwttokentypeconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="valueimportanceitems_valueimportanceitems"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityunitsconfiguration_querycapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="capacityunitsconfiguration_storagecapacityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="documentmetadataconfiguration_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="documentmetadataconfiguration_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index_edition"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index_rolearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index_usercontextpolicy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jsontokentypeconfiguration_groupattributefield"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jsontokentypeconfiguration_usernameattributefield"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_claimregex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_groupattributefield"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_issuer"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_keylocation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_secretmanagerarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_url"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jwttokentypeconfiguration_usernameattributefield"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="relevance_duration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="relevance_freshness"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="relevance_importance"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="relevance_rankorder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="search_displayable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="search_facetable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="search_searchable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="search_sortable"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="serversideencryptionconfiguration_kmskeyid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="valueimportanceitem_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="valueimportanceitem_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="capacityunitsconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="capacityunitsconfiguration_querycapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="capacityunitsconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="capacityunitsconfiguration_storagecapacityunits"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="documentmetadataconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="documentmetadataconfiguration_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="documentmetadataconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="documentmetadataconfiguration_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="index"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="index_edition"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="index"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="index_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="index"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="index_rolearn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="jsontokentypeconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="jsontokentypeconfiguration_groupattributefield"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="jsontokentypeconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="jsontokentypeconfiguration_usernameattributefield"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="jwttokentypeconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="jwttokentypeconfiguration_keylocation"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="documentmetadataconfiguration_relevance"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="documentmetadataconfiguration_search"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="index_capacityunits"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="index_serversideencryptionconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="relevance_valueimportanceitems"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usertokenconfiguration_jsontokentypeconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="usertokenconfiguration_jwttokentypeconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="documentmetadataconfiguration_relevance"/>
+        <Class IRI="documentmetadataconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="documentmetadataconfiguration_search"/>
+        <Class IRI="documentmetadataconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="index_capacityunits"/>
+        <Class IRI="index"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="index_documentmetadataconfigurations"/>
+        <Class IRI="index"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="index_serversideencryptionconfiguration"/>
+        <Class IRI="index"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="index_tags"/>
+        <Class IRI="index"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="index_usertokenconfigurations"/>
+        <Class IRI="index"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="relevance_valueimportanceitems"/>
+        <Class IRI="relevance"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usertokenconfiguration_jsontokentypeconfiguration"/>
+        <Class IRI="usertokenconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usertokenconfiguration_jwttokentypeconfiguration"/>
+        <Class IRI="usertokenconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="valueimportanceitems_valueimportanceitems"/>
+        <Class IRI="valueimportanceitems"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="documentmetadataconfiguration_relevance"/>
+        <Class IRI="relevance"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="documentmetadataconfiguration_search"/>
+        <Class IRI="search"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="index_capacityunits"/>
+        <Class IRI="capacityunitsconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="index_documentmetadataconfigurations"/>
+        <Class IRI="documentmetadataconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="index_serversideencryptionconfiguration"/>
+        <Class IRI="serversideencryptionconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="index_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="index_usertokenconfigurations"/>
+        <Class IRI="usertokenconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="relevance_valueimportanceitems"/>
+        <Class IRI="valueimportanceitems"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usertokenconfiguration_jsontokentypeconfiguration"/>
+        <Class IRI="jsontokentypeconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usertokenconfiguration_jwttokentypeconfiguration"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="valueimportanceitems_valueimportanceitems"/>
+        <Class IRI="valueimportanceitem"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityunitsconfiguration_querycapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="capacityunitsconfiguration_storagecapacityunits"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="documentmetadataconfiguration_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="documentmetadataconfiguration_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="index_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="index_edition"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="index_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="index_rolearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="index_usercontextpolicy"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jsontokentypeconfiguration_groupattributefield"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jsontokentypeconfiguration_usernameattributefield"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_claimregex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_groupattributefield"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_issuer"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_keylocation"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_secretmanagerarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_url"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jwttokentypeconfiguration_usernameattributefield"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="relevance_duration"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="relevance_freshness"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="relevance_importance"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="relevance_rankorder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="search_displayable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="search_facetable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="search_searchable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="search_sortable"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="serversideencryptionconfiguration_kmskeyid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="valueimportanceitem_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="valueimportanceitem_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityunitsconfiguration_querycapacityunits"/>
+        <Class IRI="capacityunitsconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="capacityunitsconfiguration_storagecapacityunits"/>
+        <Class IRI="capacityunitsconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="documentmetadataconfiguration_name"/>
+        <Class IRI="documentmetadataconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="documentmetadataconfiguration_type"/>
+        <Class IRI="documentmetadataconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="index_description"/>
+        <Class IRI="index"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="index_edition"/>
+        <Class IRI="index"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="index_name"/>
+        <Class IRI="index"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="index_rolearn"/>
+        <Class IRI="index"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="index_usercontextpolicy"/>
+        <Class IRI="index"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jsontokentypeconfiguration_groupattributefield"/>
+        <Class IRI="jsontokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jsontokentypeconfiguration_usernameattributefield"/>
+        <Class IRI="jsontokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_claimregex"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_groupattributefield"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_issuer"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_keylocation"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_secretmanagerarn"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_url"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jwttokentypeconfiguration_usernameattributefield"/>
+        <Class IRI="jwttokentypeconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="relevance_duration"/>
+        <Class IRI="relevance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="relevance_freshness"/>
+        <Class IRI="relevance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="relevance_importance"/>
+        <Class IRI="relevance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="relevance_rankorder"/>
+        <Class IRI="relevance"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="search_displayable"/>
+        <Class IRI="search"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="search_facetable"/>
+        <Class IRI="search"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="search_searchable"/>
+        <Class IRI="search"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="search_sortable"/>
+        <Class IRI="search"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="serversideencryptionconfiguration_kmskeyid"/>
+        <Class IRI="serversideencryptionconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="valueimportanceitem_key"/>
+        <Class IRI="valueimportanceitem"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="valueimportanceitem_value"/>
+        <Class IRI="valueimportanceitem"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityunitsconfiguration_querycapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="capacityunitsconfiguration_storagecapacityunits"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="documentmetadataconfiguration_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="documentmetadataconfiguration_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="index_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="index_edition"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="index_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="index_rolearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="index_usercontextpolicy"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jsontokentypeconfiguration_groupattributefield"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jsontokentypeconfiguration_usernameattributefield"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_claimregex"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_groupattributefield"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_issuer"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_keylocation"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_secretmanagerarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_url"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jwttokentypeconfiguration_usernameattributefield"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="relevance_duration"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="relevance_freshness"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="relevance_importance"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="relevance_rankorder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="search_displayable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="search_facetable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="search_searchable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="search_sortable"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="serversideencryptionconfiguration_kmskeyid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="valueimportanceitem_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="valueimportanceitem_value"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityunitsconfiguration</IRI>
+        <Literal>kendraindex:capacityunitsconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityunitsconfiguration_querycapacityunits</IRI>
+        <Literal>kendraindex:capacityunitsconfiguration_querycapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>capacityunitsconfiguration_storagecapacityunits</IRI>
+        <Literal>kendraindex:capacityunitsconfiguration_storagecapacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>documentmetadataconfiguration</IRI>
+        <Literal>kendraindex:documentmetadataconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>documentmetadataconfiguration_name</IRI>
+        <Literal>kendraindex:documentmetadataconfiguration_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>documentmetadataconfiguration_relevance</IRI>
+        <Literal>kendraindex:documentmetadataconfiguration_relevance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>documentmetadataconfiguration_search</IRI>
+        <Literal>kendraindex:documentmetadataconfiguration_search</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>documentmetadataconfiguration_type</IRI>
+        <Literal>kendraindex:documentmetadataconfiguration_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index</IRI>
+        <Literal>kendraindex:index</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_capacityunits</IRI>
+        <Literal>kendraindex:index_capacityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_description</IRI>
+        <Literal>kendraindex:index_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_documentmetadataconfigurations</IRI>
+        <Literal>kendraindex:index_documentmetadataconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_edition</IRI>
+        <Literal>kendraindex:index_edition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_name</IRI>
+        <Literal>kendraindex:index_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_rolearn</IRI>
+        <Literal>kendraindex:index_rolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_serversideencryptionconfiguration</IRI>
+        <Literal>kendraindex:index_serversideencryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_tags</IRI>
+        <Literal>kendraindex:index_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_usercontextpolicy</IRI>
+        <Literal>kendraindex:index_usercontextpolicy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>index_usertokenconfigurations</IRI>
+        <Literal>kendraindex:index_usertokenconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsontokentypeconfiguration</IRI>
+        <Literal>kendraindex:jsontokentypeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsontokentypeconfiguration_groupattributefield</IRI>
+        <Literal>kendraindex:jsontokentypeconfiguration_groupattributefield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsontokentypeconfiguration_usernameattributefield</IRI>
+        <Literal>kendraindex:jsontokentypeconfiguration_usernameattributefield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_claimregex</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_claimregex</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_groupattributefield</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_groupattributefield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_issuer</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_issuer</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_keylocation</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_keylocation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_secretmanagerarn</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_secretmanagerarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_url</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_url</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jwttokentypeconfiguration_usernameattributefield</IRI>
+        <Literal>kendraindex:jwttokentypeconfiguration_usernameattributefield</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance</IRI>
+        <Literal>kendraindex:relevance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance_duration</IRI>
+        <Literal>kendraindex:relevance_duration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance_freshness</IRI>
+        <Literal>kendraindex:relevance_freshness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance_importance</IRI>
+        <Literal>kendraindex:relevance_importance</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance_rankorder</IRI>
+        <Literal>kendraindex:relevance_rankorder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>relevance_valueimportanceitems</IRI>
+        <Literal>kendraindex:relevance_valueimportanceitems</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>search</IRI>
+        <Literal>kendraindex:search</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>search_displayable</IRI>
+        <Literal>kendraindex:search_displayable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>search_facetable</IRI>
+        <Literal>kendraindex:search_facetable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>search_searchable</IRI>
+        <Literal>kendraindex:search_searchable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>search_sortable</IRI>
+        <Literal>kendraindex:search_sortable</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionconfiguration</IRI>
+        <Literal>kendraindex:serversideencryptionconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>serversideencryptionconfiguration_kmskeyid</IRI>
+        <Literal>kendraindex:serversideencryptionconfiguration_kmskeyid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>kendraindex:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>kendraindex:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>kendraindex:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usertokenconfiguration</IRI>
+        <Literal>kendraindex:usertokenconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usertokenconfiguration_jsontokentypeconfiguration</IRI>
+        <Literal>kendraindex:usertokenconfiguration_jsontokentypeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>usertokenconfiguration_jwttokentypeconfiguration</IRI>
+        <Literal>kendraindex:usertokenconfiguration_jwttokentypeconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>valueimportanceitem</IRI>
+        <Literal>kendraindex:valueimportanceitem</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>valueimportanceitem_key</IRI>
+        <Literal>kendraindex:valueimportanceitem_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>valueimportanceitem_value</IRI>
+        <Literal>kendraindex:valueimportanceitem_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>valueimportanceitems</IRI>
+        <Literal>kendraindex:valueimportanceitems</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>valueimportanceitems_valueimportanceitems</IRI>
+        <Literal>kendraindex:valueimportanceitems_valueimportanceitems</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

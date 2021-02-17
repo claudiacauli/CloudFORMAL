@@ -1,0 +1,966 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/quicksighttemplate#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/quicksighttemplate#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="columngroupcolumnschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="columngroupschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="columnschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datasetconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datasetreference"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="datasetschema"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="resourcepermission"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="sheet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="template"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="templateerror"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="templatesourceanalysis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="templatesourceentity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="templatesourcetemplate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="templateversion"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="columngroupschema_columngroupcolumnschemalist"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasetconfiguration_columngroupschemalist"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasetconfiguration_datasetschema"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datasetschema_columnschemalist"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="template_permissions"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="template_sourceentity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="template_tags"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templatesourceanalysis_datasetreferences"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templatesourceentity_sourceanalysis"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templatesourceentity_sourcetemplate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templateversion_datasetconfigurations"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templateversion_errors"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="templateversion_sheets"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columngroupcolumnschema_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columngroupschema_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columnschema_datatype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columnschema_geographicrole"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="columnschema_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasetconfiguration_placeholder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcepermission_actions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="resourcepermission_principal"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sheet_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="sheet_sheetid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="template_awsaccountid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="template_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="template_templateid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="template_versiondescription"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateerror_message"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateerror_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templatesourceanalysis_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templatesourcetemplate_arn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_createdtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_description"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_sourceentityarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_themearn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="templateversion_versionnumber"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="datasetreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasetreference_datasetarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="datasetreference"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="datasetreference_datasetplaceholder"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcepermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcepermission_actions"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="resourcepermission"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="resourcepermission_principal"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="template"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="template_awsaccountid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="template"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="template_templateid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="templatesourceanalysis"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="templatesourceanalysis_datasetreferences"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="templatesourceanalysis"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="templatesourceanalysis_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="templatesourcetemplate"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="templatesourcetemplate_arn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="datasetconfiguration_datasetschema"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="template_sourceentity"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="templatesourceentity_sourceanalysis"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="templatesourceentity_sourcetemplate"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="columngroupschema_columngroupcolumnschemalist"/>
+        <Class IRI="columngroupschema"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasetconfiguration_columngroupschemalist"/>
+        <Class IRI="datasetconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasetconfiguration_datasetschema"/>
+        <Class IRI="datasetconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datasetschema_columnschemalist"/>
+        <Class IRI="datasetschema"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="template_permissions"/>
+        <Class IRI="template"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="template_sourceentity"/>
+        <Class IRI="template"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="template_tags"/>
+        <Class IRI="template"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templatesourceanalysis_datasetreferences"/>
+        <Class IRI="templatesourceanalysis"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templatesourceentity_sourceanalysis"/>
+        <Class IRI="templatesourceentity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templatesourceentity_sourcetemplate"/>
+        <Class IRI="templatesourceentity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templateversion_datasetconfigurations"/>
+        <Class IRI="templateversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templateversion_errors"/>
+        <Class IRI="templateversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="templateversion_sheets"/>
+        <Class IRI="templateversion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="columngroupschema_columngroupcolumnschemalist"/>
+        <Class IRI="columngroupcolumnschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasetconfiguration_columngroupschemalist"/>
+        <Class IRI="columngroupschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasetconfiguration_datasetschema"/>
+        <Class IRI="datasetschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datasetschema_columnschemalist"/>
+        <Class IRI="columnschema"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="template_permissions"/>
+        <Class IRI="resourcepermission"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="template_sourceentity"/>
+        <Class IRI="templatesourceentity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="template_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templatesourceanalysis_datasetreferences"/>
+        <Class IRI="datasetreference"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templatesourceentity_sourceanalysis"/>
+        <Class IRI="templatesourceanalysis"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templatesourceentity_sourcetemplate"/>
+        <Class IRI="templatesourcetemplate"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templateversion_datasetconfigurations"/>
+        <Class IRI="datasetconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templateversion_errors"/>
+        <Class IRI="templateerror"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="templateversion_sheets"/>
+        <Class IRI="sheet"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="columngroupcolumnschema_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="columngroupschema_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="columnschema_datatype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="columnschema_geographicrole"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="columnschema_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasetconfiguration_placeholder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="resourcepermission_principal"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sheet_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="sheet_sheetid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="template_awsaccountid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="template_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="template_templateid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="template_versiondescription"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateerror_message"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateerror_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templatesourceanalysis_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templatesourcetemplate_arn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_createdtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_description"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_sourceentityarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_status"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_themearn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="templateversion_versionnumber"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="columngroupcolumnschema_name"/>
+        <Class IRI="columngroupcolumnschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="columngroupschema_name"/>
+        <Class IRI="columngroupschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="columnschema_datatype"/>
+        <Class IRI="columnschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="columnschema_geographicrole"/>
+        <Class IRI="columnschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="columnschema_name"/>
+        <Class IRI="columnschema"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasetconfiguration_placeholder"/>
+        <Class IRI="datasetconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+        <Class IRI="datasetreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+        <Class IRI="datasetreference"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcepermission_actions"/>
+        <Class IRI="resourcepermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="resourcepermission_principal"/>
+        <Class IRI="resourcepermission"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sheet_name"/>
+        <Class IRI="sheet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="sheet_sheetid"/>
+        <Class IRI="sheet"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="template_awsaccountid"/>
+        <Class IRI="template"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="template_name"/>
+        <Class IRI="template"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="template_templateid"/>
+        <Class IRI="template"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="template_versiondescription"/>
+        <Class IRI="template"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateerror_message"/>
+        <Class IRI="templateerror"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateerror_type"/>
+        <Class IRI="templateerror"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templatesourceanalysis_arn"/>
+        <Class IRI="templatesourceanalysis"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templatesourcetemplate_arn"/>
+        <Class IRI="templatesourcetemplate"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_createdtime"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_description"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_sourceentityarn"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_status"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_themearn"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="templateversion_versionnumber"/>
+        <Class IRI="templateversion"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="columngroupcolumnschema_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="columngroupschema_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="columnschema_datatype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="columnschema_geographicrole"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="columnschema_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasetconfiguration_placeholder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasetreference_datasetarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="datasetreference_datasetplaceholder"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcepermission_actions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="resourcepermission_principal"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sheet_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="sheet_sheetid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="template_awsaccountid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="template_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="template_templateid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="template_versiondescription"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateerror_message"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateerror_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templatesourceanalysis_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templatesourcetemplate_arn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_createdtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_description"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_sourceentityarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_themearn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="templateversion_versionnumber"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columngroupcolumnschema</IRI>
+        <Literal>quicksighttemplate:columngroupcolumnschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columngroupcolumnschema_name</IRI>
+        <Literal>quicksighttemplate:columngroupcolumnschema_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columngroupschema</IRI>
+        <Literal>quicksighttemplate:columngroupschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columngroupschema_columngroupcolumnschemalist</IRI>
+        <Literal>quicksighttemplate:columngroupschema_columngroupcolumnschemalist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columngroupschema_name</IRI>
+        <Literal>quicksighttemplate:columngroupschema_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnschema</IRI>
+        <Literal>quicksighttemplate:columnschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnschema_datatype</IRI>
+        <Literal>quicksighttemplate:columnschema_datatype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnschema_geographicrole</IRI>
+        <Literal>quicksighttemplate:columnschema_geographicrole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>columnschema_name</IRI>
+        <Literal>quicksighttemplate:columnschema_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetconfiguration</IRI>
+        <Literal>quicksighttemplate:datasetconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetconfiguration_columngroupschemalist</IRI>
+        <Literal>quicksighttemplate:datasetconfiguration_columngroupschemalist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetconfiguration_datasetschema</IRI>
+        <Literal>quicksighttemplate:datasetconfiguration_datasetschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetconfiguration_placeholder</IRI>
+        <Literal>quicksighttemplate:datasetconfiguration_placeholder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference</IRI>
+        <Literal>quicksighttemplate:datasetreference</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference_datasetarn</IRI>
+        <Literal>quicksighttemplate:datasetreference_datasetarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetreference_datasetplaceholder</IRI>
+        <Literal>quicksighttemplate:datasetreference_datasetplaceholder</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetschema</IRI>
+        <Literal>quicksighttemplate:datasetschema</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datasetschema_columnschemalist</IRI>
+        <Literal>quicksighttemplate:datasetschema_columnschemalist</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission</IRI>
+        <Literal>quicksighttemplate:resourcepermission</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission_actions</IRI>
+        <Literal>quicksighttemplate:resourcepermission_actions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>resourcepermission_principal</IRI>
+        <Literal>quicksighttemplate:resourcepermission_principal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet</IRI>
+        <Literal>quicksighttemplate:sheet</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet_name</IRI>
+        <Literal>quicksighttemplate:sheet_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>sheet_sheetid</IRI>
+        <Literal>quicksighttemplate:sheet_sheetid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>quicksighttemplate:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>quicksighttemplate:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>quicksighttemplate:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template</IRI>
+        <Literal>quicksighttemplate:template</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_awsaccountid</IRI>
+        <Literal>quicksighttemplate:template_awsaccountid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_name</IRI>
+        <Literal>quicksighttemplate:template_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_permissions</IRI>
+        <Literal>quicksighttemplate:template_permissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_sourceentity</IRI>
+        <Literal>quicksighttemplate:template_sourceentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_tags</IRI>
+        <Literal>quicksighttemplate:template_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_templateid</IRI>
+        <Literal>quicksighttemplate:template_templateid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>template_versiondescription</IRI>
+        <Literal>quicksighttemplate:template_versiondescription</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateerror</IRI>
+        <Literal>quicksighttemplate:templateerror</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateerror_message</IRI>
+        <Literal>quicksighttemplate:templateerror_message</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateerror_type</IRI>
+        <Literal>quicksighttemplate:templateerror_type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceanalysis</IRI>
+        <Literal>quicksighttemplate:templatesourceanalysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceanalysis_arn</IRI>
+        <Literal>quicksighttemplate:templatesourceanalysis_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceanalysis_datasetreferences</IRI>
+        <Literal>quicksighttemplate:templatesourceanalysis_datasetreferences</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceentity</IRI>
+        <Literal>quicksighttemplate:templatesourceentity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceentity_sourceanalysis</IRI>
+        <Literal>quicksighttemplate:templatesourceentity_sourceanalysis</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourceentity_sourcetemplate</IRI>
+        <Literal>quicksighttemplate:templatesourceentity_sourcetemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourcetemplate</IRI>
+        <Literal>quicksighttemplate:templatesourcetemplate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templatesourcetemplate_arn</IRI>
+        <Literal>quicksighttemplate:templatesourcetemplate_arn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion</IRI>
+        <Literal>quicksighttemplate:templateversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_createdtime</IRI>
+        <Literal>quicksighttemplate:templateversion_createdtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_datasetconfigurations</IRI>
+        <Literal>quicksighttemplate:templateversion_datasetconfigurations</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_description</IRI>
+        <Literal>quicksighttemplate:templateversion_description</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_errors</IRI>
+        <Literal>quicksighttemplate:templateversion_errors</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_sheets</IRI>
+        <Literal>quicksighttemplate:templateversion_sheets</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_sourceentityarn</IRI>
+        <Literal>quicksighttemplate:templateversion_sourceentityarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_status</IRI>
+        <Literal>quicksighttemplate:templateversion_status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_themearn</IRI>
+        <Literal>quicksighttemplate:templateversion_themearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>templateversion_versionnumber</IRI>
+        <Literal>quicksighttemplate:templateversion_versionnumber</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

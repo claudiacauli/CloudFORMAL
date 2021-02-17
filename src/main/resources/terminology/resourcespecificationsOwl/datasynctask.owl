@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/datasynctask#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/datasynctask#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="filterrule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="options"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="task"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="taskschedule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="task_excludes"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="task_options"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="task_schedule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="task_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filterrule_filtertype"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="filterrule_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_atime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_bytespersecond"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_gid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_loglevel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_mtime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_overwritemode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_posixpermissions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_preservedeletedfiles"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_preservedevices"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_taskqueueing"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_transfermode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_uid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="options_verifymode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="task_cloudwatchloggrouparn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="task_destinationlocationarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="task_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="task_sourcelocationarn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="taskschedule_scheduleexpression"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="task"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="task_destinationlocationarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="task"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="task_sourcelocationarn"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="taskschedule"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="taskschedule_scheduleexpression"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="task_options"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="task_schedule"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="task_excludes"/>
+        <Class IRI="task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="task_options"/>
+        <Class IRI="task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="task_schedule"/>
+        <Class IRI="task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="task_tags"/>
+        <Class IRI="task"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="task_excludes"/>
+        <Class IRI="filterrule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="task_options"/>
+        <Class IRI="options"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="task_schedule"/>
+        <Class IRI="taskschedule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="task_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filterrule_filtertype"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="filterrule_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_atime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_bytespersecond"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_gid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_loglevel"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_mtime"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_overwritemode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_posixpermissions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_preservedeletedfiles"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_preservedevices"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_taskqueueing"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_transfermode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_uid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="options_verifymode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="task_cloudwatchloggrouparn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="task_destinationlocationarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="task_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="task_sourcelocationarn"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="taskschedule_scheduleexpression"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="filterrule_filtertype"/>
+        <Class IRI="filterrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="filterrule_value"/>
+        <Class IRI="filterrule"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_atime"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_bytespersecond"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_gid"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_loglevel"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_mtime"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_overwritemode"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_posixpermissions"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_preservedeletedfiles"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_preservedevices"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_taskqueueing"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_transfermode"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_uid"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="options_verifymode"/>
+        <Class IRI="options"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="task_cloudwatchloggrouparn"/>
+        <Class IRI="task"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="task_destinationlocationarn"/>
+        <Class IRI="task"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="task_name"/>
+        <Class IRI="task"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="task_sourcelocationarn"/>
+        <Class IRI="task"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="taskschedule_scheduleexpression"/>
+        <Class IRI="taskschedule"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="filterrule_filtertype"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="filterrule_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_atime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_bytespersecond"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_gid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_loglevel"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_mtime"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_overwritemode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_posixpermissions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_preservedeletedfiles"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_preservedevices"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_taskqueueing"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_transfermode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_uid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="options_verifymode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="task_cloudwatchloggrouparn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="task_destinationlocationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="task_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="task_sourcelocationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="taskschedule_scheduleexpression"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule</IRI>
+        <Literal>datasynctask:filterrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule_filtertype</IRI>
+        <Literal>datasynctask:filterrule_filtertype</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>filterrule_value</IRI>
+        <Literal>datasynctask:filterrule_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options</IRI>
+        <Literal>datasynctask:options</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_atime</IRI>
+        <Literal>datasynctask:options_atime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_bytespersecond</IRI>
+        <Literal>datasynctask:options_bytespersecond</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_gid</IRI>
+        <Literal>datasynctask:options_gid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_loglevel</IRI>
+        <Literal>datasynctask:options_loglevel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_mtime</IRI>
+        <Literal>datasynctask:options_mtime</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_overwritemode</IRI>
+        <Literal>datasynctask:options_overwritemode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_posixpermissions</IRI>
+        <Literal>datasynctask:options_posixpermissions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_preservedeletedfiles</IRI>
+        <Literal>datasynctask:options_preservedeletedfiles</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_preservedevices</IRI>
+        <Literal>datasynctask:options_preservedevices</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_taskqueueing</IRI>
+        <Literal>datasynctask:options_taskqueueing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_transfermode</IRI>
+        <Literal>datasynctask:options_transfermode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_uid</IRI>
+        <Literal>datasynctask:options_uid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>options_verifymode</IRI>
+        <Literal>datasynctask:options_verifymode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>datasynctask:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>datasynctask:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>datasynctask:tag_value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task</IRI>
+        <Literal>datasynctask:task</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_cloudwatchloggrouparn</IRI>
+        <Literal>datasynctask:task_cloudwatchloggrouparn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_destinationlocationarn</IRI>
+        <Literal>datasynctask:task_destinationlocationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_excludes</IRI>
+        <Literal>datasynctask:task_excludes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_name</IRI>
+        <Literal>datasynctask:task_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_options</IRI>
+        <Literal>datasynctask:task_options</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_schedule</IRI>
+        <Literal>datasynctask:task_schedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_sourcelocationarn</IRI>
+        <Literal>datasynctask:task_sourcelocationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>task_tags</IRI>
+        <Literal>datasynctask:task_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskschedule</IRI>
+        <Literal>datasynctask:taskschedule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>taskschedule_scheduleexpression</IRI>
+        <Literal>datasynctask:taskschedule_scheduleexpression</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

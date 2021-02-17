@@ -21,13 +21,25 @@
         <Class IRI="environment"/>
     </Declaration>
     <Declaration>
+        <Class IRI="evaluateonexit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="fargateplatformconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="jobdefinition"/>
     </Declaration>
     <Declaration>
         <Class IRI="linuxparameters"/>
     </Declaration>
     <Declaration>
+        <Class IRI="logconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="mountpoints"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="networkconfiguration"/>
     </Declaration>
     <Declaration>
         <Class IRI="nodeproperties"/>
@@ -42,7 +54,13 @@
         <Class IRI="retrystrategy"/>
     </Declaration>
     <Declaration>
+        <Class IRI="secret"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="timeout"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tmpfs"/>
     </Declaration>
     <Declaration>
         <Class IRI="ulimit"/>
@@ -57,13 +75,25 @@
         <ObjectProperty IRI="containerproperties_environment"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="containerproperties_fargateplatformconfiguration"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="containerproperties_linuxparameters"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerproperties_logconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="containerproperties_mountpoints"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="containerproperties_networkconfiguration"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="containerproperties_resourcerequirements"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="containerproperties_secrets"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="containerproperties_ulimits"/>
@@ -87,16 +117,28 @@
         <ObjectProperty IRI="linuxparameters_devices"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="linuxparameters_tmpfs"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="logconfiguration_secretoptions"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="nodeproperties_noderangeproperties"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="noderangeproperty_container"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="retrystrategy_evaluateonexit"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="volumes_host"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="containerproperties_command"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="containerproperties_executionrolearn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="containerproperties_image"/>
@@ -138,13 +180,55 @@
         <DataProperty IRI="environment_value"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="evaluateonexit_action"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="evaluateonexit_onexitcode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="evaluateonexit_onreason"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="evaluateonexit_onstatusreason"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fargateplatformconfiguration_platformversion"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="jobdefinition_jobdefinitionname"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="jobdefinition_parameters"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="jobdefinition_platformcapabilities"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jobdefinition_propagatetags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="jobdefinition_tags"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="jobdefinition_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="linuxparameters_initprocessenabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="linuxparameters_maxswap"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="linuxparameters_sharedmemorysize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="linuxparameters_swappiness"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logconfiguration_logdriver"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="logconfiguration_options"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="mountpoints_containerpath"/>
@@ -154,6 +238,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="mountpoints_sourcevolume"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="networkconfiguration_assignpublicip"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="nodeproperties_mainnode"/>
@@ -174,7 +261,22 @@
         <DataProperty IRI="retrystrategy_attempts"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="secret_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="secret_valuefrom"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="timeout_attemptdurationseconds"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tmpfs_containerpath"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tmpfs_mountoptions"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tmpfs_size"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="ulimit_hardlimit"/>
@@ -199,9 +301,23 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="evaluateonexit"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="evaluateonexit_action"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="jobdefinition"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="jobdefinition_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="logconfiguration"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="logconfiguration_logdriver"/>
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
@@ -234,6 +350,34 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <SubClassOf>
+        <Class IRI="secret"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="secret_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="secret"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="secret_valuefrom"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tmpfs"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tmpfs_containerpath"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tmpfs"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tmpfs_size"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
         <Class IRI="ulimit"/>
         <DataSomeValuesFrom>
             <DataProperty IRI="ulimit_hardlimit"/>
@@ -255,7 +399,16 @@
         </DataSomeValuesFrom>
     </SubClassOf>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerproperties_fargateplatformconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="containerproperties_linuxparameters"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerproperties_logconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="containerproperties_networkconfiguration"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="jobdefinition_containerproperties"/>
@@ -280,7 +433,15 @@
         <Class IRI="containerproperties"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerproperties_fargateplatformconfiguration"/>
+        <Class IRI="containerproperties"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="containerproperties_linuxparameters"/>
+        <Class IRI="containerproperties"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerproperties_logconfiguration"/>
         <Class IRI="containerproperties"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -288,7 +449,15 @@
         <Class IRI="containerproperties"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerproperties_networkconfiguration"/>
+        <Class IRI="containerproperties"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="containerproperties_resourcerequirements"/>
+        <Class IRI="containerproperties"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="containerproperties_secrets"/>
         <Class IRI="containerproperties"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -320,12 +489,24 @@
         <Class IRI="linuxparameters"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="linuxparameters_tmpfs"/>
+        <Class IRI="linuxparameters"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="logconfiguration_secretoptions"/>
+        <Class IRI="logconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="nodeproperties_noderangeproperties"/>
         <Class IRI="nodeproperties"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="noderangeproperty_container"/>
         <Class IRI="noderangeproperty"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="retrystrategy_evaluateonexit"/>
+        <Class IRI="retrystrategy"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="volumes_host"/>
@@ -336,16 +517,32 @@
         <Class IRI="environment"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="containerproperties_fargateplatformconfiguration"/>
+        <Class IRI="fargateplatformconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="containerproperties_linuxparameters"/>
         <Class IRI="linuxparameters"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerproperties_logconfiguration"/>
+        <Class IRI="logconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="containerproperties_mountpoints"/>
         <Class IRI="mountpoints"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="containerproperties_networkconfiguration"/>
+        <Class IRI="networkconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="containerproperties_resourcerequirements"/>
         <Class IRI="resourcerequirement"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="containerproperties_secrets"/>
+        <Class IRI="secret"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="containerproperties_ulimits"/>
@@ -376,6 +573,14 @@
         <Class IRI="device"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="linuxparameters_tmpfs"/>
+        <Class IRI="tmpfs"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="logconfiguration_secretoptions"/>
+        <Class IRI="secret"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="nodeproperties_noderangeproperties"/>
         <Class IRI="noderangeproperty"/>
     </ObjectPropertyRange>
@@ -384,9 +589,16 @@
         <Class IRI="containerproperties"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
+        <ObjectProperty IRI="retrystrategy_evaluateonexit"/>
+        <Class IRI="evaluateonexit"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
         <ObjectProperty IRI="volumes_host"/>
         <Class IRI="volumeshost"/>
     </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="containerproperties_executionrolearn"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="containerproperties_image"/>
     </FunctionalDataProperty>
@@ -424,13 +636,52 @@
         <DataProperty IRI="environment_value"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="evaluateonexit_action"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="evaluateonexit_onexitcode"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="evaluateonexit_onreason"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="evaluateonexit_onstatusreason"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="fargateplatformconfiguration_platformversion"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="jobdefinition_jobdefinitionname"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="jobdefinition_parameters"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="jobdefinition_propagatetags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="jobdefinition_tags"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="jobdefinition_type"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="linuxparameters_initprocessenabled"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="linuxparameters_maxswap"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="linuxparameters_sharedmemorysize"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="linuxparameters_swappiness"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logconfiguration_logdriver"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="logconfiguration_options"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="mountpoints_containerpath"/>
@@ -440,6 +691,9 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="mountpoints_sourcevolume"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="networkconfiguration_assignpublicip"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="nodeproperties_mainnode"/>
@@ -460,7 +714,19 @@
         <DataProperty IRI="retrystrategy_attempts"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="secret_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="secret_valuefrom"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="timeout_attemptdurationseconds"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tmpfs_containerpath"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tmpfs_size"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="ulimit_hardlimit"/>
@@ -479,6 +745,10 @@
     </FunctionalDataProperty>
     <DataPropertyDomain>
         <DataProperty IRI="containerproperties_command"/>
+        <Class IRI="containerproperties"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="containerproperties_executionrolearn"/>
         <Class IRI="containerproperties"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -534,6 +804,26 @@
         <Class IRI="environment"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="evaluateonexit_action"/>
+        <Class IRI="evaluateonexit"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="evaluateonexit_onexitcode"/>
+        <Class IRI="evaluateonexit"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="evaluateonexit_onreason"/>
+        <Class IRI="evaluateonexit"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="evaluateonexit_onstatusreason"/>
+        <Class IRI="evaluateonexit"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fargateplatformconfiguration_platformversion"/>
+        <Class IRI="fargateplatformconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="jobdefinition_jobdefinitionname"/>
         <Class IRI="jobdefinition"/>
     </DataPropertyDomain>
@@ -542,8 +832,44 @@
         <Class IRI="jobdefinition"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="jobdefinition_platformcapabilities"/>
+        <Class IRI="jobdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jobdefinition_propagatetags"/>
+        <Class IRI="jobdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="jobdefinition_tags"/>
+        <Class IRI="jobdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="jobdefinition_type"/>
         <Class IRI="jobdefinition"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="linuxparameters_initprocessenabled"/>
+        <Class IRI="linuxparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="linuxparameters_maxswap"/>
+        <Class IRI="linuxparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="linuxparameters_sharedmemorysize"/>
+        <Class IRI="linuxparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="linuxparameters_swappiness"/>
+        <Class IRI="linuxparameters"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logconfiguration_logdriver"/>
+        <Class IRI="logconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="logconfiguration_options"/>
+        <Class IRI="logconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="mountpoints_containerpath"/>
@@ -556,6 +882,10 @@
     <DataPropertyDomain>
         <DataProperty IRI="mountpoints_sourcevolume"/>
         <Class IRI="mountpoints"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="networkconfiguration_assignpublicip"/>
+        <Class IRI="networkconfiguration"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="nodeproperties_mainnode"/>
@@ -582,8 +912,28 @@
         <Class IRI="retrystrategy"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
+        <DataProperty IRI="secret_name"/>
+        <Class IRI="secret"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="secret_valuefrom"/>
+        <Class IRI="secret"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
         <DataProperty IRI="timeout_attemptdurationseconds"/>
         <Class IRI="timeout"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tmpfs_containerpath"/>
+        <Class IRI="tmpfs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tmpfs_mountoptions"/>
+        <Class IRI="tmpfs"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tmpfs_size"/>
+        <Class IRI="tmpfs"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="ulimit_hardlimit"/>
@@ -607,6 +957,10 @@
     </DataPropertyDomain>
     <DataPropertyRange>
         <DataProperty IRI="containerproperties_command"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="containerproperties_executionrolearn"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -662,6 +1016,26 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="evaluateonexit_action"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="evaluateonexit_onexitcode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="evaluateonexit_onreason"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="evaluateonexit_onstatusreason"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fargateplatformconfiguration_platformversion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="jobdefinition_jobdefinitionname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -670,7 +1044,43 @@
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="jobdefinition_platformcapabilities"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jobdefinition_propagatetags"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="jobdefinition_tags"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="jobdefinition_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="linuxparameters_initprocessenabled"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="linuxparameters_maxswap"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="linuxparameters_sharedmemorysize"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="linuxparameters_swappiness"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logconfiguration_logdriver"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="logconfiguration_options"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -683,6 +1093,10 @@
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="mountpoints_sourcevolume"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="networkconfiguration_assignpublicip"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -710,7 +1124,27 @@
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
+        <DataProperty IRI="secret_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="secret_valuefrom"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="timeout_attemptdurationseconds"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tmpfs_containerpath"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tmpfs_mountoptions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tmpfs_size"/>
         <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
@@ -750,6 +1184,16 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerproperties_executionrolearn</IRI>
+        <Literal>batchjobdefinition:containerproperties_executionrolearn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerproperties_fargateplatformconfiguration</IRI>
+        <Literal>batchjobdefinition:containerproperties_fargateplatformconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerproperties_image</IRI>
         <Literal>batchjobdefinition:containerproperties_image</Literal>
     </AnnotationAssertion>
@@ -770,6 +1214,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerproperties_logconfiguration</IRI>
+        <Literal>batchjobdefinition:containerproperties_logconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerproperties_memory</IRI>
         <Literal>batchjobdefinition:containerproperties_memory</Literal>
     </AnnotationAssertion>
@@ -777,6 +1226,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerproperties_mountpoints</IRI>
         <Literal>batchjobdefinition:containerproperties_mountpoints</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerproperties_networkconfiguration</IRI>
+        <Literal>batchjobdefinition:containerproperties_networkconfiguration</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -792,6 +1246,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>containerproperties_resourcerequirements</IRI>
         <Literal>batchjobdefinition:containerproperties_resourcerequirements</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>containerproperties_secrets</IRI>
+        <Literal>batchjobdefinition:containerproperties_secrets</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -850,6 +1309,41 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>evaluateonexit</IRI>
+        <Literal>batchjobdefinition:evaluateonexit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>evaluateonexit_action</IRI>
+        <Literal>batchjobdefinition:evaluateonexit_action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>evaluateonexit_onexitcode</IRI>
+        <Literal>batchjobdefinition:evaluateonexit_onexitcode</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>evaluateonexit_onreason</IRI>
+        <Literal>batchjobdefinition:evaluateonexit_onreason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>evaluateonexit_onstatusreason</IRI>
+        <Literal>batchjobdefinition:evaluateonexit_onstatusreason</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fargateplatformconfiguration</IRI>
+        <Literal>batchjobdefinition:fargateplatformconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fargateplatformconfiguration_platformversion</IRI>
+        <Literal>batchjobdefinition:fargateplatformconfiguration_platformversion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>jobdefinition</IRI>
         <Literal>batchjobdefinition:jobdefinition</Literal>
     </AnnotationAssertion>
@@ -875,8 +1369,23 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobdefinition_platformcapabilities</IRI>
+        <Literal>batchjobdefinition:jobdefinition_platformcapabilities</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobdefinition_propagatetags</IRI>
+        <Literal>batchjobdefinition:jobdefinition_propagatetags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>jobdefinition_retrystrategy</IRI>
         <Literal>batchjobdefinition:jobdefinition_retrystrategy</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jobdefinition_tags</IRI>
+        <Literal>batchjobdefinition:jobdefinition_tags</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -900,6 +1409,51 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>linuxparameters_initprocessenabled</IRI>
+        <Literal>batchjobdefinition:linuxparameters_initprocessenabled</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>linuxparameters_maxswap</IRI>
+        <Literal>batchjobdefinition:linuxparameters_maxswap</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>linuxparameters_sharedmemorysize</IRI>
+        <Literal>batchjobdefinition:linuxparameters_sharedmemorysize</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>linuxparameters_swappiness</IRI>
+        <Literal>batchjobdefinition:linuxparameters_swappiness</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>linuxparameters_tmpfs</IRI>
+        <Literal>batchjobdefinition:linuxparameters_tmpfs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logconfiguration</IRI>
+        <Literal>batchjobdefinition:logconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logconfiguration_logdriver</IRI>
+        <Literal>batchjobdefinition:logconfiguration_logdriver</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logconfiguration_options</IRI>
+        <Literal>batchjobdefinition:logconfiguration_options</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>logconfiguration_secretoptions</IRI>
+        <Literal>batchjobdefinition:logconfiguration_secretoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>mountpoints</IRI>
         <Literal>batchjobdefinition:mountpoints</Literal>
     </AnnotationAssertion>
@@ -917,6 +1471,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>mountpoints_sourcevolume</IRI>
         <Literal>batchjobdefinition:mountpoints_sourcevolume</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration</IRI>
+        <Literal>batchjobdefinition:networkconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>networkconfiguration_assignpublicip</IRI>
+        <Literal>batchjobdefinition:networkconfiguration_assignpublicip</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -980,6 +1544,26 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>retrystrategy_evaluateonexit</IRI>
+        <Literal>batchjobdefinition:retrystrategy_evaluateonexit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secret</IRI>
+        <Literal>batchjobdefinition:secret</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secret_name</IRI>
+        <Literal>batchjobdefinition:secret_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>secret_valuefrom</IRI>
+        <Literal>batchjobdefinition:secret_valuefrom</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>timeout</IRI>
         <Literal>batchjobdefinition:timeout</Literal>
     </AnnotationAssertion>
@@ -987,6 +1571,26 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>timeout_attemptdurationseconds</IRI>
         <Literal>batchjobdefinition:timeout_attemptdurationseconds</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tmpfs</IRI>
+        <Literal>batchjobdefinition:tmpfs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tmpfs_containerpath</IRI>
+        <Literal>batchjobdefinition:tmpfs_containerpath</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tmpfs_mountoptions</IRI>
+        <Literal>batchjobdefinition:tmpfs_mountoptions</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tmpfs_size</IRI>
+        <Literal>batchjobdefinition:tmpfs_size</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

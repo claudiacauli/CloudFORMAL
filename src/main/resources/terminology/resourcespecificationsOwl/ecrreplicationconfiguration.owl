@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecrreplicationconfiguration#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.claudiacauli.com/aws/cfn/2019/v1.0/ecrreplicationconfiguration#">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="replicationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationdestination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="replicationrule"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationconfiguration_replicationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationconfiguration_rules"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="replicationrule_destinations"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationdestination_region"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="replicationdestination_registryid"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="replicationconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="replicationconfiguration_replicationconfiguration"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationconfiguration"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="replicationconfiguration_rules"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="replicationdestination_region"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationdestination"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="replicationdestination_registryid"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="replicationrule"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="replicationrule_destinations"/>
+            <Class abbreviatedIRI="owl:Thing"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="replicationconfiguration_replicationconfiguration"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationconfiguration_replicationconfiguration"/>
+        <Class IRI="replicationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationconfiguration_rules"/>
+        <Class IRI="replicationconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="replicationrule_destinations"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationconfiguration_replicationconfiguration"/>
+        <Class IRI="replicationconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationconfiguration_rules"/>
+        <Class IRI="replicationrule"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="replicationrule_destinations"/>
+        <Class IRI="replicationdestination"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationdestination_region"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="replicationdestination_registryid"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationdestination_region"/>
+        <Class IRI="replicationdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="replicationdestination_registryid"/>
+        <Class IRI="replicationdestination"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationdestination_region"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="replicationdestination_registryid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration</IRI>
+        <Literal>ecrreplicationconfiguration:replicationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration_replicationconfiguration</IRI>
+        <Literal>ecrreplicationconfiguration:replicationconfiguration_replicationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationconfiguration_rules</IRI>
+        <Literal>ecrreplicationconfiguration:replicationconfiguration_rules</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination</IRI>
+        <Literal>ecrreplicationconfiguration:replicationdestination</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_region</IRI>
+        <Literal>ecrreplicationconfiguration:replicationdestination_region</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationdestination_registryid</IRI>
+        <Literal>ecrreplicationconfiguration:replicationdestination_registryid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule</IRI>
+        <Literal>ecrreplicationconfiguration:replicationrule</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>replicationrule_destinations</IRI>
+        <Literal>ecrreplicationconfiguration:replicationrule_destinations</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 5.1.14) https://github.com/owlcs/owlapi/ -->
+
+

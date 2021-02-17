@@ -12,14 +12,48 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="channel"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="profilinggroup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="tag"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="profilinggroup_anomalydetectionnotificationconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="profilinggroup_tags"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="channel_channelid"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="channel_channeluri"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="profilinggroup_agentpermissions"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="profilinggroup_computeplatform"/>
+    </Declaration>
+    <Declaration>
         <DataProperty IRI="profilinggroup_profilinggroupname"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_key"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tag_value"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="channel"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="channel_channeluri"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="profilinggroup"/>
         <DataSomeValuesFrom>
@@ -27,28 +61,128 @@
             <Datatype abbreviatedIRI="xsd:string"/>
         </DataSomeValuesFrom>
     </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_key"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="tag"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="tag_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="profilinggroup_anomalydetectionnotificationconfiguration"/>
+        <Class IRI="profilinggroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="profilinggroup_tags"/>
+        <Class IRI="profilinggroup"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="profilinggroup_anomalydetectionnotificationconfiguration"/>
+        <Class IRI="channel"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="profilinggroup_tags"/>
+        <Class IRI="tag"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="channel_channelid"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="channel_channeluri"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="profilinggroup_agentpermissions"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="profilinggroup_computeplatform"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="profilinggroup_profilinggroupname"/>
     </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_key"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tag_value"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="channel_channelid"/>
+        <Class IRI="channel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="channel_channeluri"/>
+        <Class IRI="channel"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="profilinggroup_agentpermissions"/>
+        <Class IRI="profilinggroup"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="profilinggroup_computeplatform"/>
         <Class IRI="profilinggroup"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="profilinggroup_profilinggroupname"/>
         <Class IRI="profilinggroup"/>
     </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_key"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tag_value"/>
+        <Class IRI="tag"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="channel_channelid"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="channel_channeluri"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="profilinggroup_agentpermissions"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="profilinggroup_computeplatform"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="profilinggroup_profilinggroupname"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_key"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tag_value"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>channel</IRI>
+        <Literal>codeguruprofilerprofilinggroup:channel</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>channel_channelid</IRI>
+        <Literal>codeguruprofilerprofilinggroup:channel_channelid</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>channel_channeluri</IRI>
+        <Literal>codeguruprofilerprofilinggroup:channel_channeluri</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>profilinggroup</IRI>
@@ -61,8 +195,38 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>profilinggroup_anomalydetectionnotificationconfiguration</IRI>
+        <Literal>codeguruprofilerprofilinggroup:profilinggroup_anomalydetectionnotificationconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>profilinggroup_computeplatform</IRI>
+        <Literal>codeguruprofilerprofilinggroup:profilinggroup_computeplatform</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>profilinggroup_profilinggroupname</IRI>
         <Literal>codeguruprofilerprofilinggroup:profilinggroup_profilinggroupname</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>profilinggroup_tags</IRI>
+        <Literal>codeguruprofilerprofilinggroup:profilinggroup_tags</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag</IRI>
+        <Literal>codeguruprofilerprofilinggroup:tag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_key</IRI>
+        <Literal>codeguruprofilerprofilinggroup:tag_key</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tag_value</IRI>
+        <Literal>codeguruprofilerprofilinggroup:tag_value</Literal>
     </AnnotationAssertion>
 </Ontology>
 

@@ -15,10 +15,19 @@
         <Class IRI="analyticsconfiguration"/>
     </Declaration>
     <Declaration>
+        <Class IRI="tokenvalidityunits"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="userpoolclient"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="userpoolclient_analyticsconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="userpoolclient_tokenvalidityunits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="analyticsconfiguration_applicationarn"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="analyticsconfiguration_applicationid"/>
@@ -31,6 +40,18 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="analyticsconfiguration_userdatashared"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tokenvalidityunits_accesstoken"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tokenvalidityunits_idtoken"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tokenvalidityunits_refreshtoken"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="userpoolclient_accesstokenvalidity"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="userpoolclient_allowedoauthflows"/>
@@ -55,6 +76,9 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="userpoolclient_generatesecret"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="userpoolclient_idtokenvalidity"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="userpoolclient_logouturls"/>
@@ -87,14 +111,28 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="userpoolclient_analyticsconfiguration"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="userpoolclient_tokenvalidityunits"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="userpoolclient_analyticsconfiguration"/>
+        <Class IRI="userpoolclient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="userpoolclient_tokenvalidityunits"/>
         <Class IRI="userpoolclient"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="userpoolclient_analyticsconfiguration"/>
         <Class IRI="analyticsconfiguration"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="userpoolclient_tokenvalidityunits"/>
+        <Class IRI="tokenvalidityunits"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="analyticsconfiguration_applicationarn"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="analyticsconfiguration_applicationid"/>
     </FunctionalDataProperty>
@@ -106,6 +144,18 @@
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="analyticsconfiguration_userdatashared"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tokenvalidityunits_accesstoken"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tokenvalidityunits_idtoken"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="tokenvalidityunits_refreshtoken"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="userpoolclient_accesstokenvalidity"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="userpoolclient_allowedoauthflowsuserpoolclient"/>
@@ -120,6 +170,9 @@
         <DataProperty IRI="userpoolclient_generatesecret"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
+        <DataProperty IRI="userpoolclient_idtokenvalidity"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
         <DataProperty IRI="userpoolclient_preventuserexistenceerrors"/>
     </FunctionalDataProperty>
     <FunctionalDataProperty>
@@ -128,6 +181,10 @@
     <FunctionalDataProperty>
         <DataProperty IRI="userpoolclient_userpoolid"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="analyticsconfiguration_applicationarn"/>
+        <Class IRI="analyticsconfiguration"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="analyticsconfiguration_applicationid"/>
         <Class IRI="analyticsconfiguration"/>
@@ -143,6 +200,22 @@
     <DataPropertyDomain>
         <DataProperty IRI="analyticsconfiguration_userdatashared"/>
         <Class IRI="analyticsconfiguration"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tokenvalidityunits_accesstoken"/>
+        <Class IRI="tokenvalidityunits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tokenvalidityunits_idtoken"/>
+        <Class IRI="tokenvalidityunits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tokenvalidityunits_refreshtoken"/>
+        <Class IRI="tokenvalidityunits"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="userpoolclient_accesstokenvalidity"/>
+        <Class IRI="userpoolclient"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="userpoolclient_allowedoauthflows"/>
@@ -174,6 +247,10 @@
     </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="userpoolclient_generatesecret"/>
+        <Class IRI="userpoolclient"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="userpoolclient_idtokenvalidity"/>
         <Class IRI="userpoolclient"/>
     </DataPropertyDomain>
     <DataPropertyDomain>
@@ -205,6 +282,10 @@
         <Class IRI="userpoolclient"/>
     </DataPropertyDomain>
     <DataPropertyRange>
+        <DataProperty IRI="analyticsconfiguration_applicationarn"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
         <DataProperty IRI="analyticsconfiguration_applicationid"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
@@ -219,6 +300,22 @@
     <DataPropertyRange>
         <DataProperty IRI="analyticsconfiguration_userdatashared"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tokenvalidityunits_accesstoken"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tokenvalidityunits_idtoken"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tokenvalidityunits_refreshtoken"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="userpoolclient_accesstokenvalidity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="userpoolclient_allowedoauthflows"/>
@@ -251,6 +348,10 @@
     <DataPropertyRange>
         <DataProperty IRI="userpoolclient_generatesecret"/>
         <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="userpoolclient_idtokenvalidity"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
     </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="userpoolclient_logouturls"/>
@@ -287,6 +388,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>analyticsconfiguration_applicationarn</IRI>
+        <Literal>cognitouserpoolclient:analyticsconfiguration_applicationarn</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>analyticsconfiguration_applicationid</IRI>
         <Literal>cognitouserpoolclient:analyticsconfiguration_applicationid</Literal>
     </AnnotationAssertion>
@@ -307,8 +413,33 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tokenvalidityunits</IRI>
+        <Literal>cognitouserpoolclient:tokenvalidityunits</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tokenvalidityunits_accesstoken</IRI>
+        <Literal>cognitouserpoolclient:tokenvalidityunits_accesstoken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tokenvalidityunits_idtoken</IRI>
+        <Literal>cognitouserpoolclient:tokenvalidityunits_idtoken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>tokenvalidityunits_refreshtoken</IRI>
+        <Literal>cognitouserpoolclient:tokenvalidityunits_refreshtoken</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>userpoolclient</IRI>
         <Literal>cognitouserpoolclient:userpoolclient</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>userpoolclient_accesstokenvalidity</IRI>
+        <Literal>cognitouserpoolclient:userpoolclient_accesstokenvalidity</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -357,6 +488,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>userpoolclient_idtokenvalidity</IRI>
+        <Literal>cognitouserpoolclient:userpoolclient_idtokenvalidity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>userpoolclient_logouturls</IRI>
         <Literal>cognitouserpoolclient:userpoolclient_logouturls</Literal>
     </AnnotationAssertion>
@@ -379,6 +515,11 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>userpoolclient_supportedidentityproviders</IRI>
         <Literal>cognitouserpoolclient:userpoolclient_supportedidentityproviders</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>userpoolclient_tokenvalidityunits</IRI>
+        <Literal>cognitouserpoolclient:userpoolclient_tokenvalidityunits</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>

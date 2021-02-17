@@ -12,6 +12,9 @@
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="column"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="customermanageds3"/>
     </Declaration>
     <Declaration>
@@ -21,7 +24,19 @@
         <Class IRI="datastorestorage"/>
     </Declaration>
     <Declaration>
+        <Class IRI="fileformatconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="jsonconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="parquetconfiguration"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="retentionperiod"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="schemadefinition"/>
     </Declaration>
     <Declaration>
         <Class IRI="servicemanageds3"/>
@@ -31,6 +46,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="datastore_datastorestorage"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="datastore_fileformatconfiguration"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="datastore_retentionperiod"/>
@@ -43,6 +61,24 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fileformatconfiguration_jsonconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="fileformatconfiguration_parquetconfiguration"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="parquetconfiguration_schemadefinition"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="schemadefinition_columns"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="column_type"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="customermanageds3_bucket"/>
@@ -68,6 +104,20 @@
     <Declaration>
         <DataProperty IRI="tag_value"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="column"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="column_name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="column"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="column_type"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="customermanageds3"/>
         <DataSomeValuesFrom>
@@ -100,6 +150,9 @@
         <ObjectProperty IRI="datastore_datastorestorage"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
+        <ObjectProperty IRI="datastore_fileformatconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
         <ObjectProperty IRI="datastore_retentionperiod"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -108,8 +161,21 @@
     <FunctionalObjectProperty>
         <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
     </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fileformatconfiguration_jsonconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="fileformatconfiguration_parquetconfiguration"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="parquetconfiguration_schemadefinition"/>
+    </FunctionalObjectProperty>
     <ObjectPropertyDomain>
         <ObjectProperty IRI="datastore_datastorestorage"/>
+        <Class IRI="datastore"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="datastore_fileformatconfiguration"/>
         <Class IRI="datastore"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -128,9 +194,29 @@
         <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
         <Class IRI="datastorestorage"/>
     </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fileformatconfiguration_jsonconfiguration"/>
+        <Class IRI="fileformatconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="fileformatconfiguration_parquetconfiguration"/>
+        <Class IRI="fileformatconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="parquetconfiguration_schemadefinition"/>
+        <Class IRI="parquetconfiguration"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="schemadefinition_columns"/>
+        <Class IRI="schemadefinition"/>
+    </ObjectPropertyDomain>
     <ObjectPropertyRange>
         <ObjectProperty IRI="datastore_datastorestorage"/>
         <Class IRI="datastorestorage"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="datastore_fileformatconfiguration"/>
+        <Class IRI="fileformatconfiguration"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="datastore_retentionperiod"/>
@@ -148,6 +234,28 @@
         <ObjectProperty IRI="datastorestorage_servicemanageds3"/>
         <Class IRI="servicemanageds3"/>
     </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fileformatconfiguration_jsonconfiguration"/>
+        <Class IRI="jsonconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="fileformatconfiguration_parquetconfiguration"/>
+        <Class IRI="parquetconfiguration"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="parquetconfiguration_schemadefinition"/>
+        <Class IRI="schemadefinition"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="schemadefinition_columns"/>
+        <Class IRI="column"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_name"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="column_type"/>
+    </FunctionalDataProperty>
     <FunctionalDataProperty>
         <DataProperty IRI="customermanageds3_bucket"/>
     </FunctionalDataProperty>
@@ -172,6 +280,14 @@
     <FunctionalDataProperty>
         <DataProperty IRI="tag_value"/>
     </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_name"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="column_type"/>
+        <Class IRI="column"/>
+    </DataPropertyDomain>
     <DataPropertyDomain>
         <DataProperty IRI="customermanageds3_bucket"/>
         <Class IRI="customermanageds3"/>
@@ -204,6 +320,14 @@
         <DataProperty IRI="tag_value"/>
         <Class IRI="tag"/>
     </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="column_name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="column_type"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
     <DataPropertyRange>
         <DataProperty IRI="customermanageds3_bucket"/>
         <Datatype abbreviatedIRI="xsd:string"/>
@@ -236,6 +360,21 @@
         <DataProperty IRI="tag_value"/>
         <Datatype abbreviatedIRI="xsd:string"/>
     </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column</IRI>
+        <Literal>iotanalyticsdatastore:column</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column_name</IRI>
+        <Literal>iotanalyticsdatastore:column_name</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>column_type</IRI>
+        <Literal>iotanalyticsdatastore:column_type</Literal>
+    </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>customermanageds3</IRI>
@@ -273,6 +412,11 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>datastore_fileformatconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:datastore_fileformatconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>datastore_retentionperiod</IRI>
         <Literal>iotanalyticsdatastore:datastore_retentionperiod</Literal>
     </AnnotationAssertion>
@@ -298,6 +442,36 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fileformatconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:fileformatconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fileformatconfiguration_jsonconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:fileformatconfiguration_jsonconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>fileformatconfiguration_parquetconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:fileformatconfiguration_parquetconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>jsonconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:jsonconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parquetconfiguration</IRI>
+        <Literal>iotanalyticsdatastore:parquetconfiguration</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>parquetconfiguration_schemadefinition</IRI>
+        <Literal>iotanalyticsdatastore:parquetconfiguration_schemadefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>retentionperiod</IRI>
         <Literal>iotanalyticsdatastore:retentionperiod</Literal>
     </AnnotationAssertion>
@@ -310,6 +484,16 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>retentionperiod_unlimited</IRI>
         <Literal>iotanalyticsdatastore:retentionperiod_unlimited</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemadefinition</IRI>
+        <Literal>iotanalyticsdatastore:schemadefinition</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>schemadefinition_columns</IRI>
+        <Literal>iotanalyticsdatastore:schemadefinition_columns</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
