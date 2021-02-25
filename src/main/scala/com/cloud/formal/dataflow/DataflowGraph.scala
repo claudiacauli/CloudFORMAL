@@ -141,9 +141,16 @@ object DataflowGraph extends Graph {
 
     val resTypes = findAllResourceTypes()
 
-    val usedServicesWithDFDavailable =
+    //println("Rest types are " + resTypes)
+
+    var usedServicesWithDFDavailable =
       Ontologies.serviceTypeToDFD.keys.filter(k =>
       resTypes.exists(_.startsWith(k)))
+
+    if (usedServicesWithDFDavailable.toVector.contains("cloudwatch"))
+      usedServicesWithDFDavailable = usedServicesWithDFDavailable ++ Set("logs")
+
+    //println("And used services with dFD support: " + usedServicesWithDFDavailable)
 
     new File(FilePath.DataflowResSpecs)
     .listFiles().filter(_.getName.endsWith(Ex.OWL))

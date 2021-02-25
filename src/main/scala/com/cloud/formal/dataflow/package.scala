@@ -23,6 +23,7 @@ package object dataflow {
                       "cloudtrail" -> "dfdcloudtrail.owl",
                       "dynamodb" -> "dfddynamodb.owl",
                       "lambda" -> "dfdlambda.owl",
+                      "logs" -> "dfdcloudwatch.owl",
                       "s3" -> "dfds3.owl",
                       "sns" -> "dfdsns.owl",
                       "sqs" -> "dfdsqs.owl"
